@@ -151,8 +151,8 @@
         /* Info Pages */
         .info-container { background: var(--white); border-radius: 15px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); }
         .info-title { color: var(--primary); font-size: 1.6rem; font-weight: 700; margin-bottom: 25px; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
-        .tab-btn { padding: 10px 20px; border: none; background: #f5f5f5; border-radius: 25px; cursor: pointer; font-weight: 500; transition: all 0.3s; }
+        .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 25px; }
+        .tab-btn { padding: 14px 10px; border: none; background: #f5f5f5; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: all 0.3s; text-align: center; letter-spacing: -0.3px; }
         .tab-btn.active { background: var(--primary); color: var(--white); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
@@ -609,6 +609,7 @@
                     <span class="nav-item" onclick="showPage('info')">정보센터</span>
                     <div class="nav-dropdown">
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('mia1906'),100); return false;">📜 MIA 1906 영한대역</a>
+                        <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('insuranceAct2015'),100); return false;">📜 Insurance Act 2015 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('iccOldBilingual'),100); return false;">📜 ICC 구약관 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('iccBilingual'),100); return false;">📜 ICC (A)(B)(C) 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('itcHull'),100); return false;">🚢 ITC-Hull 영한대역</a>
@@ -746,14 +747,13 @@
                 <div class="product-card">
                     <h3>📚 정보센터</h3>
                     <ul>
-                        <li>ICC 신약관 (A/B/C) 상세 해설</li>
-                        <li>구약관 (AR/WA/FPA) 비교 안내</li>
-                        <li>전쟁/동맹파업 등 특약 설명</li>
-                        <li>화물종류표 및 요율 안내</li>
+                        <li>영국보험법 영한대역</li>
+                        <li>협회적하약관(ICC) 신약관(1982)·구약관(1963) 영한대역</li>
+                        <li>선박보험 ITC-Hull 영한대역</li>
+                        <li>화물분류코드</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('info')">정보보기</button>
-                        <button class="btn-secondary" onclick="showPage('info')">약관비교</button>
+                        <button class="btn-primary" onclick="showPage('info')">상세보기</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -765,7 +765,7 @@
                         <li>견적 신청 시 필요서류 안내</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('notice')">자세히보기</button>
+                        <button class="btn-primary" onclick="showPage('notice')">상세보기</button>
                     </div>
                 </div>
             </div>
@@ -1525,11 +1525,12 @@
             <div class="info-container">
                 <h2 class="info-title">📚 정보센터</h2>
                 <div class="tabs">
-                    <button class="tab-btn active" onclick="showInfoTab('mia1906')">📜 MIA 1906 영한대역</button>
-                    <button class="tab-btn" onclick="showInfoTab('iccOldBilingual')">📜 ICC 구약관 영한대역</button>
-                    <button class="tab-btn" onclick="showInfoTab('iccBilingual')">📜 ICC (A)(B)(C) 영한대역</button>
-                    <button class="tab-btn" onclick="showInfoTab('itcHull')">🚢 ITC-Hull 영한대역</button>
-                    <button class="tab-btn" onclick="showInfoTab('cargoTable')">화물종류표</button>
+                    <button class="tab-btn active" onclick="showInfoTab('mia1906')">MIA 1906</button>
+                    <button class="tab-btn" onclick="showInfoTab('insuranceAct2015')">영국보험법 2015</button>
+                    <button class="tab-btn" onclick="showInfoTab('iccOldBilingual')">ICC 구약관</button>
+                    <button class="tab-btn" onclick="showInfoTab('iccBilingual')">ICC 신약관</button>
+                    <button class="tab-btn" onclick="showInfoTab('itcHull')">ITC-Hull (1/10/83)</button>
+                    <button class="tab-btn" onclick="showInfoTab('cargoTable')">화물분류코드</button>
                 </div>
                 
                 <div class="tab-content" id="tab-old" style="display:none;"></div>
@@ -2172,6 +2173,703 @@
                     <div class="mia-disclaimer" style="line-height: 1.8;">
                         ⚖️ <strong>[국문 면책 공고]</strong> 본 사이트에 게시된 국문 영국 해상보험법 1906(Marine Insurance Act 1906)은 사용자의 이해를 돕기 위해 AI를 통해 번역된 참고용 자료입니다. 번역 과정에서 오역이나 누락이 발생할 수 있으며, 어떠한 경우에도 본 번역본은 법적 근거가 될 수 없습니다. 모든 법적 해석은 영국 의회에서 제정한 <strong>영문 원문(English Original)</strong>을 기준으로 합니다. 정확한 법률 내용은 반드시 공신력 있는 기관의 공식 법률 텍스트를 확인하시기 바랍니다.<br><br>
                         ⚖️ <strong>[English Disclaimer]</strong> The Korean translation of the Marine Insurance Act 1906 provided on this site is for reference purposes only and was translated using AI to assist understanding. This translation may contain errors or omissions and lacks legal standing. In all legal interpretations, the <strong>English Original</strong> enacted by the UK Parliament shall prevail. Please consult official legal texts provided by authoritative institutions for accurate legal information.<br><br>
+                        © CARGOINSU.COM 기업보험전문대리점 해상보험 정보센터
+                    </div>
+                    
+                </div>
+
+                <!-- Insurance Act 2015 영한대역 Tab -->
+                <div class="tab-content" id="tab-insuranceAct2015">
+                    
+                    <!-- Disclaimer Banner (Top) -->
+                    <div style="background: #fff3e0; border: 1px solid #ffcc02; border-radius: 10px; padding: 16px 20px; margin-bottom: 1.5rem; font-size: 0.78rem; line-height: 1.8; color: #5d4037;">
+                        <strong>📌 [국문 면책 공고]</strong><br>
+                        본 사이트에 게시된 국문 영국보험법 2015(Insurance Act 2015)는 사용자의 이해를 돕기 위해 AI를 통해 번역된 참고용 자료입니다. 번역 과정에서 오역이나 누락이 발생할 수 있으며, 어떠한 경우에도 본 번역본은 법적 근거가 될 수 없습니다. 모든 법적 해석은 영국 의회에서 제정한 <strong>영문 원문(English Original)</strong>을 기준으로 합니다. 정확한 법률 내용은 반드시 공신력 있는 기관의 공식 법률 텍스트를 확인하시기 바랍니다.<br><br>
+                        <strong>📌 [English Disclaimer]</strong><br>
+                        The Korean translation of the Insurance Act 2015 provided on this site is for reference purposes only and was translated using AI to assist understanding. This translation may contain errors or omissions and lacks legal standing. In all legal interpretations, the <strong>English Original</strong> enacted by the UK Parliament shall prevail. Please consult official legal texts provided by authoritative institutions for accurate legal information.<br><br>
+                        <span style="color:#888; font-size:0.72rem;">ℹ️ 비영리 및 정보 공유 목적으로 게시됩니다. 상업적 이용 의사가 없음을 명시합니다.</span>
+                    </div>
+
+                    <!-- Banner -->
+                    <div class="mia-header-banner">
+                        <h3>Insurance Act 2015</h3>
+                        <div class="mia-subtitle">영국보험법 2015 — 영한대역 (English-Korean Bilingual)</div>
+                        <div class="mia-badge">An Act to make new provision about insurance contracts [12th February 2015]</div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="mia-toc">
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p1').scrollIntoView({behavior:'smooth'}); return false;">Part 1 정의</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p2').scrollIntoView({behavior:'smooth'}); return false;">Part 2 공정한 고지의무</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p3').scrollIntoView({behavior:'smooth'}); return false;">Part 3 담보·기타조건</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p4').scrollIntoView({behavior:'smooth'}); return false;">Part 4 사기적 청구</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p5').scrollIntoView({behavior:'smooth'}); return false;">Part 5 선의·약정배제</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p6').scrollIntoView({behavior:'smooth'}); return false;">Part 6 제3자권리법 개정</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-p7').scrollIntoView({behavior:'smooth'}); return false;">Part 7 총칙</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-sch1').scrollIntoView({behavior:'smooth'}); return false;">Schedule 1</a>
+                        <a href="javascript:void(0)" onclick="document.getElementById('ia2015-sch2').scrollIntoView({behavior:'smooth'}); return false;">Schedule 2</a>
+                    </div>
+                    
+                    <!-- Column Headers -->
+                    <div class="mia-col-headers">
+                        <div class="mia-col-header en">ENGLISH — Original Text</div>
+                        <div class="mia-col-header ko">국문 — 한국어 번역</div>
+                    </div>
+                    
+                    <!-- ===== PART 1: INSURANCE CONTRACTS: MAIN DEFINITIONS ===== -->
+                    <div class="mia-part-header" id="ia2015-p1">
+                        <h4>PART 1 — Insurance Contracts: Main Definitions</h4>
+                        <div class="mia-part-kr">제1편 — 보험계약: 주요 정의</div>
+                    </div>
+                    
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">1</span> Insurance contracts: main definitions</div>
+                        <div class="mia-ko"><span class="sec-num">1</span> 보험계약: 주요 정의</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">In this Act (apart from Part 6)—<br>
+                        "consumer insurance contract" has the same meaning as in the Consumer Insurance (Disclosure and Representations) Act 2012;<br>
+                        "non-consumer insurance contract" means a contract of insurance that is not a consumer insurance contract;<br>
+                        "insured" means the party to a contract of insurance who is the insured under the contract, or would be if the contract were entered into;<br>
+                        "insurer" means the party to a contract of insurance who is the insurer under the contract, or would be if the contract were entered into;<br>
+                        "the duty of fair presentation" means the duty imposed by section 3(1).</div>
+                        <div class="mia-ko">본 법(제6편 제외)에서—<br>
+                        "소비자보험계약"이란 2012년 소비자보험(고지 및 진술)법에서와 같은 의미를 가진다.<br>
+                        "비소비자보험계약"이란 소비자보험계약이 아닌 보험계약을 말한다.<br>
+                        "피보험자"란 보험계약에서 피보험자인 당사자 또는 계약이 체결되었다면 피보험자가 되었을 당사자를 말한다.<br>
+                        "보험자"란 보험계약에서 보험자인 당사자 또는 계약이 체결되었다면 보험자가 되었을 당사자를 말한다.<br>
+                        "공정한 고지의무"란 제3조 제1항에 의해 부과되는 의무를 말한다.</div>
+                    </div>
+
+                    <!-- ===== PART 2: THE DUTY OF FAIR PRESENTATION ===== -->
+                    <div class="mia-part-header" id="ia2015-p2">
+                        <h4>PART 2 — The Duty of Fair Presentation</h4>
+                        <div class="mia-part-kr">제2편 — 공정한 고지의무</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">2</span> Application and interpretation</div>
+                        <div class="mia-ko"><span class="sec-num">2</span> 적용범위 및 해석</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This Part applies to non-consumer insurance contracts only.<br>
+                        (2) This Part applies in relation to variations of non-consumer insurance contracts as it applies to contracts, but—<br>
+                        (a) references to the risk are to be read as references to changes in the risk relevant to the proposed variation, and<br>
+                        (b) references to the contract of insurance are to the variation.</div>
+                        <div class="mia-ko">(1) 본 편은 비소비자보험계약에만 적용된다.<br>
+                        (2) 본 편은 비소비자보험계약의 변경에 대하여 계약에 적용되는 것과 동일하게 적용되나—<br>
+                        (a) 위험에 대한 언급은 제안된 변경과 관련된 위험의 변경에 대한 언급으로 해석되며,<br>
+                        (b) 보험계약에 대한 언급은 변경에 대한 언급으로 해석된다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">3</span> The duty of fair presentation</div>
+                        <div class="mia-ko"><span class="sec-num">3</span> 공정한 고지의무</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) Before a contract of insurance is entered into, the insured must make to the insurer a fair presentation of the risk.<br>
+                        (2) The duty imposed by subsection (1) is referred to in this Act as "the duty of fair presentation".<br>
+                        (3) A fair presentation of the risk is one—<br>
+                        (a) which makes the disclosure required by subsection (4),<br>
+                        (b) which makes that disclosure in a manner which would be reasonably clear and accessible to a prudent insurer, and<br>
+                        (c) in which every material representation as to a matter of fact is substantially correct, and every material representation as to a matter of expectation or belief is made in good faith.<br>
+                        (4) The disclosure required is as follows, except as provided in subsection (5)—<br>
+                        (a) disclosure of every material circumstance which the insured knows or ought to know, or<br>
+                        (b) failing that, disclosure which gives the insurer sufficient information to put a prudent insurer on notice that it needs to make further enquiries for the purpose of revealing those material circumstances.<br>
+                        (5) In the absence of enquiry, subsection (4) does not require the insured to disclose a circumstance if—<br>
+                        (a) it diminishes the risk,<br>
+                        (b) the insurer knows it,<br>
+                        (c) the insurer ought to know it,<br>
+                        (d) the insurer is presumed to know it, or<br>
+                        (e) it is something as to which the insurer waives information.<br>
+                        (6) Sections 4 to 6 make further provision about the knowledge of the insured and of the insurer, and section 7 contains supplementary provision.</div>
+                        <div class="mia-ko">(1) 보험계약이 체결되기 전에 피보험자는 보험자에게 위험에 대한 공정한 고지를 하여야 한다.<br>
+                        (2) 제1항에 의해 부과된 의무는 본 법에서 "공정한 고지의무"라 한다.<br>
+                        (3) 위험에 대한 공정한 고지란 다음과 같은 것을 말한다—<br>
+                        (a) 제4항이 요구하는 고지를 하는 것,<br>
+                        (b) 신중한 보험자에게 합리적으로 명확하고 접근 가능한 방식으로 그 고지를 하는 것, 그리고<br>
+                        (c) 사실에 관한 모든 중요한 진술이 실질적으로 정확하고, 기대 또는 신념에 관한 모든 중요한 진술이 선의로 이루어진 것.<br>
+                        (4) 요구되는 고지는 제5항에 규정된 경우를 제외하고 다음과 같다—<br>
+                        (a) 피보험자가 알고 있거나 알아야 하는 모든 중요한 사정의 고지, 또는<br>
+                        (b) 그것이 불가능한 경우, 신중한 보험자로 하여금 해당 중요한 사정을 밝히기 위해 추가 조사가 필요하다는 것을 인지하게 할 충분한 정보를 보험자에게 제공하는 고지.<br>
+                        (5) 질의가 없는 경우, 제4항은 다음의 경우 피보험자에게 해당 사정의 고지를 요구하지 않는다—<br>
+                        (a) 그것이 위험을 감소시키는 경우,<br>
+                        (b) 보험자가 이를 알고 있는 경우,<br>
+                        (c) 보험자가 이를 알아야 하는 경우,<br>
+                        (d) 보험자가 이를 알고 있는 것으로 추정되는 경우, 또는<br>
+                        (e) 보험자가 정보를 포기한 사항인 경우.<br>
+                        (6) 제4조부터 제6조까지는 피보험자 및 보험자의 인지에 관하여 추가적인 규정을 두며, 제7조는 보충 규정을 포함한다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">4</span> Knowledge of insured</div>
+                        <div class="mia-ko"><span class="sec-num">4</span> 피보험자의 인지</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This section provides for what an insured knows or ought to know for the purposes of section 3(4)(a).<br>
+                        (2) An insured who is an individual knows only—<br>
+                        (a) what is known to the individual, and<br>
+                        (b) what is known to one or more of the individuals who are responsible for the insured's insurance.<br>
+                        (3) An insured who is not an individual knows only what is known to one or more of the individuals who are—<br>
+                        (a) part of the insured's senior management, or<br>
+                        (b) responsible for the insured's insurance.<br>
+                        (4) An insured is not by virtue of subsection (2)(b) or (3)(b) taken to know confidential information known to an individual if—<br>
+                        (a) the individual is, or is an employee of, the insured's agent; and<br>
+                        (b) the information was acquired by the insured's agent (or by an employee of that agent) through a business relationship with a person who is not connected with the contract of insurance.<br>
+                        (5) For the purposes of subsection (4) the persons connected with a contract of insurance are—<br>
+                        (a) the insured and any other persons for whom cover is provided by the contract, and<br>
+                        (b) if the contract re-insures risks covered by another contract, the persons who are (by virtue of this subsection) connected with that other contract.<br>
+                        (6) Whether an individual or not, an insured ought to know what should reasonably have been revealed by a reasonable search of information available to the insured (whether the search is conducted by making enquiries or by any other means).<br>
+                        (7) In subsection (6) "information" includes information held within the insured's organisation or by any other person (such as the insured's agent or a person for whom cover is provided by the contract of insurance).<br>
+                        (8) For the purposes of this section—<br>
+                        (a) "employee", in relation to the insured's agent, includes any individual working for the agent, whatever the capacity in which the individual acts,<br>
+                        (b) an individual is responsible for the insured's insurance if the individual participates on behalf of the insured in the process of procuring the insured's insurance (whether the individual does so as the insured's employee or agent, as an employee of the insured's agent or in any other capacity), and<br>
+                        (c) "senior management" means those individuals who play significant roles in the making of decisions about how the insured's activities are to be managed or organised.</div>
+                        <div class="mia-ko">(1) 본 조는 제3조 제4항 (a)호의 목적을 위해 피보험자가 알고 있거나 알아야 하는 것에 대해 규정한다.<br>
+                        (2) 개인인 피보험자는 다음만을 알고 있는 것으로 본다—<br>
+                        (a) 해당 개인이 알고 있는 것, 그리고<br>
+                        (b) 피보험자의 보험 업무를 담당하는 개인 중 1인 이상이 알고 있는 것.<br>
+                        (3) 개인이 아닌 피보험자는 다음에 해당하는 개인 중 1인 이상이 알고 있는 것만을 알고 있는 것으로 본다—<br>
+                        (a) 피보험자의 고위경영진의 일원, 또는<br>
+                        (b) 피보험자의 보험 업무를 담당하는 자.<br>
+                        (4) 다음의 경우 피보험자는 제2항 (b)호 또는 제3항 (b)호에 의해 개인이 알고 있는 기밀 정보를 알고 있는 것으로 보지 않는다—<br>
+                        (a) 해당 개인이 피보험자의 대리인이거나 그 대리인의 피용자인 경우, 그리고<br>
+                        (b) 해당 정보가 피보험자의 대리인(또는 그 대리인의 피용자)이 보험계약과 관련이 없는 자와의 사업 관계를 통해 취득한 경우.<br>
+                        (5) 제4항의 목적상, 보험계약과 관련된 자는 다음과 같다—<br>
+                        (a) 피보험자 및 해당 계약에 의해 담보가 제공되는 기타 모든 자, 그리고<br>
+                        (b) 해당 계약이 다른 계약에 의해 담보되는 위험을 재보험하는 경우, (본 항에 의하여) 해당 다른 계약과 관련된 자.<br>
+                        (6) 개인이든 아니든, 피보험자는 피보험자가 이용할 수 있는 정보에 대한 합리적인 조사에 의해 합리적으로 밝혀졌어야 하는 것을 알아야 한다 (조사가 질의에 의하든 기타 수단에 의하든).<br>
+                        (7) 제6항에서 "정보"는 피보험자의 조직 내부에 보유된 정보 또는 기타 다른 자(예: 피보험자의 대리인 또는 보험계약에 의해 담보가 제공되는 자)가 보유한 정보를 포함한다.<br>
+                        (8) 본 조의 목적상—<br>
+                        (a) 피보험자의 대리인과 관련하여 "피용자"는 해당 대리인을 위해 일하는 모든 개인을 포함하며, 그 개인이 어떤 자격으로 행동하든 관계없다.<br>
+                        (b) 개인이 피보험자를 대신하여 피보험자의 보험 확보 과정에 참여하는 경우(피보험자의 피용자나 대리인으로서, 피보험자 대리인의 피용자로서 또는 기타 다른 자격으로든) 그 개인은 피보험자의 보험 업무를 담당하는 것으로 본다.<br>
+                        (c) "고위경영진"이란 피보험자의 활동이 관리 또는 조직되는 방법에 관한 의사결정에서 중요한 역할을 하는 개인을 말한다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">5</span> Knowledge of insurer</div>
+                        <div class="mia-ko"><span class="sec-num">5</span> 보험자의 인지</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) For the purposes of section 3(5)(b), an insurer knows something only if it is known to one or more of the individuals who participate on behalf of the insurer in the decision whether to take the risk, and if so on what terms (whether the individual does so as the insurer's employee or agent, as an employee of the insurer's agent or in any other capacity).<br>
+                        (2) For the purposes of section 3(5)(c), an insurer ought to know something only if—<br>
+                        (a) an employee or agent of the insurer knows it, and ought reasonably to have passed on the relevant information to an individual mentioned in subsection (1), or<br>
+                        (b) the relevant information is held by the insurer and is readily available to an individual mentioned in subsection (1).<br>
+                        (3) For the purposes of section 3(5)(d), an insurer is presumed to know—<br>
+                        (a) things which are common knowledge, and<br>
+                        (b) things which an insurer offering insurance of the class in question to insureds in the field of activity in question would reasonably be expected to know in the ordinary course of business.</div>
+                        <div class="mia-ko">(1) 제3조 제5항 (b)호의 목적상, 보험자는 보험자를 대신하여 위험을 인수할 것인지, 인수한다면 어떤 조건으로 할 것인지에 대한 결정에 참여하는 개인 중 1인 이상이 알고 있는 경우에만 이를 알고 있는 것으로 본다 (해당 개인이 보험자의 피용자 또는 대리인으로서, 보험자 대리인의 피용자로서 또는 기타 다른 자격으로 행동하든 관계없다).<br>
+                        (2) 제3조 제5항 (c)호의 목적상, 보험자는 다음의 경우에만 알아야 하는 것으로 본다—<br>
+                        (a) 보험자의 피용자 또는 대리인이 이를 알고 있으며, 제1항에 언급된 개인에게 해당 정보를 합리적으로 전달했어야 하는 경우, 또는<br>
+                        (b) 해당 정보가 보험자에 의해 보유되어 있으며 제1항에 언급된 개인이 용이하게 이용할 수 있는 경우.<br>
+                        (3) 제3조 제5항 (d)호의 목적상, 보험자는 다음을 알고 있는 것으로 추정된다—<br>
+                        (a) 공지의 사실인 것, 그리고<br>
+                        (b) 해당 활동 분야의 피보험자에게 해당 종류의 보험을 제공하는 보험자가 통상의 업무 과정에서 합리적으로 알고 있을 것으로 기대되는 것.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">6</span> Knowledge: general</div>
+                        <div class="mia-ko"><span class="sec-num">6</span> 인지: 일반</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) For the purposes of sections 3 to 5, references to an individual's knowledge include not only actual knowledge, but also matters which the individual suspected, and of which the individual would have had knowledge but for deliberately refraining from confirming them or enquiring about them.<br>
+                        (2) Nothing in this Part affects the operation of any rule of law according to which knowledge of a fraud perpetrated by an individual ("F") either on the insured or on the insurer is not to be attributed to the insured or to the insurer (respectively), where—<br>
+                        (a) if the fraud is on the insured, F is any of the individuals mentioned in section 4(2)(b) or (3), or<br>
+                        (b) if the fraud is on the insurer, F is any of the individuals mentioned in section 5(1).</div>
+                        <div class="mia-ko">(1) 제3조부터 제5조까지의 목적상, 개인의 인지에 대한 언급은 실제 인지뿐만 아니라, 해당 개인이 의심하였으며, 의도적으로 확인이나 조사를 자제하지 않았다면 알았을 사항도 포함한다.<br>
+                        (2) 본 편의 어떤 규정도, 개인("F")이 피보험자 또는 보험자에게 행한 사기에 대한 인지가 피보험자 또는 보험자(각각)에게 귀속되지 않는다는 법률 규칙의 작용에 영향을 미치지 않는다. 다만—<br>
+                        (a) 사기가 피보험자에 대한 것인 경우, F는 제4조 제2항 (b)호 또는 제3항에 언급된 개인 중 어느 한 명이고,<br>
+                        (b) 사기가 보험자에 대한 것인 경우, F는 제5조 제1항에 언급된 개인 중 어느 한 명이다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">7</span> Supplementary</div>
+                        <div class="mia-ko"><span class="sec-num">7</span> 보충 규정</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) A fair presentation need not be contained in only one document or oral presentation.<br>
+                        (2) The term "circumstance" includes any communication made to, or information received by, the insured.<br>
+                        (3) A circumstance or representation is material if it would influence the judgement of a prudent insurer in determining whether to take the risk and, if so, on what terms.<br>
+                        (4) Examples of things which may be material circumstances are—<br>
+                        (a) special or unusual facts relating to the risk,<br>
+                        (b) any particular concerns which led the insured to seek insurance cover for the risk,<br>
+                        (c) anything which those concerned with the class of insurance and field of activity in question would generally understand as being something that should be dealt with in a fair presentation of risks of the type in question.<br>
+                        (5) A material representation is substantially correct if a prudent insurer would not consider the difference between what is represented and what is actually correct to be material.<br>
+                        (6) A representation may be withdrawn or corrected before the contract of insurance is entered into.</div>
+                        <div class="mia-ko">(1) 공정한 고지는 하나의 문서 또는 구두 발표에만 포함될 필요가 없다.<br>
+                        (2) "사정"이라는 용어는 피보험자에게 전달된 모든 통신 또는 피보험자가 수령한 모든 정보를 포함한다.<br>
+                        (3) 사정 또는 진술은 신중한 보험자가 위험을 인수할 것인지, 인수한다면 어떤 조건으로 할 것인지를 결정하는 데 있어 그의 판단에 영향을 미칠 경우 중요한 것으로 본다.<br>
+                        (4) 중요한 사정에 해당할 수 있는 예는 다음과 같다—<br>
+                        (a) 위험과 관련된 특수하거나 이례적인 사실,<br>
+                        (b) 피보험자가 해당 위험에 대한 보험 담보를 구하게 된 특정 우려사항,<br>
+                        (c) 해당 보험 종류 및 활동 분야에 관계된 자들이 해당 유형의 위험에 대한 공정한 고지에서 다루어야 할 사항으로 일반적으로 이해하는 모든 것.<br>
+                        (5) 중요한 진술은, 신중한 보험자가 진술된 것과 실제로 정확한 것 사이의 차이를 중요한 것으로 간주하지 않을 경우 실질적으로 정확한 것으로 본다.<br>
+                        (6) 진술은 보험계약이 체결되기 전에 철회되거나 정정될 수 있다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">8</span> Remedies for breach</div>
+                        <div class="mia-ko"><span class="sec-num">8</span> 위반에 대한 구제</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) The insurer has a remedy against the insured for a breach of the duty of fair presentation only if the insurer shows that, but for the breach, the insurer—<br>
+                        (a) would not have entered into the contract of insurance at all, or<br>
+                        (b) would have done so only on different terms.<br>
+                        (2) The remedies are set out in Schedule 1.<br>
+                        (3) A breach for which the insurer has a remedy against the insured is referred to in this Act as a "qualifying breach".<br>
+                        (4) A qualifying breach is either—<br>
+                        (a) deliberate or reckless, or<br>
+                        (b) neither deliberate nor reckless.<br>
+                        (5) A qualifying breach is deliberate or reckless if the insured—<br>
+                        (a) knew that it was in breach of the duty of fair presentation, or<br>
+                        (b) did not care whether or not it was in breach of that duty.<br>
+                        (6) It is for the insurer to show that a qualifying breach was deliberate or reckless.</div>
+                        <div class="mia-ko">(1) 보험자는 공정한 고지의무 위반에 대해 피보험자에게 구제를 가지되, 보험자가 해당 위반이 없었더라면 보험자가—<br>
+                        (a) 보험계약을 전혀 체결하지 않았을 것이거나, 또는<br>
+                        (b) 다른 조건으로만 체결하였을 것임을 입증하는 경우에 한한다.<br>
+                        (2) 구제수단은 별표 1에 규정된다.<br>
+                        (3) 보험자가 피보험자에게 구제를 가지는 위반은 본 법에서 "적격 위반"이라 한다.<br>
+                        (4) 적격 위반은 다음 중 하나이다—<br>
+                        (a) 고의적이거나 무모한 것, 또는<br>
+                        (b) 고의적이지도 무모하지도 않은 것.<br>
+                        (5) 적격 위반은 피보험자가—<br>
+                        (a) 공정한 고지의무를 위반하고 있음을 알았거나, 또는<br>
+                        (b) 해당 의무를 위반하고 있는지 여부에 관심을 갖지 않은 경우 고의적이거나 무모한 것으로 본다.<br>
+                        (6) 적격 위반이 고의적이거나 무모하였음을 입증할 책임은 보험자에게 있다.</div>
+                    </div>
+
+                    <!-- ===== PART 3: WARRANTIES AND OTHER TERMS ===== -->
+                    <div class="mia-part-header" id="ia2015-p3">
+                        <h4>PART 3 — Warranties and Other Terms</h4>
+                        <div class="mia-part-kr">제3편 — 담보 및 기타 조건</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">9</span> Warranties and representations</div>
+                        <div class="mia-ko"><span class="sec-num">9</span> 담보와 진술</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This section applies to representations made by the insured in connection with—<br>
+                        (a) a proposed non-consumer insurance contract, or<br>
+                        (b) a proposed variation to a non-consumer insurance contract.<br>
+                        (2) Such a representation is not capable of being converted into a warranty by means of any provision of the non-consumer insurance contract (or of the terms of the variation), or of any other contract (and whether by declaring the representation to form the basis of the contract or otherwise).</div>
+                        <div class="mia-ko">(1) 본 조는 다음과 관련하여 피보험자가 행한 진술에 적용된다—<br>
+                        (a) 제안된 비소비자보험계약, 또는<br>
+                        (b) 비소비자보험계약에 대한 제안된 변경.<br>
+                        (2) 그러한 진술은 비소비자보험계약(또는 변경 조건)의 어떤 규정에 의해서든, 또는 기타 다른 계약에 의해서든(진술을 계약의 기초로 선언하는 방법이든 기타 방법이든) 담보로 전환될 수 없다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">10</span> Breach of warranty</div>
+                        <div class="mia-ko"><span class="sec-num">10</span> 담보 위반</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) Any rule of law that breach of a warranty (express or implied) in a contract of insurance results in the discharge of the insurer's liability under the contract is abolished.<br>
+                        (2) An insurer has no liability under a contract of insurance in respect of any loss occurring, or attributable to something happening, after a warranty (express or implied) in the contract has been breached but before the breach has been remedied.<br>
+                        (3) But subsection (2) does not apply if—<br>
+                        (a) because of a change of circumstances, the warranty ceases to be applicable to the circumstances of the contract,<br>
+                        (b) compliance with the warranty is rendered unlawful by any subsequent law, or<br>
+                        (c) the insurer waives the breach of warranty.<br>
+                        (4) Subsection (2) does not affect the liability of the insurer in respect of losses occurring, or attributable to something happening—<br>
+                        (a) before the breach of warranty, or<br>
+                        (b) if the breach can be remedied, after it has been remedied.<br>
+                        (5) For the purposes of this section, a breach of warranty is to be taken as remedied—<br>
+                        (a) in a case falling within subsection (6), if the risk to which the warranty relates later becomes essentially the same as that originally contemplated by the parties,<br>
+                        (b) in any other case, if the insured ceases to be in breach of the warranty.<br>
+                        (6) A case falls within this subsection if—<br>
+                        (a) the warranty in question requires that by an ascertainable time something is to be done (or not done), or a condition is to be fulfilled, or something is (or is not) to be the case, and<br>
+                        (b) that requirement is not complied with.<br>
+                        (7) In the Marine Insurance Act 1906—<br>
+                        (a) in section 33 (nature of warranty), in subsection (3), the second sentence is omitted,<br>
+                        (b) section 34 (when breach of warranty excused) is omitted.</div>
+                        <div class="mia-ko">(1) 보험계약에서 담보(명시적이든 묵시적이든) 위반이 해당 계약에 따른 보험자의 책임의 소멸을 초래한다는 모든 법률 규칙은 폐지된다.<br>
+                        (2) 보험자는 보험계약의 담보(명시적이든 묵시적이든)가 위반된 후 그 위반이 치유되기 전에 발생한 손해 또는 발생한 사건에 기인하는 손해에 대하여 보험계약에 따른 책임을 지지 않는다.<br>
+                        (3) 그러나 제2항은 다음의 경우 적용되지 않는다—<br>
+                        (a) 사정의 변경으로 인하여 담보가 계약의 사정에 더 이상 적용되지 않게 된 경우,<br>
+                        (b) 후속 법률에 의하여 담보의 준수가 위법하게 된 경우, 또는<br>
+                        (c) 보험자가 담보 위반을 포기한 경우.<br>
+                        (4) 제2항은 다음의 시점에 발생한 손해 또는 발생한 사건에 기인하는 손해에 대한 보험자의 책임에 영향을 미치지 않는다—<br>
+                        (a) 담보 위반 이전, 또는<br>
+                        (b) 위반이 치유될 수 있는 경우, 치유된 이후.<br>
+                        (5) 본 조의 목적상, 담보 위반은 다음과 같이 치유된 것으로 본다—<br>
+                        (a) 제6항에 해당하는 경우, 담보와 관련된 위험이 추후에 당사자들이 원래 예상한 것과 본질적으로 동일하게 된 경우,<br>
+                        (b) 기타의 경우, 피보험자가 더 이상 담보를 위반하지 않게 된 경우.<br>
+                        (6) 다음의 경우 본 항에 해당한다—<br>
+                        (a) 해당 담보가 확정 가능한 시점까지 어떤 것이 행해지거나(행해지지 않거나), 조건이 충족되거나, 어떤 것이 해당되거나(해당되지 않거나) 할 것을 요구하는 경우, 그리고<br>
+                        (b) 그 요건이 준수되지 않은 경우.<br>
+                        (7) 1906년 해상보험법에서—<br>
+                        (a) 제33조(담보의 성질) 제3항에서 두 번째 문장은 삭제되고,<br>
+                        (b) 제34조(담보 위반이 면책되는 경우)는 삭제된다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">11</span> Terms not relevant to the actual loss</div>
+                        <div class="mia-ko"><span class="sec-num">11</span> 실제 손해와 관련 없는 조건</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This section applies to a term (express or implied) of a contract of insurance, other than a term defining the risk as a whole, if compliance with it would tend to reduce the risk of one or more of the following—<br>
+                        (a) loss of a particular kind,<br>
+                        (b) loss at a particular location,<br>
+                        (c) loss at a particular time.<br>
+                        (2) If a loss occurs, and the term has not been complied with, the insurer may not rely on the non-compliance to exclude, limit or discharge its liability under the contract for the loss if the insured satisfies subsection (3).<br>
+                        (3) The insured satisfies this subsection if it shows that the non-compliance with the term could not have increased the risk of the loss which actually occurred in the circumstances in which it occurred.<br>
+                        (4) This section may apply in addition to section 10.</div>
+                        <div class="mia-ko">(1) 본 조는 위험을 전체적으로 정의하는 조건을 제외하고, 준수 시 다음 중 하나 이상의 위험을 감소시키는 경향이 있는 보험계약의 조건(명시적이든 묵시적이든)에 적용된다—<br>
+                        (a) 특정 종류의 손해,<br>
+                        (b) 특정 장소에서의 손해,<br>
+                        (c) 특정 시점에서의 손해.<br>
+                        (2) 손해가 발생하였고 해당 조건이 준수되지 않은 경우, 피보험자가 제3항을 충족시키면 보험자는 그 불준수를 이유로 해당 손해에 대한 계약상 책임을 배제, 제한 또는 면제할 수 없다.<br>
+                        (3) 피보험자는 해당 조건의 불준수가 실제로 발생한 손해의 위험을 그것이 발생한 상황에서 증가시킬 수 없었음을 입증하면 본 항을 충족한다.<br>
+                        (4) 본 조는 제10조에 추가적으로 적용될 수 있다.</div>
+                    </div>
+
+                    <!-- ===== PART 4: FRAUDULENT CLAIMS ===== -->
+                    <div class="mia-part-header" id="ia2015-p4">
+                        <h4>PART 4 — Fraudulent Claims</h4>
+                        <div class="mia-part-kr">제4편 — 사기적 청구</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">12</span> Remedies for fraudulent claims</div>
+                        <div class="mia-ko"><span class="sec-num">12</span> 사기적 청구에 대한 구제</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) If the insured makes a fraudulent claim under a contract of insurance—<br>
+                        (a) the insurer is not liable to pay the claim,<br>
+                        (b) the insurer may recover from the insured any sums paid by the insurer to the insured in respect of the claim, and<br>
+                        (c) in addition, the insurer may by notice to the insured treat the contract as having been terminated with effect from the time of the fraudulent act.<br>
+                        (2) If the insurer does treat the contract as having been terminated—<br>
+                        (a) it may refuse all liability to the insured under the contract in respect of a relevant event occurring after the time of the fraudulent act, and<br>
+                        (b) it need not return any of the premiums paid under the contract.<br>
+                        (3) Treating a contract as having been terminated under this section does not affect the rights and obligations of the parties to the contract with respect to a relevant event occurring before the time of the fraudulent act.<br>
+                        (4) In subsections (2)(a) and (3), "relevant event" refers to whatever gives rise to the insurer's liability under the contract (and includes, for example, the occurrence of a loss, the making of a claim, or the notification of a potential claim, depending on how the contract is written).</div>
+                        <div class="mia-ko">(1) 피보험자가 보험계약에 따라 사기적 청구를 한 경우—<br>
+                        (a) 보험자는 해당 청구를 지급할 책임이 없다,<br>
+                        (b) 보험자는 해당 청구와 관련하여 보험자가 피보험자에게 지급한 모든 금액을 피보험자로부터 회수할 수 있다, 그리고<br>
+                        (c) 추가적으로, 보험자는 피보험자에게 통지함으로써 사기 행위 시점부터 효력을 가지는 것으로 계약을 종료된 것으로 취급할 수 있다.<br>
+                        (2) 보험자가 계약을 종료된 것으로 취급하는 경우—<br>
+                        (a) 보험자는 사기 행위 시점 이후에 발생한 관련 사건에 대하여 계약에 따른 피보험자에 대한 모든 책임을 거부할 수 있다, 그리고<br>
+                        (b) 계약에 따라 지급된 보험료를 반환할 필요가 없다.<br>
+                        (3) 본 조에 따라 계약을 종료된 것으로 취급하는 것은 사기 행위 시점 이전에 발생한 관련 사건에 대한 계약 당사자들의 권리와 의무에 영향을 미치지 않는다.<br>
+                        (4) 제2항 (a)호 및 제3항에서 "관련 사건"이란 계약에 따른 보험자의 책임을 발생시키는 모든 것을 의미한다 (그리고 계약의 작성 방식에 따라 예를 들어, 손해의 발생, 청구의 제기 또는 잠재적 청구의 통지를 포함한다).</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">13</span> Remedies for fraudulent claims: group insurance</div>
+                        <div class="mia-ko"><span class="sec-num">13</span> 사기적 청구에 대한 구제: 단체보험</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This section applies where—<br>
+                        (a) a contract of insurance is entered into with an insurer by a person ("A"),<br>
+                        (b) the contract provides cover for one or more other persons who are not parties to the contract ("the Cs"), whether or not it also provides cover of any kind for A or another insured party, and<br>
+                        (c) a fraudulent claim is made under the contract by or on behalf of one of the Cs ("CF").<br>
+                        (2) Section 12 applies in relation to the claim as if the cover provided for CF were provided under an individual insurance contract between the insurer and CF as the insured; and, accordingly—<br>
+                        (a) the insurer's rights under section 12 are exercisable only in relation to the cover provided for CF, and<br>
+                        (b) the exercise of any of those rights does not affect the cover provided under the contract for anyone else.<br>
+                        (3) In its application by virtue of subsection (2), section 12 is subject to the following particular modifications—<br>
+                        (a) the first reference to "the insured" in subsection (1)(b) of that section, in respect of any particular sum paid by the insurer, is to whichever of A and CF the insurer paid the sum to; but if a sum was paid to A and passed on by A to CF, the reference is to CF,<br>
+                        (b) the second reference to "the insured" in subsection (1)(b) is to A or CF,<br>
+                        (c) the reference to "the insured" in subsection (1)(c) is to both CF and A,<br>
+                        (d) the reference in subsection (2)(b) to the premiums paid under the contract is to premiums paid in respect of the cover for CF.</div>
+                        <div class="mia-ko">(1) 본 조는 다음의 경우에 적용된다—<br>
+                        (a) 어떤 자("A")가 보험자와 보험계약을 체결하고,<br>
+                        (b) 해당 계약이 계약의 당사자가 아닌 1인 이상의 다른 자("C들")에게 담보를 제공하며, A 또는 다른 피보험 당사자에게도 어떤 종류의 담보를 제공하는지 여부를 불문하고,<br>
+                        (c) C들 중 1인("CF")에 의하여 또는 그를 대신하여 계약에 따라 사기적 청구가 제기된 경우.<br>
+                        (2) 제12조는 CF에게 제공된 담보가 보험자와 피보험자로서의 CF 사이의 개별 보험계약에 따라 제공된 것처럼 해당 청구에 적용되며, 따라서—<br>
+                        (a) 제12조에 따른 보험자의 권리는 CF에게 제공된 담보에 관해서만 행사할 수 있고,<br>
+                        (b) 그러한 권리의 행사는 계약에 따라 다른 누구에게 제공된 담보에 영향을 미치지 않는다.<br>
+                        (3) 제2항에 의한 적용에 있어, 제12조는 다음과 같은 특별 수정에 따른다—<br>
+                        (a) 해당 조 제1항 (b)호에서 "피보험자"에 대한 첫 번째 언급은, 보험자가 지급한 특정 금액에 관하여, A와 CF 중 보험자가 해당 금액을 지급한 상대방을 의미한다; 다만 금액이 A에게 지급되어 A가 CF에게 전달한 경우 그 언급은 CF를 의미한다,<br>
+                        (b) 제1항 (b)호에서 "피보험자"에 대한 두 번째 언급은 A 또는 CF를 의미한다,<br>
+                        (c) 제1항 (c)호에서 "피보험자"에 대한 언급은 CF와 A 모두를 의미한다,<br>
+                        (d) 제2항 (b)호에서 계약에 따라 지급된 보험료에 대한 언급은 CF의 담보에 관하여 지급된 보험료를 의미한다.</div>
+                    </div>
+
+                    <!-- ===== PART 5: GOOD FAITH AND CONTRACTING OUT ===== -->
+                    <div class="mia-part-header" id="ia2015-p5">
+                        <h4>PART 5 — Good Faith and Contracting Out</h4>
+                        <div class="mia-part-kr">제5편 — 선의 및 약정 배제</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">14</span> Good faith</div>
+                        <div class="mia-ko"><span class="sec-num">14</span> 선의</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) Any rule of law permitting a party to a contract of insurance to avoid the contract on the ground that the utmost good faith has not been observed by the other party is abolished.<br>
+                        (2) Any rule of law to the effect that a contract of insurance is a contract based on the utmost good faith is modified to the extent required by the provisions of this Act and the Consumer Insurance (Disclosure and Representations) Act 2012.<br>
+                        (3) Accordingly—<br>
+                        (a) in section 17 of the Marine Insurance Act 1906 (marine insurance contracts are contracts of the utmost good faith), the words from ", and" to the end are omitted, and<br>
+                        (b) the application of that section (as so amended) is subject to the provisions of this Act and the Consumer Insurance (Disclosure and Representations) Act 2012.<br>
+                        (4) In section 2 of the Consumer Insurance (Disclosure and Representations) Act 2012 (disclosure and representations before contract or variation), subsection (5) is omitted.</div>
+                        <div class="mia-ko">(1) 상대방이 최대선의를 준수하지 않았다는 이유로 보험계약의 당사자가 계약을 취소할 수 있도록 허용하는 모든 법률 규칙은 폐지된다.<br>
+                        (2) 보험계약이 최대선의에 기초한 계약이라는 취지의 모든 법률 규칙은 본 법 및 2012년 소비자보험(고지 및 진술)법의 규정이 요구하는 범위 내에서 수정된다.<br>
+                        (3) 따라서—<br>
+                        (a) 1906년 해상보험법 제17조(해상보험계약은 최대선의의 계약이다)에서 ", and"부터 끝까지의 문구는 삭제되고,<br>
+                        (b) 해당 조(이와 같이 개정된)의 적용은 본 법 및 2012년 소비자보험(고지 및 진술)법의 규정에 따른다.<br>
+                        (4) 2012년 소비자보험(고지 및 진술)법 제2조(계약 또는 변경 전의 고지 및 진술)에서 제5항은 삭제된다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">15</span> Contracting out: consumer insurance contracts</div>
+                        <div class="mia-ko"><span class="sec-num">15</span> 약정 배제: 소비자보험계약</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) A term of a consumer insurance contract, or of any other contract, which would put the consumer in a worse position as respects any of the matters provided for in Part 3 or 4 of this Act than the consumer would be in by virtue of the provisions of those Parts (so far as relating to consumer insurance contracts) is to that extent of no effect.<br>
+                        (2) In subsection (1) references to a contract include a variation.<br>
+                        (3) This section does not apply in relation to a contract for the settlement of a claim arising under a consumer insurance contract.</div>
+                        <div class="mia-ko">(1) 소비자보험계약 또는 기타 다른 계약의 조건이, 본 법 제3편 또는 제4편에 규정된 사항(소비자보험계약에 관한 한)에 관하여 해당 편의 규정에 의해 소비자가 처하게 될 위치보다 소비자를 더 불리한 위치에 놓이게 하는 것인 경우, 그 범위에서 효력이 없다.<br>
+                        (2) 제1항에서 계약에 대한 언급은 변경을 포함한다.<br>
+                        (3) 본 조는 소비자보험계약에 따라 발생한 청구의 합의를 위한 계약에 관해서는 적용되지 않는다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">16</span> Contracting out: non-consumer insurance contracts</div>
+                        <div class="mia-ko"><span class="sec-num">16</span> 약정 배제: 비소비자보험계약</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) A term of a non-consumer insurance contract, or of any other contract, which would put the insured in a worse position as respects representations to which section 9 applies than the insured would be in by virtue of that section is to that extent of no effect.<br>
+                        (2) A term of a non-consumer insurance contract, or of any other contract, which would put the insured in a worse position as respects any of the other matters provided for in Part 2, 3 or 4 of this Act than the insured would be in by virtue of the provisions of those Parts (so far as relating to non-consumer insurance contracts) is to that extent of no effect, unless the requirements of section 17 have been satisfied in relation to the term.<br>
+                        (3) In this section references to a contract include a variation.<br>
+                        (4) This section does not apply in relation to a contract for the settlement of a claim arising under a non-consumer insurance contract.</div>
+                        <div class="mia-ko">(1) 비소비자보험계약 또는 기타 다른 계약의 조건이, 제9조가 적용되는 진술에 관하여 해당 조에 의해 피보험자가 처하게 될 위치보다 피보험자를 더 불리한 위치에 놓이게 하는 것인 경우, 그 범위에서 효력이 없다.<br>
+                        (2) 비소비자보험계약 또는 기타 다른 계약의 조건이, 본 법 제2편, 제3편 또는 제4편에 규정된 기타 사항(비소비자보험계약에 관한 한)에 관하여 해당 편의 규정에 의해 피보험자가 처하게 될 위치보다 피보험자를 더 불리한 위치에 놓이게 하는 것인 경우, 제17조의 요건이 해당 조건에 관하여 충족되지 않는 한 그 범위에서 효력이 없다.<br>
+                        (3) 본 조에서 계약에 대한 언급은 변경을 포함한다.<br>
+                        (4) 본 조는 비소비자보험계약에 따라 발생한 청구의 합의를 위한 계약에 관해서는 적용되지 않는다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">17</span> The transparency requirements</div>
+                        <div class="mia-ko"><span class="sec-num">17</span> 투명성 요건</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) In this section, "the disadvantageous term" means such a term as is mentioned in section 16(2).<br>
+                        (2) The insurer must take sufficient steps to draw the disadvantageous term to the insured's attention before the contract is entered into or the variation agreed.<br>
+                        (3) The disadvantageous term must be clear and unambiguous as to its effect.<br>
+                        (4) In determining whether the requirements of subsections (2) and (3) have been met, the characteristics of insured persons of the kind in question, and the circumstances of the transaction, are to be taken into account.<br>
+                        (5) The insured may not rely on any failure on the part of the insurer to meet the requirements of subsection (2) if the insured (or its agent) had actual knowledge of the disadvantageous term when the contract was entered into or the variation agreed.</div>
+                        <div class="mia-ko">(1) 본 조에서 "불이익 조건"이란 제16조 제2항에 언급된 조건을 말한다.<br>
+                        (2) 보험자는 계약이 체결되거나 변경이 합의되기 전에 불이익 조건을 피보험자의 주의에 충분히 환기시키기 위한 조치를 취하여야 한다.<br>
+                        (3) 불이익 조건은 그 효과에 관하여 명확하고 모호하지 않아야 한다.<br>
+                        (4) 제2항 및 제3항의 요건이 충족되었는지를 판단함에 있어, 해당 종류의 피보험자의 특성 및 거래의 상황을 고려하여야 한다.<br>
+                        (5) 피보험자(또는 그 대리인)가 계약 체결 또는 변경 합의 시에 불이익 조건에 대한 실제 인지를 가지고 있었던 경우, 피보험자는 보험자가 제2항의 요건을 충족하지 못한 것에 의존할 수 없다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">18</span> Contracting out: group insurance contracts</div>
+                        <div class="mia-ko"><span class="sec-num">18</span> 약정 배제: 단체보험계약</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This section applies to a contract of insurance referred to in section 13(1)(a); and in this section— "A" and "the Cs" have the same meaning as in section 13, "consumer C" means an individual who is one of the Cs, where the cover provided by the contract for that individual would have been a consumer insurance contract if entered into by that person rather than by A, and "non-consumer C" means any of the Cs who is not a consumer C.<br>
+                        (2) A term of the contract of insurance, or any other contract, which puts a consumer C in a worse position as respects any matter dealt with in section 13 than that individual would be in by virtue of that section is to that extent of no effect.<br>
+                        (3) A term of the contract of insurance, or any other contract, which puts a non-consumer C in a worse position as respects any matter dealt with in section 13 than that person would be in by virtue of that section is to that extent of no effect, unless the requirements of section 17 have been met in relation to the term.<br>
+                        (4) Section 17 applies in relation to such a term as it applies to a term mentioned in section 16(2), with references to the insured being read as references to A rather than the non-consumer C.<br>
+                        (5) In this section references to a contract include a variation.<br>
+                        (6) This section does not apply in relation to a contract for the settlement of a claim arising under a contract of insurance to which this section applies.</div>
+                        <div class="mia-ko">(1) 본 조는 제13조 제1항 (a)호에 언급된 보험계약에 적용된다; 본 조에서— "A"와 "C들"은 제13조에서와 같은 의미를 가지고, "소비자 C"란 C들 중 1인으로서 해당 개인에게 계약에 의해 제공되는 담보가 A가 아닌 해당 개인이 체결하였다면 소비자보험계약이 되었을 개인을 의미하고, "비소비자 C"란 소비자 C가 아닌 C들 중의 자를 의미한다.<br>
+                        (2) 보험계약 또는 기타 다른 계약의 조건이, 제13조에서 다루는 사항에 관하여 해당 조에 의해 해당 개인이 처하게 될 위치보다 소비자 C를 더 불리한 위치에 놓이게 하는 것인 경우, 그 범위에서 효력이 없다.<br>
+                        (3) 보험계약 또는 기타 다른 계약의 조건이, 제13조에서 다루는 사항에 관하여 해당 조에 의해 해당 자가 처하게 될 위치보다 비소비자 C를 더 불리한 위치에 놓이게 하는 것인 경우, 제17조의 요건이 해당 조건에 관하여 충족되지 않는 한 그 범위에서 효력이 없다.<br>
+                        (4) 제17조는 해당 조건에 관하여 제16조 제2항에 언급된 조건에 적용되는 것과 동일하게 적용되되, 피보험자에 대한 언급은 비소비자 C가 아닌 A에 대한 언급으로 해석된다.<br>
+                        (5) 본 조에서 계약에 대한 언급은 변경을 포함한다.<br>
+                        (6) 본 조는 본 조가 적용되는 보험계약에 따라 발생한 청구의 합의를 위한 계약에 관해서는 적용되지 않는다.</div>
+                    </div>
+
+                    <!-- ===== PART 6: AMENDMENT OF THE THIRD PARTIES ACT 2010 ===== -->
+                    <div class="mia-part-header" id="ia2015-p6">
+                        <h4>PART 6 — Amendment of the Third Parties (Rights against Insurers) Act 2010</h4>
+                        <div class="mia-part-kr">제6편 — 2010년 제3자(보험자에 대한 권리)법의 개정</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">19</span> Power to change meaning of "relevant person" for purposes of 2010 Act</div>
+                        <div class="mia-ko"><span class="sec-num">19</span> 2010년 법의 목적상 "관련인"의 의미를 변경할 수 있는 권한</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">For section 19 of the Third Parties (Rights against Insurers) Act 2010 (power to amend sections 4 to 6 of the Act) substitute— [detailed substitution provisions for regulatory powers regarding "relevant person" definition, including provisions for adding/removing circumstances involving dissolution, insolvency, or similar situations of bodies corporate or individuals, with transitional provisions and parliamentary approval requirements].</div>
+                        <div class="mia-ko">2010년 제3자(보험자에 대한 권리)법 제19조(동법 제4조부터 제6조까지의 개정 권한)를 대체하여— ["관련인"의 정의에 관한 규제 권한에 대한 상세한 대체 규정이 삽입되며, 법인 또는 개인의 해산, 지급불능 또는 이와 유사한 상황의 추가·삭제에 관한 규정, 경과 규정 및 의회 승인 요건을 포함한다].</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">20</span> Other amendments</div>
+                        <div class="mia-ko"><span class="sec-num">20</span> 기타 개정</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">Schedule 2 amends the Third Parties (Rights against Insurers) Act 2010 in relation to the insured persons to whom the Act applies.</div>
+                        <div class="mia-ko">별표 2는 2010년 제3자(보험자에 대한 권리)법이 적용되는 피보험자에 관하여 동법을 개정한다.</div>
+                    </div>
+
+                    <!-- ===== PART 7: GENERAL ===== -->
+                    <div class="mia-part-header" id="ia2015-p7">
+                        <h4>PART 7 — General</h4>
+                        <div class="mia-part-kr">제7편 — 총칙</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">21</span> Provision consequential on Part 2</div>
+                        <div class="mia-ko"><span class="sec-num">21</span> 제2편에 따른 부수적 규정</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) The provision made by this section is consequential on Part 2 of this Act.<br>
+                        (2) In the Marine Insurance Act 1906, sections 18 (disclosure by assured), 19 (disclosure by agent effecting insurance) and 20 (representations pending negotiation of contract) are omitted.<br>
+                        (3) Any rule of law to the same effect as any of those provisions is abolished.<br>
+                        (4)–(5) [Consequential amendments to the Road Traffic Act 1988 and Road Traffic (Northern Ireland) Order 1981 regarding relevant insurance enactment definitions.]<br>
+                        (6) In section 11 of the Consumer Insurance (Disclosure and Representations) Act 2012 (consequential provision), subsections (1) and (2) are omitted.</div>
+                        <div class="mia-ko">(1) 본 조에 의한 규정은 본 법 제2편에 부수한다.<br>
+                        (2) 1906년 해상보험법에서 제18조(피보험자에 의한 고지), 제19조(보험을 체결하는 대리인에 의한 고지) 및 제20조(계약 협상 중의 진술)는 삭제된다.<br>
+                        (3) 해당 규정들과 동일한 효력을 가지는 모든 법률 규칙은 폐지된다.<br>
+                        (4)–(5) [관련 보험 법률 정의에 관한 1988년 도로교통법 및 1981년 도로교통(북아일랜드)명령의 부수적 개정.]<br>
+                        (6) 2012년 소비자보험(고지 및 진술)법 제11조(부수적 규정)에서 제1항 및 제2항은 삭제된다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">22</span> Application etc of Parts 2 to 5</div>
+                        <div class="mia-ko"><span class="sec-num">22</span> 제2편부터 제5편까지의 적용 등</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) Part 2 (and section 21) and section 14 apply only in relation to—<br>
+                        (a) contracts of insurance entered into after the end of the relevant period, and<br>
+                        (b) variations, agreed after the end of the relevant period, to contracts of insurance entered into at any time.<br>
+                        (2) Parts 3 and 4 of this Act apply only in relation to contracts of insurance entered into after the end of the relevant period, and variations to such contracts.<br>
+                        (3) In subsections (1) and (2) "the relevant period" means the period of 18 months beginning with the day on which this Act is passed.<br>
+                        (4) Unless the contrary intention appears, references in Parts 2 to 5 to something being done by or in relation to the insurer or the insured include its being done by or in relation to that person's agent.</div>
+                        <div class="mia-ko">(1) 제2편(및 제21조)과 제14조는 다음에 관하여만 적용된다—<br>
+                        (a) 관련 기간 종료 후에 체결된 보험계약, 그리고<br>
+                        (b) 관련 기간 종료 후에 합의된 보험계약(언제 체결되었든)의 변경.<br>
+                        (2) 본 법 제3편 및 제4편은 관련 기간 종료 후에 체결된 보험계약 및 그러한 계약의 변경에 관하여만 적용된다.<br>
+                        (3) 제1항 및 제2항에서 "관련 기간"이란 본 법이 통과된 날부터 기산하여 18개월의 기간을 말한다.<br>
+                        (4) 반대 의도가 나타나지 않는 한, 제2편부터 제5편까지에서 보험자 또는 피보험자에 의하여 또는 이와 관련하여 행해지는 것에 대한 언급은 해당 자의 대리인에 의하여 또는 이와 관련하여 행해지는 것을 포함한다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en"><span class="sec-num">23</span> Extent, commencement and short title</div>
+                        <div class="mia-ko"><span class="sec-num">23</span> 적용범위, 시행일 및 약칭</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">(1) This Act extends to England and Wales, Scotland and Northern Ireland, except for—<br>
+                        (a) section 21(4), which does not extend to Northern Ireland; and<br>
+                        (b) section 21(5), which extends to Northern Ireland only.<br>
+                        (2) This Act (apart from Part 6 and this section) comes into force at the end of the period of 18 months beginning with the day on which it is passed.<br>
+                        (3) In Part 6—<br>
+                        (a) section 19 comes into force at the end of the period of two months beginning with the day on which this Act is passed; and<br>
+                        (b) section 20 and Schedule 2 come into force on the day appointed under section 21(2) of the Third Parties (Rights against Insurers) Act 2010 for the coming into force of that Act.<br>
+                        (4) This section comes into force on the day on which this Act is passed.<br>
+                        (5) This Act may be cited as the Insurance Act 2015.</div>
+                        <div class="mia-ko">(1) 본 법은 잉글랜드 및 웨일스, 스코틀랜드 및 북아일랜드에 적용되나, 다음은 제외한다—<br>
+                        (a) 제21조 제4항은 북아일랜드에는 적용되지 않는다; 그리고<br>
+                        (b) 제21조 제5항은 북아일랜드에만 적용된다.<br>
+                        (2) 본 법(제6편 및 본 조 제외)은 본 법이 통과된 날부터 기산하여 18개월의 기간이 종료되는 때에 시행된다.<br>
+                        (3) 제6편에서—<br>
+                        (a) 제19조는 본 법이 통과된 날부터 기산하여 2개월의 기간이 종료되는 때에 시행된다; 그리고<br>
+                        (b) 제20조 및 별표 2는 2010년 제3자(보험자에 대한 권리)법의 시행을 위해 동법 제21조 제2항에 따라 지정된 날에 시행된다.<br>
+                        (4) 본 조는 본 법이 통과된 날에 시행된다.<br>
+                        (5) 본 법은 2015년 보험법으로 인용될 수 있다.</div>
+                    </div>
+
+                    <!-- ===== SCHEDULE 1 ===== -->
+                    <div class="mia-part-header" id="ia2015-sch1">
+                        <h4>SCHEDULE 1 — Insurers' Remedies for Qualifying Breaches</h4>
+                        <div class="mia-part-kr">별표 1 — 적격 위반에 대한 보험자의 구제수단</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en">Part 1 — Contracts</div>
+                        <div class="mia-ko">제1부 — 계약</div>
+                    </div>
+
+                    <div class="mia-row">
+                        <div class="mia-en"><strong>General</strong><br>
+                        1. This Part of this Schedule applies to qualifying breaches of the duty of fair presentation in relation to non-consumer insurance contracts (for variations to them, see Part 2).<br><br>
+                        <strong>Deliberate or reckless breaches</strong><br>
+                        2. If a qualifying breach was deliberate or reckless, the insurer—<br>
+                        (a) may avoid the contract and refuse all claims, and<br>
+                        (b) need not return any of the premiums paid.<br><br>
+                        <strong>Other breaches</strong><br>
+                        3. Paragraphs 4 to 6 apply if a qualifying breach was neither deliberate nor reckless.<br>
+                        4. If, in the absence of the qualifying breach, the insurer would not have entered into the contract on any terms, the insurer may avoid the contract and refuse all claims, but must in that event return the premiums paid.<br>
+                        5. If the insurer would have entered into the contract, but on different terms (other than terms relating to the premium), the contract is to be treated as if it had been entered into on those different terms if the insurer so requires.<br>
+                        6. (1) In addition, if the insurer would have entered into the contract (whether the terms relating to matters other than the premium would have been the same or different), but would have charged a higher premium, the insurer may reduce proportionately the amount to be paid on a claim.<br>
+                        (2) In sub-paragraph (1), "reduce proportionately" means that the insurer need pay on the claim only X% of what it would otherwise have been under an obligation to pay under the terms of the contract (or, if applicable, under the different terms provided for by virtue of paragraph 5), where—<br>
+                        X = (Premium actually charged ÷ Higher premium) × 100</div>
+                        <div class="mia-ko"><strong>총칙</strong><br>
+                        1. 본 별표의 본 부는 비소비자보험계약에 관한 공정한 고지의무의 적격 위반에 적용된다 (그 변경에 관해서는 제2부 참조).<br><br>
+                        <strong>고의적 또는 무모한 위반</strong><br>
+                        2. 적격 위반이 고의적이거나 무모한 경우, 보험자는—<br>
+                        (a) 계약을 취소하고 모든 청구를 거부할 수 있고,<br>
+                        (b) 지급된 보험료를 반환할 필요가 없다.<br><br>
+                        <strong>기타 위반</strong><br>
+                        3. 적격 위반이 고의적이지도 무모하지도 않은 경우 제4항부터 제6항까지가 적용된다.<br>
+                        4. 적격 위반이 없었더라면 보험자가 어떤 조건으로든 계약을 체결하지 않았을 경우, 보험자는 계약을 취소하고 모든 청구를 거부할 수 있으나, 그 경우 지급된 보험료를 반환하여야 한다.<br>
+                        5. 보험자가 계약을 체결하였을 것이나 다른 조건(보험료와 관련된 조건 제외)으로 체결하였을 경우, 보험자가 요구하면 계약은 해당 다른 조건으로 체결된 것으로 취급된다.<br>
+                        6. (1) 추가적으로, 보험자가 계약을 체결하였을 것이나(보험료 이외의 사항에 관한 조건이 동일하였든 다르였든) 더 높은 보험료를 부과하였을 경우, 보험자는 청구에 대한 지급액을 비례적으로 감액할 수 있다.<br>
+                        (2) 제1호에서 "비례적으로 감액"이란 보험자가 해당 청구에 대하여 계약 조건(또는 해당되는 경우 제5항에 의한 다른 조건)에 따라 지급할 의무가 있었을 금액의 X%만을 지급하면 된다는 것을 의미하며, 여기서—<br>
+                        X = (실제 부과된 보험료 ÷ 높은 보험료) × 100</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en">Part 2 — Variations</div>
+                        <div class="mia-ko">제2부 — 변경</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en"><strong>General</strong><br>
+                        7. This Part of this Schedule applies to qualifying breaches of the duty of fair presentation in relation to variations to non-consumer insurance contracts.<br><br>
+                        <strong>Deliberate or reckless breaches</strong><br>
+                        8. If a qualifying breach was deliberate or reckless, the insurer—<br>
+                        (a) may by notice to the insured treat the contract as having been terminated with effect from the time when the variation was made, and<br>
+                        (b) need not return any of the premiums paid.<br><br>
+                        <strong>Other breaches</strong><br>
+                        9–10. [Detailed provisions for non-deliberate/non-reckless breaches where premium was increased, unchanged, or reduced as a result of the variation, including rights to treat variation as never made, apply different terms, and proportional reduction.]<br><br>
+                        <strong>Proportionate reduction</strong><br>
+                        11. (1) If this paragraph applies, the insurer may reduce proportionately the amount to be paid on a claim arising out of events after the variation.<br>
+                        (2) "Reduce proportionately" means that the insurer need pay on the claim only Y% of what it would otherwise have been under an obligation to pay, where—<br>
+                        Y = (Total premium actually charged ÷ P) × 100<br>
+                        (3) "P" varies depending on the applicable paragraph case.</div>
+                        <div class="mia-ko"><strong>총칙</strong><br>
+                        7. 본 별표의 본 부는 비소비자보험계약의 변경에 관한 공정한 고지의무의 적격 위반에 적용된다.<br><br>
+                        <strong>고의적 또는 무모한 위반</strong><br>
+                        8. 적격 위반이 고의적이거나 무모한 경우, 보험자는—<br>
+                        (a) 피보험자에게 통지함으로써 변경이 이루어진 시점부터 효력을 가지는 것으로 계약을 종료된 것으로 취급할 수 있고,<br>
+                        (b) 지급된 보험료를 반환할 필요가 없다.<br><br>
+                        <strong>기타 위반</strong><br>
+                        9–10. [변경의 결과로 보험료가 인상, 불변 또는 감액된 경우의 비고의적/비무모한 위반에 관한 상세 규정으로, 변경이 이루어지지 않은 것으로 취급할 권리, 다른 조건의 적용 및 비례적 감액을 포함한다.]<br><br>
+                        <strong>비례적 감액</strong><br>
+                        11. (1) 본 항이 적용되는 경우, 보험자는 변경 이후의 사건에서 발생한 청구에 대한 지급액을 비례적으로 감액할 수 있다.<br>
+                        (2) "비례적으로 감액"이란 보험자가 해당 청구에 대하여 지급할 의무가 있었을 금액의 Y%만을 지급하면 된다는 것을 의미하며, 여기서—<br>
+                        Y = (실제 부과된 총 보험료 ÷ P) × 100<br>
+                        (3) "P"는 적용되는 항목의 경우에 따라 다르다.</div>
+                    </div>
+
+                    <div class="mia-row section-title">
+                        <div class="mia-en">Part 3 — Supplementary</div>
+                        <div class="mia-ko">제3부 — 보충</div>
+                    </div>
+                    <div class="mia-row">
+                        <div class="mia-en">12. Section 84 of the Marine Insurance Act 1906 (return of premium for failure of consideration) is to be read subject to the provisions of this Schedule in relation to contracts of marine insurance which are non-consumer insurance contracts.</div>
+                        <div class="mia-ko">12. 1906년 해상보험법 제84조(대가의 불이행에 따른 보험료 반환)는 비소비자보험계약인 해상보험계약에 관하여 본 별표의 규정에 따라 해석되어야 한다.</div>
+                    </div>
+
+                    <!-- ===== SCHEDULE 2 ===== -->
+                    <div class="mia-part-header" id="ia2015-sch2">
+                        <h4>SCHEDULE 2 — Rights of Third Parties Against Insurers: Relevant Insured Persons</h4>
+                        <div class="mia-part-kr">별표 2 — 보험자에 대한 제3자의 권리: 관련 피보험자</div>
+                    </div>
+
+                    <div class="mia-row">
+                        <div class="mia-en">1. The Third Parties (Rights against Insurers) Act 2010 is amended as follows.<br><br>
+                        [Schedule 2 contains detailed amendments to the 2010 Act regarding: individuals subject to debt relief orders in Northern Ireland (para 2), corporate bodies in administration (para 3), transitional cases for individuals who became bankrupt, companies in winding-up, administration, or receivership before commencement day (paras 4–5), and interpretation provisions defining "enactment" (para 6).]</div>
+                        <div class="mia-ko">1. 2010년 제3자(보험자에 대한 권리)법은 다음과 같이 개정된다.<br><br>
+                        [별표 2는 2010년 법에 대한 상세 개정을 포함하며: 북아일랜드의 채무 면제 명령 대상 개인(제2항), 관리 중인 법인(제3항), 시행일 이전에 파산하거나, 청산·관리·관재인 선임 중인 회사에 대한 경과 사례(제4–5항), 그리고 "법률"의 정의를 포함한 해석 규정(제6항)을 다룬다.]</div>
+                    </div>
+
+                    <!-- Source Attribution -->
+                    <div style="background: #f5f5f5; border-radius: 10px; padding: 16px 20px; margin-top: 2rem; font-size: 0.75rem; color: #666; line-height: 1.8; text-align: center;">
+                        <strong>Source:</strong> Insurance Act 2015 (c.4), UK Parliament (legislation.gov.uk)<br>
+                        본 법률의 영문 원문 저작권은 Crown Copyright에 의해 보호됩니다.<br>
+                        출처: 「해상보험 이론과 실무」(부록 2. 영국보험법) 참조
+                    </div>
+
+                    <div class="mia-disclaimer" style="line-height: 1.8;">
+                        ⚖️ <strong>[국문 면책 공고]</strong> 본 사이트에 게시된 국문 영국보험법 2015(Insurance Act 2015)는 사용자의 이해를 돕기 위해 AI를 통해 번역된 참고용 자료입니다. 번역 과정에서 오역이나 누락이 발생할 수 있으며, 어떠한 경우에도 본 번역본은 법적 근거가 될 수 없습니다. 모든 법적 해석은 영국 의회에서 제정한 <strong>영문 원문(English Original)</strong>을 기준으로 합니다. 정확한 법률 내용은 반드시 공신력 있는 기관의 공식 법률 텍스트를 확인하시기 바랍니다.<br><br>
+                        ⚖️ <strong>[English Disclaimer]</strong> The Korean translation of the Insurance Act 2015 provided on this site is for reference purposes only and was translated using AI to assist understanding. This translation may contain errors or omissions and lacks legal standing. In all legal interpretations, the <strong>English Original</strong> enacted by the UK Parliament shall prevail. Please consult official legal texts provided by authoritative institutions for accurate legal information.<br><br>
                         © CARGOINSU.COM 기업보험전문대리점 해상보험 정보센터
                     </div>
                     
