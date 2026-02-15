@@ -5592,7 +5592,7 @@
                                 <div class="form-row">
                                     <div class="form-group" style="position:relative;">
                                         <label>출발지 국가 <span style="color:#e53935;">*</span></label>
-                                        <input type="text" id="exOriginCountry" class="required-field" placeholder="국가명 입력 (예: Korea, 한국)" oninput="exSearchCountry(this,'exOriginCountryDD')" autocomplete="off">
+                                        <input type="text" id="exOriginCountry" class="required-field" placeholder="국가명 입력 (예: Korea, 한국)" oninput="exSearchCountry(this,'exOriginCountryDD')" onblur="setTimeout(()=>{exAutoMatchCountry(this); updateExVoyage();}, 200)" autocomplete="off">
                                         <div class="search-dropdown" id="exOriginCountryDD"></div>
                                     </div>
                                     <div class="form-group" style="position:relative;">
@@ -5604,7 +5604,7 @@
                                 <div class="form-row">
                                     <div class="form-group" style="position:relative;">
                                         <label>도착지 국가 <span style="color:#e53935;">*</span></label>
-                                        <input type="text" id="exDestCountry" class="required-field" placeholder="국가명 입력 (예: USA, 미국)" oninput="exSearchCountry(this,'exDestCountryDD')" autocomplete="off">
+                                        <input type="text" id="exDestCountry" class="required-field" placeholder="국가명 입력 (예: USA, 미국)" oninput="exSearchCountry(this,'exDestCountryDD')" onblur="setTimeout(()=>{exAutoMatchCountry(this); updateExVoyage();}, 200)" autocomplete="off">
                                         <div class="search-dropdown" id="exDestCountryDD"></div>
                                     </div>
                                     <div class="form-group" style="position:relative;">
@@ -7700,7 +7700,7 @@
 
 // ==================== Google Sheets 연동 설정 ====================
 // ★ 아래 URL을 Google Apps Script 웹앱 배포 후 받은 URL로 교체하세요
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmQPZyAgHuYBjM_sip5s3ZL1EErgrD4bz_D1c7C2ml8e4EhPQBYhnYiXUhVOLT2AzE/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyoGs6KAdFS9zIZb9mXcAAje_sudBwHC8zjCZmxcloa3OEoDHotIOFL7y9yx29xtOKq/exec';
 
 // ==================== EmailJS 설정 ====================
 // ⚠️ 아래 3개 값을 EmailJS 계정에서 발급받은 값으로 교체하세요
@@ -11393,6 +11393,9 @@ function selectTrack(track) {
 
 // ==================== 특송 국가/도시/HS Code 자동검색 ====================
 function exSearchCountry(input, ddId) {
+    // 타이핑 시작하면 기존 region 초기화 (새 선택 필요)
+    delete input.dataset.region;
+    delete input.dataset.code;
     const q = input.value.toLowerCase();
     const dd = document.getElementById(ddId);
     if (q.length < 1) { dd.classList.remove('show'); return; }
@@ -11409,6 +11412,22 @@ function exSearchCountry(input, ddId) {
             updateExVoyage();
         };
     });
+}
+
+// 특송보험 국가 자동매칭 (blur 시 — 드롭다운 미클릭 대응)
+function exAutoMatchCountry(input) {
+    if (input.dataset.region) return; // 이미 드롭다운에서 선택된 경우
+    const q = input.value.trim().toLowerCase();
+    if (!q) return;
+    const found = countries.find(c => 
+        c.name.toLowerCase() === q || c.korean === input.value.trim() || c.code.toLowerCase() === q ||
+        c.name.toLowerCase().startsWith(q) || c.korean.startsWith(input.value.trim())
+    );
+    if (found) {
+        input.value = found.name;
+        input.dataset.code = found.code;
+        input.dataset.region = found.region;
+    }
 }
 
 // 특송보험 운송구간(Voyage) 자동 설정
@@ -11991,10 +12010,10 @@ async function aiParseDocument(mode) {
         const base64 = await fileToBase64(selectedFile);
         const fileType = selectedFile.type || 'application/pdf';
         
-        // Google Apps Script 2단계 방식 (CORS 우회)
-        // Step 1: no-cors POST로 파일 전송 + requestId 부여
+        // Google Apps Script — JSONP 방식 (CORS 완전 우회)
         const requestId = 'ai_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
         
+        // Step 1: no-cors POST로 파일 전송
         await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -12009,34 +12028,52 @@ async function aiParseDocument(mode) {
             })
         });
         
-        // Step 2: GET 폴링으로 결과 조회 (GET은 CORS 문제 없음)
-        let result = null;
-        const maxAttempts = 30; // 최대 30초 대기
-        for (let i = 0; i < maxAttempts; i++) {
-            await new Promise(r => setTimeout(r, 1000)); // 1초 대기
-            btn.innerHTML = `<span class="ai-icon">⏳</span> AI 분석 중... (${i + 1}초)`;
+        // Step 2: JSONP 폴링으로 결과 조회 (script 태그는 CORS 제한 없음)
+        const data = await new Promise((resolve, reject) => {
+            let attempts = 0;
+            const maxAttempts = 35;
             
-            try {
-                const pollResp = await fetch(GOOGLE_SCRIPT_URL + '?action=getResult&requestId=' + requestId);
-                const pollData = await pollResp.json();
+            function poll() {
+                attempts++;
+                btn.innerHTML = `<span class="ai-icon">⏳</span> AI 분석 중... (${attempts}초)`;
                 
-                if (pollData.status === 200 && pollData.data) {
-                    result = pollData;
-                    break;
-                } else if (pollData.status === 500) {
-                    throw new Error(pollData.message || 'AI 파싱 오류');
-                }
-                // status === 202 (processing) → 계속 폴링
-            } catch(pollErr) {
-                if (i === maxAttempts - 1) throw pollErr;
+                const callbackName = 'aiCb_' + requestId.replace(/[^a-zA-Z0-9]/g, '') + '_' + attempts;
+                
+                window[callbackName] = function(result) {
+                    // 콜백 정리
+                    delete window[callbackName];
+                    const scriptEl = document.getElementById(callbackName);
+                    if (scriptEl) scriptEl.remove();
+                    
+                    if (result.status === 200 && result.data) {
+                        resolve(result.data);
+                    } else if (result.status === 500) {
+                        reject(new Error(result.message || 'AI 파싱 오류'));
+                    } else if (attempts < maxAttempts) {
+                        setTimeout(poll, 1000);
+                    } else {
+                        reject(new Error('AI 분석 시간 초과 (35초)'));
+                    }
+                };
+                
+                const script = document.createElement('script');
+                script.id = callbackName;
+                script.src = GOOGLE_SCRIPT_URL + '?action=getResult&requestId=' + requestId + '&callback=' + callbackName;
+                script.onerror = function() {
+                    delete window[callbackName];
+                    script.remove();
+                    if (attempts < maxAttempts) {
+                        setTimeout(poll, 1000);
+                    } else {
+                        reject(new Error('서버 연결 실패'));
+                    }
+                };
+                document.head.appendChild(script);
             }
-        }
-        
-        if (!result || !result.data) {
-            throw new Error('AI 분석 시간 초과. 파일이 너무 크거나 서버가 응답하지 않습니다.');
-        }
-        
-        const data = result.data;
+            
+            // 첫 폴링은 3초 후 시작 (Claude API 처리 시간 확보)
+            setTimeout(poll, 3000);
+        });
         
         // 폼에 자동 입력
         aiAutoFill(mode, data);
