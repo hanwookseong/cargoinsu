@@ -513,6 +513,22 @@
         .express-pay-card.selected { border-color: var(--primary); background: var(--primary-bg); }
         .express-pay-card .p-icon { font-size: 1.3rem; margin-bottom: 4px; }
         .express-pay-card .p-title { font-size: 0.85rem; font-weight: 700; }
+        
+        /* AI 서류 자동인식 버튼 */
+        .ai-parse-btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; background:linear-gradient(135deg, #6366f1, #8b5cf6); color:#fff; border:none; border-radius:10px; font-size:0.85rem; font-weight:700; cursor:pointer; transition:all 0.3s; box-shadow:0 2px 8px rgba(99,102,241,0.3); }
+        .ai-parse-btn:hover { background:linear-gradient(135deg, #4f46e5, #7c3aed); transform:translateY(-1px); box-shadow:0 4px 12px rgba(99,102,241,0.4); }
+        .ai-parse-btn:disabled { background:#ccc; cursor:not-allowed; transform:none; box-shadow:none; }
+        .ai-parse-btn .ai-icon { font-size:1.1rem; }
+        .ai-parse-btn.parsing { animation: aiPulse 1.5s infinite; }
+        @keyframes aiPulse { 0%,100%{opacity:1;} 50%{opacity:0.6;} }
+        .ai-parse-result { margin-top:12px; padding:14px 18px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; font-size:0.82rem; line-height:1.7; display:none; }
+        .ai-parse-result.show { display:block; }
+        .ai-parse-result .parse-title { font-weight:800; color:#15803d; margin-bottom:8px; font-size:0.88rem; }
+        .ai-parse-result .parse-item { display:flex; gap:8px; }
+        .ai-parse-result .parse-label { color:#666; min-width:100px; }
+        .ai-parse-result .parse-value { font-weight:600; color:#1a1a1a; }
+        .ai-parse-error { margin-top:12px; padding:12px 16px; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; font-size:0.82rem; color:#dc2626; display:none; }
+        .ai-parse-error.show { display:block; }
         .express-pay-card .p-desc { font-size: 0.68rem; color: #888; margin-top: 2px; }
         .express-faq { background: #fffde7; border: 1px solid #fff9c4; border-radius: 10px; padding: 12px 16px; margin-top: 10px; }
         .express-faq summary { font-size: 0.8rem; font-weight: 700; color: #f57f17; cursor: pointer; }
@@ -4515,6 +4531,14 @@
                                 <div id="ezDocWarning" style="display:none; background:#ffebee; border:1px solid #ef9a9a; border-radius:8px; padding:10px 14px; font-size:0.8rem; color:#c62828; margin-top:8px;">
                                     ⚠️ 최소 <strong>CI(Commercial Invoice)</strong>는 반드시 업로드해 주세요.
                                 </div>
+                                <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
+                                    <button type="button" class="ai-parse-btn" id="ezAiParseBtn" onclick="aiParseDocument('ez')">
+                                        <span class="ai-icon">🤖</span> AI 서류 자동인식 — 첨부서류에서 정보 추출
+                                    </button>
+                                    <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보가 자동 인식됩니다.</div>
+                                    <div class="ai-parse-result" id="ezAiResult"></div>
+                                    <div class="ai-parse-error" id="ezAiError"></div>
+                                </div>
                             </div>
                         </div>
 
@@ -5266,6 +5290,14 @@
                                     <div class="design-file-list" id="fileEtcList"></div>
                                 </div>
                             </div>
+                            <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
+                                <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
+                                    <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
+                                </button>
+                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로, 계약자 정보 등이 자동 입력됩니다.</div>
+                                <div class="ai-parse-result" id="dsAiResult"></div>
+                                <div class="ai-parse-error" id="dsAiError"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -5651,6 +5683,14 @@
                                         <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.xlsx">
                                     </div>
                                     <div class="form-group"></div>
+                                </div>
+                                <div style="margin-top:12px; padding-top:12px; border-top:1px dashed #e0e0e0;">
+                                    <button type="button" class="ai-parse-btn" id="exAiParseBtn" onclick="aiParseDocument('express')">
+                                        <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/AWB에서 정보 추출
+                                    </button>
+                                    <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 AWB 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로 등이 자동 입력됩니다.</div>
+                                    <div class="ai-parse-result" id="exAiResult"></div>
+                                    <div class="ai-parse-error" id="exAiError"></div>
                                 </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label>추가 요청사항</label>
@@ -11884,6 +11924,320 @@ async function submitEzApply() {
 }
 
 // ==================== END 간편접수 ====================
+
+// ==================== AI 서류 자동인식 ====================
+
+/**
+ * AI 서류 파싱 메인 함수
+ * @param {string} mode - 'express' | 'cargo' | 'ez'
+ */
+async function aiParseDocument(mode) {
+    // 파일 입력 요소 결정
+    let fileInputIds, btn, resultEl, errorEl;
+    if (mode === 'express') {
+        fileInputIds = ['exFileCI', 'exFileAWB', 'exFilePL'];
+        btn = document.getElementById('exAiParseBtn');
+        resultEl = document.getElementById('exAiResult');
+        errorEl = document.getElementById('exAiError');
+    } else if (mode === 'cargo') {
+        fileInputIds = ['fileInvoice', 'fileBL', 'filePL'];
+        btn = document.getElementById('dsAiParseBtn');
+        resultEl = document.getElementById('dsAiResult');
+        errorEl = document.getElementById('dsAiError');
+    } else if (mode === 'ez') {
+        fileInputIds = ['ezFileCI', 'ezFileBL', 'ezFileRequest'];
+        btn = document.getElementById('ezAiParseBtn');
+        resultEl = document.getElementById('ezAiResult');
+        errorEl = document.getElementById('ezAiError');
+    }
+    
+    // 첨부 파일 찾기 (우선순위: CI → BL/AWB → PL/부보의뢰서)
+    let selectedFile = null;
+    let docType = 'CI';
+    for (let i = 0; i < fileInputIds.length; i++) {
+        const input = document.getElementById(fileInputIds[i]);
+        if (input && input.files && input.files.length > 0) {
+            selectedFile = input.files[0];
+            if (i === 0) docType = 'CI';
+            else if (i === 1) docType = fileInputIds[i].includes('AWB') || fileInputIds[i].includes('BL') ? 'AWB' : 'BL';
+            else docType = 'PL';
+            break;
+        }
+    }
+    
+    if (!selectedFile) {
+        errorEl.textContent = '⚠️ 먼저 CI, AWB, 또는 B/L 파일을 첨부해 주세요.';
+        errorEl.classList.add('show');
+        resultEl.classList.remove('show');
+        return;
+    }
+    
+    // 파일 크기 체크
+    if (selectedFile.size > 5 * 1024 * 1024) {
+        errorEl.textContent = '⚠️ 파일 크기가 5MB를 초과합니다.';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    // UI 상태: 로딩
+    btn.disabled = true;
+    btn.classList.add('parsing');
+    btn.innerHTML = '<span class="ai-icon">⏳</span> AI가 서류를 분석하고 있습니다...';
+    resultEl.classList.remove('show');
+    errorEl.classList.remove('show');
+    
+    try {
+        // 파일을 base64로 변환
+        const base64 = await fileToBase64(selectedFile);
+        const fileType = selectedFile.type || 'application/pdf';
+        
+        // Google Apps Script 프록시를 통해 Claude API 호출
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'parseDocument',
+                fileData: base64,
+                fileType: fileType,
+                docType: docType,
+                mode: mode
+            })
+        });
+        
+        const result = await response.json();
+        
+        if (result.status !== 200 || !result.data) {
+            throw new Error(result.message || 'AI 파싱 실패');
+        }
+        
+        const data = result.data;
+        
+        // 폼에 자동 입력
+        aiAutoFill(mode, data);
+        
+        // 결과 표시
+        showAiResult(resultEl, data);
+        errorEl.classList.remove('show');
+        
+    } catch (error) {
+        console.error('AI Parse Error:', error);
+        errorEl.textContent = '❌ AI 인식 오류: ' + (error.message || '서버 연결 실패. 잠시 후 다시 시도해주세요.');
+        errorEl.classList.add('show');
+        resultEl.classList.remove('show');
+    } finally {
+        btn.disabled = false;
+        btn.classList.remove('parsing');
+        if (mode === 'express') btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/AWB에서 정보 추출';
+        else if (mode === 'cargo') btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출';
+        else btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — 첨부서류에서 정보 추출';
+    }
+}
+
+/** 파일 → base64 변환 */
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            const base64 = reader.result.split(',')[1]; // data:...;base64, 제거
+            resolve(base64);
+        };
+        reader.onerror = () => reject(new Error('파일 읽기 실패'));
+        reader.readAsDataURL(file);
+    });
+}
+
+/** AI 파싱 결과를 폼에 자동 입력 */
+function aiAutoFill(mode, d) {
+    if (mode === 'express') {
+        // 특송보험 폼 자동 입력
+        if (d.cargoDescription) setVal('exCargo', d.cargoDescription);
+        if (d.hsCode) setVal('exHsCode', d.hsCode);
+        if (d.totalAmount) setVal('exInvoice', d.totalAmount);
+        if (d.currency) setSelect('exCurrency', d.currency);
+        if (d.quantity) setVal('exQuantityNum', d.quantity.replace(/[^\d.]/g,''));
+        if (d.quantityUnit) setSelectByText('exQuantityUnit', d.quantityUnit);
+        if (d.grossWeight) setVal('exWeightNum', d.grossWeight.replace(/[^\d.]/g,''));
+        if (d.weightUnit) setSelectByText('exWeightUnit', d.weightUnit);
+        if (d.packing) setSelect('exPacking', matchPacking(d.packing));
+        if (d.blOrAwbNo) setVal('exTrackingNo', d.blOrAwbNo);
+        if (d.shipDate) setVal('exShipDate', formatDateForInput(d.shipDate));
+        
+        // 출발지/도착지 국가 자동 설정
+        if (d.originCountry) aiSetCountry('exOriginCountry', d.originCountry, 'express');
+        if (d.destCountry) aiSetCountry('exDestCountry', d.destCountry, 'express');
+        if (d.originCity) setVal('exOriginCity', d.originCity);
+        if (d.destCity) setVal('exDestCity', d.destCity);
+        
+    } else if (mode === 'cargo') {
+        // 적하보험 직접입력 폼 자동 입력
+        if (d.shipper) setVal('dsContractorName', d.shipper);
+        if (d.consignee) {
+            const sameCheck = document.getElementById('dsSameAsContractor');
+            if (sameCheck && sameCheck.checked) { sameCheck.click(); }
+            setVal('dsInsuredName', d.consignee);
+        }
+        if (d.originCountry) aiSetCountryDS('dsOriginCountry', d.originCountry);
+        if (d.destCountry) aiSetCountryDS('dsDestCountry', d.destCountry);
+        if (d.originCity) setVal('dsOriginCity', d.originCity);
+        if (d.destCity) setVal('dsDestCity', d.destCity);
+        if (d.vesselOrFlight) setVal('dsVessel', d.vesselOrFlight);
+        if (d.shipDate) setVal('dsShipDate', formatDateForInput(d.shipDate));
+        if (d.hsCode) setVal('dsHsCode', d.hsCode);
+        if (d.cargoDescription) setVal('dsCargoName', d.cargoDescription);
+        if (d.packing) setSelect('dsPacking', matchPacking(d.packing));
+        if (d.totalAmount) setVal('dsCargoValue', d.totalAmount);
+        if (d.currency) setSelect('dsCargoCurrency', d.currency);
+        if (d.invoiceNo) setVal('dsVessel', (document.getElementById('dsVessel').value ? document.getElementById('dsVessel').value + ' / ' : '') + 'INV:' + d.invoiceNo);
+        
+    } else if (mode === 'ez') {
+        // 간편접수 — 보충정보 영역에 요약 표시 (직접 필드가 적음)
+        // 간편접수는 서류 기반이므로 주요 정보를 메모에 정리
+        const summaryParts = [];
+        if (d.cargoDescription) summaryParts.push('화물: ' + d.cargoDescription);
+        if (d.hsCode) summaryParts.push('HS: ' + d.hsCode);
+        if (d.currency && d.totalAmount) summaryParts.push('금액: ' + d.currency + ' ' + d.totalAmount);
+        if (d.originCountry && d.destCountry) summaryParts.push('경로: ' + d.originCountry + ' → ' + d.destCountry);
+        if (d.incoterms) summaryParts.push('Incoterms: ' + d.incoterms);
+        if (d.vesselOrFlight) summaryParts.push('선박/편명: ' + d.vesselOrFlight);
+        if (d.shipper) summaryParts.push('Shipper: ' + d.shipper);
+        if (d.consignee) summaryParts.push('Consignee: ' + d.consignee);
+        
+        const memoEl = document.getElementById('ezMemo');
+        if (memoEl && summaryParts.length) {
+            memoEl.value = '[AI 추출정보]\n' + summaryParts.join('\n') + (memoEl.value ? '\n\n' + memoEl.value : '');
+        }
+    }
+}
+
+/** 국가명으로 countries 배열에서 매칭하여 자동 설정 (특송보험용) */
+function aiSetCountry(inputId, countryName, mode) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    const normalized = countryName.toLowerCase().trim();
+    const found = countries.find(c => 
+        c.name.toLowerCase() === normalized || 
+        c.korean === countryName || 
+        c.code.toLowerCase() === normalized ||
+        c.name.toLowerCase().includes(normalized) ||
+        normalized.includes(c.name.toLowerCase())
+    );
+    if (found) {
+        input.value = found.name;
+        input.dataset.code = found.code;
+        input.dataset.region = found.region;
+        updateExVoyage();
+    } else {
+        input.value = countryName;
+    }
+}
+
+/** 국가명으로 countries 배열에서 매칭하여 자동 설정 (직접입력용) */
+function aiSetCountryDS(inputId, countryName) {
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    const normalized = countryName.toLowerCase().trim();
+    const found = countries.find(c => 
+        c.name.toLowerCase() === normalized || 
+        c.korean === countryName || 
+        c.code.toLowerCase() === normalized ||
+        c.name.toLowerCase().includes(normalized) ||
+        normalized.includes(c.name.toLowerCase())
+    );
+    if (found) {
+        input.value = found.name + ' (' + found.korean + ')';
+        input.dataset.code = found.code;
+        input.dataset.region = found.region;
+        input.dataset.countryName = found.name;
+        dsUpdateRoute();
+    } else {
+        input.value = countryName;
+    }
+}
+
+/** 포장형태 매칭 */
+function matchPacking(text) {
+    if (!text) return '';
+    const t = text.toLowerCase();
+    if (t.includes('carton') || t.includes('ctn')) return 'carton';
+    if (t.includes('pallet') || t.includes('plt')) return 'pallet';
+    if (t.includes('crate')) return 'crate';
+    if (t.includes('drum')) return 'drum';
+    if (t.includes('bag')) return 'bag';
+    if (t.includes('bulk')) return 'bulk';
+    if (t.includes('container')) return 'container';
+    if (t.includes('box')) return 'box';
+    return '';
+}
+
+/** 날짜 문자열을 input[type=date] 형식으로 변환 */
+function formatDateForInput(dateStr) {
+    if (!dateStr) return '';
+    // 이미 YYYY-MM-DD 형식이면 그대로
+    if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+    // 다양한 형식 파싱 시도
+    const d = new Date(dateStr);
+    if (!isNaN(d.getTime())) {
+        return d.toISOString().split('T')[0];
+    }
+    return '';
+}
+
+/** 안전한 값 설정 */
+function setVal(id, val) {
+    const el = document.getElementById(id);
+    if (el && val) el.value = val;
+}
+
+/** select 요소에 값 설정 */
+function setSelect(id, val) {
+    const el = document.getElementById(id);
+    if (!el || !val) return;
+    const v = val.toUpperCase();
+    for (let opt of el.options) {
+        if (opt.value.toUpperCase() === v || opt.value.toUpperCase().includes(v)) {
+            el.value = opt.value;
+            return;
+        }
+    }
+}
+
+/** select 요소에 텍스트로 값 설정 */
+function setSelectByText(id, text) {
+    const el = document.getElementById(id);
+    if (!el || !text) return;
+    const t = text.toUpperCase().replace(/[^A-Z]/g, '');
+    for (let opt of el.options) {
+        if (opt.value.toUpperCase().replace(/[^A-Z]/g, '') === t || opt.text.toUpperCase().includes(t)) {
+            el.value = opt.value;
+            return;
+        }
+    }
+}
+
+/** AI 결과 표시 */
+function showAiResult(el, d) {
+    const items = [];
+    if (d.shipper) items.push(['Shipper', d.shipper]);
+    if (d.consignee) items.push(['Consignee', d.consignee]);
+    if (d.cargoDescription) items.push(['화물품명', d.cargoDescription]);
+    if (d.hsCode) items.push(['HS Code', d.hsCode]);
+    if (d.currency && d.totalAmount) items.push(['금액', d.currency + ' ' + Number(d.totalAmount).toLocaleString()]);
+    if (d.incoterms) items.push(['Incoterms', d.incoterms]);
+    if (d.originCountry || d.originCity) items.push(['출발지', (d.originCity ? d.originCity + ', ' : '') + (d.originCountry || '')]);
+    if (d.destCountry || d.destCity) items.push(['도착지', (d.destCity ? d.destCity + ', ' : '') + (d.destCountry || '')]);
+    if (d.vesselOrFlight) items.push(['선박/항공편', d.vesselOrFlight]);
+    if (d.blOrAwbNo) items.push(['B/L·AWB No.', d.blOrAwbNo]);
+    if (d.shipDate) items.push(['선적일', d.shipDate]);
+    if (d.quantity) items.push(['수량', d.quantity + (d.quantityUnit ? ' ' + d.quantityUnit : '')]);
+    if (d.grossWeight) items.push(['중량', d.grossWeight + (d.weightUnit ? ' ' + d.weightUnit : '')]);
+    if (d.packing) items.push(['포장', d.packing]);
+    
+    el.innerHTML = '<div class="parse-title">✅ AI 서류 인식 완료 — ' + items.length + '개 항목 추출</div>' +
+        items.map(([label, value]) => `<div class="parse-item"><span class="parse-label">${label}</span><span class="parse-value">${value}</span></div>`).join('');
+    el.classList.add('show');
+}
+
+// ==================== END AI 서류 자동인식 ====================
 
 // ==================== END 적하보험 견적신청 ====================
 
