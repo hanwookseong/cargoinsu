@@ -7700,7 +7700,7 @@
 
 // ==================== Google Sheets 연동 설정 ====================
 // ★ 아래 URL을 Google Apps Script 웹앱 배포 후 받은 URL로 교체하세요
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx3jC2KMqMd7LFkUZ3Cd3E_UqU6R-Tjhb-aFVP3OoXTWSFMQCnzektfkPGE554ttrxh/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwmQPZyAgHuYBjM_sip5s3ZL1EErgrD4bz_D1c7C2ml8e4EhPQBYhnYiXUhVOLT2AzE/exec';
 
 // ==================== EmailJS 설정 ====================
 // ⚠️ 아래 3개 값을 EmailJS 계정에서 발급받은 값으로 교체하세요
@@ -11991,12 +11991,17 @@ async function aiParseDocument(mode) {
         const base64 = await fileToBase64(selectedFile);
         const fileType = selectedFile.type || 'application/pdf';
         
-        // Google Apps Script 프록시를 통해 Claude API 호출
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
+        // Google Apps Script 2단계 방식 (CORS 우회)
+        // Step 1: no-cors POST로 파일 전송 + requestId 부여
+        const requestId = 'ai_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+        
+        await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            redirect: 'follow',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify({
                 action: 'parseDocument',
+                requestId: requestId,
                 fileData: base64,
                 fileType: fileType,
                 docType: docType,
@@ -12004,7 +12009,34 @@ async function aiParseDocument(mode) {
             })
         });
         
-        const result = await response.json();
+        // Step 2: GET 폴링으로 결과 조회 (GET은 CORS 문제 없음)
+        let result = null;
+        const maxAttempts = 30; // 최대 30초 대기
+        for (let i = 0; i < maxAttempts; i++) {
+            await new Promise(r => setTimeout(r, 1000)); // 1초 대기
+            btn.innerHTML = `<span class="ai-icon">⏳</span> AI 분석 중... (${i + 1}초)`;
+            
+            try {
+                const pollResp = await fetch(GOOGLE_SCRIPT_URL + '?action=getResult&requestId=' + requestId);
+                const pollData = await pollResp.json();
+                
+                if (pollData.status === 200 && pollData.data) {
+                    result = pollData;
+                    break;
+                } else if (pollData.status === 500) {
+                    throw new Error(pollData.message || 'AI 파싱 오류');
+                }
+                // status === 202 (processing) → 계속 폴링
+            } catch(pollErr) {
+                if (i === maxAttempts - 1) throw pollErr;
+            }
+        }
+        
+        if (!result || !result.data) {
+            throw new Error('AI 분석 시간 초과. 파일이 너무 크거나 서버가 응답하지 않습니다.');
+        }
+        
+        const data = result.data;
         
         if (result.status !== 200 || !result.data) {
             throw new Error(result.message || 'AI 파싱 실패');
