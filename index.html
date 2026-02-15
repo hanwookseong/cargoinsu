@@ -519,32 +519,6 @@
         .express-faq p { font-size: 0.75rem; color: var(--text-mid); margin-top: 6px; line-height: 1.6; }
 
         /* ===== Express Comparison Simulator ===== */
-        .express-compare-wrap { background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%); border: 2px solid #ffd54f; border-radius: 16px; padding: 24px; margin-bottom: 24px; }
-        .express-compare-title { font-size: 1rem; font-weight: 800; color: #e65100; margin-bottom: 16px; text-align: center; }
-        .express-compare-input { display: flex; gap: 12px; align-items: end; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
-        .express-compare-input .comp-field { flex: 1; min-width: 160px; max-width: 250px; }
-        .express-compare-input label { display: block; font-size: 0.78rem; font-weight: 600; color: #555; margin-bottom: 4px; }
-        .express-compare-input input, .express-compare-input select { width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
-        .express-compare-input input:focus, .express-compare-input select:focus { border-color: var(--primary); outline: none; }
-        .express-compare-btn { padding: 10px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap; min-height: 44px; }
-        .express-compare-btn:hover { background: #e68200; }
-        .express-compare-result { display: none; }
-        .express-compare-result.show { display: block; }
-        .comp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; border-radius: 12px; overflow: hidden; }
-        .comp-table th { background: var(--primary); color: #fff; padding: 12px 16px; text-align: center; font-weight: 700; }
-        .comp-table td { padding: 12px 16px; text-align: center; border-bottom: 1px solid #e0e0e0; }
-        .comp-table tr:nth-child(even) { background: rgba(255,255,255,0.6); }
-        .comp-table .comp-highlight { background: #e8f5e9 !important; font-weight: 700; color: #2e7d32; }
-        .comp-table .comp-warn { color: #c62828; font-weight: 600; }
-        .comp-table .comp-good { color: #2e7d32; font-weight: 700; }
-        .comp-savings-box { margin-top: 16px; background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: #fff; border-radius: 12px; padding: 20px; text-align: center; }
-        .comp-savings-box .savings-label { font-size: 0.85rem; opacity: 0.9; margin-bottom: 6px; }
-        .comp-savings-box .savings-amount { font-size: 1.8rem; font-weight: 800; }
-        .comp-savings-box .savings-detail { font-size: 0.78rem; opacity: 0.7; margin-top: 8px; }
-        @media (max-width: 768px) {
-            .express-compare-input { flex-direction: column; align-items: stretch; }
-            .express-compare-input .comp-field { max-width: 100%; }
-        }
         @media (max-width: 768px) {
             .track-selector { grid-template-columns: 1fr; }
             .express-role-grid { grid-template-columns: 1fr; }
@@ -661,6 +635,10 @@
         .design-field .search-dropdown.show { display: block; }
         .design-field .search-dropdown div { padding: 8px 12px; font-size: 0.82rem; cursor: pointer; border-bottom: 1px solid #f5f5f5; }
         .design-field .search-dropdown div:hover { background: #e8eaf6; }
+        .form-group .search-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 0 0 8px 8px; max-height: 180px; overflow-y: auto; z-index: 20; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .form-group .search-dropdown.show { display: block; }
+        .form-group .search-dropdown div { padding: 8px 12px; font-size: 0.82rem; cursor: pointer; border-bottom: 1px solid #f5f5f5; }
+        .form-group .search-dropdown div:hover { background: #e8eaf6; }
         
         .design-checkbox-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
         .design-checkbox-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--primary); }
@@ -5395,51 +5373,7 @@
                             <div class="express-benefit-item">
                                 <div class="b-icon">🛡️</div>
                                 <div class="b-title">ICC(Air) All Risks</div>
-                                <div class="b-desc">항공화물 전위험담보<br>Chubb/KB 보험사</div>
-                            </div>
-                        </div>
-
-                        <!-- 💰 보험료 비교 시뮬레이터 -->
-                        <div class="express-compare-wrap">
-                            <div class="express-compare-title">💰 보험료 비교 시뮬레이터 — 특송사 자체보험 vs Cargoinsu</div>
-                            <div class="express-compare-input">
-                                <div class="comp-field">
-                                    <label>화물 가액 (Invoice Value)</label>
-                                    <input type="text" id="compCargoValue" placeholder="예: 2,000" oninput="formatNumber(this)">
-                                </div>
-                                <div class="comp-field">
-                                    <label>통화</label>
-                                    <select id="compCurrency">
-                                        <option value="USD" selected>USD ($)</option>
-                                        <option value="KRW">KRW (₩)</option>
-                                        <option value="EUR">EUR (€)</option>
-                                    </select>
-                                </div>
-                                <div class="comp-field">
-                                    <label>화물 중량 (kg)</label>
-                                    <input type="number" id="compWeight" placeholder="예: 15" value="10">
-                                </div>
-                                <button class="express-compare-btn" onclick="runExpressComparison()">비교하기 →</button>
-                            </div>
-                            <div class="express-compare-result" id="compResult">
-                                <table class="comp-table">
-                                    <thead>
-                                        <tr>
-                                            <th>구분</th>
-                                            <th>DHL 자체보험</th>
-                                            <th>UPS 자체보험</th>
-                                            <th>FedEx 자체보험</th>
-                                            <th style="background:var(--accent);">Cargoinsu 특송보험</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="compTableBody">
-                                    </tbody>
-                                </table>
-                                <div class="comp-savings-box" id="compSavings">
-                                    <div class="savings-label">Cargoinsu 특송보험으로 절감되는 금액</div>
-                                    <div class="savings-amount" id="compSavingsAmt">-</div>
-                                    <div class="savings-detail" id="compSavingsDetail">ICC(Air) All Risks · 전위험담보 · 보험가액 110% 보장</div>
-                                </div>
+                                <div class="b-desc">항공화물 전위험담보<br>정식 보험증권 발급</div>
                             </div>
                         </div>
 
@@ -5447,22 +5381,26 @@
                         <div class="design-section">
                             <div class="design-section-title">✈️ ① 특송사 선택</div>
                             <div class="design-section-body">
-                                <div class="express-carrier-grid">
-                                    <div class="express-carrier" onclick="selectExpressCarrier(this,'UPS')">
-                                        <div class="c-name">UPS</div>
-                                        <div class="c-sub">United Parcel Service</div>
+                                <div class="express-carrier-grid" style="grid-template-columns: repeat(5, 1fr);">
+                                    <div class="express-carrier" onclick="selectExpressCarrier(this,'DHL')">
+                                        <div class="c-name">DHL</div>
+                                        <div class="c-sub">DHL Express</div>
                                     </div>
                                     <div class="express-carrier" onclick="selectExpressCarrier(this,'FedEx')">
                                         <div class="c-name">FedEx</div>
                                         <div class="c-sub">Federal Express</div>
                                     </div>
-                                    <div class="express-carrier" onclick="selectExpressCarrier(this,'DHL')">
-                                        <div class="c-name">DHL</div>
-                                        <div class="c-sub">DHL Express</div>
+                                    <div class="express-carrier" onclick="selectExpressCarrier(this,'UPS')">
+                                        <div class="c-name">UPS</div>
+                                        <div class="c-sub">United Parcel Service</div>
                                     </div>
                                     <div class="express-carrier" onclick="selectExpressCarrier(this,'EMS')">
                                         <div class="c-name">EMS</div>
                                         <div class="c-sub">국제특급우편</div>
+                                    </div>
+                                    <div class="express-carrier" onclick="selectExpressCarrier(this,'기타')">
+                                        <div class="c-name">기타</div>
+                                        <div class="c-sub">Other Carrier</div>
                                     </div>
                                 </div>
                                 <div class="form-row" style="margin-top:10px;">
@@ -5506,13 +5444,14 @@
                             <div class="design-section-title">📦 ③ 화물 정보</div>
                             <div class="design-section-body">
                                 <div class="form-row">
-                                    <div class="form-group">
+                                    <div class="form-group" style="position:relative;">
                                         <label>화물 품명 <span style="color:#e53935;">*</span></label>
                                         <input type="text" id="exCargoDesc" placeholder="예: 전자부품, 의류 샘플, 화장품 등">
                                     </div>
-                                    <div class="form-group">
-                                        <label>HS Code (있는 경우)</label>
-                                        <input type="text" id="exHsCode" placeholder="예: 8542.31">
+                                    <div class="form-group" style="position:relative;">
+                                        <label>HS Code <span style="font-size:0.72rem; color:#888;">(코드 또는 품명으로 검색)</span></label>
+                                        <input type="text" id="exHsCode" placeholder="예: 8542 또는 '반도체'" oninput="exSearchHsCode(this)" autocomplete="off">
+                                        <div class="search-dropdown" id="exHsCodeDD"></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -5563,13 +5502,27 @@
                             <div class="design-section-title">🗺️ ④ 운송 경로</div>
                             <div class="design-section-body">
                                 <div class="form-row">
-                                    <div class="form-group">
-                                        <label>출발지 <span style="color:#e53935;">*</span></label>
-                                        <input type="text" id="exOrigin" placeholder="예: Seoul, Korea">
+                                    <div class="form-group" style="position:relative;">
+                                        <label>출발지 국가 <span style="color:#e53935;">*</span></label>
+                                        <input type="text" id="exOriginCountry" class="required-field" placeholder="국가명 입력 (예: Korea, 한국)" oninput="exSearchCountry(this,'exOriginCountryDD')" autocomplete="off">
+                                        <div class="search-dropdown" id="exOriginCountryDD"></div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>도착지 <span style="color:#e53935;">*</span></label>
-                                        <input type="text" id="exDestination" placeholder="예: New York, USA">
+                                    <div class="form-group" style="position:relative;">
+                                        <label>출발지 도시</label>
+                                        <input type="text" id="exOriginCity" placeholder="도시 선택 또는 직접 입력" onfocus="exShowCities(this,'exOriginCityDD','exOriginCountry')" oninput="exFilterCities(this,'exOriginCityDD','exOriginCountry')" autocomplete="off">
+                                        <div class="search-dropdown" id="exOriginCityDD"></div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group" style="position:relative;">
+                                        <label>도착지 국가 <span style="color:#e53935;">*</span></label>
+                                        <input type="text" id="exDestCountry" class="required-field" placeholder="국가명 입력 (예: USA, 미국)" oninput="exSearchCountry(this,'exDestCountryDD')" autocomplete="off">
+                                        <div class="search-dropdown" id="exDestCountryDD"></div>
+                                    </div>
+                                    <div class="form-group" style="position:relative;">
+                                        <label>도착지 도시</label>
+                                        <input type="text" id="exDestCity" placeholder="도시 선택 또는 직접 입력" onfocus="exShowCities(this,'exDestCityDD','exDestCountry')" oninput="exFilterCities(this,'exDestCityDD','exDestCountry')" autocomplete="off">
+                                        <div class="search-dropdown" id="exDestCityDD"></div>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -5618,10 +5571,23 @@
                         <div class="design-section">
                             <div class="design-section-title">📎 ⑥ 서류 첨부 (선택)</div>
                             <div class="design-section-body">
-                                <p style="font-size:0.8rem; color:#666; margin-bottom:10px; line-height:1.6;">Commercial Invoice, Packing List 등 보유 서류를 첨부하시면 견적 처리가 빨라집니다.</p>
-                                <div class="form-group">
-                                    <input type="file" id="exFileUpload" multiple accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
-                                    <div id="exFileList" style="margin-top:8px; font-size:0.8rem; color:var(--text-mid);"></div>
+                                <p style="font-size:0.8rem; color:#666; margin-bottom:10px; line-height:1.6;">보유 서류를 첨부하시면 견적 처리가 빨라집니다. (각 파일 최대 5MB)</p>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>📄 Commercial Invoice (CI)</label>
+                                        <input type="file" id="exFileCI" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>📄 Packing List (PL)</label>
+                                        <input type="file" id="exFilePL" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>📄 Air Waybill (AWB)</label>
+                                        <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                    </div>
+                                    <div class="form-group"></div>
                                 </div>
                                 <div class="form-group" style="margin-top:10px;">
                                     <label>추가 요청사항</label>
@@ -7643,11 +7609,11 @@ const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 // ⚠️ 아래 3개 값을 EmailJS 계정에서 발급받은 값으로 교체하세요
 // 가입: https://www.emailjs.com → Service 생성 → Template 생성 → Public Key 확인
 const EMAILJS_CONFIG = {
-    PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY',      // EmailJS Dashboard > Account > API Keys
-    SERVICE_ID: 'YOUR_EMAILJS_SERVICE_ID',      // EmailJS Dashboard > Email Services > Service ID
-    TEMPLATE_QUOTE: 'YOUR_TEMPLATE_ID_QUOTE',   // 견적신청 알림 템플릿 ID
-    TEMPLATE_EXPRESS: 'YOUR_TEMPLATE_ID_EXPRESS', // 특송보험 알림 템플릿 ID
-    NOTIFY_EMAIL: 'help@cargoinsu.com'          // 알림 수신 이메일
+    PUBLIC_KEY: 'ecgt57O41ZlHfOjRB',
+    SERVICE_ID: 'service_cargoinsu',
+    TEMPLATE_QUOTE: 'template_wgr8d9c',
+    TEMPLATE_EXPRESS: 'template_wgr8d9c',
+    NOTIFY_EMAIL: 'sales@cargoinsu.com'
 };
 
 // EmailJS 초기화
@@ -11099,109 +11065,112 @@ function selectTrack(track) {
     document.querySelector('.track-selector-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ==================== 특송 보험료 비교 시뮬레이터 ====================
-function runExpressComparison() {
-    const rawVal = document.getElementById('compCargoValue').value.replace(/,/g, '');
-    const cargoValue = parseFloat(rawVal);
-    const currency = document.getElementById('compCurrency').value;
-    const weight = parseFloat(document.getElementById('compWeight').value) || 10;
-    
-    if (!cargoValue || cargoValue <= 0) {
-        alert('화물 가액을 입력해주세요.');
-        document.getElementById('compCargoValue').focus();
-        return;
-    }
-    
-    // 환율 변환 → USD 기준
-    const exRates = { USD: 1, KRW: 1 / (exchangeRate || 1458), EUR: 1.08, JPY: 1 / 150 };
-    const valueUSD = cargoValue * (exRates[currency] || 1);
-    const valueKRW = currency === 'KRW' ? cargoValue : valueUSD * (exchangeRate || 1458);
-    
-    // === 특송사별 자체보험 계산 ===
-    // DHL: 물품가액의 1% 또는 최소 15,000원 (DHL Shipment Value Protection)
-    const dhlPremium = Math.max(valueKRW * 0.01, 15000);
-    const dhlLimit = valueKRW; // 가입 시 전액 보상
-    const dhlNoInsLimit = Math.min(valueKRW, weight * 23.92 * (exchangeRate || 1458)); // 미가입 시
-    
-    // UPS: Declared Value 기준, $100 초과분에 대해 $100당 $2.70 (표준)
-    const upsDefaultLimit = 100 * (exchangeRate || 1458); // 기본 $100 한도
-    const upsPremiumUSD = valueUSD > 100 ? Math.ceil((valueUSD - 100) / 100) * 2.70 : 0;
-    const upsPremium = Math.max(upsPremiumUSD * (exchangeRate || 1458), 0);
-    const upsLimit = valueKRW;
-    
-    // FedEx: Declared Value 기준, $100 초과분에 대해 $100당 $3.00 (표준)
-    const fedexDefaultLimit = 100 * (exchangeRate || 1458);
-    const fedexPremiumUSD = valueUSD > 100 ? Math.ceil((valueUSD - 100) / 100) * 3.00 : 0;
-    const fedexPremium = Math.max(fedexPremiumUSD * (exchangeRate || 1458), 0);
-    const fedexLimit = valueKRW;
-    
-    // === Cargoinsu 특송보험 계산 ===
-    // ICC(Air) All Risks 기준 예상 보험료 (Chubb 2026 요율 기반 추정)
-    // 일반 화물 기준 약 0.08~0.15% 수준, 최저보험료 14,000원 적용
-    const insuredValue = valueKRW * 1.1; // CIF × 110%
-    let cargoRate = 0.001; // 0.10% (일반화물 ICC(Air) 평균)
-    let cargoPremium = insuredValue * cargoRate;
-    if (cargoPremium < 14000) cargoPremium = 14000;
-    
-    // 결과 렌더링
-    const fmt = (v) => '₩' + Math.round(v).toLocaleString('ko-KR');
-    const fmtUSD = (v) => '$' + (v / (exchangeRate || 1458)).toFixed(2);
-    
-    // 가장 비싼 특송사 보험료
-    const maxCarrierPremium = Math.max(dhlPremium, upsPremium, fedexPremium);
-    const savings = maxCarrierPremium - cargoPremium;
-    
-    document.getElementById('compTableBody').innerHTML = `
-        <tr>
-            <td style="font-weight:700; text-align:left;">💰 보험료</td>
-            <td>${fmt(dhlPremium)}</td>
-            <td>${upsPremium > 0 ? fmt(upsPremium) : '<span style="color:#888;">기본 $100 이하 무료</span>'}</td>
-            <td>${fedexPremium > 0 ? fmt(fedexPremium) : '<span style="color:#888;">기본 $100 이하 무료</span>'}</td>
-            <td class="comp-highlight">${fmt(cargoPremium)}</td>
-        </tr>
-        <tr>
-            <td style="font-weight:700; text-align:left;">🛡 보상 한도</td>
-            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#888;">미가입 시 ${fmt(dhlNoInsLimit)}</span></td>
-            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#c62828;">미가입 시 기본 $100</span></td>
-            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#c62828;">미가입 시 기본 $100</span></td>
-            <td class="comp-highlight">${fmt(insuredValue)}<br><span style="font-size:0.72rem;">(CIF×110% 전액)</span></td>
-        </tr>
-        <tr>
-            <td style="font-weight:700; text-align:left;">📜 담보 범위</td>
-            <td>외부 원인에 의한<br>분실/파손만</td>
-            <td>외부 원인에 의한<br>분실/파손만</td>
-            <td>외부 원인에 의한<br>분실/파손만</td>
-            <td class="comp-highlight">ICC(Air) All Risks<br>전위험담보</td>
-        </tr>
-        <tr>
-            <td style="font-weight:700; text-align:left;">⚡ 클레임 처리</td>
-            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
-            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
-            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
-            <td class="comp-highlight">보험사 공식 클레임<br><span style="font-size:0.72rem;">Chubb/KB 보험사</span></td>
-        </tr>
-        <tr>
-            <td style="font-weight:700; text-align:left;">🔖 보험증권</td>
-            <td class="comp-warn">미발급</td>
-            <td class="comp-warn">미발급</td>
-            <td class="comp-warn">미발급</td>
-            <td class="comp-good">정식 보험증권 발급 ✓</td>
-        </tr>
-    `;
-    
-    // 절감액 표시
-    if (savings > 0) {
-        document.getElementById('compSavingsAmt').textContent = `최대 ${fmt(savings)} 절감!`;
-        document.getElementById('compSavingsDetail').textContent = `화물가액 ${fmt(valueKRW)} 기준 | ICC(Air) All Risks · 전위험담보 · 보험가액 ${fmt(insuredValue)} 보장`;
-    } else {
-        document.getElementById('compSavingsAmt').textContent = `${fmt(cargoPremium)}으로 전위험담보!`;
-        document.getElementById('compSavingsDetail').textContent = `특송사 자체보험은 제한적 보상, Cargoinsu는 ICC(Air) All Risks + 정식 보험증권 발급`;
-    }
-    
-    document.getElementById('compResult').classList.add('show');
-    document.getElementById('compResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+// ==================== 특송 국가/도시/HS Code 자동검색 ====================
+function exSearchCountry(input, ddId) {
+    const q = input.value.toLowerCase();
+    const dd = document.getElementById(ddId);
+    if (q.length < 1) { dd.classList.remove('show'); return; }
+    const filtered = countries.filter(c => c.name.toLowerCase().includes(q) || c.korean.includes(q) || c.code.toLowerCase().includes(q)).slice(0, 10);
+    if (!filtered.length) { dd.innerHTML = '<div style="color:#999;">검색결과 없음</div>'; dd.classList.add('show'); return; }
+    dd.innerHTML = filtered.map(c => `<div data-code="${c.code}" data-name="${c.name}">${c.name} (${c.korean})</div>`).join('');
+    dd.classList.add('show');
+    dd.querySelectorAll('div').forEach(div => {
+        div.onclick = () => {
+            input.value = div.dataset.name;
+            input.dataset.code = div.dataset.code;
+            dd.classList.remove('show');
+        };
+    });
 }
-// ==================== END 비교 시뮬레이터 ====================
+
+function exShowCities(input, ddId, countryInputId) {
+    const countryInput = document.getElementById(countryInputId);
+    const code = countryInput.dataset.code;
+    const dd = document.getElementById(ddId);
+    const list = cities[code] || [];
+    if (list.length) {
+        dd.innerHTML = list.map(c => `<div>${c}</div>`).join('');
+        dd.classList.add('show');
+        dd.querySelectorAll('div').forEach(div => {
+            div.onclick = () => { input.value = div.textContent; dd.classList.remove('show'); };
+        });
+    } else if (code) {
+        dd.innerHTML = '<div style="color:#999; font-style:italic;">도시 목록 없음 - 직접 입력하세요</div>';
+        dd.classList.add('show');
+    }
+}
+
+function exFilterCities(input, ddId, countryInputId) {
+    const countryInput = document.getElementById(countryInputId);
+    const code = countryInput.dataset.code;
+    const dd = document.getElementById(ddId);
+    const q = input.value.toLowerCase();
+    const list = (cities[code] || []).filter(c => c.toLowerCase().includes(q));
+    if (list.length) {
+        dd.innerHTML = list.map(c => `<div>${c}</div>`).join('');
+        dd.classList.add('show');
+        dd.querySelectorAll('div').forEach(div => {
+            div.onclick = () => { input.value = div.textContent; dd.classList.remove('show'); };
+        });
+    } else {
+        dd.classList.remove('show');
+    }
+}
+
+function exSearchHsCode(input) {
+    const q = input.value.trim();
+    const dd = document.getElementById('exHsCodeDD');
+    if (q.length < 2) { dd.classList.remove('show'); return; }
+    
+    const isNumeric = /^\d/.test(q);
+    let results = [];
+    
+    if (isNumeric) {
+        const numQ = q.replace(/[^0-9]/g, '');
+        results = Object.entries(hsCodeMapping).filter(([code]) => code.startsWith(numQ)).slice(0, 8);
+        if (!results.length && numQ.length >= 2) {
+            const chapter = numQ.substring(0, 2);
+            if (chapterMapping[chapter]) {
+                results = [[numQ.padEnd(4,'0').substring(0,4), chapterMapping[chapter]]];
+            }
+        }
+    } else {
+        const lq = q.toLowerCase();
+        results = Object.entries(hsCodeMapping).filter(([code, d]) => 
+            d.desc.toLowerCase().includes(lq) || d.note.toLowerCase().includes(lq)
+        ).slice(0, 8);
+        if (!results.length) {
+            results = Object.entries(chapterMapping).filter(([ch, d]) =>
+                d.desc.toLowerCase().includes(lq) || d.note.toLowerCase().includes(lq)
+            ).map(([ch, d]) => [ch + '00', d]).slice(0, 8);
+        }
+    }
+    
+    if (!results.length) { dd.classList.remove('show'); return; }
+    
+    dd.innerHTML = results.map(([code, d]) => 
+        `<div data-code="${code}" data-desc="${d.desc}">${code} - ${d.desc} (${d.note})</div>`
+    ).join('');
+    dd.classList.add('show');
+    dd.querySelectorAll('div').forEach(div => {
+        div.onclick = () => {
+            input.value = div.dataset.code;
+            const cargoDesc = document.getElementById('exCargoDesc');
+            if (cargoDesc && !cargoDesc.value) {
+                cargoDesc.value = div.dataset.desc;
+            }
+            dd.classList.remove('show');
+        };
+    });
+}
+
+// 드롭다운 외부 클릭 닫기 (특송용)
+document.addEventListener('click', function(e) {
+    document.querySelectorAll('.form-group .search-dropdown.show').forEach(dd => {
+        if (!dd.parentElement.contains(e.target)) dd.classList.remove('show');
+    });
+});
+// ==================== END 특송 자동검색 ====================
 
 // Express carrier selection (original)
 function selectExpressCarrier(el, carrier) {
@@ -11236,8 +11205,12 @@ function submitExpress() {
     const email = document.getElementById('exInsuredEmail').value.trim();
     const cargo = document.getElementById('exCargoDesc').value.trim();
     const invoice = document.getElementById('exInvoiceValue').value.trim();
-    const origin = document.getElementById('exOrigin').value.trim();
-    const dest = document.getElementById('exDestination').value.trim();
+    const originCountry = document.getElementById('exOriginCountry').value.trim();
+    const originCity = document.getElementById('exOriginCity').value.trim();
+    const destCountry = document.getElementById('exDestCountry').value.trim();
+    const destCity = document.getElementById('exDestCity').value.trim();
+    const origin = originCity ? `${originCity}, ${originCountry}` : originCountry;
+    const dest = destCity ? `${destCity}, ${destCountry}` : destCountry;
 
     if (!carrier) { alert('특송사를 선택해 주세요.'); return; }
     if (!name) { alert('피보험자 성명/회사명을 입력해 주세요.'); return; }
@@ -11245,8 +11218,8 @@ function submitExpress() {
     if (!email) { alert('이메일을 입력해 주세요.'); return; }
     if (!cargo) { alert('화물 품명을 입력해 주세요.'); return; }
     if (!invoice) { alert('송장금액을 입력해 주세요.'); return; }
-    if (!origin) { alert('출발지를 입력해 주세요.'); return; }
-    if (!dest) { alert('도착지를 입력해 주세요.'); return; }
+    if (!originCountry) { alert('출발지 국가를 입력해 주세요.'); document.getElementById('exOriginCountry').focus(); return; }
+    if (!destCountry) { alert('도착지 국가를 입력해 주세요.'); document.getElementById('exDestCountry').focus(); return; }
 
     // Check required agrees
     const agree1 = document.getElementById('exAgree1').checked;
