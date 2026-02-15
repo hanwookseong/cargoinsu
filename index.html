@@ -12030,66 +12030,23 @@ async function aiParseDocument(mode) {
         const base64 = await fileToBase64(selectedFile);
         const fileType = selectedFile.type || 'application/pdf';
         
-        // Gemini API 직접 호출 (CORS 지원, 3~5초 이내)
-        const GEMINI_API_KEY = 'AIzaSyDTX2Ankb3_YpE2r67QE_a_OYdqb8LmYW4';
-        const GEMINI_MODEL = 'gemini-2.0-flash-lite';
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+        // Google Apps Script 프록시를 통한 AI 파싱 (API 키 서버사이드 보호)
+        const response = await aiParseWithRetry({
+            action: 'ai_parse',
+            fileData: base64,
+            fileType: fileType,
+            docType: docType,
+            promptMode: 'full'
+        }, btn);
         
-        const systemPrompt = `You are a cargo insurance document parser. Extract structured data from this shipping document (${docType}).
-Return ONLY valid JSON, no markdown, no backticks, no explanation.
-Use empty string "" for fields not found. For amounts, return numbers only (no commas/symbols).
-
-IMPORTANT RULES:
-- hsCode: Return ONLY the first 4 digits (e.g., "3304" not "3304.99.1000")
-- quantity: Return only the number
-- quantityUnit: Detect from document context. If CI lists individual items as "EA", "PCS", "PIECE" or just numbers, return "EA". If grouped in cartons/boxes, return "CTN" or "BOX". If no unit specified but items are counted individually, return "EA".
-- totalAmount: Return the GRAND TOTAL or G-TOTAL amount as numbers only (no currency symbol, no commas). Look for "Total", "Grand Total", "G-Total" line.
-- currency: Return 3-letter code (KRW, USD, EUR, etc.)
-- grossWeight: Total weight number only
-- weightUnit: KG or LB
-
-JSON format:
-{"shipper":"","shipperAddress":"","consignee":"","consigneeAddress":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","netWeight":"","totalAmount":"","unitPrice":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","vesselOrFlight":"","blOrAwbNo":"","shipDate":"","invoiceNo":"","invoiceDate":"","packing":"","marksAndNumbers":"","portOfLoading":"","portOfDischarge":"","additionalNotes":""}`;
+        const result = await response.json();
         
-        // Gemini API 요청 구성
-        const geminiBody = {
-            contents: [{
-                parts: [
-                    {
-                        inline_data: {
-                            mime_type: fileType,
-                            data: base64
-                        }
-                    },
-                    { text: systemPrompt }
-                ]
-            }],
-            generationConfig: {
-                temperature: 0.1,
-                maxOutputTokens: 2000
-            }
-        };
-        
-        const response = await geminiCallWithRetry(GEMINI_URL, geminiBody, btn);
-        
-        if (!response.ok) {
-            const errText = await response.text();
-            console.error('Gemini API Error:', response.status, errText);
-            throw new Error('AI 서버 오류 (' + response.status + ')');
+        if (result.status !== 200) {
+            console.error('AI Parse Error:', result);
+            throw new Error(result.message || 'AI 서버 오류');
         }
         
-        const geminiResult = await response.json();
-        const textContent = geminiResult.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        
-        // JSON 파싱
-        let data;
-        try {
-            const cleanText = textContent.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
-            data = JSON.parse(cleanText);
-        } catch(parseErr) {
-            console.error('JSON Parse Error:', textContent);
-            throw new Error('AI 응답 파싱 실패');
-        }
+        const data = result.data;
         
         // 폼에 자동 입력
         aiAutoFill(mode, data);
@@ -12131,31 +12088,24 @@ async function autoAiParse(mode) {
         const fileType = file.type || 'application/pdf';
         const base64 = await fileToBase64(file);
         
-        const GEMINI_API_KEY = 'AIzaSyDTX2Ankb3_YpE2r67QE_a_OYdqb8LmYW4';
-        const GEMINI_MODEL = 'gemini-2.0-flash-lite';
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-        
-        const systemPrompt = `Extract key shipping data from this ${docType}. Return ONLY JSON. hsCode: first 4 digits only. totalAmount: grand total numbers only. quantityUnit: EA if individual items, CTN if cartons.
-{"shipper":"","consignee":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","totalAmount":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","blOrAwbNo":"","shipDate":"","invoiceNo":""}`;
-        
-        const resp = await fetch(GEMINI_URL, {
+        // Google Apps Script 프록시를 통한 AI 파싱
+        const resp = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ parts: [
-                    { inline_data: { mime_type: fileType, data: base64 } },
-                    { text: systemPrompt }
-                ]}],
-                generationConfig: { temperature: 0.1, maxOutputTokens: 1500 }
+                action: 'ai_parse',
+                fileData: base64,
+                fileType: fileType,
+                docType: docType,
+                promptMode: 'quick'
             })
         });
         
         if (!resp.ok) return null;
         
         const result = await resp.json();
-        const text = result.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        const clean = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
-        const data = JSON.parse(clean);
+        if (result.status !== 200 || !result.data) return null;
+        
+        const data = result.data;
         
         // 폼에 자동 입력 (빈 필드만)
         aiAutoFill(mode, data);
@@ -12167,23 +12117,52 @@ async function autoAiParse(mode) {
     }
 }
 
-/** Gemini API 호출 + 429 재시도 (최대 3회) */
-async function geminiCallWithRetry(url, body, btn) {
-
+/** Google Apps Script 프록시를 통한 AI 파싱 + 재시도 (최대 3회) */
+async function aiParseWithRetry(payload, btn) {
     const maxRetries = 3;
     for (let i = 0; i < maxRetries; i++) {
-        const resp = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        });
-        if (resp.status === 429 && i < maxRetries - 1) {
-            const waitSec = (i + 1) * 10; // 10초, 20초, 30초
-            btn.innerHTML = `<span class="ai-icon">⏳</span> API 한도 초과, ${waitSec}초 후 재시도...`;
-            await new Promise(r => setTimeout(r, waitSec * 1000));
-            continue;
+        try {
+            const resp = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            });
+            
+            // Apps Script는 항상 200을 반환하고, 내부 status로 구분
+            // 단, redirect 응답이 올 수 있으므로 redirected 체크
+            if (resp.ok) {
+                const data = await resp.json();
+                if (data.status === 429 || (data.message && data.message.includes('429'))) {
+                    if (i < maxRetries - 1) {
+                        const waitSec = (i + 1) * 10;
+                        btn.innerHTML = `<span class="ai-icon">⏳</span> API 한도 초과, ${waitSec}초 후 재시도...`;
+                        await new Promise(r => setTimeout(r, waitSec * 1000));
+                        continue;
+                    }
+                }
+                // 성공 또는 기타 에러 — Response 객체처럼 래핑하여 반환
+                return {
+                    ok: true,
+                    json: async () => data
+                };
+            }
+            
+            // HTTP 에러
+            if (i < maxRetries - 1) {
+                const waitSec = (i + 1) * 10;
+                btn.innerHTML = `<span class="ai-icon">⏳</span> 서버 오류, ${waitSec}초 후 재시도...`;
+                await new Promise(r => setTimeout(r, waitSec * 1000));
+                continue;
+            }
+            return resp;
+        } catch (fetchErr) {
+            if (i < maxRetries - 1) {
+                const waitSec = (i + 1) * 10;
+                btn.innerHTML = `<span class="ai-icon">⏳</span> 네트워크 오류, ${waitSec}초 후 재시도...`;
+                await new Promise(r => setTimeout(r, waitSec * 1000));
+                continue;
+            }
+            throw fetchErr;
         }
-        return resp;
     }
 }
 
