@@ -12011,8 +12011,9 @@ async function aiParseDocument(mode) {
         const fileType = selectedFile.type || 'application/pdf';
         
         // Gemini API 직접 호출 (CORS 지원, 3~5초 이내)
-        const GEMINI_API_KEY = 'AIzaSyDs-m10A-Ws85Ij3WgNaT-Fz_pE7jJApt4';
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
+        const GEMINI_API_KEY = 'AIzaSyDTX2Ankb3_YpE2r67QE_a_OYdqb8LmYW4';
+        const GEMINI_MODEL = 'gemini-2.0-flash-lite';
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
         
         const systemPrompt = `You are a cargo insurance document parser. Extract structured data from this shipping document (${docType}).
 Return ONLY valid JSON, no markdown, no backticks, no explanation.
@@ -12039,11 +12040,7 @@ JSON format:
             }
         };
         
-        const response = await fetch(GEMINI_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(geminiBody)
-        });
+        const response = await geminiCallWithRetry(GEMINI_URL, geminiBody, btn);
         
         if (!response.ok) {
             const errText = await response.text();
@@ -12082,6 +12079,25 @@ JSON format:
         if (mode === 'express') btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/AWB에서 정보 추출';
         else if (mode === 'cargo') btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출';
         else btn.innerHTML = '<span class="ai-icon">🤖</span> AI 서류 자동인식 — 첨부서류에서 정보 추출';
+    }
+}
+
+/** Gemini API 호출 + 429 재시도 (최대 3회) */
+async function geminiCallWithRetry(url, body, btn) {
+    const maxRetries = 3;
+    for (let i = 0; i < maxRetries; i++) {
+        const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+        if (resp.status === 429 && i < maxRetries - 1) {
+            const waitSec = (i + 1) * 10; // 10초, 20초, 30초
+            btn.innerHTML = `<span class="ai-icon">⏳</span> API 한도 초과, ${waitSec}초 후 재시도...`;
+            await new Promise(r => setTimeout(r, waitSec * 1000));
+            continue;
+        }
+        return resp;
     }
 }
 
