@@ -9,7 +9,10 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cargoinsu.com/">
     <!-- Naver 검색엔진 인증 (등록 후 코드 교체 필요) -->
-    <!-- <meta name="naver-site-verification" content="여기에_네이버_인증코드"> -->
+    <!-- ⚠️ 네이버 서치어드바이저(https://searchadvisor.naver.com)에서 사이트 등록 후 발급받은 인증코드를 아래에 입력하세요 -->
+    <meta name="naver-site-verification" content="YOUR_NAVER_VERIFICATION_CODE">
+    <!-- ⚠️ Google Search Console(https://search.google.com/search-console)에서 사이트 등록 후 발급받은 인증코드를 아래에 입력하세요 -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="적하보험 온라인 견적 | 보험료 즉시 계산 - Cargoinsu">
@@ -24,6 +27,10 @@
     <title>적하보험 온라인 견적 | 보험료 즉시 계산 | 해상·항공 적하보험 전문 - Cargoinsu</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <style>
         :root {
             --primary: #1a237e;
@@ -510,6 +517,34 @@
         .express-faq { background: #fffde7; border: 1px solid #fff9c4; border-radius: 10px; padding: 12px 16px; margin-top: 10px; }
         .express-faq summary { font-size: 0.8rem; font-weight: 700; color: #f57f17; cursor: pointer; }
         .express-faq p { font-size: 0.75rem; color: var(--text-mid); margin-top: 6px; line-height: 1.6; }
+
+        /* ===== Express Comparison Simulator ===== */
+        .express-compare-wrap { background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%); border: 2px solid #ffd54f; border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+        .express-compare-title { font-size: 1rem; font-weight: 800; color: #e65100; margin-bottom: 16px; text-align: center; }
+        .express-compare-input { display: flex; gap: 12px; align-items: end; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .express-compare-input .comp-field { flex: 1; min-width: 160px; max-width: 250px; }
+        .express-compare-input label { display: block; font-size: 0.78rem; font-weight: 600; color: #555; margin-bottom: 4px; }
+        .express-compare-input input, .express-compare-input select { width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 0.9rem; font-weight: 600; }
+        .express-compare-input input:focus, .express-compare-input select:focus { border-color: var(--primary); outline: none; }
+        .express-compare-btn { padding: 10px 28px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 700; cursor: pointer; white-space: nowrap; min-height: 44px; }
+        .express-compare-btn:hover { background: #e68200; }
+        .express-compare-result { display: none; }
+        .express-compare-result.show { display: block; }
+        .comp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; border-radius: 12px; overflow: hidden; }
+        .comp-table th { background: var(--primary); color: #fff; padding: 12px 16px; text-align: center; font-weight: 700; }
+        .comp-table td { padding: 12px 16px; text-align: center; border-bottom: 1px solid #e0e0e0; }
+        .comp-table tr:nth-child(even) { background: rgba(255,255,255,0.6); }
+        .comp-table .comp-highlight { background: #e8f5e9 !important; font-weight: 700; color: #2e7d32; }
+        .comp-table .comp-warn { color: #c62828; font-weight: 600; }
+        .comp-table .comp-good { color: #2e7d32; font-weight: 700; }
+        .comp-savings-box { margin-top: 16px; background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: #fff; border-radius: 12px; padding: 20px; text-align: center; }
+        .comp-savings-box .savings-label { font-size: 0.85rem; opacity: 0.9; margin-bottom: 6px; }
+        .comp-savings-box .savings-amount { font-size: 1.8rem; font-weight: 800; }
+        .comp-savings-box .savings-detail { font-size: 0.78rem; opacity: 0.7; margin-top: 8px; }
+        @media (max-width: 768px) {
+            .express-compare-input { flex-direction: column; align-items: stretch; }
+            .express-compare-input .comp-field { max-width: 100%; }
+        }
         @media (max-width: 768px) {
             .track-selector { grid-template-columns: 1fr; }
             .express-role-grid { grid-template-columns: 1fr; }
@@ -5364,6 +5399,50 @@
                             </div>
                         </div>
 
+                        <!-- 💰 보험료 비교 시뮬레이터 -->
+                        <div class="express-compare-wrap">
+                            <div class="express-compare-title">💰 보험료 비교 시뮬레이터 — 특송사 자체보험 vs Cargoinsu</div>
+                            <div class="express-compare-input">
+                                <div class="comp-field">
+                                    <label>화물 가액 (Invoice Value)</label>
+                                    <input type="text" id="compCargoValue" placeholder="예: 2,000" oninput="formatNumber(this)">
+                                </div>
+                                <div class="comp-field">
+                                    <label>통화</label>
+                                    <select id="compCurrency">
+                                        <option value="USD" selected>USD ($)</option>
+                                        <option value="KRW">KRW (₩)</option>
+                                        <option value="EUR">EUR (€)</option>
+                                    </select>
+                                </div>
+                                <div class="comp-field">
+                                    <label>화물 중량 (kg)</label>
+                                    <input type="number" id="compWeight" placeholder="예: 15" value="10">
+                                </div>
+                                <button class="express-compare-btn" onclick="runExpressComparison()">비교하기 →</button>
+                            </div>
+                            <div class="express-compare-result" id="compResult">
+                                <table class="comp-table">
+                                    <thead>
+                                        <tr>
+                                            <th>구분</th>
+                                            <th>DHL 자체보험</th>
+                                            <th>UPS 자체보험</th>
+                                            <th>FedEx 자체보험</th>
+                                            <th style="background:var(--accent);">Cargoinsu 특송보험</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="compTableBody">
+                                    </tbody>
+                                </table>
+                                <div class="comp-savings-box" id="compSavings">
+                                    <div class="savings-label">Cargoinsu 특송보험으로 절감되는 금액</div>
+                                    <div class="savings-amount" id="compSavingsAmt">-</div>
+                                    <div class="savings-detail" id="compSavingsDetail">ICC(Air) All Risks · 전위험담보 · 보험가액 110% 보장</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- ① 특송사 선택 -->
                         <div class="design-section">
                             <div class="design-section-title">✈️ ① 특송사 선택</div>
@@ -7559,6 +7638,133 @@
 // ==================== Google Sheets 연동 설정 ====================
 // ★ 아래 URL을 Google Apps Script 웹앱 배포 후 받은 URL로 교체하세요
 const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+// ==================== EmailJS 설정 ====================
+// ⚠️ 아래 3개 값을 EmailJS 계정에서 발급받은 값으로 교체하세요
+// 가입: https://www.emailjs.com → Service 생성 → Template 생성 → Public Key 확인
+const EMAILJS_CONFIG = {
+    PUBLIC_KEY: 'YOUR_EMAILJS_PUBLIC_KEY',      // EmailJS Dashboard > Account > API Keys
+    SERVICE_ID: 'YOUR_EMAILJS_SERVICE_ID',      // EmailJS Dashboard > Email Services > Service ID
+    TEMPLATE_QUOTE: 'YOUR_TEMPLATE_ID_QUOTE',   // 견적신청 알림 템플릿 ID
+    TEMPLATE_EXPRESS: 'YOUR_TEMPLATE_ID_EXPRESS', // 특송보험 알림 템플릿 ID
+    NOTIFY_EMAIL: 'help@cargoinsu.com'          // 알림 수신 이메일
+};
+
+// EmailJS 초기화
+if (EMAILJS_CONFIG.PUBLIC_KEY !== 'YOUR_EMAILJS_PUBLIC_KEY') {
+    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+}
+
+// ==================== Supabase 설정 ====================
+const SUPABASE_URL = 'https://kuxqmtmumccsyqzfwmnn.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_CxtONDUFmjCverYSiA2s8A_M_G56mNW';
+const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+/**
+ * Supabase에 견적신청 데이터 저장
+ * @param {string} tableName - 테이블명 (cargo_quotes / express_quotes / ez_quotes)
+ * @param {Object} rowData - 저장할 데이터 (컬럼명: 값)
+ * @returns {Promise}
+ */
+async function saveToSupabase(tableName, rowData) {
+    if (!supabaseClient) {
+        console.log('[DEV] Supabase 미연결:', tableName, rowData);
+        return { status: 'dev' };
+    }
+    try {
+        const { data, error } = await supabaseClient.from(tableName).insert([rowData]);
+        if (error) {
+            console.error('Supabase INSERT error:', error.message);
+            return { status: 'error', message: error.message };
+        }
+        console.log('Supabase INSERT OK:', tableName);
+        return { status: 'success', data };
+    } catch (err) {
+        console.error('Supabase exception:', err);
+        return { status: 'error', message: err.toString() };
+    }
+}
+
+/**
+ * EmailJS를 통한 견적신청 이메일 알림 발송
+ * @param {string} templateId - EmailJS 템플릿 ID
+ * @param {Object} params - 템플릿 파라미터
+ * @returns {Promise}
+ */
+async function sendEmailNotification(templateId, params) {
+    if (EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_EMAILJS_PUBLIC_KEY') {
+        console.log('[DEV] EmailJS 미연결 - 이메일 데이터:', params);
+        return { status: 'dev', text: 'EmailJS 미설정 (개발모드)' };
+    }
+    try {
+        const result = await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, templateId, params);
+        console.log('✅ 이메일 발송 성공:', result.status);
+        return result;
+    } catch (error) {
+        console.error('❌ 이메일 발송 실패:', error);
+        // 이메일 실패해도 사용자 경험에 영향 없도록 처리
+        return { status: 'error', text: error.toString() };
+    }
+}
+
+/**
+ * 견적신청 데이터를 이메일 파라미터로 변환
+ */
+function buildEmailParams(formType, formData) {
+    const now = new Date();
+    const dateStr = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+    
+    let subject = '';
+    let summary = '';
+    
+    if (formType === 'cargo_apply') {
+        subject = `[적하보험 견적신청] ${formData.contractorName || '미입력'} - ${formData.cargoName || ''}`;
+        summary = [
+            `📋 신청유형: 적하보험 직접입력`,
+            `🏢 계약자: ${formData.contractorName || '-'} (${formData.contractorBizNo || '-'})`,
+            `📦 화물: ${formData.cargoName || '-'} (HS: ${formData.hsCode || '-'})`,
+            `🗺 구간: ${formData.originCountry || ''} ${formData.originCity || ''} → ${formData.destCountry || ''} ${formData.destCity || ''}`,
+            `💰 가액: ${formData.cargoCurrency || 'USD'} ${formData.cargoValue || '-'}`,
+            `📜 담보: ${formData.clauseType || '-'} ${formData.coverage || '-'}`,
+            `👤 담당자: ${formData.contactName || '-'} / ${formData.contactPhone || '-'} / ${formData.contactEmail || '-'}`,
+            `📝 메모: ${formData.memo || '없음'}`
+        ].join('\n');
+    } else if (formType === 'express') {
+        subject = `[특송보험 견적신청] ${formData.insured?.name || '미입력'} - ${formData.carrier || ''}`;
+        summary = [
+            `📋 신청유형: 특송 적하보험`,
+            `✈️ 특송사: ${formData.carrier || '-'} (${formData.trackingNo || '-'})`,
+            `👤 피보험자: ${formData.insured?.name || '-'} / ${formData.insured?.phone || '-'} / ${formData.insured?.email || '-'}`,
+            `📦 화물: ${formData.cargo?.description || '-'}`,
+            `💰 송장금액: ${formData.cargo?.currency || 'USD'} ${formData.cargo?.invoiceValue || '-'}`,
+            `🗺 구간: ${formData.route?.origin || ''} → ${formData.route?.destination || ''}`,
+            `📜 담보: ${formData.coverage?.base || 'ICC(Air)'}`,
+            `📝 메모: ${formData.memo || '없음'}`
+        ].join('\n');
+    } else if (formType === 'ez_cargo_apply') {
+        subject = `[적하보험 간편접수] ${formData.policyholder || '미입력'}`;
+        summary = [
+            `📋 신청유형: 적하보험 간편접수 (서류 업로드)`,
+            `🏢 계약자: ${formData.policyholder || '-'} (${formData.bizNo || '-'})`,
+            `📜 담보: ${formData.clauseType || '-'} ${formData.coverage || '-'}`,
+            `📎 첨부: CI(${formData.hasFileCI}), BL(${formData.hasFileBL}), 부보의뢰서(${formData.hasFileRequest}), 기타(${formData.hasFileEtc})`,
+            `👤 담당자: ${formData.contactName || '-'} / ${formData.contactPhone || '-'} / ${formData.contactEmail || '-'}`,
+            `📝 메모: ${formData.memo || '없음'}`
+        ].join('\n');
+    } else {
+        subject = `[Cargoinsu 견적신청] ${formType}`;
+        summary = JSON.stringify(formData, null, 2);
+    }
+    
+    return {
+        to_email: EMAILJS_CONFIG.NOTIFY_EMAIL,
+        subject: subject,
+        message: summary,
+        form_type: formType,
+        timestamp: dateStr,
+        reply_to: formData.contactEmail || formData.insured?.email || 'noreply@cargoinsu.com'
+    };
+}
 
 // Google Sheets 전송 헬퍼 함수
 async function sendToGoogleSheets(formType, formData) {
@@ -9819,18 +10025,125 @@ function calculatePremium(e) {
     window.calcResult = {
         origin: document.getElementById('originCountry').value + ' ' + document.getElementById('originCity').value,
         dest: document.getElementById('destCountry').value + ' ' + document.getElementById('destCity').value,
+        originCountry: document.getElementById('originCountry').value,
+        originCity: document.getElementById('originCity').value,
+        destCountry: document.getElementById('destCountry').value,
+        destCity: document.getElementById('destCity').value,
         cargo: cargoItem?.text || cargo,
+        cargoCode: cargo,
+        clause: clause,
+        coverage: coverage,
+        coverageName: conditionNames[coverage] || coverage,
+        route: route,
+        value: value,
+        insured: insured,
+        rate: rate,
+        premiumUSD: premiumUSD,
+        premiumKRW: Math.round(premiumKRW),
         premium: `₩${Math.round(premiumKRW).toLocaleString('ko-KR')} ($${premiumUSD.toFixed(2)})`
     };
 }
 
 function goToApply() {
-    const user = JSON.parse(localStorage.getItem('cargoinsu_user'));
-    if (!user) { alert('보험 견적신청을 위해 로그인이 필요합니다.'); showModal('loginModal'); return; }
     showPage('apply');
-    // 계산기 결과가 있으면 견적신청 폼에 반영
+    switchApplyTab('full'); // 직접입력 탭으로 전환
+    
+    // 계산기 결과가 있으면 견적신청 폼에 자동 반영
     if (window.calcResult) {
-        // origin/dest는 계산기에서 이미 선택된 값 활용
+        const r = window.calcResult;
+        
+        // 출발지/도착지
+        if (r.originCountry) {
+            const originEl = document.getElementById('dsOriginCountry');
+            if (originEl) {
+                originEl.value = r.originCountry;
+                // 국가 데이터 속성도 설정
+                const country = countries.find(c => c.name === r.originCountry || c.korean === r.originCountry);
+                if (country) {
+                    originEl.dataset.code = country.code;
+                    originEl.dataset.region = country.region;
+                }
+            }
+        }
+        if (r.originCity) {
+            const originCityEl = document.getElementById('dsOriginCity');
+            if (originCityEl) originCityEl.value = r.originCity;
+        }
+        if (r.destCountry) {
+            const destEl = document.getElementById('dsDestCountry');
+            if (destEl) {
+                destEl.value = r.destCountry;
+                const country = countries.find(c => c.name === r.destCountry || c.korean === r.destCountry);
+                if (country) {
+                    destEl.dataset.code = country.code;
+                    destEl.dataset.region = country.region;
+                }
+            }
+        }
+        if (r.destCity) {
+            const destCityEl = document.getElementById('dsDestCity');
+            if (destCityEl) destCityEl.value = r.destCity;
+        }
+        
+        // 운송지역 자동 판별
+        if (typeof dsUpdateRoute === 'function') dsUpdateRoute();
+        
+        // 화물가액
+        if (r.value) {
+            const valEl = document.getElementById('dsCargoValue');
+            if (valEl) {
+                valEl.value = r.value.toLocaleString('en-US');
+                if (typeof calcInsuredAmount === 'function') setTimeout(calcInsuredAmount, 100);
+            }
+        }
+        
+        // 약관구분 (신약관/구약관)
+        if (r.clause) {
+            const clauseEl = document.getElementById('dsClauseType');
+            if (clauseEl) {
+                clauseEl.value = r.clause;
+                if (typeof updateCoverageOpts === 'function') {
+                    updateCoverageOpts();
+                    // 담보조건 설정 (약관 옵션 업데이트 후)
+                    setTimeout(() => {
+                        const covEl = document.getElementById('dsCoverage');
+                        if (covEl && r.coverage) {
+                            // 계산기 coverage 키 → 견적폼 value 매핑
+                            const covMap = {
+                                'ICC_A': 'ICC(A)', 'ICC_B': 'ICC(B)', 'ICC_C': 'ICC(C)', 'ICC_A_AIR': 'ICC(Air)',
+                                'AR': 'A/R', 'WA_3': 'WA', 'WA_IOP': 'WA', 'FPA': 'FPA', 'AR_AIR': 'ICC(Air)'
+                            };
+                            const mappedVal = covMap[r.coverage] || r.coverage;
+                            covEl.value = mappedVal;
+                        }
+                    }, 50);
+                }
+            }
+        }
+        
+        // 안내 배너 표시
+        const banner = document.createElement('div');
+        banner.id = 'calcAutoFillBanner';
+        banner.style.cssText = 'background:linear-gradient(135deg,#e8f5e9,#c8e6c9); border:2px solid #66bb6a; border-radius:12px; padding:16px 20px; margin-bottom:20px; font-size:0.88rem; line-height:1.6; color:#2e7d32; position:relative;';
+        banner.innerHTML = `
+            <strong>✅ 보험료 계산기 결과가 자동 반영되었습니다</strong><br>
+            <span style="font-size:0.82rem; color:#555;">
+                화물: <strong>${r.cargo}</strong> | 구간: <strong>${r.origin} → ${r.dest}</strong> | 
+                담보: <strong>${r.clause} ${r.coverageName}</strong> | 
+                예상보험료: <strong>${r.premium}</strong>
+            </span>
+            <span onclick="this.parentElement.remove()" style="position:absolute; top:8px; right:12px; cursor:pointer; font-size:1.1rem; color:#999;">&times;</span>
+        `;
+        // 기존 배너 제거 후 삽입
+        const oldBanner = document.getElementById('calcAutoFillBanner');
+        if (oldBanner) oldBanner.remove();
+        const formBody = document.querySelector('#tabContentFull .design-body');
+        if (formBody) formBody.insertBefore(banner, formBody.firstChild);
+        
+        // 스크롤
+        setTimeout(() => {
+            document.getElementById('page-apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
     }
 }
 
@@ -10722,6 +11035,43 @@ function submitDesign() {
     
     sendToGoogleSheets('cargo_apply', formData);
     
+    // EmailJS 이메일 알림 발송
+    sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_QUOTE, buildEmailParams('cargo_apply', formData));
+    
+    // Supabase DB 저장
+    saveToSupabase('cargo_quotes', {
+        contractor_biz_no: formData.contractorBizNo,
+        contractor_name: formData.contractorName,
+        contractor_name_en: formData.contractorNameEn,
+        contractor_rep: formData.contractorRep,
+        contractor_addr: formData.contractorAddr,
+        same_as_contractor: formData.sameAsContractor === 'Y',
+        insured_biz_no: formData.insuredBizNo || null,
+        insured_name: formData.insuredName || null,
+        trans_type: formData.transType,
+        origin_country: formData.originCountry,
+        origin_city: formData.originCity,
+        dest_country: formData.destCountry,
+        dest_city: formData.destCity,
+        vessel: formData.vessel,
+        ship_date: formData.shipDate || null,
+        hs_code: formData.hsCode,
+        cargo_name: formData.cargoName,
+        packing: formData.packing,
+        load_method: formData.loadMethod,
+        cargo_value: parseFloat((formData.cargoValue || '0').replace(/,/g, '')) || null,
+        cargo_currency: formData.cargoCurrency,
+        insured_amount: parseFloat((formData.insuredAmount || '0').replace(/,/g, '')) || null,
+        clause_type: formData.clauseType,
+        coverage: formData.coverage,
+        war_clause: formData.warClause,
+        strike_clause: formData.strikeClause,
+        contact_name: formData.contactName,
+        contact_phone: formData.contactPhone,
+        contact_email: formData.contactEmail,
+        memo: formData.memo
+    });
+    
     showModal('designSuccessModal');
 }
 
@@ -10749,7 +11099,111 @@ function selectTrack(track) {
     document.querySelector('.track-selector-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Express carrier selection
+// ==================== 특송 보험료 비교 시뮬레이터 ====================
+function runExpressComparison() {
+    const rawVal = document.getElementById('compCargoValue').value.replace(/,/g, '');
+    const cargoValue = parseFloat(rawVal);
+    const currency = document.getElementById('compCurrency').value;
+    const weight = parseFloat(document.getElementById('compWeight').value) || 10;
+    
+    if (!cargoValue || cargoValue <= 0) {
+        alert('화물 가액을 입력해주세요.');
+        document.getElementById('compCargoValue').focus();
+        return;
+    }
+    
+    // 환율 변환 → USD 기준
+    const exRates = { USD: 1, KRW: 1 / (exchangeRate || 1458), EUR: 1.08, JPY: 1 / 150 };
+    const valueUSD = cargoValue * (exRates[currency] || 1);
+    const valueKRW = currency === 'KRW' ? cargoValue : valueUSD * (exchangeRate || 1458);
+    
+    // === 특송사별 자체보험 계산 ===
+    // DHL: 물품가액의 1% 또는 최소 15,000원 (DHL Shipment Value Protection)
+    const dhlPremium = Math.max(valueKRW * 0.01, 15000);
+    const dhlLimit = valueKRW; // 가입 시 전액 보상
+    const dhlNoInsLimit = Math.min(valueKRW, weight * 23.92 * (exchangeRate || 1458)); // 미가입 시
+    
+    // UPS: Declared Value 기준, $100 초과분에 대해 $100당 $2.70 (표준)
+    const upsDefaultLimit = 100 * (exchangeRate || 1458); // 기본 $100 한도
+    const upsPremiumUSD = valueUSD > 100 ? Math.ceil((valueUSD - 100) / 100) * 2.70 : 0;
+    const upsPremium = Math.max(upsPremiumUSD * (exchangeRate || 1458), 0);
+    const upsLimit = valueKRW;
+    
+    // FedEx: Declared Value 기준, $100 초과분에 대해 $100당 $3.00 (표준)
+    const fedexDefaultLimit = 100 * (exchangeRate || 1458);
+    const fedexPremiumUSD = valueUSD > 100 ? Math.ceil((valueUSD - 100) / 100) * 3.00 : 0;
+    const fedexPremium = Math.max(fedexPremiumUSD * (exchangeRate || 1458), 0);
+    const fedexLimit = valueKRW;
+    
+    // === Cargoinsu 특송보험 계산 ===
+    // ICC(Air) All Risks 기준 예상 보험료 (Chubb 2026 요율 기반 추정)
+    // 일반 화물 기준 약 0.08~0.15% 수준, 최저보험료 14,000원 적용
+    const insuredValue = valueKRW * 1.1; // CIF × 110%
+    let cargoRate = 0.001; // 0.10% (일반화물 ICC(Air) 평균)
+    let cargoPremium = insuredValue * cargoRate;
+    if (cargoPremium < 14000) cargoPremium = 14000;
+    
+    // 결과 렌더링
+    const fmt = (v) => '₩' + Math.round(v).toLocaleString('ko-KR');
+    const fmtUSD = (v) => '$' + (v / (exchangeRate || 1458)).toFixed(2);
+    
+    // 가장 비싼 특송사 보험료
+    const maxCarrierPremium = Math.max(dhlPremium, upsPremium, fedexPremium);
+    const savings = maxCarrierPremium - cargoPremium;
+    
+    document.getElementById('compTableBody').innerHTML = `
+        <tr>
+            <td style="font-weight:700; text-align:left;">💰 보험료</td>
+            <td>${fmt(dhlPremium)}</td>
+            <td>${upsPremium > 0 ? fmt(upsPremium) : '<span style="color:#888;">기본 $100 이하 무료</span>'}</td>
+            <td>${fedexPremium > 0 ? fmt(fedexPremium) : '<span style="color:#888;">기본 $100 이하 무료</span>'}</td>
+            <td class="comp-highlight">${fmt(cargoPremium)}</td>
+        </tr>
+        <tr>
+            <td style="font-weight:700; text-align:left;">🛡 보상 한도</td>
+            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#888;">미가입 시 ${fmt(dhlNoInsLimit)}</span></td>
+            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#c62828;">미가입 시 기본 $100</span></td>
+            <td>가입 시 전액<br><span style="font-size:0.72rem; color:#c62828;">미가입 시 기본 $100</span></td>
+            <td class="comp-highlight">${fmt(insuredValue)}<br><span style="font-size:0.72rem;">(CIF×110% 전액)</span></td>
+        </tr>
+        <tr>
+            <td style="font-weight:700; text-align:left;">📜 담보 범위</td>
+            <td>외부 원인에 의한<br>분실/파손만</td>
+            <td>외부 원인에 의한<br>분실/파손만</td>
+            <td>외부 원인에 의한<br>분실/파손만</td>
+            <td class="comp-highlight">ICC(Air) All Risks<br>전위험담보</td>
+        </tr>
+        <tr>
+            <td style="font-weight:700; text-align:left;">⚡ 클레임 처리</td>
+            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
+            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
+            <td>특송사 자체 심사<br><span style="font-size:0.72rem; color:#888;">30~60일</span></td>
+            <td class="comp-highlight">보험사 공식 클레임<br><span style="font-size:0.72rem;">Chubb/KB 보험사</span></td>
+        </tr>
+        <tr>
+            <td style="font-weight:700; text-align:left;">🔖 보험증권</td>
+            <td class="comp-warn">미발급</td>
+            <td class="comp-warn">미발급</td>
+            <td class="comp-warn">미발급</td>
+            <td class="comp-good">정식 보험증권 발급 ✓</td>
+        </tr>
+    `;
+    
+    // 절감액 표시
+    if (savings > 0) {
+        document.getElementById('compSavingsAmt').textContent = `최대 ${fmt(savings)} 절감!`;
+        document.getElementById('compSavingsDetail').textContent = `화물가액 ${fmt(valueKRW)} 기준 | ICC(Air) All Risks · 전위험담보 · 보험가액 ${fmt(insuredValue)} 보장`;
+    } else {
+        document.getElementById('compSavingsAmt').textContent = `${fmt(cargoPremium)}으로 전위험담보!`;
+        document.getElementById('compSavingsDetail').textContent = `특송사 자체보험은 제한적 보상, Cargoinsu는 ICC(Air) All Risks + 정식 보험증권 발급`;
+    }
+    
+    document.getElementById('compResult').classList.add('show');
+    document.getElementById('compResult').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+// ==================== END 비교 시뮬레이터 ====================
+
+// Express carrier selection (original)
 function selectExpressCarrier(el, carrier) {
     document.querySelectorAll('.express-carrier').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
@@ -10835,6 +11289,29 @@ function submitExpress() {
     };
 
     console.log('Express Quote Request:', formData);
+    
+    // Google Sheets 전송
+    sendToGoogleSheets('express_apply', formData);
+    
+    // EmailJS 이메일 알림 발송
+    sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_EXPRESS, buildEmailParams('express', formData));
+    
+    // Supabase DB 저장
+    saveToSupabase('express_quotes', {
+        carrier: formData.carrier,
+        tracking_no: formData.trackingNo,
+        insured_name: formData.insured?.name,
+        insured_phone: formData.insured?.phone,
+        insured_email: formData.insured?.email,
+        cargo_description: formData.cargo?.description,
+        invoice_currency: formData.cargo?.currency,
+        invoice_value: parseFloat(formData.cargo?.invoiceValue) || null,
+        origin: formData.route?.origin,
+        destination: formData.route?.destination,
+        coverage: formData.coverage?.base || 'ICC(Air)',
+        memo: formData.memo
+    });
+    
     // Show success modal
     showModal('designSuccessModal');
 }
@@ -11068,6 +11545,30 @@ function submitEzApply() {
     
     // Google Sheets 전송
     sendToGoogleSheets('ez_cargo_apply', formData);
+    
+    // EmailJS 이메일 알림 발송
+    sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_QUOTE, buildEmailParams('ez_cargo_apply', formData));
+    
+    // Supabase DB 저장
+    saveToSupabase('ez_quotes', {
+        policyholder: formData.policyholder,
+        biz_no: formData.bizNo,
+        same_as_contractor: formData.sameAsContractor === 'Y',
+        insured_name: formData.insuredName || null,
+        insured_biz_no: formData.insuredBizNo || null,
+        packing: formData.packing,
+        stowage: formData.stowage,
+        clause_type: formData.clauseType,
+        coverage: formData.coverage,
+        profit_rate: parseInt(formData.profitRate) || 110,
+        contact_name: formData.contactName,
+        contact_phone: formData.contactPhone,
+        contact_email: formData.contactEmail,
+        memo: formData.memo,
+        has_file_ci: formData.hasFileCI === 'Y',
+        has_file_bl: formData.hasFileBL === 'Y',
+        has_file_request: formData.hasFileRequest === 'Y'
+    });
     
     showModal('designSuccessModal');
 }

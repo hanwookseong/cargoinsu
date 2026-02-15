@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cargoinsu.com/sitemap.xml
+
+# Cargoinsu.com - 적하보험 전문 플랫폼
+# Contact: help@cargoinsu.com

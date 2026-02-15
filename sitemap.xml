@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 메인 페이지 -->
+  <url>
+    <loc>https://cargoinsu.com/</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- 적하보험 상세 -->
+  <url>
+    <loc>https://cargoinsu.com/#cargo</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 보험료 계산기 -->
+  <url>
+    <loc>https://cargoinsu.com/#calculator</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 견적신청 (일반 + 특송) -->
+  <url>
+    <loc>https://cargoinsu.com/#apply</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- 내륙운송보험 -->
+  <url>
+    <loc>https://cargoinsu.com/#inland</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 예술품종합보험 -->
+  <url>
+    <loc>https://cargoinsu.com/#art</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 화물배상책임보험 -->
+  <url>
+    <loc>https://cargoinsu.com/#liability</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 정보센터 - MIA 1906 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-mia1906</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 정보센터 - Insurance Act 2015 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-insuranceAct2015</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 정보센터 - ICC 구약관 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-iccOldBilingual</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 정보센터 - ICC (A)(B)(C) 신약관 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-iccBilingual</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- 정보센터 - ITC-Hull -->
+  <url>
+    <loc>https://cargoinsu.com/#info-itcHull</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 정보센터 - 부가약관 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-additionalClauses</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 정보센터 - 특수화물보통약관 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-specialCargo</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 정보센터 - 기타특별약관 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-otherSpecial</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- 정보센터 - 화물종류표 -->
+  <url>
+    <loc>https://cargoinsu.com/#info-cargoTable</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- 알아두실사항 -->
+  <url>
+    <loc>https://cargoinsu.com/#notice</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
