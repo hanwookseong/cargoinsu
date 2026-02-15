@@ -11994,7 +11994,7 @@ async function aiParseDocument(mode) {
         // Google Apps Script 프록시를 통해 Claude API 호출
         const response = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            redirect: 'follow',
             body: JSON.stringify({
                 action: 'parseDocument',
                 fileData: base64,
