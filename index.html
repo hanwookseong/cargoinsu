@@ -7652,6 +7652,57 @@ async function saveToSupabase(tableName, rowData) {
 }
 
 /**
+ * Supabase Storage 파일 업로드
+ * @param {string} folder - 폴더 경로 (예: 'express/20260215_143022')
+ * @param {File} file - 업로드할 파일 객체
+ * @returns {Promise<string|null>} 업로드된 파일 경로 또는 null
+ */
+async function uploadFileToStorage(folder, file) {
+    if (!supabaseClient || !file) return null;
+    try {
+        const timestamp = new Date().toISOString().replace(/[-:T]/g,'').substring(0,14);
+        const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const filePath = `${folder}/${timestamp}_${safeName}`;
+        
+        const { data, error } = await supabaseClient.storage
+            .from('quote-files')
+            .upload(filePath, file, {
+                cacheControl: '3600',
+                upsert: false
+            });
+        
+        if (error) {
+            console.error('Storage upload error:', error.message);
+            return null;
+        }
+        console.log('File uploaded:', filePath);
+        return filePath;
+    } catch (err) {
+        console.error('Storage exception:', err);
+        return null;
+    }
+}
+
+/**
+ * 여러 파일을 Supabase Storage에 업로드
+ * @param {string} folder - 폴더 경로
+ * @param {Object} fileInputs - { ci: fileInput, pl: fileInput, awb: fileInput }
+ * @returns {Promise<Object>} { ci: 'path', pl: 'path', awb: 'path' }
+ */
+async function uploadQuoteFiles(folder, fileInputs) {
+    const result = {};
+    for (const [key, inputId] of Object.entries(fileInputs)) {
+        const input = document.getElementById(inputId);
+        if (input && input.files && input.files[0]) {
+            result[key] = await uploadFileToStorage(folder, input.files[0]);
+        } else {
+            result[key] = null;
+        }
+    }
+    return result;
+}
+
+/**
  * EmailJS를 통한 견적신청 이메일 알림 발송
  * @param {string} templateId - EmailJS 템플릿 ID
  * @param {Object} params - 템플릿 파라미터
@@ -10918,7 +10969,7 @@ function checkDesignAgreeAll() {
 function saveDesignDraft() { alert('✅ 임시저장이 완료되었습니다.\n다음에 이어서 작성할 수 있습니다.'); }
 
 // 제출
-function submitDesign() {
+async function submitDesign() {
     const required = [
         { id: 'dsContractorBizNo', name: '계약자 사업자등록번호' },
         { id: 'dsContractorName', name: '계약자 회사명 (검색필요)' },
@@ -11004,6 +11055,15 @@ function submitDesign() {
     // EmailJS 이메일 알림 발송
     sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_QUOTE, buildEmailParams('cargo_apply', formData));
     
+    // Supabase Storage 파일 업로드
+    const dsFileFolder = 'cargo/' + new Date().toISOString().replace(/[-:T]/g,'').substring(0,14) + '_' + (formData.contractorName || 'unknown').substring(0,10);
+    const dsUploadedFiles = await uploadQuoteFiles(dsFileFolder, {
+        ci: 'fileInvoice',
+        pl: 'filePL',
+        bl: 'fileBL',
+        etc: 'fileEtc'
+    });
+    
     // Supabase DB 저장
     saveToSupabase('cargo_quotes', {
         contractor_biz_no: formData.contractorBizNo,
@@ -11035,7 +11095,11 @@ function submitDesign() {
         contact_name: formData.contactName,
         contact_phone: formData.contactPhone,
         contact_email: formData.contactEmail,
-        memo: formData.memo
+        memo: formData.memo,
+        file_ci: dsUploadedFiles.ci,
+        file_pl: dsUploadedFiles.pl,
+        file_bl: dsUploadedFiles.bl,
+        file_etc: dsUploadedFiles.etc
     });
     
     showModal('designSuccessModal');
@@ -11197,7 +11261,7 @@ function checkExAgreeAll() {
 }
 
 // Express form submission
-function submitExpress() {
+async function submitExpress() {
     // Validate required fields
     const carrier = document.querySelector('.express-carrier.selected');
     const name = document.getElementById('exInsuredName').value.trim();
@@ -11269,6 +11333,14 @@ function submitExpress() {
     // EmailJS 이메일 알림 발송
     sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_EXPRESS, buildEmailParams('express', formData));
     
+    // Supabase Storage 파일 업로드
+    const fileFolder = 'express/' + new Date().toISOString().replace(/[-:T]/g,'').substring(0,14) + '_' + (formData.insured?.name || 'unknown').substring(0,10);
+    const uploadedFiles = await uploadQuoteFiles(fileFolder, {
+        ci: 'exFileCI',
+        pl: 'exFilePL',
+        awb: 'exFileAWB'
+    });
+    
     // Supabase DB 저장
     saveToSupabase('express_quotes', {
         carrier: formData.carrier,
@@ -11282,7 +11354,10 @@ function submitExpress() {
         origin: formData.route?.origin,
         destination: formData.route?.destination,
         coverage: formData.coverage?.base || 'ICC(Air)',
-        memo: formData.memo
+        memo: formData.memo,
+        file_ci: uploadedFiles.ci,
+        file_pl: uploadedFiles.pl,
+        file_awb: uploadedFiles.awb
     });
     
     // Show success modal
@@ -11439,7 +11514,7 @@ function checkEzAgreeAll() {
 }
 
 // 간편접수 제출
-function submitEzApply() {
+async function submitEzApply() {
     // 1. 서류 검증
     const hasCI = document.getElementById('ezFileCI').files.length > 0;
     if (!hasCI) {
@@ -11522,6 +11597,15 @@ function submitEzApply() {
     // EmailJS 이메일 알림 발송
     sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_QUOTE, buildEmailParams('ez_cargo_apply', formData));
     
+    // Supabase Storage 파일 업로드
+    const ezFileFolder = 'ez/' + new Date().toISOString().replace(/[-:T]/g,'').substring(0,14) + '_' + (formData.policyholder || 'unknown').substring(0,10);
+    const ezUploadedFiles = await uploadQuoteFiles(ezFileFolder, {
+        request: 'ezFileRequest',
+        ci: 'ezFileCI',
+        bl: 'ezFileBL',
+        etc: 'ezFileEtc'
+    });
+    
     // Supabase DB 저장
     saveToSupabase('ez_quotes', {
         policyholder: formData.policyholder,
@@ -11540,7 +11624,11 @@ function submitEzApply() {
         memo: formData.memo,
         has_file_ci: formData.hasFileCI === 'Y',
         has_file_bl: formData.hasFileBL === 'Y',
-        has_file_request: formData.hasFileRequest === 'Y'
+        has_file_request: formData.hasFileRequest === 'Y',
+        file_request: ezUploadedFiles.request,
+        file_ci: ezUploadedFiles.ci,
+        file_bl: ezUploadedFiles.bl,
+        file_etc: ezUploadedFiles.etc
     });
     
     showModal('designSuccessModal');
