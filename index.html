@@ -11568,6 +11568,26 @@ function checkExAgreeAll() {
 
 // Express form submission
 async function submitExpress() {
+    // AI 서류 자동인식 — 파일 첨부되어 있으면 자동 추출 후 폼에 채움
+    // (가입신청 클릭 시 자동 실행 — 빈 필드만 AI로 채움)
+    const ciFile = document.getElementById('exFileCI')?.files[0];
+    const awbFile = document.getElementById('exFileAWB')?.files[0];
+    if (ciFile || awbFile) {
+        const submitBtn = document.querySelector('.express-submit-btn') || document.querySelector('[onclick*="submitExpress"]');
+        if (submitBtn) {
+            const origText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
+            submitBtn.disabled = true;
+            try {
+                await autoAiParse('express');
+            } catch(e) { console.log('Auto parse error:', e); }
+            submitBtn.innerHTML = origText;
+            submitBtn.disabled = false;
+        } else {
+            await autoAiParse('express');
+        }
+    }
+    
     // Validate required fields
     const carrier = document.querySelector('.express-carrier.selected');
     const name = document.getElementById('exInsuredName').value.trim();
@@ -12018,6 +12038,16 @@ async function aiParseDocument(mode) {
         const systemPrompt = `You are a cargo insurance document parser. Extract structured data from this shipping document (${docType}).
 Return ONLY valid JSON, no markdown, no backticks, no explanation.
 Use empty string "" for fields not found. For amounts, return numbers only (no commas/symbols).
+
+IMPORTANT RULES:
+- hsCode: Return ONLY the first 4 digits (e.g., "3304" not "3304.99.1000")
+- quantity: Return only the number
+- quantityUnit: Detect from document context. If CI lists individual items as "EA", "PCS", "PIECE" or just numbers, return "EA". If grouped in cartons/boxes, return "CTN" or "BOX". If no unit specified but items are counted individually, return "EA".
+- totalAmount: Return the GRAND TOTAL or G-TOTAL amount as numbers only (no currency symbol, no commas). Look for "Total", "Grand Total", "G-Total" line.
+- currency: Return 3-letter code (KRW, USD, EUR, etc.)
+- grossWeight: Total weight number only
+- weightUnit: KG or LB
+
 JSON format:
 {"shipper":"","shipperAddress":"","consignee":"","consigneeAddress":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","netWeight":"","totalAmount":"","unitPrice":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","vesselOrFlight":"","blOrAwbNo":"","shipDate":"","invoiceNo":"","invoiceDate":"","packing":"","marksAndNumbers":"","portOfLoading":"","portOfDischarge":"","additionalNotes":""}`;
         
@@ -12082,8 +12112,64 @@ JSON format:
     }
 }
 
+/** 제출 시 자동 AI 파싱 — 파일 첨부되어 있고 주요 필드가 비어있으면 자동 실행 */
+async function autoAiParse(mode) {
+    try {
+        let ciFile, awbFile;
+        if (mode === 'express') {
+            ciFile = document.getElementById('exFileCI')?.files[0];
+            awbFile = document.getElementById('exFileAWB')?.files[0];
+        } else if (mode === 'cargo') {
+            ciFile = document.getElementById('dsFileCI')?.files[0];
+        }
+        
+        if (!ciFile && !awbFile) return null; // 파일 없으면 스킵
+        
+        // CI 우선 파싱
+        const file = ciFile || awbFile;
+        const docType = ciFile ? 'Commercial Invoice' : 'Air Waybill';
+        const fileType = file.type || 'application/pdf';
+        const base64 = await fileToBase64(file);
+        
+        const GEMINI_API_KEY = 'AIzaSyDTX2Ankb3_YpE2r67QE_a_OYdqb8LmYW4';
+        const GEMINI_MODEL = 'gemini-2.0-flash-lite';
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+        
+        const systemPrompt = `Extract key shipping data from this ${docType}. Return ONLY JSON. hsCode: first 4 digits only. totalAmount: grand total numbers only. quantityUnit: EA if individual items, CTN if cartons.
+{"shipper":"","consignee":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","totalAmount":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","blOrAwbNo":"","shipDate":"","invoiceNo":""}`;
+        
+        const resp = await fetch(GEMINI_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [
+                    { inline_data: { mime_type: fileType, data: base64 } },
+                    { text: systemPrompt }
+                ]}],
+                generationConfig: { temperature: 0.1, maxOutputTokens: 1500 }
+            })
+        });
+        
+        if (!resp.ok) return null;
+        
+        const result = await resp.json();
+        const text = result.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const clean = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+        const data = JSON.parse(clean);
+        
+        // 폼에 자동 입력 (빈 필드만)
+        aiAutoFill(mode, data);
+        
+        return data;
+    } catch(e) {
+        console.log('Auto AI Parse skipped:', e.message);
+        return null;
+    }
+}
+
 /** Gemini API 호출 + 429 재시도 (최대 3회) */
 async function geminiCallWithRetry(url, body, btn) {
+
     const maxRetries = 3;
     for (let i = 0; i < maxRetries; i++) {
         const resp = await fetch(url, {
@@ -12116,50 +12202,148 @@ function fileToBase64(file) {
 
 /** AI 파싱 결과를 폼에 자동 입력 */
 function aiAutoFill(mode, d) {
+    // 우선순위 규칙: 사용자 입력이 이미 있으면 AI 데이터로 덮어쓰지 않음
+    // (빈 필드만 AI로 채움)
+    function fillIfEmpty(id, val) {
+        if (!val) return;
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.value && el.value.trim()) return; // 사용자 입력 우선
+        el.value = val;
+        // input 이벤트 트리거 (연동된 로직 실행)
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    function fillSelectIfDefault(id, val) {
+        if (!val) return;
+        const el = document.getElementById(id);
+        if (!el) return;
+        // select의 첫 번째 옵션(기본값)이면 AI로 변경
+        const opts = Array.from(el.options);
+        const match = opts.find(o => o.value.toUpperCase() === val.toUpperCase() || o.text.toUpperCase().includes(val.toUpperCase()));
+        if (match) { el.value = match.value; el.dispatchEvent(new Event('change', { bubbles: true })); }
+    }
+    
+    // HS Code 4자리 변환 (10자리 → 4자리로 cargoList 매칭용)
+    function normalizeHsCode(hsRaw) {
+        if (!hsRaw) return '';
+        const digits = hsRaw.replace(/[^0-9]/g, '');
+        return digits.substring(0, 4); // 처음 4자리만 사용
+    }
+    
+    // 수량 단위 매핑
+    function mapQuantityUnit(unitRaw, qty) {
+        if (!unitRaw) {
+            // 단위 없이 숫자만 있으면 → EA (개)
+            if (qty && parseInt(qty) > 100) return 'EA';
+            return ''; // 기본값 유지
+        }
+        const u = unitRaw.toUpperCase().replace(/[^A-Z]/g, '');
+        if (['EA', 'EACH', 'PCS', 'PC', 'PIECE', 'PIECES', 'UNIT', 'UNITS'].includes(u)) return 'EA';
+        if (['CTN', 'CARTON', 'CARTONS', 'CT'].includes(u)) return 'CTN';
+        if (['BOX', 'BOXES', 'BX'].includes(u)) return 'BOX';
+        if (['PLT', 'PALLET', 'PALLETS'].includes(u)) return 'PLT';
+        if (['PKG', 'PACKAGE', 'PACKAGES'].includes(u)) return 'PKG';
+        if (['SET', 'SETS'].includes(u)) return 'SET';
+        return 'EA'; // 기본 fallback
+    }
+    
     if (mode === 'express') {
         // 특송보험 폼 자동 입력
-        if (d.cargoDescription) setVal('exCargo', d.cargoDescription);
-        if (d.hsCode) setVal('exHsCode', d.hsCode);
-        if (d.totalAmount) setVal('exInvoice', d.totalAmount);
-        if (d.currency) setSelect('exCurrency', d.currency);
-        if (d.quantity) setVal('exQuantityNum', d.quantity.replace(/[^\d.]/g,''));
-        if (d.quantityUnit) setSelectByText('exQuantityUnit', d.quantityUnit);
-        if (d.grossWeight) setVal('exWeightNum', d.grossWeight.replace(/[^\d.]/g,''));
-        if (d.weightUnit) setSelectByText('exWeightUnit', d.weightUnit);
-        if (d.packing) setSelect('exPacking', matchPacking(d.packing));
-        if (d.blOrAwbNo) setVal('exTrackingNo', d.blOrAwbNo);
-        if (d.shipDate) setVal('exShipDate', formatDateForInput(d.shipDate));
+        fillIfEmpty('exCargoDesc', d.cargoDescription);
+        
+        // HS Code: 4자리로 변환 후 입력 + 화물품명 자동 매칭
+        if (d.hsCode) {
+            const hs4 = normalizeHsCode(d.hsCode);
+            const hsInput = document.getElementById('exHsCode');
+            if (hsInput && !hsInput.value.trim()) {
+                hsInput.value = hs4;
+                // hsCodeMapping에서 자동 매칭하여 화물품명도 설정
+                if (typeof hsCodeMapping !== 'undefined' && hsCodeMapping[hs4]) {
+                    const matched = hsCodeMapping[hs4];
+                    const cargoDesc = document.getElementById('exCargoDesc');
+                    if (cargoDesc && !cargoDesc.value.trim()) {
+                        cargoDesc.value = matched.desc;
+                    }
+                }
+            }
+        }
+        
+        // 인보이스 금액 (숫자만 추출)
+        if (d.totalAmount) {
+            const amountNum = String(d.totalAmount).replace(/[^0-9.]/g, '');
+            fillIfEmpty('exInvoiceValue', amountNum);
+        }
+        
+        // 통화
+        if (d.currency) fillSelectIfDefault('exCurrency', d.currency);
+        
+        // 수량 + 단위
+        if (d.quantity) {
+            const qtyNum = String(d.quantity).replace(/[^\d.]/g, '');
+            fillIfEmpty('exQuantityNum', qtyNum);
+            // 수량 단위 자동 감지
+            const detectedUnit = mapQuantityUnit(d.quantityUnit, qtyNum);
+            if (detectedUnit) {
+                const unitEl = document.getElementById('exQuantityUnit');
+                if (unitEl) unitEl.value = detectedUnit;
+            }
+        }
+        
+        // 중량
+        if (d.grossWeight) {
+            fillIfEmpty('exWeightNum', String(d.grossWeight).replace(/[^\d.]/g, ''));
+            if (d.weightUnit) fillSelectIfDefault('exWeightUnit', d.weightUnit);
+        }
+        
+        if (d.packing) {
+            const packVal = matchPacking(d.packing);
+            if (packVal) { const el = document.getElementById('exPacking'); if (el) el.value = packVal; }
+        }
+        if (d.blOrAwbNo) fillIfEmpty('exTrackingNo', d.blOrAwbNo);
+        if (d.shipDate) fillIfEmpty('exShipDate', formatDateForInput(d.shipDate));
         
         // 출발지/도착지 국가 자동 설정
         if (d.originCountry) aiSetCountry('exOriginCountry', d.originCountry, 'express');
         if (d.destCountry) aiSetCountry('exDestCountry', d.destCountry, 'express');
-        if (d.originCity) setVal('exOriginCity', d.originCity);
-        if (d.destCity) setVal('exDestCity', d.destCity);
+        if (d.originCity) fillIfEmpty('exOriginCity', d.originCity);
+        if (d.destCity) fillIfEmpty('exDestCity', d.destCity);
+        
+        // 운송구간(Voyage) 자동 업데이트
+        setTimeout(() => updateExVoyage(), 300);
         
     } else if (mode === 'cargo') {
         // 적하보험 직접입력 폼 자동 입력
-        if (d.shipper) setVal('dsContractorName', d.shipper);
+        if (d.shipper) fillIfEmpty('dsContractorName', d.shipper);
         if (d.consignee) {
             const sameCheck = document.getElementById('dsSameAsContractor');
             if (sameCheck && sameCheck.checked) { sameCheck.click(); }
-            setVal('dsInsuredName', d.consignee);
+            fillIfEmpty('dsInsuredName', d.consignee);
         }
         if (d.originCountry) aiSetCountryDS('dsOriginCountry', d.originCountry);
         if (d.destCountry) aiSetCountryDS('dsDestCountry', d.destCountry);
-        if (d.originCity) setVal('dsOriginCity', d.originCity);
-        if (d.destCity) setVal('dsDestCity', d.destCity);
-        if (d.vesselOrFlight) setVal('dsVessel', d.vesselOrFlight);
-        if (d.shipDate) setVal('dsShipDate', formatDateForInput(d.shipDate));
-        if (d.hsCode) setVal('dsHsCode', d.hsCode);
-        if (d.cargoDescription) setVal('dsCargoName', d.cargoDescription);
-        if (d.packing) setSelect('dsPacking', matchPacking(d.packing));
-        if (d.totalAmount) setVal('dsCargoValue', d.totalAmount);
-        if (d.currency) setSelect('dsCargoCurrency', d.currency);
-        if (d.invoiceNo) setVal('dsVessel', (document.getElementById('dsVessel').value ? document.getElementById('dsVessel').value + ' / ' : '') + 'INV:' + d.invoiceNo);
+        if (d.originCity) fillIfEmpty('dsOriginCity', d.originCity);
+        if (d.destCity) fillIfEmpty('dsDestCity', d.destCity);
+        if (d.vesselOrFlight) fillIfEmpty('dsVessel', d.vesselOrFlight);
+        if (d.shipDate) fillIfEmpty('dsShipDate', formatDateForInput(d.shipDate));
+        if (d.hsCode) {
+            const hs4 = normalizeHsCode(d.hsCode);
+            fillIfEmpty('dsHsCode', hs4);
+        }
+        if (d.cargoDescription) fillIfEmpty('dsCargoName', d.cargoDescription);
+        if (d.packing) {
+            const packVal = matchPacking(d.packing);
+            if (packVal) { const el = document.getElementById('dsPacking'); if (el && el.selectedIndex <= 0) el.value = packVal; }
+        }
+        if (d.totalAmount) fillIfEmpty('dsCargoValue', String(d.totalAmount).replace(/[^0-9.]/g, ''));
+        if (d.currency) fillSelectIfDefault('dsCargoCurrency', d.currency);
+        if (d.invoiceNo) {
+            const vesselEl = document.getElementById('dsVessel');
+            if (vesselEl) vesselEl.value = (vesselEl.value ? vesselEl.value + ' / ' : '') + 'INV:' + d.invoiceNo;
+        }
         
     } else if (mode === 'ez') {
-        // 간편접수 — 보충정보 영역에 요약 표시 (직접 필드가 적음)
-        // 간편접수는 서류 기반이므로 주요 정보를 메모에 정리
+        // 간편접수 — 보충정보 영역에 요약 표시
         const summaryParts = [];
         if (d.cargoDescription) summaryParts.push('화물: ' + d.cargoDescription);
         if (d.hsCode) summaryParts.push('HS: ' + d.hsCode);
@@ -12181,6 +12365,7 @@ function aiAutoFill(mode, d) {
 function aiSetCountry(inputId, countryName, mode) {
     const input = document.getElementById(inputId);
     if (!input) return;
+    if (input.value && input.value.trim() && input.dataset.region) return; // 사용자 입력 우선
     const normalized = countryName.toLowerCase().trim();
     const found = countries.find(c => 
         c.name.toLowerCase() === normalized || 
