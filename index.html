@@ -806,8 +806,8 @@
                     <span class="nav-item" onclick="showPage('cargo')">보험상품</span>
                     <div class="nav-dropdown">
                         <a href="javascript:void(0)" onclick="showPage('cargo'); return false;">적하보험 (해상/항공)</a>
-                        <a href="javascript:void(0)" onclick="showPage('apply'); return false;">📝 적하보험 견적신청</a>
-                        <a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); return false;">✈️ 특송 적하보험 견적신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('apply'); return false;">📝 적하보험 보험가입신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); return false;">✈️ 특송 적하보험 가입신청</a>
                         <a href="javascript:void(0)" onclick="showPage('inland'); return false;">내륙운송보험</a>
                         <a href="javascript:void(0)" onclick="showPage('art'); return false;">예술품종합보험</a>
                         <a href="javascript:void(0)" onclick="showPage('liability'); return false;">화물배상책임보험</a>
@@ -859,8 +859,8 @@
                     <h4>보험상품</h4>
                     <ul>
                         <li><a href="javascript:void(0)" onclick="showPage('cargo'); toggleServicesModal(); return false;">적하보험 (해상/항공)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('apply'); toggleServicesModal(); return false;">📝 적하보험 견적신청</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); toggleServicesModal(); return false;">✈️ 특송 적하보험 견적신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('apply'); toggleServicesModal(); return false;">📝 적하보험 보험가입신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); toggleServicesModal(); return false;">✈️ 특송 적하보험 가입신청</a></li>
                         <li><a href="javascript:void(0)" onclick="showPage('inland'); toggleServicesModal(); return false;">내륙운송보험</a></li>
                         <li><a href="javascript:void(0)" onclick="showPage('art'); toggleServicesModal(); return false;">예술품종합보험</a></li>
                         <li><a href="javascript:void(0)" onclick="showPage('liability'); toggleServicesModal(); return false;">화물배상책임보험</a></li>
@@ -926,7 +926,7 @@
                     <div class="card-btns" style="flex-wrap:wrap;">
                         <button class="btn-primary" onclick="showPage('cargo')">상세보기</button>
                         <button class="btn-secondary" onclick="showPage('calculator')">보험료계산</button>
-                        <button class="btn-primary" onclick="showPage('apply')" style="background:var(--accent); flex:1 1 100%;">📝 견적신청</button>
+                        <button class="btn-primary" onclick="showPage('apply')" style="background:var(--accent); flex:1 1 100%;">📝 보험가입신청</button>
                     </div>
                 </div>
                 <div class="product-card" style="border: 2px solid var(--accent); position: relative;">
@@ -940,7 +940,7 @@
                         <li>소액화물도 건별 보험가입 가능</li>
                     </ul>
                     <div class="card-btns" style="flex-wrap:wrap;">
-                        <button class="btn-primary" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100);" style="background:var(--accent); flex:1 1 100%;">✈️ 특송보험 간편 견적신청</button>
+                        <button class="btn-primary" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100);" style="background:var(--accent); flex:1 1 100%;">✈️ 특송보험 간편 가입신청</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -1126,7 +1126,7 @@
                 
                 <div style="text-align:center; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
                     <button class="btn-submit" onclick="showPage('calculator')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📊 보험료 계산하기</button>
-                    <button class="btn-submit" onclick="showPage('apply')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px; background:var(--accent);">📝 견적신청하기</button>
+                    <button class="btn-submit" onclick="showPage('apply')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px; background:var(--accent);">📝 보험가입신청하기</button>
                 </div>
             </div>
         </div>
@@ -1374,7 +1374,7 @@
                         <div class="krw" id="resPremiumKRW">₩0</div>
                     </div>
                     <p class="result-disclaimer">※ 실제 보험료는 언더라이팅 결과에 따라 달라질 수 있습니다.</p>
-                    <button class="btn-apply" onclick="goToApply()">🚀 바로 보험 견적신청하기</button>
+                    <button class="btn-apply" onclick="goToApply()">🚀 바로 보험가입신청하기</button>
                 </div>
             </div>
         </div>
@@ -4270,8 +4270,8 @@
             <div class="design-container">
                 <!-- Header -->
                 <div class="design-header">
-                    <h2>📝 적하보험 견적신청</h2>
-                    <span class="design-badge">Cargo Insurance Quote Request</span>
+                    <h2>📝 적하보험 보험가입신청</h2>
+                    <span class="design-badge">Cargo Insurance Application</span>
                 </div>
                 
                 <!-- ===== 고지사항 ===== -->
@@ -4304,7 +4304,7 @@
                             <div class="track-sub">UPS · FedEx · DHL 이용 화주를 위한<br>간편 보험가입 (마스터 등록 불요)</div>
                             <div class="track-tags">
                                 <span class="track-tag orange">보험료 대폭 절감</span>
-                                <span class="track-tag blue">간편 온라인 결제</span>
+                                <span class="track-tag blue">간편 온라인 가입</span>
                             </div>
                         </div>
                     </div>
@@ -4472,7 +4472,7 @@
                                         <span class="upload-req optional">있으면 제출</span>
                                         <div class="file-attached" id="ezFileRequestName"></div>
                                     </div>
-                                    <input type="file" id="ezFileRequest" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="ezFileChanged(this,'ezCardRequest','ezFileRequestName')">
+                                    <input type="file" id="ezFileRequest" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardRequest','ezFileRequestName')">
                                     
                                     <!-- Commercial Invoice -->
                                     <div class="ez-upload-card" id="ezCardCI" onclick="document.getElementById('ezFileCI').click();" style="border-color:#e65100;">
@@ -4487,7 +4487,7 @@
                                         <span class="upload-req required">필수</span>
                                         <div class="file-attached" id="ezFileCIName"></div>
                                     </div>
-                                    <input type="file" id="ezFileCI" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="ezFileChanged(this,'ezCardCI','ezFileCIName')">
+                                    <input type="file" id="ezFileCI" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardCI','ezFileCIName')">
                                     
                                     <!-- B/L -->
                                     <div class="ez-upload-card" id="ezCardBL" onclick="document.getElementById('ezFileBL').click();">
@@ -4498,7 +4498,7 @@
                                         <span class="upload-req optional">있으면 제출</span>
                                         <div class="file-attached" id="ezFileBLName"></div>
                                     </div>
-                                    <input type="file" id="ezFileBL" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="ezFileChanged(this,'ezCardBL','ezFileBLName')">
+                                    <input type="file" id="ezFileBL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardBL','ezFileBLName')">
                                     
                                     <!-- 기타 -->
                                     <div class="ez-upload-card" id="ezCardEtc" onclick="document.getElementById('ezFileEtc').click();">
@@ -4509,7 +4509,7 @@
                                         <span class="upload-req optional">선택</span>
                                         <div class="file-attached" id="ezFileEtcName"></div>
                                     </div>
-                                    <input type="file" id="ezFileEtc" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="ezFileChanged(this,'ezCardEtc','ezFileEtcName')">
+                                    <input type="file" id="ezFileEtc" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardEtc','ezFileEtcName')">
                                 </div>
                                 
                                 <div id="ezDocWarning" style="display:none; background:#ffebee; border:1px solid #ef9a9a; border-radius:8px; padding:10px 14px; font-size:0.8rem; color:#c62828; margin-top:8px;">
@@ -4581,7 +4581,7 @@
                                                     <div style="font-size:0.8rem; color:#666;">📎 클릭하여 업로드 (PDF/JPG)</div>
                                                     <div class="file-attached" id="ezFileInsuredBizName"></div>
                                                 </div>
-                                                <input type="file" id="ezFileInsuredBiz" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="ezFileChanged(this,'ezCardInsuredBiz','ezFileInsuredBizName')">
+                                                <input type="file" id="ezFileInsuredBiz" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardInsuredBiz','ezFileInsuredBizName')">
                                             </div>
                                         </div>
                                         <div style="font-size:0.7rem; color:#e65100; margin-top:4px;">⚠️ 피보험자가 계약자와 다른 경우, 피보험자 사업자등록증을 반드시 첨부해 주세요.</div>
@@ -4734,6 +4734,13 @@
                                     • 접수 후 <strong>영업일 기준 1일 이내</strong>에 보험료 산출 결과와 함께 연락드립니다.
                                 </div>
                                 
+                                <div style="margin-top:12px; background:#fff3e0; border:1px solid #ffe0b2; border-radius:8px; padding:12px; font-size:0.78rem; color:#555; line-height:1.7;">
+                                    <strong style="color:#e65100;">💳 보험료 결제 안내</strong><br>
+                                    • 결제 프로세스: 가입신청 접수 → 중개사 검토 → 보험사 인수심사 → <strong>보험료 확정 통보</strong> → 결제 → 증권 발급<br>
+                                    • 결제 수단: 신용카드(온라인 PG) 또는 계좌이체(무통장입금/실시간이체)<br>
+                                    • 보험료는 인수심사 완료 후 확정되며, 확정 보험료를 안내드린 후 결제가 진행됩니다.
+                                </div>
+                                
                                 <div style="margin-top:12px;">
                                     <p style="font-size:0.78rem; color:#555; line-height:1.7; margin:0;">이 보험계약은 예금자보호법에 따라 해지환급금(또는 만기 시 보험금에 기타지급금을 합한 금액)이 1인당 "1억원까지" (본 보험회사의 여타 보호상품과 합산) 보호됩니다. 단, 보험계약자 및 보험료 납부자가 법인인 경우에는 보호되지 않습니다.</p>
                                 </div>
@@ -4743,7 +4750,7 @@
                         <!-- 버튼 영역 -->
                         <div class="design-actions">
                             <button class="design-btn-save" onclick="switchApplyTab('full')">✏️ 직접입력으로 전환</button>
-                            <button class="design-btn-submit" onclick="submitEzApply()">📨 간편접수 신청하기</button>
+                            <button class="design-btn-submit" onclick="submitEzApply()">📨 보험가입신청하기</button>
                         </div>
                     </div>
                 </div>
@@ -4753,7 +4760,7 @@
                 <div class="design-body">
                     <!-- 안내 -->
                     <div class="design-notice">
-                        <strong>⚠ 견적신청 전 확인사항:</strong> 최초 견적신청 고객은 <a href="javascript:void(0)" onclick="showModal('registerModal'); return false;" style="color:#1a237e; font-weight:700;">회원가입</a> 시 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
+                        <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <a href="javascript:void(0)" onclick="showModal('registerModal'); return false;" style="color:#1a237e; font-weight:700;">회원가입</a> 시 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
                         <br><br>
                         <span style="color:#1a237e; font-weight:600;">💡 서류를 보유하고 계시다면 <a href="javascript:void(0)" onclick="switchApplyTab('ez')" style="color:#e65100; font-weight:700; text-decoration:underline;">간편접수 모드</a>를 이용해 보세요. 30개+ 필드 대신 서류 업로드 + 5~6개 항목만 입력하시면 됩니다.</span>
                     </div>
@@ -5221,9 +5228,9 @@
                                     <div class="design-file-area" onclick="document.getElementById('fileInvoice').click();">
                                         <div class="file-icon">📄</div>
                                         <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, PNG (최대 10MB)</div>
+                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
                                     </div>
-                                    <input type="file" id="fileInvoice" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="showFileName(this, 'fileInvoiceList')">
+                                    <input type="file" id="fileInvoice" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileInvoiceList')">
                                     <div class="design-file-list" id="fileInvoiceList"></div>
                                 </div>
                                 <div class="design-field">
@@ -5231,9 +5238,9 @@
                                     <div class="design-file-area" onclick="document.getElementById('filePL').click();">
                                         <div class="file-icon">📄</div>
                                         <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, PNG (최대 10MB)</div>
+                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
                                     </div>
-                                    <input type="file" id="filePL" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="showFileName(this, 'filePLList')">
+                                    <input type="file" id="filePL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'filePLList')">
                                     <div class="design-file-list" id="filePLList"></div>
                                 </div>
                             </div>
@@ -5243,9 +5250,9 @@
                                     <div class="design-file-area" onclick="document.getElementById('fileBL').click();">
                                         <div class="file-icon">📄</div>
                                         <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, PNG (최대 10MB)</div>
+                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
                                     </div>
-                                    <input type="file" id="fileBL" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="showFileName(this, 'fileBLList')">
+                                    <input type="file" id="fileBL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileBLList')">
                                     <div class="design-file-list" id="fileBLList"></div>
                                 </div>
                                 <div class="design-field">
@@ -5253,9 +5260,9 @@
                                     <div class="design-file-area" onclick="document.getElementById('fileEtc').click();">
                                         <div class="file-icon">📄</div>
                                         <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, PNG (최대 10MB)</div>
+                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
                                     </div>
-                                    <input type="file" id="fileEtc" accept=".pdf,.jpg,.jpeg,.png" style="display:none;" onchange="showFileName(this, 'fileEtcList')">
+                                    <input type="file" id="fileEtc" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileEtcList')">
                                     <div class="design-file-list" id="fileEtcList"></div>
                                 </div>
                             </div>
@@ -5279,6 +5286,30 @@
                                     <label style="font-size:0.82rem;">이메일 <span style="color:#e53935;">*</span></label>
                                     <input type="email" id="dsContactEmail" placeholder="example@email.com" style="font-size:0.85rem;">
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ⑦-2 보험료 결제 안내 -->
+                    <div class="design-section">
+                        <div class="design-section-title">💳 보험료 결제 안내</div>
+                        <div class="design-section-body">
+                            <div style="background:#fff3e0; border:1px solid #ffe0b2; border-radius:10px; padding:14px 18px; margin-bottom:12px;">
+                                <div style="font-size:0.85rem; font-weight:700; color:#e65100; margin-bottom:6px;">📌 결제 프로세스</div>
+                                <div style="font-size:0.78rem; color:#555; line-height:1.8;">
+                                    ① 보험가입신청 접수 → ② 중개사 검토 → ③ 보험사 인수심사 → ④ <strong>보험료 확정 통보</strong> → ⑤ 결제 → ⑥ 증권 발급<br>
+                                    ※ 보험료는 인수심사 완료 후 확정되며, 확정 보험료를 안내드린 후 결제가 진행됩니다.
+                                </div>
+                            </div>
+                            <div style="background:#f5f6ff; border:1px solid #e0e4f5; border-radius:10px; padding:14px 18px;">
+                                <div style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:6px;">💳 결제 수단 안내</div>
+                                <div style="font-size:0.78rem; color:#555; line-height:1.8;">
+                                    • <strong>신용카드:</strong> 온라인 카드결제 (PG: cargoinsu.com)<br>
+                                    • <strong>계좌이체:</strong> 무통장입금 / 실시간이체
+                                </div>
+                            </div>
+                            <div style="margin-top:10px; font-size:0.73rem; color:#888; line-height:1.6;">
+                                ※ 최소보험료: Chubb 14,000원 / KB USD 15 (보험료가 최소보험료 미만 시 최소보험료가 적용됩니다)
                             </div>
                         </div>
                     </div>
@@ -5316,7 +5347,7 @@
                     <!-- 버튼 영역 -->
                     <div class="design-actions">
                         <button class="design-btn-save" onclick="saveDesignDraft()">💾 임시저장</button>
-                        <button class="design-btn-submit" onclick="submitDesign()">📨 견적신청하기</button>
+                        <button class="design-btn-submit" onclick="submitDesign()">📨 보험가입신청하기</button>
                     </div>
                 </div>
                 </div><!-- /tabContentFull -->
@@ -5480,9 +5511,33 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label>수량 / 중량</label>
-                                        <input type="text" id="exQuantity" placeholder="예: 2 CTN / 15 KG">
+                                        <label>수량 (Quantity)</label>
+                                        <div style="display:flex; gap:8px;">
+                                            <input type="number" id="exQuantityNum" placeholder="예: 2" style="flex:1;" min="1">
+                                            <select id="exQuantityUnit" style="width:110px;">
+                                                <option value="CTN" selected>CTN (카톤)</option>
+                                                <option value="BOX">BOX (박스)</option>
+                                                <option value="PLT">PLT (팔레트)</option>
+                                                <option value="PCS">PCS (개)</option>
+                                                <option value="PKG">PKG (포장)</option>
+                                                <option value="SET">SET (세트)</option>
+                                                <option value="EA">EA (개)</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>중량 (Weight)</label>
+                                        <div style="display:flex; gap:8px;">
+                                            <input type="number" id="exWeightNum" placeholder="예: 15" style="flex:1;" min="0" step="0.1">
+                                            <select id="exWeightUnit" style="width:90px;">
+                                                <option value="KG" selected>KG</option>
+                                                <option value="LB">LB</option>
+                                                <option value="TON">TON</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group">
                                         <label>포장 형태</label>
                                         <select id="exPacking">
@@ -5493,6 +5548,7 @@
                                             <option value="other">기타</option>
                                         </select>
                                     </div>
+                                    <div class="form-group"></div>
                                 </div>
                             </div>
                         </div>
@@ -5538,6 +5594,13 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>운송구간 (Voyage) <span style="font-size:0.72rem; color:#888;">국가 선택 시 자동 설정</span></label>
+                                        <input type="text" id="exVoyage" class="readonly-bg" readonly placeholder="출발지·도착지 국가 선택 시 자동 입력" style="background:#f5f5f5; font-weight:600; color:var(--primary);">
+                                    </div>
+                                    <div class="form-group"></div>
+                                </div>
                             </div>
                         </div>
 
@@ -5575,17 +5638,17 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label>📄 Commercial Invoice (CI)</label>
-                                        <input type="file" id="exFileCI" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                        <input type="file" id="exFileCI" accept=".pdf,.jpg,.jpeg,.xlsx">
                                     </div>
                                     <div class="form-group">
                                         <label>📄 Packing List (PL)</label>
-                                        <input type="file" id="exFilePL" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                        <input type="file" id="exFilePL" accept=".pdf,.jpg,.jpeg,.xlsx">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label>📄 Air Waybill (AWB)</label>
-                                        <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.png,.xlsx,.xls,.doc,.docx">
+                                        <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.xlsx">
                                     </div>
                                     <div class="form-group"></div>
                                 </div>
@@ -5603,21 +5666,15 @@
                                 <div style="background:#fff3e0; border:1px solid #ffe0b2; border-radius:10px; padding:14px 18px; margin-bottom:14px;">
                                     <div style="font-size:0.85rem; font-weight:700; color:#e65100; margin-bottom:6px;">📌 결제 프로세스</div>
                                     <div style="font-size:0.78rem; color:#555; line-height:1.8;">
-                                        ① 견적신청 접수 → ② 중개사 검토 → ③ 보험사 인수심사 → ④ <strong>보험료 확정 통보</strong> → ⑤ 결제 → ⑥ 증권 발급<br>
+                                        ① 보험가입신청 접수 → ② 중개사 검토 → ③ 보험사 인수심사 → ④ <strong>보험료 확정 통보</strong> → ⑤ 결제 → ⑥ 증권 발급<br>
                                         ※ 보험료는 인수심사 완료 후 확정되며, 확정 보험료를 안내드린 후 결제가 진행됩니다.
                                     </div>
                                 </div>
-                                <div style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:8px;">결제 방법 선택 (보험료 확정 후 안내)</div>
-                                <div class="express-pay-options">
-                                    <div class="express-pay-card selected" onclick="selectExpressPayment(this,'card')">
-                                        <div class="p-icon">💳</div>
-                                        <div class="p-title">신용카드</div>
-                                        <div class="p-desc">온라인 카드결제<br>(PG: cargoinsu.com)</div>
-                                    </div>
-                                    <div class="express-pay-card" onclick="selectExpressPayment(this,'transfer')">
-                                        <div class="p-icon">🏦</div>
-                                        <div class="p-title">계좌이체</div>
-                                        <div class="p-desc">무통장입금 / 실시간이체<br>(엔투엔로지스틱 계좌)</div>
+                                <div style="background:#f5f6ff; border:1px solid #e0e4f5; border-radius:10px; padding:14px 18px;">
+                                    <div style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:8px;">💳 결제 수단 안내</div>
+                                    <div style="font-size:0.78rem; color:#555; line-height:1.8;">
+                                        • <strong>신용카드:</strong> 온라인 카드결제 (PG: cargoinsu.com)<br>
+                                        • <strong>계좌이체:</strong> 무통장입금 / 실시간이체 (엔투엔로지스틱 계좌)
                                     </div>
                                 </div>
                                 <div style="margin-top:12px; font-size:0.73rem; color:#888; line-height:1.6;">
@@ -5663,7 +5720,7 @@
 
                         <!-- 버튼 영역 -->
                         <div style="display:flex; gap:12px; margin-top:20px;">
-                            <button class="design-btn-submit" onclick="submitExpress()" style="flex:2; background:var(--accent); padding:16px; font-size:1.05rem;">✈️ 특송보험 견적신청하기</button>
+                            <button class="design-btn-submit" onclick="submitExpress()" style="flex:2; background:var(--accent); padding:16px; font-size:1.05rem;">✈️ 특송보험 가입신청하기</button>
                         </div>
 
                     </div>
@@ -7735,7 +7792,7 @@ function buildEmailParams(formType, formData) {
     let summary = '';
     
     if (formType === 'cargo_apply') {
-        subject = `[적하보험 견적신청] ${formData.contractorName || '미입력'} - ${formData.cargoName || ''}`;
+        subject = `[적하보험 가입신청] ${formData.contractorName || '미입력'} - ${formData.cargoName || ''}`;
         summary = [
             `📋 신청유형: 적하보험 직접입력`,
             `🏢 계약자: ${formData.contractorName || '-'} (${formData.contractorBizNo || '-'})`,
@@ -7747,7 +7804,7 @@ function buildEmailParams(formType, formData) {
             `📝 메모: ${formData.memo || '없음'}`
         ].join('\n');
     } else if (formType === 'express') {
-        subject = `[특송보험 견적신청] ${formData.insured?.name || '미입력'} - ${formData.carrier || ''}`;
+        subject = `[특송보험 가입신청] ${formData.insured?.name || '미입력'} - ${formData.carrier || ''}`;
         summary = [
             `📋 신청유형: 특송 적하보험`,
             `✈️ 특송사: ${formData.carrier || '-'} (${formData.trackingNo || '-'})`,
@@ -7810,11 +7867,17 @@ async function sendToGoogleSheets(formType, formData) {
 
 // ==================== DATA ====================
 const countries = [
+    // 국내연안
     {code:"KR",name:"Korea",korean:"한국",region:"국내연안"},
+    // 일본
     {code:"JP",name:"Japan",korean:"일본",region:"일본"},
+    // 중국/대만/홍콩/마카오
     {code:"CN",name:"China",korean:"중국",region:"중국"},
     {code:"TW",name:"Taiwan",korean:"대만",region:"중국"},
     {code:"HK",name:"Hong Kong",korean:"홍콩",region:"중국"},
+    {code:"MO",name:"Macau",korean:"마카오",region:"중국"},
+    {code:"MN",name:"Mongolia",korean:"몽골",region:"중국"},
+    // 동남아
     {code:"VN",name:"Vietnam",korean:"베트남",region:"동남아"},
     {code:"TH",name:"Thailand",korean:"태국",region:"동남아"},
     {code:"SG",name:"Singapore",korean:"싱가포르",region:"동남아"},
@@ -7824,10 +7887,23 @@ const countries = [
     {code:"MM",name:"Myanmar",korean:"미얀마",region:"동남아"},
     {code:"KH",name:"Cambodia",korean:"캄보디아",region:"동남아"},
     {code:"LA",name:"Laos",korean:"라오스",region:"동남아"},
-    {code:"BD",name:"Bangladesh",korean:"방글라데시",region:"동남아"},
+    {code:"BN",name:"Brunei",korean:"브루나이",region:"동남아"},
+    {code:"TL",name:"Timor-Leste",korean:"동티모르",region:"동남아"},
+    {code:"FJ",name:"Fiji",korean:"피지",region:"동남아"},
+    {code:"PG",name:"Papua New Guinea",korean:"파푸아뉴기니",region:"동남아"},
+    {code:"WS",name:"Samoa",korean:"사모아",region:"동남아"},
+    {code:"TO",name:"Tonga",korean:"통가",region:"동남아"},
+    {code:"VU",name:"Vanuatu",korean:"바누아투",region:"동남아"},
+    {code:"NC",name:"New Caledonia",korean:"뉴칼레도니아",region:"동남아"},
+    {code:"GU",name:"Guam",korean:"괌",region:"동남아"},
+    // 중동/아프리카 (중동아)
+    {code:"BD",name:"Bangladesh",korean:"방글라데시",region:"중동아"},
     {code:"IN",name:"India",korean:"인도",region:"중동아"},
     {code:"PK",name:"Pakistan",korean:"파키스탄",region:"중동아"},
     {code:"LK",name:"Sri Lanka",korean:"스리랑카",region:"중동아"},
+    {code:"NP",name:"Nepal",korean:"네팔",region:"중동아"},
+    {code:"MV",name:"Maldives",korean:"몰디브",region:"중동아"},
+    {code:"AF",name:"Afghanistan",korean:"아프가니스탄",region:"중동아"},
     {code:"AE",name:"UAE",korean:"아랍에미리트",region:"중동아"},
     {code:"SA",name:"Saudi Arabia",korean:"사우디아라비아",region:"중동아"},
     {code:"QA",name:"Qatar",korean:"카타르",region:"중동아"},
@@ -7838,6 +7914,21 @@ const countries = [
     {code:"IQ",name:"Iraq",korean:"이라크",region:"중동아"},
     {code:"TR",name:"Turkey",korean:"터키",region:"중동아"},
     {code:"IL",name:"Israel",korean:"이스라엘",region:"중동아"},
+    {code:"JO",name:"Jordan",korean:"요르단",region:"중동아"},
+    {code:"LB",name:"Lebanon",korean:"레바논",region:"중동아"},
+    {code:"SY",name:"Syria",korean:"시리아",region:"중동아"},
+    {code:"YE",name:"Yemen",korean:"예멘",region:"중동아"},
+    {code:"PS",name:"Palestine",korean:"팔레스타인",region:"중동아"},
+    {code:"CY",name:"Cyprus",korean:"키프로스",region:"중동아"},
+    {code:"GE",name:"Georgia",korean:"조지아",region:"중동아"},
+    {code:"AM",name:"Armenia",korean:"아르메니아",region:"중동아"},
+    {code:"AZ",name:"Azerbaijan",korean:"아제르바이잔",region:"중동아"},
+    {code:"KZ",name:"Kazakhstan",korean:"카자흐스탄",region:"중동아"},
+    {code:"UZ",name:"Uzbekistan",korean:"우즈베키스탄",region:"중동아"},
+    {code:"TM",name:"Turkmenistan",korean:"투르크메니스탄",region:"중동아"},
+    {code:"KG",name:"Kyrgyzstan",korean:"키르기스스탄",region:"중동아"},
+    {code:"TJ",name:"Tajikistan",korean:"타지키스탄",region:"중동아"},
+    // 아프리카 (중동아)
     {code:"EG",name:"Egypt",korean:"이집트",region:"중동아"},
     {code:"ZA",name:"South Africa",korean:"남아프리카공화국",region:"중동아"},
     {code:"NG",name:"Nigeria",korean:"나이지리아",region:"중동아"},
@@ -7845,8 +7936,52 @@ const countries = [
     {code:"GH",name:"Ghana",korean:"가나",region:"중동아"},
     {code:"TZ",name:"Tanzania",korean:"탄자니아",region:"중동아"},
     {code:"ET",name:"Ethiopia",korean:"에티오피아",region:"중동아"},
+    {code:"MA",name:"Morocco",korean:"모로코",region:"중동아"},
+    {code:"DZ",name:"Algeria",korean:"알제리",region:"중동아"},
+    {code:"TN",name:"Tunisia",korean:"튀니지",region:"중동아"},
+    {code:"LY",name:"Libya",korean:"리비아",region:"중동아"},
+    {code:"SD",name:"Sudan",korean:"수단",region:"중동아"},
+    {code:"AO",name:"Angola",korean:"앙골라",region:"중동아"},
+    {code:"MZ",name:"Mozambique",korean:"모잠비크",region:"중동아"},
+    {code:"CM",name:"Cameroon",korean:"카메룬",region:"중동아"},
+    {code:"CI",name:"Ivory Coast",korean:"코트디부아르",region:"중동아"},
+    {code:"SN",name:"Senegal",korean:"세네갈",region:"중동아"},
+    {code:"UG",name:"Uganda",korean:"우간다",region:"중동아"},
+    {code:"CD",name:"DR Congo",korean:"콩고민주공화국",region:"중동아"},
+    {code:"CG",name:"Congo",korean:"콩고",region:"중동아"},
+    {code:"ZM",name:"Zambia",korean:"잠비아",region:"중동아"},
+    {code:"ZW",name:"Zimbabwe",korean:"짐바브웨",region:"중동아"},
+    {code:"RW",name:"Rwanda",korean:"르완다",region:"중동아"},
+    {code:"MG",name:"Madagascar",korean:"마다가스카르",region:"중동아"},
+    {code:"MU",name:"Mauritius",korean:"모리셔스",region:"중동아"},
+    {code:"BW",name:"Botswana",korean:"보츠와나",region:"중동아"},
+    {code:"NA",name:"Namibia",korean:"나미비아",region:"중동아"},
+    {code:"DJ",name:"Djibouti",korean:"지부티",region:"중동아"},
+    {code:"SO",name:"Somalia",korean:"소말리아",region:"중동아"},
+    {code:"ER",name:"Eritrea",korean:"에리트레아",region:"중동아"},
+    {code:"ML",name:"Mali",korean:"말리",region:"중동아"},
+    {code:"BF",name:"Burkina Faso",korean:"부르키나파소",region:"중동아"},
+    {code:"NE",name:"Niger",korean:"니제르",region:"중동아"},
+    {code:"TD",name:"Chad",korean:"차드",region:"중동아"},
+    {code:"GA",name:"Gabon",korean:"가봉",region:"중동아"},
+    {code:"GN",name:"Guinea",korean:"기니",region:"중동아"},
+    {code:"BJ",name:"Benin",korean:"베냉",region:"중동아"},
+    {code:"TG",name:"Togo",korean:"토고",region:"중동아"},
+    {code:"LR",name:"Liberia",korean:"라이베리아",region:"중동아"},
+    {code:"SL",name:"Sierra Leone",korean:"시에라리온",region:"중동아"},
+    {code:"MW",name:"Malawi",korean:"말라위",region:"중동아"},
+    {code:"LS",name:"Lesotho",korean:"레소토",region:"중동아"},
+    {code:"SZ",name:"Eswatini",korean:"에스와티니",region:"중동아"},
+    {code:"SS",name:"South Sudan",korean:"남수단",region:"중동아"},
+    {code:"GM",name:"Gambia",korean:"감비아",region:"중동아"},
+    {code:"GQ",name:"Equatorial Guinea",korean:"적도기니",region:"중동아"},
+    {code:"CF",name:"Central African Republic",korean:"중앙아프리카공화국",region:"중동아"},
+    {code:"MR",name:"Mauritania",korean:"모리타니",region:"중동아"},
+    {code:"RE",name:"Reunion",korean:"레위니옹",region:"중동아"},
+    // 호주/뉴질랜드
     {code:"AU",name:"Australia",korean:"호주",region:"호주"},
     {code:"NZ",name:"New Zealand",korean:"뉴질랜드",region:"호주"},
+    // 유럽
     {code:"DE",name:"Germany",korean:"독일",region:"유럽"},
     {code:"FR",name:"France",korean:"프랑스",region:"유럽"},
     {code:"GB",name:"United Kingdom",korean:"영국",region:"유럽"},
@@ -7869,10 +8004,50 @@ const countries = [
     {code:"IE",name:"Ireland",korean:"아일랜드",region:"유럽"},
     {code:"RU",name:"Russia",korean:"러시아",region:"유럽"},
     {code:"UA",name:"Ukraine",korean:"우크라이나",region:"유럽"},
+    {code:"MT",name:"Malta",korean:"몰타",region:"유럽"},
+    {code:"LU",name:"Luxembourg",korean:"룩셈부르크",region:"유럽"},
+    {code:"SK",name:"Slovakia",korean:"슬로바키아",region:"유럽"},
+    {code:"SI",name:"Slovenia",korean:"슬로베니아",region:"유럽"},
+    {code:"HR",name:"Croatia",korean:"크로아티아",region:"유럽"},
+    {code:"BG",name:"Bulgaria",korean:"불가리아",region:"유럽"},
+    {code:"RS",name:"Serbia",korean:"세르비아",region:"유럽"},
+    {code:"LT",name:"Lithuania",korean:"리투아니아",region:"유럽"},
+    {code:"LV",name:"Latvia",korean:"라트비아",region:"유럽"},
+    {code:"EE",name:"Estonia",korean:"에스토니아",region:"유럽"},
+    {code:"IS",name:"Iceland",korean:"아이슬란드",region:"유럽"},
+    {code:"BA",name:"Bosnia and Herzegovina",korean:"보스니아헤르체고비나",region:"유럽"},
+    {code:"AL",name:"Albania",korean:"알바니아",region:"유럽"},
+    {code:"MK",name:"North Macedonia",korean:"북마케도니아",region:"유럽"},
+    {code:"ME",name:"Montenegro",korean:"몬테네그로",region:"유럽"},
+    {code:"XK",name:"Kosovo",korean:"코소보",region:"유럽"},
+    {code:"MD",name:"Moldova",korean:"몰도바",region:"유럽"},
+    {code:"BY",name:"Belarus",korean:"벨라루스",region:"유럽"},
+    {code:"MC",name:"Monaco",korean:"모나코",region:"유럽"},
+    {code:"LI",name:"Liechtenstein",korean:"리히텐슈타인",region:"유럽"},
+    {code:"AD",name:"Andorra",korean:"안도라",region:"유럽"},
+    {code:"SM",name:"San Marino",korean:"산마리노",region:"유럽"},
+    {code:"VA",name:"Vatican City",korean:"바티칸시국",region:"유럽"},
+    {code:"GI",name:"Gibraltar",korean:"지브롤터",region:"유럽"},
+    // 북미
     {code:"US",name:"United States",korean:"미국",region:"북미"},
     {code:"CA",name:"Canada",korean:"캐나다",region:"북미"},
     {code:"MX",name:"Mexico",korean:"멕시코",region:"북미"},
     {code:"PA",name:"Panama",korean:"파나마",region:"북미"},
+    {code:"GT",name:"Guatemala",korean:"과테말라",region:"북미"},
+    {code:"HN",name:"Honduras",korean:"온두라스",region:"북미"},
+    {code:"SV",name:"El Salvador",korean:"엘살바도르",region:"북미"},
+    {code:"NI",name:"Nicaragua",korean:"니카라과",region:"북미"},
+    {code:"CR",name:"Costa Rica",korean:"코스타리카",region:"북미"},
+    {code:"BZ",name:"Belize",korean:"벨리즈",region:"북미"},
+    {code:"CU",name:"Cuba",korean:"쿠바",region:"북미"},
+    {code:"DO",name:"Dominican Republic",korean:"도미니카공화국",region:"북미"},
+    {code:"JM",name:"Jamaica",korean:"자메이카",region:"북미"},
+    {code:"HT",name:"Haiti",korean:"아이티",region:"북미"},
+    {code:"TT",name:"Trinidad and Tobago",korean:"트리니다드토바고",region:"북미"},
+    {code:"BS",name:"Bahamas",korean:"바하마",region:"북미"},
+    {code:"BB",name:"Barbados",korean:"바베이도스",region:"북미"},
+    {code:"PR",name:"Puerto Rico",korean:"푸에르토리코",region:"북미"},
+    // 남미
     {code:"BR",name:"Brazil",korean:"브라질",region:"남미"},
     {code:"AR",name:"Argentina",korean:"아르헨티나",region:"남미"},
     {code:"CL",name:"Chile",korean:"칠레",region:"남미"},
@@ -7882,7 +8057,9 @@ const countries = [
     {code:"EC",name:"Ecuador",korean:"에콰도르",region:"남미"},
     {code:"UY",name:"Uruguay",korean:"우루과이",region:"남미"},
     {code:"PY",name:"Paraguay",korean:"파라과이",region:"남미"},
-    {code:"BO",name:"Bolivia",korean:"볼리비아",region:"남미"}
+    {code:"BO",name:"Bolivia",korean:"볼리비아",region:"남미"},
+    {code:"GY",name:"Guyana",korean:"가이아나",region:"남미"},
+    {code:"SR",name:"Suriname",korean:"수리남",region:"남미"}
 ];
 
 const cities = {
@@ -7924,7 +8101,44 @@ const cities = {
     "AR":["Buenos Aires (부에노스아이레스)"],
     "PE":["Callao (카야오)","Lima (리마)"],
     "CO":["Buenaventura (부에나벤투라)","Cartagena (카르타헤나)","Bogota (보고타)"],
-    "PA":["Panama City (파나마시티)","Balboa (발보아)","Colon (콜론)"]
+    "PA":["Panama City (파나마시티)","Balboa (발보아)","Colon (콜론)"],
+    "MT":["Valletta (발레타)","Marsaxlokk (마르사슬록)"],
+    "LU":["Luxembourg City (룩셈부르크시)"],
+    "SK":["Bratislava (브라티슬라바)"],
+    "SI":["Ljubljana (류블랴나)","Koper (코페르)"],
+    "HR":["Zagreb (자그레브)","Rijeka (리예카)","Split (스플리트)"],
+    "BG":["Sofia (소피아)","Varna (바르나)","Burgas (부르가스)"],
+    "RS":["Belgrade (베오그라드)"],
+    "LT":["Vilnius (빌뉴스)","Klaipeda (클라이페다)"],
+    "LV":["Riga (리가)"],
+    "EE":["Tallinn (탈린)"],
+    "IS":["Reykjavik (레이캬비크)"],
+    "CY":["Limassol (리마솔)","Nicosia (니코시아)"],
+    "JO":["Amman (암만)","Aqaba (아카바)"],
+    "LB":["Beirut (베이루트)"],
+    "MA":["Casablanca (카사블랑카)","Tangier (탕헤르)"],
+    "TN":["Tunis (튀니스)"],
+    "DZ":["Algiers (알제)"],
+    "AO":["Luanda (루안다)"],
+    "MZ":["Maputo (마푸토)"],
+    "KZ":["Almaty (알마티)","Astana (아스타나)"],
+    "UZ":["Tashkent (타슈켄트)"],
+    "GE":["Tbilisi (트빌리시)","Batumi (바투미)"],
+    "GT":["Guatemala City (과테말라시티)","Puerto Quetzal (푸에르토케찰)"],
+    "CR":["San Jose (산호세)"],
+    "DO":["Santo Domingo (산토도밍고)"],
+    "JM":["Kingston (킹스턴)"],
+    "NP":["Kathmandu (카트만두)"],
+    "MN":["Ulaanbaatar (울란바토르)"],
+    "FJ":["Suva (수바)"],
+    "PG":["Port Moresby (포트모르즈비)"],
+    "BN":["Bandar Seri Begawan (반다르스리브가완)"],
+    "GY":["Georgetown (조지타운)"],
+    "MU":["Port Louis (포트루이스)"],
+    "MG":["Antananarivo (안타나나리보)"],
+    "CM":["Douala (두알라)"],
+    "SN":["Dakar (다카르)"],
+    "CI":["Abidjan (아비장)"]
 };
 
 const hsCodeMapping = {
@@ -9574,6 +9788,14 @@ function showPage(pageId) {
     if (page) page.classList.add('active');
     
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    
+    // 적하보험 견적신청 페이지 진입 시 일반 적하보험(general) 트랙으로 초기화
+    if (pageId === 'apply') {
+        selectTrack('general');
+        // 간편접수 탭도 기본으로 리셋
+        switchApplyTab('ez');
+    }
+    
     window.scrollTo(0, 0);
 }
 
@@ -11136,15 +11358,40 @@ function exSearchCountry(input, ddId) {
     if (q.length < 1) { dd.classList.remove('show'); return; }
     const filtered = countries.filter(c => c.name.toLowerCase().includes(q) || c.korean.includes(q) || c.code.toLowerCase().includes(q)).slice(0, 10);
     if (!filtered.length) { dd.innerHTML = '<div style="color:#999;">검색결과 없음</div>'; dd.classList.add('show'); return; }
-    dd.innerHTML = filtered.map(c => `<div data-code="${c.code}" data-name="${c.name}">${c.name} (${c.korean})</div>`).join('');
+    dd.innerHTML = filtered.map(c => `<div data-code="${c.code}" data-name="${c.name}" data-region="${c.region}">${c.name} (${c.korean})</div>`).join('');
     dd.classList.add('show');
     dd.querySelectorAll('div').forEach(div => {
         div.onclick = () => {
             input.value = div.dataset.name;
             input.dataset.code = div.dataset.code;
+            input.dataset.region = div.dataset.region;
             dd.classList.remove('show');
+            updateExVoyage();
         };
     });
+}
+
+// 특송보험 운송구간(Voyage) 자동 설정
+function updateExVoyage() {
+    const regionLabels = {'국내연안':'국내연안','일본':'일본','중국':'중국','동남아':'동남아','중동아':'중동/아프리카','호주':'호주/뉴질랜드','유럽':'유럽','북미':'북미','남미':'남미'};
+    const originRegion = document.getElementById('exOriginCountry').dataset.region || '';
+    const destRegion = document.getElementById('exDestCountry').dataset.region || '';
+    const originName = document.getElementById('exOriginCountry').value || '';
+    const destName = document.getElementById('exDestCountry').value || '';
+    const voyageEl = document.getElementById('exVoyage');
+    if (originRegion && destRegion) {
+        const oLabel = regionLabels[originRegion] || originRegion;
+        const dLabel = regionLabels[destRegion] || destRegion;
+        voyageEl.value = `${originName} (${oLabel}) → ${destName} (${dLabel})`;
+    } else if (destRegion) {
+        const dLabel = regionLabels[destRegion] || destRegion;
+        voyageEl.value = `→ ${destName} (${dLabel})`;
+    } else if (originRegion) {
+        const oLabel = regionLabels[originRegion] || originRegion;
+        voyageEl.value = `${originName} (${oLabel}) →`;
+    } else {
+        voyageEl.value = '';
+    }
 }
 
 function exShowCities(input, ddId, countryInputId) {
@@ -11307,11 +11554,13 @@ async function submitExpress() {
             currency: document.getElementById('exCurrency').value,
             invoiceValue: invoice,
             insuredRate: document.getElementById('exInsuredRate').value,
-            quantity: document.getElementById('exQuantity').value.trim(),
+            quantity: (document.getElementById('exQuantityNum').value.trim() || '') + ' ' + (document.getElementById('exQuantityUnit').value || ''),
+            weight: (document.getElementById('exWeightNum').value.trim() || '') + ' ' + (document.getElementById('exWeightUnit').value || ''),
             packing: document.getElementById('exPacking').value
         },
         route: {
             origin, destination: dest,
+            voyage: document.getElementById('exVoyage').value.trim(),
             shipDate: document.getElementById('exShipDate').value,
             direction: document.getElementById('exDirection').value
         },
@@ -11320,7 +11569,7 @@ async function submitExpress() {
             warRisk: document.getElementById('exWarRisk').value,
             strikeRisk: document.getElementById('exStrikeRisk').value
         },
-        payment: document.querySelector('.express-pay-card.selected')?.dataset?.method || 'card',
+        payment: '보험료 확정 후 결제',
         memo: document.getElementById('exMemo').value.trim(),
         timestamp: new Date().toISOString()
     };
@@ -11685,7 +11934,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 화물배상책임보험 폼 UI 초기화
     initLiabilityFormUI();
     
-    console.log('Cargoinsu v12 초기화 완료 - 견적신청 기능 추가');
+    console.log('Cargoinsu v12 초기화 완료 - 보험가입신청 기능 추가');
     console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
     
     // 적하보험 견적신청 초기화
@@ -11701,9 +11950,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="modal-content" style="max-width:500px; text-align:center;">
             <span class="modal-close" onclick="closeModal('designSuccessModal')">&times;</span>
             <div class="success-icon">✅</div>
-            <h3 style="color:var(--primary); margin-bottom:12px;">적하보험 견적신청 완료</h3>
+            <h3 style="color:var(--primary); margin-bottom:12px;">적하보험 가입신청 완료</h3>
             <p style="color:#555; font-size:0.9rem; line-height:1.8; margin-bottom:20px;">
-                견적신청이 성공적으로 접수되었습니다.<br>
+                보험가입신청이 성공적으로 접수되었습니다.<br>
                 담당자가 검토 후 <strong>영업일 기준 1일 이내</strong>에<br>
                 보험료 산출 결과와 함께 연락드리겠습니다.
             </p>
