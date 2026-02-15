@@ -12038,12 +12038,6 @@ async function aiParseDocument(mode) {
         
         const data = result.data;
         
-        if (result.status !== 200 || !result.data) {
-            throw new Error(result.message || 'AI 파싱 실패');
-        }
-        
-        const data = result.data;
-        
         // 폼에 자동 입력
         aiAutoFill(mode, data);
         
