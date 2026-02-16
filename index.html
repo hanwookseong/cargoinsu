@@ -4525,8 +4525,16 @@
                                         <span class="upload-req optional">선택</span>
                                         <div class="file-attached" id="ezFileEtcName"></div>
                                     </div>
-                                    <input type="file" id="ezFileEtc" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardEtc','ezFileEtcName')">
+                                    <input type="file" id="ezFileEtc" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="display:none;" onchange="ezFileChanged(this,'ezCardEtc','ezFileEtcName')">
                                 </div>
+                                
+                                <p style="font-size:0.75rem; color:#888; margin-top:8px;">📎 지원 파일형태: <strong>JPG, PDF, Excel(.xlsx)</strong> | 각 파일 최대 5MB</p>
+                                
+                                <!-- 추가 서류 첨부 -->
+                                <div id="ezFileUploadList" style="margin-top:8px;"></div>
+                                <button type="button" onclick="addEzFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:6px 14px; border-radius:8px; cursor:pointer; font-size:0.78rem; margin-top:4px;">
+                                    ➕ 서류 추가 첨부
+                                </button>
                                 
                                 <div id="ezDocWarning" style="display:none; background:#ffebee; border:1px solid #ef9a9a; border-radius:8px; padding:10px 14px; font-size:0.8rem; color:#c62828; margin-top:8px;">
                                     ⚠️ 최소 <strong>CI(Commercial Invoice)</strong>는 반드시 업로드해 주세요.
@@ -4624,6 +4632,10 @@
                                             <option value="오픈탑컨테이너">오픈탑(Open Top) 컨테이너</option>
                                             <option value="플랫랙컨테이너">플랫랙(Flat Rack) 컨테이너</option>
                                             <option value="벌크">벌크 (산적)</option>
+                                            <option value="유리병">유리병</option>
+                                            <option value="PP병">PP병</option>
+                                            <option value="종이박스">종이박스</option>
+                                            <option value="PP박스">PP박스</option>
                                         </select>
                                     </div>
                                     <div class="design-field">
@@ -4634,6 +4646,23 @@
                                             <option value="갑판">갑판 (On Deck)</option>
                                         </select>
                                         <div style="font-size:0.7rem; color:#888; margin-top:3px;">화물 적재 위치에 따라 담보조건이 변경될 수 있습니다</div>
+                                    </div>
+                                </div>
+
+                                <!-- 운송모드 + Vessel No. -->
+                                <div class="design-row">
+                                    <div class="design-field">
+                                        <label>운송모드 Mode of Transport <span class="req">*</span></label>
+                                        <select id="ezTransportMode" class="required-field">
+                                            <option value="">-- 선택 --</option>
+                                            <option value="SEA">SEA (해상운송)</option>
+                                            <option value="AIR">AIR (항공운송)</option>
+                                            <option value="MULTIMODAL">MULTIMODAL (복합운송)</option>
+                                        </select>
+                                    </div>
+                                    <div class="design-field">
+                                        <label>Vessel / Flight No.</label>
+                                        <input type="text" id="ezVesselNo" placeholder="선박명 또는 항공편명 (예: HMM GDANSK V.052E)">
                                     </div>
                                 </div>
 
@@ -4789,6 +4818,39 @@
                         <span style="color:#1a237e; font-weight:600;">💡 서류를 보유하고 계시다면 <a href="javascript:void(0)" onclick="switchApplyTab('ez')" style="color:#e65100; font-weight:700; text-decoration:underline;">간편접수 모드</a>를 이용해 보세요. 30개+ 필드 대신 서류 업로드 + 5~6개 항목만 입력하시면 됩니다.</span>
                     </div>
 
+                    <!-- ⓪ 서류 첨부 (선택) -->
+                    <div class="design-section">
+                        <div class="design-section-title">📎 ⓪ 서류 첨부 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(선택 — 첨부 시 AI 자동인식 가능)</span></div>
+                        <div class="design-section-body">
+                            <p style="font-size:0.8rem; color:#666; margin-bottom:10px; line-height:1.6;">서류를 첨부하시면 AI가 자동으로 정보를 추출합니다. <strong>지원 파일형태: JPG, PDF, Excel(.xlsx)</strong></p>
+                            <div id="dsFileUploadList">
+                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                                    <select style="width:160px; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
+                                        <option value="CI">Commercial Invoice</option>
+                                        <option value="BL">B/L 선하증권</option>
+                                        <option value="AWB">Air Waybill</option>
+                                        <option value="PL">Packing List</option>
+                                        <option value="Request">부보의뢰서</option>
+                                        <option value="ETC">기타 서류</option>
+                                    </select>
+                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+                                    <button type="button" onclick="this.closest('.ds-file-row').remove();" style="background:#ef5350; color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:1rem; line-height:1;">✕</button>
+                                </div>
+                            </div>
+                            <button type="button" onclick="addDsFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:0.82rem; margin-top:4px;">
+                                ➕ 서류 추가 첨부
+                            </button>
+                            <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
+                                <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
+                                    <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
+                                </button>
+                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로 등이 자동 입력됩니다.</div>
+                                <div class="ai-parse-result" id="dsAiResult"></div>
+                                <div class="ai-parse-error" id="dsAiError"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- ① 계약자 / 피보험자 정보 -->
                     <div class="design-section">
                         <div class="design-section-title">👤 ① 계약자 / 피보험자 정보</div>
@@ -4805,15 +4867,6 @@
                                 <div class="design-field">
                                     <label>계약자 회사명</label>
                                     <input type="text" id="dsContractorName" class="readonly-bg" readonly placeholder="사업자번호 검색 시 자동입력">
-                                </div>
-                            </div>
-                            <div class="design-row">
-                                <div class="design-field" style="grid-column: 1 / -1;">
-                                    <label>최종발송지 (계약자 사업장주소) <span class="req">*</span></label>
-                                    <div class="input-with-btn">
-                                        <input type="text" id="dsDispatchAddr" class="required-field" placeholder="계약자 검색 시 등록 주소가 자동입력됩니다" readonly>
-                                        <button onclick="editDispatchAddr()">✏️ 변경</button>
-                                    </div>
                                 </div>
                             </div>
                             
@@ -4884,6 +4937,23 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <!-- 운송모드 + Vessel No. -->
+                            <div class="design-row">
+                                <div class="design-field">
+                                    <label>운송모드 Mode of Transport <span class="req">*</span></label>
+                                    <select id="dsTransportMode" class="required-field">
+                                        <option value="">-- 선택 --</option>
+                                        <option value="SEA">SEA (해상운송)</option>
+                                        <option value="AIR">AIR (항공운송)</option>
+                                        <option value="MULTIMODAL">MULTIMODAL (복합운송)</option>
+                                    </select>
+                                </div>
+                                <div class="design-field">
+                                    <label>Vessel / Flight No.</label>
+                                    <input type="text" id="dsVesselNo" placeholder="선박명 또는 항공편명 (예: HMM GDANSK V.052E)">
+                                </div>
+                            </div>
                             
                             <!-- 갑판적재 경고 (직접입력) -->
                             <div id="dsDeckWarning" style="display:none; background:#ffebee; border:2px solid #e53935; border-radius:8px; padding:12px 16px; margin-bottom:12px;">
@@ -4896,7 +4966,7 @@
                             
                             <!-- 출발지: 국가 → 도시 -->
                             <div style="background:#f8f9ff; border:1px solid #e0e0e0; border-radius:8px; padding:14px; margin-bottom:12px;">
-                                <label style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:8px; display:block;">📍 출발지 <span class="req">*</span></label>
+                                <label style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:8px; display:block;">📍 출발지 POL (Port of Loading) <span class="req">*</span></label>
                                 <div class="design-row">
                                     <div class="design-field">
                                         <label>국가명 검색</label>
@@ -4913,7 +4983,7 @@
                             
                             <!-- 도착지: 국가 → 도시 -->
                             <div style="background:#fff8f0; border:1px solid #ffe0b2; border-radius:8px; padding:14px; margin-bottom:12px;">
-                                <label style="font-size:0.82rem; font-weight:700; color:#e65100; margin-bottom:8px; display:block;">📍 도착지 <span class="req">*</span></label>
+                                <label style="font-size:0.82rem; font-weight:700; color:#e65100; margin-bottom:8px; display:block;">📍 도착지 POD (Port of Discharge) <span class="req">*</span></label>
                                 <div class="design-row">
                                     <div class="design-field">
                                         <label>국가명 검색</label>
@@ -5143,18 +5213,6 @@
                                 </div>
                             </div>
                             
-                            <!-- Survey / Claim Agent -->
-                            <div class="design-row">
-                                <div class="design-field">
-                                    <label>Survey Agent</label>
-                                    <input type="text" id="dsSurveyAgent" placeholder="감정인 (선택사항)">
-                                </div>
-                                <div class="design-field">
-                                    <label>Claim Agent</label>
-                                    <input type="text" id="dsClaimAgent" placeholder="클레임 대리인 (선택사항)">
-                                </div>
-                            </div>
-                            
                             <!-- 특별약관 -->
                             <div style="margin-top:12px;">
                                 <label style="font-size:0.82rem; font-weight:600; color:#555; margin-bottom:8px; display:block;">특별약관 (Special Clauses) - 해당되는 항목 선택</label>
@@ -5240,66 +5298,8 @@
                         </div>
                     </div>
 
-                    <!-- ⑦ 서류 업로드 -->
-                    <div class="design-section">
-                        <div class="design-section-title">📎 ⑦ 관련서류 업로드</div>
-                        <div class="design-section-body">
-                            <p style="font-size:0.8rem; color:#666; margin-bottom:12px;">신청 시 필요한 서류를 업로드해 주세요. (PDF, JPG, PNG / 건당 최대 10MB)</p>
-                            
-                            <div class="design-row">
-                                <div class="design-field">
-                                    <label>Commercial Invoice (상업송장) <span class="req">*</span></label>
-                                    <div class="design-file-area" onclick="document.getElementById('fileInvoice').click();">
-                                        <div class="file-icon">📄</div>
-                                        <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
-                                    </div>
-                                    <input type="file" id="fileInvoice" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileInvoiceList')">
-                                    <div class="design-file-list" id="fileInvoiceList"></div>
-                                </div>
-                                <div class="design-field">
-                                    <label>Packing List</label>
-                                    <div class="design-file-area" onclick="document.getElementById('filePL').click();">
-                                        <div class="file-icon">📄</div>
-                                        <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
-                                    </div>
-                                    <input type="file" id="filePL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'filePLList')">
-                                    <div class="design-file-list" id="filePLList"></div>
-                                </div>
-                            </div>
-                            <div class="design-row">
-                                <div class="design-field">
-                                    <label>B/L 또는 AWB (선하증권/항공화물운송장)</label>
-                                    <div class="design-file-area" onclick="document.getElementById('fileBL').click();">
-                                        <div class="file-icon">📄</div>
-                                        <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
-                                    </div>
-                                    <input type="file" id="fileBL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileBLList')">
-                                    <div class="design-file-list" id="fileBLList"></div>
-                                </div>
-                                <div class="design-field">
-                                    <label>기타 서류 (L/C 사본 등)</label>
-                                    <div class="design-file-area" onclick="document.getElementById('fileEtc').click();">
-                                        <div class="file-icon">📄</div>
-                                        <div class="file-text">클릭하여 파일 선택</div>
-                                        <div class="file-hint">PDF, JPG, XLSX (최대 5MB)</div>
-                                    </div>
-                                    <input type="file" id="fileEtc" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="showFileName(this, 'fileEtcList')">
-                                    <div class="design-file-list" id="fileEtcList"></div>
-                                </div>
-                            </div>
-                            <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
-                                <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
-                                    <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
-                                </button>
-                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로, 계약자 정보 등이 자동 입력됩니다.</div>
-                                <div class="ai-parse-result" id="dsAiResult"></div>
-                                <div class="ai-parse-error" id="dsAiError"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- ⑦ 관련서류 업로드 (상단 ⓪에서 통합) -->
+                    <!-- 서류 업로드는 폼 상단의 ⓪ 서류 첨부 섹션으로 통합되었습니다 -->
 
                     <!-- ⑦-2 담당자 연락처 -->
                     <div class="design-section">
@@ -5571,12 +5571,18 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label>포장 형태</label>
+                                        <label>포장 형태 Packaging</label>
                                         <select id="exPacking">
-                                            <option value="carton" selected>Carton (카톤)</option>
+                                            <option value="">-- 선택 --</option>
+                                            <option value="일반포장">일반포장 (CASE/SKID/PALLET 등)</option>
+                                            <option value="carton">Carton (카톤)</option>
                                             <option value="pallet">Pallet (팔레트)</option>
                                             <option value="crate">Crate (크레이트)</option>
                                             <option value="envelope">Envelope (서류봉투)</option>
+                                            <option value="종이박스">종이박스</option>
+                                            <option value="PP박스">PP박스</option>
+                                            <option value="유리병">유리병</option>
+                                            <option value="PP병">PP병</option>
                                             <option value="other">기타</option>
                                         </select>
                                     </div>
@@ -5591,7 +5597,7 @@
                             <div class="design-section-body">
                                 <div class="form-row">
                                     <div class="form-group" style="position:relative;">
-                                        <label>출발지 국가 <span style="color:#e53935;">*</span></label>
+                                        <label>출발지 국가 POL <span style="color:#e53935;">*</span></label>
                                         <input type="text" id="exOriginCountry" class="required-field" placeholder="국가명 입력 (예: Korea, 한국)" oninput="exSearchCountry(this,'exOriginCountryDD')" onblur="setTimeout(()=>{exAutoMatchCountry(this); updateExVoyage();}, 200)" autocomplete="off">
                                         <div class="search-dropdown" id="exOriginCountryDD"></div>
                                     </div>
@@ -5603,7 +5609,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group" style="position:relative;">
-                                        <label>도착지 국가 <span style="color:#e53935;">*</span></label>
+                                        <label>도착지 국가 POD <span style="color:#e53935;">*</span></label>
                                         <input type="text" id="exDestCountry" class="required-field" placeholder="국가명 입력 (예: USA, 미국)" oninput="exSearchCountry(this,'exDestCountryDD')" onblur="setTimeout(()=>{exAutoMatchCountry(this); updateExVoyage();}, 200)" autocomplete="off">
                                         <div class="search-dropdown" id="exDestCountryDD"></div>
                                     </div>
@@ -5680,10 +5686,17 @@
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label>📄 Air Waybill (AWB)</label>
-                                        <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.xlsx">
+                                        <input type="file" id="exFileAWB" accept=".pdf,.jpg,.jpeg,.xlsx,.xls">
                                     </div>
                                     <div class="form-group"></div>
                                 </div>
+                                <p style="font-size:0.75rem; color:#888; margin-top:4px;">📎 지원 파일형태: <strong>JPG, PDF, Excel(.xlsx)</strong> | 각 파일 최대 5MB</p>
+                                
+                                <!-- 추가 서류 첨부 -->
+                                <div id="exFileUploadList" style="margin-top:8px;"></div>
+                                <button type="button" onclick="addExFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:6px 14px; border-radius:8px; cursor:pointer; font-size:0.78rem; margin-top:4px;">
+                                    ➕ 서류 추가 첨부
+                                </button>
                                 <div style="margin-top:12px; padding-top:12px; border-top:1px dashed #e0e0e0;">
                                     <button type="button" class="ai-parse-btn" id="exAiParseBtn" onclick="aiParseDocument('express')">
                                         <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/AWB에서 정보 추출
@@ -10859,7 +10872,8 @@ function searchContractor() {
     const found = demo[bizNo];
     if (found) {
         document.getElementById('dsContractorName').value = found.name;
-        document.getElementById('dsDispatchAddr').value = found.addr;
+        // dsDispatchAddr 필드 제거됨 (최종발송지 삭제)
+        if (document.getElementById('dsDispatchAddr')) document.getElementById('dsDispatchAddr').value = found.addr;
     } else {
         alert('등록된 사업자를 찾을 수 없습니다.\n회원가입 후 이용해 주세요.');
     }
@@ -10880,6 +10894,7 @@ function searchInsured() {
 
 function editDispatchAddr() {
     const input = document.getElementById('dsDispatchAddr');
+    if (!input) return;
     if (input.readOnly) {
         input.readOnly = false; input.classList.remove('readonly-bg'); input.classList.add('required-field'); input.focus();
     } else {
@@ -11077,6 +11092,65 @@ function updateCoverageOpts() {
 }
 
 // 직접입력: 갑판적재 + 오픈탑/플랫랙 시 담보조건 자동 변경
+
+// 서류 추가 첨부 (+ 버튼)
+function addDsFileRow() {
+    const list = document.getElementById('dsFileUploadList');
+    const row = document.createElement('div');
+    row.className = 'ds-file-row';
+    row.style = 'display:flex; gap:10px; align-items:center; margin-bottom:8px;';
+    row.innerHTML = `
+        <select style="width:160px; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
+            <option value="CI">Commercial Invoice</option>
+            <option value="BL">B/L 선하증권</option>
+            <option value="AWB">Air Waybill</option>
+            <option value="PL">Packing List</option>
+            <option value="Request">부보의뢰서</option>
+            <option value="ETC">기타 서류</option>
+        </select>
+        <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+        <button type="button" onclick="this.closest('.ds-file-row').remove();" style="background:#ef5350; color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:1rem; line-height:1;">✕</button>
+    `;
+    list.appendChild(row);
+}
+
+function addEzFileRow() {
+    const list = document.getElementById('ezFileUploadList');
+    if (!list) return;
+    const row = document.createElement('div');
+    row.className = 'ez-extra-file-row';
+    row.style = 'display:flex; gap:10px; align-items:center; margin-bottom:8px;';
+    row.innerHTML = `
+        <select style="width:160px; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
+            <option value="ETC">기타 서류</option>
+            <option value="CI">Commercial Invoice</option>
+            <option value="BL">B/L 선하증권</option>
+            <option value="PL">Packing List</option>
+        </select>
+        <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+        <button type="button" onclick="this.closest('.ez-extra-file-row').remove();" style="background:#ef5350; color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:1rem; line-height:1;">✕</button>
+    `;
+    list.appendChild(row);
+}
+
+function addExFileRow() {
+    const list = document.getElementById('exFileUploadList');
+    if (!list) return;
+    const row = document.createElement('div');
+    row.className = 'ex-extra-file-row';
+    row.style = 'display:flex; gap:10px; align-items:center; margin-bottom:8px;';
+    row.innerHTML = `
+        <select style="width:160px; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
+            <option value="ETC">기타 서류</option>
+            <option value="CI">Commercial Invoice</option>
+            <option value="AWB">Air Waybill</option>
+            <option value="PL">Packing List</option>
+        </select>
+        <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+        <button type="button" onclick="this.closest('.ex-extra-file-row').remove();" style="background:#ef5350; color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:1rem; line-height:1;">✕</button>
+    `;
+    list.appendChild(row);
+}
 function checkDsDeckStowage() {
     const packing = document.getElementById('dsPacking').value;
     const loadMethod = document.getElementById('dsLoadMethod').value;
@@ -11232,6 +11306,27 @@ function saveDesignDraft() { alert('✅ 임시저장이 완료되었습니다.\n
 
 // 제출
 async function submitDesign() {
+    // AI 서류 자동인식 — 아직 안 했으면 자동 실행 (중복 방지)
+    const dsRows = document.querySelectorAll('#dsFileUploadList .ds-file-row');
+    const hasAnyFile = Array.from(dsRows).some(row => {
+        const fi = row.querySelector('input[type="file"]');
+        return fi && fi.files && fi.files.length > 0;
+    });
+    if (!aiParseDoneFlags['cargo'] && hasAnyFile) {
+        const submitBtn = document.querySelector('#tabContentFull .design-btn-submit') || document.querySelector('[onclick*="submitDesign"]');
+        if (submitBtn) {
+            const origText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
+            submitBtn.disabled = true;
+            try {
+                await aiParseDocument('cargo');
+                aiParseDoneFlags['cargo'] = true;
+            } catch(e) { console.log('Auto parse error:', e); }
+            submitBtn.innerHTML = origText;
+            submitBtn.disabled = false;
+        }
+    }
+
     const required = [
         { id: 'dsContractorBizNo', name: '계약자 사업자등록번호' },
         { id: 'dsContractorName', name: '계약자 회사명 (검색필요)' },
@@ -11258,9 +11353,6 @@ async function submitDesign() {
         if (!document.getElementById('dsInsuredBizNo').value || !document.getElementById('dsInsuredName').value) {
             alert('⚠️ 피보험자 정보를 입력해주세요.'); return;
         }
-    }
-    if (!document.getElementById('fileInvoice').files.length) {
-        alert('⚠️ Commercial Invoice 파일을 업로드해주세요.'); return;
     }
     if (!Array.from(document.querySelectorAll('.ds-agree-item')).every(i => i.checked)) {
         alert('⚠️ 필수 약관에 모두 동의해주세요.'); return;
@@ -11309,7 +11401,9 @@ async function submitDesign() {
         contactName: dsContactName,
         contactPhone: dsContactPhone,
         contactEmail: dsContactEmail,
-        memo: document.getElementById('dsMemo')?.value || ''
+        memo: document.getElementById('dsMemo')?.value || '',
+        transportMode: document.getElementById('dsTransportMode')?.value || '',
+        vesselNo: document.getElementById('dsVesselNo')?.value || ''
     };
     
     sendToGoogleSheets('cargo_apply', formData);
@@ -11317,14 +11411,22 @@ async function submitDesign() {
     // EmailJS 이메일 알림 발송
     sendEmailNotification(EMAILJS_CONFIG.TEMPLATE_QUOTE, buildEmailParams('cargo_apply', formData));
     
-    // Supabase Storage 파일 업로드
+    // Supabase Storage 파일 업로드 (동적 파일 행에서 수집)
     const dsFileFolder = 'cargo/' + new Date().toISOString().replace(/[-:T]/g,'').substring(0,14) + '_' + (formData.contractorName || 'unknown').substring(0,10);
-    const dsUploadedFiles = await uploadQuoteFiles(dsFileFolder, {
-        ci: 'fileInvoice',
-        pl: 'filePL',
-        bl: 'fileBL',
-        etc: 'fileEtc'
+    const dsFileMap = {};
+    const dsFileRows = document.querySelectorAll('#dsFileUploadList .ds-file-row');
+    dsFileRows.forEach((row, idx) => {
+        const fileInput = row.querySelector('input[type="file"]');
+        const selectEl = row.querySelector('select');
+        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+            const fileType = selectEl ? selectEl.value.toLowerCase() : 'etc';
+            // 임시 ID 생성하여 uploadQuoteFiles와 호환
+            const tempId = 'dsTemp_' + idx;
+            fileInput.id = tempId;
+            dsFileMap[fileType + '_' + idx] = tempId;
+        }
     });
+    const dsUploadedFiles = await uploadQuoteFiles(dsFileFolder, dsFileMap);
     
     // Supabase DB 저장
     saveToSupabase('cargo_quotes', {
@@ -11377,6 +11479,9 @@ document.addEventListener('click', function(e) {
         }
     });
 });
+
+// ==================== AI 인식 완료 플래그 ====================
+let aiParseDoneFlags = { ez: false, cargo: false, express: false };
 
 // ==================== 간편접수 (Model B) FUNCTIONS ====================
 
@@ -11568,23 +11673,26 @@ function checkExAgreeAll() {
 
 // Express form submission
 async function submitExpress() {
-    // AI 서류 자동인식 — 파일 첨부되어 있으면 자동 추출 후 폼에 채움
-    // (가입신청 클릭 시 자동 실행 — 빈 필드만 AI로 채움)
-    const ciFile = document.getElementById('exFileCI')?.files[0];
-    const awbFile = document.getElementById('exFileAWB')?.files[0];
-    if (ciFile || awbFile) {
-        const submitBtn = document.querySelector('.express-submit-btn') || document.querySelector('[onclick*="submitExpress"]');
-        if (submitBtn) {
-            const origText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
-            submitBtn.disabled = true;
-            try {
+    // AI 서류 자동인식 — 아직 안 했으면 자동 실행 (중복 방지)
+    if (!aiParseDoneFlags['express']) {
+        const ciFile = document.getElementById('exFileCI')?.files[0];
+        const awbFile = document.getElementById('exFileAWB')?.files[0];
+        if (ciFile || awbFile) {
+            const submitBtn = document.querySelector('.express-submit-btn') || document.querySelector('[onclick*="submitExpress"]');
+            if (submitBtn) {
+                const origText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
+                submitBtn.disabled = true;
+                try {
+                    await autoAiParse('express');
+                    aiParseDoneFlags['express'] = true;
+                } catch(e) { console.log('Auto parse error:', e); }
+                submitBtn.innerHTML = origText;
+                submitBtn.disabled = false;
+            } else {
                 await autoAiParse('express');
-            } catch(e) { console.log('Auto parse error:', e); }
-            submitBtn.innerHTML = origText;
-            submitBtn.disabled = false;
-        } else {
-            await autoAiParse('express');
+                aiParseDoneFlags['express'] = true;
+            }
         }
     }
     
@@ -11843,6 +11951,27 @@ function checkEzAgreeAll() {
 
 // 간편접수 제출
 async function submitEzApply() {
+    // 0. AI 서류 자동인식 — 아직 안 했으면 자동 실행 (중복 방지)
+    if (!aiParseDoneFlags['ez']) {
+        const hasFile = document.getElementById('ezFileCI')?.files.length > 0 
+            || document.getElementById('ezFileBL')?.files.length > 0 
+            || document.getElementById('ezFileRequest')?.files.length > 0;
+        if (hasFile) {
+            const submitBtn = document.querySelector('#tabContentEz .design-btn-submit') || document.querySelector('[onclick*="submitEzApply"]');
+            if (submitBtn) {
+                const origText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
+                submitBtn.disabled = true;
+                try {
+                    await aiParseDocument('ez');
+                    aiParseDoneFlags['ez'] = true;
+                } catch(e) { console.log('Auto parse error:', e); }
+                submitBtn.innerHTML = origText;
+                submitBtn.disabled = false;
+            }
+        }
+    }
+
     // 1. 서류 검증
     const hasCI = document.getElementById('ezFileCI').files.length > 0;
     if (!hasCI) {
@@ -11912,6 +12041,8 @@ async function submitEzApply() {
         contactPhone: document.getElementById('ezContactPhone')?.value || '',
         contactEmail: document.getElementById('ezContactEmail')?.value || '',
         memo: document.getElementById('ezMemo')?.value || '',
+        transportMode: document.getElementById('ezTransportMode')?.value || '',
+        vesselNo: document.getElementById('ezVesselNo')?.value || '',
         hasFileRequest: document.getElementById('ezFileRequest').files.length > 0 ? 'Y' : 'N',
         hasFileCI: 'Y',
         hasFileBL: document.getElementById('ezFileBL').files.length > 0 ? 'Y' : 'N',
@@ -11973,16 +12104,48 @@ async function submitEzApply() {
 async function aiParseDocument(mode) {
     // 파일 입력 요소 결정
     let fileInputIds, btn, resultEl, errorEl;
+    var selectedFile = null;
+    var docType = 'CI';
     if (mode === 'express') {
         fileInputIds = ['exFileCI', 'exFileAWB', 'exFilePL'];
         btn = document.getElementById('exAiParseBtn');
         resultEl = document.getElementById('exAiResult');
         errorEl = document.getElementById('exAiError');
     } else if (mode === 'cargo') {
-        fileInputIds = ['fileInvoice', 'fileBL', 'filePL'];
+        // 직접입력: 동적 파일 행에서 첫 번째 파일 찾기
+        fileInputIds = [];
+        const dsRows = document.querySelectorAll('#dsFileUploadList .ds-file-row');
+        dsRows.forEach(row => {
+            const fileInput = row.querySelector('input[type="file"]');
+            if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                fileInputIds.push(fileInput);
+            }
+        });
         btn = document.getElementById('dsAiParseBtn');
         resultEl = document.getElementById('dsAiResult');
         errorEl = document.getElementById('dsAiError');
+        
+        // 동적 행에서 파일 직접 추출
+        for (let i = 0; i < fileInputIds.length; i++) {
+            const input = fileInputIds[i];
+            if (input && input.files && input.files.length > 0) {
+                selectedFile = input.files[0];
+                const selectEl = input.closest('.ds-file-row')?.querySelector('select');
+                const fileLabel = selectEl ? selectEl.value : 'CI';
+                if (fileLabel === 'CI') docType = 'CI';
+                else if (fileLabel === 'BL') docType = 'BL';
+                else if (fileLabel === 'AWB') docType = 'AWB';
+                else docType = 'CI';
+                break;
+            }
+        }
+        
+        if (!selectedFile) {
+            errorEl.textContent = '⚠️ 먼저 서류 파일을 첨부해 주세요.';
+            errorEl.classList.add('show');
+            resultEl.classList.remove('show');
+            return;
+        }
     } else if (mode === 'ez') {
         fileInputIds = ['ezFileCI', 'ezFileBL', 'ezFileRequest'];
         btn = document.getElementById('ezAiParseBtn');
@@ -11990,25 +12153,27 @@ async function aiParseDocument(mode) {
         errorEl = document.getElementById('ezAiError');
     }
     
-    // 첨부 파일 찾기 (우선순위: CI → BL/AWB → PL/부보의뢰서)
-    let selectedFile = null;
-    let docType = 'CI';
-    for (let i = 0; i < fileInputIds.length; i++) {
-        const input = document.getElementById(fileInputIds[i]);
-        if (input && input.files && input.files.length > 0) {
-            selectedFile = input.files[0];
-            if (i === 0) docType = 'CI';
-            else if (i === 1) docType = fileInputIds[i].includes('AWB') || fileInputIds[i].includes('BL') ? 'AWB' : 'BL';
-            else docType = 'PL';
-            break;
+    // 첨부 파일 찾기 (express/ez modes - cargo는 위에서 이미 처리)
+    if (mode !== 'cargo') {
+        var selectedFile = null;
+        var docType = 'CI';
+        for (var i = 0; i < fileInputIds.length; i++) {
+            var input = document.getElementById(fileInputIds[i]);
+            if (input && input.files && input.files.length > 0) {
+                selectedFile = input.files[0];
+                if (i === 0) docType = 'CI';
+                else if (i === 1) docType = fileInputIds[i].includes('AWB') || fileInputIds[i].includes('BL') ? 'AWB' : 'BL';
+                else docType = 'PL';
+                break;
+            }
         }
-    }
-    
-    if (!selectedFile) {
-        errorEl.textContent = '⚠️ 먼저 CI, AWB, 또는 B/L 파일을 첨부해 주세요.';
-        errorEl.classList.add('show');
-        resultEl.classList.remove('show');
-        return;
+        
+        if (!selectedFile) {
+            errorEl.textContent = '⚠️ 먼저 CI, AWB, 또는 B/L 파일을 첨부해 주세요.';
+            errorEl.classList.add('show');
+            resultEl.classList.remove('show');
+            return;
+        }
     }
     
     // 파일 크기 체크
@@ -12030,26 +12195,72 @@ async function aiParseDocument(mode) {
         const base64 = await fileToBase64(selectedFile);
         const fileType = selectedFile.type || 'application/pdf';
         
-        // Google Apps Script 프록시를 통한 AI 파싱 (API 키 서버사이드 보호)
-        const response = await aiParseWithRetry({
-            action: 'ai_parse',
-            fileData: base64,
-            fileType: fileType,
-            docType: docType,
-            promptMode: 'full'
-        }, btn);
+        // Gemini API 직접 호출 (CORS 지원, 3~5초 이내)
+        const GEMINI_API_KEY = 'AIzaSyC10YNgYc7EZ6vRZpg7wpJtbaVBLOkhfl0';
+        const GEMINI_MODEL = 'gemini-2.0-flash';
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
         
-        const result = await response.json();
+        const systemPrompt = `You are a cargo insurance document parser. Extract structured data from this shipping document (${docType}).
+Return ONLY valid JSON, no markdown, no backticks, no explanation.
+Use empty string "" for fields not found. For amounts, return numbers only (no commas/symbols).
+
+IMPORTANT RULES:
+- hsCode: Return ONLY the first 4 digits (e.g., "3304" not "3304.99.1000")
+- quantity: Return only the number
+- quantityUnit: Detect from document context. If CI lists individual items as "EA", "PCS", "PIECE" or just numbers, return "EA". If grouped in cartons/boxes, return "CTN" or "BOX". If no unit specified but items are counted individually, return "EA".
+- totalAmount: Return the GRAND TOTAL or G-TOTAL amount as numbers only (no currency symbol, no commas). Look for "Total", "Grand Total", "G-Total" line.
+- currency: Return 3-letter code (KRW, USD, EUR, etc.)
+- grossWeight: Total weight number only
+- weightUnit: KG or LB
+
+JSON format:
+{"shipper":"","shipperAddress":"","consignee":"","consigneeAddress":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","netWeight":"","totalAmount":"","unitPrice":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","vesselOrFlight":"","blOrAwbNo":"","shipDate":"","invoiceNo":"","invoiceDate":"","packing":"","marksAndNumbers":"","portOfLoading":"","portOfDischarge":"","additionalNotes":""}`;
         
-        if (result.status !== 200) {
-            console.error('AI Parse Error:', result);
-            throw new Error(result.message || 'AI 서버 오류');
+        // Gemini API 요청 구성
+        const geminiBody = {
+            contents: [{
+                parts: [
+                    {
+                        inline_data: {
+                            mime_type: fileType,
+                            data: base64
+                        }
+                    },
+                    { text: systemPrompt }
+                ]
+            }],
+            generationConfig: {
+                temperature: 0.1,
+                maxOutputTokens: 2000
+            }
+        };
+        
+        const response = await geminiCallWithRetry(GEMINI_URL, geminiBody, btn);
+        
+        if (!response.ok) {
+            const errText = await response.text();
+            console.error('Gemini API Error:', response.status, errText);
+            throw new Error('AI 서버 오류 (' + response.status + ')');
         }
         
-        const data = result.data;
+        const geminiResult = await response.json();
+        const textContent = geminiResult.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        
+        // JSON 파싱
+        let data;
+        try {
+            const cleanText = textContent.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+            data = JSON.parse(cleanText);
+        } catch(parseErr) {
+            console.error('JSON Parse Error:', textContent);
+            throw new Error('AI 응답 파싱 실패');
+        }
         
         // 폼에 자동 입력
         aiAutoFill(mode, data);
+        
+        // AI 인식 완료 플래그 설정
+        aiParseDoneFlags[mode] = true;
         
         // 결과 표시
         showAiResult(resultEl, data);
@@ -12088,26 +12299,31 @@ async function autoAiParse(mode) {
         const fileType = file.type || 'application/pdf';
         const base64 = await fileToBase64(file);
         
-        // Google Apps Script 프록시를 통한 AI 파싱
-        const resp = await fetch(GOOGLE_SCRIPT_URL, {
+        const GEMINI_API_KEY = 'AIzaSyC10YNgYc7EZ6vRZpg7wpJtbaVBLOkhfl0';
+        const GEMINI_MODEL = 'gemini-2.0-flash';
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+        
+        const systemPrompt = `Extract key shipping data from this ${docType}. Return ONLY JSON. hsCode: first 4 digits only. totalAmount: grand total numbers only. quantityUnit: EA if individual items, CTN if cartons.
+{"shipper":"","consignee":"","cargoDescription":"","hsCode":"","quantity":"","quantityUnit":"","grossWeight":"","weightUnit":"","totalAmount":"","currency":"","incoterms":"","originCountry":"","originCity":"","destCountry":"","destCity":"","blOrAwbNo":"","shipDate":"","invoiceNo":""}`;
+        
+        const resp = await fetch(GEMINI_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                action: 'ai_parse',
-                fileData: base64,
-                fileType: fileType,
-                docType: docType,
-                promptMode: 'quick'
-            }),
-            redirect: 'follow'
+                contents: [{ parts: [
+                    { inline_data: { mime_type: fileType, data: base64 } },
+                    { text: systemPrompt }
+                ]}],
+                generationConfig: { temperature: 0.1, maxOutputTokens: 1500 }
+            })
         });
         
         if (!resp.ok) return null;
         
         const result = await resp.json();
-        if (result.status !== 200 || !result.data) return null;
-        
-        const data = result.data;
+        const text = result.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        const clean = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+        const data = JSON.parse(clean);
         
         // 폼에 자동 입력 (빈 필드만)
         aiAutoFill(mode, data);
@@ -12119,50 +12335,23 @@ async function autoAiParse(mode) {
     }
 }
 
-/** Google Apps Script 프록시를 통한 AI 파싱 + 재시도 (최대 3회) */
-async function aiParseWithRetry(payload, btn) {
+/** Gemini API 호출 + 429 재시도 (최대 3회) */
+async function geminiCallWithRetry(url, body, btn) {
+
     const maxRetries = 3;
     for (let i = 0; i < maxRetries; i++) {
-        try {
-            const resp = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify(payload),
-                redirect: 'follow'
-            });
-            
-            if (resp.ok) {
-                const data = await resp.json();
-                if (data.status === 429 || (data.message && data.message.includes('429'))) {
-                    if (i < maxRetries - 1) {
-                        const waitSec = (i + 1) * 10;
-                        btn.innerHTML = `<span class="ai-icon">⏳</span> API 한도 초과, ${waitSec}초 후 재시도...`;
-                        await new Promise(r => setTimeout(r, waitSec * 1000));
-                        continue;
-                    }
-                }
-                return {
-                    ok: true,
-                    json: async () => data
-                };
-            }
-            
-            if (i < maxRetries - 1) {
-                const waitSec = (i + 1) * 10;
-                btn.innerHTML = `<span class="ai-icon">⏳</span> 서버 오류, ${waitSec}초 후 재시도...`;
-                await new Promise(r => setTimeout(r, waitSec * 1000));
-                continue;
-            }
-            return resp;
-        } catch (fetchErr) {
-            if (i < maxRetries - 1) {
-                const waitSec = (i + 1) * 10;
-                btn.innerHTML = `<span class="ai-icon">⏳</span> 네트워크 오류, ${waitSec}초 후 재시도...`;
-                await new Promise(r => setTimeout(r, waitSec * 1000));
-                continue;
-            }
-            throw fetchErr;
+        const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+        if (resp.status === 429 && i < maxRetries - 1) {
+            const waitSec = (i + 1) * 10; // 10초, 20초, 30초
+            btn.innerHTML = `<span class="ai-icon">⏳</span> API 한도 초과, ${waitSec}초 후 재시도...`;
+            await new Promise(r => setTimeout(r, waitSec * 1000));
+            continue;
         }
+        return resp;
     }
 }
 
