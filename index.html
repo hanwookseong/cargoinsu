@@ -5500,7 +5500,6 @@
                             <div class="track-sub">수출입 기업 · 포워더 · 실화주가<br>직접 계약자(Policy Holder)로 가입</div>
                             <div class="track-tags">
                                 <span class="track-tag blue">해상/항공 화물</span>
-                                <span class="track-tag green">기업 직접 계약</span>
                             </div>
                         </div>
                         <div class="track-card" onclick="selectTrack('express')" id="trackExpress">
@@ -5518,512 +5517,36 @@
                 <!-- ===== TRACK A: 일반 적하보험 (기존 폼) ===== -->
                 <div class="track-content active" id="trackContentGeneral">
                 
-                <!-- 탭 바 -->
-                <div class="apply-tab-bar">
-                    <button class="apply-tab active" onclick="switchApplyTab('ez')" id="tabEz">
-                        📎 간편접수 (서류 업로드) <span class="tab-badge">추천</span>
-                    </button>
-                    <button class="apply-tab" onclick="switchApplyTab('full')" id="tabFull">
-                        ✏️ 직접입력 (전체 폼)
-                    </button>
-                </div>
 
-                <!-- ==================== 간편접수 모드 (Model B) ==================== -->
-                <div class="apply-tab-content active" id="tabContentEz">
-                    <div class="design-body">
-                        
-                        <!-- 프로세스 안내 -->
-                        <div class="ez-step-indicator">
-                            <div class="ez-step active">
-                                <div class="step-num">1</div><br>서류 업로드<br><span style="font-size:0.65rem; color:#aaa;">3~5분</span>
-                            </div>
-                            <div class="ez-step">
-                                <div class="step-num">2</div><br>AI 자동추출<br><span style="font-size:0.65rem; color:#aaa;">10초</span>
-                            </div>
-                            <div class="ez-step">
-                                <div class="step-num">3</div><br>중개사 검토<br><span style="font-size:0.65rem; color:#aaa;">2~5분</span>
-                            </div>
-                            <div class="ez-step">
-                                <div class="step-num">4</div><br>인수심사<br><span style="font-size:0.65rem; color:#aaa;">보험사</span>
-                            </div>
-                            <div class="ez-step">
-                                <div class="step-num">5</div><br>보험료 결제<br><span style="font-size:0.65rem; color:#aaa;">확정후</span>
-                            </div>
-                            <div class="ez-step">
-                                <div class="step-num">6</div><br>증권 발급
-                            </div>
-                        </div>
 
-                        <!-- 안내문 -->
-                        <div class="design-notice">
-                            <strong>💡 간편접수 모드:</strong> 서류 업로드 + 최소 정보만 입력하시면, AI가 서류에서 보험 데이터를 자동 추출하고 담당 중개사가 검토 후 보험 견적을 처리합니다. <strong>기존 30개+ 필드 입력이 5~6개로 줄어듭니다.</strong>
-                        </div>
-
-                        <!-- ===== 서류별 추출 가능 정보 가이드 ===== -->
-                        <div class="ez-doc-guide">
-                            <h4>📋 어떤 서류를 제출해야 하나요?</h4>
-                            <p style="font-size:0.8rem; color:#555; margin-bottom:12px; line-height:1.6;">
-                                아래 표를 참고하여 가용한 서류를 제출해 주세요. <strong>부보의뢰서가 없어도 BL + CI/PL 조합으로 신청 가능합니다.</strong>
-                            </p>
-                            <table class="ez-doc-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width:25%;">추출 항목</th>
-                                        <th style="width:18%; text-align:center;">부보의뢰서</th>
-                                        <th style="width:18%; text-align:center;">B/L (선하증권)</th>
-                                        <th style="width:18%; text-align:center;">CI (송장)</th>
-                                        <th style="width:21%;">비고</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>보험계약자</td>
-                                        <td style="text-align:center;" class="doc-check">✅ 명시</td>
-                                        <td style="text-align:center;" class="doc-partial">⚠️ 추정</td>
-                                        <td style="text-align:center;" class="doc-none">—</td>
-                                        <td style="font-size:0.75rem;">BL의 Notify Party로 추정</td>
-                                    </tr>
-                                    <tr>
-                                        <td>피보험자(은행)</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">BL Consignee에서 추출</td>
-                                    </tr>
-                                    <tr>
-                                        <td>운송경로 (출발/도착)</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">교차검증 가능</td>
-                                    </tr>
-                                    <tr>
-                                        <td>선명 / 출발일</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">교차검증 가능</td>
-                                    </tr>
-                                    <tr>
-                                        <td>화물명 / 수량 / 중량</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">CI가 가장 상세</td>
-                                    </tr>
-                                    <tr>
-                                        <td>보험가액 (Invoice Value)</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-partial">⚠️ 일부</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">BL에 AMOUNT 있는 경우만</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Incoterms / LC번호</td>
-                                        <td style="text-align:center;" class="doc-partial">⚠️</td>
-                                        <td style="text-align:center;" class="doc-partial">⚠️ 일부</td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="font-size:0.75rem;">CI에서 확보 가능</td>
-                                    </tr>
-                                    <tr style="background: #fff8e1;">
-                                        <td><strong>보험가입금액</strong></td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-none">❌</td>
-                                        <td style="text-align:center;" class="doc-none">❌</td>
-                                        <td style="font-size:0.75rem; color:#e65100;"><strong>→ 아래에서 입력</strong></td>
-                                    </tr>
-                                    <tr style="background: #fff8e1;">
-                                        <td><strong>담보범위 (Coverage)</strong></td>
-                                        <td style="text-align:center;" class="doc-check">✅</td>
-                                        <td style="text-align:center;" class="doc-none">❌</td>
-                                        <td style="text-align:center;" class="doc-none">❌</td>
-                                        <td style="font-size:0.75rem; color:#e65100;"><strong>→ 아래에서 선택</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div style="margin-top:12px; padding:10px 14px; background:rgba(255,255,255,0.7); border-radius:8px; font-size:0.78rem; line-height:1.7;">
-                                <strong>📌 권장 조합:</strong><br>
-                                &nbsp;&nbsp;🥇 <strong>부보의뢰서 + CI</strong> — 최적 (추가 입력 거의 불필요)<br>
-                                &nbsp;&nbsp;🥈 <strong>BL + CI</strong> — 우수 (담보범위·이익율만 추가 입력)<br>
-                                &nbsp;&nbsp;🥉 <strong>CI만</strong> — 가능 (보험계약자·담보범위 추가 입력 필요)
-                            </div>
-                        </div>
-
-                        <!-- ===== ① 서류 업로드 ===== -->
-                        <div class="design-section">
-                            <div class="design-section-title">📎 ① 서류 업로드</div>
-                            <div class="design-section-body">
-                                <p style="font-size:0.8rem; color:#666; margin-bottom:10px; line-height:1.6;">보유하신 서류를 업로드해 주세요. AI가 서류에서 보험 견적에 필요한 데이터를 자동 추출합니다. <strong>최소 1개 이상의 서류가 필요합니다.</strong></p>
-                                
-                                <!-- 보험료 산출 필수정보 안내 -->
-                                <div style="background:#fff3e0; border:2px solid #ff9800; border-radius:10px; padding:14px 18px; margin-bottom:16px;">
-                                    <div style="font-size:0.95rem; font-weight:800; color:#e65100; margin-bottom:6px;">⚠️ 보험료 산출 필수 정보 — 서류에 반드시 포함되어야 합니다</div>
-                                    <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                                        <span style="background:#e65100; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:700;">📦 HS Code (품목코드)</span>
-                                        <span style="background:#1565c0; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:700;">💰 Invoice Value (송장금액)</span>
-                                        <span style="background:#2e7d32; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:700;">📋 Incoterms (거래조건)</span>
-                                        <span style="background:#6a1b9a; color:#fff; padding:5px 12px; border-radius:20px; font-size:0.85rem; font-weight:700;">🚢 운송구간 (출발지→도착지)</span>
-                                    </div>
-                                    <p style="font-size:0.78rem; color:#bf360c; margin:8px 0 0 0; line-height:1.5;">※ <strong>HS Code</strong>는 화물종류(Interest) 결정의 핵심 정보로, 보험료 요율 산출의 기초가 됩니다. CI에 HS Code가 기재되어 있지 않으면 반드시 보충 정보에 직접 입력해 주세요.</p>
-                                </div>
-                                
-                                <div class="ez-upload-grid">
-                                    <!-- 부보의뢰서 -->
-                                    <div class="ez-upload-card" id="ezCardRequest" onclick="document.getElementById('ezFileRequest').click();">
-                                        <button class="remove-btn" onclick="event.stopPropagation(); ezRemoveFile('ezFileRequest','ezCardRequest');">✕</button>
-                                        <div class="upload-icon">📋</div>
-                                        <div class="upload-title">부보의뢰서</div>
-                                        <div class="upload-desc">보험계약자, 가입금액, 담보범위 등<br>핵심 보험 데이터 원천</div>
-                                        <span class="upload-req optional">있으면 제출</span>
-                                        <div class="file-attached" id="ezFileRequestName"></div>
-                                    </div>
-                                    <input type="file" id="ezFileRequest" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardRequest','ezFileRequestName')">
-                                    
-                                    <!-- Commercial Invoice -->
-                                    <div class="ez-upload-card" id="ezCardCI" onclick="document.getElementById('ezFileCI').click();" style="border-color:#e65100;">
-                                        <button class="remove-btn" onclick="event.stopPropagation(); ezRemoveFile('ezFileCI','ezCardCI');">✕</button>
-                                        <div class="upload-icon">📄</div>
-                                        <div class="upload-title" style="color:#e65100;">Commercial Invoice / Packing List</div>
-                                        <div class="upload-desc" style="font-size:0.78rem;">
-                                            <strong style="color:#c62828; font-size:0.82rem;">필수 기재항목:</strong><br>
-                                            <span style="color:#e65100; font-weight:700;">✓ HS Code (품목코드)</span> · 화물종류 결정<br>
-                                            ✓ Invoice Value · Incoterms · 수량/포장
-                                        </div>
-                                        <span class="upload-req required">필수</span>
-                                        <div class="file-attached" id="ezFileCIName"></div>
-                                    </div>
-                                    <input type="file" id="ezFileCI" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardCI','ezFileCIName')">
-                                    
-                                    <!-- B/L -->
-                                    <div class="ez-upload-card" id="ezCardBL" onclick="document.getElementById('ezFileBL').click();">
-                                        <button class="remove-btn" onclick="event.stopPropagation(); ezRemoveFile('ezFileBL','ezCardBL');">✕</button>
-                                        <div class="upload-icon">🚢</div>
-                                        <div class="upload-title">B/L 선하증권 / AWB</div>
-                                        <div class="upload-desc">선명, 운송경로, 수하인 등<br>부보의뢰서 없을 시 필수</div>
-                                        <span class="upload-req optional">있으면 제출</span>
-                                        <div class="file-attached" id="ezFileBLName"></div>
-                                    </div>
-                                    <input type="file" id="ezFileBL" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardBL','ezFileBLName')">
-                                    
-                                    <!-- 기타 -->
-                                    <div class="ez-upload-card" id="ezCardEtc" onclick="document.getElementById('ezFileEtc').click();">
-                                        <button class="remove-btn" onclick="event.stopPropagation(); ezRemoveFile('ezFileEtc','ezCardEtc');">✕</button>
-                                        <div class="upload-icon">📁</div>
-                                        <div class="upload-title">기타 서류</div>
-                                        <div class="upload-desc">L/C 사본, 보험특약 요청서 등<br>추가 참고 서류</div>
-                                        <span class="upload-req optional">선택</span>
-                                        <div class="file-attached" id="ezFileEtcName"></div>
-                                    </div>
-                                    <input type="file" id="ezFileEtc" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="display:none;" onchange="ezFileChanged(this,'ezCardEtc','ezFileEtcName')">
-                                </div>
-                                
-                                <p style="font-size:0.75rem; color:#888; margin-top:8px;">📎 지원 파일형태: <strong>JPG, PDF, Excel(.xlsx)</strong> | 각 파일 최대 5MB</p>
-                                
-                                <!-- 추가 서류 첨부 -->
-                                <div id="ezFileUploadList" style="margin-top:8px;"></div>
-                                <button type="button" onclick="addEzFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:6px 14px; border-radius:8px; cursor:pointer; font-size:0.78rem; margin-top:4px;">
-                                    ➕ 서류 추가 첨부
-                                </button>
-                                
-                                <div id="ezDocWarning" style="display:none; background:#ffebee; border:1px solid #ef9a9a; border-radius:8px; padding:10px 14px; font-size:0.8rem; color:#c62828; margin-top:8px;">
-                                    ⚠️ 최소 <strong>CI(Commercial Invoice)</strong>는 반드시 업로드해 주세요.
-                                </div>
-                                <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
-                                    <button type="button" class="ai-parse-btn" id="ezAiParseBtn" onclick="aiParseDocument('ez')">
-                                        <span class="ai-icon">🤖</span> AI 서류 자동인식 — 첨부서류에서 정보 추출
-                                    </button>
-                                    <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보가 자동 인식됩니다.</div>
-                                    <div class="ai-parse-result" id="ezAiResult"></div>
-                                    <div class="ai-parse-error" id="ezAiError"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== ② 서류에서 추출 불가한 필수 정보 ===== -->
-                        <div class="design-section">
-                            <div class="design-section-title">✍️ ② 보충 정보 입력 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(서류에서 추출 불가한 항목)</span></div>
-                            <div class="design-section-body">
-                                
-                                <div class="ez-supplement-box">
-                                    <h4>💡 왜 이 항목들이 필요한가요?</h4>
-                                    <p>부보의뢰서가 있으면 대부분 자동추출되지만, <strong>BL + CI만 제출하는 경우</strong> 아래 항목은 서류에 포함되지 않아 직접 입력이 필요합니다. 부보의뢰서를 제출한 경우에도 확인 차원에서 입력해 주시면 정확도가 높아집니다.</p>
-                                </div>
-
-                                <!-- 보험계약자 -->
-                                <div style="background:#f8f9ff; border:1px solid #c5cae9; border-radius:8px; padding:14px; margin-bottom:14px;">
-                                    <label style="font-size:0.82rem; font-weight:700; color:var(--primary); margin-bottom:8px; display:block;">👤 보험계약자 정보 <span class="req">*</span></label>
-                                    <div class="design-row">
-                                        <div class="design-field">
-                                            <label>회사명 <span class="req">*</span></label>
-                                            <input type="text" id="ezPolicyholder" class="required-field" placeholder="예: 현대중공업터보기계(주)">
-                                        </div>
-                                        <div class="design-field">
-                                            <label>사업자등록번호 <span class="req">*</span></label>
-                                            <input type="text" id="ezBizNo" class="required-field" placeholder="000-00-00000" maxlength="12" oninput="formatBizNo(this)">
-                                        </div>
-                                    </div>
-                                    <div style="font-size:0.7rem; color:#888; margin-top:3px;">부보의뢰서 제출 시 자동추출되나, 미제출 시 필수 입력</div>
-                                </div>
-
-                                <!-- 피보험자 -->
-                                <div style="background:#fff8f0; border:1px solid #ffe0b2; border-radius:8px; padding:14px; margin-bottom:14px;">
-                                    <label style="font-size:0.82rem; font-weight:700; color:#e65100; margin-bottom:8px; display:block;">👤 피보험자 정보</label>
-                                    <div class="design-checkbox-row" style="margin-bottom:10px;">
-                                        <input type="checkbox" id="ezSameAsContractor" onchange="toggleEzInsured()">
-                                        <label for="ezSameAsContractor">피보험자가 계약자와 동일</label>
-                                    </div>
-                                    <div id="ezInsuredSection" style="display:block;">
-                                        <div class="design-row">
-                                            <div class="design-field">
-                                                <label>피보험자 회사명 <span class="req">*</span></label>
-                                                <input type="text" id="ezInsuredName" placeholder="피보험자 회사명">
-                                            </div>
-                                            <div class="design-field">
-                                                <label>피보험자 사업자등록번호 <span class="req">*</span></label>
-                                                <input type="text" id="ezInsuredBizNo" placeholder="000-00-00000" maxlength="12" oninput="formatBizNo(this)">
-                                            </div>
-                                        </div>
-                                        <div class="design-row">
-                                            <div class="design-field">
-                                                <label>계약자와의 관계</label>
-                                                <select id="ezInsuredRelation">
-                                                    <option value="">-- 선택 --</option>
-                                                    <option value="매수인">매수인 (Buyer)</option>
-                                                    <option value="매도인">매도인 (Seller)</option>
-                                                    <option value="수탁자">수탁자 (Consignee)</option>
-                                                    <option value="은행">은행 (L/C 개설은행)</option>
-                                                    <option value="기타">기타</option>
-                                                </select>
-                                            </div>
-                                            <div class="design-field">
-                                                <label>피보험자 사업자등록증 <span class="req">*</span></label>
-                                                <div class="ez-upload-card" id="ezCardInsuredBiz" onclick="document.getElementById('ezFileInsuredBiz').click();" style="padding:12px; min-height:auto;">
-                                                    <button class="remove-btn" onclick="event.stopPropagation(); ezRemoveFile('ezFileInsuredBiz','ezCardInsuredBiz');" style="top:4px; right:6px;">✕</button>
-                                                    <div style="font-size:0.8rem; color:#666;">📎 클릭하여 업로드 (PDF/JPG)</div>
-                                                    <div class="file-attached" id="ezFileInsuredBizName"></div>
-                                                </div>
-                                                <input type="file" id="ezFileInsuredBiz" accept=".pdf,.jpg,.jpeg,.xlsx" style="display:none;" onchange="ezFileChanged(this,'ezCardInsuredBiz','ezFileInsuredBizName')">
-                                            </div>
-                                        </div>
-                                        <div style="font-size:0.7rem; color:#e65100; margin-top:4px;">⚠️ 피보험자가 계약자와 다른 경우, 피보험자 사업자등록증을 반드시 첨부해 주세요.</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- 포장구분 + 선적구분 -->
-                                <div class="design-row">
-                                    <div class="design-field">
-                                        <label>포장구분 <span class="req">*</span></label>
-                                        <select id="ezPacking" class="required-field" onchange="checkEzDeckStowage()">
-                                            <option value="">-- 선택 --</option>
-                                            <option value="일반포장">일반포장 (CASE/SKID/PALLET 등)</option>
-                                            <option value="일반컨테이너">일반(Dry) 컨테이너</option>
-                                            <option value="냉동컨테이너">냉동(Reefer) 컨테이너</option>
-                                            <option value="오픈탑컨테이너">오픈탑(Open Top) 컨테이너</option>
-                                            <option value="플랫랙컨테이너">플랫랙(Flat Rack) 컨테이너</option>
-                                            <option value="벌크">벌크 (산적)</option>
-                                            <option value="유리병">유리병</option>
-                                            <option value="PP병">PP병</option>
-                                            <option value="종이박스">종이박스</option>
-                                            <option value="PP박스">PP박스</option>
-                                        </select>
-                                    </div>
-                                    <div class="design-field">
-                                        <label>선적구분 <span class="req">*</span></label>
-                                        <select id="ezStowage" class="required-field" onchange="checkEzDeckStowage()">
-                                            <option value="">-- 선택 --</option>
-                                            <option value="선창" selected>선창 (Under Deck / Below Deck)</option>
-                                            <option value="갑판">갑판 (On Deck)</option>
-                                        </select>
-                                        <div style="font-size:0.7rem; color:#888; margin-top:3px;">화물 적재 위치에 따라 담보조건이 변경될 수 있습니다</div>
-                                    </div>
-                                </div>
-
-                                <!-- 운송모드 + Vessel No. -->
-                                <div class="design-row">
-                                    <div class="design-field">
-                                        <label>운송모드 Mode of Transport <span class="req">*</span></label>
-                                        <select id="ezTransportMode" class="required-field">
-                                            <option value="">-- 선택 --</option>
-                                            <option value="SEA">SEA (해상운송)</option>
-                                            <option value="AIR">AIR (항공운송)</option>
-                                            <option value="MULTIMODAL">MULTIMODAL (복합운송)</option>
-                                        </select>
-                                    </div>
-                                    <div class="design-field">
-                                        <label>Vessel / Flight No.</label>
-                                        <input type="text" id="ezVesselNo" placeholder="선박명 또는 항공편명 (예: HMM GDANSK V.052E)">
-                                    </div>
-                                </div>
-
-                                <!-- 갑판적재 경고 -->
-                                <div id="ezDeckWarning" style="display:none; background:#ffebee; border:2px solid #e53935; border-radius:8px; padding:12px 16px; margin-bottom:12px;">
-                                    <div style="font-size:0.88rem; font-weight:800; color:#c62828; margin-bottom:6px;">⚠️ 갑판적재 담보조건 자동 변경</div>
-                                    <p style="font-size:0.8rem; color:#b71c1c; margin:0; line-height:1.7;">
-                                        화물이 <strong>"OPEN-TOP"</strong> 혹은 <strong>"FLAT-RACK"</strong> 컨테이너에 적입되어 <strong>갑판에 적재</strong>되어 운송될 경우에는 
-                                        보험이 위험개시 때부터 유실위험을 포함한 <strong>「ICC(C)」 / 「FPA」</strong> 조건으로 변경됩니다.<br>
-                                        <span style="font-size:0.75rem; color:#d32f2f;">→ 담보조건이 자동으로 변경되었습니다. 전위험담보(All Risks)는 적용이 불가합니다.</span>
-                                    </p>
-                                </div>
-
-                                <!-- 약관구분 + 담보범위 -->
-                                <div class="design-row">
-                                    <div class="design-field">
-                                        <label>약관구분 <span class="req">*</span></label>
-                                        <select id="ezClauseType" class="required-field" onchange="updateEzCoverageOptions()">
-                                            <option value="">-- 선택 --</option>
-                                            <option value="신약관" selected>신약관 (ICC 1982)</option>
-                                            <option value="구약관">구약관 (ICC 1963)</option>
-                                        </select>
-                                        <div style="font-size:0.7rem; color:#888; margin-top:3px;">일반적으로 신약관(ICC 1982) 적용</div>
-                                    </div>
-                                    <div class="design-field">
-                                        <label>담보조건 <span class="req">*</span></label>
-                                        <select id="ezCoverage" class="required-field">
-                                            <option value="">-- 선택 --</option>
-                                            <option value="ICC(A)" selected>ICC(A) — 전위험담보</option>
-                                            <option value="ICC(B)">ICC(B) — 열거위험담보 (확장)</option>
-                                            <option value="ICC(C)">ICC(C) — 열거위험담보 (기본)</option>
-                                            <option value="ICC(Air)">ICC(Air) — 항공화물</option>
-                                        </select>
-                                        <div style="font-size:0.7rem; color:#888; margin-top:3px;">부보의뢰서에서 추출 가능하나, BL·CI에는 없음</div>
-                                    </div>
-                                </div>
-                                <div class="design-row">
-                                    <div class="design-field">
-                                        <label>특별약관 요청사항</label>
-                                        <input type="text" id="ezSpecialClauses" placeholder="예: 대위권포기특약, 협회전쟁약관 등">
-                                    </div>
-                                    <div class="design-field">
-                                        <label>이익율 (Profit Rate)</label>
-                                        <select id="ezProfitRate">
-                                            <option value="110" selected>110% (표준)</option>
-                                            <option value="115">115%</option>
-                                            <option value="120">120%</option>
-                                            <option value="기타">기타 (메모에 기재)</option>
-                                        </select>
-                                        <div style="font-size:0.7rem; color:#888; margin-top:3px;">보험가입금액 = Invoice Value × 이익율</div>
-                                    </div>
-                                </div>
-
-                                <!-- 환율 적용 안내 -->
-                                <div style="background:#e8f5e9; border:1px solid #a5d6a7; border-radius:8px; padding:12px 16px; margin-top:12px;">
-                                    <div style="font-size:0.82rem; font-weight:700; color:#2e7d32; margin-bottom:4px;">💱 환율 적용 기준 <span style="font-weight:400; font-size:0.75rem; color:#388e3c;">(출처: 하나은행)</span></div>
-                                    <p style="font-size:0.78rem; color:#1b5e20; margin:0; line-height:1.6;">
-                                        보험료 산출 시 적용 환율: <strong>하나은행 전신환 매도율 (TT Selling Rate)</strong>을 적용합니다.<br>
-                                        현재 적용 환율: <strong style="font-size:0.88rem; color:#1565c0;">USD 1 = ₩1,458.10</strong> (2026-02-13 기준)<br>
-                                        <span style="font-size:0.72rem; color:#555;">※ 최종 보험료 확정 시 적용 환율은 증권에 명시됩니다. 환율 출처: 하나은행 (www.kebhana.com)</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== ③ 담당자 연락처 ===== -->
-                        <div class="design-section">
-                            <div class="design-section-title">📞 ③ 담당자 연락처</div>
-                            <div class="design-section-body">
-                                <p style="font-size:0.78rem; color:#888; margin-bottom:10px;">접수 확인 및 증권 발송을 위해 필요합니다.</p>
-                                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
-                                    <div class="design-field">
-                                        <label>담당자명 <span class="req">*</span></label>
-                                        <input type="text" id="ezContactName" class="required-field" placeholder="담당자 성함">
-                                    </div>
-                                    <div class="design-field">
-                                        <label>연락처 <span class="req">*</span></label>
-                                        <input type="tel" id="ezContactPhone" class="required-field" placeholder="010-0000-0000">
-                                    </div>
-                                    <div class="design-field">
-                                        <label>이메일 <span class="req">*</span></label>
-                                        <input type="email" id="ezContactEmail" class="required-field" placeholder="example@email.com">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== ④ 메모 ===== -->
-                        <div class="design-section">
-                            <div class="design-section-title">📝 ④ 메모 (선택)</div>
-                            <div class="design-section-body">
-                                <textarea id="ezMemo" style="width:100%; min-height:70px; padding:10px 12px; border:1.5px solid #ddd; border-radius:8px; font-family:inherit; font-size:0.85rem; resize:vertical;" placeholder="추가 요청사항이나 특이사항을 자유롭게 기재해 주세요.&#10;예: 이익율 120% 적용 요청, 대위권포기특약 필수, 증권 2부 발행 요청 등"></textarea>
-                            </div>
-                        </div>
-
-                        <!-- ===== ⑤ 약관동의 및 제출 ===== -->
-                        <div class="design-section">
-                            <div class="design-section-title">✅ ⑤ 약관동의 및 제출</div>
-                            <div class="design-section-body">
-                                <div class="design-checkbox-row">
-                                    <input type="checkbox" id="ezAgreeAll" onchange="toggleEzAgreeAll(this)">
-                                    <label for="ezAgreeAll" style="font-weight:700;">전체 동의</label>
-                                </div>
-                                <hr style="border:none; border-top:1px solid #eee; margin:8px 0;">
-                                <div class="design-checkbox-row">
-                                    <input type="checkbox" id="ezAgree1" class="ez-agree-item" onchange="checkEzAgreeAll()">
-                                    <label for="ezAgree1"><strong>[필수]</strong> 개인정보 수집 및 이용 동의 <a href="javascript:void(0)" onclick="showModal('privacyModal'); return false;" style="color:var(--primary); font-size:0.8rem;">보기 ›</a></label>
-                                </div>
-                                <div class="design-checkbox-row">
-                                    <input type="checkbox" id="ezAgree2" class="ez-agree-item" onchange="checkEzAgreeAll()">
-                                    <label for="ezAgree2"><strong>[필수]</strong> 이용약관 동의 <a href="javascript:void(0)" onclick="showModal('termsModal'); return false;" style="color:var(--primary); font-size:0.8rem;">보기 ›</a></label>
-                                </div>
-                                <div class="design-checkbox-row">
-                                    <input type="checkbox" id="ezAgree3" class="ez-agree-item" onchange="checkEzAgreeAll()">
-                                    <label for="ezAgree3"><strong>[필수]</strong> 서류 기반 자동추출 및 AI 처리 동의</label>
-                                </div>
-                                
-                                <div style="margin-top:12px; background:#f5f6ff; border-radius:8px; padding:12px; font-size:0.78rem; color:#555; line-height:1.7;">
-                                    <strong style="color:var(--primary);">📌 간편접수 처리 안내</strong><br>
-                                    • 업로드된 서류는 AI가 분석하여 보험 견적에 필요한 데이터를 자동 추출합니다.<br>
-                                    • 추출된 데이터는 담당 중개사가 검토·보완한 후 보험사에 전달됩니다.<br>
-                                    • 접수 후 <strong>영업일 기준 1일 이내</strong>에 보험료 산출 결과와 함께 연락드립니다.
-                                </div>
-                                
-                                <div style="margin-top:12px; background:#fff3e0; border:1px solid #ffe0b2; border-radius:8px; padding:12px; font-size:0.78rem; color:#555; line-height:1.7;">
-                                    <strong style="color:#e65100;">💳 보험료 결제 안내</strong><br>
-                                    • 결제 프로세스: 가입신청 접수 → 중개사 검토 → 보험사 인수심사 → <strong>보험료 확정 통보</strong> → 결제 → 증권 발급<br>
-                                    • 결제 수단: 신용카드(온라인 PG) 또는 계좌이체(무통장입금/실시간이체)<br>
-                                    • 보험료는 인수심사 완료 후 확정되며, 확정 보험료를 안내드린 후 결제가 진행됩니다.
-                                </div>
-                                
-                                <div style="margin-top:12px;">
-                                    <p style="font-size:0.78rem; color:#555; line-height:1.7; margin:0;">이 보험계약은 예금자보호법에 따라 해지환급금(또는 만기 시 보험금에 기타지급금을 합한 금액)이 1인당 "1억원까지" (본 보험회사의 여타 보호상품과 합산) 보호됩니다. 단, 보험계약자 및 보험료 납부자가 법인인 경우에는 보호되지 않습니다.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 버튼 영역 -->
-                        <div class="design-actions">
-                            <button class="design-btn-save" onclick="switchApplyTab('full')">✏️ 직접입력으로 전환</button>
-                            <button class="design-btn-submit" onclick="submitEzApply()">📨 보험가입신청하기</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ==================== 직접입력 모드 (기존 Model A) ==================== -->
-                <div class="apply-tab-content" id="tabContentFull">
+                <!-- ==================== 일반적하보험 가입신청 ==================== -->
                 <div class="design-body">
                     <!-- 안내 -->
                     <div class="design-notice">
                         <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. 자세한 사항은 <strong>sales@cargoinsu.com</strong>으로 문의해 주세요. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
-                        <br><br>
-                        <span style="color:#1a237e; font-weight:600;">💡 서류를 보유하고 계시다면 <a href="javascript:void(0)" onclick="switchApplyTab('ez')" style="color:#e65100; font-weight:700; text-decoration:underline;">간편접수 모드</a>를 이용해 보세요. 30개+ 필드 대신 서류 업로드 + 5~6개 항목만 입력하시면 됩니다.</span>
                     </div>
 
                     <!-- ⓪ 서류 첨부 (선택) -->
                     <div class="design-section">
-                        <div class="design-section-title">📎 ⓪ 서류 첨부 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(선택 — 첨부 시 AI 자동인식 가능)</span></div>
+                        <div class="design-section-title">📎 ⓪ 서류 첨부 · AI 자동인식 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(CI/B/L 첨부 시 자동 정보추출)</span></div>
                         <div class="design-section-body">
-                            <p style="font-size:0.8rem; color:#666; margin-bottom:10px; line-height:1.6;">서류를 첨부하시면 AI가 자동으로 정보를 추출합니다. <strong>지원 파일형태: JPG, PDF, Excel(.xlsx)</strong></p>
+                            <p style="font-size:0.8rem; color:#666; margin-bottom:12px; line-height:1.6;">서류를 첨부하시면 AI가 자동으로 정보를 추출합니다. <strong>지원 파일형태: JPG, PDF, Excel(.xlsx)</strong></p>
                             <div id="dsFileUploadList">
                                 <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-                                    <select style="width:160px; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
-                                        <option value="CI">Commercial Invoice</option>
-                                        <option value="BL">B/L 선하증권</option>
-                                        <option value="AWB">Air Waybill</option>
-                                        <option value="PL">Packing List</option>
-                                        <option value="Request">부보의뢰서</option>
-                                        <option value="ETC">기타 서류</option>
-                                    </select>
+                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 CI (Commercial Invoice)</span>
                                     <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
-                                    <button type="button" onclick="this.closest('.ds-file-row').remove();" style="background:#ef5350; color:#fff; border:none; border-radius:50%; width:28px; height:28px; cursor:pointer; font-size:1rem; line-height:1;">✕</button>
+                                </div>
+                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 Packing List</span>
+                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+                                </div>
+                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 B/L 또는 AWB</span>
+                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
+                                </div>
+                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 부보의뢰서</span>
+                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
                                 </div>
                             </div>
                             <button type="button" onclick="addDsFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:0.82rem; margin-top:4px;">
@@ -6033,7 +5556,7 @@
                                 <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
                                     <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
                                 </button>
-                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로 등이 자동 입력됩니다.</div>
+                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로, 계약자 정보 등이 자동 입력됩니다.</div>
                                 <div class="ai-parse-result" id="dsAiResult"></div>
                                 <div class="ai-parse-error" id="dsAiError"></div>
                             </div>
@@ -6045,37 +5568,112 @@
                         <div class="design-section-title">👤 ① 계약자 / 피보험자 정보</div>
                         <div class="design-section-body">
                             <!-- 계약자 -->
+                            <div style="font-size:0.78rem; color:#795548; background:#FFF8E1; padding:8px 14px; border-radius:6px; margin-bottom:12px;">
+                                💡 사업자번호 입력 후 <strong>검색</strong> 버튼을 누르면 등록된 계약자 정보가 자동으로 채워집니다. 미등록 시 직접 입력 후 <strong>사업자등록증</strong>을 서류첨부에 첨부해 주세요.
+                            </div>
                             <div class="design-row">
                                 <div class="design-field">
                                     <label>계약자 사업자등록번호 <span class="req">*</span></label>
                                     <div class="input-with-btn">
                                         <input type="text" id="dsContractorBizNo" class="required-field" placeholder="000-00-00000" maxlength="12" oninput="formatBizNo(this)">
-                                        <button onclick="searchContractor()">🔍 검색</button>
+                                        <button onclick="searchContractorFull()">🔍 검색</button>
                                     </div>
                                 </div>
                                 <div class="design-field">
-                                    <label>계약자 회사명</label>
-                                    <input type="text" id="dsContractorName" class="readonly-bg" readonly placeholder="사업자번호 검색 시 자동입력">
+                                    <label>법인번호</label>
+                                    <input type="text" id="dsContractorCorpNo" placeholder="법인번호">
+                                </div>
+                            </div>
+                            <div class="design-row">
+                                <div class="design-field">
+                                    <label>계약자명 (국문) <span class="req">*</span></label>
+                                    <input type="text" id="dsContractorName" placeholder="회사명 또는 성함">
+                                </div>
+                                <div class="design-field">
+                                    <label>계약자명 (영문) <span class="req">*</span></label>
+                                    <input type="text" id="dsContractorNameEn" placeholder="Company Name in English">
+                                </div>
+                            </div>
+                            <div class="design-row">
+                                <div class="design-field">
+                                    <label>대표자명</label>
+                                    <input type="text" id="dsContractorCeo" placeholder="대표자 성함">
+                                </div>
+                                <div class="design-field">
+                                    <label>대표자 주소 (영문) <span style="font-size:0.72rem; color:#888;">보험증권 기재용</span></label>
+                                    <input type="text" id="dsContractorAddrEn" placeholder="Address in English (for Certificate)">
+                                </div>
+                            </div>
+                            <div class="design-row single">
+                                <div class="design-field">
+                                    <label>주소</label>
+                                    <div class="input-with-btn">
+                                        <input type="text" id="dsContractorAddr" placeholder="주소">
+                                        <button type="button" onclick="openAddressSearch('dsContractorAddr','dsContractorAddrDetail')">주소 찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="design-row single">
+                                <div class="design-field">
+                                    <label>상세주소</label>
+                                    <input type="text" id="dsContractorAddrDetail" placeholder="상세주소">
                                 </div>
                             </div>
                             
                             <!-- 피보험자 -->
-                            <div class="design-checkbox-row" style="margin-top:10px; margin-bottom:10px;">
-                                <input type="checkbox" id="dsSameAsContractor" checked onchange="toggleInsured()">
-                                <label for="dsSameAsContractor">피보험자가 계약자와 동일</label>
+                            <div style="border-top:2px solid #e8eaf6; margin-top:16px; padding-top:12px;">
+                                <div class="design-checkbox-row" style="margin-bottom:10px;">
+                                    <input type="checkbox" id="dsSameAsContractor" checked onchange="toggleInsuredFull()">
+                                    <label for="dsSameAsContractor">피보험자가 계약자와 동일</label>
+                                </div>
                             </div>
                             <div id="insuredSection" style="display:none;">
                                 <div class="design-row">
                                     <div class="design-field">
-                                        <label>피보험자 사업자등록번호 <span class="req">*</span></label>
+                                        <label>피보험자 사업자등록번호</label>
                                         <div class="input-with-btn">
                                             <input type="text" id="dsInsuredBizNo" placeholder="000-00-00000" maxlength="12" oninput="formatBizNo(this)">
-                                            <button onclick="searchInsured()">🔍 검색</button>
+                                            <button onclick="searchInsuredFull()">🔍 검색</button>
                                         </div>
                                     </div>
                                     <div class="design-field">
-                                        <label>피보험자 회사명</label>
-                                        <input type="text" id="dsInsuredName" class="readonly-bg" readonly placeholder="사업자번호 검색 시 자동입력">
+                                        <label>법인번호</label>
+                                        <input type="text" id="dsInsuredCorpNo" placeholder="법인번호">
+                                    </div>
+                                </div>
+                                <div class="design-row">
+                                    <div class="design-field">
+                                        <label>피보험자명 (국문)</label>
+                                        <input type="text" id="dsInsuredName" placeholder="피보험자명 (국문)">
+                                    </div>
+                                    <div class="design-field">
+                                        <label>피보험자명 (영문)</label>
+                                        <input type="text" id="dsInsuredNameEn" placeholder="Insured Name in English">
+                                    </div>
+                                </div>
+                                <div class="design-row">
+                                    <div class="design-field">
+                                        <label>대표자명</label>
+                                        <input type="text" id="dsInsuredCeo" placeholder="대표자 성함">
+                                    </div>
+                                    <div class="design-field">
+                                        <label>주소 (영문)</label>
+                                        <input type="text" id="dsInsuredAddrEn" placeholder="Address in English">
+                                    </div>
+                                </div>
+                                <div class="design-row single">
+                                    <div class="design-field">
+                                        <label>주소</label>
+                                        <div class="input-with-btn">
+                                            <input type="text" id="dsInsuredAddr" placeholder="주소">
+                                            <button type="button" onclick="openAddressSearch('dsInsuredAddr','dsInsuredAddrDetail')">주소 찾기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="design-row single">
+                                    <div class="design-field">
+                                        <label>상세주소</label>
+                                        <input type="text" id="dsInsuredAddrDetail" placeholder="상세주소">
                                     </div>
                                 </div>
                                 <div class="design-row single">
@@ -6341,42 +5939,47 @@
                     <div class="design-section">
                         <div class="design-section-title">🔢 ⑤ 참조번호</div>
                         <div class="design-section-body">
-                            <div class="design-ref-row">
-                                <div class="design-field" style="flex-shrink:0; width:140px;">
-                                    <label>참조유형 1</label>
-                                    <select id="dsRefType1">
-                                        <option value="">-- 선택 --</option>
+                            <div id="dsRefList">
+                                <div class="design-ref-row ds-ref-item">
+                                    <div class="design-field" style="flex-shrink:0; width:140px;">
+                                        <label>참조유형 1</label>
+                                        <select id="dsRefType1">
+                                            <option value="">-- 선택 --</option>
                                         <option value="LC#">L/C No.</option>
                                         <option value="INV#">Invoice No.</option>
                                         <option value="P/O#">P/O No.</option>
                                         <option value="B/L#">B/L No.</option>
                                         <option value="CONT#">Container No.</option>
                                         <option value="FILE#">File No.</option>
-                                    </select>
+                                        </select>
+                                    </div>
+                                    <div class="design-field" style="flex:1;">
+                                        <label>참조번호 1</label>
+                                        <input type="text" id="dsRefNo1" placeholder="번호 입력">
+                                    </div>
                                 </div>
-                                <div class="design-field" style="flex:1;">
-                                    <label>참조번호 1</label>
-                                    <input type="text" id="dsRefNo1" placeholder="번호 입력">
-                                </div>
-                            </div>
-                            <div class="design-ref-row">
-                                <div class="design-field" style="flex-shrink:0; width:140px;">
-                                    <label>참조유형 2</label>
-                                    <select id="dsRefType2">
-                                        <option value="">-- 선택 --</option>
+                                <div class="design-ref-row ds-ref-item">
+                                    <div class="design-field" style="flex-shrink:0; width:140px;">
+                                        <label>참조유형 2</label>
+                                        <select id="dsRefType2">
+                                            <option value="">-- 선택 --</option>
                                         <option value="LC#">L/C No.</option>
                                         <option value="INV#">Invoice No.</option>
                                         <option value="P/O#">P/O No.</option>
                                         <option value="B/L#">B/L No.</option>
                                         <option value="CONT#">Container No.</option>
                                         <option value="FILE#">File No.</option>
-                                    </select>
-                                </div>
-                                <div class="design-field" style="flex:1;">
-                                    <label>참조번호 2</label>
-                                    <input type="text" id="dsRefNo2" placeholder="번호 입력">
+                                        </select>
+                                    </div>
+                                    <div class="design-field" style="flex:1;">
+                                        <label>참조번호 2</label>
+                                        <input type="text" id="dsRefNo2" placeholder="번호 입력">
+                                    </div>
                                 </div>
                             </div>
+                            <button type="button" onclick="addDsRefRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:6px 16px; border-radius:8px; cursor:pointer; font-size:0.82rem; margin-top:8px;">
+                                ➕ 참조번호 추가 (최대 6개)
+                            </button>
                         </div>
                     </div>
 
@@ -6402,41 +6005,55 @@
                                 </div>
                             </div>
                             
-                            <!-- 특별약관 -->
-                            <div style="margin-top:12px;">
-                                <label style="font-size:0.82rem; font-weight:600; color:#555; margin-bottom:8px; display:block;">특별약관 (Special Clauses) - 해당되는 항목 선택</label>
-                                <div class="special-clause-list">
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc1" value="Institute War Clauses (Cargo)">
-                                        <label for="sc1">전쟁약관 - Institute War Clauses (Cargo)</label>
+                            <!-- 부가약관/특별화물약관/기타 특별약관 선택 -->
+                            <div style="margin-top:16px;">
+                                <label style="font-size:0.85rem; font-weight:700; color:#1a237e; margin-bottom:10px; display:block;">📋 약관 추가 선택</label>
+                                
+                                <!-- 약관 탭 -->
+                                <div style="display:flex; gap:4px; margin-bottom:12px; border-bottom:2px solid #e8eaf6;">
+                                    <button type="button" class="clause-tab active" onclick="switchClauseTab('additional')" id="clauseTabAdditional" style="padding:8px 16px; border:none; background:#e8eaf6; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#1a237e;">부가약관<br><span style="font-size:0.68rem; font-weight:400;">Additional Clauses</span></button>
+                                    <button type="button" class="clause-tab" onclick="switchClauseTab('specialCargo')" id="clauseTabSpecialCargo" style="padding:8px 16px; border:none; background:#f5f5f5; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#666;">특수화물약관<br><span style="font-size:0.68rem; font-weight:400;">Special Cargo Clauses</span></button>
+                                    <button type="button" class="clause-tab" onclick="switchClauseTab('otherSpecial')" id="clauseTabOtherSpecial" style="padding:8px 16px; border:none; background:#f5f5f5; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#666;">기타 특별약관<br><span style="font-size:0.68rem; font-weight:400;">Other Special Clauses</span></button>
+                                </div>
+                                
+                                <!-- 부가약관 (Additional Clauses) -->
+                                <div id="clausePanelAdditional" class="clause-panel">
+                                    <div class="special-clause-list">
+                                        <div class="special-clause-item"><input type="checkbox" id="ac1" value="T.P.N.D."><label for="ac1">1. T.P.N.D. (도난·좀도둑·미착위험)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac2" value="R.F.W.D."><label for="ac2">2. R.F.W.D. (우담수손)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac3" value="Hook & Hole"><label for="ac3">3. Hook &amp; Hole (갈쿠리 손상)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac4" value="C.O.O.C."><label for="ac4">4. C.O.O.C. (타 화물 접촉위험)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac5" value="Breakage"><label for="ac5">5. Breakage (파손위험)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac6" value="Bending & Denting"><label for="ac6">6. Bending &amp; Denting (곡손위험)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac7" value="Leakage & Shortage"><label for="ac7">7. Leakage &amp; Shortage (누손·중량부족)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="ac8" value="Sweat & Heating"><label for="ac8">8. Sweat &amp; Heating (땀·열손해)</label></div>
                                     </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc2" value="Institute Strikes Clauses (Cargo)">
-                                        <label for="sc2">동맹파업약관 - Institute Strikes Clauses (Cargo)</label>
+                                </div>
+
+                                <!-- 특수화물약관 (Special Cargo Clauses) -->
+                                <div id="clausePanelSpecialCargo" class="clause-panel" style="display:none;">
+                                    <div class="special-clause-list">
+                                        <div class="special-clause-item"><input type="checkbox" id="scc1" value="Institute Air Cargo Clause (All Risks)"><label for="scc1">1. 협회항공화물약관 (전위험담보)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc2" value="Institute War Clause (Air Cargo)"><label for="scc2">2. 협회전쟁약관 (항공화물)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc3" value="Total Loss Clause (Cargo)"><label for="scc3">3. 전부손해 부담약관 (적하)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc4" value="Raw Sugar Clause"><label for="scc4">4. 원당약관 (Raw Sugar)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc5" value="Rubber Clauses"><label for="scc5">5. 고무약관 (Rubber)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc6" value="Timber Trade Federation Clause"><label for="scc6">6. 원목무역협회약관 (Timber)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="scc7" value="Institute Frozen Food Clause"><label for="scc7">7. 협회냉동식품약관 (Frozen Food)</label></div>
                                     </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc3" value="Waiver of Subrogation against Carrier">
-                                        <label for="sc3">운송인 구상권 포기 - Waiver of Subrogation against Carrier</label>
-                                    </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc4" value="Both to Blame Collision Clause">
-                                        <label for="sc4">쌍방과실충돌약관 - Both to Blame Collision Clause</label>
-                                    </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc5" value="Institute Classification Clause">
-                                        <label for="sc5">선급약관 - Institute Classification Clause</label>
-                                    </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc6" value="Theft Pilferage & Non-delivery (TPND)">
-                                        <label for="sc6">도난·발하·부착 - TPND Clause</label>
-                                    </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc7" value="Rain Fresh Water Damage Clause">
-                                        <label for="sc7">우·담수손해 - Rain Fresh Water Damage Clause</label>
-                                    </div>
-                                    <div class="special-clause-item">
-                                        <input type="checkbox" id="sc8" value="Sweat & Heating Clause">
-                                        <label for="sc8">땀·열손해약관 - Sweat & Heating Clause</label>
+                                </div>
+
+                                <!-- 기타 특별약관 (Other Special Clauses) -->
+                                <div id="clausePanelOtherSpecial" class="clause-panel" style="display:none;">
+                                    <div class="special-clause-list">
+                                        <div class="special-clause-item"><input type="checkbox" id="osc1" value="Country Damage Clause"><label for="osc1">1. 원산지 손해약관 (Country Damage)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc2" value="Institute Classification Clause"><label for="osc2">2. 협회선급약관 (Institute Classification)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc3" value="Custom Duty Clause"><label for="osc3">3. 관세약관 (Custom Duty)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc4" value="Refrigerating Machinery Clause"><label for="osc4">4. 냉동기관약관 (Refrigerating Machinery)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc5" value="Institute War Clauses (Cargo)"><label for="osc5">5. 전쟁약관 - Institute War Clauses (Cargo)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc6" value="Institute Strikes Clauses (Cargo)"><label for="osc6">6. 동맹파업약관 - Institute Strikes Clauses (Cargo)</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc7" value="Waiver of Subrogation"><label for="osc7">7. 운송인 구상권 포기 - Waiver of Subrogation</label></div>
+                                        <div class="special-clause-item"><input type="checkbox" id="osc8" value="Both to Blame Collision Clause"><label for="osc8">8. 쌍방과실충돌약관 - Both to Blame Collision</label></div>
                                     </div>
                                 </div>
                             </div>
@@ -6571,7 +6188,7 @@
                         <button class="design-btn-submit" onclick="submitDesign()">📨 보험가입신청하기</button>
                     </div>
                 </div>
-                </div><!-- /tabContentFull -->
+
                 </div><!-- /trackContentGeneral -->
 
                 <!-- ===== TRACK B: 특송 적하보험 ===== -->
@@ -9701,7 +9318,7 @@ function showPage(pageId) {
     if (pageId === 'apply') {
         selectTrack('general');
         // 간편접수 탭도 기본으로 리셋
-        switchApplyTab('ez');
+        // switchApplyTab removed - full mode only
     }
     
     if (pageId === 'inlandQuote') { setTimeout(loadInlandDraft, 100); }
@@ -10036,7 +9653,7 @@ function calculatePremium(e) {
 
 function goToApply() {
     showPage('apply');
-    switchApplyTab('full'); // 직접입력 탭으로 전환
+    // full mode is default now
     
     // 계산기 결과가 있으면 견적신청 폼에 자동 반영
     if (window.calcResult) {
@@ -10127,7 +9744,7 @@ function goToApply() {
         // 기존 배너 제거 후 삽입
         const oldBanner = document.getElementById('calcAutoFillBanner');
         if (oldBanner) oldBanner.remove();
-        const formBody = document.querySelector('#tabContentFull .design-body');
+        const formBody = document.querySelector('#trackContentGeneral .design-body');
         if (formBody) formBody.insertBefore(banner, formBody.firstChild);
         
         // 스크롤
@@ -11011,7 +10628,7 @@ async function submitDesign() {
         return fi && fi.files && fi.files.length > 0;
     });
     if (!aiParseDoneFlags['cargo'] && hasAnyFile) {
-        const submitBtn = document.querySelector('#tabContentFull .design-btn-submit') || document.querySelector('[onclick*="submitDesign"]');
+        const submitBtn = document.querySelector('#trackContentGeneral .design-btn-submit') || document.querySelector('[onclick*="submitDesign"]');
         if (submitBtn) {
             const origText = submitBtn.innerHTML;
             submitBtn.innerHTML = '🤖 AI 서류 분석 중...';
@@ -11499,10 +11116,12 @@ async function submitExpress() {
 }
 
 function switchApplyTab(mode) {
-    document.getElementById('tabEz').classList.toggle('active', mode === 'ez');
+    // 간편접수 모드 삭제됨 - full mode only
+    var tabEz = document.getElementById('tabEz');
+    if(tabEz) tabEz.classList.toggle('active', mode === 'ez');
     document.getElementById('tabFull').classList.toggle('active', mode === 'full');
-    document.getElementById('tabContentEz').classList.toggle('active', mode === 'ez');
-    document.getElementById('tabContentFull').classList.toggle('active', mode === 'full');
+    var tce = document.getElementById('tabContentEz'); if(tce) tce.classList.toggle('active', mode === 'ez');
+    // tabContentFull removed - full mode always visible
     // 스크롤 위치 조정
     document.getElementById('page-apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -12542,6 +12161,64 @@ function saveInlandDraftV2() {
     try{localStorage.setItem('inlandQuoteDraft',JSON.stringify(data));alert('견적신청 내용이 임시저장되었습니다.');}catch(e){alert('임시저장에 실패했습니다.');}
 }
 
+
+
+// ===== 적하보험 - 계약자 사업자번호 Full 검색 =====
+function searchContractorFull() {
+    var bizNo = document.getElementById('dsContractorBizNo').value.replace(/[^0-9]/g,'');
+    if(bizNo.length!==10){alert('사업자번호 10자리를 입력해주세요.');return;}
+    lookupRegisteredBiz(bizNo, {
+        companyKr:'dsContractorName', companyEn:'dsContractorNameEn',
+        ceoName:'dsContractorCeo', ceoBirth:null,
+        ceoNation:null, addrSearch:'dsContractorAddr', addrDetail:'dsContractorAddrDetail'
+    });
+}
+
+// ===== 적하보험 - 피보험자 사업자번호 Full 검색 =====
+function searchInsuredFull() {
+    var bizNo = document.getElementById('dsInsuredBizNo').value.replace(/[^0-9]/g,'');
+    if(bizNo.length!==10){alert('사업자번호 10자리를 입력해주세요.');return;}
+    lookupRegisteredBiz(bizNo, {
+        companyKr:'dsInsuredName', companyEn:'dsInsuredNameEn',
+        ceoName:'dsInsuredCeo', ceoBirth:null,
+        ceoNation:null, addrSearch:'dsInsuredAddr', addrDetail:'dsInsuredAddrDetail'
+    });
+}
+
+// ===== 적하보험 - 피보험자 토글 (Full mode) =====
+function toggleInsuredFull() {
+    var same = document.getElementById('dsSameAsContractor').checked;
+    document.getElementById('insuredSection').style.display = same ? 'none' : 'block';
+    if(same) {
+        var pairs = [['dsInsuredName','dsContractorName'],['dsInsuredNameEn','dsContractorNameEn'],['dsInsuredCeo','dsContractorCeo'],['dsInsuredAddr','dsContractorAddr'],['dsInsuredAddrDetail','dsContractorAddrDetail'],['dsInsuredAddrEn','dsContractorAddrEn'],['dsInsuredCorpNo','dsContractorCorpNo']];
+        pairs.forEach(function(p){ var d=document.getElementById(p[0]),s=document.getElementById(p[1]); if(d&&s) d.value=s.value; });
+    }
+}
+
+// ===== 참조번호 추가 (최대 6개) =====
+function addDsRefRow() {
+    var list = document.getElementById('dsRefList');
+    var count = list.querySelectorAll('.ds-ref-item').length;
+    if(count >= 6) { alert('참조번호는 최대 6개까지 추가할 수 있습니다.'); return; }
+    var n = count + 1;
+    var div = document.createElement('div');
+    div.className = 'design-ref-row ds-ref-item';
+    div.innerHTML = '<div class="design-field" style="flex-shrink:0;width:140px;"><label>참조유형 '+n+'</label><select><option value="">-- 선택 --</option><option value="LC#">L/C No.</option><option value="INV#">Invoice No.</option><option value="P/O#">P/O No.</option><option value="B/L#">B/L No.</option><option value="CONT#">Container No.</option><option value="FILE#">File No.</option></select></div><div class="design-field" style="flex:1;"><label>참조번호 '+n+'</label><div style="display:flex;gap:6px;"><input type="text" placeholder="번호 입력" style="flex:1;"><button type="button" onclick="this.closest(\'.ds-ref-item\').remove()" style="background:#ef5350;color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:0.9rem;">\u2715</button></div></div>';
+    list.appendChild(div);
+}
+
+// ===== 약관 탭 전환 =====
+function switchClauseTab(tab) {
+    ['additional','specialCargo','otherSpecial'].forEach(function(t) {
+        var panel = document.getElementById('clausePanel' + t.charAt(0).toUpperCase() + t.slice(1));
+        var btn = document.getElementById('clauseTab' + t.charAt(0).toUpperCase() + t.slice(1));
+        if(panel) panel.style.display = t===tab ? 'block' : 'none';
+        if(btn) {
+            btn.style.background = t===tab ? '#e8eaf6' : '#f5f5f5';
+            btn.style.color = t===tab ? '#1a237e' : '#666';
+        }
+    });
+}
 
 // ===== Art 보관장소 토글 =====
 function toggleArtStorage() {
