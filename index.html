@@ -5526,43 +5526,6 @@
                         <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. 자세한 사항은 <strong>sales@cargoinsu.com</strong>으로 문의해 주세요. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
                     </div>
 
-                    <!-- ⓪ 서류 첨부 (선택) -->
-                    <div class="design-section">
-                        <div class="design-section-title">📎 ⓪ 서류 첨부 · AI 자동인식 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(CI/B/L 첨부 시 자동 정보추출)</span></div>
-                        <div class="design-section-body">
-                            <p style="font-size:0.8rem; color:#666; margin-bottom:12px; line-height:1.6;">서류를 첨부하시면 AI가 자동으로 정보를 추출합니다. <strong>지원 파일형태: JPG, PDF, Excel(.xlsx)</strong></p>
-                            <div id="dsFileUploadList">
-                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 CI (Commercial Invoice)</span>
-                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
-                                </div>
-                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 Packing List</span>
-                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
-                                </div>
-                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 B/L 또는 AWB</span>
-                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
-                                </div>
-                                <div class="ds-file-row" style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
-                                    <span style="width:130px; font-size:0.82rem; font-weight:600; flex-shrink:0; color:#1a237e;">📄 부보의뢰서</span>
-                                    <input type="file" accept=".pdf,.jpg,.jpeg,.xlsx,.xls" style="flex:1; font-size:0.82rem;">
-                                </div>
-                            </div>
-                            <button type="button" onclick="addDsFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:0.82rem; margin-top:4px;">
-                                ➕ 서류 추가 첨부
-                            </button>
-                            <div style="margin-top:14px; padding-top:14px; border-top:1px dashed #e0e0e0;">
-                                <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
-                                    <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
-                                </button>
-                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로, 계약자 정보 등이 자동 입력됩니다.</div>
-                                <div class="ai-parse-result" id="dsAiResult"></div>
-                                <div class="ai-parse-error" id="dsAiError"></div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- ① 계약자 / 피보험자 정보 -->
                     <div class="design-section">
                         <div class="design-section-title">👤 ① 계약자 / 피보험자 정보</div>
@@ -6005,67 +5968,53 @@
                                 </div>
                             </div>
                             
-                            <!-- 부가약관/특별화물약관/기타 특별약관 선택 -->
-                            <div style="margin-top:16px;">
-                                <label style="font-size:0.85rem; font-weight:700; color:#1a237e; margin-bottom:10px; display:block;">📋 약관 추가 선택</label>
-                                
-                                <!-- 약관 탭 -->
-                                <div style="display:flex; gap:4px; margin-bottom:12px; border-bottom:2px solid #e8eaf6;">
-                                    <button type="button" class="clause-tab active" onclick="switchClauseTab('additional')" id="clauseTabAdditional" style="padding:8px 16px; border:none; background:#e8eaf6; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#1a237e;">부가약관<br><span style="font-size:0.68rem; font-weight:400;">Additional Clauses</span></button>
-                                    <button type="button" class="clause-tab" onclick="switchClauseTab('specialCargo')" id="clauseTabSpecialCargo" style="padding:8px 16px; border:none; background:#f5f5f5; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#666;">특수화물약관<br><span style="font-size:0.68rem; font-weight:400;">Special Cargo Clauses</span></button>
-                                    <button type="button" class="clause-tab" onclick="switchClauseTab('otherSpecial')" id="clauseTabOtherSpecial" style="padding:8px 16px; border:none; background:#f5f5f5; border-radius:6px 6px 0 0; cursor:pointer; font-size:0.8rem; font-weight:600; color:#666;">기타 특별약관<br><span style="font-size:0.68rem; font-weight:400;">Other Special Clauses</span></button>
-                                </div>
-                                
-                                <!-- 부가약관 (Additional Clauses) -->
-                                <div id="clausePanelAdditional" class="clause-panel">
-                                    <div class="special-clause-list">
-                                        <div class="special-clause-item"><input type="checkbox" id="ac1" value="T.P.N.D."><label for="ac1">1. T.P.N.D. (도난·좀도둑·미착위험)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac2" value="R.F.W.D."><label for="ac2">2. R.F.W.D. (우담수손)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac3" value="Hook & Hole"><label for="ac3">3. Hook &amp; Hole (갈쿠리 손상)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac4" value="C.O.O.C."><label for="ac4">4. C.O.O.C. (타 화물 접촉위험)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac5" value="Breakage"><label for="ac5">5. Breakage (파손위험)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac6" value="Bending & Denting"><label for="ac6">6. Bending &amp; Denting (곡손위험)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac7" value="Leakage & Shortage"><label for="ac7">7. Leakage &amp; Shortage (누손·중량부족)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="ac8" value="Sweat & Heating"><label for="ac8">8. Sweat &amp; Heating (땀·열손해)</label></div>
-                                    </div>
-                                </div>
 
-                                <!-- 특수화물약관 (Special Cargo Clauses) -->
-                                <div id="clausePanelSpecialCargo" class="clause-panel" style="display:none;">
-                                    <div class="special-clause-list">
-                                        <div class="special-clause-item"><input type="checkbox" id="scc1" value="Institute Air Cargo Clause (All Risks)"><label for="scc1">1. 협회항공화물약관 (전위험담보)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc2" value="Institute War Clause (Air Cargo)"><label for="scc2">2. 협회전쟁약관 (항공화물)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc3" value="Total Loss Clause (Cargo)"><label for="scc3">3. 전부손해 부담약관 (적하)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc4" value="Raw Sugar Clause"><label for="scc4">4. 원당약관 (Raw Sugar)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc5" value="Rubber Clauses"><label for="scc5">5. 고무약관 (Rubber)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc6" value="Timber Trade Federation Clause"><label for="scc6">6. 원목무역협회약관 (Timber)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="scc7" value="Institute Frozen Food Clause"><label for="scc7">7. 협회냉동식품약관 (Frozen Food)</label></div>
-                                    </div>
-                                </div>
-
-                                <!-- 기타 특별약관 (Other Special Clauses) -->
-                                <div id="clausePanelOtherSpecial" class="clause-panel" style="display:none;">
-                                    <div class="special-clause-list">
-                                        <div class="special-clause-item"><input type="checkbox" id="osc1" value="Country Damage Clause"><label for="osc1">1. 원산지 손해약관 (Country Damage)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc2" value="Institute Classification Clause"><label for="osc2">2. 협회선급약관 (Institute Classification)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc3" value="Custom Duty Clause"><label for="osc3">3. 관세약관 (Custom Duty)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc4" value="Refrigerating Machinery Clause"><label for="osc4">4. 냉동기관약관 (Refrigerating Machinery)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc5" value="Institute War Clauses (Cargo)"><label for="osc5">5. 전쟁약관 - Institute War Clauses (Cargo)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc6" value="Institute Strikes Clauses (Cargo)"><label for="osc6">6. 동맹파업약관 - Institute Strikes Clauses (Cargo)</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc7" value="Waiver of Subrogation"><label for="osc7">7. 운송인 구상권 포기 - Waiver of Subrogation</label></div>
-                                        <div class="special-clause-item"><input type="checkbox" id="osc8" value="Both to Blame Collision Clause"><label for="osc8">8. 쌍방과실충돌약관 - Both to Blame Collision</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="design-row single" style="margin-top:12px;">
-                                <div class="design-field">
-                                    <label>기타 특별약관 (직접 기재)</label>
-                                    <textarea id="dsSpecialNote" placeholder="상기 목록에 없는 특별약관이 있으면 여기에 기재하세요"></textarea>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     
+                    <!-- ⑦ 서류 첨부 · AI 자동인식 -->
+                    <div class="design-section">
+                        <div class="design-section-title">📎 ⑦ 첨부 · AI 자동인식 <span style="font-size:0.72rem; font-weight:400; color:#666; margin-left:8px;">(CI/B/L/PL/AWB 등 서류 첨부 시 자동 정보 추출)</span></div>
+                        <div class="design-section-body">
+                            <p style="font-size:0.8rem; color:#666; margin-bottom:12px; line-height:1.6;">보유 서류를 첨부하시면 견적 처리가 빨라집니다. (각 파일 최대 5MB)</p>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>📄 Commercial Invoice (CI)</label>
+                                    <input type="file" id="dsFileCI" accept=".pdf,.jpg,.jpeg,.xlsx,.xls">
+                                </div>
+                                <div class="form-group">
+                                    <label>📄 Packing List (PL)</label>
+                                    <input type="file" id="dsFilePL" accept=".pdf,.jpg,.jpeg,.xlsx,.xls">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>📄 B/L 또는 AWB</label>
+                                    <input type="file" id="dsFileBL" accept=".pdf,.jpg,.jpeg,.xlsx,.xls">
+                                </div>
+                                <div class="form-group">
+                                    <label>📄 부보의뢰서</label>
+                                    <input type="file" id="dsFileRequest" accept=".pdf,.jpg,.jpeg,.xlsx,.xls">
+                                </div>
+                            </div>
+                            <p style="font-size:0.75rem; color:#888; margin-top:4px;">📎 지원 파일형태: <strong>JPG, PDF, Excel(.xlsx)</strong> | 각 파일 최대 5MB</p>
+                            
+                            <!-- 추가 서류 -->
+                            <div id="dsFileUploadList" style="margin-top:8px;"></div>
+                            <button type="button" onclick="addDsFileRow()" style="background:none; border:2px dashed #c5cae9; color:var(--primary); padding:6px 14px; border-radius:8px; cursor:pointer; font-size:0.78rem; margin-top:4px;">
+                                ➕ 서류 추가 첨부
+                            </button>
+                            <div style="margin-top:12px; padding-top:12px; border-top:1px dashed #e0e0e0;">
+                                <button type="button" class="ai-parse-btn" id="dsAiParseBtn" onclick="aiParseDocument('cargo')">
+                                    <span class="ai-icon">🤖</span> AI 서류 자동인식 — CI/BL에서 정보 추출
+                                </button>
+                                <div style="font-size:0.72rem; color:#888; margin-top:6px;">CI 또는 B/L 파일을 첨부한 후 버튼을 클릭하면 화물정보, 운송경로, 계약자 정보 등이 자동 입력됩니다.</div>
+                                <div class="ai-parse-result" id="dsAiResult"></div>
+                                <div class="ai-parse-error" id="dsAiError"></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- 예상보험료 계산 -->
                     <div class="design-section">
                         <div class="design-section-title">📊 예상보험료</div>
@@ -6104,12 +6053,9 @@
                         </div>
                     </div>
 
-                    <!-- ⑦ 관련서류 업로드 (상단 ⓪에서 통합) -->
-                    <!-- 서류 업로드는 폼 상단의 ⓪ 서류 첨부 섹션으로 통합되었습니다 -->
-
-                    <!-- ⑦-2 담당자 연락처 -->
+                    <!-- ⑧ 담당자 연락처 -->
                     <div class="design-section">
-                        <div class="design-section-title">📞 ⑦-2 담당자 연락처</div>
+                        <div class="design-section-title">📞 ⑧ 담당자 연락처</div>
                         <div class="design-section-body">
                             <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
                                 <div class="form-group" style="margin:0;">
@@ -6128,7 +6074,7 @@
                         </div>
                     </div>
 
-                    <!-- ⑦-2 보험료 결제 안내 -->
+                    <!-- 보험료 결제 안내 -->
                     <div class="design-section">
                         <div class="design-section-title">💳 보험료 결제 안내</div>
                         <div class="design-section-body">
@@ -6154,7 +6100,7 @@
 
                     <!-- ⑧ 동의 및 제출 -->
                     <div class="design-section">
-                        <div class="design-section-title">✅ ⑧ 약관동의 및 제출</div>
+                        <div class="design-section-title">✅ ⑨ 약관동의 및 제출</div>
                         <div class="design-section-body">
                             <div class="design-checkbox-row">
                                 <input type="checkbox" id="dsAgreeAll" onchange="toggleDesignAgreeAll(this)">
@@ -6546,7 +6492,7 @@
 
                         <!-- ⑧ 동의 및 제출 -->
                         <div class="design-section">
-                            <div class="design-section-title">✅ ⑧ 약관동의 및 제출</div>
+                            <div class="design-section-title">✅ ⑨ 약관동의 및 제출</div>
                             <div class="design-section-body">
                                 <div class="design-checkbox-row" style="display:flex; align-items:center; gap:8px; padding:8px 0;">
                                     <input type="checkbox" id="exAgreeAll" onchange="toggleExAgreeAll(this)">
@@ -11419,6 +11365,12 @@ async function submitEzApply() {
  * @param {string} mode - 'express' | 'cargo' | 'ez'
  */
 async function aiParseDocument(mode) {
+    // Check API key
+    if (!window.CARGOINSU_GEMINI_KEY) {
+        var errEl = document.getElementById(mode === 'cargo' ? 'dsAiError' : 'exAiError');
+        if (errEl) { errEl.textContent = '⚠️ AI 자동인식 기능은 현재 설정 중입니다. 관리자에게 문의해 주세요.'; errEl.style.display = 'block'; }
+        return;
+    }
     // 파일 입력 요소 결정
     let fileInputIds, btn, resultEl, errorEl;
     var selectedFile = null;
@@ -11429,40 +11381,11 @@ async function aiParseDocument(mode) {
         resultEl = document.getElementById('exAiResult');
         errorEl = document.getElementById('exAiError');
     } else if (mode === 'cargo') {
-        // 직접입력: 동적 파일 행에서 첫 번째 파일 찾기
-        fileInputIds = [];
-        const dsRows = document.querySelectorAll('#dsFileUploadList .ds-file-row');
-        dsRows.forEach(row => {
-            const fileInput = row.querySelector('input[type="file"]');
-            if (fileInput && fileInput.files && fileInput.files.length > 0) {
-                fileInputIds.push(fileInput);
-            }
-        });
+        // 일반적하: 지정된 파일 입력에서 찾기
+        fileInputIds = ['dsFileCI', 'dsFileBL', 'dsFilePL', 'dsFileRequest'];
         btn = document.getElementById('dsAiParseBtn');
         resultEl = document.getElementById('dsAiResult');
         errorEl = document.getElementById('dsAiError');
-        
-        // 동적 행에서 파일 직접 추출
-        for (let i = 0; i < fileInputIds.length; i++) {
-            const input = fileInputIds[i];
-            if (input && input.files && input.files.length > 0) {
-                selectedFile = input.files[0];
-                const selectEl = input.closest('.ds-file-row')?.querySelector('select');
-                const fileLabel = selectEl ? selectEl.value : 'CI';
-                if (fileLabel === 'CI') docType = 'CI';
-                else if (fileLabel === 'BL') docType = 'BL';
-                else if (fileLabel === 'AWB') docType = 'AWB';
-                else docType = 'CI';
-                break;
-            }
-        }
-        
-        if (!selectedFile) {
-            errorEl.textContent = '⚠️ 먼저 서류 파일을 첨부해 주세요.';
-            errorEl.classList.add('show');
-            resultEl.classList.remove('show');
-            return;
-        }
     } else if (mode === 'ez') {
         fileInputIds = ['ezFileCI', 'ezFileBL', 'ezFileRequest'];
         btn = document.getElementById('ezAiParseBtn');
@@ -11470,8 +11393,8 @@ async function aiParseDocument(mode) {
         errorEl = document.getElementById('ezAiError');
     }
     
-    // 첨부 파일 찾기 (express/ez modes - cargo는 위에서 이미 처리)
-    if (mode !== 'cargo') {
+    // 첨부 파일 찾기 - 모든 모드
+    {
         var selectedFile = null;
         var docType = 'CI';
         for (var i = 0; i < fileInputIds.length; i++) {
@@ -11513,7 +11436,7 @@ async function aiParseDocument(mode) {
         const fileType = selectedFile.type || 'application/pdf';
         
         // Gemini API 직접 호출 (CORS 지원, 3~5초 이내)
-        const GEMINI_API_KEY = 'AIzaSyC10YNgYc7EZ6vRZpg7wpJtbaVBLOkhfl0';
+        const GEMINI_API_KEY = window.CARGOINSU_GEMINI_KEY || '';
         const GEMINI_MODEL = 'gemini-2.0-flash';
         const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
         
@@ -11616,7 +11539,7 @@ async function autoAiParse(mode) {
         const fileType = file.type || 'application/pdf';
         const base64 = await fileToBase64(file);
         
-        const GEMINI_API_KEY = 'AIzaSyC10YNgYc7EZ6vRZpg7wpJtbaVBLOkhfl0';
+        const GEMINI_API_KEY = window.CARGOINSU_GEMINI_KEY || '';
         const GEMINI_MODEL = 'gemini-2.0-flash';
         const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
         
