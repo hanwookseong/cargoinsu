@@ -406,13 +406,9 @@
         .chubb-label { width: 180px; min-width: 180px; background: #fafbfc; padding: 10px 16px; font-size: 0.82rem; font-weight: 600; color: #444; display: flex; align-items: center; border-right: 1px solid #e8e8e8; flex-shrink: 0; }
         .chubb-label .req { color: #e53935; margin-left: 2px; }
         .chubb-field { flex: 1; padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .chubb-field input[type="text"],
-        .chubb-field input[type="date"],
-        .chubb-field input[type="number"],
-        .chubb-field input[type="email"],
-        .chubb-field input[type="tel"],
-        .chubb-field textarea,
-        .chubb-field select { border: 1px solid #d0d0d0; border-radius: 4px; padding: 7px 10px; font-size: 0.82rem; font-family: inherit; outline: none; transition: border 0.2s; }
+        .chubb-field input[type="text"], .chubb-field input[type="date"], .chubb-field input[type="number"],
+        .chubb-field input[type="email"], .chubb-field input[type="tel"], .chubb-field textarea, .chubb-field select {
+            border: 1px solid #d0d0d0; border-radius: 4px; padding: 7px 10px; font-size: 0.82rem; font-family: inherit; outline: none; transition: border 0.2s; }
         .chubb-field input:focus, .chubb-field select:focus, .chubb-field textarea:focus { border-color: #FF8F00; box-shadow: 0 0 0 2px rgba(255,143,0,0.1); }
         .chubb-field input[type="text"], .chubb-field input[type="email"], .chubb-field input[type="tel"] { flex: 1; min-width: 150px; }
         .chubb-field select { min-width: 150px; }
@@ -422,30 +418,22 @@
         .chubb-field .btn-verify:hover { background: #E65100; }
         .chubb-field .btn-addr { padding: 7px 14px; background: #f5f5f5; color: #333; border: 1px solid #ccc; border-radius: 4px; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
         .chubb-field .btn-addr:hover { background: #e8e8e8; }
-        .chubb-field .w-full { width: 100%; }
         .chubb-double-row { display: grid; grid-template-columns: 1fr 1fr; }
         .chubb-double-row .chubb-row { border-right: 1px solid #f0f0f0; }
         .chubb-double-row .chubb-row:last-child { border-right: none; }
-        .chubb-file-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
-        .chubb-file-row input[type="file"] { font-size: 0.78rem; }
-        .chubb-file-row .file-size { font-size: 0.72rem; color: #999; }
         .chubb-form-actions { display: flex; justify-content: space-between; padding: 20px; background: #fafafa; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 3rem; }
         .chubb-btn { padding: 10px 28px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1px solid #ccc; transition: all 0.2s; }
         .chubb-btn-list { background: #555; color: #fff; border-color: #555; }
         .chubb-btn-list:hover { background: #333; }
-        .chubb-btn-save { background: #FF8F00; color: #fff; border-color: #FF8F00; margin-left: 8px; }
-        .chubb-btn-save:hover { background: #E65100; }
         .chubb-btn-submit { background: var(--primary); color: #fff; border-color: var(--primary); }
         .chubb-btn-submit:hover { background: #0d1757; }
         .chubb-btn-reset { background: #fff; color: #666; }
         .chubb-btn-reset:hover { background: #f5f5f5; }
-        .chubb-note { font-size: 0.75rem; color: #999; padding: 6px 16px; background: #fffbf0; }
         @media (max-width: 768px) {
             .chubb-row { flex-direction: column; }
             .chubb-label { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid #f0f0f0; padding: 8px 12px; }
             .chubb-field { padding: 8px 12px; }
             .chubb-double-row { grid-template-columns: 1fr; }
-            .chubb-double-row .chubb-row { border-right: none; }
             .chubb-form-actions { flex-direction: column; gap: 10px; }
         }
 
@@ -1823,6 +1811,735 @@
                 
             </div>
         </div>
+
+
+        <!-- Inland Quote Full Page -->
+        <div class="page" id="page-inlandQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('inland')">내륙운송보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>🚛 내륙운송보험 신규청약</h2>
+                </div>
+                <form id="inlandQuoteForm" onsubmit="event.preventDefault(); submitInlandQuote();">
+                <div class="chubb-form-body">
+                    <!-- 계약자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="inlandContractType" value="individual" checked> 개별정산</label>
+                                    <label><input type="radio" name="inlandContractType" value="op"> OP(월정산)</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="inlandBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify" onclick="lookupBiz('inlandBizNo','inlandCompanyKr','inlandCeoName')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandCompanyKr" required placeholder="회사명 또는 성함"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)</div>
+                                <div class="chubb-field"><input type="text" id="inlandCompanyEn" placeholder="Company Name in English"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="inlandCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
+                                <input type="date" id="inlandCeoBirth" style="flex:0 0 160px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자 국적</div>
+                            <div class="chubb-field">
+                                <select id="inlandCeoNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="inlandCompanyAddrSearch" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('inlandCompanyAddrSearch','inlandCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="inlandCompanyAddrDetail" placeholder="상세주소 입력 (예: 602호)" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 피보험자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 피보험자 정보</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="inlandInsuredType" value="same" checked onchange="toggleInsuredFields(false)"> 보험계약자 정보와 동일</label>
+                                <label><input type="radio" name="inlandInsuredType" value="other" onchange="toggleInsuredFields(true)"> 개인/별도 입력</label>
+                            </div>
+                        </div>
+                        <div id="inlandInsuredFields" style="display:none;">
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자명</div>
+                                <div class="chubb-field"><input type="text" id="inlandInsuredName" placeholder="피보험자명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자 국적</div>
+                                <div class="chubb-field">
+                                    <select id="inlandInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자 주소</div>
+                                <div class="chubb-field"><input type="text" id="inlandInsuredAddr" placeholder="피보험자 주소"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 담당자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 담당자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">담당자<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandContactName" required placeholder="담당자명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">전화번호<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="tel" id="inlandContactPhone" required placeholder="010-0000-0000"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">이메일<span class="req">*</span></div>
+                            <div class="chubb-field"><input type="email" id="inlandContactEmail" required placeholder="email@company.com"></div>
+                        </div>
+                    </div>
+
+                    <!-- 운송 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 운송 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">출발일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="inlandDepartDate" required></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">도착일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="inlandArrivalDate" required></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">출발지 주소<span class="req">*</span></div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="inlandFromAddr" required placeholder="출발지 주소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandFromAddr',null)">주소 찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">도착지 주소<span class="req">*</span></div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="inlandToAddr" required placeholder="도착지 주소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandToAddr',null)">주소 찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송거리<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="inlandDistance" value="under100" checked> 100Km 미만</label>
+                                    <label><input type="radio" name="inlandDistance" value="100to300"> 100~300Km</label>
+                                    <label><input type="radio" name="inlandDistance" value="over300"> 300Km 이상</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송수단<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandTransport" placeholder="예: 5톤 윙바디"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">차량대수</div>
+                            <div class="chubb-field"><input type="number" id="inlandVehicleCount" placeholder="1" min="1" style="width:100px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 보험가입목적물 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 보험가입목적물</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험가입금액<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <select id="inlandCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
+                                    <input type="text" id="inlandInsuredAmt" required placeholder="보험가입금액">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">HS CODE</div>
+                                <div class="chubb-field"><input type="text" id="inlandHsCode" placeholder="HS CODE" maxlength="4"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">품목<span class="req">*</span></div>
+                            <div class="chubb-field"><input type="text" id="inlandItemName" required placeholder="품목명"></div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">중고 구분<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="inlandCondition" value="new" checked> 신품</label>
+                                <label><input type="radio" name="inlandCondition" value="used"> 중고</label>
+                                <label style="margin-left:16px;"><input type="checkbox" id="inlandTempSensitive"> 온도민감품목</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">품목 상세</div>
+                            <div class="chubb-field"><textarea id="inlandItemDetail" placeholder="품목에 대한 상세 설명"></textarea></div>
+                        </div>
+                    </div>
+
+                    <!-- 보험조건 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 보험조건</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">보험조건</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:6px;">
+                                <span style="font-size:0.82rem; color:#333;">Inland Transit Insurance</span>
+                                <span style="font-size:0.82rem; color:#333;">Sanction Limitation And Exclusion Clause</span>
+                                <label><input type="checkbox" id="inlandCovExtend"> Coverage extended until being shipped on board subject to advance declaration (본선도 담보)</label>
+                                <label>Waiver of subrogation against <input type="text" id="inlandWaiverTarget" placeholder="대상 입력" style="width:200px; margin-left:6px;"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 첨부파일 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">7. 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">첨부파일</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <input type="file" id="inlandFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="inlandFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="inlandFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 5개, 각 100MB)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 대리점 요구사항 -->
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="inlandAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div>
+                        <button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('inland')">← 목록</button>
+                    </div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('inlandQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Art Insurance Quote Full Page -->
+        <div class="page" id="page-artQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('art')">예술품보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>🎨 예술품종합보험 신규청약</h2>
+                </div>
+                <form id="artQuoteForm" onsubmit="event.preventDefault(); submitArtQuote();">
+                <div class="chubb-form-body">
+                    <!-- 계약자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="artContractType" value="new" checked> 신규</label>
+                                    <label><input type="radio" name="artContractType" value="renew"> 갱신</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험기간<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artInsStartDate" required style="flex:1;">
+                                    <span>~</span>
+                                    <input type="date" id="artInsEndDate" required style="flex:1;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="artCompanyKr" required placeholder="회사명 또는 성함"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)</div>
+                                <div class="chubb-field"><input type="text" id="artCompanyEn" placeholder="Company Name in English"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="artBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify">확인</button>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">법인번호</div>
+                                <div class="chubb-field"><input type="text" id="artCorpNo" placeholder="법인번호"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="artCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
+                                <input type="date" id="artCeoBirth" style="flex:0 0 160px;">
+                                <span style="font-size:0.82rem; color:#555;">성별</span>
+                                <select id="artCeoGender" style="width:70px;"><option value="">선택</option><option value="M">남</option><option value="F">여</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="artCompanyAddr" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('artCompanyAddr','artCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="artCompanyAddrDetail" placeholder="상세주소 입력">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 피보험자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 피보험자 정보</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="artInsuredType" value="same" checked> 보험계약자 정보와 동일</label>
+                                <label><input type="radio" name="artInsuredType" value="other"> 개인/별도 입력</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자 국적</div>
+                            <div class="chubb-field">
+                                <select id="artInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 전시/보관 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 전시/보관 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">전시기간</div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artExhibitStart" style="flex:1;"> <span>~</span> <input type="date" id="artExhibitEnd" style="flex:1;">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">전시장소</div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="artExhibitPlace" placeholder="전시장소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('artExhibitPlace',null)">주소 찾기</button>
+                                        <label><input type="checkbox" id="artExhibitSameAddr"> 주소와 동일</label>
+                                    </div>
+                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artExhibitOverseas"> 해외전시</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보관기간</div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artStorageStart" style="flex:1;"> <span>~</span> <input type="date" id="artStorageEnd" style="flex:1;">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보관장소</div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <input type="text" id="artStoragePlace" placeholder="보관장소">
+                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artStorageOverseas"> 해외보관</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 작품 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 작품 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">작품수량<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="number" id="artItemCount" placeholder="점" min="1" style="width:100px;"> <span style="font-size:0.82rem;">점</span></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">작품가격<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <select id="artCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
+                                    <input type="text" id="artValue" required placeholder="총 보험가액">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">보험목적 소재지</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artLocSameAddr"> 주소와 동일</label>
+                                <input type="text" id="artLocation" placeholder="보험목적 소재지" style="flex:1;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">담보범위</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artCovTransit"> In Transit</label>
+                                <label><input type="checkbox" id="artCovExhibit"> On Exhibit</label>
+                                <label><input type="checkbox" id="artCovCustody"> On Custody</label>
+                                <label><input type="checkbox" id="artCovRemoval"> Removal</label>
+                                <label><input type="checkbox" id="artCovPacking"> Packing</label>
+                                <label><input type="checkbox" id="artCovSetting"> Setting</label>
+                                <label><input type="checkbox" id="artCovUnpacking"> Unpacking</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 보험조건 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 보험 조건</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">전시/보관 건물 구조</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artBldgRC"> 철근콘크리트</label>
+                                <label><input type="checkbox" id="artBldgSteel"> 철골구조</label>
+                                <label><input type="checkbox" id="artBldgBrick"> 벽돌건물</label>
+                                <label><input type="checkbox" id="artBldgWood"> 목조건물</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row"><div class="chubb-label">화재방재시설</div><div class="chubb-field"><label><input type="radio" name="artFireSys" value="yes"> 있음</label><label><input type="radio" name="artFireSys" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">도난경보장치</div><div class="chubb-field"><label><input type="radio" name="artAlarmSys" value="yes"> 있음</label><label><input type="radio" name="artAlarmSys" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">24시간 경비원</div><div class="chubb-field"><label><input type="radio" name="artGuard" value="yes"> 있음</label><label><input type="radio" name="artGuard" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">전문운송업체 운송</div><div class="chubb-field"><label><input type="radio" name="artProTransport" value="yes" checked> 예</label><label><input type="radio" name="artProTransport" value="no"> 아니오</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">CCTV</div><div class="chubb-field"><label><input type="radio" name="artCCTV" value="yes"> 있음</label><label><input type="radio" name="artCCTV" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">아크릴케이스 진행</div><div class="chubb-field"><label><input type="radio" name="artAcrylic" value="yes"> 있음</label><label><input type="radio" name="artAcrylic" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">야외 작품 포함</div><div class="chubb-field"><label><input type="radio" name="artOutdoor" value="yes"> 있음</label><label><input type="radio" name="artOutdoor" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">공제금액<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="artDeductible" value="nil" checked> Nil</label>
+                                <label><input type="radio" name="artDeductible" value="percent"> % of insured value per each item</label>
+                                <select id="artDeductCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
+                                <span style="font-size:0.82rem; color:#555;">Any one occurrence</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 첨부파일 (작품목록) -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 작품목록 · 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">작품목록<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <input type="file" id="artFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="artFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="artFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <span style="font-size:0.72rem; color:#999;">작품목록을 드래그 앤 드롭 해주세요.(최대 5개)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 대리점 요구사항 -->
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="artAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('art')">← 목록</button></div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('artQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Liability Quote Full Page -->
+        <div class="page" id="page-liabilityQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('liability')">화물배상책임보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>📦 화물배상책임보험 신규청약</h2>
+                </div>
+                <form id="liabilityQuoteForm" onsubmit="event.preventDefault(); submitLiabilityQuote();">
+                <div class="chubb-form-body">
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="liabilityContractType" value="new" checked> 신규</label>
+                                    <label><input type="radio" name="liabilityContractType" value="renew"> 갱신</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">대표자 국적</div>
+                                <div class="chubb-field">
+                                    <select id="liabCeoNation"><option value="KR" selected>KR | 대한민국</option><option value="US">US</option><option value="OTHER">기타</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="liabCompanyKr" required placeholder="회사명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="liabCompanyEn" required placeholder="Company Name"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="liabBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify">확인</button>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">법인번호</div>
+                                <div class="chubb-field"><input type="text" id="liabCorpNo" placeholder="법인번호"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="liabCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem;">대표자 생년월일</span>
+                                <input type="date" id="liabCeoBirth" style="flex:0 0 160px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="liabCompanyAddr" placeholder="주소" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('liabCompanyAddr','liabCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="liabCompanyAddrDetail" placeholder="상세주소">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 보험기간 · 사업정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험 시작일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="liabStartDate" required></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험 종료일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="liabEndDate" required></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">사업종류<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabBizType1"> 국제물류주선업</label>
+                                <label><input type="checkbox" id="liabBizType2"> 콘솔리데이션업</label>
+                                <label><input type="checkbox" id="liabBizType3"> 운송업</label>
+                                <label><input type="checkbox" id="liabBizType4"> 기타(직접입력)</label>
+                                <input type="text" id="liabBizTypeOther" placeholder="직접입력" style="width:150px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주로 취급 화물</div>
+                            <div class="chubb-field"><input type="text" id="liabMainCargo" placeholder="주요 취급 화물 명세"></div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">고가화물 비중</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabHighVal1"> 중장비</label>
+                                <label><input type="checkbox" id="liabHighVal2"> 생동물</label>
+                                <label><input type="checkbox" id="liabHighVal3"> 귀금속</label>
+                                <label><input type="checkbox" id="liabHighVal4"> 범엽기</label>
+                                <label><input type="checkbox" id="liabHighVal5"> 미술품</label>
+                                <label><input type="checkbox" id="liabHighVal6"> 자동차</label>
+                                <label><input type="checkbox" id="liabHighVal7"> 의약품</label>
+                                <label><input type="checkbox" id="liabHighVal8"> 담배</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">프로젝트카고</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="liabProjectCargo" value="yes" checked> 진행</label>
+                                <label><input type="radio" name="liabProjectCargo" value="no"> 미진행</label>
+                                <select id="liabProjectCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주요 실 화주명</div>
+                            <div class="chubb-field"><input type="text" id="liabMainShipper" placeholder="주요 실 화주명"></div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송용구당 최대 선적톤수</div>
+                                <div class="chubb-field"><input type="text" id="liabMaxTonnage" placeholder="톤수"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송용구당 평균 선적톤수</div>
+                                <div class="chubb-field"><input type="text" id="liabAvgTonnage" placeholder="톤수"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">발행 B/L 종류</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabBL1"> KIFFA B/L</label>
+                                <label><input type="checkbox" id="liabBL2"> FIATA B/L</label>
+                                <label><input type="checkbox" id="liabBL3"> IATA B/L</label>
+                                <label><input type="checkbox" id="liabBL4"> 기타(직접입력)</label>
+                                <input type="text" id="liabBLOther" placeholder="" style="width:150px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 매출실적 (Last 3 Years)</div>
+                        <div style="overflow-x:auto; padding:12px 16px;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+                                <thead><tr style="background:#fafafa;">
+                                    <th style="padding:8px; border:1px solid #e0e0e0; text-align:left;"></th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출액(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal2"></td></tr>
+                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출원가(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal2"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 보험조건 (Occurrence Basis)</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">Section 1.<br>Goods-Legal Liability</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
+                                <div><strong style="font-size:0.82rem;">보상한도액</strong></div>
+                                <label><input type="radio" name="liabSec1Limit" value="100m" checked> KRW 100,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabSec1Limit" value="200m"> KRW 200,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabSec1Limit" value="300m"> KRW 300,000,000</label>
+                                <label><input type="radio" name="liabSec1Limit" value="500m"> KRW 500,000,000</label>
+                                <label><input type="radio" name="liabSec1Limit" value="custom"> 직접입력 <input type="text" id="liabSec1Custom" placeholder="금액" style="width:150px; margin-left:8px;"></label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
+                                <label><input type="radio" name="liabSec1Deduct" value="3m" checked> KRW 3,000,000</label>
+                                <label><input type="radio" name="liabSec1Deduct" value="5m"> KRW 5,000,000</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">Third Party Liability<br>(특약사항)</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
+                                <label><input type="radio" name="liabTPL" value="yes" checked> 진행</label>
+                                <label><input type="radio" name="liabTPL" value="no"> 미진행</label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">보상한도액</strong></div>
+                                <label><input type="radio" name="liabTPLLimit" value="100m" checked> KRW 100,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabTPLLimit" value="200m"> KRW 200,000,000 - 사고당</label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
+                                <label><input type="radio" name="liabTPLDeduct" value="1m" checked> KRW 1,000,000</label>
+                                <label><input type="radio" name="liabTPLDeduct" value="2.5m"> KRW 2,500,000</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 사고이력</div>
+                        <div style="overflow-x:auto; padding:12px 16px;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+                                <thead><tr style="background:#fafafa;">
+                                    <th style="padding:8px; border:1px solid #e0e0e0;"></th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고건수</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">손해액</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고상세</td><td colspan="3" style="border:1px solid #e0e0e0;"><input type="text" id="liabClaimDetail" style="width:100%; border:none; padding:6px;" placeholder="품목, 사고내용 등"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">첨부파일<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">손익계산서</span><input type="file" id="liabFileIncome"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">매출확인서</span><input type="file" id="liabFileSales"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">사업자등록증</span><input type="file" id="liabFileBiz"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">등기부등본</span><input type="file" id="liabFileReg"></div>
+                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 4개)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="liabAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('liability')">← 목록</button></div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('liabilityQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
 
         <!-- Info Center Page -->
         <div class="page" id="page-info">
@@ -5828,734 +6545,6 @@
                     </div>
                 </div><!-- /trackContentExpress -->
             </div>
-
-        <!-- Inland Quote Full Page -->
-        <div class="page" id="page-inlandQuote">
-            <div class="chubb-form-page">
-                <div class="chubb-top-bar"></div>
-                <div class="chubb-form-header">
-                    <div class="breadcrumb"><a onclick="showPage('inland')">내륙운송보험</a> &gt; <strong>신규청약</strong></div>
-                    <h2>🚛 내륙운송보험 신규청약</h2>
-                </div>
-                <form id="inlandQuoteForm" onsubmit="event.preventDefault(); submitInlandQuote();">
-                <div class="chubb-form-body">
-                    <!-- 계약자 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">1. 계약자 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약구분<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <label><input type="radio" name="inlandContractType" value="individual" checked> 개별정산</label>
-                                    <label><input type="radio" name="inlandContractType" value="op"> OP(월정산)</label>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <input type="text" id="inlandBizNo" required placeholder="000-00-00000">
-                                    <button type="button" class="btn-verify" onclick="lookupBiz('inlandBizNo','inlandCompanyKr','inlandCeoName')">확인</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="inlandCompanyKr" required placeholder="회사명 또는 성함"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(영문)</div>
-                                <div class="chubb-field"><input type="text" id="inlandCompanyEn" placeholder="Company Name in English"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">대표자명<span class="req">*</span></div>
-                            <div class="chubb-field" style="gap:16px;">
-                                <input type="text" id="inlandCeoName" required placeholder="대표자 성함" style="flex:1;">
-                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
-                                <input type="date" id="inlandCeoBirth" style="flex:0 0 160px;">
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">대표자 국적</div>
-                            <div class="chubb-field">
-                                <select id="inlandCeoNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <div style="display:flex; gap:8px;">
-                                    <input type="text" id="inlandCompanyAddrSearch" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
-                                    <button type="button" class="btn-addr" onclick="openAddressSearch('inlandCompanyAddrSearch','inlandCompanyAddrDetail')">주소 찾기</button>
-                                </div>
-                                <input type="text" id="inlandCompanyAddrDetail" placeholder="상세주소 입력 (예: 602호)" class="w-full">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 피보험자 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">2. 피보험자 정보</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">피보험자</div>
-                            <div class="chubb-field">
-                                <label><input type="radio" name="inlandInsuredType" value="same" checked onchange="toggleInsuredFields(false)"> 보험계약자 정보와 동일</label>
-                                <label><input type="radio" name="inlandInsuredType" value="other" onchange="toggleInsuredFields(true)"> 개인/별도 입력</label>
-                            </div>
-                        </div>
-                        <div id="inlandInsuredFields" style="display:none;">
-                            <div class="chubb-row">
-                                <div class="chubb-label">피보험자명</div>
-                                <div class="chubb-field"><input type="text" id="inlandInsuredName" placeholder="피보험자명"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">피보험자 국적</div>
-                                <div class="chubb-field">
-                                    <select id="inlandInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">피보험자 주소</div>
-                                <div class="chubb-field"><input type="text" id="inlandInsuredAddr" placeholder="피보험자 주소"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 담당자 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">3. 담당자 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">담당자<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="inlandContactName" required placeholder="담당자명"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">전화번호<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="tel" id="inlandContactPhone" required placeholder="010-0000-0000"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">이메일<span class="req">*</span></div>
-                            <div class="chubb-field"><input type="email" id="inlandContactEmail" required placeholder="email@company.com"></div>
-                        </div>
-                    </div>
-
-                    <!-- 운송 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">4. 운송 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">출발일<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="date" id="inlandDepartDate" required></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">도착일<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="date" id="inlandArrivalDate" required></div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">출발지 주소<span class="req">*</span></div>
-                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                    <div style="display:flex; gap:8px;">
-                                        <input type="text" id="inlandFromAddr" required placeholder="출발지 주소" style="flex:1;">
-                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandFromAddr',null)">주소 찾기</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">도착지 주소<span class="req">*</span></div>
-                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                    <div style="display:flex; gap:8px;">
-                                        <input type="text" id="inlandToAddr" required placeholder="도착지 주소" style="flex:1;">
-                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandToAddr',null)">주소 찾기</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">운송거리<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <label><input type="radio" name="inlandDistance" value="under100" checked> 100Km 미만</label>
-                                    <label><input type="radio" name="inlandDistance" value="100to300"> 100~300Km</label>
-                                    <label><input type="radio" name="inlandDistance" value="over300"> 300Km 이상</label>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">운송수단<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="inlandTransport" placeholder="예: 5톤 윙바디"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">차량대수</div>
-                            <div class="chubb-field"><input type="number" id="inlandVehicleCount" placeholder="1" min="1" style="width:100px;"></div>
-                        </div>
-                    </div>
-
-                    <!-- 보험가입목적물 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">5. 보험가입목적물</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">보험가입금액<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <select id="inlandCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
-                                    <input type="text" id="inlandInsuredAmt" required placeholder="보험가입금액">
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">HS CODE</div>
-                                <div class="chubb-field"><input type="text" id="inlandHsCode" placeholder="HS CODE" maxlength="4"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">품목<span class="req">*</span></div>
-                            <div class="chubb-field"><input type="text" id="inlandItemName" required placeholder="품목명"></div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">중고 구분<span class="req">*</span></div>
-                            <div class="chubb-field">
-                                <label><input type="radio" name="inlandCondition" value="new" checked> 신품</label>
-                                <label><input type="radio" name="inlandCondition" value="used"> 중고</label>
-                                <label style="margin-left:16px;"><input type="checkbox" id="inlandTempSensitive"> 온도민감품목</label>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">품목 상세</div>
-                            <div class="chubb-field"><textarea id="inlandItemDetail" placeholder="품목에 대한 상세 설명"></textarea></div>
-                        </div>
-                    </div>
-
-                    <!-- 보험조건 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">6. 보험조건</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">보험조건</div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:6px;">
-                                <span style="font-size:0.82rem; color:#333;">Inland Transit Insurance</span>
-                                <span style="font-size:0.82rem; color:#333;">Sanction Limitation And Exclusion Clause</span>
-                                <label><input type="checkbox" id="inlandCovExtend"> Coverage extended until being shipped on board subject to advance declaration (본선도 담보)</label>
-                                <label>Waiver of subrogation against <input type="text" id="inlandWaiverTarget" placeholder="대상 입력" style="width:200px; margin-left:6px;"></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 첨부파일 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">7. 첨부파일</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">첨부파일</div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <input type="file" id="inlandFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <input type="file" id="inlandFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <input type="file" id="inlandFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 5개, 각 100MB)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 대리점 요구사항 -->
-                    <div class="chubb-section">
-                        <div class="chubb-row">
-                            <div class="chubb-label">대리점 요구사항</div>
-                            <div class="chubb-field"><textarea id="inlandAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="chubb-form-actions">
-                    <div>
-                        <button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('inland')">← 목록</button>
-                    </div>
-                    <div>
-                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
-                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('inlandQuoteForm').reset()">초기화</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Art Insurance Quote Full Page -->
-        <div class="page" id="page-artQuote">
-            <div class="chubb-form-page">
-                <div class="chubb-top-bar"></div>
-                <div class="chubb-form-header">
-                    <div class="breadcrumb"><a onclick="showPage('art')">예술품보험</a> &gt; <strong>신규청약</strong></div>
-                    <h2>🎨 예술품종합보험 신규청약</h2>
-                </div>
-                <form id="artQuoteForm" onsubmit="event.preventDefault(); submitArtQuote();">
-                <div class="chubb-form-body">
-                    <!-- 계약자 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">1. 계약자 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약구분<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <label><input type="radio" name="artContractType" value="new" checked> 신규</label>
-                                    <label><input type="radio" name="artContractType" value="renew"> 갱신</label>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">보험기간<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <input type="date" id="artInsStartDate" required style="flex:1;">
-                                    <span>~</span>
-                                    <input type="date" id="artInsEndDate" required style="flex:1;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="artCompanyKr" required placeholder="회사명 또는 성함"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(영문)</div>
-                                <div class="chubb-field"><input type="text" id="artCompanyEn" placeholder="Company Name in English"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <input type="text" id="artBizNo" required placeholder="000-00-00000">
-                                    <button type="button" class="btn-verify">확인</button>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">법인번호</div>
-                                <div class="chubb-field"><input type="text" id="artCorpNo" placeholder="법인번호"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">대표자명<span class="req">*</span></div>
-                            <div class="chubb-field" style="gap:16px;">
-                                <input type="text" id="artCeoName" required placeholder="대표자 성함" style="flex:1;">
-                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
-                                <input type="date" id="artCeoBirth" style="flex:0 0 160px;">
-                                <span style="font-size:0.82rem; color:#555;">성별</span>
-                                <select id="artCeoGender" style="width:70px;"><option value="">선택</option><option value="M">남</option><option value="F">여</option></select>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">주소<span class="req">*</span></div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <div style="display:flex; gap:8px;">
-                                    <input type="text" id="artCompanyAddr" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
-                                    <button type="button" class="btn-addr" onclick="openAddressSearch('artCompanyAddr','artCompanyAddrDetail')">주소 찾기</button>
-                                </div>
-                                <input type="text" id="artCompanyAddrDetail" placeholder="상세주소 입력">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 피보험자 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">2. 피보험자 정보</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">피보험자</div>
-                            <div class="chubb-field">
-                                <label><input type="radio" name="artInsuredType" value="same" checked> 보험계약자 정보와 동일</label>
-                                <label><input type="radio" name="artInsuredType" value="other"> 개인/별도 입력</label>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">피보험자 국적</div>
-                            <div class="chubb-field">
-                                <select id="artInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 전시/보관 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">3. 전시/보관 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">전시기간</div>
-                                <div class="chubb-field">
-                                    <input type="date" id="artExhibitStart" style="flex:1;"> <span>~</span> <input type="date" id="artExhibitEnd" style="flex:1;">
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">전시장소</div>
-                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                    <div style="display:flex; gap:8px;">
-                                        <input type="text" id="artExhibitPlace" placeholder="전시장소" style="flex:1;">
-                                        <button type="button" class="btn-addr" onclick="openAddressSearch('artExhibitPlace',null)">주소 찾기</button>
-                                        <label><input type="checkbox" id="artExhibitSameAddr"> 주소와 동일</label>
-                                    </div>
-                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artExhibitOverseas"> 해외전시</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">보관기간</div>
-                                <div class="chubb-field">
-                                    <input type="date" id="artStorageStart" style="flex:1;"> <span>~</span> <input type="date" id="artStorageEnd" style="flex:1;">
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">보관장소</div>
-                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                    <input type="text" id="artStoragePlace" placeholder="보관장소">
-                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artStorageOverseas"> 해외보관</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 작품 정보 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">4. 작품 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">작품수량<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="number" id="artItemCount" placeholder="점" min="1" style="width:100px;"> <span style="font-size:0.82rem;">점</span></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">작품가격<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <select id="artCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
-                                    <input type="text" id="artValue" required placeholder="총 보험가액">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">보험목적 소재지</div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="artLocSameAddr"> 주소와 동일</label>
-                                <input type="text" id="artLocation" placeholder="보험목적 소재지" style="flex:1;">
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">담보범위</div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="artCovTransit"> In Transit</label>
-                                <label><input type="checkbox" id="artCovExhibit"> On Exhibit</label>
-                                <label><input type="checkbox" id="artCovCustody"> On Custody</label>
-                                <label><input type="checkbox" id="artCovRemoval"> Removal</label>
-                                <label><input type="checkbox" id="artCovPacking"> Packing</label>
-                                <label><input type="checkbox" id="artCovSetting"> Setting</label>
-                                <label><input type="checkbox" id="artCovUnpacking"> Unpacking</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 보험조건 -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">5. 보험 조건</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">전시/보관 건물 구조</div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="artBldgRC"> 철근콘크리트</label>
-                                <label><input type="checkbox" id="artBldgSteel"> 철골구조</label>
-                                <label><input type="checkbox" id="artBldgBrick"> 벽돌건물</label>
-                                <label><input type="checkbox" id="artBldgWood"> 목조건물</label>
-                            </div>
-                        </div>
-                        <div class="chubb-row"><div class="chubb-label">화재방재시설</div><div class="chubb-field"><label><input type="radio" name="artFireSys" value="yes"> 있음</label><label><input type="radio" name="artFireSys" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">도난경보장치</div><div class="chubb-field"><label><input type="radio" name="artAlarmSys" value="yes"> 있음</label><label><input type="radio" name="artAlarmSys" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">24시간 경비원</div><div class="chubb-field"><label><input type="radio" name="artGuard" value="yes"> 있음</label><label><input type="radio" name="artGuard" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">전문운송업체 운송</div><div class="chubb-field"><label><input type="radio" name="artProTransport" value="yes" checked> 예</label><label><input type="radio" name="artProTransport" value="no"> 아니오</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">CCTV</div><div class="chubb-field"><label><input type="radio" name="artCCTV" value="yes"> 있음</label><label><input type="radio" name="artCCTV" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">아크릴케이스 진행</div><div class="chubb-field"><label><input type="radio" name="artAcrylic" value="yes"> 있음</label><label><input type="radio" name="artAcrylic" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row"><div class="chubb-label">야외 작품 포함</div><div class="chubb-field"><label><input type="radio" name="artOutdoor" value="yes"> 있음</label><label><input type="radio" name="artOutdoor" value="no" checked> 없음</label></div></div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">공제금액<span class="req">*</span></div>
-                            <div class="chubb-field">
-                                <label><input type="radio" name="artDeductible" value="nil" checked> Nil</label>
-                                <label><input type="radio" name="artDeductible" value="percent"> % of insured value per each item</label>
-                                <select id="artDeductCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
-                                <span style="font-size:0.82rem; color:#555;">Any one occurrence</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 첨부파일 (작품목록) -->
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">6. 작품목록 · 첨부파일</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">작품목록<span class="req">*</span></div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <input type="file" id="artFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <input type="file" id="artFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <input type="file" id="artFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                                <span style="font-size:0.72rem; color:#999;">작품목록을 드래그 앤 드롭 해주세요.(최대 5개)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 대리점 요구사항 -->
-                    <div class="chubb-section">
-                        <div class="chubb-row">
-                            <div class="chubb-label">대리점 요구사항</div>
-                            <div class="chubb-field"><textarea id="artAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="chubb-form-actions">
-                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('art')">← 목록</button></div>
-                    <div>
-                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
-                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('artQuoteForm').reset()">초기화</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Liability Quote Full Page -->
-        <div class="page" id="page-liabilityQuote">
-            <div class="chubb-form-page">
-                <div class="chubb-top-bar"></div>
-                <div class="chubb-form-header">
-                    <div class="breadcrumb"><a onclick="showPage('liability')">화물배상책임보험</a> &gt; <strong>신규청약</strong></div>
-                    <h2>📦 화물배상책임보험 신규청약</h2>
-                </div>
-                <form id="liabilityQuoteForm" onsubmit="event.preventDefault(); submitLiabilityQuote();">
-                <div class="chubb-form-body">
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">1. 계약자 정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약구분<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <label><input type="radio" name="liabilityContractType" value="new" checked> 신규</label>
-                                    <label><input type="radio" name="liabilityContractType" value="renew"> 갱신</label>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">대표자 국적</div>
-                                <div class="chubb-field">
-                                    <select id="liabCeoNation"><option value="KR" selected>KR | 대한민국</option><option value="US">US</option><option value="OTHER">기타</option></select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="liabCompanyKr" required placeholder="회사명"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">계약자명(영문)<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="text" id="liabCompanyEn" required placeholder="Company Name"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
-                                <div class="chubb-field">
-                                    <input type="text" id="liabBizNo" required placeholder="000-00-00000">
-                                    <button type="button" class="btn-verify">확인</button>
-                                </div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">법인번호</div>
-                                <div class="chubb-field"><input type="text" id="liabCorpNo" placeholder="법인번호"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">대표자명<span class="req">*</span></div>
-                            <div class="chubb-field" style="gap:16px;">
-                                <input type="text" id="liabCeoName" required placeholder="대표자 성함" style="flex:1;">
-                                <span style="font-size:0.82rem;">대표자 생년월일</span>
-                                <input type="date" id="liabCeoBirth" style="flex:0 0 160px;">
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <div style="display:flex; gap:8px;">
-                                    <input type="text" id="liabCompanyAddr" placeholder="주소" style="flex:1;">
-                                    <button type="button" class="btn-addr" onclick="openAddressSearch('liabCompanyAddr','liabCompanyAddrDetail')">주소 찾기</button>
-                                </div>
-                                <input type="text" id="liabCompanyAddrDetail" placeholder="상세주소">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">2. 보험기간 · 사업정보</div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">보험 시작일<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="date" id="liabStartDate" required></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">보험 종료일<span class="req">*</span></div>
-                                <div class="chubb-field"><input type="date" id="liabEndDate" required></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">사업종류<span class="req">*</span></div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="liabBizType1"> 국제물류주선업</label>
-                                <label><input type="checkbox" id="liabBizType2"> 콘솔리데이션업</label>
-                                <label><input type="checkbox" id="liabBizType3"> 운송업</label>
-                                <label><input type="checkbox" id="liabBizType4"> 기타(직접입력)</label>
-                                <input type="text" id="liabBizTypeOther" placeholder="직접입력" style="width:150px;">
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">주로 취급 화물</div>
-                            <div class="chubb-field"><input type="text" id="liabMainCargo" placeholder="주요 취급 화물 명세"></div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">고가화물 비중</div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="liabHighVal1"> 중장비</label>
-                                <label><input type="checkbox" id="liabHighVal2"> 생동물</label>
-                                <label><input type="checkbox" id="liabHighVal3"> 귀금속</label>
-                                <label><input type="checkbox" id="liabHighVal4"> 범엽기</label>
-                                <label><input type="checkbox" id="liabHighVal5"> 미술품</label>
-                                <label><input type="checkbox" id="liabHighVal6"> 자동차</label>
-                                <label><input type="checkbox" id="liabHighVal7"> 의약품</label>
-                                <label><input type="checkbox" id="liabHighVal8"> 담배</label>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">프로젝트카고</div>
-                            <div class="chubb-field">
-                                <label><input type="radio" name="liabProjectCargo" value="yes" checked> 진행</label>
-                                <label><input type="radio" name="liabProjectCargo" value="no"> 미진행</label>
-                                <select id="liabProjectCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">주요 실 화주명</div>
-                            <div class="chubb-field"><input type="text" id="liabMainShipper" placeholder="주요 실 화주명"></div>
-                        </div>
-                        <div class="chubb-double-row">
-                            <div class="chubb-row">
-                                <div class="chubb-label">운송용구당 최대 선적톤수</div>
-                                <div class="chubb-field"><input type="text" id="liabMaxTonnage" placeholder="톤수"></div>
-                            </div>
-                            <div class="chubb-row">
-                                <div class="chubb-label">운송용구당 평균 선적톤수</div>
-                                <div class="chubb-field"><input type="text" id="liabAvgTonnage" placeholder="톤수"></div>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">발행 B/L 종류</div>
-                            <div class="chubb-field">
-                                <label><input type="checkbox" id="liabBL1"> KIFFA B/L</label>
-                                <label><input type="checkbox" id="liabBL2"> FIATA B/L</label>
-                                <label><input type="checkbox" id="liabBL3"> IATA B/L</label>
-                                <label><input type="checkbox" id="liabBL4"> 기타(직접입력)</label>
-                                <input type="text" id="liabBLOther" placeholder="" style="width:150px;">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">3. 매출실적 (Last 3 Years)</div>
-                        <div style="overflow-x:auto; padding:12px 16px;">
-                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
-                                <thead><tr style="background:#fafafa;">
-                                    <th style="padding:8px; border:1px solid #e0e0e0; text-align:left;"></th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
-                                </tr></thead>
-                                <tbody>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출액(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal2"></td></tr>
-                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출원가(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal2"></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">4. 보험조건 (Occurrence Basis)</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">Section 1.<br>Goods-Legal Liability</div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
-                                <div><strong style="font-size:0.82rem;">보상한도액</strong></div>
-                                <label><input type="radio" name="liabSec1Limit" value="100m" checked> KRW 100,000,000 - 사고당</label>
-                                <label><input type="radio" name="liabSec1Limit" value="200m"> KRW 200,000,000 - 사고당</label>
-                                <label><input type="radio" name="liabSec1Limit" value="300m"> KRW 300,000,000</label>
-                                <label><input type="radio" name="liabSec1Limit" value="500m"> KRW 500,000,000</label>
-                                <label><input type="radio" name="liabSec1Limit" value="custom"> 직접입력 <input type="text" id="liabSec1Custom" placeholder="금액" style="width:150px; margin-left:8px;"></label>
-                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
-                                <label><input type="radio" name="liabSec1Deduct" value="3m" checked> KRW 3,000,000</label>
-                                <label><input type="radio" name="liabSec1Deduct" value="5m"> KRW 5,000,000</label>
-                            </div>
-                        </div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">Third Party Liability<br>(특약사항)</div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
-                                <label><input type="radio" name="liabTPL" value="yes" checked> 진행</label>
-                                <label><input type="radio" name="liabTPL" value="no"> 미진행</label>
-                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">보상한도액</strong></div>
-                                <label><input type="radio" name="liabTPLLimit" value="100m" checked> KRW 100,000,000 - 사고당</label>
-                                <label><input type="radio" name="liabTPLLimit" value="200m"> KRW 200,000,000 - 사고당</label>
-                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
-                                <label><input type="radio" name="liabTPLDeduct" value="1m" checked> KRW 1,000,000</label>
-                                <label><input type="radio" name="liabTPLDeduct" value="2.5m"> KRW 2,500,000</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">5. 사고이력</div>
-                        <div style="overflow-x:auto; padding:12px 16px;">
-                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
-                                <thead><tr style="background:#fafafa;">
-                                    <th style="padding:8px; border:1px solid #e0e0e0;"></th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
-                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
-                                </tr></thead>
-                                <tbody>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고건수</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">손해액</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss2" style="width:100%; border:none; padding:6px;"></td></tr>
-                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고상세</td><td colspan="3" style="border:1px solid #e0e0e0;"><input type="text" id="liabClaimDetail" style="width:100%; border:none; padding:6px;" placeholder="품목, 사고내용 등"></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-section-title">6. 첨부파일</div>
-                        <div class="chubb-row">
-                            <div class="chubb-label">첨부파일<span class="req">*</span></div>
-                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
-                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">손익계산서</span><input type="file" id="liabFileIncome"></div>
-                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">매출확인서</span><input type="file" id="liabFileSales"></div>
-                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">사업자등록증</span><input type="file" id="liabFileBiz"></div>
-                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">등기부등본</span><input type="file" id="liabFileReg"></div>
-                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 4개)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chubb-section">
-                        <div class="chubb-row">
-                            <div class="chubb-label">대리점 요구사항</div>
-                            <div class="chubb-field"><textarea id="liabAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="chubb-form-actions">
-                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('liability')">← 목록</button></div>
-                    <div>
-                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
-                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('liabilityQuoteForm').reset()">초기화</button>
-                    </div>
-                </div>
-                </form>
-            </div>
-        </div>
-
         </div>
     </div>
 
@@ -9307,7 +9296,7 @@ function showModal(id) {
         modal.classList.add('show'); 
         document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
     } 
-    // 내륙운송보험 임시저장 확인 (모달→풀페이지 전환으로 showPage에서 호출)
+    // 내륙운송보험 임시저장은 showPage에서 처리
 }
 function closeModal(id) { 
     const modal = document.getElementById(id);
@@ -12000,7 +11989,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 
-    console.log('Cargoinsu v16 초기화 완료 - 회원시스템 제거, 경량화');
+    console.log('Cargoinsu v17 초기화 완료 - Chubb스타일 설계화면, i18n');
     console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
     
     // 적하보험 견적신청 초기화
