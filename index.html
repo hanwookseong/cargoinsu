@@ -389,6 +389,66 @@
         * { -webkit-tap-highlight-color: rgba(0,0,0,0.1); -webkit-touch-callout: none; }
         html { touch-action: manipulation; }
 
+
+        /* ===== Chubb-style Full Page Form ===== */
+        .chubb-form-page { max-width: 960px; margin: 0 auto; padding: 0; }
+        .chubb-top-bar { height: 4px; background: linear-gradient(90deg, #FF8F00, #FFB300); border-radius: 0 0 2px 2px; }
+        .chubb-form-header { text-align: center; padding: 2rem 1rem 1.5rem; border-bottom: 2px solid #e0e0e0; }
+        .chubb-form-header h2 { font-size: 1.6rem; font-weight: 700; color: #E65100; margin: 0; }
+        .chubb-form-header .breadcrumb { font-size: 0.8rem; color: #999; margin-top: 0.5rem; }
+        .chubb-form-header .breadcrumb a { color: var(--primary); text-decoration: none; cursor: pointer; }
+        .chubb-form-body { background: var(--white); border: 1px solid #e0e0e0; border-top: none; }
+        .chubb-section { border-bottom: 1px solid #e8e8e8; }
+        .chubb-section:last-child { border-bottom: none; }
+        .chubb-section-title { background: #fafafa; padding: 10px 20px; font-size: 0.9rem; font-weight: 700; color: #333; border-bottom: 1px solid #e8e8e8; }
+        .chubb-row { display: flex; border-bottom: 1px solid #f0f0f0; min-height: 46px; }
+        .chubb-row:last-child { border-bottom: none; }
+        .chubb-label { width: 180px; min-width: 180px; background: #fafbfc; padding: 10px 16px; font-size: 0.82rem; font-weight: 600; color: #444; display: flex; align-items: center; border-right: 1px solid #e8e8e8; flex-shrink: 0; }
+        .chubb-label .req { color: #e53935; margin-left: 2px; }
+        .chubb-field { flex: 1; padding: 8px 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .chubb-field input[type="text"],
+        .chubb-field input[type="date"],
+        .chubb-field input[type="number"],
+        .chubb-field input[type="email"],
+        .chubb-field input[type="tel"],
+        .chubb-field textarea,
+        .chubb-field select { border: 1px solid #d0d0d0; border-radius: 4px; padding: 7px 10px; font-size: 0.82rem; font-family: inherit; outline: none; transition: border 0.2s; }
+        .chubb-field input:focus, .chubb-field select:focus, .chubb-field textarea:focus { border-color: #FF8F00; box-shadow: 0 0 0 2px rgba(255,143,0,0.1); }
+        .chubb-field input[type="text"], .chubb-field input[type="email"], .chubb-field input[type="tel"] { flex: 1; min-width: 150px; }
+        .chubb-field select { min-width: 150px; }
+        .chubb-field textarea { flex: 1; min-width: 100%; min-height: 60px; resize: vertical; }
+        .chubb-field label { font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+        .chubb-field .btn-verify { padding: 7px 14px; background: #FF8F00; color: #fff; border: none; border-radius: 4px; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+        .chubb-field .btn-verify:hover { background: #E65100; }
+        .chubb-field .btn-addr { padding: 7px 14px; background: #f5f5f5; color: #333; border: 1px solid #ccc; border-radius: 4px; font-size: 0.78rem; font-weight: 600; cursor: pointer; white-space: nowrap; }
+        .chubb-field .btn-addr:hover { background: #e8e8e8; }
+        .chubb-field .w-full { width: 100%; }
+        .chubb-double-row { display: grid; grid-template-columns: 1fr 1fr; }
+        .chubb-double-row .chubb-row { border-right: 1px solid #f0f0f0; }
+        .chubb-double-row .chubb-row:last-child { border-right: none; }
+        .chubb-file-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+        .chubb-file-row input[type="file"] { font-size: 0.78rem; }
+        .chubb-file-row .file-size { font-size: 0.72rem; color: #999; }
+        .chubb-form-actions { display: flex; justify-content: space-between; padding: 20px; background: #fafafa; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 3rem; }
+        .chubb-btn { padding: 10px 28px; border-radius: 4px; font-size: 0.85rem; font-weight: 600; cursor: pointer; border: 1px solid #ccc; transition: all 0.2s; }
+        .chubb-btn-list { background: #555; color: #fff; border-color: #555; }
+        .chubb-btn-list:hover { background: #333; }
+        .chubb-btn-save { background: #FF8F00; color: #fff; border-color: #FF8F00; margin-left: 8px; }
+        .chubb-btn-save:hover { background: #E65100; }
+        .chubb-btn-submit { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .chubb-btn-submit:hover { background: #0d1757; }
+        .chubb-btn-reset { background: #fff; color: #666; }
+        .chubb-btn-reset:hover { background: #f5f5f5; }
+        .chubb-note { font-size: 0.75rem; color: #999; padding: 6px 16px; background: #fffbf0; }
+        @media (max-width: 768px) {
+            .chubb-row { flex-direction: column; }
+            .chubb-label { width: 100%; min-width: 100%; border-right: none; border-bottom: 1px solid #f0f0f0; padding: 8px 12px; }
+            .chubb-field { padding: 8px 12px; }
+            .chubb-double-row { grid-template-columns: 1fr; }
+            .chubb-double-row .chubb-row { border-right: none; }
+            .chubb-form-actions { flex-direction: column; gap: 10px; }
+        }
+
         /* Language Toggle */
         .lang-toggle { display: flex; align-items: center; gap: 0; border: 1.5px solid #c5cae9; border-radius: 20px; overflow: hidden; background: #f5f5f5; flex-shrink: 0; }
         .lang-btn { padding: 5px 12px; font-size: 0.72rem; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #888; transition: all 0.3s; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
@@ -835,9 +895,9 @@
                     <span class="nav-item" onclick="showPage('calculator')" data-i18n="nav.calculator">보험료계산</span>
                     <div class="nav-dropdown">
                         <a href="javascript:void(0)" onclick="showPage('calculator'); return false;" data-i18n="nav.dd.calc">적하보험료 계산기</a>
-                        <a href="javascript:void(0)" onclick="showModal('inlandQuoteModal'); return false;">내륙운송 견적신청</a>
-                        <a href="javascript:void(0)" onclick="showModal('artQuoteModal'); return false;">예술품종합 견적신청</a>
-                        <a href="javascript:void(0)" onclick="showModal('liabilityQuoteModal'); return false;">화물배상 견적신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('inlandQuote'); return false;">내륙운송 견적신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('artQuote'); return false;">예술품종합 견적신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('liabilityQuote'); return false;">화물배상 견적신청</a>
                     </div>
                 </div>
                 <div class="nav-item-wrap">
@@ -894,9 +954,9 @@
                     <h4>보험료 계산</h4>
                     <ul>
                         <li><a href="javascript:void(0)" onclick="showPage('calculator'); toggleServicesModal(); return false;" data-i18n="nav.dd.calc">적하보험료 계산기</a></li>
-                        <li><a href="javascript:void(0)" onclick="showModal('inlandQuoteModal'); toggleServicesModal(); return false;">내륙운송 견적신청</a></li>
-                        <li><a href="javascript:void(0)" onclick="showModal('artQuoteModal'); toggleServicesModal(); return false;">예술품종합보험 견적신청</a></li>
-                        <li><a href="javascript:void(0)" onclick="showModal('liabilityQuoteModal'); toggleServicesModal(); return false;">화물배상 견적신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('inlandQuote'); toggleServicesModal(); return false;">내륙운송 견적신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('artQuote'); toggleServicesModal(); return false;">예술품종합보험 견적신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('liabilityQuote'); toggleServicesModal(); return false;">화물배상 견적신청</a></li>
                     </ul>
                 </div>
             </div>
@@ -958,7 +1018,7 @@
                     </ul>
                     <div class="card-btns">
                         <button class="btn-primary" onclick="showPage('inland')" data-i18n="btn.detail">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('inlandQuoteModal')" data-i18n="btn.quote">견적신청</button>
+                        <button class="btn-secondary" onclick="showPage('inlandQuote')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -971,7 +1031,7 @@
                     </ul>
                     <div class="card-btns">
                         <button class="btn-primary" onclick="showPage('art')" data-i18n="btn.detail">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('artQuoteModal')" data-i18n="btn.quote">견적신청</button>
+                        <button class="btn-secondary" onclick="showPage('artQuote')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -984,7 +1044,7 @@
                     </ul>
                     <div class="card-btns">
                         <button class="btn-primary" onclick="showPage('liability')" data-i18n="btn.detail">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('liabilityQuoteModal')" data-i18n="btn.quote">견적신청</button>
+                        <button class="btn-secondary" onclick="showPage('liabilityQuote')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -1456,7 +1516,7 @@
                 </div>
                 
                 <div style="text-align:center;">
-                    <button class="btn-submit" onclick="showModal('inlandQuoteModal')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📋 견적 신청하기</button>
+                    <button class="btn-submit" onclick="showPage('inlandQuote')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📋 견적 신청하기</button>
                 </div>
             </div>
         </div>
@@ -1559,7 +1619,7 @@
                 </div>
                 
                 <div style="text-align:center; margin-top:2rem;">
-                    <button class="btn-submit" onclick="showModal('artQuoteModal')" style="font-size:1.1rem; padding:1rem 3rem;">📋 견적 신청하기</button>
+                    <button class="btn-submit" onclick="showPage('artQuote')" style="font-size:1.1rem; padding:1rem 3rem;">📋 견적 신청하기</button>
                 </div>
             </div>
         </div>
@@ -1620,7 +1680,7 @@
                 </div>
                 
                 <div style="text-align:center;">
-                    <button class="btn-submit" onclick="showModal('liabilityQuoteModal')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📋 견적 신청하기</button>
+                    <button class="btn-submit" onclick="showPage('liabilityQuote')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📋 견적 신청하기</button>
                 </div>
             </div>
         </div>
@@ -5768,6 +5828,734 @@
                     </div>
                 </div><!-- /trackContentExpress -->
             </div>
+
+        <!-- Inland Quote Full Page -->
+        <div class="page" id="page-inlandQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('inland')">내륙운송보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>🚛 내륙운송보험 신규청약</h2>
+                </div>
+                <form id="inlandQuoteForm" onsubmit="event.preventDefault(); submitInlandQuote();">
+                <div class="chubb-form-body">
+                    <!-- 계약자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="inlandContractType" value="individual" checked> 개별정산</label>
+                                    <label><input type="radio" name="inlandContractType" value="op"> OP(월정산)</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="inlandBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify" onclick="lookupBiz('inlandBizNo','inlandCompanyKr','inlandCeoName')">확인</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandCompanyKr" required placeholder="회사명 또는 성함"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)</div>
+                                <div class="chubb-field"><input type="text" id="inlandCompanyEn" placeholder="Company Name in English"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="inlandCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
+                                <input type="date" id="inlandCeoBirth" style="flex:0 0 160px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자 국적</div>
+                            <div class="chubb-field">
+                                <select id="inlandCeoNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="inlandCompanyAddrSearch" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('inlandCompanyAddrSearch','inlandCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="inlandCompanyAddrDetail" placeholder="상세주소 입력 (예: 602호)" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 피보험자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 피보험자 정보</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="inlandInsuredType" value="same" checked onchange="toggleInsuredFields(false)"> 보험계약자 정보와 동일</label>
+                                <label><input type="radio" name="inlandInsuredType" value="other" onchange="toggleInsuredFields(true)"> 개인/별도 입력</label>
+                            </div>
+                        </div>
+                        <div id="inlandInsuredFields" style="display:none;">
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자명</div>
+                                <div class="chubb-field"><input type="text" id="inlandInsuredName" placeholder="피보험자명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자 국적</div>
+                                <div class="chubb-field">
+                                    <select id="inlandInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="CN">중국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">피보험자 주소</div>
+                                <div class="chubb-field"><input type="text" id="inlandInsuredAddr" placeholder="피보험자 주소"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 담당자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 담당자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">담당자<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandContactName" required placeholder="담당자명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">전화번호<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="tel" id="inlandContactPhone" required placeholder="010-0000-0000"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">이메일<span class="req">*</span></div>
+                            <div class="chubb-field"><input type="email" id="inlandContactEmail" required placeholder="email@company.com"></div>
+                        </div>
+                    </div>
+
+                    <!-- 운송 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 운송 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">출발일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="inlandDepartDate" required></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">도착일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="inlandArrivalDate" required></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">출발지 주소<span class="req">*</span></div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="inlandFromAddr" required placeholder="출발지 주소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandFromAddr',null)">주소 찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">도착지 주소<span class="req">*</span></div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="inlandToAddr" required placeholder="도착지 주소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('inlandToAddr',null)">주소 찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송거리<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="inlandDistance" value="under100" checked> 100Km 미만</label>
+                                    <label><input type="radio" name="inlandDistance" value="100to300"> 100~300Km</label>
+                                    <label><input type="radio" name="inlandDistance" value="over300"> 300Km 이상</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송수단<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="inlandTransport" placeholder="예: 5톤 윙바디"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">차량대수</div>
+                            <div class="chubb-field"><input type="number" id="inlandVehicleCount" placeholder="1" min="1" style="width:100px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 보험가입목적물 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 보험가입목적물</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험가입금액<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <select id="inlandCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
+                                    <input type="text" id="inlandInsuredAmt" required placeholder="보험가입금액">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">HS CODE</div>
+                                <div class="chubb-field"><input type="text" id="inlandHsCode" placeholder="HS CODE" maxlength="4"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">품목<span class="req">*</span></div>
+                            <div class="chubb-field"><input type="text" id="inlandItemName" required placeholder="품목명"></div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">중고 구분<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="inlandCondition" value="new" checked> 신품</label>
+                                <label><input type="radio" name="inlandCondition" value="used"> 중고</label>
+                                <label style="margin-left:16px;"><input type="checkbox" id="inlandTempSensitive"> 온도민감품목</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">품목 상세</div>
+                            <div class="chubb-field"><textarea id="inlandItemDetail" placeholder="품목에 대한 상세 설명"></textarea></div>
+                        </div>
+                    </div>
+
+                    <!-- 보험조건 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 보험조건</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">보험조건</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:6px;">
+                                <span style="font-size:0.82rem; color:#333;">Inland Transit Insurance</span>
+                                <span style="font-size:0.82rem; color:#333;">Sanction Limitation And Exclusion Clause</span>
+                                <label><input type="checkbox" id="inlandCovExtend"> Coverage extended until being shipped on board subject to advance declaration (본선도 담보)</label>
+                                <label>Waiver of subrogation against <input type="text" id="inlandWaiverTarget" placeholder="대상 입력" style="width:200px; margin-left:6px;"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 첨부파일 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">7. 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">첨부파일</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <input type="file" id="inlandFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="inlandFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="inlandFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 5개, 각 100MB)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 대리점 요구사항 -->
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="inlandAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div>
+                        <button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('inland')">← 목록</button>
+                    </div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('inlandQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Art Insurance Quote Full Page -->
+        <div class="page" id="page-artQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('art')">예술품보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>🎨 예술품종합보험 신규청약</h2>
+                </div>
+                <form id="artQuoteForm" onsubmit="event.preventDefault(); submitArtQuote();">
+                <div class="chubb-form-body">
+                    <!-- 계약자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="artContractType" value="new" checked> 신규</label>
+                                    <label><input type="radio" name="artContractType" value="renew"> 갱신</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험기간<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artInsStartDate" required style="flex:1;">
+                                    <span>~</span>
+                                    <input type="date" id="artInsEndDate" required style="flex:1;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="artCompanyKr" required placeholder="회사명 또는 성함"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)</div>
+                                <div class="chubb-field"><input type="text" id="artCompanyEn" placeholder="Company Name in English"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="artBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify">확인</button>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">법인번호</div>
+                                <div class="chubb-field"><input type="text" id="artCorpNo" placeholder="법인번호"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="artCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem; color:#555;">대표자 생년월일</span>
+                                <input type="date" id="artCeoBirth" style="flex:0 0 160px;">
+                                <span style="font-size:0.82rem; color:#555;">성별</span>
+                                <select id="artCeoGender" style="width:70px;"><option value="">선택</option><option value="M">남</option><option value="F">여</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="artCompanyAddr" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('artCompanyAddr','artCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="artCompanyAddrDetail" placeholder="상세주소 입력">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 피보험자 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 피보험자 정보</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="artInsuredType" value="same" checked> 보험계약자 정보와 동일</label>
+                                <label><input type="radio" name="artInsuredType" value="other"> 개인/별도 입력</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">피보험자 국적</div>
+                            <div class="chubb-field">
+                                <select id="artInsuredNation"><option value="KR" selected>대한민국</option><option value="US">미국</option><option value="JP">일본</option><option value="OTHER">기타</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 전시/보관 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 전시/보관 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">전시기간</div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artExhibitStart" style="flex:1;"> <span>~</span> <input type="date" id="artExhibitEnd" style="flex:1;">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">전시장소</div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <div style="display:flex; gap:8px;">
+                                        <input type="text" id="artExhibitPlace" placeholder="전시장소" style="flex:1;">
+                                        <button type="button" class="btn-addr" onclick="openAddressSearch('artExhibitPlace',null)">주소 찾기</button>
+                                        <label><input type="checkbox" id="artExhibitSameAddr"> 주소와 동일</label>
+                                    </div>
+                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artExhibitOverseas"> 해외전시</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보관기간</div>
+                                <div class="chubb-field">
+                                    <input type="date" id="artStorageStart" style="flex:1;"> <span>~</span> <input type="date" id="artStorageEnd" style="flex:1;">
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보관장소</div>
+                                <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                    <input type="text" id="artStoragePlace" placeholder="보관장소">
+                                    <label style="font-size:0.78rem; color:#666;"><input type="checkbox" id="artStorageOverseas"> 해외보관</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 작품 정보 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 작품 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">작품수량<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="number" id="artItemCount" placeholder="점" min="1" style="width:100px;"> <span style="font-size:0.82rem;">점</span></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">작품가격<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <select id="artCurrency" style="width:80px;"><option value="KRW" selected>KRW</option><option value="USD">USD</option></select>
+                                    <input type="text" id="artValue" required placeholder="총 보험가액">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">보험목적 소재지</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artLocSameAddr"> 주소와 동일</label>
+                                <input type="text" id="artLocation" placeholder="보험목적 소재지" style="flex:1;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">담보범위</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artCovTransit"> In Transit</label>
+                                <label><input type="checkbox" id="artCovExhibit"> On Exhibit</label>
+                                <label><input type="checkbox" id="artCovCustody"> On Custody</label>
+                                <label><input type="checkbox" id="artCovRemoval"> Removal</label>
+                                <label><input type="checkbox" id="artCovPacking"> Packing</label>
+                                <label><input type="checkbox" id="artCovSetting"> Setting</label>
+                                <label><input type="checkbox" id="artCovUnpacking"> Unpacking</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 보험조건 -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 보험 조건</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">전시/보관 건물 구조</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="artBldgRC"> 철근콘크리트</label>
+                                <label><input type="checkbox" id="artBldgSteel"> 철골구조</label>
+                                <label><input type="checkbox" id="artBldgBrick"> 벽돌건물</label>
+                                <label><input type="checkbox" id="artBldgWood"> 목조건물</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row"><div class="chubb-label">화재방재시설</div><div class="chubb-field"><label><input type="radio" name="artFireSys" value="yes"> 있음</label><label><input type="radio" name="artFireSys" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">도난경보장치</div><div class="chubb-field"><label><input type="radio" name="artAlarmSys" value="yes"> 있음</label><label><input type="radio" name="artAlarmSys" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">24시간 경비원</div><div class="chubb-field"><label><input type="radio" name="artGuard" value="yes"> 있음</label><label><input type="radio" name="artGuard" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">전문운송업체 운송</div><div class="chubb-field"><label><input type="radio" name="artProTransport" value="yes" checked> 예</label><label><input type="radio" name="artProTransport" value="no"> 아니오</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">CCTV</div><div class="chubb-field"><label><input type="radio" name="artCCTV" value="yes"> 있음</label><label><input type="radio" name="artCCTV" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">아크릴케이스 진행</div><div class="chubb-field"><label><input type="radio" name="artAcrylic" value="yes"> 있음</label><label><input type="radio" name="artAcrylic" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row"><div class="chubb-label">야외 작품 포함</div><div class="chubb-field"><label><input type="radio" name="artOutdoor" value="yes"> 있음</label><label><input type="radio" name="artOutdoor" value="no" checked> 없음</label></div></div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">공제금액<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="artDeductible" value="nil" checked> Nil</label>
+                                <label><input type="radio" name="artDeductible" value="percent"> % of insured value per each item</label>
+                                <select id="artDeductCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
+                                <span style="font-size:0.82rem; color:#555;">Any one occurrence</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 첨부파일 (작품목록) -->
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 작품목록 · 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">작품목록<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <input type="file" id="artFile1" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="artFile2" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <input type="file" id="artFile3" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
+                                <span style="font-size:0.72rem; color:#999;">작품목록을 드래그 앤 드롭 해주세요.(최대 5개)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 대리점 요구사항 -->
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="artAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('art')">← 목록</button></div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('artQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Liability Quote Full Page -->
+        <div class="page" id="page-liabilityQuote">
+            <div class="chubb-form-page">
+                <div class="chubb-top-bar"></div>
+                <div class="chubb-form-header">
+                    <div class="breadcrumb"><a onclick="showPage('liability')">화물배상책임보험</a> &gt; <strong>신규청약</strong></div>
+                    <h2>📦 화물배상책임보험 신규청약</h2>
+                </div>
+                <form id="liabilityQuoteForm" onsubmit="event.preventDefault(); submitLiabilityQuote();">
+                <div class="chubb-form-body">
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">1. 계약자 정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약구분<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <label><input type="radio" name="liabilityContractType" value="new" checked> 신규</label>
+                                    <label><input type="radio" name="liabilityContractType" value="renew"> 갱신</label>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">대표자 국적</div>
+                                <div class="chubb-field">
+                                    <select id="liabCeoNation"><option value="KR" selected>KR | 대한민국</option><option value="US">US</option><option value="OTHER">기타</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(한글)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="liabCompanyKr" required placeholder="회사명"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">계약자명(영문)<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="text" id="liabCompanyEn" required placeholder="Company Name"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">사업자번호<span class="req">*</span></div>
+                                <div class="chubb-field">
+                                    <input type="text" id="liabBizNo" required placeholder="000-00-00000">
+                                    <button type="button" class="btn-verify">확인</button>
+                                </div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">법인번호</div>
+                                <div class="chubb-field"><input type="text" id="liabCorpNo" placeholder="법인번호"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">대표자명<span class="req">*</span></div>
+                            <div class="chubb-field" style="gap:16px;">
+                                <input type="text" id="liabCeoName" required placeholder="대표자 성함" style="flex:1;">
+                                <span style="font-size:0.82rem;">대표자 생년월일</span>
+                                <input type="date" id="liabCeoBirth" style="flex:0 0 160px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">계약자 주소<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div style="display:flex; gap:8px;">
+                                    <input type="text" id="liabCompanyAddr" placeholder="주소" style="flex:1;">
+                                    <button type="button" class="btn-addr" onclick="openAddressSearch('liabCompanyAddr','liabCompanyAddrDetail')">주소 찾기</button>
+                                </div>
+                                <input type="text" id="liabCompanyAddrDetail" placeholder="상세주소">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">2. 보험기간 · 사업정보</div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험 시작일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="liabStartDate" required></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">보험 종료일<span class="req">*</span></div>
+                                <div class="chubb-field"><input type="date" id="liabEndDate" required></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">사업종류<span class="req">*</span></div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabBizType1"> 국제물류주선업</label>
+                                <label><input type="checkbox" id="liabBizType2"> 콘솔리데이션업</label>
+                                <label><input type="checkbox" id="liabBizType3"> 운송업</label>
+                                <label><input type="checkbox" id="liabBizType4"> 기타(직접입력)</label>
+                                <input type="text" id="liabBizTypeOther" placeholder="직접입력" style="width:150px;">
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주로 취급 화물</div>
+                            <div class="chubb-field"><input type="text" id="liabMainCargo" placeholder="주요 취급 화물 명세"></div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">고가화물 비중</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabHighVal1"> 중장비</label>
+                                <label><input type="checkbox" id="liabHighVal2"> 생동물</label>
+                                <label><input type="checkbox" id="liabHighVal3"> 귀금속</label>
+                                <label><input type="checkbox" id="liabHighVal4"> 범엽기</label>
+                                <label><input type="checkbox" id="liabHighVal5"> 미술품</label>
+                                <label><input type="checkbox" id="liabHighVal6"> 자동차</label>
+                                <label><input type="checkbox" id="liabHighVal7"> 의약품</label>
+                                <label><input type="checkbox" id="liabHighVal8"> 담배</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">프로젝트카고</div>
+                            <div class="chubb-field">
+                                <label><input type="radio" name="liabProjectCargo" value="yes" checked> 진행</label>
+                                <label><input type="radio" name="liabProjectCargo" value="no"> 미진행</label>
+                                <select id="liabProjectCurrency" style="width:80px;"><option value="KRW">KRW</option><option value="USD">USD</option></select>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">주요 실 화주명</div>
+                            <div class="chubb-field"><input type="text" id="liabMainShipper" placeholder="주요 실 화주명"></div>
+                        </div>
+                        <div class="chubb-double-row">
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송용구당 최대 선적톤수</div>
+                                <div class="chubb-field"><input type="text" id="liabMaxTonnage" placeholder="톤수"></div>
+                            </div>
+                            <div class="chubb-row">
+                                <div class="chubb-label">운송용구당 평균 선적톤수</div>
+                                <div class="chubb-field"><input type="text" id="liabAvgTonnage" placeholder="톤수"></div>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">발행 B/L 종류</div>
+                            <div class="chubb-field">
+                                <label><input type="checkbox" id="liabBL1"> KIFFA B/L</label>
+                                <label><input type="checkbox" id="liabBL2"> FIATA B/L</label>
+                                <label><input type="checkbox" id="liabBL3"> IATA B/L</label>
+                                <label><input type="checkbox" id="liabBL4"> 기타(직접입력)</label>
+                                <input type="text" id="liabBLOther" placeholder="" style="width:150px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">3. 매출실적 (Last 3 Years)</div>
+                        <div style="overflow-x:auto; padding:12px 16px;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+                                <thead><tr style="background:#fafafa;">
+                                    <th style="padding:8px; border:1px solid #e0e0e0; text-align:left;"></th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevSea2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(해상)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostSea2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출액(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabRevAir2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa; font-weight:600;">매출원가(항공)</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabCostAir2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출액(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabRevTotal2"></td></tr>
+                                    <tr style="background:#f0f4ff; font-weight:700;"><td style="padding:8px; border:1px solid #e0e0e0;">매출원가(합계)</td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal0"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal1"></td><td style="border:1px solid #e0e0e0; padding:8px;" id="liabCostTotal2"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">4. 보험조건 (Occurrence Basis)</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">Section 1.<br>Goods-Legal Liability</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
+                                <div><strong style="font-size:0.82rem;">보상한도액</strong></div>
+                                <label><input type="radio" name="liabSec1Limit" value="100m" checked> KRW 100,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabSec1Limit" value="200m"> KRW 200,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabSec1Limit" value="300m"> KRW 300,000,000</label>
+                                <label><input type="radio" name="liabSec1Limit" value="500m"> KRW 500,000,000</label>
+                                <label><input type="radio" name="liabSec1Limit" value="custom"> 직접입력 <input type="text" id="liabSec1Custom" placeholder="금액" style="width:150px; margin-left:8px;"></label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
+                                <label><input type="radio" name="liabSec1Deduct" value="3m" checked> KRW 3,000,000</label>
+                                <label><input type="radio" name="liabSec1Deduct" value="5m"> KRW 5,000,000</label>
+                            </div>
+                        </div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">Third Party Liability<br>(특약사항)</div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:flex-start; gap:8px;">
+                                <label><input type="radio" name="liabTPL" value="yes" checked> 진행</label>
+                                <label><input type="radio" name="liabTPL" value="no"> 미진행</label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">보상한도액</strong></div>
+                                <label><input type="radio" name="liabTPLLimit" value="100m" checked> KRW 100,000,000 - 사고당</label>
+                                <label><input type="radio" name="liabTPLLimit" value="200m"> KRW 200,000,000 - 사고당</label>
+                                <div style="margin-top:8px;"><strong style="font-size:0.82rem;">자기부담금</strong></div>
+                                <label><input type="radio" name="liabTPLDeduct" value="1m" checked> KRW 1,000,000</label>
+                                <label><input type="radio" name="liabTPLDeduct" value="2.5m"> KRW 2,500,000</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">5. 사고이력</div>
+                        <div style="overflow-x:auto; padding:12px 16px;">
+                            <table style="width:100%; border-collapse:collapse; font-size:0.82rem;">
+                                <thead><tr style="background:#fafafa;">
+                                    <th style="padding:8px; border:1px solid #e0e0e0;"></th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-1</th>
+                                    <th style="padding:8px; border:1px solid #e0e0e0;">Last Year-2</th>
+                                </tr></thead>
+                                <tbody>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고건수</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabClaim2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">손해액</td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss0" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss1" style="width:100%; border:none; padding:6px;"></td><td style="border:1px solid #e0e0e0;"><input type="text" id="liabLoss2" style="width:100%; border:none; padding:6px;"></td></tr>
+                                    <tr><td style="padding:8px; border:1px solid #e0e0e0; background:#fafafa;">사고상세</td><td colspan="3" style="border:1px solid #e0e0e0;"><input type="text" id="liabClaimDetail" style="width:100%; border:none; padding:6px;" placeholder="품목, 사고내용 등"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-section-title">6. 첨부파일</div>
+                        <div class="chubb-row">
+                            <div class="chubb-label">첨부파일<span class="req">*</span></div>
+                            <div class="chubb-field" style="flex-direction:column; align-items:stretch; gap:6px;">
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">손익계산서</span><input type="file" id="liabFileIncome"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">매출확인서</span><input type="file" id="liabFileSales"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">사업자등록증</span><input type="file" id="liabFileBiz"></div>
+                                <div class="chubb-file-row"><span style="width:100px; font-size:0.78rem;">등기부등본</span><input type="file" id="liabFileReg"></div>
+                                <span style="font-size:0.72rem; color:#999;">첨부파일을 드래그 앤 드롭 해주세요.(최대 4개)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chubb-section">
+                        <div class="chubb-row">
+                            <div class="chubb-label">대리점 요구사항</div>
+                            <div class="chubb-field"><textarea id="liabAgentNote" placeholder="추가 요구사항을 입력하세요"></textarea></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chubb-form-actions">
+                    <div><button type="button" class="chubb-btn chubb-btn-list" onclick="showPage('liability')">← 목록</button></div>
+                    <div>
+                        <button type="submit" class="chubb-btn chubb-btn-submit">등록</button>
+                        <button type="button" class="chubb-btn chubb-btn-reset" onclick="document.getElementById('liabilityQuoteForm').reset()">초기화</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
         </div>
     </div>
 
@@ -5974,1056 +6762,8 @@
 
 
     <!-- Quote Modal -->
-    <!-- 내륙운송보험 견적 모달 -->
-    <div class="modal" id="inlandQuoteModal">
-        <div class="modal-content" style="max-width:750px; max-height:90vh; overflow-y:auto; font-size:14px;">
-            <span class="modal-close" onclick="closeModal('inlandQuoteModal')">&times;</span>
-            <h3 class="modal-title" style="font-size:1.2rem; font-weight:700;">🚛 내륙운송보험 신규청약</h3>
-            <form id="inlandQuoteForm" onsubmit="event.preventDefault(); submitInlandQuote();">
-                
-                <!-- 1. 계약자 정보 -->
-                <div class="modal-section">
-                    <h4>1. 계약자 정보</h4>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>계약구분 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:1.5rem; margin-top:8px;">
-                                <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                    <input type="radio" name="inlandContractType" value="individual" checked> 개별정산
-                                </label>
-                                <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                    <input type="radio" name="inlandContractType" value="op"> OP(월정산)
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>사업자번호 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="inlandBizNo" required placeholder="000-00-00000">
-                        </div>
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>계약자명(한글) <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="inlandCompanyKr" required placeholder="회사명 또는 성함">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>계약자명(영문)</label>
-                            <input type="text" id="inlandCompanyEn" placeholder="Company Name in English">
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자명 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="inlandCeoName" required placeholder="대표자 성함">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자 생년월일</label>
-                            <input type="date" id="inlandCeoBirth">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자 국적</label>
-                            <select id="inlandCeoNation">
-                                <option value="KR" selected>대한민국</option>
-                                <option value="US">미국</option>
-                                <option value="CN">중국</option>
-                                <option value="JP">일본</option>
-                                <option value="OTHER">기타</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin:0;">
-                        <label>계약자 주소 <span style="color:#e53935;">*</span></label>
-                        <div style="display:flex; gap:8px; margin-bottom:8px;">
-                            <input type="text" id="inlandCompanyAddrSearch" placeholder="주소 직접 입력 또는 검색 버튼 클릭" style="flex:1;">
-                            <button type="button" onclick="openAddressSearch('inlandCompanyAddrSearch', 'inlandCompanyAddrDetail')" class="btn-search">🔍 검색</button>
-                        </div>
-                        <input type="text" id="inlandCompanyAddrDetail" placeholder="상세주소 입력 (예: 602호)">
-                    </div>
-                </div>
-                
-                <!-- 2. 피보험자 정보 -->
-                <div class="modal-section">
-                    <h4>2. 피보험자 정보</h4>
-                    <div class="form-group" style="margin:0;">
-                        <label>피보험자</label>
-                        <div style="display:flex; gap:1.5rem; margin-top:8px;">
-                            <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                <input type="radio" name="inlandInsuredType" value="same" checked onchange="toggleInsuredFields(false)"> 보험계약자 정보와 동일
-                            </label>
-                            <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                <input type="radio" name="inlandInsuredType" value="other" onchange="toggleInsuredFields(true)"> 개인/별도 입력
-                            </label>
-                        </div>
-                    </div>
-                    <div id="insuredFields" style="display:none; margin-top:0.8rem;">
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
-                            <div class="form-group" style="margin:0;">
-                                <label>피보험자 국적</label>
-                                <select id="inlandInsuredNation">
-                                    <option value="KR" selected>대한민국</option>
-                                    <option value="US">미국</option>
-                                    <option value="CN">중국</option>
-                                    <option value="OTHER">기타</option>
-                                </select>
-                            </div>
-                            <div class="form-group" style="margin:0;">
-                                <label>피보험자 주소</label>
-                                <input type="text" id="inlandInsuredAddr" placeholder="피보험자 주소">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3. 담당자 정보 -->
-                <div class="modal-section">
-                    <h4>3. 담당자 정보</h4>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>담당자 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="inlandContact" required placeholder="담당자 성함">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>전화번호 <span style="color:#e53935;">*</span></label>
-                            <input type="tel" id="inlandPhone" required placeholder="010-1234-5678">
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin:0;">
-                        <label>이메일 <span style="color:#e53935;">*</span></label>
-                        <input type="email" id="inlandEmail" required placeholder="example@email.com">
-                    </div>
-                </div>
-                
-                <!-- 4. 운송 정보 -->
-                <div class="modal-section">
-                    <h4>4. 운송 정보</h4>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>출발일 <span style="color:#e53935;">*</span></label>
-                            <input type="date" id="inlandDepartDate" required>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>도착일 <span style="color:#e53935;">*</span></label>
-                            <input type="date" id="inlandArriveDate" required>
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>출발지 주소 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:8px; margin-bottom:8px;">
-                                <input type="text" id="inlandOriginSearch" placeholder="주소 직접 입력 또는 검색" style="flex:1;">
-                                <button type="button" onclick="openAddressSearch('inlandOriginSearch', 'inlandOriginDetail')" class="btn-search">🔍 검색</button>
-                            </div>
-                            <input type="text" id="inlandOriginDetail" placeholder="상세주소 (예: 제1공장)">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>도착지 주소 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:8px; margin-bottom:8px;">
-                                <input type="text" id="inlandDestSearch" placeholder="주소 직접 입력 또는 검색" style="flex:1;">
-                                <button type="button" onclick="openAddressSearch('inlandDestSearch', 'inlandDestDetail')" class="btn-search">🔍 검색</button>
-                            </div>
-                            <input type="text" id="inlandDestDetail" placeholder="상세주소 (예: 물류센터)">
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>운송거리 <span style="color:#e53935;">*</span></label>
-                            <select id="inlandDistance">
-                                <option value="under100">100Km 미만</option>
-                                <option value="100to300">100Km ~ 300Km</option>
-                                <option value="over300">300Km 이상</option>
-                            </select>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>운송수단</label>
-                            <input type="text" id="inlandTransportMethod" placeholder="예: 5톤 트럭">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>차량대수</label>
-                            <input type="number" id="inlandVehicleCount" min="1" value="1">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 5. 보험가입목적물 -->
-                <div class="modal-section">
-                    <h4>5. 보험가입목적물</h4>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>보험가입금액 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:5px;">
-                                <select id="inlandCurrency" style="width:80px;">
-                                    <option value="KRW" selected>KRW</option>
-                                    <option value="USD">USD</option>
-                                </select>
-                                <input type="text" id="inlandCargoValue" required placeholder="금액 입력" style="flex:1;">
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>Invoice No & Date</label>
-                            <input type="text" id="inlandInvoice" placeholder="INV-2024-001, 2024-01-15">
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>HS CODE</label>
-                            <input type="text" id="inlandHsCode" placeholder="예: 8471">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>품목 <span style="color:#e53935;">*</span></label>
-                            <select id="inlandCargoType" required>
-                                <option value="">선택</option>
-                                <option value="general">일반화물 (잡화)</option>
-                                <option value="electronic">전자제품 / IT기기</option>
-                                <option value="machinery">기계류 / 산업설비</option>
-                                <option value="furniture">가구 / 이사화물</option>
-                                <option value="food">식품 / 농수산물</option>
-                                <option value="chemical">화학제품</option>
-                                <option value="construction">건축자재 / 철강</option>
-                                <option value="other">기타</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem; align-items:center;">
-                        <div class="form-group" style="margin:0;">
-                            <label>중고 구분 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:1.5rem; margin-top:8px;">
-                                <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                    <input type="radio" name="inlandCondition" value="new" checked> 신품
-                                </label>
-                                <label style="display:flex; align-items:center; gap:5px; cursor:pointer;">
-                                    <input type="radio" name="inlandCondition" value="used"> 중고
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label style="display:flex; align-items:center; gap:6px; cursor:pointer; margin-top:1.5rem;">
-                                <input type="checkbox" id="inlandTempSensitive"> 온도민감품목 (냉동/냉장 필요)
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin:0;">
-                        <label>품목 상세</label>
-                        <textarea id="inlandCargoDetail" rows="2" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px;" placeholder="화물의 상세 내용, 포장 상태 등"></textarea>
-                    </div>
-                </div>
-                
-                <!-- 6. 보험조건 -->
-                <div class="modal-section">
-                    <h4>6. 보험조건</h4>
-                    <div style="background:#f9f9f9; padding:1rem; border-radius:6px; margin-bottom:1rem;">
-                        <p style="font-weight:600; margin-bottom:10px; font-size:0.85rem;">기본 약관</p>
-                        <p style="color:#555; margin:5px 0; font-size:0.82rem;">• Inland Transit Insurance (내륙운송보험)</p>
-                        <p style="color:#555; margin:5px 0; font-size:0.82rem;">• Sanction Limitation And Exclusion Clause (제재국가 면책조항)</p>
-                    </div>
-                    <div style="background:#f9f9f9; padding:1rem; border-radius:6px;">
-                        <p style="font-weight:600; margin-bottom:10px; font-size:0.85rem;">추가 담보조건 선택</p>
-                        <label style="display:flex; align-items:flex-start; gap:8px; margin-bottom:12px; cursor:pointer; font-size:0.82rem;">
-                            <input type="checkbox" id="inlandExtendedCoverage" style="margin-top:3px;">
-                            <span>Coverage extended until being shipped on board subject to advance declaration<br><span style="color:#666; font-size:0.8rem;">(본선도담보 - 화물이 본선에 선적될 때까지 담보 연장)</span></span>
-                        </label>
-                        <div style="margin-bottom:8px;">
-                            <label style="display:flex; align-items:flex-start; gap:8px; cursor:pointer; font-size:0.82rem;">
-                                <input type="checkbox" id="inlandWaiverSubrogation" style="margin-top:3px;">
-                                <span>Waiver of subrogation against carrier<br><span style="color:#666; font-size:0.8rem;">(대위권포기조항 - 운송인)</span></span>
-                            </label>
-                            <div id="waiverTargetGroup" style="display:none; margin-left:25px; margin-top:8px;">
-                                <input type="text" id="waiverTarget" placeholder="대위권포기 대상 입력 (예: ABC Logistics Co.)" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px; font-size:0.82rem;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 7. 첨부파일 -->
-                <div class="modal-section">
-                    <h4>7. 첨부파일</h4>
-                    <p style="font-size:0.85rem; color:#666; margin-bottom:10px;">첨부파일을 드래그 앤 드롭 해주세요. (최대 5개, 각 100MB)</p>
-                    <div style="display:flex; flex-direction:column; gap:8px;">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <input type="file" id="inlandFile1" style="flex:1; font-size:0.85rem;" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                            <span style="color:#888; font-size:0.75rem;">(0 Byte / 100MB)</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <input type="file" id="inlandFile2" style="flex:1; font-size:0.85rem;" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                            <span style="color:#888; font-size:0.75rem;">(0 Byte / 100MB)</span>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <input type="file" id="inlandFile3" style="flex:1; font-size:0.85rem;" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx,.xls,.xlsx">
-                            <span style="color:#888; font-size:0.75rem;">(0 Byte / 100MB)</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 버튼 그룹 -->
-                <div class="quote-form-actions">
-                    <button type="button" class="quote-btn-save" onclick="saveInlandDraft()">💾 임시저장</button>
-                    <button type="submit" class="quote-btn-submit">📨 견적신청</button>
-                    <button type="button" class="quote-btn-reset" onclick="document.getElementById('inlandQuoteForm').reset()">🔄 초기화</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- 예술품종합보험 견적 모달 -->
-    <div class="modal" id="artQuoteModal">
-        <div class="modal-content" style="max-width:800px; max-height:90vh; overflow-y:auto; font-size:14px;">
-            <span class="modal-close" onclick="closeModal('artQuoteModal')">&times;</span>
-            <h3 class="modal-title">🎨 예술품종합보험 신규청약</h3>
-            <form id="artQuoteForm" onsubmit="event.preventDefault(); submitArtQuote();">
-                
-                <!-- 1. 계약자 정보 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">1. 계약자 정보</h4>
-                    
-                    <div style="display:flex; align-items:center; gap:1.5rem; margin-bottom:0.8rem;">
-                        <label style="font-size:14px;">계약구분 <span style="color:#e53935;">*</span></label>
-                        <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                            <input type="radio" name="artContractType" value="new" checked> 신규
-                        </label>
-                        <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                            <input type="radio" name="artContractType" value="renewal"> 갱신
-                        </label>
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label>계약자명(한글) <span style="color:#e53935;">*</span></label>
-                        <input type="text" id="artContractorKr" required placeholder="계약자명 (법인명)">
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label>계약자명(영문)</label>
-                        <input type="text" id="artContractorEn" placeholder="Contractor Name (Company Name)">
-                    </div>
-                    
-                    <div style="display:grid; grid-template-columns:150px 1fr; gap:1rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자 국적 <span style="color:#e53935;">*</span></label>
-                            <select id="artNationality" required>
-                                <option value="KR" selected>대한민국</option>
-                                <option value="OTHER">기타</option>
-                            </select>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>주소 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="artAddress" required placeholder="주소를 입력하세요">
-                        </div>
-                    </div>
-                    
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>사업자번호</label>
-                            <input type="text" id="artBizNo" placeholder="000-00-00000">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>법인번호</label>
-                            <input type="text" id="artCorpNo" placeholder="000000-0000000">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자명 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="artRepName" required placeholder="대표자명">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>대표자 생년월일</label>
-                            <input type="date" id="artRepBirth">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 2. 피보험자 정보 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">2. 피보험자 정보</h4>
-                    
-                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>피보험자</label>
-                            <input type="text" id="artInsured" placeholder="피보험자명">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>피보험자 국적</label>
-                            <select id="artInsuredNationality">
-                                <option value="KR" selected>대한민국</option>
-                                <option value="OTHER">기타</option>
-                            </select>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>담당자 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="artManager" required placeholder="담당자명">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>전화번호 <span style="color:#e53935;">*</span></label>
-                            <input type="tel" id="artPhone" required placeholder="010-0000-0000">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>이메일 <span style="color:#e53935;">*</span></label>
-                            <input type="email" id="artEmail" required placeholder="example@email.com">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3. 보험목적물 정보 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">3. 보험목적물 정보</h4>
-                    
-                    <div style="display:grid; grid-template-columns:1fr 1fr 120px; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>작품수량 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; align-items:center; gap:0.3rem;">
-                                <input type="number" id="artQuantity" required placeholder="0" min="1" style="flex:1;">
-                                <span>점</span>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>작품가격 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="artValue" required placeholder="금액">
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>통화</label>
-                            <select id="artCurrency">
-                                <option value="KRW">KRW</option>
-                                <option value="USD">USD</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label>보험목적 소재지 <span style="color:#e53935;">*</span></label>
-                        <input type="text" id="artInsuredLocation" placeholder="보험목적물이 소재한 주소">
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label>보험기간 <span style="color:#e53935;">*</span></label>
-                        <div style="display:flex; align-items:center; gap:0.5rem;">
-                            <input type="date" id="artInsuranceStart" required style="flex:1;">
-                            <span>~</span>
-                            <input type="date" id="artInsuranceEnd" required style="flex:1;">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label>운송구간</label>
-                        <textarea id="artTransportRoute" rows="2" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:6px;" placeholder="분운송 구간(출/도착지), 수단(해상,항공), 횟수(편도,왕복 등) 기재 필수. 관용차량, 일반차량 등 전문운송사에 의한 운송이 아닌 경우 내용 기재 필수."></textarea>
-                    </div>
-                    
-                    <!-- 전시 정보 -->
-                    <div style="background:#f9f9f9; padding:1rem; border-radius:6px; margin-bottom:0.8rem;">
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                            <div class="form-group" style="margin:0;">
-                                <label>전시기간</label>
-                                <div style="display:flex; align-items:center; gap:0.3rem;">
-                                    <input type="date" id="artExhibitStart" style="flex:1;">
-                                    <span>~</span>
-                                    <input type="date" id="artExhibitEnd" style="flex:1;">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin:0;">
-                                <label>전시장소</label>
-                                <input type="text" id="artExhibitPlace" placeholder="전시장소 주소">
-                            </div>
-                        </div>
-                        <div style="display:flex; gap:1.5rem; margin-bottom:0.8rem;">
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" id="artExhibitSameAddress"> 주소와 동일
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" id="artExhibitOverseas"> 해외전시
-                            </label>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>전시장소 추가입력</label>
-                            <input type="text" id="artExhibitPlaceExtra" placeholder="추가 전시장소">
-                        </div>
-                    </div>
-                    
-                    <!-- 보관 정보 -->
-                    <div style="background:#f9f9f9; padding:1rem; border-radius:6px;">
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                            <div class="form-group" style="margin:0;">
-                                <label>보관기간</label>
-                                <div style="display:flex; align-items:center; gap:0.3rem;">
-                                    <input type="date" id="artStorageStart" style="flex:1;">
-                                    <span>~</span>
-                                    <input type="date" id="artStorageEnd" style="flex:1;">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin:0;">
-                                <label>보관장소</label>
-                                <input type="text" id="artStoragePlace" placeholder="보관장소 주소">
-                            </div>
-                        </div>
-                        <div style="display:flex; gap:1.5rem; margin-bottom:0.8rem;">
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" id="artStorageSameExhibit"> 전시장소와 동일
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" id="artStorageOverseas"> 해외보관
-                            </label>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>보관장소 추가입력</label>
-                            <input type="text" id="artStoragePlaceExtra" placeholder="추가 보관장소">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 4. 보험조건 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">4. 보험조건</h4>
-                    
-                    <!-- 담보 범위 -->
-                    <div style="margin-bottom:1rem;">
-                        <label style="font-weight:500; display:block; margin-bottom:0.5rem;">담보 범위</label>
-                        <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="inTransit"> In Transit
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="onExhibit"> On Exhibit
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="onCustody"> On Custody
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="removal"> Removal
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="packing"> Packing
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="setting"> Setting
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artCoverage" value="unpacking"> Unpacking
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- Waiver of subrogation -->
-                    <div style="margin-bottom:1rem;">
-                        <div class="form-group" style="margin:0; max-width:300px;">
-                            <label>Waiver of subrogation against</label>
-                            <select id="artWaiverSubrogation">
-                                <option value="">선택</option>
-                                <option value="carrier">Carrier (운송인)</option>
-                                <option value="freightForwarder">Freight Forwarder (운송주선인)</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <!-- 건물 구조 -->
-                    <div style="margin-bottom:1rem;">
-                        <label style="font-weight:500; display:block; margin-bottom:0.5rem;">전시/보관되는 건물의 구조</label>
-                        <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artBuildingStructure" value="concrete"> 철근콘크리트
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artBuildingStructure" value="steel"> 철골구조
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artBuildingStructure" value="brick"> 벽돌건물
-                            </label>
-                            <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                                <input type="checkbox" name="artBuildingStructure" value="wood"> 목조건물
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <!-- 시설/보안 조건 테이블 -->
-                    <table style="width:100%; border-collapse:collapse;">
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">전시실(혹은 보관장소)내의 화재방재시설 설치 여부</td>
-                            <td style="width:120px; text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artFireSystem" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artFireSystem" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">도난경보장치 설치 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artAlarmSystem" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artAlarmSystem" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">24시간 경비원 상주 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artSecurityGuard" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artSecurityGuard" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">운송 담보시 미술품전문운송업체에 의한 포장, 해체, 설치, 운송 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artProfessionalTransport" value="yes"> 예</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artProfessionalTransport" value="no"> 아니오</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">가이드라인 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artGuideline" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artGuideline" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">무진동 차량 이용 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artNoVibration" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artNoVibration" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">CCTV 사용 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artCCTV" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artCCTV" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:0.5rem 0;">아크릴 케이스 / 유리 액자 등 작품 전시 간 케이스 진행 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artDisplayCase" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artDisplayCase" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="padding:0.5rem 0;">야외 작품 포함 여부</td>
-                            <td style="text-align:right;">
-                                <label style="cursor:pointer;"><input type="radio" name="artOutdoor" value="yes"> 있음</label>
-                                <label style="cursor:pointer; margin-left:0.8rem;"><input type="radio" name="artOutdoor" value="no"> 없음</label>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                
-                <!-- 5. 공제금액 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">5. 공제금액</h4>
-                    
-                    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:1rem;">
-                        <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                            <input type="radio" name="artDeductible" value="nil" checked> Nil
-                        </label>
-                        <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                            <input type="radio" name="artDeductible" value="percent"> 
-                            <input type="number" id="artDeductiblePercent" style="width:50px;" placeholder="0" min="0" max="100">
-                            % of insured value per each item
-                        </label>
-                        <label style="display:flex; align-items:center; gap:0.3rem; cursor:pointer;">
-                            <input type="radio" name="artDeductible" value="amount">
-                            <select id="artDeductibleCurrency" style="width:65px;">
-                                <option value="KRW">KRW</option>
-                                <option value="USD">USD</option>
-                            </select>
-                            <input type="text" id="artDeductibleAmount" style="width:100px;" placeholder="금액">
-                            Any one occurrence
-                        </label>
-                    </div>
-                </div>
-                
-                <!-- 6. 첨부 제출서류 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">6. 첨부 제출서류</h4>
-                    
-                    <div class="form-group" style="margin:0;">
-                        <label>작품목록 <span style="color:#e53935;">*</span></label>
-                        <p style="color:#666; margin:0.3rem 0 0.5rem 0;">작품목록을 드래그 앤 드롭 해주세요. (최대 5개, 각 100MB)</p>
-                        <div style="border:2px dashed #ccc; border-radius:6px; padding:1.2rem; text-align:center; background:#fafafa;">
-                            <input type="file" id="artWorkList" multiple accept=".xlsx,.xls,.pdf,.doc,.docx" style="display:none;">
-                            <label for="artWorkList" style="cursor:pointer; color:#666;">
-                                📎 파일 선택 또는 여기에 드래그 앤 드롭
-                            </label>
-                            <div id="artFileList" style="margin-top:0.8rem; text-align:left;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 버튼 -->
-                <div class="quote-form-actions">
-                    <button type="button" class="quote-btn-save" onclick="saveArtDraft()">💾 임시저장</button>
-                    <button type="submit" class="quote-btn-submit">📨 견적신청</button>
-                    <button type="button" class="quote-btn-reset" onclick="resetArtForm()">🔄 초기화</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- 화물배상책임보험 견적 모달 -->
-    <div class="modal" id="liabilityQuoteModal">
-        <div class="modal-content" style="max-width:900px; max-height:90vh; overflow-y:auto; font-size:14px;">
-            <span class="modal-close" onclick="closeModal('liabilityQuoteModal')">&times;</span>
-            <h3 class="modal-title">📦 화물배상책임보험 신규청약</h3>
-            <form id="liabilityQuoteForm" onsubmit="event.preventDefault(); submitLiabilityQuote();">
-                
-                <!-- 1. 계약자 정보 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">1. 계약자 정보</h4>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">계약구분 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:1.2rem; padding:6px 0;">
-                                <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="radio" name="liabilityContractType" value="new" checked style="margin-right:4px; transform:scale(0.9);"> 신규</label>
-                                <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="radio" name="liabilityContractType" value="renew" style="margin-right:4px; transform:scale(0.9);"> 갱신</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">대표자 국적 <span style="color:#e53935;">*</span></label>
-                            <select id="liabilityNationality" required style="padding:8px; font-size:0.85rem;">
-                                <option value="KR" selected>KR | 대한민국</option>
-                                <option value="US">US | 미국</option>
-                                <option value="CN">CN | 중국</option>
-                                <option value="JP">JP | 일본</option>
-                                <option value="other">기타</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">계약자명(한글) <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="liabilityCompanyKr" required placeholder="한글 회사명" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">계약자명(영문) <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="liabilityCompanyEn" required placeholder="English Company Name" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">사업자번호 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="liabilityBizNo" required placeholder="000-00-00000" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">법인번호</label>
-                            <input type="text" id="liabilityCorpNo" placeholder="000000-0000000" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">대표자명 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="liabilityRepName" required placeholder="대표자 성명" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">대표자 생년월일 <span style="color:#e53935;">*</span></label>
-                            <input type="date" id="liabilityRepBirth" required style="padding:8px; font-size:0.85rem;">
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label style="font-size:0.8rem; color:#555;">계약자 주소 <span style="color:#e53935;">*</span></label>
-                        <div style="display:flex; gap:0.4rem; margin-bottom:0.4rem;">
-                            <input type="text" id="liabilityZipcode" placeholder="우편번호" style="width:100px; padding:8px; font-size:0.85rem;" readonly>
-                            <button type="button" onclick="searchLiabilityAddress()" class="btn-search">주소 찾기</button>
-                        </div>
-                        <input type="text" id="liabilityAddress" required placeholder="기본주소" style="margin-bottom:0.4rem; padding:8px; font-size:0.85rem;">
-                        <input type="text" id="liabilityAddressDetail" placeholder="상세주소 (동/호수)" style="padding:8px; font-size:0.85rem;">
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">담당자 <span style="color:#e53935;">*</span></label>
-                            <input type="text" id="liabilityManager" required placeholder="담당자 성명" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">연락처 <span style="color:#e53935;">*</span></label>
-                            <input type="tel" id="liabilityPhone" required placeholder="010-0000-0000" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label style="font-size:0.8rem; color:#555;">이메일 <span style="color:#e53935;">*</span></label>
-                        <input type="email" id="liabilityEmail" required placeholder="example@email.com" style="padding:8px; font-size:0.85rem;">
-                    </div>
-                </div>
-                
-                <!-- 2. 보험기간 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">2. 보험기간</h4>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
-                        <div class="form-group" style="margin:0;">
-                            <label>보험 시작일 <span style="color:#e53935;">*</span></label>
-                            <input type="date" id="liabilityStartDate" required>
-                        </div>
-                        <div class="form-group" style="margin:0;">
-                            <label>보험 종료일 <span style="color:#e53935;">*</span></label>
-                            <input type="date" id="liabilityEndDate" required>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 3. 사업정보 -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">3. 사업정보</h4>
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label style="font-size:0.8rem; color:#555;">사업종류 <span style="color:#e53935;">*</span></label>
-                        <div style="display:flex; flex-wrap:wrap; gap:0.8rem; padding:6px 0;">
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBizType" value="international" style="margin-right:4px; transform:scale(0.9);"> 국제물류주선업</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBizType" value="consol" style="margin-right:4px; transform:scale(0.9);"> 콘솔리데이션업</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBizType" value="transport" style="margin-right:4px; transform:scale(0.9);"> 운송업</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBizType" value="other" style="margin-right:4px; transform:scale(0.9);"> 기타(직접입력)</label>
-                        </div>
-                        <input type="text" id="liabilityBizTypeOther" placeholder="기타 사업종류 직접 입력" style="display:none; margin-top:0.4rem; padding:8px; font-size:0.85rem;">
-                    </div>
-                    <p style="color:#888; font-size:0.75rem; margin-bottom:0.8rem;">※ 운송 주선인이 직접 운송을 실시하여 사고가 발생할 경우 고지의무 위반으로 부담보</p>
-                    
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label style="font-size:0.8rem; color:#555;">주로 취급하는 화물 명세</label>
-                        <input type="text" id="liabilityCargoDesc" placeholder="주요 취급 화물 종류를 입력하세요" style="padding:8px; font-size:0.85rem;">
-                    </div>
-                    
-                    <!-- 50% 이상 화물 체크 -->
-                    <div style="background:#f9f9f9; padding:0.8rem; border-radius:4px; margin-bottom:0.8rem; border:1px solid #ddd;">
-                        <label style="font-size:0.85rem; color:#333; font-weight:600; display:block; margin-bottom:0.6rem;">⚠️ 화물의 비중이 50%이상 초과하거나 초과할 것으로 예상되는 경우 체크</label>
-                        <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0.4rem;">
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="heavy" style="margin-right:4px; transform:scale(0.85);"> 중장비</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="animal" style="margin-right:4px; transform:scale(0.85);"> 생동물</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="precious" style="margin-right:4px; transform:scale(0.85);"> 귀금속</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="transformer" style="margin-right:4px; transform:scale(0.85);"> 변압기</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="art" style="margin-right:4px; transform:scale(0.85);"> 미술품</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="auto" style="margin-right:4px; transform:scale(0.85);"> 자동차</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="electronics" style="margin-right:4px; transform:scale(0.85);"> 휴대폰 전자기기/컴퓨터</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="science" style="margin-right:4px; transform:scale(0.85);"> 과학장비 및 의학용 검사기계</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="medicine" style="margin-right:4px; transform:scale(0.85);"> 의약품</label>
-                            <label style="font-weight:normal; cursor:pointer; font-size:0.75rem; background:#fff; padding:6px 8px; border:1px solid #e0e0e0; border-radius:3px; display:flex; align-items:center;"><input type="checkbox" name="liabilityCargo50" value="tobacco" style="margin-right:4px; transform:scale(0.85);"> 담배</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">프로젝트카고 <span style="color:#e53935;">*</span></label>
-                            <div style="display:flex; gap:1rem; padding:6px 0;">
-                                <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="radio" name="liabilityProjectCargo" value="yes" style="margin-right:4px; transform:scale(0.9);"> 진행</label>
-                                <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="radio" name="liabilityProjectCargo" value="no" checked style="margin-right:4px; transform:scale(0.9);"> 미진행</label>
-                            </div>
-                        </div>
-                        <div class="form-group" style="grid-column: span 2;">
-                            <label style="font-size:0.8rem; color:#555;">통화</label>
-                            <select id="liabilityCurrency" style="width:120px; padding:8px; font-size:0.85rem;">
-                                <option value="KRW" selected>KRW</option>
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group" style="margin-bottom:0.8rem;">
-                        <label style="font-size:0.8rem; color:#555;">주요 실 화주명</label>
-                        <input type="text" id="liabilityShippers" placeholder="예: 삼성전자, LG화학, 현대자동차" style="padding:8px; font-size:0.85rem;">
-                    </div>
-                    <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem;">
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">운송용구당 최대 선적톤수</label>
-                            <input type="text" id="liabilityMaxTonnage" placeholder="톤수 입력" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                        <div class="form-group">
-                            <label style="font-size:0.8rem; color:#555;">운송용구당 평균 선적톤수</label>
-                            <input type="text" id="liabilityAvgTonnage" placeholder="톤수 입력" style="padding:8px; font-size:0.85rem;">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 4. 매출정보 (3개년) -->
-                <div style="margin-bottom:1.5rem; border:1px solid #ddd; border-radius:8px; padding:1.2rem;">
-                    <h4 style="margin:0 0 1rem 0; font-size:15px; color:#333; border-bottom:1px solid #eee; padding-bottom:0.5rem;">4. 매출정보 (직전 3개년)</h4>
-                    <div style="overflow-x:auto;">
-                        <table style="width:100%; border-collapse:collapse; font-size:0.75rem;">
-                            <thead>
-                                <tr style="background:#f5f5f5;">
-                                    <th style="padding:8px; text-align:left; width:120px; border:1px solid #e0e0e0;">구분</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year-1</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year-2</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td style="padding:6px; border:1px solid #e0e0e0;">매출액(해상)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaSalesY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaSalesY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaSalesY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr style="background:#fafafa;"><td style="padding:6px; border:1px solid #e0e0e0;">매출원가(해상)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaCostY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaCostY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilitySeaCostY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr><td style="padding:6px; border:1px solid #e0e0e0;">매출액(항공)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirSalesY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirSalesY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirSalesY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr style="background:#fafafa;"><td style="padding:6px; border:1px solid #e0e0e0;">매출원가(항공)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirCostY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirCostY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityAirCostY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr style="background:#f5f5f5;"><td style="padding:6px; border:1px solid #e0e0e0; font-weight:600;">매출액(합계)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalSalesY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalSalesY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalSalesY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr style="background:#f5f5f5;"><td style="padding:6px; border:1px solid #e0e0e0; font-weight:600;">매출원가(합계)</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalCostY0" style="width:100%; padding:6px; border:1px solid #a5d6a7; border-radius:3px; font-size:0.75rem; background:#f1f8e9;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalCostY1" style="width:100%; padding:6px; border:1px solid #a5d6a7; border-radius:3px; font-size:0.75rem; background:#f1f8e9;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityTotalCostY2" style="width:100%; padding:6px; border:1px solid #a5d6a7; border-radius:3px; font-size:0.75rem; background:#f1f8e9;"></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <!-- 발행 B/L 종류 -->
-                <div style="background:#fff; padding:1rem 1.2rem; border-radius:6px; margin-bottom:1rem; border:1px solid #e0e0e0;">
-                    <label style="font-size:0.8rem; color:#555; display:block; margin-bottom:0.6rem;">발행 B/L 종류</label>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.8rem;">
-                        <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBLType" value="kiffa" style="margin-right:4px; transform:scale(0.9);"> KIFFA B/L</label>
-                        <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBLType" value="fiata" style="margin-right:4px; transform:scale(0.9);"> FIATA B/L</label>
-                        <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBLType" value="iata" style="margin-right:4px; transform:scale(0.9);"> IATA B/L</label>
-                        <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" name="liabilityBLType" value="other" style="margin-right:4px; transform:scale(0.9);"> 기타(직접입력)</label>
-                    </div>
-                    <input type="text" id="liabilityBLTypeOther" placeholder="기타 B/L 종류 입력" style="display:none; margin-top:0.4rem; padding:8px; font-size:0.85rem;">
-                </div>
-                
-                <!-- 보험조건 (Occurrence Basis 손해사고기준) -->
-                <div style="background:#e8eaf6; padding:1rem 1.2rem; border-radius:6px; margin-bottom:1rem; border:1px solid #c5cae9;">
-                    <div style="display:flex; align-items:center; margin-bottom:0.8rem;">
-                        <span style="background:#3949ab; color:#fff; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.7rem; margin-right:8px;">i</span>
-                        <span style="font-size:0.9rem; font-weight:600; color:#3949ab;">보험조건 (Occurrence Basis 손해사고기준)</span>
-                    </div>
-                    
-                    <!-- Section 1 - 원본 스타일 -->
-                    <div style="background:#fff; padding:0.8rem 1rem; border-radius:4px; margin-bottom:0.8rem; border:1px solid #e0e0e0;">
-                        <h5 style="color:#333; margin-bottom:0.8rem; font-size:0.85rem; font-weight:600;">Section 1. Goods-Legal Liability</h5>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;">
-                            <div>
-                                <label style="font-size:0.8rem; color:#555; font-weight:600;">보상한도액 <span style="color:#e53935;">*</span></label>
-                                <div style="display:flex; flex-direction:column; gap:0.3rem; padding:6px 0;">
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="100m" style="margin-right:4px; transform:scale(0.85);"> KRW 100,000,000 - 사고당</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="200m" style="margin-right:4px; transform:scale(0.85);"> KRW 200,000,000 - 사고당</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="300m" style="margin-right:4px; transform:scale(0.85);"> KRW 300,000,000</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="400m" style="margin-right:4px; transform:scale(0.85);"> KRW 400,000,000</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="500m" style="margin-right:4px; transform:scale(0.85);"> KRW 500,000,000</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Limit" value="custom" style="margin-right:4px; transform:scale(0.85);"> 직접입력</label>
-                                </div>
-                                <div id="liabilitySection1CustomWrap" style="display:none; margin-top:0.3rem;">
-                                    <input type="text" id="liabilitySection1Custom" placeholder="금액 입력" style="width:120px; padding:6px; font-size:0.75rem; margin-right:8px;">
-                                    <label style="font-weight:normal; font-size:0.75rem;"><input type="checkbox" id="liabilitySection1PerOccur" style="margin-right:3px; transform:scale(0.85);"> 사고당</label>
-                                    <label style="font-weight:normal; font-size:0.75rem; margin-left:8px;"><input type="checkbox" id="liabilitySection1Annual" style="margin-right:3px; transform:scale(0.85);"> 연간총한도</label>
-                                </div>
-                            </div>
-                            <div>
-                                <label style="font-size:0.8rem; color:#555; font-weight:600;">자기부담금 <span style="color:#e53935;">*</span></label>
-                                <div style="display:flex; flex-direction:column; gap:0.3rem; padding:6px 0;">
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Deduct" value="3m" style="margin-right:4px; transform:scale(0.85);"> KRW 3,000,000</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilitySection1Deduct" value="5m" style="margin-right:4px; transform:scale(0.85);"> KRW 5,000,000</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Section 2 + Third Party - 원본 스타일 -->
-                    <div style="background:#fff; padding:0.8rem 1rem; border-radius:4px; border:1px solid #e0e0e0;">
-                        <!-- 상단: Section 2 설명 | Third Party Liability 타이틀 + 진행/미진행 -->
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; padding-bottom:0.8rem; border-bottom:1px solid #e0e0e0;">
-                            <!-- Section 2 설명 -->
-                            <div style="border-right:1px solid #e0e0e0; padding-right:1rem;">
-                                <h5 style="color:#333; margin-bottom:0.5rem; font-size:0.8rem; font-weight:600;">Section 2. Professional Indemnity</h5>
-                                <p style="color:#666; font-size:0.7rem; line-height:1.4;">(사업 수행상 피보험자에 의해 발생된 배달착오, 지시사항의 이행실패, 사무착오, 부주의, 과실, 부작위 혹은 고용된 사람의 부정, 사기, 범죄 등의 원인으로 제기된 Claim에 대한 배상책임)</p>
-                            </div>
-                            <!-- Third Party Liability 타이틀 + 진행/미진행 -->
-                            <div>
-                                <h5 style="color:#333; margin-bottom:0.5rem; font-size:0.8rem; font-weight:600;">Third Party Liability Covered (제3자배상책임 담보)</h5>
-                                <div style="display:flex; gap:1rem;">
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityThirdParty" value="yes" style="margin-right:4px; transform:scale(0.85); accent-color:#FF8F00;"> 진행</label>
-                                    <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityThirdParty" value="no" checked style="margin-right:4px; transform:scale(0.85);"> 미진행</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- 하단: Third Party Liability (특약사항) - 진행 선택 시 표시 -->
-                        <div id="liabilityThirdPartyOptions" style="display:none; padding-top:0.8rem;">
-                            <div style="display:grid; grid-template-columns:180px 1fr 1fr; gap:1rem; align-items:start;">
-                                <!-- 좌측: 특약사항 라벨 -->
-                                <div>
-                                    <h6 style="font-size:0.8rem; color:#555; font-weight:500;">Third Party Liability(특약사항)</h6>
-                                </div>
-                                <!-- 중앙: 보상한도액 -->
-                                <div>
-                                    <label style="font-size:0.75rem; color:#555; font-weight:600; display:block; margin-bottom:0.4rem;">보상한도액</label>
-                                    <div style="display:flex; flex-direction:column; gap:0.25rem;">
-                                        <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityTPLimit" value="100m" style="margin-right:4px; transform:scale(0.85);"> KRW 100,000,000 - 사고당</label>
-                                        <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityTPLimit" value="200m" style="margin-right:4px; transform:scale(0.85);"> KRW 200,000,000 - 사고당</label>
-                                    </div>
-                                </div>
-                                <!-- 우측: 자기부담금 -->
-                                <div>
-                                    <label style="font-size:0.75rem; color:#555; font-weight:600; display:block; margin-bottom:0.4rem;">자기부담금</label>
-                                    <div style="display:flex; flex-direction:column; gap:0.25rem;">
-                                        <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityTPDeduct" value="1m" style="margin-right:4px; transform:scale(0.85);"> KRW 1,000,000</label>
-                                        <label style="font-weight:normal; cursor:pointer; font-size:0.75rem;"><input type="radio" name="liabilityTPDeduct" value="2.5m" style="margin-right:4px; transform:scale(0.85);"> KRW 2,500,000</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 보험가입이력 -->
-                <div style="background:#fff; padding:1rem 1.2rem; border-radius:6px; margin-bottom:1rem; border:1px solid #e0e0e0;">
-                    <div style="display:flex; align-items:center; margin-bottom:0.6rem;">
-                        <label style="font-weight:normal; cursor:pointer; font-size:0.8rem;"><input type="checkbox" id="liabilityNewCompany" style="margin-right:4px; transform:scale(0.9);"> 신규설립법인</label>
-                    </div>
-                    <div id="liabilityPremiumHistory">
-                        <label style="font-size:0.8rem; color:#555; display:block; margin-bottom:0.4rem;">보험료 (직전 3개년)</label>
-                        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.6rem;">
-                            <div><label style="font-size:0.7rem; color:#888;">Last Year</label><input type="text" id="liabilityPremiumY0" placeholder="원" style="padding:6px; font-size:0.8rem;"></div>
-                            <div><label style="font-size:0.7rem; color:#888;">Last Year-1</label><input type="text" id="liabilityPremiumY1" placeholder="원" style="padding:6px; font-size:0.8rem;"></div>
-                            <div><label style="font-size:0.7rem; color:#888;">Last Year-2</label><input type="text" id="liabilityPremiumY2" placeholder="원" style="padding:6px; font-size:0.8rem;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 사고이력 -->
-                <div style="background:#fff; padding:1rem 1.2rem; border-radius:6px; margin-bottom:1rem; border:1px solid #e0e0e0;">
-                    <label style="font-size:0.8rem; color:#555; display:block; margin-bottom:0.6rem;">사고이력 (직전 3개년)</label>
-                    <div style="overflow-x:auto;">
-                        <table style="width:100%; border-collapse:collapse; font-size:0.75rem;">
-                            <thead>
-                                <tr style="background:#f5f5f5;">
-                                    <th style="padding:8px; text-align:left; width:80px; border:1px solid #e0e0e0;">구분</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year-1</th>
-                                    <th style="padding:8px; text-align:center; border:1px solid #e0e0e0;">Last Year-2</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td style="padding:6px; border:1px solid #e0e0e0;">사고건수</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimCountY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimCountY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimCountY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                                <tr style="background:#fafafa;"><td style="padding:6px; border:1px solid #e0e0e0;">손해액</td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimAmtY0" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimAmtY1" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td>
-                                    <td style="padding:4px; border:1px solid #e0e0e0;"><input type="text" id="liabilityClaimAmtY2" style="width:100%; padding:6px; border:1px solid #ddd; border-radius:3px; font-size:0.75rem;"></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="form-group" style="margin-top:0.6rem;">
-                        <label style="font-size:0.8rem; color:#555;">사고상세 (품목, 사고내용 등)</label>
-                        <textarea id="liabilityClaimDetail" rows="2" style="width:100%; padding:8px; border:1px solid #ddd; border-radius:4px; font-size:0.8rem;" placeholder="사고 상세 내용을 입력해주세요."></textarea>
-                    </div>
-                </div>
-                
-                <!-- 첨부파일 -->
-                <div style="background:#fff; padding:1rem 1.2rem; border-radius:6px; margin-bottom:1rem; border:1px solid #e0e0e0;">
-                    <label style="font-size:0.8rem; color:#555; display:block; margin-bottom:0.6rem;">첨부파일 <span style="color:#e53935;">*</span></label>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
-                        <div><label style="font-size:0.75rem; color:#666;">손익계산서</label><input type="file" id="liabilityFileIncome" style="font-size:0.7rem;"><small style="color:#999; font-size:0.65rem;">0 Byte / 100MB</small></div>
-                        <div><label style="font-size:0.75rem; color:#666;">매출확인서</label><input type="file" id="liabilityFileSales" style="font-size:0.7rem;"><small style="color:#999; font-size:0.65rem;">0 Byte / 100MB</small></div>
-                        <div><label style="font-size:0.75rem; color:#666;">사업자등록증 <span style="color:#e53935;">*</span></label><input type="file" id="liabilityFileBizReg" style="font-size:0.7rem;" required><small style="color:#999; font-size:0.65rem;">0 Byte / 100MB</small></div>
-                        <div><label style="font-size:0.75rem; color:#666;">등기부등본</label><input type="file" id="liabilityFileCorpReg" style="font-size:0.7rem;"><small style="color:#999; font-size:0.65rem;">0 Byte / 100MB</small></div>
-                    </div>
-                    <div style="margin-top:0.6rem; padding:0.8rem; background:#fafafa; border:1px dashed #ccc; border-radius:4px; text-align:center; color:#999; font-size:0.75rem;">
-                        첨부파일을 드래그 앤 드롭 해주세요. (최대 4개)
-                    </div>
-                </div>
-                
-                <!-- 버튼 -->
-                <div class="quote-form-actions">
-                    <button type="button" class="quote-btn-save" onclick="saveLiabilityTemp()">💾 임시저장</button>
-                    <button type="submit" class="quote-btn-submit">📨 견적신청</button>
-                    <button type="button" class="quote-btn-reset" onclick="resetLiabilityForm()">🔄 초기화</button>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <!-- Success Modal -->
     <div class="modal" id="successModal">
@@ -9552,6 +9292,11 @@ function showPage(pageId) {
         switchApplyTab('ez');
     }
     
+    // 내륙운송보험 신규청약 진입 시 임시저장 확인
+    if (pageId === 'inlandQuote') {
+        setTimeout(loadInlandDraft, 100);
+    }
+    
     window.scrollTo(0, 0);
 }
 
@@ -9562,10 +9307,7 @@ function showModal(id) {
         modal.classList.add('show'); 
         document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
     } 
-    // 내륙운송보험 모달 열릴 때 임시저장 확인
-    if (id === 'inlandQuoteModal') {
-        setTimeout(loadInlandDraft, 100);
-    }
+    // 내륙운송보험 임시저장 확인 (모달→풀페이지 전환으로 showPage에서 호출)
 }
 function closeModal(id) { 
     const modal = document.getElementById(id);
@@ -10173,7 +9915,7 @@ function submitInlandQuote() {
     // 임시저장 데이터 삭제
     localStorage.removeItem('inlandQuoteDraft');
     
-    closeModal('inlandQuoteModal');
+    showPage('home');
     showModal('successModal');
 }
 
@@ -10230,7 +9972,7 @@ function submitArtQuote() {
     // Google Sheets 전송
     sendToGoogleSheets('art_quote', formData);
     
-    closeModal('artQuoteModal');
+    showPage('home');
     showModal('successModal');
 }
 
@@ -10293,7 +10035,7 @@ function submitLiabilityQuote() {
     // Google Sheets 전송
     sendToGoogleSheets('liability_quote', formData);
     
-    closeModal('liabilityQuoteModal');
+    showPage('home');
     showModal('successModal');
 }
 
