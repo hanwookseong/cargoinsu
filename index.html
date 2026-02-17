@@ -8,6 +8,8 @@
     <meta name="author" content="엔투엔보험중개 Cargoinsu">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://cargoinsu.com/">
+    <link rel="alternate" hreflang="ko" href="https://cargoinsu.com/">
+    <link rel="alternate" hreflang="en" href="https://cargoinsu.com/?lang=en">
     <!-- Naver 검색엔진 인증 (등록 후 코드 교체 필요) -->
     <!-- ⚠️ 네이버 서치어드바이저(https://searchadvisor.naver.com)에서 사이트 등록 후 발급받은 인증코드를 아래에 입력하세요 -->
     <meta name="naver-site-verification" content="YOUR_NAVER_VERIFICATION_CODE">
@@ -386,6 +388,15 @@
         /* 모바일 터치 호환성 */
         * { -webkit-tap-highlight-color: rgba(0,0,0,0.1); -webkit-touch-callout: none; }
         html { touch-action: manipulation; }
+
+        /* Language Toggle */
+        .lang-toggle { display: flex; align-items: center; gap: 0; border: 1.5px solid #c5cae9; border-radius: 20px; overflow: hidden; background: #f5f5f5; flex-shrink: 0; }
+        .lang-btn { padding: 5px 12px; font-size: 0.72rem; font-weight: 700; cursor: pointer; border: none; background: transparent; color: #888; transition: all 0.3s; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+        .lang-btn.active { background: var(--primary); color: #fff; }
+        .lang-btn:hover:not(.active) { background: #e8eaf6; color: var(--primary); }
+        [lang="en"] .ko-only { display: none !important; }
+        [lang="ko"] .en-only { display: none !important; }
+
         button, a, .nav-item, .btn-primary, .btn-secondary, .hero-info-btn, .btn-submit, .btn-apply, .tab-btn, .inco-tab, .icc-tab, .radio-label, .services-btn, [onclick] {
             touch-action: manipulation;
             -webkit-user-select: none;
@@ -801,32 +812,36 @@
             </div>
         </div>
         <div class="header-inner">
+                <div class="lang-toggle" style="margin-left:auto;">
+                    <button class="lang-btn active" id="langKo" onclick="switchLang('ko')">KO</button>
+                    <button class="lang-btn" id="langEn" onclick="switchLang('en')">EN</button>
+                </div>
             <nav class="nav">
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('home')" style="color:var(--accent);">홈</span>
+                    <span class="nav-item" onclick="showPage('home')" style="color:var(--accent);" data-i18n="nav.home">홈</span>
                 </div>
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('cargo')">보험상품</span>
+                    <span class="nav-item" onclick="showPage('cargo')" data-i18n="nav.products">보험상품</span>
                     <div class="nav-dropdown">
-                        <a href="javascript:void(0)" onclick="showPage('cargo'); return false;">적하보험 (해상/항공)</a>
-                        <a href="javascript:void(0)" onclick="showPage('apply'); return false;">📝 적하보험 보험가입신청</a>
-                        <a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); return false;">✈️ 특송 적하보험 가입신청</a>
-                        <a href="javascript:void(0)" onclick="showPage('inland'); return false;">내륙운송보험</a>
-                        <a href="javascript:void(0)" onclick="showPage('art'); return false;">예술품종합보험</a>
-                        <a href="javascript:void(0)" onclick="showPage('liability'); return false;">화물배상책임보험</a>
+                        <a href="javascript:void(0)" onclick="showPage('cargo'); return false;" data-i18n="nav.dd.cargo">적하보험 (해상/항공)</a>
+                        <a href="javascript:void(0)" onclick="showPage('apply'); return false;" data-i18n="nav.dd.cargoApply">📝 적하보험 보험가입신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); return false;" data-i18n="nav.dd.expressApply">✈️ 특송 적하보험 가입신청</a>
+                        <a href="javascript:void(0)" onclick="showPage('inland'); return false;" data-i18n="nav.dd.inland">내륙운송보험</a>
+                        <a href="javascript:void(0)" onclick="showPage('art'); return false;" data-i18n="nav.dd.art">예술품종합보험</a>
+                        <a href="javascript:void(0)" onclick="showPage('liability'); return false;" data-i18n="nav.dd.liability">화물배상책임보험</a>
                     </div>
                 </div>
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('calculator')">보험료계산</span>
+                    <span class="nav-item" onclick="showPage('calculator')" data-i18n="nav.calculator">보험료계산</span>
                     <div class="nav-dropdown">
-                        <a href="javascript:void(0)" onclick="showPage('calculator'); return false;">적하보험료 계산기</a>
+                        <a href="javascript:void(0)" onclick="showPage('calculator'); return false;" data-i18n="nav.dd.calc">적하보험료 계산기</a>
                         <a href="javascript:void(0)" onclick="showModal('inlandQuoteModal'); return false;">내륙운송 견적신청</a>
                         <a href="javascript:void(0)" onclick="showModal('artQuoteModal'); return false;">예술품종합 견적신청</a>
                         <a href="javascript:void(0)" onclick="showModal('liabilityQuoteModal'); return false;">화물배상 견적신청</a>
                     </div>
                 </div>
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('info')">정보센터</span>
+                    <span class="nav-item" onclick="showPage('info')" data-i18n="nav.info">정보센터</span>
                     <div class="nav-dropdown">
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('mia1906'),100); return false;">📜 MIA 1906 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('insuranceAct2015'),100); return false;">📜 Insurance Act 2015 영한대역</a>
@@ -840,7 +855,7 @@
                     </div>
                 </div>
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('notice')">알아두실사항</span>
+                    <span class="nav-item" onclick="showPage('notice')" data-i18n="nav.notice">알아두실사항</span>
                 </div>
             </nav>
         </div>
@@ -850,17 +865,17 @@
     <div class="services-modal" id="servicesModal" onclick="closeServicesModal(event)">
         <div class="services-content" onclick="event.stopPropagation()">
             <span class="services-close" onclick="toggleServicesModal()">&times;</span>
-            <h3 class="services-title">Cargoinsu 서비스 전체보기</h3>
+            <h3 class="services-title" data-i18n="services.title">Cargoinsu 서비스 전체보기</h3>
             <div class="services-grid">
                 <div class="services-section">
                     <h4>보험상품</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showPage('cargo'); toggleServicesModal(); return false;">적하보험 (해상/항공)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('apply'); toggleServicesModal(); return false;">📝 적하보험 보험가입신청</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); toggleServicesModal(); return false;">✈️ 특송 적하보험 가입신청</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('inland'); toggleServicesModal(); return false;">내륙운송보험</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('art'); toggleServicesModal(); return false;">예술품종합보험</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('liability'); toggleServicesModal(); return false;">화물배상책임보험</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('cargo'); toggleServicesModal(); return false;" data-i18n="nav.dd.cargo">적하보험 (해상/항공)</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('apply'); toggleServicesModal(); return false;" data-i18n="nav.dd.cargoApply">📝 적하보험 보험가입신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.expressApply">✈️ 특송 적하보험 가입신청</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('inland'); toggleServicesModal(); return false;" data-i18n="nav.dd.inland">내륙운송보험</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('art'); toggleServicesModal(); return false;" data-i18n="nav.dd.art">예술품종합보험</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('liability'); toggleServicesModal(); return false;" data-i18n="nav.dd.liability">화물배상책임보험</a></li>
                     </ul>
                 </div>
                 <div class="services-section">
@@ -878,7 +893,7 @@
                 <div class="services-section">
                     <h4>보험료 계산</h4>
                     <ul>
-                        <li><a href="javascript:void(0)" onclick="showPage('calculator'); toggleServicesModal(); return false;">적하보험료 계산기</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('calculator'); toggleServicesModal(); return false;" data-i18n="nav.dd.calc">적하보험료 계산기</a></li>
                         <li><a href="javascript:void(0)" onclick="showModal('inlandQuoteModal'); toggleServicesModal(); return false;">내륙운송 견적신청</a></li>
                         <li><a href="javascript:void(0)" onclick="showModal('artQuoteModal'); toggleServicesModal(); return false;">예술품종합보험 견적신청</a></li>
                         <li><a href="javascript:void(0)" onclick="showModal('liabilityQuoteModal'); toggleServicesModal(); return false;">화물배상 견적신청</a></li>
@@ -891,12 +906,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="heroSection">
-        <h1>🚢 해상·항공 적하보험 전문</h1>
-        <p>간편하게 예상보험료를 산출할 수 있는 디지털운송보험 - 카고인슈</p>
+        <h1 data-i18n="hero.title">🚢 해상·항공 적하보험 전문</h1>
+        <p data-i18n="hero.subtitle">간편하게 예상보험료를 산출할 수 있는 디지털운송보험 - 카고인슈</p>
         <div class="hero-info-btns">
-            <button class="hero-info-btn" onclick="showModal('incoterms2020Modal')">📦 인코텀즈 2020</button>
-            <button class="hero-info-btn" onclick="showModal('incotermsModal')">📋 인코텀즈 핵심정리</button>
-            <button class="hero-info-btn" onclick="showModal('iccModal')">📜 ICC 약관 비교</button>
+            <button class="hero-info-btn" onclick="showModal('incoterms2020Modal')" data-i18n="hero.btn.incoterms2020">📦 인코텀즈 2020</button>
+            <button class="hero-info-btn" onclick="showModal('incotermsModal')" data-i18n="hero.btn.incotermsGuide">📋 인코텀즈 핵심정리</button>
+            <button class="hero-info-btn" onclick="showModal('iccModal')" data-i18n="hero.btn.iccCompare">📜 ICC 약관 비교</button>
         </div>
     </section>
 
@@ -906,74 +921,74 @@
         <div class="page active" id="page-home">
             <div class="product-grid">
                 <div class="product-card">
-                    <h3>🚢 적하보험</h3>
+                    <h3> data-i18n="home.card.cargo">🚢 적하보험</h3>
                     <ul>
-                        <li>수출입 화물의 해상/항공 운송 위험 담보</li>
-                        <li>ICC 신약관/구약관 담보조건 선택</li>
-                        <li>전쟁, 동맹파업 특약 추가 가능</li>
-                        <li>실시간 보험료 계산 지원</li>
+                        <li data-i18n="home.li.cargo1">수출입 화물의 해상/항공 운송 위험 담보</li>
+                        <li data-i18n="home.li.cargo2">ICC 신약관/구약관 담보조건 선택</li>
+                        <li data-i18n="home.li.cargo3">전쟁, 동맹파업 특약 추가 가능</li>
+                        <li data-i18n="home.li.cargo4">실시간 보험료 계산 지원</li>
                     </ul>
                     <div class="card-btns" style="flex-wrap:wrap;">
-                        <button class="btn-primary" onclick="showPage('cargo')">상세보기</button>
-                        <button class="btn-secondary" onclick="showPage('calculator')">보험료계산</button>
-                        <button class="btn-primary" onclick="showPage('apply')" style="background:var(--accent); flex:1 1 100%;">📝 보험가입신청</button>
+                        <button class="btn-primary" onclick="showPage('cargo')" data-i18n="btn.detail">상세보기</button>
+                        <button class="btn-secondary" onclick="showPage('calculator')" data-i18n="btn.calcPremium">보험료계산</button>
+                        <button class="btn-primary" onclick="showPage('apply')" style="background:var(--accent); flex:1 1 100%;" data-i18n="btn.cargoApply">📝 보험가입신청</button>
                     </div>
                 </div>
                 <div class="product-card" style="border: 2px solid var(--accent); position: relative;">
                     <span style="position:absolute; top:-12px; right:16px; background:var(--accent); color:#fff; padding:3px 14px; border-radius:12px; font-size:0.72rem; font-weight:700;">NEW</span>
-                    <h3>✈️ 특송 적하보험</h3>
+                    <h3> data-i18n="home.card.express">✈️ 특송 적하보험</h3>
                     <ul>
-                        <li>UPS / FedEx / DHL / EMS 이용 화주 전용</li>
-                        <li>특송사 자체보험 대비 보험료 대폭 절감</li>
-                        <li>간편 온라인 가입 — 마스터 청약서 불요</li>
-                        <li>ICC(Air) All Risks 담보</li>
-                        <li>소액화물도 건별 보험가입 가능</li>
+                        <li data-i18n="home.li.express1">UPS / FedEx / DHL / EMS 이용 화주 전용</li>
+                        <li data-i18n="home.li.express2">특송사 자체보험 대비 보험료 대폭 절감</li>
+                        <li data-i18n="home.li.express3">간편 온라인 가입 — 마스터 청약서 불요</li>
+                        <li data-i18n="home.li.express4">ICC(Air) All Risks 담보</li>
+                        <li data-i18n="home.li.express5">소액화물도 건별 보험가입 가능</li>
                     </ul>
                     <div class="card-btns" style="flex-wrap:wrap;">
-                        <button class="btn-primary" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100);" style="background:var(--accent); flex:1 1 100%;">✈️ 특송보험 간편 가입신청</button>
+                        <button class="btn-primary" onclick="showPage('apply'); setTimeout(()=>selectTrack('express'),100);" style="background:var(--accent); flex:1 1 100%;" data-i18n="btn.expressApply">✈️ 특송보험 간편 가입신청</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <h3>🚛 내륙운송보험</h3>
+                    <h3> data-i18n="home.card.inland">🚛 내륙운송보험</h3>
                     <ul>
-                        <li>국내 육상운송 중 화물손해 담보</li>
-                        <li>상하차 작업 중 사고 포함</li>
-                        <li>보관 중 손해 담보 (최대 5일)</li>
-                        <li>자연재해 추가담보 가능</li>
+                        <li data-i18n="home.li.inland1">국내 육상운송 중 화물손해 담보</li>
+                        <li data-i18n="home.li.inland2">상하차 작업 중 사고 포함</li>
+                        <li data-i18n="home.li.inland3">보관 중 손해 담보 (최대 5일)</li>
+                        <li data-i18n="home.li.inland4">자연재해 추가담보 가능</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('inland')">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('inlandQuoteModal')">견적신청</button>
+                        <button class="btn-primary" onclick="showPage('inland')" data-i18n="btn.detail">상세보기</button>
+                        <button class="btn-secondary" onclick="showModal('inlandQuoteModal')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <h3>🎨 예술품종합보험</h3>
+                    <h3> data-i18n="home.card.art">🎨 예술품종합보험</h3>
                     <ul>
-                        <li>미술품, 골동품, 조각품 등 담보</li>
-                        <li>전시, 운송, 보관 중 손해 보장</li>
-                        <li>도난, 파손, 화재 위험 담보</li>
-                        <li>전문 감정평가 서비스 연계</li>
+                        <li data-i18n="home.li.art1">미술품, 골동품, 조각품 등 담보</li>
+                        <li data-i18n="home.li.art2">전시, 운송, 보관 중 손해 보장</li>
+                        <li data-i18n="home.li.art3">도난, 파손, 화재 위험 담보</li>
+                        <li data-i18n="home.li.art4">전문 감정평가 서비스 연계</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('art')">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('artQuoteModal')">견적신청</button>
+                        <button class="btn-primary" onclick="showPage('art')" data-i18n="btn.detail">상세보기</button>
+                        <button class="btn-secondary" onclick="showModal('artQuoteModal')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <h3>📦 화물배상책임보험</h3>
+                    <h3> data-i18n="home.card.liability">📦 화물배상책임보험</h3>
                     <ul>
-                        <li>운송업자의 화물손해 배상책임 담보</li>
-                        <li>육상/해상/항공 운송 모두 적용</li>
-                        <li>하청업체 손해까지 확장 가능</li>
-                        <li>연간/건별 계약 선택 가능</li>
+                        <li data-i18n="home.li.liab1">운송업자의 화물손해 배상책임 담보</li>
+                        <li data-i18n="home.li.liab2">육상/해상/항공 운송 모두 적용</li>
+                        <li data-i18n="home.li.liab3">하청업체 손해까지 확장 가능</li>
+                        <li data-i18n="home.li.liab4">연간/건별 계약 선택 가능</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('liability')">상세보기</button>
-                        <button class="btn-secondary" onclick="showModal('liabilityQuoteModal')">견적신청</button>
+                        <button class="btn-primary" onclick="showPage('liability')" data-i18n="btn.detail">상세보기</button>
+                        <button class="btn-secondary" onclick="showModal('liabilityQuoteModal')" data-i18n="btn.quote">견적신청</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <h3>📚 정보센터</h3>
+                    <h3> data-i18n="home.card.info">📚 정보센터</h3>
                     <ul>
                         <li>영국보험법 영한대역</li>
                         <li>ICC 적하협회 신·구약관 영한대역</li>
@@ -982,11 +997,11 @@
                         <li>화물분류코드</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('info')">상세보기</button>
+                        <button class="btn-primary" onclick="showPage('info')" data-i18n="btn.detail">상세보기</button>
                     </div>
                 </div>
                 <div class="product-card">
-                    <h3>📢 알아두실 사항</h3>
+                    <h3> data-i18n="home.card.notice">📢 알아두실 사항</h3>
                     <ul>
                         <li>계약 전/후 알릴의무 안내</li>
                         <li>청약 철회 및 보험금 지급제한</li>
@@ -994,7 +1009,7 @@
                         <li>견적 신청 시 필요서류 안내</li>
                     </ul>
                     <div class="card-btns">
-                        <button class="btn-primary" onclick="showPage('notice')">상세보기</button>
+                        <button class="btn-primary" onclick="showPage('notice')" data-i18n="btn.detail">상세보기</button>
                     </div>
                 </div>
             </div>
@@ -1021,7 +1036,7 @@
         <!-- Cargo Insurance Detail Page -->
         <div class="page" id="page-cargo">
             <div class="info-container" style="max-width:1050px;">
-                <h2 class="info-title" style="text-align:center; margin-bottom:0.5rem;">🚢 적하보험</h2>
+                <h2 class="info-title" style="text-align:center; margin-bottom:0.5rem;" data-i18n="cargo.title">🚢 적하보험</h2>
                 <p class="page-subtitle">Marine Cargo Insurance</p>
                 
                 <!-- 상품 소개 -->
@@ -1115,8 +1130,8 @@
                 </div>
                 
                 <div style="text-align:center; display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-                    <button class="btn-submit" onclick="showPage('calculator')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;">📊 보험료 계산하기</button>
-                    <button class="btn-submit" onclick="showPage('apply')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px; background:var(--accent);">📝 보험가입신청하기</button>
+                    <button class="btn-submit" onclick="showPage('calculator')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px;" data-i18n="cargo.btn.calc">📊 보험료 계산하기</button>
+                    <button class="btn-submit" onclick="showPage('apply')" style="font-size:1.1rem; padding:15px 50px; border-radius:30px; background:var(--accent);" data-i18n="cargo.btn.apply">📝 보험가입신청하기</button>
                 </div>
             </div>
         </div>
@@ -1124,16 +1139,16 @@
         <!-- Calculator Page -->
         <div class="page" id="page-calculator">
             <div class="calc-container">
-                <h2 class="calc-title">📊 적하보험료 계산기</h2>
+                <h2 class="calc-title" data-i18n="calc.title">📊 적하보험료 계산기</h2>
                 <div class="exchange-display" id="exchangeDisplay">USD 1 = ₩1,458.10 (하나은행 전신환 매도율 기준)</div>
                 
                 <form id="calcForm">
                     <!-- 거래조건 -->
                     <div class="form-section">
-                        <h4>거래조건 (Incoterms 2020)</h4>
+                        <h4 data-i18n="calc.sec.trade">거래조건 (Incoterms 2020)</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>인코텀즈 선택</label>
+                                <label data-i18n="calc.lbl.incoterms">인코텀즈 선택</label>
                                 <select id="incoterms" name="trade">
                                     <optgroup label="매도인 보험부보 (Seller's Insurance)">
                                         <option value="CIF" selected>CIF - Cost, Insurance and Freight (운임보험료포함인도)</option>
@@ -1155,7 +1170,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>보험부보자</label>
+                                <label data-i18n="calc.lbl.insParty">보험부보자</label>
                                 <input type="text" id="insuranceParty" readonly value="매도인 (Seller)" style="background:#f5f5f5;">
                             </div>
                         </div>
@@ -1163,38 +1178,38 @@
                     
                     <!-- 운송정보 -->
                     <div class="form-section">
-                        <h4>운송 정보</h4>
+                        <h4 data-i18n="calc.sec.transport">운송 정보</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>출발지 국가</label>
+                                <label data-i18n="calc.lbl.originCountry">출발지 국가</label>
                                 <input type="text" id="originCountry" placeholder="국가명 검색 (예: korea, 한국)" autocomplete="off">
                                 <div class="search-results" id="originResults"></div>
                             </div>
                             <div class="form-group">
-                                <label>출발지 도시</label>
+                                <label data-i18n="calc.lbl.originCity">출발지 도시</label>
                                 <input type="text" id="originCity" placeholder="도시명" autocomplete="off">
                                 <div class="search-results" id="originCityResults"></div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>도착지 국가</label>
+                                <label data-i18n="calc.lbl.destCountry">도착지 국가</label>
                                 <input type="text" id="destCountry" placeholder="국가명 검색" autocomplete="off">
                                 <div class="search-results" id="destResults"></div>
                             </div>
                             <div class="form-group">
-                                <label>도착지 도시</label>
+                                <label data-i18n="calc.lbl.destCity">도착지 도시</label>
                                 <input type="text" id="destCity" placeholder="도시명" autocomplete="off">
                                 <div class="search-results" id="destCityResults"></div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>선적예정일</label>
+                                <label data-i18n="calc.lbl.shipDate">선적예정일</label>
                                 <input type="date" id="shipDate">
                             </div>
                             <div class="form-group">
-                                <label>운송지역 (자동선택)</label>
+                                <label data-i18n="calc.lbl.route">운송지역 (자동선택)</label>
                                 <select id="route">
                                     <option value="">선택하세요</option>
                                     <option value="보세외항">보세/외항</option>
@@ -1214,16 +1229,16 @@
                     
                     <!-- 화물정보 -->
                     <div class="form-section">
-                        <h4>화물 정보</h4>
+                        <h4 data-i18n="calc.sec.cargo">화물 정보</h4>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>HS CODE (4자리)</label>
+                                <label data-i18n="calc.lbl.hsCode">HS CODE (4자리)</label>
                                 <input type="text" id="hsCode" placeholder="예: 8471" maxlength="4" autocomplete="off">
                                 <div class="search-results" id="hsResults"></div>
                                 <div class="hs-info" id="hsInfo"></div>
                             </div>
                             <div class="form-group">
-                                <label>화물종류</label>
+                                <label data-i18n="calc.lbl.cargoType">화물종류</label>
                                 <select id="cargo" required>
                                     <option value="">선택하세요</option>
                                     <optgroup label="섬유류 (201-202)">
@@ -1372,7 +1387,7 @@
         <!-- Inland Insurance Page -->
         <div class="page" id="page-inland">
             <div class="info-container" style="max-width:1050px;">
-                <h2 class="info-title" style="text-align:center; margin-bottom:0.5rem;">🚛 내륙운송보험</h2>
+                <h2 class="info-title" style="text-align:center; margin-bottom:0.5rem;" data-i18n="inland.title">🚛 내륙운송보험</h2>
                 <p class="page-subtitle">Inland Transit Insurance</p>
                 
                 <!-- 상품 소개 -->
@@ -1449,7 +1464,7 @@
         <!-- Art Insurance Page -->
         <div class="page" id="page-art">
             <div class="info-container" style="max-width:950px;">
-                <h2 class="info-title">🎨 예술품종합보험</h2>
+                <h2 class="info-title" data-i18n="art.title">🎨 예술품종합보험</h2>
                 <p style="text-align:center; color:#666; margin-bottom:2rem;">
                     예술품 종합보험은 <strong>전 위험담보 (All Risk Cover)</strong> 보험으로써 증권상 면책규정에 해당되는 몇몇 위험을 제외하고 급격하고 우연한 사고로 인하여 소장품(Collection)에 발생하는 손해를 보상하는 보험입니다.
                 </p>
@@ -1552,7 +1567,7 @@
         <!-- Liability Insurance Page -->
         <div class="page" id="page-liability">
             <div class="info-container" style="max-width:900px;">
-                <h2 class="info-title">📦 화물배상책임보험 (Freight Forwarder's Liability)</h2>
+                <h2 class="info-title" data-i18n="liability.title">📦 화물배상책임보험 (Freight Forwarder's Liability)</h2>
                 <p class="page-subtitle" style="line-height:1.8; font-size:0.95rem;">보험기간 동안에 발생한 화물의 손상, 멸실, 운송지연 등으로 발생하는 피보험자의<br>법률상 배상책임을 관습법, 계약서, 국가 또는 국제협약 관련법규의 범위내에서 담보합니다.</p>
                 
                 <div class="detail-card" style="margin-bottom:1.5rem;">
@@ -1613,7 +1628,7 @@
         <!-- Notice Page -->
         <div class="page" id="page-notice">
             <div class="info-container" style="max-width:900px;">
-                <h2 class="info-title">📢 알아두실 사항</h2>
+                <h2 class="info-title" data-i18n="notice.title">📢 알아두실 사항</h2>
                 
                 <!-- 보험가입에 따른 권리와 의무 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
@@ -5764,9 +5779,9 @@
                 <div class="logo-sub"><span class="logo-sub-kr">카고인슈</span><span class="logo-sub-com">.com</span></div>
             </div>
             <div class="footer-info">
-                <p><strong>상호:</strong> 엔투엔보험중개 | <strong>대표:</strong> 성한욱 | <strong>사업자등록번호:</strong> 611-23-02374</p>
-                <p><strong>보험중개사 등록번호:</strong> 제2026012201호 | <strong>통신판매업신고:</strong> 제2026-서울서초-0450호</p>
-                <p><strong>주소:</strong> 서울특별시 서초구 방배로30길 41, 602호</p>
+                <p data-i18n="footer.company"><strong>상호:</strong> 엔투엔보험중개 | <strong>대표:</strong> 성한욱 | <strong>사업자등록번호:</strong> 611-23-02374</p>
+                <p data-i18n="footer.license"><strong>보험중개사 등록번호:</strong> 제2026012201호 | <strong>통신판매업신고:</strong> 제2026-서울서초-0450호</p>
+                <p data-i18n="footer.address"><strong>주소:</strong> 서울특별시 서초구 방배로30길 41, 602호</p>
                 <p><strong>전화:</strong> <a href="tel:010-5755-6465">010-5755-6465</a> | <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#5d2e3c31382e1d3e3c2f3a3234332e28733e3230"><span class="__cf_email__" data-cfemail="493a28252c3a092a283b2e2620273a3c672a2624">[email&#160;protected]</span></a></p>
             </div>
             <hr class="footer-divider">
@@ -12241,6 +12256,228 @@ document.addEventListener('DOMContentLoaded', function() {
     // 화물배상책임보험 폼 UI 초기화
     initLiabilityFormUI();
     
+
+// ==================== i18n 다국어 시스템 ====================
+const i18n = {
+    currentLang: 'ko',
+    
+    translations: {
+        // === Navigation ===
+        'nav.home': { ko: '홈', en: 'Home' },
+        'nav.products': { ko: '보험상품', en: 'Products' },
+        'nav.calculator': { ko: '보험료계산', en: 'Premium Calc' },
+        'nav.info': { ko: '정보센터', en: 'Info Center' },
+        'nav.notice': { ko: '알아두실사항', en: 'Notices' },
+        
+        // Nav dropdowns
+        'nav.dd.cargo': { ko: '적하보험 (해상/항공)', en: 'Marine Cargo Insurance' },
+        'nav.dd.cargoApply': { ko: '📝 적하보험 보험가입신청', en: '📝 Cargo Insurance Application' },
+        'nav.dd.expressApply': { ko: '✈️ 특송 적하보험 가입신청', en: '✈️ Express Cargo Application' },
+        'nav.dd.inland': { ko: '내륙운송보험', en: 'Inland Transit Insurance' },
+        'nav.dd.art': { ko: '예술품종합보험', en: 'Fine Art Insurance' },
+        'nav.dd.liability': { ko: '화물배상책임보험', en: "Freight Forwarder's Liability" },
+        'nav.dd.calc': { ko: '적하보험료 계산기', en: 'Premium Calculator' },
+        
+        // === Hero ===
+        'hero.title': { ko: '🚢 해상·항공 적하보험 전문', en: '🚢 Marine & Air Cargo Insurance Specialist' },
+        'hero.subtitle': { ko: '간편하게 예상보험료를 산출할 수 있는 디지털운송보험 - 카고인슈', en: 'Digital Cargo Insurance Platform — Instant Premium Calculation' },
+        'hero.btn.incoterms2020': { ko: '📦 인코텀즈 2020', en: '📦 Incoterms 2020' },
+        'hero.btn.incotermsGuide': { ko: '📋 인코텀즈 핵심정리', en: '📋 Incoterms Guide' },
+        'hero.btn.iccCompare': { ko: '📜 ICC 약관 비교', en: '📜 ICC Clauses Comparison' },
+        
+        // === Home Page Cards ===
+        'home.card.cargo': { ko: '🚢 적하보험', en: '🚢 Marine Cargo' },
+        'home.card.express': { ko: '✈️ 특송 적하보험', en: '✈️ Express Cargo' },
+        'home.card.inland': { ko: '🚛 내륙운송보험', en: '🚛 Inland Transit' },
+        'home.card.art': { ko: '🎨 예술품종합보험', en: '🎨 Fine Art Insurance' },
+        'home.card.liability': { ko: '📦 화물배상책임보험', en: "📦 Forwarder's Liability" },
+        'home.card.info': { ko: '📚 정보센터', en: '📚 Information Center' },
+        'home.card.notice': { ko: '📢 알아두실 사항', en: '📢 Important Notices' },
+        
+        // Home card list items - Cargo
+        'home.li.cargo1': { ko: '수출입 화물의 해상/항공 운송 위험 담보', en: 'Coverage for marine/air transport risks of import/export cargo' },
+        'home.li.cargo2': { ko: 'ICC 신약관/구약관 담보조건 선택', en: 'Choose ICC New/Old Clause coverage conditions' },
+        'home.li.cargo3': { ko: '전쟁, 동맹파업 특약 추가 가능', en: 'War and Strikes special clauses available' },
+        'home.li.cargo4': { ko: '실시간 보험료 계산 지원', en: 'Real-time premium calculation' },
+        
+        // Home card list items - Express
+        'home.li.express1': { ko: 'UPS / FedEx / DHL / EMS 이용 화주 전용', en: 'For UPS / FedEx / DHL / EMS shippers' },
+        'home.li.express2': { ko: '특송사 자체보험 대비 보험료 대폭 절감', en: 'Significant savings vs. courier insurance' },
+        'home.li.express3': { ko: '간편 온라인 가입 — 마스터 청약서 불요', en: 'Simple online application — No master policy required' },
+        'home.li.express4': { ko: 'ICC(Air) All Risks 담보', en: 'ICC(Air) All Risks coverage' },
+        'home.li.express5': { ko: '소액화물도 건별 보험가입 가능', en: 'Per-shipment coverage even for small parcels' },
+        
+        // Home card list items - Inland
+        'home.li.inland1': { ko: '국내 육상운송 중 화물손해 담보', en: 'Coverage for domestic overland transit damage' },
+        'home.li.inland2': { ko: '상하차 작업 중 사고 포함', en: 'Loading/unloading accidents included' },
+        'home.li.inland3': { ko: '보관 중 손해 담보 (최대 5일)', en: 'Storage damage covered (up to 5 days)' },
+        'home.li.inland4': { ko: '자연재해 추가담보 가능', en: 'Natural disaster coverage available' },
+        
+        // Home card list items - Art
+        'home.li.art1': { ko: '미술품, 골동품, 조각품 등 담보', en: 'Paintings, antiques, sculptures covered' },
+        'home.li.art2': { ko: '전시, 운송, 보관 중 손해 보장', en: 'Exhibition, transit, storage coverage' },
+        'home.li.art3': { ko: '도난, 파손, 화재 위험 담보', en: 'Theft, breakage, fire risks covered' },
+        'home.li.art4': { ko: '전문 감정평가 서비스 연계', en: 'Professional appraisal service available' },
+        
+        // Home card list items - Liability
+        'home.li.liab1': { ko: '운송업자의 화물손해 배상책임 담보', en: "Carrier's cargo damage liability coverage" },
+        'home.li.liab2': { ko: '육상/해상/항공 운송 모두 적용', en: 'Land/sea/air transport all covered' },
+        'home.li.liab3': { ko: '하청업체 손해까지 확장 가능', en: 'Extendable to subcontractor damages' },
+        'home.li.liab4': { ko: '연간/건별 계약 선택 가능', en: 'Annual or per-shipment policy available' },
+        
+        // === Buttons ===
+        'btn.detail': { ko: '상세보기', en: 'Details' },
+        'btn.calcPremium': { ko: '보험료계산', en: 'Calculate' },
+        'btn.cargoApply': { ko: '📝 보험가입신청', en: '📝 Apply for Insurance' },
+        'btn.expressApply': { ko: '✈️ 특송보험 간편 가입신청', en: '✈️ Express Insurance Apply' },
+        'btn.quote': { ko: '견적신청', en: 'Get Quote' },
+        
+        // === Cargo Product Page ===
+        'cargo.title': { ko: '🚢 적하보험', en: '🚢 Marine Cargo Insurance' },
+        'cargo.btn.calc': { ko: '📊 보험료 계산하기', en: '📊 Calculate Premium' },
+        'cargo.btn.apply': { ko: '📝 보험가입신청하기', en: '📝 Apply for Insurance' },
+        
+        // === Calculator ===
+        'calc.title': { ko: '📊 적하보험료 계산기', en: '📊 Cargo Insurance Premium Calculator' },
+        'calc.sec.trade': { ko: '거래조건 (Incoterms 2020)', en: 'Trade Terms (Incoterms 2020)' },
+        'calc.sec.transport': { ko: '운송 정보', en: 'Transport Information' },
+        'calc.sec.cargo': { ko: '화물 정보', en: 'Cargo Information' },
+        'calc.sec.amount': { ko: '보험 금액', en: 'Insurance Amount' },
+        'calc.lbl.incoterms': { ko: '인코텀즈 선택', en: 'Select Incoterms' },
+        'calc.lbl.insParty': { ko: '보험부보자', en: 'Insurance Party' },
+        'calc.lbl.originCountry': { ko: '출발지 국가', en: 'Origin Country' },
+        'calc.lbl.originCity': { ko: '출발지 도시', en: 'Origin City' },
+        'calc.lbl.destCountry': { ko: '도착지 국가', en: 'Destination Country' },
+        'calc.lbl.destCity': { ko: '도착지 도시', en: 'Destination City' },
+        'calc.lbl.shipDate': { ko: '선적예정일', en: 'Expected Shipment Date' },
+        'calc.lbl.route': { ko: '운송지역 (자동선택)', en: 'Transport Region (Auto)' },
+        'calc.lbl.hsCode': { ko: 'HS CODE (4자리)', en: 'HS CODE (4 digits)' },
+        'calc.lbl.cargoType': { ko: '화물종류', en: 'Cargo Type' },
+        'calc.lbl.cargoDetail': { ko: '화물상세', en: 'Cargo Detail' },
+        
+        // === Page Titles ===
+        'inland.title': { ko: '🚛 내륙운송보험', en: '🚛 Inland Transit Insurance' },
+        'art.title': { ko: '🎨 예술품종합보험', en: '🎨 Fine Art Insurance' },
+        'liability.title': { ko: '📦 화물배상책임보험 (Freight Forwarder\'s Liability)', en: '📦 Freight Forwarder\'s Liability Insurance' },
+        'notice.title': { ko: '📢 알아두실 사항', en: '📢 Important Notices' },
+        
+        // === Footer ===
+        'footer.company': { ko: '<strong>상호:</strong> 엔투엔보험중개 | <strong>대표:</strong> 성한욱 | <strong>사업자등록번호:</strong> 611-23-02374', en: '<strong>Company:</strong> N2N Insurance Brokerage | <strong>CEO:</strong> Hanwook Sung | <strong>Business Reg:</strong> 611-23-02374' },
+        'footer.license': { ko: '<strong>보험중개사 등록번호:</strong> 제2026012201호 | <strong>통신판매업신고:</strong> 제2026-서울서초-0450호', en: '<strong>Insurance Broker License:</strong> No. 2026012201 | <strong>Online Sales Registration:</strong> No. 2026-Seoul Seocho-0450' },
+        'footer.address': { ko: '<strong>주소:</strong> 서울특별시 서초구 방배로30길 41, 602호', en: '<strong>Address:</strong> #602, 41 Bangbae-ro 30-gil, Seocho-gu, Seoul, Korea' },
+        
+        // === Services Modal ===
+        'services.title': { ko: 'Cargoinsu 서비스 전체보기', en: 'All Cargoinsu Services' },
+        
+        // === Calculator Placeholders ===
+        'ph.countrySearch': { ko: '국가명 검색 (예: korea, 한국)', en: 'Search country (e.g., korea)' },
+        'ph.countrySearch2': { ko: '국가명 검색', en: 'Search country' },
+        'ph.cityName': { ko: '도시명', en: 'City name' },
+        'ph.hsCode': { ko: '예: 8471', en: 'e.g., 8471' },
+        'ph.selectOne': { ko: '선택하세요', en: 'Please select' },
+        
+        // === Calculator Insurance Party ===
+        'calc.party.seller': { ko: '매도인 (Seller)', en: 'Seller' },
+        'calc.party.buyer': { ko: '매수인 (Buyer)', en: 'Buyer' },
+        
+        // === Transport Route Options ===
+        'route.bonded': { ko: '보세/외항', en: 'Bonded/Overseas' },
+        'route.coastal': { ko: '국내연안', en: 'Domestic Coastal' },
+        'route.japan': { ko: '일본', en: 'Japan' },
+        'route.china': { ko: '중국', en: 'China' },
+        'route.sea': { ko: '동남아', en: 'Southeast Asia' },
+        'route.mideast': { ko: '중동/아프리카', en: 'Middle East/Africa' },
+        'route.oceania': { ko: '호주/뉴질랜드', en: 'Australia/NZ' },
+        'route.europe': { ko: '유럽', en: 'Europe' },
+        'route.namerica': { ko: '북미', en: 'North America' },
+        'route.samerica': { ko: '남미', en: 'South America' },
+    }
+};
+
+/**
+ * Switch interface language
+ * @param {string} lang - 'ko' or 'en'
+ */
+function switchLang(lang) {
+    i18n.currentLang = lang;
+    document.documentElement.lang = lang;
+    
+    // Update toggle buttons
+    document.getElementById('langKo').classList.toggle('active', lang === 'ko');
+    document.getElementById('langEn').classList.toggle('active', lang === 'en');
+    
+    // Translate all elements with data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const t = i18n.translations[key];
+        if (t && t[lang]) {
+            // Check if translation contains HTML
+            if (t[lang].includes('<')) {
+                el.innerHTML = t[lang];
+            } else {
+                el.textContent = t[lang];
+            }
+        }
+    });
+    
+    // Translate placeholders
+    const phMap = {
+        'originCountry': lang === 'en' ? 'Search country (e.g., korea)' : '국가명 검색 (예: korea, 한국)',
+        'originCity': lang === 'en' ? 'City name' : '도시명',
+        'destCountry': lang === 'en' ? 'Search country' : '국가명 검색',
+        'destCity': lang === 'en' ? 'City name' : '도시명',
+        'hsCode': lang === 'en' ? 'e.g., 8471' : '예: 8471',
+    };
+    for (const [id, ph] of Object.entries(phMap)) {
+        const el = document.getElementById(id);
+        if (el) el.placeholder = ph;
+    }
+    
+    // Translate select option text for route
+    const routeSelect = document.getElementById('route');
+    if (routeSelect) {
+        const routeMap = {
+            '보세외항': lang === 'en' ? 'Bonded/Overseas' : '보세/외항',
+            '국내연안': lang === 'en' ? 'Domestic Coastal' : '국내연안',
+            '일본': lang === 'en' ? 'Japan' : '일본',
+            '중국': lang === 'en' ? 'China' : '중국',
+            '동남아': lang === 'en' ? 'Southeast Asia' : '동남아',
+            '중동아': lang === 'en' ? 'Middle East/Africa' : '중동/아프리카',
+            '호주': lang === 'en' ? 'Australia/NZ' : '호주/뉴질랜드',
+            '유럽': lang === 'en' ? 'Europe' : '유럽',
+            '북미': lang === 'en' ? 'North America' : '북미',
+            '남미': lang === 'en' ? 'South America' : '남미',
+        };
+        routeSelect.querySelectorAll('option').forEach(opt => {
+            if (routeMap[opt.value]) opt.textContent = routeMap[opt.value];
+            if (opt.value === '') opt.textContent = lang === 'en' ? 'Please select' : '선택하세요';
+        });
+    }
+    
+    // Insurance party field
+    const ipField = document.getElementById('insuranceParty');
+    if (ipField) {
+        if (ipField.value.includes('매도인') || ipField.value.includes('Seller')) {
+            ipField.value = lang === 'en' ? 'Seller' : '매도인 (Seller)';
+        } else {
+            ipField.value = lang === 'en' ? 'Buyer' : '매수인 (Buyer)';
+        }
+    }
+    
+    // Save preference
+    try { localStorage.setItem('cargoinsu_lang', lang); } catch(e) {}
+    
+    console.log('[i18n] Language switched to:', lang);
+}
+
+// Auto-detect language on load
+(function initI18n() {
+    const saved = localStorage.getItem('cargoinsu_lang');
+    const browserLang = navigator.language || navigator.userLanguage || 'ko';
+    const lang = saved || (browserLang.startsWith('ko') ? 'ko' : 'en');
+    if (lang === 'en') switchLang('en');
+})();
+
     console.log('Cargoinsu v16 초기화 완료 - 회원시스템 제거, 경량화');
     console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
     
