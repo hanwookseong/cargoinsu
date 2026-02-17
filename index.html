@@ -12257,6 +12257,16 @@ document.addEventListener('DOMContentLoaded', function() {
     initLiabilityFormUI();
     
 
+
+    console.log('Cargoinsu v16 초기화 완료 - 회원시스템 제거, 경량화');
+    console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
+    
+    // 적하보험 견적신청 초기화
+    const dsShipDate = document.getElementById('dsShipDate');
+    if (dsShipDate) dsShipDate.value = new Date().toISOString().split('T')[0];
+    calcInsuredAmount();
+});
+
 // ==================== i18n 다국어 시스템 ====================
 const i18n = {
     currentLang: 'ko',
@@ -12478,14 +12488,6 @@ function switchLang(lang) {
     if (lang === 'en') switchLang('en');
 })();
 
-    console.log('Cargoinsu v16 초기화 완료 - 회원시스템 제거, 경량화');
-    console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
-    
-    // 적하보험 견적신청 초기화
-    const dsShipDate = document.getElementById('dsShipDate');
-    if (dsShipDate) dsShipDate.value = new Date().toISOString().split('T')[0];
-    calcInsuredAmount();
-});
 </script>
 
 <!-- 주소 검색 레이어 -->
