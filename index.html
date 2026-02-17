@@ -53,7 +53,6 @@
         .header { background: var(--white); box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
         .header-top { max-width: 1200px; margin: 0 auto; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid #f0f0f0; }
         .header-top .logo { cursor: pointer; }
-        .header-top #authButtons { display: flex; gap: 20px; }
         .header-top a { color: var(--text-light); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
         .header-top a:hover { color: var(--primary); }
         .btn-all-services { background: #f5f5f5; border: 1px solid #ddd; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--text-dark); display: flex; align-items: center; gap: 6px; }
@@ -75,12 +74,6 @@
         .nav-item-wrap:hover > .nav-item { color: var(--primary); border-bottom-color: var(--primary); }
         .nav-dropdown a { display: block; padding: 10px 20px; color: var(--text-dark); text-decoration: none; font-size: 0.85rem; font-weight: 500; white-space: nowrap; transition: all 0.2s; }
         .nav-dropdown a:hover { background: var(--primary-bg); color: var(--primary); padding-left: 24px; }
-        .user-menu { display: none; position: relative; flex-shrink: 0; }
-        .user-btn { background: var(--primary); color: var(--white); padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; }
-        .user-dropdown { position: absolute; top: 100%; right: 0; background: var(--white); box-shadow: 0 5px 25px rgba(0,0,0,0.15); border-radius: 10px; display: none; min-width: 140px; margin-top: 10px; }
-        .user-dropdown.show { display: block; }
-        .user-dropdown a { display: block; padding: 12px 18px; color: var(--text-dark); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
-        .user-dropdown a:hover { background: #f5f5f5; color: var(--primary); }
         
         /* All Services Modal */
         .services-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: flex-start; padding-top: 80px; }
@@ -299,8 +292,6 @@
             .nav { display: none !important; }
             .nav-dropdown { display: none !important; }
             .nav-spacer { display: none !important; }
-            #authButtons { display: none !important; }
-            .user-menu { display: none !important; }
             
             /* 로고 크기 조정 */
             .logo .logo-main { font-size: 1.3rem; }
@@ -804,10 +795,6 @@
                 <div class="logo-sub"><span class="logo-sub-kr">카고인슈</span><span class="logo-sub-com">.com</span></div>
             </div>
             <div style="display:flex; align-items:center; gap:20px;">
-                <div id="authButtons">
-                    <a href="javascript:void(0)" onclick="showModal('loginModal'); return false;">로그인</a>
-                    <a href="javascript:void(0)" onclick="showModal('registerModal'); return false;">회원가입</a>
-                </div>
                 <button class="btn-all-services" onclick="toggleServicesModal()">
                     <span>☰</span> 서비스 전체보기
                 </button>
@@ -856,12 +843,6 @@
                     <span class="nav-item" onclick="showPage('notice')">알아두실사항</span>
                 </div>
             </nav>
-            <div class="user-menu" id="userMenu" style="display:none;">
-                <button class="user-btn" onclick="toggleUserDropdown()"><span id="userName"></span> ▼</button>
-                <div class="user-dropdown" id="userDropdown">
-                    <a href="javascript:void(0)" onclick="logout(); return false;">로그아웃</a>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -901,13 +882,6 @@
                         <li><a href="javascript:void(0)" onclick="showModal('inlandQuoteModal'); toggleServicesModal(); return false;">내륙운송 견적신청</a></li>
                         <li><a href="javascript:void(0)" onclick="showModal('artQuoteModal'); toggleServicesModal(); return false;">예술품종합보험 견적신청</a></li>
                         <li><a href="javascript:void(0)" onclick="showModal('liabilityQuoteModal'); toggleServicesModal(); return false;">화물배상 견적신청</a></li>
-                    </ul>
-                </div>
-                <div class="services-section">
-                    <h4>회원서비스</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)" onclick="showModal('loginModal'); toggleServicesModal(); return false;">로그인</a></li>
-                        <li><a href="javascript:void(0)" onclick="showModal('registerModal'); toggleServicesModal(); return false;">회원가입</a></li>
                     </ul>
                 </div>
             </div>
@@ -4813,7 +4787,7 @@
                 <div class="design-body">
                     <!-- 안내 -->
                     <div class="design-notice">
-                        <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <a href="javascript:void(0)" onclick="showModal('registerModal'); return false;" style="color:#1a237e; font-weight:700;">회원가입</a> 시 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
+                        <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. 자세한 사항은 <strong>sales@cargoinsu.com</strong>으로 문의해 주세요. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
                         <br><br>
                         <span style="color:#1a237e; font-weight:600;">💡 서류를 보유하고 계시다면 <a href="javascript:void(0)" onclick="switchApplyTab('ez')" style="color:#e65100; font-weight:700; text-decoration:underline;">간편접수 모드</a>를 이용해 보세요. 30개+ 필드 대신 서류 업로드 + 5~6개 항목만 입력하시면 됩니다.</span>
                     </div>
@@ -5803,229 +5777,7 @@
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content" style="max-width:440px;">
-            <span class="modal-close" onclick="closeModal('loginModal')">&times;</span>
-            <h3 class="modal-title" style="margin-bottom:0.3rem;">로그인</h3>
-            <p style="text-align:center; color:#888; font-size:0.82rem; margin-bottom:1.5rem;">Cargoinsu.com 해상·항공 적하보험 전문</p>
-            <div class="form-group">
-                <label>이메일</label>
-                <input type="email" id="loginEmail" placeholder="example@company.com">
-            </div>
-            <div class="form-group">
-                <label>비밀번호</label>
-                <input type="password" id="loginPassword" placeholder="비밀번호를 입력하세요">
-            </div>
-            <button class="btn-submit" onclick="login()" style="width:100%; margin-top:0.5rem;">로그인</button>
-            <p class="modal-link" style="margin-top:1rem;">계정이 없으신가요? <a href="javascript:void(0)" onclick="closeModal('loginModal'); showModal('registerModal');">회원가입</a></p>
-        </div>
-    </div>
 
-    <!-- Register Modal -->
-    <div class="modal" id="registerModal">
-        <div class="modal-content" style="max-width:520px; max-height:90vh; overflow-y:auto;">
-            <span class="modal-close" onclick="closeModal('registerModal')">&times;</span>
-            <h3 class="modal-title" style="margin-bottom:0.2rem;">회원가입</h3>
-            <p style="text-align:center; color:#888; font-size:0.82rem; margin-bottom:1.5rem;">Cargoinsu.com 해상운송보험 서비스</p>
-
-            <!-- 이용약관 동의 -->
-            <div style="background:#f8f9ff; border:1px solid #e0e0e0; border-radius:10px; padding:1.2rem; margin-bottom:1.2rem;">
-                <h4 style="color:#1a237e; margin:0 0 0.3rem 0; font-size:0.95rem;">이용약관에 먼저 동의해 주세요.</h4>
-                
-                <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin-bottom:0.8rem; padding:0.6rem 0; border-bottom:1px solid #e0e0e0;">
-                    <input type="checkbox" id="regAgreeAll" onchange="toggleAllAgree(this)" style="width:18px; height:18px; accent-color:#1a237e;">
-                    <span style="font-weight:700; font-size:0.92rem;">✔ 전체동의</span>
-                </label>
-
-                <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin-bottom:0.5rem;">
-                    <input type="checkbox" id="regAgreeTerms" class="reg-agree-item" onchange="checkAllAgree()" style="width:16px; height:16px; accent-color:#1a237e;">
-                    <span style="font-size:0.85rem; flex:1;"><strong>(필수)</strong> 카고인슈 사이트 이용약관 동의</span>
-                    <a href="javascript:void(0)" onclick="closeModal('registerModal'); showModal('termsModal'); return false;" style="color:#1a237e; font-size:0.78rem; white-space:nowrap;">보기 ›</a>
-                </label>
-
-                <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin-bottom:0.5rem;">
-                    <input type="checkbox" id="regAgreePrivacy" class="reg-agree-item" onchange="checkAllAgree()" style="width:16px; height:16px; accent-color:#1a237e;">
-                    <span style="font-size:0.85rem; flex:1;"><strong>(필수)</strong> 개인정보 수집, 이용, 조회 제공 동의</span>
-                    <a href="javascript:void(0)" onclick="closeModal('registerModal'); showModal('privacyModal'); return false;" style="color:#1a237e; font-size:0.78rem; white-space:nowrap;">보기 ›</a>
-                </label>
-
-                <label style="display:flex; align-items:center; gap:8px; cursor:pointer; margin-bottom:0.5rem;">
-                    <input type="checkbox" id="regAgreeOP" class="reg-agree-item" onchange="checkAllAgree()" style="width:16px; height:16px; accent-color:#1a237e;">
-                    <span style="font-size:0.85rem; flex:1;">(선택) 포괄(OP)계약 업무 협정서 동의</span>
-                    <a href="javascript:void(0)" onclick="closeModal('registerModal'); showModal('opAgreementModal'); return false;" style="color:#1a237e; font-size:0.78rem; white-space:nowrap;">보기 ›</a>
-                </label>
-
-                <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                    <input type="checkbox" id="regAgreeMarketing" class="reg-agree-item" onchange="checkAllAgree()" style="width:16px; height:16px; accent-color:#1a237e;">
-                    <span style="font-size:0.85rem;">(선택) 혜택알림 이메일, 문자 동의</span>
-                </label>
-
-                <p style="font-size:0.72rem; color:#999; margin:0.6rem 0 0 0;">※ 고객은 동의를 거부할 권리가 있으며 필수 동의를 거부할 경우 회원가입이 제한됩니다.</p>
-            </div>
-
-            <!-- 카고인슈 회원 혜택 -->
-            <div style="background:linear-gradient(135deg,#e8eaf6 0%,#c5cae9 100%); border-radius:10px; padding:1rem 1.2rem; margin-bottom:1.5rem; text-align:center;">
-                <h4 style="color:#1a237e; margin:0 0 0.6rem 0; font-size:0.95rem;">🚢 카고인슈 회원 혜택</h4>
-                <p style="font-size:0.82rem; color:#333; margin:0 0 0.3rem 0;">01. 실시간 해상적하보험 보험료 산출 및 온라인 청약</p>
-                <p style="font-size:0.82rem; color:#333; margin:0;">02. 포괄(OP)계약 신청으로 간편한 월정산 보험관리</p>
-            </div>
-
-            <!-- 회원정보 입력 -->
-            <h4 style="color:#1a237e; margin:0 0 1rem 0; font-size:0.95rem;">회원정보를 입력해 주세요.</h4>
-
-            <div class="form-group" style="margin-bottom:0.8rem;">
-                <label style="font-size:0.82rem;">회원유형 <span style="color:#e53935;">*</span></label>
-                <div style="display:flex; gap:1.2rem; margin-top:6px;">
-                    <label style="display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.82rem;">
-                        <input type="radio" name="regMemberType" value="법인" checked style="accent-color:#1a237e; width:14px; height:14px;" onchange="toggleRegFields()"> 법인
-                    </label>
-                    <label style="display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.82rem;">
-                        <input type="radio" name="regMemberType" value="개인사업자" style="accent-color:#1a237e; width:14px; height:14px;" onchange="toggleRegFields()"> 개인사업자
-                    </label>
-                    <label style="display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.82rem;">
-                        <input type="radio" name="regMemberType" value="개인" style="accent-color:#1a237e; width:14px; height:14px;" onchange="toggleRegFields()"> 개인
-                    </label>
-                </div>
-            </div>
-
-            <div id="regCorpFields">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                    <div class="form-group" style="margin:0;">
-                        <label style="font-size:0.82rem;">회사/단체명 <span style="color:#e53935;">*</span></label>
-                        <input type="text" id="regCompany" placeholder="회사명 또는 단체명" style="font-size:0.82rem; padding:9px 10px;">
-                    </div>
-                    <div class="form-group" style="margin:0;">
-                        <label style="font-size:0.82rem;">사업자등록번호 <span style="color:#e53935;">*</span></label>
-                        <input type="text" id="regBizNo" placeholder="000-00-00000" style="font-size:0.82rem; padding:9px 10px;">
-                    </div>
-                </div>
-            </div>
-
-            <div id="regPersonalFields" style="display:none;">
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                    <div class="form-group" style="margin:0;">
-                        <label style="font-size:0.82rem;">생년월일 <span style="color:#e53935;">*</span></label>
-                        <input type="text" id="regBirth" placeholder="예) 19900515" style="font-size:0.82rem; padding:9px 10px;">
-                    </div>
-                    <div class="form-group" style="margin:0;">
-                        <label style="font-size:0.82rem;">성별 <span style="color:#e53935;">*</span></label>
-                        <div style="display:flex; gap:1.2rem; margin-top:8px; height:38px; align-items:center;">
-                            <label style="display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.82rem;">
-                                <input type="radio" name="regGender" value="M" style="accent-color:#1a237e; width:14px; height:14px;"> 남자
-                            </label>
-                            <label style="display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.82rem;">
-                                <input type="radio" name="regGender" value="F" style="accent-color:#1a237e; width:14px; height:14px;"> 여자
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom:0.8rem;">
-                <label id="regNameLabel" style="font-size:0.82rem;">담당자명 <span style="color:#e53935;">*</span></label>
-                <input type="text" id="regName" placeholder="홍길동" style="font-size:0.82rem; padding:9px 10px;">
-            </div>
-
-            <div class="form-group" style="margin-bottom:0.8rem;">
-                <label style="font-size:0.82rem;">이메일 (아이디) <span style="color:#e53935;">*</span></label>
-                <div style="display:flex; gap:6px; align-items:center;">
-                    <input type="text" id="regEmailId" placeholder="아이디" style="flex:1; font-size:0.82rem; padding:9px 10px;">
-                    <span style="color:#888; font-size:0.82rem;">@</span>
-                    <select id="regEmailDomain" onchange="toggleCustomDomain()" style="flex:1; padding:9px 8px; border:1px solid #ddd; border-radius:8px; font-size:0.82rem;">
-                        <option value="">선택</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="daum.net">daum.net</option>
-                        <option value="hanmail.net">hanmail.net</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="kakao.com">kakao.com</option>
-                        <option value="custom">직접입력</option>
-                    </select>
-                </div>
-                <input type="text" id="regEmailCustom" placeholder="도메인 직접입력" style="display:none; margin-top:6px; font-size:0.82rem; padding:9px 10px;">
-            </div>
-
-            <div class="form-group" style="margin-bottom:0.8rem;">
-                <label style="font-size:0.82rem;">휴대폰 번호 <span style="color:#e53935;">*</span></label>
-                <div style="display:flex; gap:8px;">
-                    <input type="tel" id="regPhone" placeholder="숫자만 입력해주세요" style="flex:1; font-size:0.82rem; padding:9px 10px;">
-                    <button type="button" onclick="alert('인증번호가 발송되었습니다.')" style="padding:9px 14px; background:#1a237e; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:0.82rem; white-space:nowrap;">인증받기</button>
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom:0.8rem;">
-                <label style="font-size:0.82rem;">주소</label>
-                <div style="display:flex; gap:8px; margin-bottom:6px;">
-                    <input type="text" id="regZipcode" placeholder="우편번호" style="width:120px; font-size:0.82rem; padding:9px 10px;" readonly>
-                    <button type="button" onclick="alert('우편번호 검색 (실제 서비스에서 다음 주소 API 연동)')" style="padding:9px 14px; background:#555; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:0.82rem; white-space:nowrap;">우편번호 검색</button>
-                </div>
-                <input type="text" id="regAddress" placeholder="기본주소" style="font-size:0.82rem; padding:9px 10px; margin-bottom:6px;">
-                <input type="text" id="regAddressDetail" placeholder="상세주소 (동/호수 등)" style="font-size:0.82rem; padding:9px 10px;">
-            </div>
-
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-bottom:0.8rem;">
-                <div class="form-group" style="margin:0;">
-                    <label style="font-size:0.82rem;">비밀번호 <span style="color:#e53935;">*</span></label>
-                    <input type="password" id="regPassword" placeholder="8~20자 영문+숫자+특수문자" style="font-size:0.82rem; padding:9px 10px;">
-                </div>
-                <div class="form-group" style="margin:0;">
-                    <label style="font-size:0.82rem;">비밀번호 재확인 <span style="color:#e53935;">*</span></label>
-                    <input type="password" id="regPasswordConfirm" placeholder="비밀번호 재확인" style="font-size:0.82rem; padding:9px 10px;">
-                </div>
-            </div>
-
-            <!-- 마스터 청약서 제출 -->
-            <div style="background:#fff3e0; border:2px solid #ff9800; border-radius:10px; padding:1rem 1.2rem; margin-bottom:1rem;">
-                <h4 style="color:#e65100; margin:0 0 0.5rem 0; font-size:0.92rem;">📋 적하보험 마스터 청약서 제출 <span style="color:#e53935;">*</span></h4>
-                <p style="font-size:0.78rem; color:#555; margin:0 0 0.8rem 0; line-height:1.6;">
-                    최초 가입 고객은 마스터 청약서를 작성하여 제출해야 합니다.<br>
-                    마스터 청약서에 기재된 정보를 바탕으로 <strong style="color:#1a237e;">Policy Holder (계약자) Number</strong>가 생성됩니다.<br>
-                    이후 개별 건별 보험 견적/가입은 해당 번호로 간편하게 처리됩니다.
-                </p>
-                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
-                    <a href="javascript:void(0)" onclick="downloadMasterForm()" style="display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:#1a237e; color:#fff; border-radius:8px; text-decoration:none; font-size:0.82rem; font-weight:600;">
-                        📥 마스터 청약서 다운로드
-                    </a>
-                    <span style="font-size:0.72rem; color:#888;">(.xlsx 양식)</span>
-                </div>
-                <div style="display:flex; gap:8px; align-items:center;">
-                    <label style="display:inline-flex; align-items:center; gap:6px; padding:8px 16px; background:#e65100; color:#fff; border-radius:8px; cursor:pointer; font-size:0.82rem; font-weight:600;">
-                        📎 작성완료 청약서 업로드
-                        <input type="file" id="regMasterForm" accept=".xlsx,.xls,.pdf,.jpg,.jpeg,.png" style="display:none;" onchange="regMasterFileChanged(this)">
-                    </label>
-                    <span id="regMasterFileName" style="font-size:0.78rem; color:#2e7d32; font-weight:600;"></span>
-                </div>
-                <p style="font-size:0.7rem; color:#999; margin:6px 0 0 0;">※ 마스터 청약서 제출 후 당사 검토를 거쳐 Policy Holder Number가 부여됩니다.</p>
-            </div>
-
-            <div style="display:flex; gap:10px;">
-                <button onclick="closeModal('registerModal');" style="flex:1; padding:14px; background:#fff; color:#555; border:1px solid #ddd; border-radius:10px; cursor:pointer; font-size:0.95rem; font-weight:600;">처음으로</button>
-                <button class="btn-submit" onclick="register()" style="flex:2; padding:14px;">가입하기</button>
-            </div>
-            <p class="modal-link" style="margin-top:0.8rem;">이미 계정이 있으신가요? <a href="javascript:void(0)" onclick="closeModal('registerModal'); showModal('loginModal');">로그인</a></p>
-
-            <!-- 약관 주요사항 고지 -->
-            <details style="margin-top:1.2rem; border-top:1px solid #e0e0e0; padding-top:1rem;">
-                <summary style="cursor:pointer; font-size:0.85rem; font-weight:600; color:#555;">약관 주요사항 고지</summary>
-                <div style="margin-top:0.8rem; font-size:0.78rem; color:#666; line-height:1.8;">
-                    <p style="margin:0 0 0.5rem 0; color:#1a237e;"><a href="javascript:void(0)" onclick="closeModal('registerModal'); showModal('termsModal'); return false;">약관 전문은 위의 이용약관 보기에 전문이 게시되어 있습니다.</a></p>
-                    
-                    <p style="margin:0 0 0.3rem 0;"><strong>(필수) 카고인슈 회원 이용약관</strong></p>
-                    <p style="margin:0 0 0.3rem 0;"><u>해상운송보험 가입 동의</u></p>
-                    <p style="margin:0 0 0.2rem 0;">① 회사는 보험중개사로서 이용자를 계약자(피보험자)로 하는 해상적하보험, 내륙운송보험, 예술품운송보험, 화물배상책임보험 등의 보험계약 체결을 중개할 수 있습니다. 이때 적용되는 보험약관은 협회적하약관(ICC) 신약관 또는 구약관에 따릅니다.</p>
-                    <p style="margin:0 0 0.2rem 0;">② 이용자가 포괄(OP)계약을 체결하는 경우, 회사를 포괄계약의 대표계약자로 하여 월정산 방식의 보험계약을 관리할 수 있습니다.</p>
-                    <p style="margin:0 0 0.2rem 0;">③ 이용자는 보험약관, 알아두실 사항 등 보험계약과 관련된 사항을 충분히 이해한 후 가입하여야 하며, 보험계약에 관한 세부사항은 보험회사가 제공하는 보험약관에 따릅니다.</p>
-                    <p style="margin:0 0 0.2rem 0;">④ 보험계약의 체결 및 보험금 지급 등 보험계약상의 의무는 해당 보험회사가 부담합니다.</p>
-                    <p style="margin:0 0 0.8rem 0;">⑤ 보험료는 세법 관련규정(소득세법 시행령 제25조 2항)에 의해 현금영수증 발급대상이 아닐 수 있습니다.</p>
-
-                    <p style="margin:0 0 0.3rem 0;"><strong>(필수) 개인정보 수집 및 이용</strong></p>
-                    <p style="margin:0;">- 법인/단체회원: 회사/단체명, 사업자등록번호, 담당자명, 휴대폰번호, 이메일주소</p>
-                    <p style="margin:0;">- 개인회원: 이름, 성별, 생년월일, 휴대폰번호, 이메일주소</p>
-                </div>
-            </details>
-        </div>
-    </div>
 
     <!-- Privacy Modal -->
     <div class="modal" id="privacyModal">
@@ -6122,7 +5874,7 @@
                 </div>
                 <p style="font-size:0.72rem; color:#aaa; margin:0;">※ 각 제공대상기관 및 이용목적의 구체적인 정보는 해당 보험회사 홈페이지에서 확인할 수 있습니다.</p>
             </div>
-            <button class="btn-submit" onclick="closeModal('privacyModal'); showModal('registerModal');" style="width:100%; margin-top:1rem;">확인</button>
+            <button class="btn-submit" onclick="closeModal('privacyModal');" style="width:100%; margin-top:1rem;">확인</button>
         </div>
     </div>
 
@@ -6201,74 +5953,10 @@
                     © CARGOINSU.COM 엔투엔보험중개
                 </div>
             </div>
-            <button class="btn-submit" onclick="closeModal('termsModal'); showModal('registerModal');" style="width:100%; margin-top:1rem;">확인</button>
+            <button class="btn-submit" onclick="closeModal('termsModal');" style="width:100%; margin-top:1rem;">확인</button>
         </div>
     </div>
 
-    <!-- OP Agreement Modal (포괄계약 업무 협정서) -->
-    <div class="modal" id="opAgreementModal">
-        <div class="modal-content" style="max-width:720px; max-height:90vh; overflow-y:auto;">
-            <span class="modal-close" onclick="closeModal('opAgreementModal')">&times;</span>
-            <h3 class="modal-title" style="margin-bottom:1.5rem;">포괄(OP)계약 업무 협정서</h3>
-            <div class="privacy-content" style="font-size:0.84rem; line-height:1.9;">
-
-                <div style="background:#e3f2fd; padding:1rem; border-radius:8px; margin-bottom:1.5rem; border-left:4px solid #1565c0;">
-                    <p style="margin:0; font-size:0.85rem;">본 협정서는 "계약자"가 "회사"의 해상적하보험 포괄예정보험계약(Open Policy)을 가입함에 있어 필요한 사항을 협정함을 목적으로 합니다.</p>
-                </div>
-
-                <p><strong>제1조 【목적】</strong></p>
-                <p>본 협정서는 "계약자"가 "회사"(엔투엔보험중개)를 통하여 보험회사의 해상적하보험 포괄예정보험계약(이하 'OP계약'이라 합니다)을 가입함에 있어 필요한 사항을 협정함을 목적으로 한다.</p>
-
-                <p><strong>제2조 【용어의 정의】</strong></p>
-                <p>① "계약자"는 OP계약상의 모든 권리, 의무를 행사할 수 있는 다음 각 호의 자를 말한다.</p>
-                <p style="padding-left:1rem;">1. 법인: 수출입 화물의 운송과 관련하여 보험의 필요가 있는 법인 사업자</p>
-                <p style="padding-left:1rem;">2. 개인사업자: 수출입 화물의 운송과 관련하여 보험의 필요가 있는 개인 사업자</p>
-                <p style="padding-left:1rem;">3. 관세사·포워더 등: 화주를 대리하여 보험계약을 체결할 수 있는 자</p>
-                <p>② "피보험자"는 보험계약에 의하여 보험의 보호를 받는 자로서, 화물의 소유자 또는 이해관계인을 말한다.</p>
-                <p>③ "OP계약"은 일정기간 동안 계속적·반복적으로 발생하는 화물운송에 대하여 포괄적으로 보험을 부보하는 계약을 말한다.</p>
-
-                <p><strong>제3조 【보험가입 및 통지】</strong></p>
-                <p>① "계약자"는 OP계약 기간 중 발생하는 모든 수출입 화물에 대하여 개별 확정통지(Declaration)를 "회사"에 하여야 한다.</p>
-                <p>② "계약자"는 선적 전 또는 선적 후 지체 없이 화물의 품명, 수량, 보험가액, 선명, 출발지, 도착지, 선적일 등의 정보를 "회사"에 통지하여야 한다.</p>
-                <p>③ 확정통지가 없는 경우에도 OP계약의 약관에 따라 자동담보가 적용될 수 있으며, 그 세부조건은 보험회사의 약관에 따른다.</p>
-
-                <p><strong>제4조 【보험증권의 발급】</strong></p>
-                <p>"회사"는 "계약자"의 확정통지에 따라 개별 보험증권(Certificate) 또는 부보확인서를 발급하며, "계약자"의 요청이 있을 경우 영문 보험증권을 별도 발급할 수 있다. 신용장(L/C) 거래 시 필요한 보험서류는 신용장 조건에 부합하도록 발급한다.</p>
-
-                <p><strong>제5조 【적용 약관】</strong></p>
-                <p>① OP계약에 적용되는 약관은 협회적하약관(Institute Cargo Clauses)으로서, 다음 각 호 중 계약에서 정하는 바에 따른다.</p>
-                <p style="padding-left:1rem;">1. 신약관: ICC (A), ICC (B), ICC (C) — 1982년 제정</p>
-                <p style="padding-left:1rem;">2. 구약관: All Risks (A/R), With Average (WA), Free from Particular Average (FPA) — 1963년 제정</p>
-                <p>② 전쟁약관(Institute War Clauses) 및 동맹파업약관(Institute Strikes Clauses)은 별도 특약으로 부가할 수 있다.</p>
-
-                <p><strong>제6조 【보험료의 정산】</strong></p>
-                <p>① 보험료의 정산기간은 매월 1일에서 말일까지의 1개월로 한다. 단, OP계약의 개시일자가 1일이 아닌 경우, 개시일자에서 해당 월 말일까지의 기간을 첫 정산기간으로 한다.</p>
-                <p>② "계약자"는 정산기간의 예상 선적물량 및 보험가입조건을 "회사"에 통지하고, 동 조건에 따라 산출된 추정보험료를 정산기간 전월 말일까지 예치보험료로 납입한다.</p>
-                <p>③ "회사"는 확정통지에 따라 실제보험료를 산출하고, 정산기간 종료 후 7일 이내에 예치보험료와의 차액을 추징 또는 환급한다.</p>
-                <p>④ "회사"는 "계약자"로부터 실제보험료의 1.5배를 초과하는 예치보험료를 수령할 수 없다.</p>
-
-                <p><strong>제7조 【보험기간】</strong></p>
-                <p>OP계약의 보험기간은 계약 가입일로부터 1년으로 한다. 단, 일방 당사자가 계약 종료일 30일 이전에 종료의 의사를 서면으로 통보하지 않을 경우 1년 단위로 자동 갱신된다.</p>
-
-                <p><strong>제8조 【협정의 변경】</strong></p>
-                <p>"계약자"와 "회사"는 상호 합의 하에 본 협정의 내용(요율, 담보조건, 면책사항 등)을 변경할 수 있다.</p>
-
-                <p><strong>제9조 【사고통지 및 보험금 청구】</strong></p>
-                <p>① "계약자" 또는 "피보험자"는 보험사고 발생 시 지체 없이 "회사"에 통지하여야 한다.</p>
-                <p>② 보험금 청구에 필요한 서류(손해명세서, Survey Report, 선하증권, 상업송장 등)는 "회사"의 안내에 따라 제출하여야 한다.</p>
-                <p>③ 보험금의 지급은 보험회사의 심사 및 손해사정 절차에 따른다.</p>
-
-                <p><strong>제10조 【준용규정】</strong></p>
-                <p>본 협정에서 정하지 않은 사항은 해상적하보험 보통약관 및 협회적하약관(ICC), 영국해상보험법(Marine Insurance Act 1906) 및 관련 법령을 따른다.</p>
-
-                <div style="margin-top:1.5rem; padding:0.8rem; background:#f5f5f5; border-radius:6px; font-size:0.78rem; color:#888;">
-                    부칙: 본 협정서는 2026년 2월 1일부터 시행합니다.<br>
-                    © CARGOINSU.COM 엔투엔보험중개
-                </div>
-            </div>
-            <button class="btn-submit" onclick="closeModal('opAgreementModal'); showModal('registerModal');" style="width:100%; margin-top:1rem;">확인</button>
-        </div>
-    </div>
 
     <!-- Quote Modal -->
     <!-- 내륙운송보험 견적 모달 -->
@@ -9888,7 +9576,6 @@ function showInfoTab(tabId) {
     document.getElementById('tab-' + tabId).classList.add('active');
 }
 
-function toggleUserDropdown() { document.getElementById('userDropdown').classList.toggle('show'); }
 
 function toggleServicesModal() {
     document.getElementById('servicesModal').classList.toggle('show');
@@ -9900,169 +9587,15 @@ function closeServicesModal(event) {
     }
 }
 
-function login() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    if (!email || !password) { alert('이메일과 비밀번호를 입력하세요.'); return; }
-    const users = JSON.parse(localStorage.getItem('cargoinsu_users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password);
-    if (user) {
-        localStorage.setItem('cargoinsu_user', JSON.stringify(user));
-        closeModal('loginModal');
-        updateAuthUI();
-        alert('로그인되었습니다.');
-    } else {
-        alert('이메일 또는 비밀번호가 일치하지 않습니다.');
-    }
-}
 
-function toggleAllAgree(el) {
-    document.querySelectorAll('.reg-agree-item').forEach(function(cb) { cb.checked = el.checked; });
-}
-function checkAllAgree() {
-    var items = document.querySelectorAll('.reg-agree-item');
-    var allChecked = true;
-    items.forEach(function(cb) { if (!cb.checked) allChecked = false; });
-    document.getElementById('regAgreeAll').checked = allChecked;
-}
 
-// 회원유형별 필드 토글
-function toggleRegFields() {
-    var memberType = document.querySelector('input[name="regMemberType"]:checked').value;
-    var corpFields = document.getElementById('regCorpFields');
-    var personalFields = document.getElementById('regPersonalFields');
-    var nameLabel = document.getElementById('regNameLabel');
-    
-    if (memberType === '개인') {
-        corpFields.style.display = 'none';
-        personalFields.style.display = 'block';
-        nameLabel.innerHTML = '이름 <span style="color:#e53935;">*</span>';
-    } else {
-        corpFields.style.display = 'block';
-        personalFields.style.display = 'none';
-        nameLabel.innerHTML = '담당자명 <span style="color:#e53935;">*</span>';
-    }
-}
 
-// 이메일 도메인 직접입력 토글
-function toggleCustomDomain() {
-    var sel = document.getElementById('regEmailDomain');
-    var custom = document.getElementById('regEmailCustom');
-    custom.style.display = sel.value === 'custom' ? 'block' : 'none';
-    if (sel.value !== 'custom') custom.value = '';
-}
 
-// 이메일 조합 헬퍼
-function getRegEmail() {
-    var id = document.getElementById('regEmailId').value.trim();
-    var domainSel = document.getElementById('regEmailDomain');
-    var domain = domainSel.value === 'custom' 
-        ? document.getElementById('regEmailCustom').value.trim() 
-        : domainSel.value;
-    return (id && domain) ? id + '@' + domain : '';
-}
 
-// 마스터 청약서 다운로드
-function downloadMasterForm() {
-    // 실제 서비스에서는 서버에서 다운로드 링크 제공
-    alert('📥 마스터 청약서(적하보험 청약서 양식)를 다운로드합니다.\n\n작성 후 회원가입 시 업로드해 주세요.\nPolicy Holder Number는 검토 후 부여됩니다.');
-}
 
-// 마스터 청약서 파일 업로드 핸들러
-function regMasterFileChanged(input) {
-    const nameEl = document.getElementById('regMasterFileName');
-    if (input.files.length > 0) {
-        const file = input.files[0];
-        if (file.size > 10 * 1024 * 1024) {
-            alert('⚠️ 파일 크기가 10MB를 초과합니다.');
-            input.value = '';
-            nameEl.textContent = '';
-            return;
-        }
-        nameEl.textContent = '✅ ' + file.name;
-    } else {
-        nameEl.textContent = '';
-    }
-}
 
-function register() {
-    var memberType = document.querySelector('input[name="regMemberType"]:checked');
-    var mType = memberType ? memberType.value : '법인';
-    var email = getRegEmail();
-    
-    const data = {
-        memberType: mType,
-        company: mType !== '개인' ? document.getElementById('regCompany').value : '',
-        bizNo: mType !== '개인' && document.getElementById('regBizNo') ? document.getElementById('regBizNo').value : '',
-        name: document.getElementById('regName').value,
-        email: email,
-        phone: document.getElementById('regPhone').value,
-        password: document.getElementById('regPassword').value,
-        marketing: document.getElementById('regAgreeMarketing').checked
-    };
-    
-    if (mType === '개인') {
-        data.birth = document.getElementById('regBirth') ? document.getElementById('regBirth').value : '';
-        var gender = document.querySelector('input[name="regGender"]:checked');
-        data.gender = gender ? gender.value : '';
-    }
-    
-    const confirm = document.getElementById('regPasswordConfirm').value;
-    const agreeP = document.getElementById('regAgreePrivacy').checked;
-    const agreeT = document.getElementById('regAgreeTerms').checked;
-    const agreeOP = document.getElementById('regAgreeOP').checked;
-    
-    // 필수 항목 체크
-    if (mType !== '개인' && !data.company) { alert('회사/단체명을 입력하세요.'); return; }
-    if (!data.name) { alert(mType === '개인' ? '이름을 입력하세요.' : '담당자명을 입력하세요.'); return; }
-    if (!email) { alert('이메일을 올바르게 입력하세요.'); return; }
-    if (!data.phone) { alert('휴대폰 번호를 입력하세요.'); return; }
-    if (!data.password) { alert('비밀번호를 입력하세요.'); return; }
-    if (data.password.length < 8) { alert('비밀번호는 8자 이상이어야 합니다.'); return; }
-    if (data.password !== confirm) { alert('비밀번호가 일치하지 않습니다.'); return; }
-    if (!agreeP || !agreeT) { alert('필수 동의 항목에 모두 동의해주세요.'); return; }
-    
-    const users = JSON.parse(localStorage.getItem('cargoinsu_users') || '[]');
-    if (users.find(u => u.email === data.email)) { alert('이미 등록된 이메일입니다.'); return; }
-    
-    users.push(data);
-    localStorage.setItem('cargoinsu_users', JSON.stringify(users));
-    localStorage.setItem('cargoinsu_user', JSON.stringify(data));
-    
-    // Google Sheets 전송
-    sendToGoogleSheets('register', {
-        memberType: data.memberType,
-        company: data.company,
-        bizNo: data.bizNo,
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        zipcode: document.getElementById('regZipcode')?.value || '',
-        address: document.getElementById('regAddress')?.value || '',
-        addressDetail: document.getElementById('regAddressDetail')?.value || '',
-        birth: data.birth || '',
-        gender: data.gender || '',
-        agreeOP: agreeOP,
-        marketing: data.marketing
-    });
-    
-    closeModal('registerModal');
-    updateAuthUI();
-    alert('회원가입이 완료되었습니다. 카고인슈 서비스를 이용해 주셔서 감사합니다.');
-}
 
-function logout() {
-    localStorage.removeItem('cargoinsu_user');
-    updateAuthUI();
-    document.getElementById('userDropdown').classList.remove('show');
-}
 
-function updateAuthUI() {
-    const user = JSON.parse(localStorage.getItem('cargoinsu_user'));
-    document.getElementById('authButtons').style.display = user ? 'none' : 'flex';
-    document.getElementById('userMenu').style.display = user ? 'block' : 'none';
-    if (user) document.getElementById('userName').textContent = user.name;
-}
 
 function updateRadioStyle(groupId) {
     document.querySelectorAll('#' + groupId + ' .radio-label').forEach(label => {
@@ -10875,7 +10408,7 @@ function searchContractor() {
         // dsDispatchAddr 필드 제거됨 (최종발송지 삭제)
         if (document.getElementById('dsDispatchAddr')) document.getElementById('dsDispatchAddr').value = found.addr;
     } else {
-        alert('등록된 사업자를 찾을 수 없습니다.\n회원가입 후 이용해 주세요.');
+        alert('등록된 사업자를 찾을 수 없습니다.\nsales@cargoinsu.com으로 문의해 주세요.');
     }
 }
 
@@ -12704,12 +12237,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('#warGroup input').forEach(i => i.addEventListener('change', () => updateRadioStyle('warGroup')));
     document.querySelectorAll('#strikeGroup input').forEach(i => i.addEventListener('change', () => updateRadioStyle('strikeGroup')));
     
-    updateAuthUI();
     
     // 화물배상책임보험 폼 UI 초기화
     initLiabilityFormUI();
     
-    console.log('Cargoinsu v12 초기화 완료 - 보험가입신청 기능 추가');
+    console.log('Cargoinsu v16 초기화 완료 - 회원시스템 제거, 경량화');
     console.log('요율표 로드됨:', Object.keys(rates['신약관']).length, '개 화물 종류');
     
     // 적하보험 견적신청 초기화
