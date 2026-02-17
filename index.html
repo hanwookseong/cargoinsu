@@ -5523,7 +5523,7 @@
                 <div class="design-body">
                     <!-- 안내 -->
                     <div class="design-notice">
-                        <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. 자세한 사항은 <strong>sales@cargoinsu.com</strong>으로 문의해 주세요. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
+                        <strong>⚠ 보험가입신청 전 확인사항:</strong> 최초 가입신청 고객은 <strong>마스터 청약서</strong>를 작성·제출하여 <strong>Policy Holder Number</strong>를 부여받아야 합니다. 자세한 사항은 <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3a495b565f497a595b485d555354494f14595557">[email&#160;protected]</a></strong>으로 문의해 주세요. <span style="color:var(--primary);">노란색 배경</span> 필드는 필수 입력 항목입니다.
                     </div>
 
                     <!-- ① 계약자 / 피보험자 정보 -->
@@ -7120,7 +7120,7 @@
         </div>
     </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ==================== ⚙️ 설정 (Configuration) ====================
 // 사업자번호 조회 (Google Apps Script URL)
 window.CARGOINSU_GAS_URL = '';
@@ -10659,7 +10659,7 @@ async function submitDesign() {
         packing: document.getElementById('dsPacking')?.value || '',
         loadMethod: document.getElementById('dsLoadMethod')?.value || '',
         cargoValue: document.getElementById('dsCargoValue')?.value || '',
-        cargoCurrency: document.getElementById('dsCargoCurrency')?.value || 'USD',
+        cargoCurrency: document.getElementById('dsCurrency')?.value || 'USD',
         insuredCurrency: document.getElementById('dsInsuredCurrency')?.value || 'KRW',
         insuredAmount: document.getElementById('dsInsuredAmount')?.value || '',
         clauseType: document.getElementById('dsClauseType')?.value || '',
@@ -11739,11 +11739,87 @@ function aiAutoFill(mode, d) {
         if (d.destCountry) aiSetCountryDS('dsDestCountry', d.destCountry);
         if (d.originCity) fillIfEmpty('dsOriginCity', d.originCity);
         if (d.destCity) fillIfEmpty('dsDestCity', d.destCity);
-        if (d.vesselOrFlight) fillIfEmpty('dsVessel', d.vesselOrFlight);
+        if (d.vesselOrFlight) {
+            fillIfEmpty('dsVesselName', d.vesselOrFlight);
+            // 운송용구 자동 감지: FedEx/DHL/UPS → 국제택배(항공), 선박명 → 컨테이너선
+            const vf = d.vesselOrFlight.toUpperCase();
+            const vesselSelect = document.getElementById('dsVessel');
+            if (vesselSelect && vesselSelect.selectedIndex <= 0) {
+                if (/FEDEX|FED\s*EX|DHL|UPS|TNT|EMS|SF\s*EXPRESS/.test(vf)) {
+                    vesselSelect.value = '국제택배_항공';
+                } else if (/FLIGHT|AIR|KE\d|OZ\d|AA\d|UA\d/.test(vf)) {
+                    vesselSelect.value = '항공기_정기';
+                } else {
+                    vesselSelect.value = '컨테이너선';
+                }
+                vesselSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+        // AWB에서 운송수단 자동 감지 (vesselOrFlight 없어도 blOrAwbNo로 판단)
+        if (!d.vesselOrFlight && d.blOrAwbNo) {
+            const awbStr = String(d.blOrAwbNo).toUpperCase();
+            const vesselSelect = document.getElementById('dsVessel');
+            if (vesselSelect && vesselSelect.selectedIndex <= 0) {
+                if (/FEDEX|FED\s*EX|DHL|UPS|TNT|EMS/.test(awbStr) || awbStr.length >= 10) {
+                    vesselSelect.value = '국제택배_항공';
+                    vesselSelect.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            }
+        }
         if (d.shipDate) fillIfEmpty('dsShipDate', formatDateForInput(d.shipDate));
+        
+        // 운송구분 자동 설정: 출발지/도착지 기준
+        {
+            const transEl = document.getElementById('dsTransType');
+            if (transEl && transEl.selectedIndex <= 0) {
+                const orig = (d.originCountry || '').toUpperCase();
+                const dest = (d.destCountry || '').toUpperCase();
+                const isOrigKR = /KOREA|KR|한국/.test(orig);
+                const isDestKR = /KOREA|KR|한국/.test(dest);
+                if (isOrigKR && !isDestKR) transEl.value = '수출';
+                else if (!isOrigKR && isDestKR) transEl.value = '수입';
+                else if (!isOrigKR && !isDestKR) transEl.value = '제3국간운송';
+                if (transEl.value) transEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+        
+        // 운송모드 자동 설정: FedEx/DHL/UPS → AIR, 선박 → SEA
+        {
+            const modeEl = document.getElementById('dsTransportMode');
+            if (modeEl && modeEl.selectedIndex <= 0) {
+                const carrier = ((d.vesselOrFlight || '') + ' ' + (d.blOrAwbNo || '')).toUpperCase();
+                if (/FEDEX|FED\s*EX|DHL|UPS|TNT|EMS|AIR|FLIGHT/.test(carrier)) {
+                    modeEl.value = 'AIR';
+                } else if (/VESSEL|SHIP|HMM|MSC|MAERSK|EVERGREEN|CMA|COSCO/.test(carrier)) {
+                    modeEl.value = 'SEA';
+                }
+                if (modeEl.value) modeEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+        
+        // 적재방법 기본값: 선창적재 (가장 일반적)
+        {
+            const loadEl = document.getElementById('dsLoadMethod');
+            if (loadEl && loadEl.selectedIndex <= 0) {
+                loadEl.value = '선창적재';
+                loadEl.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        }
+        
+        // Vessel / Flight No. (dsVesselNo)에도 기입
+        if (d.vesselOrFlight) fillIfEmpty('dsVesselNo', d.vesselOrFlight);
+        if (d.blOrAwbNo) {
+            // AWB/BL 번호가 있으면 VesselNo에 참고 정보 추가
+            const vnEl = document.getElementById('dsVesselNo');
+            if (vnEl && !vnEl.value.trim()) vnEl.value = d.blOrAwbNo;
+        }
         if (d.hsCode) {
             const hs4 = normalizeHsCode(d.hsCode);
             fillIfEmpty('dsHsCode', hs4);
+            // HS Code 매핑 직접 호출 (synthetic event가 oninput 트리거 안 될 수 있음)
+            if (hs4.length >= 2 && typeof dsSearchHsCode === 'function') {
+                setTimeout(() => dsSearchHsCode(hs4), 100);
+            }
         }
         if (d.cargoDescription) fillIfEmpty('dsCargoName', d.cargoDescription);
         if (d.packing) {
@@ -11751,11 +11827,28 @@ function aiAutoFill(mode, d) {
             if (packVal) { const el = document.getElementById('dsPacking'); if (el && el.selectedIndex <= 0) el.value = packVal; }
         }
         if (d.totalAmount) fillIfEmpty('dsCargoValue', String(d.totalAmount).replace(/[^0-9.]/g, ''));
-        if (d.currency) fillSelectIfDefault('dsCargoCurrency', d.currency);
-        if (d.invoiceNo) {
-            const vesselEl = document.getElementById('dsVessel');
-            if (vesselEl) vesselEl.value = (vesselEl.value ? vesselEl.value + ' / ' : '') + 'INV:' + d.invoiceNo;
+        if (d.currency) fillSelectIfDefault('dsCurrency', d.currency);
+        
+        // 수량, 중량, 인보이스번호 등 추가 정보를 화물상세에 기입
+        {
+            const detailParts = [];
+            if (d.quantity) detailParts.push('수량: ' + d.quantity + (d.quantityUnit ? ' ' + d.quantityUnit : ''));
+            if (d.grossWeight) detailParts.push('중량: ' + d.grossWeight + (d.weightUnit ? ' ' + d.weightUnit : ''));
+            if (d.incoterms) detailParts.push('Incoterms: ' + d.incoterms);
+            if (d.invoiceNo) detailParts.push('Invoice No: ' + d.invoiceNo);
+            if (d.blOrAwbNo) detailParts.push('B/L·AWB No: ' + d.blOrAwbNo);
+            if (detailParts.length) {
+                const detailEl = document.getElementById('dsCargoDetail');
+                if (detailEl && !detailEl.value.trim()) {
+                    detailEl.value = detailParts.join(' / ');
+                }
+            }
         }
+        
+        // 통화/금액 변경 후 보험가입금액 재계산
+        setTimeout(() => { 
+            if (typeof calcInsuredAmount === 'function') calcInsuredAmount(); 
+        }, 500);
         
     } else if (mode === 'ez') {
         // 간편접수 — 보충정보 영역에 요약 표시
@@ -12513,11 +12606,4 @@ function switchLang(lang) {
     <div style="background:#fff; width:90%; max-width:500px; height:460px; border-radius:12px; overflow:hidden; position:relative; margin:auto; top:50%; transform:translateY(-50%); box-shadow:0 8px 32px rgba(0,0,0,0.3);">
         <div style="padding:12px 20px; background:var(--primary); color:#fff; display:flex; justify-content:space-between; align-items:center;">
             <span style="font-weight:700; font-size:0.95rem;">📍 주소 검색</span>
-            <span onclick="closeAddressSearch()" style="cursor:pointer; font-size:1.3rem; line-height:1;">&times;</span>
-        </div>
-        <div id="addressSearchContent" style="width:100%; height:calc(100% - 48px);"></div>
-    </div>
-</div>
-
-</body>
-</html>
+            <span onclick="closeA
