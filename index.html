@@ -18,7 +18,7 @@
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="적하보험 온라인 견적 | 보험료 즉시 계산 - Cargoinsu">
-    <meta property="og:description" content="적하보험 보험료를 즉시 계산하고 온라인으로 견적신청하세요. ICC 신약관·구약관, 43개 화물종류, 9개 운송지역 지원.">
+    <meta property="og:description" content="적하보험 보험료를 즉시 계산하고 온라인으로 견적신청하세요. ICC 신약관·구약관, 40개 화물종류, 10개 운송지역 지원.">
     <meta property="og:url" content="https://cargoinsu.com/">
     <meta property="og:site_name" content="Cargoinsu - 적하보험 전문">
     <meta property="og:locale" content="ko_KR">
@@ -96,34 +96,47 @@
         .nav-dropdown a:hover { background: var(--primary-bg); color: var(--primary); padding-left: 24px; }
         
         /* All Services Modal */
-        .services-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: flex-start; padding-top: 80px; }
+        .services-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; justify-content: center; align-items: flex-start; padding-top: 80px; overflow-y: auto; }
         .services-modal.show { display: flex; }
-        .services-content { background: var(--white); border-radius: 16px; padding: 40px 50px; max-width: 700px; width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; }
+        .services-content { background: var(--white); border-radius: 16px; padding: 40px 50px; max-width: 920px; width: 92%; box-shadow: 0 10px 40px rgba(0,0,0,0.2); position: relative; margin-bottom: 40px; }
         .services-close { position: absolute; top: 20px; right: 25px; font-size: 28px; cursor: pointer; color: var(--text-light); }
         .services-close:hover { color: var(--text-dark); }
         .services-title { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin-bottom: 30px; text-align: center; }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px 30px; }
         .services-section h4 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--primary-bg); }
         .services-section ul { list-style: none; }
-        .services-section li { padding: 8px 0; }
-        .services-section a { color: var(--text-mid); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+        .services-section li { padding: 7px 0; }
+        .services-section a { color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: all 0.2s; }
         .services-section a:hover { color: var(--primary); padding-left: 5px; }
         .services-section a::before { content: "-"; margin-right: 8px; color: #999; }
         .services-btn { display: block; width: 100%; margin-top: 30px; padding: 15px; background: var(--primary); color: var(--white); border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; }
         .services-btn:hover { background: #0d1757; }
+        @media (max-width: 768px) {
+            .services-modal { padding-top: 20px; }
+            .services-content { padding: 30px 20px; width: 95%; }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .services-section a { font-size: 0.85rem; }
+        }
         
         /* Hero */
         .hero { background: linear-gradient(135deg, #1a237e 0%, #303f9f 50%, #3949ab 100%); color: var(--white); padding: 50px 20px 40px; text-align: center; }
         .hero h1 { font-family: 'Poppins', 'Noto Sans KR', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px; }
         .hero > p { font-size: 1.1rem; opacity: 0.85; font-weight: 400; }
-        .hero-ig { margin-top:36px; padding-top:30px; border-top:1px solid rgba(255,255,255,0.15); }
-        .hero-ig-title { font-family:'Poppins','Noto Sans KR',sans-serif; font-size:1.6rem; font-weight:800; margin-bottom:8px; letter-spacing:-0.5px; color:#fff; }
-        .hero-ig-sub { font-size:0.95rem; opacity:0.8; margin-bottom:24px; }
-        .hero-ig-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
-        .hero-ig-btn { padding:14px 32px; background:rgba(255,255,255,0.1); border:2px solid rgba(255,255,255,0.5); color:#fff; border-radius:30px; cursor:pointer; font-size:1rem; font-weight:600; transition:all 0.3s; letter-spacing:-0.3px; }
-        .hero-ig-btn:hover { background:rgba(255,255,255,0.2); border-color:#fff; transform:translateY(-2px); }
-        .hero-ig-btn.active { background:rgba(255,255,255,0.25); border-color:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.2); }
-        .hero-ig-desc { font-size:0.92rem; opacity:0.75; max-width:700px; margin:0 auto; line-height:1.7; }
+        /* Hero USP */
+        .hero-usp { margin-top:36px; padding-top:30px; border-top:1px solid rgba(255,255,255,0.15); }
+        .hero-usp-badge { display:inline-block; background:rgba(255,215,0,0.2); border:1px solid rgba(255,215,0,0.5); color:#ffd700; font-size:0.82rem; font-weight:700; padding:6px 18px; border-radius:20px; margin-bottom:16px; letter-spacing:-0.3px; }
+        .hero-usp-title { font-family:'Poppins','Noto Sans KR',sans-serif; font-size:2rem; font-weight:800; margin-bottom:10px; letter-spacing:-0.5px; color:#fff; }
+        .hero-usp-sub { font-size:1rem; opacity:0.85; margin-bottom:28px; line-height:1.7; }
+        .hero-usp-features { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+        .hero-usp-feat { display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:10px 18px; border-radius:12px; font-size:0.9rem; font-weight:500; }
+        .hero-usp-icon { font-size:1.2rem; }
+        .hero-usp-text { letter-spacing:-0.3px; }
+        .hero-usp-cta { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:16px; }
+        .hero-cta-primary { padding:16px 40px; background:linear-gradient(135deg, #ff6f00, #ff8f00); border:none; color:#fff; border-radius:30px; cursor:pointer; font-size:1.1rem; font-weight:700; transition:all 0.3s; letter-spacing:-0.3px; box-shadow:0 4px 20px rgba(255,111,0,0.4); }
+        .hero-cta-primary:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(255,111,0,0.55); background:linear-gradient(135deg, #e65100, #ff6f00); }
+        .hero-cta-secondary { padding:16px 32px; background:transparent; border:2px solid rgba(255,255,255,0.5); color:#fff; border-radius:30px; cursor:pointer; font-size:1rem; font-weight:600; transition:all 0.3s; letter-spacing:-0.3px; }
+        .hero-cta-secondary:hover { background:rgba(255,255,255,0.15); border-color:#fff; transform:translateY(-2px); }
+        .hero-usp-note { font-size:0.78rem; opacity:0.6; margin-top:8px; }
         
         /* Main Container */
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
@@ -146,6 +159,84 @@
         /* Pages */
         .page { display: none; }
         .page.active { display: block; }
+
+        /* Guide Pages Common */
+        .guide-container { max-width:1050px; margin:0 auto; }
+        .guide-header { text-align:center; margin-bottom:32px; }
+        .guide-header h2 { font-size:1.8rem; font-weight:800; color:var(--primary); margin-bottom:8px; letter-spacing:-0.5px; }
+        .guide-header p { font-size:0.95rem; color:var(--text-mid); line-height:1.7; }
+        .guide-back { display:inline-flex; align-items:center; gap:6px; margin-bottom:20px; padding:8px 18px; background:var(--primary-bg); color:var(--primary); border-radius:20px; cursor:pointer; font-size:0.82rem; font-weight:600; border:none; transition:all 0.2s; }
+        .guide-back:hover { background:#c5cae9; }
+        .guide-cta { text-align:center; margin-top:36px; padding:28px; background:linear-gradient(135deg,#e8eaf6,#c5cae9); border-radius:16px; }
+        .guide-cta p { font-size:0.9rem; color:var(--text-mid); margin-bottom:14px; }
+        .guide-cta-btn { display:inline-block; padding:14px 36px; background:var(--primary); color:#fff; border:none; border-radius:30px; font-size:1rem; font-weight:700; cursor:pointer; transition:all 0.3s; }
+        .guide-cta-btn:hover { background:#0d1757; transform:translateY(-2px); box-shadow:0 4px 16px rgba(26,35,126,0.3); }
+        
+        /* Guide: Cargo Type */
+        .cargo-group { margin-bottom:24px; }
+        .cargo-group-title { font-size:1rem; font-weight:700; color:var(--primary); padding:10px 16px; background:var(--primary-bg); border-radius:10px 10px 0 0; border-left:4px solid var(--primary); }
+        .cargo-group-items { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:0; }
+        .cargo-item { padding:10px 16px; font-size:0.82rem; color:var(--text); border-bottom:1px solid #f0f0f0; display:flex; align-items:center; gap:8px; }
+        .cargo-item:hover { background:#f5f6ff; }
+        .cargo-code { font-weight:700; color:var(--primary); min-width:55px; }
+        .hs-match-box { background:#e3f2fd; border:1px solid #90caf9; border-radius:12px; padding:20px 24px; margin-bottom:28px; }
+        .hs-match-box h3 { font-size:1.05rem; color:#1565c0; margin-bottom:10px; }
+        .hs-match-box p { font-size:0.85rem; color:#555; line-height:1.7; }
+        .hs-flow { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
+        .hs-flow-step { background:#fff; border:2px solid #90caf9; border-radius:10px; padding:10px 18px; font-size:0.82rem; font-weight:600; color:#1565c0; }
+        .hs-flow-arrow { font-size:1.2rem; color:#90caf9; }
+        
+        /* Guide: Region Map */
+        .region-search { display:flex; gap:10px; margin-bottom:24px; justify-content:center; }
+        .region-search input { padding:12px 20px; border:2px solid #e0e0e0; border-radius:30px; font-size:0.9rem; width:320px; outline:none; transition:border 0.2s; }
+        .region-search input:focus { border-color:var(--primary); }
+        .region-search-result { text-align:center; margin-bottom:20px; font-size:0.9rem; min-height:28px; }
+        .region-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px; }
+        .region-card { border-radius:14px; padding:18px 20px; border:2px solid #e0e0e0; transition:all 0.3s; cursor:pointer; }
+        .region-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.08); }
+        .region-card.highlight { border-color:var(--primary); background:var(--primary-bg); box-shadow:0 4px 20px rgba(26,35,126,0.15); }
+        .region-card-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+        .region-num { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.82rem; font-weight:800; color:#fff; flex-shrink:0; }
+        .region-card-name { font-size:1.05rem; font-weight:700; color:var(--text); }
+        .region-countries { font-size:0.78rem; color:var(--text-mid); line-height:1.8; }
+        .region-country-tag { display:inline-block; background:#f5f5f5; padding:3px 9px; border-radius:12px; margin:2px; font-size:0.72rem; }
+        .region-country-tag.match { background:#ffeb3b; font-weight:600; }
+        
+        /* Guide: Coverage */
+        .cov-section { margin-bottom:28px; }
+        .cov-section-title { font-size:1.1rem; font-weight:800; color:var(--primary); padding:12px 18px; background:var(--primary-bg); border-radius:12px; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+        .cov-cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:14px; }
+        .cov-card { border:2px solid #e0e0e0; border-radius:12px; padding:18px; transition:all 0.2s; }
+        .cov-card:hover { border-color:var(--primary); box-shadow:0 2px 12px rgba(26,35,126,0.1); }
+        .cov-card-name { font-size:1rem; font-weight:700; margin-bottom:6px; }
+        .cov-card-en { font-size:0.75rem; color:#999; margin-bottom:10px; }
+        .cov-card-desc { font-size:0.8rem; color:var(--text-mid); line-height:1.7; }
+        .cov-card-scope { display:inline-block; margin-top:8px; padding:4px 12px; border-radius:20px; font-size:0.72rem; font-weight:700; }
+        
+        /* Guide: Value */
+        .value-diagram { background:linear-gradient(135deg,#e8eaf6,#f5f6ff); border-radius:16px; padding:32px; text-align:center; margin-bottom:28px; }
+        .value-formula { font-size:1.6rem; font-weight:800; color:var(--primary); margin-bottom:12px; letter-spacing:-0.5px; }
+        .value-formula-sub { font-size:0.9rem; color:var(--text-mid); }
+        .value-breakdown { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-top:24px; }
+        .value-item { background:#fff; border-radius:12px; padding:20px; text-align:center; border:1px solid #e0e0e0; }
+        .value-item-icon { font-size:2rem; margin-bottom:8px; }
+        .value-item-label { font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:4px; }
+        .value-item-desc { font-size:0.78rem; color:var(--text-mid); line-height:1.6; }
+        .value-example { background:#fff3e0; border:1px solid #ffcc02; border-radius:12px; padding:20px 24px; margin-top:20px; }
+        .value-example h4 { font-size:0.95rem; color:#e65100; margin-bottom:10px; }
+        .value-example p { font-size:0.82rem; color:#555; line-height:1.8; }
+        
+        @media(max-width:768px){
+            .guide-header h2 { font-size:1.3rem; }
+            .cargo-group-items { grid-template-columns:1fr; }
+            .region-grid { grid-template-columns:1fr; }
+            .region-search input { width:100%; }
+            .cov-cards { grid-template-columns:1fr; }
+            .value-formula { font-size:1.2rem; }
+            .value-breakdown { grid-template-columns:1fr 1fr; }
+            .hs-flow { flex-direction:column; }
+            .hs-flow-arrow { transform:rotate(90deg); }
+        }
         
         /* Calculator Page */
         .calc-container { background: var(--white); border-radius: 15px; padding: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); }
@@ -336,6 +427,17 @@
             .hero { padding: 30px 16px 28px; }
             .hero h1 { font-size: 1.5rem; }
             .hero > p { font-size: 0.85rem; }
+            .hero-usp { margin-top:24px; padding-top:20px; }
+            .hero-usp-badge { font-size:0.72rem; padding:5px 14px; }
+            .hero-usp-title { font-size:1.35rem; }
+            .hero-usp-sub { font-size:0.82rem; margin-bottom:20px; }
+            .hero-usp-features { gap:8px; }
+            .hero-usp-feat { padding:8px 12px; font-size:0.78rem; }
+            .hero-usp-icon { font-size:1rem; }
+            .hero-usp-cta { flex-direction:column; align-items:center; gap:10px; }
+            .hero-cta-primary { width:85%; padding:14px 20px; font-size:0.95rem; }
+            .hero-cta-secondary { width:85%; padding:12px 20px; font-size:0.88rem; }
+            .hero-usp-note { font-size:0.7rem; }
             .hero-ig { margin-top:24px; padding-top:20px; }
             .hero-ig-title { font-size:1.15rem; }
             .hero-ig-sub { font-size:0.78rem; margin-bottom:16px; }
@@ -483,7 +585,7 @@
             user-select: none;
             cursor: pointer;
         }
-        button, .btn-primary, .btn-secondary, .hero-info-btn, .btn-submit, .btn-apply {
+        button, .btn-primary, .btn-secondary, .hero-info-btn, .hero-cta-primary, .hero-cta-secondary, .btn-submit, .btn-apply {
             min-height: 44px;
             min-width: 44px;
         }
@@ -881,7 +983,7 @@
 .pnl { display:none; animation:fadeUp .4s ease; }
 .pnl.on { display:block; }
 @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-.pnl-intro { text-align:center; margin-bottom:36px; }
+.pnl-intro { text-align:center; margin-bottom:20px; }
 .pnl-intro p { font-size:1.05rem; color:var(--text-light); max-width:780px; margin:0 auto; line-height:1.8; }
 
 /* ═══ 3-COLUMN CARDS ═══ */
@@ -929,6 +1031,85 @@
 .cd.exempt .m { background:rgba(84,110,122,0.1); color:var(--exempt-gray); }
 .cd .sc { margin-top:14px; padding-top:12px; border-top:1px dashed rgba(0,0,0,0.08); }
 .cd .sc-t { font-size:0.8rem; font-weight:700; color:var(--text-light); letter-spacing:0.8px; margin-bottom:5px; }
+
+/* ═══ ACCORDION SUB-SECTIONS ═══ */
+.ig-accord {
+    margin-bottom:16px; border-radius:16px; overflow:hidden;
+    border:1.5px solid var(--border);
+    background:var(--bg-card);
+    transition:box-shadow .3s;
+}
+.ig-accord:last-child { margin-bottom:0; }
+.ig-accord.open { box-shadow:0 4px 20px rgba(26,35,126,0.06); }
+.ig-accord-head {
+    display:flex; align-items:center; gap:14px;
+    padding:18px 24px; cursor:pointer;
+    background:var(--bg-soft);
+    transition:background .2s;
+    user-select:none; -webkit-user-select:none;
+    border-bottom:1.5px solid transparent;
+}
+.ig-accord.open .ig-accord-head {
+    border-bottom-color:var(--border);
+    background:linear-gradient(135deg,rgba(26,35,126,0.03),rgba(57,73,171,0.02));
+}
+.ig-accord-head:hover { background:rgba(26,35,126,0.04); }
+.ig-accord-icon {
+    width:40px; height:40px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.2rem; flex-shrink:0;
+    background:linear-gradient(135deg,var(--primary),#3949ab);
+    color:#fff;
+    box-shadow:0 2px 8px rgba(26,35,126,0.15);
+}
+.ig-accord-title {
+    flex:1; font-size:1.1rem; font-weight:800; color:var(--text-dark);
+    letter-spacing:-0.3px; line-height:1.4;
+}
+.ig-accord-title small {
+    display:block; font-size:0.78rem; font-weight:500; color:var(--text-light);
+    margin-top:2px; letter-spacing:0;
+}
+.ig-accord-arrow {
+    width:28px; height:28px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--bg-soft); border:1.5px solid var(--border);
+    font-size:0.7rem; color:var(--text-light);
+    transition:transform .3s, background .3s;
+    flex-shrink:0;
+}
+.ig-accord.open .ig-accord-arrow {
+    transform:rotate(180deg);
+    background:var(--primary); border-color:var(--primary); color:#fff;
+}
+.ig-accord-body {
+    max-height:0; overflow:hidden;
+    transition:max-height .4s cubic-bezier(0.4,0,0.2,1), padding .3s;
+    padding:0 24px;
+}
+.ig-accord.open .ig-accord-body {
+    max-height:6000px;
+    padding:28px 24px;
+}
+
+@media(max-width:600px) {
+    .ig-accord { border-radius:12px; margin-bottom:10px; }
+    .ig-accord-head { padding:14px 16px; gap:10px; }
+    .ig-accord-icon { width:34px; height:34px; font-size:1rem; border-radius:10px; }
+    .ig-accord-title { font-size:0.92rem; }
+    .ig-accord-title small { font-size:0.7rem; }
+    .ig-accord-arrow { width:24px; height:24px; }
+    .ig-accord-body { padding:0 14px; }
+    .ig-accord.open .ig-accord-body { padding:20px 14px; }
+}
+
+/* Content inside accordion bodies: reduce extra spacing */
+.ig-accord-body .svg-box { margin-bottom:0; }
+.ig-accord-body .cmp { margin-top:0; }
+.ig-accord-body .cards3 { margin-bottom:0; }
+.ig-accord-body .v-grid { margin-bottom:0; }
+.ig-accord-body .req-section { margin-top:0; }
+.ig-accord-body .divider { display:none; }
 
 /* ═══ DIVIDER (Title-style) ═══ */
 .divider {
@@ -1093,8 +1274,8 @@
 }
 .tc:first-child { font-weight:600; color:var(--text-dark); border-right:1px solid rgba(0,0,0,0.04); }
 .tc:not(:first-child) { justify-content:center; }
-.tc.highlight { background:rgba(0,191,165,0.04); }
-.tc.highlight-a { background:rgba(21,101,192,0.04); }
+.tr.highlight { background:rgba(0,191,165,0.04); }
+.tr.highlight-a { background:rgba(21,101,192,0.04); }
 
 .s { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:8px; font-size:0.9rem; }
 .sy { background:#dcfce7; color:#16a34a; }
@@ -1481,8 +1662,9 @@
                     </div>
                 </div>
                 <div class="nav-item-wrap">
-                    <span class="nav-item" onclick="showPage('info')" data-i18n="nav.info">정보센터</span>
+                    <span class="nav-item" onclick="showPage('infographic')" data-i18n="nav.info">정보센터</span>
                     <div class="nav-dropdown">
+                        <a href="javascript:void(0)" onclick="showPage('infographic'); return false;" data-i18n="nav.dd.infographic">📋 적하보험이해</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('mia1906'),100); return false;" data-i18n="nav.dd.mia1906">📜 MIA 1906 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('insuranceAct2015'),100); return false;" data-i18n="nav.dd.insuranceAct">📜 Insurance Act 2015 영한대역</a>
                         <a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('iccOldBilingual'),100); return false;" data-i18n="nav.dd.iccOld">📜 ICC 구약관 영한대역</a>
@@ -1518,20 +1700,6 @@
                     </ul>
                 </div>
                 <div class="services-section">
-                    <h4 data-i18n="services.sec.support">고객센터</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)" onclick="showPage('notice'); toggleServicesModal(); return false;" data-i18n="nav.notice.full">알아두실 사항</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('info'); toggleServicesModal(); return false;" data-i18n="services.info">정보센터 (약관안내)</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('additionalClauses'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.addClauses">부가약관 영한대역</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('specialCargo'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.specialCargo">특수화물보통약관 영한대역</a></li>
-                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('otherSpecial'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.otherSpecial">기타특별약관 영한대역</a></li>
-                        <li><a href="javascript:void(0)" onclick="contactEmail()" data-i18n="services.email">✉️ E-mail 이메일 문의</a></li>
-                        <li><a href="tel:010-5755-6465" data-i18n="services.phone">📱 전화 상담 (010-5755-6465)</a></li>
-                        <li><a href="https://open.kakao.com/o/sYXKPVfg" target="_blank">💬 카카오톡 상담</a></li>
-                        <li><a href="https://talk.nate.com/?domain=nateonweb&dest=n2nib" target="_blank">💜 네이트온 상담</a></li>
-                    </ul>
-                </div>
-                <div class="services-section">
                     <h4 data-i18n="services.sec.calc">보험료 계산</h4>
                     <ul>
                         <li><a href="javascript:void(0)" onclick="showPage('calculator'); toggleServicesModal(); return false;" data-i18n="nav.dd.calc">📊 적하보험 예상보험료</a></li>
@@ -1540,27 +1708,76 @@
                         <li><a href="javascript:void(0)" onclick="showPage('liabilityQuote'); toggleServicesModal(); return false;" data-i18n="nav.dd.liabQuote">화물배상 견적신청</a></li>
                     </ul>
                 </div>
+                <div class="services-section">
+                    <h4 data-i18n="nav.info">정보센터</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="showPage('infographic'); toggleServicesModal(); return false;" data-i18n="nav.dd.infographic">📋 적하보험이해</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('mia1906'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.mia1906">📜 MIA 1906 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('insuranceAct2015'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.insuranceAct">📜 Insurance Act 2015 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('iccOldBilingual'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.iccOld">📜 ICC 구약관 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('iccBilingual'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.iccNew">📜 ICC (A)(B)(C) 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('itcHull'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.itcHull">🚢 ITC-Hull 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('additionalClauses'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.addClauses">📑 부가약관 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('specialCargo'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.specialCargo">📑 특수화물보통약관 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('otherSpecial'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.otherSpecial">📑 기타특별약관 영한대역</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('info'); setTimeout(()=>showInfoTab('cargoTable'),100); toggleServicesModal(); return false;" data-i18n="nav.dd.cargoTable">📋 화물종류표</a></li>
+                    </ul>
+                </div>
+                <div class="services-section">
+                    <h4 data-i18n="nav.notice.full">알아두실 사항</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="showPage('notice'); toggleServicesModal(); return false;" data-i18n="services.noticeView">📌 알아두실 사항 보기</a></li>
+                    </ul>
+                </div>
+                <div class="services-section">
+                    <h4 data-i18n="services.sec.support">고객지원</h4>
+                    <ul>
+                        <li><a href="javascript:void(0)" onclick="contactEmail()" data-i18n="services.email">✉️ E-mail 이메일 문의</a></li>
+                        <li><a href="tel:010-5755-6465" data-i18n="services.phone">📱 전화 상담 (010-5755-6465)</a></li>
+                        <li><a href="https://open.kakao.com/o/sYXKPVfg" target="_blank">💬 카카오톡 상담</a></li>
+                        <li><a href="https://talk.nate.com/?domain=nateonweb&dest=n2nib" target="_blank">💜 네이트온 상담</a></li>
+                    </ul>
+                </div>
             </div>
             <button class="services-btn" onclick="toggleServicesModal()" data-i18n="btn.close">닫기</button>
         </div>
     </div>
 
-    <!-- Hero Section (Expanded with Infographic Nav) -->
+    <!-- Hero Section (USP - Calculator) -->
     <section class="hero" id="heroSection">
         <h1 data-i18n="hero.title">🚢 해상·항공 적하보험 전문</h1>
         <p data-i18n="hero.subtitle">실시간 예상보험료 계산 · 간편 가입신청 — 디지털 적하보험 플랫폼 카고인슈</p>
         
-        <div class="hero-ig">
-            <h2 class="hero-ig-title" data-i18n="hero.ig.title">📋 적하보험 한눈에 이해하기</h2>
-            <p class="hero-ig-sub" data-i18n="hero.ig.sub">담보위험 · ICC 구약관 · ICC 신약관의 핵심 차이를 인포그래픽으로 쉽게 비교하세요</p>
+        <div class="hero-usp">
+            <div class="hero-usp-badge" data-i18n="hero.usp.badge">🏆 적하보험 전문 디지털 플랫폼</div>
+            <h2 class="hero-usp-title" data-i18n="hero.usp.title">실시간 예상보험료 계산</h2>
+            <p class="hero-usp-sub" data-i18n="hero.usp.sub">화물 종류 · 운송 지역 · 담보 조건 · 화물 가액을 입력하면<br>예상 보험료를 즉시 확인할 수 있습니다</p>
             
-            <div class="hero-ig-btns">
-                <button class="hero-ig-btn" onclick="goIG(0)" data-i18n="hero.ig.btn1">⚓ 담보위험 · 보상 · 면책</button>
-                <button class="hero-ig-btn" onclick="goIG(1)" data-i18n="hero.ig.btn2">📜 ICC 구약관 담보비교</button>
-                <button class="hero-ig-btn" onclick="goIG(2)" data-i18n="hero.ig.btn3">📘 ICC 신약관 담보비교</button>
+            <div class="hero-usp-features">
+                <div class="hero-usp-feat" onclick="showPage('guideCargoType')" style="cursor:pointer;">
+                    <span class="hero-usp-icon">📦</span>
+                    <span class="hero-usp-text" data-i18n="hero.usp.cargo">40개 화물종류</span>
+                </div>
+                <div class="hero-usp-feat" onclick="showPage('guideRegion')" style="cursor:pointer;">
+                    <span class="hero-usp-icon">🌍</span>
+                    <span class="hero-usp-text" data-i18n="hero.usp.region">10개 운송지역</span>
+                </div>
+                <div class="hero-usp-feat" onclick="showPage('guideCoverage')" style="cursor:pointer;">
+                    <span class="hero-usp-icon">📋</span>
+                    <span class="hero-usp-text" data-i18n="hero.usp.coverage">신·구약관 9가지 담보조건</span>
+                </div>
+                <div class="hero-usp-feat" onclick="showPage('guideValue')" style="cursor:pointer;">
+                    <span class="hero-usp-icon">💰</span>
+                    <span class="hero-usp-text" data-i18n="hero.usp.value">화물가액 입력</span>
+                </div>
+            </div>
+
+            <div class="hero-usp-cta">
+                <button class="hero-cta-primary" onclick="showPage('calculator')" data-i18n="hero.usp.ctaCalc">📊 지금 바로 보험료 계산하기</button>
+                <button class="hero-cta-secondary" onclick="showPage('apply')" data-i18n="hero.usp.ctaApply">📝 간편 가입신청</button>
             </div>
             
-            <p class="hero-ig-desc" data-i18n="hero.ig.desc">적하보험은 화물이 매도인 창고를 떠나 매수인 창고에 도착할 때까지 해상·육상 전 운송구간에서 발생할 수 있는 위험으로부터 화물을 보호합니다.</p>
+            <p class="hero-usp-note" data-i18n="hero.usp.note">※ 참고 금액이며 언더라이팅 심사 후 확정됩니다</p>
         </div>
     </section>
 
@@ -1695,6 +1912,15 @@
 <div class="pnl on" id="p0">
 
 <div class="pnl-intro"><p data-i18n="ig.p0.intro">적하보험은 화물이 매도인 창고를 떠나 매수인 창고에 도착할 때까지 해상·육상 전 운송구간에서 발생할 수 있는 위험으로부터 화물을 보호합니다.</p></div>
+
+<!-- ▼ Accordion 1: 담보위험·보상·면책 ▼ -->
+<div class="ig-accord open">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">⚡</div>
+        <div class="ig-accord-title" data-i18n="ig.acc.perils">담보위험 · 보상 · 면책<small>Perils Covered · Losses Compensated · Exclusions</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 <!-- Text Cards -->
 <div class="cards3">
     <div class="cd risk">
@@ -1744,7 +1970,17 @@
 </div>
 
 <!-- ▼ VISUAL: Cargo Journey ▼ -->
-<div class="divider"><span>🚢 화물 운송 여정과 위험</span></div>
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 1 -->
+
+<!-- ▼ Accordion 2: 화물 운송 여정 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">🚢</div>
+        <div class="ig-accord-title" data-i18n="ig.acc.journey">화물 운송 여정과 위험<small>Warehouse to Warehouse — Cargo Journey &amp; Perils</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 
 <div class="svg-box">
     <div class="scroll-hint" data-i18n="svg.scrollHint">👆 좌우로 스와이프하여 전체 그림을 확인하세요</div>
@@ -1946,13 +2182,19 @@
 </div>
 
 <!-- ▼ Required Info Section ▼ -->
-<div class="divider"><span>📝 적하보험 가입 시 필요한 정보</span></div>
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 2 -->
 
-<div class="req-section">
-    <div class="req-header">
-        <h4 data-i18n="ig.req.title">📝 적하보험 가입 시 필요 정보</h4>
-        <p data-i18n="ig.req.sub">적하보험 증권(Certificate) 발행을 위해 계약자/피보험자가 제공해야 하는 정보입니다.</p>
+<!-- ▼ Accordion 3: 가입 시 필요한 정보 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">📝</div>
+        <div class="ig-accord-title" data-i18n="ig.acc.reqinfo">적하보험 가입 시 필요한 정보<small>Required Information for Cargo Insurance Application</small></div>
+        <div class="ig-accord-arrow">▼</div>
     </div>
+    <div class="ig-accord-body">
+
+<div class="req-section" style="margin-top:0">
 
     <!-- Step Flow -->
     <div class="req-flow">
@@ -2115,12 +2357,24 @@
     </div>
 </div>
 
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 3 -->
+
 </div><!-- p0 -->
 
 <!-- ═══════════ PANEL 2: ICC 구약관 ═══════════ -->
 <div class="pnl" id="p1">
 
 <div class="pnl-intro"><p>ICC 구약관(1963)은 Lloyd's SG Policy를 보충하는 특별약관으로, 담보범위에 따라 <strong>All Risks · W.A · F.P.A</strong> 3가지 조건으로 구분됩니다. SG Policy에서 담보하는 위험(해상고유위험, 화재, 투하, 해적, 강도, 선원악행 등)을 기본으로 합니다.</p></div>
+
+<!-- ▼ Accordion 1: 3 조건 비교 ▼ -->
+<div class="ig-accord open">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">🛡️</div>
+        <div class="ig-accord-title">All Risks · W.A · F.P.A 조건 비교<small>Coverage Comparison of the Three Old Clauses</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 
 <!-- Shield Cards -->
 <div class="v-grid">
@@ -2196,7 +2450,17 @@
 </div>
 
 <!-- ▼ Nested Circle Diagram ▼ -->
-<div class="divider"><span>📊 담보범위 포함관계 다이어그램</span></div>
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 1 -->
+
+<!-- ▼ Accordion 2: 담보범위 포함관계 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">📊</div>
+        <div class="ig-accord-title">담보범위 포함관계 다이어그램<small>Coverage Scope Inclusion Diagram — All Risks ⊃ W.A ⊃ F.P.A</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 <div class="svg-box">
     <div class="scroll-hint">👆 좌우로 스와이프하여 전체 다이어그램을 확인하세요</div>
     <div class="svg-title">
@@ -2249,10 +2513,22 @@
     </svg>
 </div>
 
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 2 -->
+
+<!-- ▼ Accordion 3: 상세 비교표 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">📋</div>
+        <div class="ig-accord-title">구약관 상세 비교표<small>Detailed Comparison Table — All Risks vs W.A vs F.P.A</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
+
 <!-- Comparison Table -->
 <div class="cmp">
     <div class="cmp-legend">
-        <div class="cmp-li"><div class="cmp-badge cb1">🔵 All Risks</div><div class="cmp-desc">전위험 담보</div></div>
+        <div class="cmp-li"><div class="cmp-badge cb1">🔵 All Risks</div><div class="cmp-desc" data-i18n="guide.cov.scopeAR">전위험 담보</div></div>
         <div class="cmp-li"><div class="cmp-badge cb2">🟢 W.A</div><div class="cmp-desc">분손 담보 (면책률↑)</div></div>
         <div class="cmp-li"><div class="cmp-badge cb3">🟣 F.P.A</div><div class="cmp-desc">단독해손 부담보</div></div>
     </div>
@@ -2290,12 +2566,25 @@
     </div>
     <div class="foot">* 구약관(1963) SG Policy 특별약관 · W.A 면책률: Lloyd's Memorandum Clause 준용 — 곡류·어류·소금·과실·곡분·종자 전액 부담보, 사탕·연초·대마·아마·피혁 5% 미만, 기타 3% 미만 부담보 · F.P.A 특별비용은 ICC(WA) 조건에서 보상할 것이라면 보상</div>
 </div>
+
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 3 -->
+
 </div><!-- p1 -->
 
 <!-- ═══════════ PANEL 3: ICC 신약관 ═══════════ -->
 <div class="pnl" id="p2">
 
 <div class="pnl-intro"><p>ICC 신약관(1982)은 SG Policy와 무관한 독립 약관으로 <strong>ICC(A) · ICC(B) · ICC(C)</strong>로 구분되며, 위험을 명확하게 열거했습니다.</p></div>
+
+<!-- ▼ Accordion 1: 3 조건 비교 ▼ -->
+<div class="ig-accord open">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">🛡️</div>
+        <div class="ig-accord-title">ICC(A) · (B) · (C) 조건 비교<small>Coverage Comparison of the Three New Clauses (1982)</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 
 <!-- Shield Cards -->
 <div class="v-grid">
@@ -2348,12 +2637,22 @@
             <div class="vi off"><span class="vdot off"></span>지진·낙뢰·해수유입 미담보</div>
             <div class="vi off"><span class="vdot off"></span>갑판유실·낙하전손 미담보</div>
         </div>
-        <div class="kcall"><div class="kcall-t">최소 담보</div><div class="kcall-p"><b>열거 기본 위험만</b>. 해수유입·지진·갑판유실·낙하전손은 미보상. C조건 열거위험으로 인한 해수손해만 간접 담보 가능.</div></div>
+        <div class="kcall"><div class="kcall-t" data-i18n="guide.cov.scopeMin">최소 담보</div><div class="kcall-p"><b>열거 기본 위험만</b>. 해수유입·지진·갑판유실·낙하전손은 미보상. C조건 열거위험으로 인한 해수손해만 간접 담보 가능.</div></div>
     </div>
 </div>
 
 <!-- ▼ B vs C Visual ▼ -->
-<div class="divider"><span>⭐ ICC(B)에서만 추가 담보되는 4가지 위험</span></div>
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 1 -->
+
+<!-- ▼ Accordion 2: B vs C 추가 담보 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">⭐</div>
+        <div class="ig-accord-title">ICC(B)에서만 추가 담보되는 4가지 위험<small>4 Additional Perils Covered by ICC(B) but not ICC(C)</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
 <div class="svg-box">
     <div class="scroll-hint">👆 좌우로 스와이프하여 전체 다이어그램을 확인하세요</div>
     <div class="svg-title">
@@ -2414,6 +2713,18 @@
     </svg>
 </div>
 
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 2 -->
+
+<!-- ▼ Accordion 3: 신약관 상세 비교표 ▼ -->
+<div class="ig-accord">
+    <div class="ig-accord-head" onclick="toggleIGAccord(this)">
+        <div class="ig-accord-icon">📋</div>
+        <div class="ig-accord-title">신약관 상세 비교표<small>Detailed Comparison Table — ICC(A) vs (B) vs (C)</small></div>
+        <div class="ig-accord-arrow">▼</div>
+    </div>
+    <div class="ig-accord-body">
+
 <!-- Table -->
 <div class="cmp">
     <div class="cmp-legend">
@@ -2458,10 +2769,476 @@
     </div>
     <div class="foot">* 신약관(1982) 독립약관 · ⭐ = 조건별 핵심 차이 · ICC(A)만 여하한 자의 고의적 손상·파괴 담보 (제4조 면책에서 제외) · ICC(C)에서 열거위험으로 인해 간접적 해수침수 발생 시 담보 가능 (예: 좌초로 인한 해수유입)</div>
 </div>
+
+    </div><!-- ig-accord-body -->
+</div><!-- ig-accord 3 -->
+
 </div><!-- p2 -->
 
                 </div><!-- panels -->
             </div><!-- ig-page-wrap -->
+        </div>
+
+        <!-- ═══ GUIDE PAGE 1: 화물종류 ═══ -->
+        <div class="page" id="page-guideCargoType">
+            <div class="guide-container">
+                <button class="guide-back" onclick="showPage('home')" data-i18n="guide.back">← 홈으로</button>
+                <div class="guide-header">
+                    <h2 data-i18n="guide.cargo.title">📦 40개 화물종류 분류</h2>
+                    <p data-i18n="guide.cargo.desc">적하보험 요율은 화물 종류에 따라 결정됩니다.<br>HS Code 입력 시 해당 화물분류가 자동으로 매칭됩니다.</p>
+                </div>
+
+                <div class="hs-match-box">
+                    <h3 data-i18n="guide.cargo.hsTitle">🔗 HS Code 자동매칭 시스템</h3>
+                    <p data-i18n="guide.cargo.hsDesc">수출입 통관 시 사용하는 <strong>HS Code(국제통일상품분류체계)</strong> 4자리를 입력하면, 보험 화물분류 코드(KIDI 기준)로 자동 변환되어 해당 요율이 적용됩니다.</p>
+                    <div class="hs-flow">
+                        <div class="hs-flow-step" data-i18n="guide.cargo.hsFlow1">📝 HS Code 4자리 입력<br><small>예: 6204 (여성의류)</small></div>
+                        <span class="hs-flow-arrow">→</span>
+                        <div class="hs-flow-step" data-i18n="guide.cargo.hsFlow2">🔄 KIDI 코드 자동매핑<br><small>→ 203 의류</small></div>
+                        <span class="hs-flow-arrow">→</span>
+                        <div class="hs-flow-step" data-i18n="guide.cargo.hsFlow3">📊 요율 자동적용<br><small>화물분류별 보험요율 산출</small></div>
+                    </div>
+                </div>
+
+                <!-- HS Code 인터랙티브 검색 -->
+                <div style="background:#fff; border:2px solid #1a237e; border-radius:16px; padding:24px; margin-bottom:28px;">
+                    <h3 style="font-size:1.05rem; color:var(--primary); margin-bottom:14px;" data-i18n="guide.cargo.searchTitle">🔍 HS Code → 화물분류 자동매칭 테스트</h3>
+                    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                        <input type="text" id="guideHsInput" placeholder="HS Code 4자리 입력 (예: 6204, 8471, 2710...)" 
+                            maxlength="4" inputmode="numeric"
+                            style="flex:1; min-width:200px; padding:14px 20px; border:2px solid #e0e0e0; border-radius:30px; font-size:1rem; font-weight:600; outline:none; transition:border 0.2s; letter-spacing:2px; text-align:center;"
+                            oninput="guideHsSearch()" onfocus="this.style.borderColor='#1a237e'" onblur="this.style.borderColor='#e0e0e0'">
+                    </div>
+                    <div id="guideHsResult" style="margin-top:16px; min-height:24px;"></div>
+                    <div id="guideHsSuggestions" style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;"></div>
+                    <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+                        <span style="font-size:0.72rem; color:#999;">예시:</span>
+                        <button onclick="document.getElementById('guideHsInput').value='6204';guideHsSearch();" style="padding:4px 12px; background:#f5f6ff; border:1px solid #c5cae9; border-radius:16px; font-size:0.75rem; cursor:pointer; color:var(--primary);">6204 여성의류</button>
+                        <button onclick="document.getElementById('guideHsInput').value='8471';guideHsSearch();" style="padding:4px 12px; background:#f5f6ff; border:1px solid #c5cae9; border-radius:16px; font-size:0.75rem; cursor:pointer; color:var(--primary);">8471 컴퓨터</button>
+                        <button onclick="document.getElementById('guideHsInput').value='2710';guideHsSearch();" style="padding:4px 12px; background:#f5f6ff; border:1px solid #c5cae9; border-radius:16px; font-size:0.75rem; cursor:pointer; color:var(--primary);">2710 석유류</button>
+                        <button onclick="document.getElementById('guideHsInput').value='1001';guideHsSearch();" style="padding:4px 12px; background:#f5f6ff; border:1px solid #c5cae9; border-radius:16px; font-size:0.75rem; cursor:pointer; color:var(--primary);">1001 밀</button>
+                        <button onclick="document.getElementById('guideHsInput').value='8703';guideHsSearch();" style="padding:4px 12px; background:#f5f6ff; border:1px solid #c5cae9; border-radius:16px; font-size:0.75rem; cursor:pointer; color:var(--primary);">8703 자동차</button>
+                    </div>
+                </div>
+
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.textile">🧵 섬유류 (6개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">201-①</span> 직제품 (Woven Fabric)</div>
+                        <div class="cargo-item"><span class="cargo-code">201-②</span> 원면 (Raw Cotton)</div>
+                        <div class="cargo-item"><span class="cargo-code">201-③</span> 생사 (Raw Silk)</div>
+                        <div class="cargo-item"><span class="cargo-code">201-④</span> 양모 (Wool)</div>
+                        <div class="cargo-item"><span class="cargo-code">202</span> 모피 및 피혁류 (Fur &amp; Leather)</div>
+                        <div class="cargo-item"><span class="cargo-code">203</span> 의류 (Clothing)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.wood">🪵 목재류 (4개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">204-①</span> 원목, 대나무 (Logs, Bamboo)</div>
+                        <div class="cargo-item"><span class="cargo-code">204-②</span> 가공목재 (Processed Wood)</div>
+                        <div class="cargo-item"><span class="cargo-code">204-③</span> 고무 (Rubber)</div>
+                        <div class="cargo-item"><span class="cargo-code">204-④</span> 잎담배 (Leaf Tobacco)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.paper">📄 지류 (2개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">205-①</span> 펄프 (Pulp)</div>
+                        <div class="cargo-item"><span class="cargo-code">205-②</span> 지류 (Paper)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.chem">⚗️ 화학류 (7개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">206</span> 비료 (Fertilizer)</div>
+                        <div class="cargo-item"><span class="cargo-code">207</span> 유류 (Oil)</div>
+                        <div class="cargo-item"><span class="cargo-code">208</span> 유지류 (Oil Fats)</div>
+                        <div class="cargo-item"><span class="cargo-code">209-①</span> 화공품·액체 (Liquid Chemicals)</div>
+                        <div class="cargo-item"><span class="cargo-code">209-②</span> 화공품·고체 (Solid Chemicals)</div>
+                        <div class="cargo-item"><span class="cargo-code">209-③</span> 폭발성 화공품 (Explosive Chemicals)</div>
+                        <div class="cargo-item"><span class="cargo-code">209-④</span> 의약품 (Pharmaceuticals)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.food">🍚 식품류 (3개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">210-①</span> 곡물류 (Grain)</div>
+                        <div class="cargo-item"><span class="cargo-code">210-③</span> 일반 식료품 (General Food)</div>
+                        <div class="cargo-item"><span class="cargo-code">210-④</span> 육류 및 수산물 (Meat &amp; Seafood)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.bio">🌿 동식물 (5개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">212-①</span> 식물 (Plants)</div>
+                        <div class="cargo-item"><span class="cargo-code">212-②</span> 대형 포유류 (Large Mammals)</div>
+                        <div class="cargo-item"><span class="cargo-code">212-③</span> 뱀류 (Snakes)</div>
+                        <div class="cargo-item"><span class="cargo-code">212-④</span> 조류 (Birds)</div>
+                        <div class="cargo-item"><span class="cargo-code">212-⑤</span> 수생생물 (Aquatic Animals)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.mineral">⛏️ 광물류 (3개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">213-①</span> 광산물 1류 (Minerals Type 1)</div>
+                        <div class="cargo-item"><span class="cargo-code">213-②</span> 광산물 2류 (Minerals Type 2)</div>
+                        <div class="cargo-item"><span class="cargo-code">214</span> 석탄류 (Coal)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.metal">🔩 금속류 (2개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">215-①</span> 철금속 (Ferrous Metals)</div>
+                        <div class="cargo-item"><span class="cargo-code">215-②</span> 비철금속 (Non-ferrous Metals)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.machine">⚙️ 기계류 (3개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">216-①</span> 일반기계 (General Machinery)</div>
+                        <div class="cargo-item"><span class="cargo-code">216-④</span> 자동차 (Automobiles)</div>
+                        <div class="cargo-item"><span class="cargo-code">216-⑤</span> 중장비 (Heavy Equipment)</div>
+                    </div>
+                </div>
+                <div class="cargo-group">
+                    <div class="cargo-group-title" data-i18n="guide.cargo.g.etc">📦 기타 (5개)</div>
+                    <div class="cargo-group-items">
+                        <div class="cargo-item"><span class="cargo-code">217</span> 유리 및 요업제품 (Glass &amp; Ceramic)</div>
+                        <div class="cargo-item"><span class="cargo-code">301</span> 화폐/귀금속/보석 (Bullion/Jewelry)</div>
+                        <div class="cargo-item"><span class="cargo-code">302</span> 이사화물 (Household Goods)</div>
+                        <div class="cargo-item"><span class="cargo-code">303</span> 잡화 (General Merchandise)</div>
+                        <div class="cargo-item"><span class="cargo-code">306</span> 군수물자 (Defense Materials)</div>
+                    </div>
+                </div>
+
+                <div class="guide-cta">
+                    <p data-i18n="guide.cargo.cta">화물종류를 확인하셨나요? 지금 바로 보험료를 계산해 보세요.</p>
+                    <button class="guide-cta-btn" onclick="showPage('calculator')" data-i18n="guide.cta.calc">📊 예상보험료 계산하기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ GUIDE PAGE 2: 운송지역 ═══ -->
+        <div class="page" id="page-guideRegion">
+            <div class="guide-container">
+                <button class="guide-back" onclick="showPage('home')" data-i18n="guide.back">← 홈으로</button>
+                <div class="guide-header">
+                    <h2 data-i18n="guide.region.title">🌍 10개 운송지역</h2>
+                    <p data-i18n="guide.region.desc">운송 지역에 따라 보험요율이 달라집니다. 도착지/출발지 국가를 검색하면 해당 운송지역을 확인할 수 있습니다.</p>
+                </div>
+
+                <div class="region-search">
+                    <input type="text" id="regionSearchInput" placeholder="국가명 검색 (예: 미국, Vietnam, 독일...)" oninput="searchRegionCountry()">
+                </div>
+                <div class="region-search-result" id="regionSearchResult"></div>
+
+                <div class="region-grid">
+                    <div class="region-card" id="rc-0" onclick="highlightRegionCard(0)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#78909c;">1</div>
+                            <div class="region-card-name" data-i18n="guide.region.r0.name">보세/외항</div>
+                        </div>
+                        <div class="region-countries" data-i18n="guide.region.r0.desc">한국 내 보세구역 및 외항 간 운송에 적용. 국내 항만 간 화물 이동 시 최저 요율 적용.</div>
+                    </div>
+                    <div class="region-card" id="rc-1" onclick="highlightRegionCard(1)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#26a69a;">2</div>
+                            <div class="region-card-name" data-i18n="guide.region.r1.name">국내연안</div>
+                        </div>
+                        <div class="region-countries" data-i18n="guide.region.r1.desc">한국 연안 항구 간 운송. 제주도, 울릉도 등 도서지역 포함.</div>
+                    </div>
+                    <div class="region-card" id="rc-2" onclick="highlightRegionCard(2)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#ef5350;">3</div>
+                            <div class="region-card-name" data-i18n="guide.region.r2.name">🇯🇵 일본</div>
+                        </div>
+                        <div class="region-countries"><span class="region-country-tag" data-name="일본 Japan">일본</span></div>
+                    </div>
+                    <div class="region-card" id="rc-3" onclick="highlightRegionCard(3)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#e53935;">4</div>
+                            <div class="region-card-name" data-i18n="guide.region.r3.name">🇨🇳 중국</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="중국 China">중국</span>
+                            <span class="region-country-tag" data-name="대만 Taiwan">대만</span>
+                            <span class="region-country-tag" data-name="홍콩 Hong Kong">홍콩</span>
+                            <span class="region-country-tag" data-name="마카오 Macau">마카오</span>
+                            <span class="region-country-tag" data-name="몽골 Mongolia">몽골</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-4" onclick="highlightRegionCard(4)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#ff7043;">5</div>
+                            <div class="region-card-name" data-i18n="guide.region.r4.name">🌏 동남아</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="베트남 Vietnam">베트남</span>
+                            <span class="region-country-tag" data-name="태국 Thailand">태국</span>
+                            <span class="region-country-tag" data-name="싱가포르 Singapore">싱가포르</span>
+                            <span class="region-country-tag" data-name="말레이시아 Malaysia">말레이시아</span>
+                            <span class="region-country-tag" data-name="인도네시아 Indonesia">인도네시아</span>
+                            <span class="region-country-tag" data-name="필리핀 Philippines">필리핀</span>
+                            <span class="region-country-tag" data-name="미얀마 Myanmar">미얀마</span>
+                            <span class="region-country-tag" data-name="캄보디아 Cambodia">캄보디아</span>
+                            <span class="region-country-tag" data-name="라오스 Laos">라오스</span>
+                            <span class="region-country-tag" data-name="방글라데시 Bangladesh">방글라데시</span>
+                            <span class="region-country-tag" data-name="인도 India">인도</span>
+                            <span class="region-country-tag" data-name="스리랑카 Sri Lanka">스리랑카</span>
+                            <span class="region-country-tag" data-name="파키스탄 Pakistan">파키스탄</span>
+                            <span class="region-country-tag" data-name="브루나이 Brunei">브루나이</span>
+                            <span class="region-country-tag" data-name="네팔 Nepal">네팔</span>
+                            <span class="region-country-tag" data-name="동티모르 Timor-Leste">동티모르</span>
+                            <span class="region-country-tag" data-name="파푸아뉴기니 Papua New Guinea">파푸아뉴기니</span>
+                            <span class="region-country-tag" data-name="피지 Fiji">피지</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-5" onclick="highlightRegionCard(5)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#8d6e63;">6</div>
+                            <div class="region-card-name" data-i18n="guide.region.r5.name">🕌 중동/아프리카</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="사우디아라비아 Saudi Arabia">사우디</span>
+                            <span class="region-country-tag" data-name="아랍에미리트 UAE">UAE</span>
+                            <span class="region-country-tag" data-name="이란 Iran">이란</span>
+                            <span class="region-country-tag" data-name="이라크 Iraq">이라크</span>
+                            <span class="region-country-tag" data-name="터키 Turkey Türkiye">터키</span>
+                            <span class="region-country-tag" data-name="이스라엘 Israel">이스라엘</span>
+                            <span class="region-country-tag" data-name="이집트 Egypt">이집트</span>
+                            <span class="region-country-tag" data-name="남아프리카공화국 South Africa">남아공</span>
+                            <span class="region-country-tag" data-name="나이지리아 Nigeria">나이지리아</span>
+                            <span class="region-country-tag" data-name="케냐 Kenya">케냐</span>
+                            <span class="region-country-tag" data-name="카타르 Qatar">카타르</span>
+                            <span class="region-country-tag" data-name="쿠웨이트 Kuwait">쿠웨이트</span>
+                            <span class="region-country-tag" data-name="오만 Oman">오만</span>
+                            <span class="region-country-tag" data-name="요르단 Jordan">요르단</span>
+                            <span class="region-country-tag" data-name="바레인 Bahrain">바레인</span>
+                            <span style="font-size:0.72rem; color:#999;"> 외 65개국+</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-6" onclick="highlightRegionCard(6)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#66bb6a;">7</div>
+                            <div class="region-card-name" data-i18n="guide.region.r6.name">🦘 호주/뉴질랜드</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="호주 Australia">호주</span>
+                            <span class="region-country-tag" data-name="뉴질랜드 New Zealand">뉴질랜드</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-7" onclick="highlightRegionCard(7)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#42a5f5;">8</div>
+                            <div class="region-card-name" data-i18n="guide.region.r7.name">🏰 유럽</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="독일 Germany">독일</span>
+                            <span class="region-country-tag" data-name="프랑스 France">프랑스</span>
+                            <span class="region-country-tag" data-name="영국 United Kingdom UK">영국</span>
+                            <span class="region-country-tag" data-name="이탈리아 Italy">이탈리아</span>
+                            <span class="region-country-tag" data-name="스페인 Spain">스페인</span>
+                            <span class="region-country-tag" data-name="네덜란드 Netherlands">네덜란드</span>
+                            <span class="region-country-tag" data-name="폴란드 Poland">폴란드</span>
+                            <span class="region-country-tag" data-name="스웨덴 Sweden">스웨덴</span>
+                            <span class="region-country-tag" data-name="러시아 Russia">러시아</span>
+                            <span class="region-country-tag" data-name="우크라이나 Ukraine">우크라이나</span>
+                            <span style="font-size:0.72rem; color:#999;"> 외 36개국+</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-8" onclick="highlightRegionCard(8)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#5c6bc0;">9</div>
+                            <div class="region-card-name" data-i18n="guide.region.r8.name">🗽 북미</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="미국 United States USA">미국</span>
+                            <span class="region-country-tag" data-name="캐나다 Canada">캐나다</span>
+                            <span class="region-country-tag" data-name="멕시코 Mexico">멕시코</span>
+                            <span class="region-country-tag" data-name="파나마 Panama">파나마</span>
+                            <span class="region-country-tag" data-name="코스타리카 Costa Rica">코스타리카</span>
+                            <span class="region-country-tag" data-name="과테말라 Guatemala">과테말라</span>
+                            <span class="region-country-tag" data-name="쿠바 Cuba">쿠바</span>
+                            <span class="region-country-tag" data-name="자메이카 Jamaica">자메이카</span>
+                            <span style="font-size:0.72rem; color:#999;"> 외 10개국+</span>
+                        </div>
+                    </div>
+                    <div class="region-card" id="rc-9" onclick="highlightRegionCard(9)">
+                        <div class="region-card-header">
+                            <div class="region-num" style="background:#ab47bc;">10</div>
+                            <div class="region-card-name" data-i18n="guide.region.r9.name">🌎 남미</div>
+                        </div>
+                        <div class="region-countries">
+                            <span class="region-country-tag" data-name="브라질 Brazil">브라질</span>
+                            <span class="region-country-tag" data-name="아르헨티나 Argentina">아르헨티나</span>
+                            <span class="region-country-tag" data-name="칠레 Chile">칠레</span>
+                            <span class="region-country-tag" data-name="콜롬비아 Colombia">콜롬비아</span>
+                            <span class="region-country-tag" data-name="페루 Peru">페루</span>
+                            <span class="region-country-tag" data-name="에콰도르 Ecuador">에콰도르</span>
+                            <span class="region-country-tag" data-name="베네수엘라 Venezuela">베네수엘라</span>
+                            <span class="region-country-tag" data-name="우루과이 Uruguay">우루과이</span>
+                            <span style="font-size:0.72rem; color:#999;"> 외 4개국+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-cta">
+                    <p data-i18n="guide.region.cta">보험료 계산기에서 출발지·도착지 항구를 선택하면 위 10개 운송지역이 자동으로 결정됩니다.</p>
+                    <button class="guide-cta-btn" onclick="showPage('calculator')" data-i18n="guide.cta.calc">📊 예상보험료 계산하기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ GUIDE PAGE 3: 담보조건 ═══ -->
+        <div class="page" id="page-guideCoverage">
+            <div class="guide-container">
+                <button class="guide-back" onclick="showPage('home')" data-i18n="guide.back">← 홈으로</button>
+                <div class="guide-header">
+                    <h2 data-i18n="guide.cov.title">📋 신·구약관 9가지 담보조건</h2>
+                    <p data-i18n="guide.cov.desc">적하보험은 ICC(Institute Cargo Clauses) 약관에 따라 담보범위가 달라집니다.<br>신약관(1982/2009)과 구약관(1963)을 선택할 수 있습니다.</p>
+                </div>
+
+                <div class="cov-section">
+                    <div class="cov-section-title"><span data-i18n="guide.cov.newTitle" data-i18n="guide.cov.newTitle">📘 ICC 신약관 (1982/2009) — 4가지</div>
+                    <div class="cov-cards">
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#7b1fa2;">ICC (C)</div>
+                            <div class="cov-card-en">Institute Cargo Clauses (C)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.iccC.desc">화재·폭발, 좌초·침몰·전복, 충돌, 공동해손 희생, 투하, 본선·부선의 전손 등 <strong>열거된 위험</strong>만 담보. 가장 기본적인 보장.</div>
+                            <span class="cov-card-scope" style="background:#f3e5f5; color:#7b1fa2;" data-i18n="guide.cov.scope40">담보범위 약 40%</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#00796b;">ICC (B)</div>
+                            <div class="cov-card-en">Institute Cargo Clauses (B)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.iccB.desc">ICC(C) + 지진·낙뢰·해일, 갑판유실, 침수, 하역 중 낙하·추락 등 추가 담보. 중간 수준의 보장.</div>
+                            <span class="cov-card-scope" style="background:#e0f2f1; color:#00796b;" data-i18n="guide.cov.scope65">담보범위 약 65%</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#1565c0;">ICC (A)</div>
+                            <div class="cov-card-en">Institute Cargo Clauses (A)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.iccA.desc"><strong>전위험 담보(All Risks)</strong>. 면책사항을 제외한 모든 우연한 위험을 담보. 가장 넓은 보장 범위.</div>
+                            <span class="cov-card-scope" style="background:#e3f2fd; color:#1565c0;" data-i18n="guide.cov.scope100">담보범위 약 100%</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#0277bd;">ICC (A) AIR</div>
+                            <div class="cov-card-en">Institute Cargo Clauses (Air)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.iccAir.desc">항공운송 화물 전용. ICC(A)와 동일한 전위험 담보. 하역 후 시간제한이 <strong>30일</strong>로 축소.</div>
+                            <span class="cov-card-scope" style="background:#e1f5fe; color:#0277bd;" data-i18n="guide.cov.scopeAir" data-i18n="guide.cov.scopeAir">항공 전위험</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cov-section">
+                    <div class="cov-section-title" data-i18n="guide.cov.oldTitle">📜 ICC 구약관 (1963) — 5가지</div>
+                    <div class="cov-cards">
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#6a1b9a;">F.P.A.</div>
+                            <div class="cov-card-en">Free from Particular Average</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.fpa.desc"><strong>단독해손 부담보</strong>. 전손, 공동해손, 특정 사고(좌초·침몰·화재·충돌)로 인한 손해만 보상. 분손은 보상하지 않음.</div>
+                            <span class="cov-card-scope" style="background:#f3e5f5; color:#6a1b9a;" data-i18n="guide.cov.scopeMin">최소 담보</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#4a148c;">W.A. 3%</div>
+                            <div class="cov-card-en">With Average (3% Franchise)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.wa3.desc">F.P.A. + <strong>면책률 3% 이상의 분손</strong> 담보. 손해가 보험가액의 3% 이상이면 전액 보상, 미만이면 보상 없음.</div>
+                            <span class="cov-card-scope" style="background:#ede7f6; color:#4a148c;" data-i18n="guide.cov.scopeFr3">면책률 3%</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#311b92;">W.A. I.O.P</div>
+                            <div class="cov-card-en">With Average Irrespective of Percentage</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.waIop.desc">F.P.A. + <strong>면책률 없이 모든 분손</strong> 담보. 손해 비율에 관계없이 분손 보상.</div>
+                            <span class="cov-card-scope" style="background:#e8eaf6; color:#311b92;" data-i18n="guide.cov.scopeNoFr">면책률 없음</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#1a237e;">A/R</div>
+                            <div class="cov-card-en">All Risks</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.ar.desc"><strong>전위험 담보</strong>. 면책위험을 제외한 모든 우연한 사고로 인한 손해를 담보. 구약관 중 가장 넓은 보장.</div>
+                            <span class="cov-card-scope" style="background:#c5cae9; color:#1a237e;">전위험 담보</span>
+                        </div>
+                        <div class="cov-card">
+                            <div class="cov-card-name" style="color:#0d47a1;">A/R (AIR)</div>
+                            <div class="cov-card-en">All Risks (Air)</div>
+                            <div class="cov-card-desc" data-i18n="guide.cov.arAir.desc">항공운송 화물 전용 전위험 담보. 구약관 기준 항공 화물에 적용.</div>
+                            <span class="cov-card-scope" style="background:#e3f2fd; color:#0d47a1;">항공 전위험</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:#fff3e0; border:1px solid #ffcc02; border-radius:12px; padding:16px 20px; margin-top:8px; font-size:0.82rem; color:#e65100; line-height:1.7;">
+                    ⚠️ <strong>공통 면책위험</strong>: 고의적 불법행위 · 지연 · 고유하자/성질 · 포장부적합 · 자연소모 · 원자력/핵 · 전쟁(별도특약) · 파업(별도특약) · 불감항(별도)
+                </div>
+
+                <div class="guide-cta">
+                    <p data-i18n="guide.cov.cta">담보조건을 이해하셨나요? 조건별 보험료 차이를 직접 비교해 보세요.</p>
+                    <button class="guide-cta-btn" onclick="showPage('calculator')" data-i18n="guide.cta.calc">📊 예상보험료 계산하기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ GUIDE PAGE 4: 화물가액 ═══ -->
+        <div class="page" id="page-guideValue">
+            <div class="guide-container">
+                <button class="guide-back" onclick="showPage('home')" data-i18n="guide.back">← 홈으로</button>
+                <div class="guide-header">
+                    <h2 data-i18n="guide.val.title">💰 화물가액 (보험가액) 산정</h2>
+                    <p data-i18n="guide.val.desc">적하보험의 보험가액은 국제 상관습에 따라<br><strong>CIF 가격 × 110%</strong>를 기준으로 산정합니다.</p>
+                </div>
+
+                <div class="value-diagram">
+                    <div class="value-formula" data-i18n="guide.val.formula">보험가액 = CIF × 110%</div>
+                    <div class="value-formula-sub" data-i18n="guide.val.formulaSub">Insured Value = CIF Price × 110%</div>
+                    <div class="value-breakdown">
+                        <div class="value-item">
+                            <div class="value-item-icon">📦</div>
+                            <div class="value-item-label" data-i18n="guide.val.cost">C — Cost</div>
+                            <div class="value-item-desc" data-i18n="guide.val.costDesc">화물 원가<br>(Invoice 금액)</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-item-icon">🛡️</div>
+                            <div class="value-item-label" data-i18n="guide.val.ins">I — Insurance</div>
+                            <div class="value-item-desc" data-i18n="guide.val.insDesc">보험료<br>(적하보험료)</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-item-icon">🚢</div>
+                            <div class="value-item-label" data-i18n="guide.val.frt">F — Freight</div>
+                            <div class="value-item-desc" data-i18n="guide.val.frtDesc">운임<br>(해상/항공 운송비)</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-item-icon">📈</div>
+                            <div class="value-item-label" data-i18n="guide.val.profit">+10% (희망이익)</div>
+                            <div class="value-item-desc" data-i18n="guide.val.profitDesc">Imaginary Profit<br>도착 후 예상 이익분</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="value-example">
+                    <h4 data-i18n="guide.val.exTitle">💡 산출 예시</h4>
+                    <p>
+                        <span data-i18n="guide.val.exCIF"><strong>▸ CIF 조건일 때</strong><br>
+                        CIF 가격: <strong>USD 53,200</strong> (Cost $50,000 + Insurance $200 + Freight $3,000)<br>
+                        보험가액: USD 53,200 × 110% = <strong>USD 58,520</strong></span><br><br>
+                        <span data-i18n="guide.val.exFOB"><strong>▸ FOB/CFR 조건일 때</strong> (매수인이 보험 가입)<br>
+                        화물원가(C): <strong>USD 50,000</strong> / 운임(F): <strong>USD 3,000</strong><br>
+                        보험가액: (50,000 + 3,000) × 110% = <strong>USD 58,300</strong><br>
+                        <span style="font-size:0.75rem; color:#888;">※ 보험료(I)는 미확정이므로 (C+F) × 110%로 산정. 보험료 0.1~0.5%는 10% 희망이익에 흡수.</span></span>
+                    </p>
+                </div>
+
+                <div style="background:#e8eaf6; border-radius:12px; padding:16px 20px; margin-top:20px; font-size:0.82rem; color:var(--primary); line-height:1.7;">
+                    📌 <strong>인코텀즈(Incoterms)에 따른 보험가액 산정</strong><br><br>
+                    <span data-i18n="guide.val.incoCIF">• <strong>CIF/CIP 조건</strong>: 매도인이 보험가입 의무 → 가격에 보험료(I)가 이미 포함 → <strong>CIF × 110%</strong> 적용</span><br>
+                    <span data-i18n="guide.val.incoFOB">• <strong>FOB/CFR 조건</strong>: 매수인이 보험가입 → 보험료 미확정 상태에서 보험가액 산정 필요 → <strong>(C+F) × 110%</strong>로 산정</span><br>
+                    <span data-i18n="guide.val.incoEXW">• <strong>EXW 조건</strong>: 매수인이 모든 비용·위험 부담 → <strong>(원가 + 내륙운송비 + 해상운임) × 110%</strong></span><br><br>
+                    <span data-i18n="guide.val.circular"><span style="color:#e65100;">💡 <strong>왜 FOB/CFR/EXW에서 보험료(I)를 넣지 않나요?</strong></span><br>
+                    보험가액을 구하려면 보험료가 필요하고, 보험료를 구하려면 보험가액이 필요한 <strong>순환계산(Circular Calculation)</strong> 문제가 발생합니다. 실무에서는 보험료가 화물가액의 0.1~0.5% 수준으로 미미하므로, 10% 희망이익분에 흡수되는 것으로 보고 <strong>(C+F) × 110%</strong>를 보험가액으로 사용합니다.</span>
+                </div>
+
+                <div class="guide-cta">
+                    <p data-i18n="guide.val.cta">화물가액 산정 방법을 이해하셨나요? 직접 금액을 입력하고 보험료를 확인해 보세요.</p>
+                    <button class="guide-cta-btn" onclick="showPage('calculator')" data-i18n="guide.cta.calc">📊 예상보험료 계산하기</button>
+                </div>
+            </div>
         </div>
 
         <!-- Cargo Insurance Detail Page -->
@@ -2473,9 +3250,9 @@
                 <!-- 상품 소개 -->
                 <div class="detail-intro">
                     <p>
-                        <span data-i18n="cargo.intro">축적된 해외 언더라이팅 기법을 통한 질 높은 보험 서비스를 제공하고 전세계 <strong>54개국</strong>에 걸친 글로벌 네트워크를 활용하여 신속하고 정확한 보상 서비스를 제공합니다.
-                        해상 및 항공운송 이에 수반되는 내륙운송 중 화물이 멸실, 손상되는 경우 또는 손해를 방지 경감하기 위하여 화물의 소유자가 지출한 비용을 보험조건에 따라 보상하여 드립니다.
-                        웹베이스 시스템을 통한 실시간 증권발급 및 조회가 가능하고, 전문 위험관리인에 의한 위험 분석 및 글로벌 네트워크에 기반한 차별화된 리스크 관리 서비스를 제공합니다.</span>
+                        <span data-i18n="cargo.intro">엔투엔보험중개는 국내외 다수의 보험사와 제휴하여, 계약자의 화물 특성과 운송 조건에 가장 적합한 적하보험을 독립적으로 비교·중개해 드립니다.
+                        해상 및 항공운송, 이에 수반되는 내륙운송 중 화물이 멸실·손상되는 경우 또는 손해를 방지·경감하기 위하여 화물의 소유자가 지출한 비용을 보험조건에 따라 보상받으실 수 있습니다.
+                        실시간 예상보험료 계산, 복수 보험사 조건 비교, 전문 위험분석을 통해 최적의 보험 솔루션을 제공합니다.</span>
                     </p>
                 </div>
                 
@@ -2842,9 +3619,8 @@
                 <!-- 상품 소개 -->
                 <div class="detail-intro">
                     <p>
-                        축적된 해외 언더라이팅 기법을 통한 질 높은 보험 서비스를 제공하고, 신속하며 정확한 보상 서비스를 제공합니다. 
-                        보험 목적물을 <strong data-i18n="inland.subtitle">육상(호수와 하천을 포함합니다)</strong>에서 운송하는 도중에 생긴 멸실, 훼손 등의 손해 또는 화물을 보호하기 위하여 
-                        화물의 소유자가 입은 손해를 보험 조건에 따라 보상하여 드립니다.
+                        <span data-i18n="inland.intro">엔투엔보험중개는 복수의 보험사 상품을 비교·분석하여, 계약자의 운송 구간과 화물 특성에 가장 적합한 내륙운송보험을 독립적으로 중개해 드립니다.
+                        보험 목적물을 <strong>육상(호수와 하천을 포함)</strong>에서 운송하는 도중에 생긴 멸실·훼손 등의 손해 또는 화물을 보호하기 위하여 화물의 소유자가 입은 손해를 보험 조건에 따라 보상받으실 수 있습니다.</span>
                     </p>
                 </div>
                 
@@ -2914,8 +3690,9 @@
         <div class="page" id="page-art">
             <div class="info-container" style="max-width:950px;">
                 <h2 class="info-title" data-i18n="art.title">🎨 예술품종합보험</h2>
-                <p style="text-align:center; color:#666; margin-bottom:2rem;">
-                    예술품 종합보험은 <strong>전 위험담보 (All Risk Cover)</strong> 보험으로써 증권상 면책규정에 해당되는 몇몇 위험을 제외하고 급격하고 우연한 사고로 인하여 소장품(Collection)에 발생하는 손해를 보상하는 보험입니다.
+                <p style="text-align:center; color:#666; margin-bottom:2rem;" data-i18n="art.intro">
+                    엔투엔보험중개는 미술관·박물관·컬렉터의 소장품 특성과 전시·운송 환경을 분석하여, 가장 적합한 예술품종합보험을 독립적으로 비교·중개해 드립니다.
+                    예술품 종합보험은 <strong>전 위험담보 (All Risk Cover)</strong> 보험으로서 증권상 면책규정에 해당되는 일부 위험을 제외하고 급격하고 우연한 사고로 인하여 소장품(Collection)에 발생하는 손해를 보상하는 보험입니다.
                 </p>
                 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
@@ -3017,7 +3794,8 @@
         <div class="page" id="page-liability">
             <div class="info-container" style="max-width:900px;">
                 <h2 class="info-title" data-i18n="liability.title">📦 화물배상책임보험 (Freight Forwarder's Liability)</h2>
-                <p class="page-subtitle" style="line-height:1.8; font-size:0.95rem;">보험기간 동안에 발생한 화물의 손상, 멸실, 운송지연 등으로 발생하는 피보험자의<br>법률상 배상책임을 관습법, 계약서, 국가 또는 국제협약 관련법규의 범위내에서 담보합니다.</p>
+                <p class="page-subtitle" style="line-height:1.8; font-size:0.95rem;" data-i18n="liab.intro">엔투엔보험중개는 운송주선업자·물류기업의 영업 형태와 위험 구조를 분석하여, 가장 적합한 화물배상책임보험을 독립적으로 비교·중개해 드립니다.
+                    보험기간 동안에 발생한 화물의 손상, 멸실, 운송지연 등으로 발생하는 피보험자의 법률상 배상책임을 관습법, 계약서, 국가 또는 국제협약 관련법규의 범위내에서 담보합니다.</p>
                 
                 <div class="detail-card" style="margin-bottom:1.5rem;">
                     <h4><span class="icon-badge">🛡️</span> 주요 보상하는 손해</h4>
@@ -3081,15 +3859,15 @@
                 
                 <!-- 보험가입에 따른 권리와 의무 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;">보험가입에 따른 권리와 의무</h3>
+                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;" data-i18n="notice.h.rights">보험가입에 따른 권리와 의무</h3>
                     
                     <div style="margin-bottom:1.5rem;">
-                        <h4 style="color:#333; margin-bottom:0.8rem;">계약 전 알릴의무</h4>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.preduty">계약 전 알릴의무</h4>
                         <p style="color:#555; line-height:1.7;" data-i18n="notice.preduty.p">계약자, 피보험자 또는 이들의 대리인은 청약할 때 청약서(질문서를 포함합니다)에서 질문한 사항에 대하여 알고 있는 사실을반드시 사실대로 알려야 합니다.</p>
                     </div>
                     
                     <div style="margin-bottom:1.5rem;">
-                        <h4 style="color:#333; margin-bottom:0.8rem;">계약 후 알릴의무 및 위반에 따른 불이익</h4>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.postduty">계약 후 알릴의무 및 위반에 따른 불이익</h4>
                         <p style="color:#555; line-height:1.7;" data-i18n="notice.postduty.p">보험계약자 또는 피보험자는 계약을 맺은 후 아래의 사항을 즉시 회사에 알려야 합니다. 그러지 않을 경우, 보험사고가 발생한 경우에도 보험금 지급이 제한될 수 있습니다.</p>
                         <div style="background:#f5f5f5; padding:1rem; border-radius:8px; margin-top:0.8rem;">
                             <p style="color:#555; margin-bottom:0.5rem;"><strong data-i18n="notice.example">[예시]</strong></p>
@@ -3100,114 +3878,114 @@
                     </div>
                     
                     <div style="margin-bottom:1.5rem;">
-                        <h4 style="color:#333; margin-bottom:0.8rem;">청약 시에는 보험계약의 기본사항을 반드시 확인</h4>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.confirm">청약 시에는 보험계약의 기본사항을 반드시 확인</h4>
                         <p style="color:#555; line-height:1.7;"><span data-i18n="notice.confirm.p">보험계약자 또는 피보험자(보험대상자)는 보험계약 청약 시에 보험상품명, 보험기간, 보험료, 피보험자 등을 반드시 확인하시고보험상품 내용(약관)을 확인하시기 바랍니다.</span></p>
                     </div>
                     
                     <div>
-                        <h4 style="color:#333; margin-bottom:0.8rem;">청약의 철회</h4>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.withdraw">청약의 철회</h4>
                         <p data-i18n="notice.withdraw.p1" style="color:#555; line-height:1.7;">일반금융소비자인계약자는 「금융소비자자보호에관한법률」 제46조, 동법 시행령 제37조, 동법 감독규정 제30조에서 정하는 바에따라 보험증권을 받은 날부터 15일 이내(장기계약은 안 날부터 30일 이내에 한함)에 청약을 철회할 수 있으며, 이 경우 철회를 접수한 날부터 3영업일 이내 보험료를 돌려드립니다.</p>
                         <p data-i18n="notice.withdraw.p2" style="color:#555; font-size:0.9rem; margin-top:0.5rem;">다만, 보장기간이 90일 이내인 계약 또는 전문금융 소비자가 체결한계약은 청약을 철회할 수 없습니다. 청약철회 가능일 경우 납입한 보험료 전액을 돌려받으실 수 있습니다.</p>
                         <div style="background:#f5f5f5; padding:0.8rem; border-radius:6px; margin-top:0.8rem;">
-                            <p style="color:#555; font-size:0.85rem;">[일반금융 소비자]란 전문금융소비자가 아닌 금융 소비자를 말합니다.</p>
-                            <p style="color:#555; font-size:0.85rem;">[전문금융소비자]란 금융상품에관한전문성, 자산규모등에비추어 위험감수능력이 있는금융소비자로서, 「금융소비자 보호에 관한법률」 제2조(정의) 제9호에서 정하는바에따릅니다.</p>
+                            <p style="color:#555; font-size:0.85rem;" data-i18n="notice.def.general">[일반금융 소비자]란 전문금융소비자가 아닌 금융 소비자를 말합니다.</p>
+                            <p style="color:#555; font-size:0.85rem;" data-i18n="notice.def.professional">[전문금융소비자]란 금융상품에관한전문성, 자산규모등에비추어 위험감수능력이 있는금융소비자로서, 「금융소비자 보호에 관한법률」 제2조(정의) 제9호에서 정하는바에따릅니다.</p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 계약의 취소 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">계약의 취소</h4>
-                    <p style="color:#555; line-height:1.7;">보험계약자는 청약 시 약관과 청약서 부본을 전달받지 못했거나 약관의 중요한 내용을 설명 받지 못한 때 또는 청약서에 자필(날인(도장을 찍음) 서명을 하지 아니한 때에는 계약이 성립한 날부터 3개월 이내에 이 계약을 취소할 수 있습니다. 이 경우 회사는 이미 납입한 보험료를 계약자에게 돌려드리며, 보험료를 받은 기간에 대하여 보험개발원이 공시하는 보험계약대출이율을 연단위 복리로 계산한 금액을 더하여 지급합니다.</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.cancel.contract">계약의 취소</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.cancel.contract.p">보험계약자는 청약 시 약관과 청약서 부본을 전달받지 못했거나 약관의 중요한 내용을 설명 받지 못한 때 또는 청약서에 자필(날인(도장을 찍음) 서명을 하지 아니한 때에는 계약이 성립한 날부터 3개월 이내에 이 계약을 취소할 수 있습니다. 이 경우 회사는 이미 납입한 보험료를 계약자에게 돌려드리며, 보험료를 받은 기간에 대하여 보험개발원이 공시하는 보험계약대출이율을 연단위 복리로 계산한 금액을 더하여 지급합니다.</span></p>
                 </div>
                 
                 <!-- 보험금 지급사유 통지 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">보험금 지급사유 통지</h4>
-                    <p style="color:#555; line-height:1.7;">보험계약자,피보험자또는보험수익자는사고가 생긴 것을 안 때에는 즉시 그 사실을 회사에 알려야 합니다. 통지를 게을리하여 손해가 증가된 때에는 증가된 손해에 대해서는 보상하여 드리지 아니합니다.</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.claim.notify">보험금 지급사유 통지</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.claim.notify.p">보험계약자,피보험자또는보험수익자는사고가 생긴 것을 안 때에는 즉시 그 사실을 회사에 알려야 합니다. 통지를 게을리하여 손해가 증가된 때에는 증가된 손해에 대해서는 보상하여 드리지 아니합니다.</span></p>
                 </div>
                 
                 <!-- 보험금의 지급 및 지급제한 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;">보험금의 지급 및 지급제한</h3>
+                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;" data-i18n="notice.h.claim.payment">보험금의 지급 및 지급제한</h3>
                     
                     <div style="margin-bottom:1.5rem;">
-                        <h4 style="color:#333; margin-bottom:0.8rem;">보험금의 지급</h4>
-                        <p style="color:#555; line-height:1.7;">보험회사는 지급보험이 확정되면 지체 없이 보험금을 지급합니다. 그러나피보험자는보험자가손해를 통지받고보상할책임을 인정하는 경우 해당 상황 하에서 지급할 수 있는 최저액을 가지급 보험금으로 청구할 수 있습니다. 보상액이 확정되지 않거나 피보험자의 관리영역 내에 있는 사유로 보험금을 지급할 수 없는 기간 동안은 보험금 지급을 중지합니다.</p>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.claim.pay">보험금의 지급</h4>
+                        <p style="color:#555; line-height:1.7;"><span data-i18n="notice.claim.pay.p">보험회사는 지급보험이 확정되면 지체 없이 보험금을 지급합니다. 그러나피보험자는보험자가손해를 통지받고보상할책임을 인정하는 경우 해당 상황 하에서 지급할 수 있는 최저액을 가지급 보험금으로 청구할 수 있습니다. 보상액이 확정되지 않거나 피보험자의 관리영역 내에 있는 사유로 보험금을 지급할 수 없는 기간 동안은 보험금 지급을 중지합니다.</span></p>
                         <div style="background:#f5f5f5; padding:0.8rem; border-radius:6px; margin-top:0.8rem;">
-                            <p style="color:#555; font-size:0.9rem;"><strong>A</strong> 보험자에게 필요한 증빙이 제출되지 않음으로써 피보험자의 보상청구권에 의문이 있는 경우</p>
-                            <p style="color:#555; font-size:0.9rem;"><strong>B</strong> 사고와 관련하여 경찰의 조사 또는 형법에 의한 심문이 완결되지 않은 상태로 진행 중인 경우</p>
+                            <p style="color:#555; font-size:0.9rem;" data-i18n="notice.claim.pay.a"><strong>A</strong> 보험자에게 필요한 증빙이 제출되지 않음으로써 피보험자의 보상청구권에 의문이 있는 경우</p>
+                            <p style="color:#555; font-size:0.9rem;" data-i18n="notice.claim.pay.b"><strong>B</strong> 사고와 관련하여 경찰의 조사 또는 형법에 의한 심문이 완결되지 않은 상태로 진행 중인 경우</p>
                         </div>
                     </div>
                     
                     <div>
-                        <h4 style="color:#333; margin-bottom:0.8rem;">보험금의 지급제한</h4>
-                        <p style="color:#555; line-height:1.7;">약관에서 정한 보상하지않는손해 및 일반면책사항(이 일반면책은 증권의 전 부문에 적용됩니다). 피보험자 또는 그 대리인의 고의적 행위나 고의적 태만으로 인한 손해는 보상하지 않습니다. 자세한 내용은 약관을 참고하시기 바랍니다.</p>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.claim.limit">보험금의 지급제한</h4>
+                        <p style="color:#555; line-height:1.7;"><span data-i18n="notice.claim.limit.p">약관에서 정한 보상하지않는손해 및 일반면책사항(이 일반면책은 증권의 전 부문에 적용됩니다). 피보험자 또는 그 대리인의 고의적 행위나 고의적 태만으로 인한 손해는 보상하지 않습니다. 자세한 내용은 약관을 참고하시기 바랍니다.</span></p>
                     </div>
                 </div>
                 
                 <!-- 계약의 해제·해지에관한 사항 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;">계약의 해제·해지에 관한 사항 (해지환급금 안내)</h3>
+                    <h3 style="color:#1a237e; border-bottom:2px solid #1a237e; padding-bottom:10px; margin-bottom:1rem;" data-i18n="notice.h.termination">계약의 해제·해지에 관한 사항 (해지환급금 안내)</h3>
                     
                     <div style="margin-bottom:1.5rem;">
-                        <h4 style="color:#333; margin-bottom:0.8rem;">계약의 해지 사유</h4>
-                        <p style="color:#555; line-height:1.7;">보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있습니다. 보험회사는 아래와 같은 사실이 있을 경우에는 그 사실을 안 날부터 1개월 이내에 계약을 해지할 수 있습니다.</p>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.cancel.reason">계약의 해지 사유</h4>
+                        <p style="color:#555; line-height:1.7;"><span data-i18n="notice.cancel.reason.p">보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있습니다. 보험회사는 아래와 같은 사실이 있을 경우에는 그 사실을 안 날부터 1개월 이내에 계약을 해지할 수 있습니다.</span></p>
                         <div style="background:#f5f5f5; padding:0.8rem; border-radius:6px; margin-top:0.8rem;">
-                            <p style="color:#555; font-size:0.9rem;">1 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급사유를 발생시킨 경우</p>
-                            <p style="color:#555; font-size:0.9rem;">2 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급청구서류에 사실과 다른 것을 기재하였거나 그 서류 또는 증거를 위조 또는 변조한 경우</p>
-                            <p style="color:#555; font-size:0.9rem;">3 계약자,피보험자가고의 또는 중대한 과실로 계약 전 알릴 의무를 위반하고 그 의무가 중요한 사항에 해당하는 경우</p>
-                            <p style="color:#555; font-size:0.9rem;">4 계약자 또는 피보험자가 고의 또는 중대한 과실로 뚜렷한 위험의 증가와 관련된 계약 후 알릴 의무를 미이행한 경우</p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.cancel.r1">1 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급사유를 발생시킨 경우</span></p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.cancel.r2">2 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급청구서류에 사실과 다른 것을 기재하였거나 그 서류 또는 증거를 위조 또는 변조한 경우</span></p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.cancel.r3">3 계약자,피보험자가고의 또는 중대한 과실로 계약 전 알릴 의무를 위반하고 그 의무가 중요한 사항에 해당하는 경우</span></p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.cancel.r4">4 계약자 또는 피보험자가 고의 또는 중대한 과실로 뚜렷한 위험의 증가와 관련된 계약 후 알릴 의무를 미이행한 경우</span></p>
                         </div>
                     </div>
                     
                     <div>
-                        <h4 style="color:#333; margin-bottom:0.8rem;">계약의 해제 사항</h4>
-                        <p style="color:#555; line-height:1.7;">계약자는 계약 체결 후 지체 없이 보험료의 전부 또는 제1회 보험료를 지급하여야 하며, 이를 지급하지 아니하는 경우, 다른 약정이 없는 한 계약 성립 후 2개월이 경과하면 그 계약은 해제된 것으로 봅니다(상법제650조제세항).</p>
-                        <p style="color:#555; line-height:1.7; margin-top:0.5rem;">보험계약이 효력상실, 해지 또는 소멸된 때에는 아래와 같이 보험료를 돌려드리나 보험기간 중 보험사고가 발생하여 보험금이 지급된 사실이 있으면 어떠한 경우에도 보험료는 돌려드리지 아니합니다.</p>
+                        <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.rescission">계약의 해제 사항</h4>
+                        <p style="color:#555; line-height:1.7;"><span data-i18n="notice.rescission.p1">계약자는 계약 체결 후 지체 없이 보험료의 전부 또는 제1회 보험료를 지급하여야 하며, 이를 지급하지 아니하는 경우, 다른 약정이 없는 한 계약 성립 후 2개월이 경과하면 그 계약은 해제된 것으로 봅니다(상법제650조제세항).</span></p>
+                        <p style="color:#555; line-height:1.7; margin-top:0.5rem;"><span data-i18n="notice.rescission.p2">보험계약이 효력상실, 해지 또는 소멸된 때에는 아래와 같이 보험료를 돌려드리나 보험기간 중 보험사고가 발생하여 보험금이 지급된 사실이 있으면 어떠한 경우에도 보험료는 돌려드리지 아니합니다.</span></p>
                         <div style="background:#f5f5f5; padding:0.8rem; border-radius:6px; margin-top:0.8rem;">
-                            <p style="color:#555; font-size:0.9rem;">• 계약자, 피보험자 또는 수익자의 책임 없는 사유에 의하는 경우 경과하지 아니한 기간에 대하여 일단위로 계산한 보험료</p>
-                            <p style="color:#555; font-size:0.9rem;">• 계약자, 피보험자 또는 수익자의 책임 있는 사유에 의한 경우 이미 경과한 기간에 대하여 단기요율로 계산한 보험료를 뺀 잔액</p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.refund.1">• 계약자, 피보험자 또는 수익자의 책임 없는 사유에 의하는 경우 경과하지 아니한 기간에 대하여 일단위로 계산한 보험료</span></p>
+                            <p style="color:#555; font-size:0.9rem;"><span data-i18n="notice.refund.2">• 계약자, 피보험자 또는 수익자의 책임 있는 사유에 의한 경우 이미 경과한 기간에 대하여 단기요율로 계산한 보험료를 뺀 잔액</span></p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 해지환급금이 적거나 없는 이유 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">해지환급금이 적거나 없는 이유</h4>
-                    <p style="color:#555; line-height:1.7;">보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있으므로 계약 해지 시 보험기간 중 남은 미경과기간에 대해 단기요율을 적용하여 해지환급금을 돌려드리므로 납입하신 보험료보다 적거나 없을 수 있습니다.</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.surrender">해지환급금이 적거나 없는 이유</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.surrender.p">보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있으므로 계약 해지 시 보험기간 중 남은 미경과기간에 대해 단기요율을 적용하여 해지환급금을 돌려드리므로 납입하신 보험료보다 적거나 없을 수 있습니다.</span></p>
                 </div>
                 
                 <!-- 예금자 보호 안내 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">예금자 보호 안내</h4>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.deposit">예금자 보호 안내</h4>
                     <div style="display:flex; align-items:center; gap:1.5rem;">
                         <div style="flex-shrink:0; width:150px;"><img src="data:image/png;base64,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" alt="예금보험공사 보호금융상품" style="width:100%; height:auto; display:block;"></div>
                         <div>
-                            <p style="color:#555; line-height:1.7;">이 보험계약은 예금자보호법에 따라 해지환급금(또는 만기 시 보험금에 기타지급금을 합한 금액)이 1인당 "1억원까지" (본 보험회사의 여타 보호상품과 합산) 보호됩니다. 이와 별도로 본 보험회사 보호상품의 사고보험금을 합산한 금액이 1인당 "1억원까지" 보호됩니다. 단, 보험계약자 및 보험료납부자가 법인인 경우에는 보호되지 않습니다.</p>
+                            <p style="color:#555; line-height:1.7;"><span data-i18n="notice.deposit.p">이 보험계약은 예금자보호법에 따라 해지환급금(또는 만기 시 보험금에 기타지급금을 합한 금액)이 1인당 "1억원까지" (본 보험회사의 여타 보호상품과 합산) 보호됩니다. 이와 별도로 본 보험회사 보호상품의 사고보험금을 합산한 금액이 1인당 "1억원까지" 보호됩니다. 단, 보험계약자 및 보험료납부자가 법인인 경우에는 보호되지 않습니다.</span></p>
                         </div>
                     </div>
                 </div>
                 
                 <!-- 보험 상담 및 분쟁의 해결 안내 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">보험 상담 및 분쟁의 해결 안내</h4>
-                    <p style="color:#555; line-height:1.7;">보험에 관한 상담 및 분쟁이 있을 때에는 먼저 당사 고객서비스센터로 연락하여 주시기 바라며, 처리결과에 이의가 있으시면 금융감독원에 민원 또는 분쟁 조정을 신청하실 수 있습니다.</p>
-                    <p style="color:#555; font-size:0.9rem; margin-top:0.5rem;">금융감독원 금융소비자보호센터 (국번없이 1332/ www.fss.or.kr)</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.dispute">보험 상담 및 분쟁의 해결 안내</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.dispute.p">보험에 관한 상담 및 분쟁이 있을 때에는 먼저 당사 고객서비스센터로 연락하여 주시기 바라며, 처리결과에 이의가 있으시면 금융감독원에 민원 또는 분쟁 조정을 신청하실 수 있습니다.</span></p>
+                    <p style="color:#555; font-size:0.9rem; margin-top:0.5rem;"><span data-i18n="notice.dispute.fss">금융감독원 금융소비자보호센터 (국번없이 1332/ www.fss.or.kr)</span></p>
                 </div>
                 
                 <!-- 계약 해지 후 다른 보험계약 시 유의사항 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">계약 해지 후 다른 보험계약 시 유의사항</h4>
-                    <p style="color:#555; line-height:1.7;">보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결할 경우 보험인수가 거절 되거나 보험료가 인상될 수 있으며, 보장내용(면책기간 적용 등)이 달라질 수 있습니다.</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.newcontract">계약 해지 후 다른 보험계약 시 유의사항</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.newcontract.p">보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결할 경우 보험인수가 거절 되거나 보험료가 인상될 수 있으며, 보장내용(면책기간 적용 등)이 달라질 수 있습니다.</span></p>
                 </div>
                 
                 <!-- 위법계약을 해지할 수 있는 권리 -->
                 <div class="info-section" style="background:#fff; padding:1.5rem; border-radius:12px; border:1px solid #e0e0e0; margin-bottom:1.5rem;">
-                    <h4 style="color:#333; margin-bottom:0.8rem;">위법계약을 해지할 수 있는 권리</h4>
-                    <p style="color:#555; line-height:1.7;">계약자는 보험사가 「금융소비자 보호에 관한 법률」 제17조(적합성 원칙) 제3항, 제18조(적정성 원칙) 제2항, 제19조(설명의무)제1항및제3항, 제20조(불공정영업행위금지) 제1항 또는 제21조(부당권유행위금지)를 위반하여 계약을 체결한 경우, 동법제47조(위법계약의해지)제1항, 동법 시행령 제38조 및 동법 감독 규정 제3조의4에서 정하는 바에 따라, 계약체결일부터 5년을 초과하지 않는 범위 내에서 계약체결에 대한 회사의 위반사항을 안 날부터 1년 이내에 서면 등으로 해당 계약의 해지를 요구할 수 있습니다.</p>
-                    <p style="color:#555; line-height:1.7; margin-top:0.5rem;">이때 계약자는 해지요구시에 위반사실을 증명하는 서류를 첨부하여 보험사에 제출하여야합니다. 이 경우 보험사에 해지를 요구하신 날부터 10일 이내에 수락 여부를 통지(거절할 때에는 거절사유를 함께 포함하여 통지) 받으실 수 있습니다.</p>
-                    <p style="color:#555; font-size:0.9rem; margin-top:0.8rem;">다만, 법률에 따라 가입의무가 부과되고 그 해지·해지도해당 법률에 따라 가능한 보장성 상품에 대해 계약의 해지를 요구하려는 경우에는 동종의 다른 보험에 가입되어 있어야 합니다.</p>
+                    <h4 style="color:#333; margin-bottom:0.8rem;" data-i18n="notice.h.illegal">위법계약을 해지할 수 있는 권리</h4>
+                    <p style="color:#555; line-height:1.7;"><span data-i18n="notice.illegal.p1">계약자는 보험사가 「금융소비자 보호에 관한 법률」 제17조(적합성 원칙) 제3항, 제18조(적정성 원칙) 제2항, 제19조(설명의무)제1항및제3항, 제20조(불공정영업행위금지) 제1항 또는 제21조(부당권유행위금지)를 위반하여 계약을 체결한 경우, 동법제47조(위법계약의해지)제1항, 동법 시행령 제38조 및 동법 감독 규정 제3조의4에서 정하는 바에 따라, 계약체결일부터 5년을 초과하지 않는 범위 내에서 계약체결에 대한 회사의 위반사항을 안 날부터 1년 이내에 서면 등으로 해당 계약의 해지를 요구할 수 있습니다.</span></p>
+                    <p style="color:#555; line-height:1.7; margin-top:0.5rem;"><span data-i18n="notice.illegal.p2">이때 계약자는 해지요구시에 위반사실을 증명하는 서류를 첨부하여 보험사에 제출하여야합니다. 이 경우 보험사에 해지를 요구하신 날부터 10일 이내에 수락 여부를 통지(거절할 때에는 거절사유를 함께 포함하여 통지) 받으실 수 있습니다.</span></p>
+                    <p style="color:#555; font-size:0.9rem; margin-top:0.8rem;"><span data-i18n="notice.illegal.p3">다만, 법률에 따라 가입의무가 부과되고 그 해지·해지도해당 법률에 따라 가능한 보장성 상품에 대해 계약의 해지를 요구하려는 경우에는 동종의 다른 보험에 가입되어 있어야 합니다.</span></p>
                 </div>
                 
             </div>
@@ -4365,6 +5143,7 @@
             <div class="info-container">
                 <h2 class="info-title" data-i18n="info.title">📚 정보센터</h2>
                 <div class="tabs">
+                    <button class="tab-btn" onclick="showPage('infographic')" style="background:linear-gradient(135deg,#1a237e,#3949ab); color:#fff; border-color:#3949ab;" data-i18n="info.tab.infographic">📋 적하보험이해</button>
                     <button class="tab-btn active" onclick="showInfoTab('mia1906')">MIA 1906</button>
                     <button class="tab-btn" onclick="showInfoTab('insuranceAct2015')" data-i18n="info.tab.ia2015">영국보험법 2015</button>
                     <button class="tab-btn" onclick="showInfoTab('iccOldBilingual')" data-i18n="info.tab.iccOld">ICC 구약관</button>
@@ -16963,6 +17742,127 @@ function switchIGTab(i,b){
     b.classList.add('on');
 }
 
+/* ═══ Accordion toggle for infographic sub-sections ═══ */
+function toggleIGAccord(headEl){
+    var accord = headEl.parentElement;
+    var wasOpen = accord.classList.contains('open');
+    accord.classList.toggle('open');
+    /* Smooth scroll to the opened accordion if it was closed */
+    if(!wasOpen){
+        setTimeout(function(){
+            accord.scrollIntoView({behavior:'smooth',block:'nearest'});
+        },100);
+    }
+}
+
+// ═══ Guide Page: HS Code Interactive Search ═══
+const cargoCodeNames = {
+    "201_1":"201-① 직제품 (Woven Fabric)","201_2":"201-② 원면 (Raw Cotton)","201_3":"201-③ 생사 (Raw Silk)","201_4":"201-④ 양모 (Wool)",
+    "202":"202 모피 및 피혁류 (Fur & Leather)","203":"203 의류 (Clothing)",
+    "204_1":"204-① 원목, 대나무 (Logs, Bamboo)","204_2":"204-② 가공목재 (Processed Wood)","204_3":"204-③ 고무 (Rubber)","204_4":"204-④ 잎담배 (Leaf Tobacco)",
+    "205_1":"205-① 펄프 (Pulp)","205_2":"205-② 지류 (Paper)",
+    "206":"206 비료 (Fertilizer)","207":"207 유류 (Oil)","208":"208 유지류 (Oil Fats)",
+    "209_1":"209-① 화공품·액체 (Liquid Chemicals)","209_2":"209-② 화공품·고체 (Solid Chemicals)","209_3":"209-③ 폭발성 화공품","209_4":"209-④ 의약품 (Pharmaceuticals)",
+    "210_1":"210-① 곡물류 (Grain)","210_3":"210-③ 일반 식료품 (General Food)","210_4":"210-④ 육류/수산물 (Meat & Seafood)",
+    "212_1":"212-① 식물 (Plants)","212_2":"212-② 대형 포유류 (Large Mammals)","212_3":"212-③ 뱀류 (Snakes)","212_4":"212-④ 조류 (Birds)","212_5":"212-⑤ 수생생물 (Aquatic Animals)",
+    "213_1":"213-① 광산물 1류","213_2":"213-② 광산물 2류","214":"214 석탄류 (Coal)",
+    "215_1":"215-① 철금속 (Ferrous Metals)","215_2":"215-② 비철금속 (Non-ferrous Metals)",
+    "216_1":"216-① 일반기계 (General Machinery)","216_4":"216-④ 자동차 (Automobiles)","216_5":"216-⑤ 중장비 (Heavy Equipment)",
+    "217":"217 유리/요업제품 (Glass & Ceramic)","301":"301 화폐/귀금속/보석","302":"302 이사화물 (Household Goods)","303":"303 잡화 (General Merchandise)","306":"306 군수물자"
+};
+
+function guideHsSearch() {
+    const input = document.getElementById('guideHsInput').value.replace(/\D/g,'');
+    const resultDiv = document.getElementById('guideHsResult');
+    const sugDiv = document.getElementById('guideHsSuggestions');
+    const isEn = (typeof i18n !== 'undefined' && i18n.currentLang === 'en');
+    
+    if (!input || input.length < 2) {
+        resultDiv.innerHTML = `<span style="font-size:0.82rem; color:#999;">${isEn ? 'Enter a 4-digit HS Code (numbers only)' : 'HS Code 4자리를 입력하세요 (숫자만)'}</span>`;
+        sugDiv.innerHTML = '';
+        return;
+    }
+    
+    // Exact 4-digit match
+    if (input.length === 4 && typeof hsCodeMapping !== 'undefined' && hsCodeMapping[input]) {
+        const m = hsCodeMapping[input];
+        const cargoName = cargoCodeNames[m.cargo] || m.cargo;
+        resultDiv.innerHTML = `
+            <div style="background:#e8f5e9; border:2px solid #66bb6a; border-radius:12px; padding:16px 20px;">
+                <div style="font-size:0.78rem; color:#388e3c; margin-bottom:8px;">${isEn ? '✅ Match Found' : '✅ 매칭 성공'}</div>
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                    <div style="background:#fff; border-radius:8px; padding:8px 16px; border:1px solid #c8e6c9;">
+                        <div style="font-size:0.7rem; color:#999;">HS Code</div>
+                        <div style="font-size:1.2rem; font-weight:800; color:#1a237e; letter-spacing:1px;">${input}</div>
+                    </div>
+                    <span style="font-size:1.5rem; color:#66bb6a;">→</span>
+                    <div style="background:#fff; border-radius:8px; padding:8px 16px; border:1px solid #c8e6c9;">
+                        <div style="font-size:0.7rem; color:#999;">${isEn ? 'Cargo Classification (KIDI)' : '화물분류 (KIDI)'}</div>
+                        <div style="font-size:1rem; font-weight:700; color:var(--primary);">${cargoName}</div>
+                    </div>
+                </div>
+                <div style="margin-top:10px; font-size:0.78rem; color:#666;">
+                    📝 ${isEn ? 'Item' : '품목'}: <strong>${m.desc}</strong> ${m.note ? '(' + m.note + ')' : ''}
+                </div>
+            </div>`;
+        sugDiv.innerHTML = '';
+        return;
+    }
+    
+    // Partial match - show suggestions
+    if (typeof hsCodeMapping !== 'undefined') {
+        const matches = Object.entries(hsCodeMapping).filter(([code]) => code.startsWith(input)).slice(0, 8);
+        if (matches.length > 0) {
+            resultDiv.innerHTML = `<span style="font-size:0.82rem; color:#1565c0;">📂 Chapter ${input.substring(0,2)} — ${matches.length} ${isEn ? 'codes found (enter all 4 digits)' : '개 코드 발견 (4자리까지 입력하세요)'}</span>`;
+            sugDiv.innerHTML = matches.map(([code, d]) => 
+                `<button onclick="document.getElementById('guideHsInput').value='${code}';guideHsSearch();" 
+                    style="padding:6px 14px; background:#e3f2fd; border:1px solid #90caf9; border-radius:20px; font-size:0.78rem; cursor:pointer; color:#1565c0; font-weight:600;">
+                    ${code} ${d.desc}
+                </button>`
+            ).join('');
+        } else {
+            resultDiv.innerHTML = `<span style="font-size:0.82rem; color:#e65100;">${isEn ? '⚠️ HS Code not found in mapping data. Please select cargo type manually in the calculator.' : '⚠️ 해당 HS Code가 매핑 데이터에 없습니다. 계산기에서 화물종류를 직접 선택해 주세요.'}</span>`;
+            sugDiv.innerHTML = '';
+        }
+    }
+}
+
+// ═══ Guide Page: Region Search & Highlight ═══
+function searchRegionCountry() {
+    const query = document.getElementById('regionSearchInput').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('regionSearchResult');
+    const isEn = (typeof i18n !== 'undefined' && i18n.currentLang === 'en');
+    // Reset all highlights
+    document.querySelectorAll('.region-card').forEach(c => c.classList.remove('highlight'));
+    document.querySelectorAll('.region-country-tag').forEach(t => t.classList.remove('match'));
+    
+    if (!query || query.length < 1) { resultDiv.innerHTML = ''; return; }
+    
+    let found = false;
+    document.querySelectorAll('.region-country-tag').forEach(tag => {
+        const name = (tag.getAttribute('data-name') || '').toLowerCase();
+        if (name.includes(query)) {
+            tag.classList.add('match');
+            const card = tag.closest('.region-card');
+            if (card) {
+                card.classList.add('highlight');
+                const regionName = card.querySelector('.region-card-name')?.textContent || '';
+                const regionNum = card.querySelector('.region-num')?.textContent || '';
+                resultDiv.innerHTML = isEn
+                    ? `✅ <strong>${tag.textContent}</strong> → Region <strong>#${regionNum} ${regionName}</strong>`
+                    : `✅ <strong>${tag.textContent}</strong> → <strong>${regionNum}번 ${regionName}</strong> 지역에 해당합니다`;
+                found = true;
+            }
+        }
+    });
+    if (!found) resultDiv.innerHTML = `<span style="color:#999;">${isEn ? 'No results. Please enter a country name in Korean or English.' : '검색 결과가 없습니다. 국가명을 한글 또는 영어로 입력해 주세요.'}</span>`;
+}
+
+function highlightRegionCard(idx) {
+    document.querySelectorAll('.region-card').forEach(c => c.classList.remove('highlight'));
+    document.getElementById('rc-' + idx)?.classList.add('highlight');
+}
+
 function showPage(pageId) {
     console.log('showPage called:', pageId); // 디버그
     const hero = document.getElementById('heroSection');
@@ -20340,6 +21240,7 @@ const i18n = {
         'nav.dd.inlandQuote': { ko: '내륙운송 견적신청', en: 'Inland Transit Quote' },
         'nav.dd.artQuote': { ko: '예술품종합 견적신청', en: 'Fine Art Insurance Quote' },
         'nav.dd.liabQuote': { ko: '화물배상 견적신청', en: "Forwarder's Liability Quote" },
+        'nav.dd.infographic': { ko: '📋 적하보험이해', en: '📋 Cargo Insurance Guide' },
         'nav.dd.mia1906': { ko: '📜 MIA 1906 영한대역', en: '📜 MIA 1906 (Bilingual)' },
         'nav.dd.insuranceAct': { ko: '📜 Insurance Act 2015 영한대역', en: '📜 Insurance Act 2015 (Bilingual)' },
         'nav.dd.iccOld': { ko: '📜 ICC 구약관 영한대역', en: '📜 ICC Old Clauses (Bilingual)' },
@@ -20353,6 +21254,18 @@ const i18n = {
         // === Hero ===
         'hero.title': { ko: '🚢 해상·항공 적하보험 전문', en: '🚢 Marine & Air Cargo Insurance Specialist' },
         'hero.subtitle': { ko: '실시간 예상보험료 계산 · 간편 가입신청 — 디지털 적하보험 플랫폼 카고인슈', en: 'Real-time Premium Quotes · Simple Application — Digital Cargo Insurance Platform' },
+
+        // Hero USP
+        'hero.usp.badge': { ko: '🏆 적하보험 전문 디지털 플랫폼', en: '🏆 Specialized Digital Cargo Insurance Platform' },
+        'hero.usp.title': { ko: '실시간 예상보험료 계산', en: 'Real-time Premium Estimation' },
+        'hero.usp.sub': { ko: '화물 종류 · 운송 지역 · 담보 조건 · 화물 가액을 입력하면<br>예상 보험료를 즉시 확인할 수 있습니다', en: 'Enter cargo type · shipping region · coverage condition · cargo value<br>to instantly check estimated premium' },
+        'hero.usp.cargo': { ko: '40개 화물종류', en: '40 Cargo Types' },
+        'hero.usp.region': { ko: '10개 운송지역', en: '10 Shipping Regions' },
+        'hero.usp.coverage': { ko: '신·구약관 9가지 담보조건', en: '9 Coverage Conditions' },
+        'hero.usp.value': { ko: '화물가액 입력', en: 'Cargo Value Input' },
+        'hero.usp.ctaCalc': { ko: '📊 지금 바로 보험료 계산하기', en: '📊 Calculate Premium Now' },
+        'hero.usp.ctaApply': { ko: '📝 간편 가입신청', en: '📝 Quick Application' },
+        'hero.usp.note': { ko: '※ 참고 금액이며 언더라이팅 심사 후 확정됩니다', en: '※ Estimated amount only. Final premium confirmed after underwriting review.' },
 
         // ═══ Infographic i18n ═══
 
@@ -20391,7 +21304,10 @@ const i18n = {
         'form.bizTip': { ko: '💡 사업자번호 입력 후 <strong>확인</strong> 버튼을 누르면 등록된 정보가 자동완성됩니다. 미등록 업체는 직접 입력 후 <strong>사업자등록증</strong>을 첨부해 주세요.', en: '💡 Enter your business registration number and click <strong>Verify</strong> to auto-fill registered information. For unregistered businesses, please enter manually and attach your <strong>business registration certificate</strong>.' },
         'footer.disclaimer': { ko: '카고인슈는 보험업법에 따라 등록된 보험중개사가 운영합니다', en: 'CargoInsu is operated by a licensed insurance broker registered under the Insurance Business Act' },
         'cargo.subtitle': { ko: 'Marine Cargo Insurance', en: 'Marine Cargo Insurance' },
-        'cargo.intro': { ko: '축적된 해외 언더라이팅 기법을 통한 질 높은 보험 서비스를 제공하고 전세계 <strong>54개국</strong>에 걸친 글로벌 네트워크를 활용하여 신속하고 정확한 보상 서비스를 제공합니다. 해상 및 항공운송 이에 수반되는 내륙운송 중 화물이 멸실, 손상되는 경우 또는 손해를 방지 경감하기 위하여 화물의 소유자가 지출한 비용을 보험조건에 따라 보상하여 드립니다. 웹베이스 시스템을 통한 실시간 증권발급 및 조회가 가능하고, 전문 위험관리인에 의한 위험 분석 및 글로벌 네트워크에 기반한 차별화된 리스크 관리 서비스를 제공합니다.', en: 'We provide high-quality insurance services through accumulated international underwriting expertise, with prompt and accurate claims services leveraging our global network across <strong>54 countries</strong>. We compensate for loss or damage to cargo during marine, air, and associated inland transit, as well as expenses incurred by cargo owners to prevent or mitigate losses. Our web-based system enables real-time certificate issuance and inquiry, with differentiated risk management services from expert risk managers backed by our global network.' },
+        'cargo.intro': { ko: '엔투엔보험중개는 국내외 다수의 보험사와 제휴하여, 계약자의 화물 특성과 운송 조건에 가장 적합한 적하보험을 독립적으로 비교·중개해 드립니다. 해상 및 항공운송, 이에 수반되는 내륙운송 중 화물이 멸실·손상되는 경우 또는 손해를 방지·경감하기 위하여 화물의 소유자가 지출한 비용을 보험조건에 따라 보상받으실 수 있습니다. 실시간 예상보험료 계산, 복수 보험사 조건 비교, 전문 위험분석을 통해 최적의 보험 솔루션을 제공합니다.', en: 'N2N Insurance Brokerage independently compares and brokers the most suitable cargo insurance by partnering with multiple domestic and international insurers, tailored to the client\'s cargo characteristics and shipping conditions. Losses or damage to cargo during marine, air, and associated inland transit — as well as expenses incurred to prevent or mitigate such losses — are covered according to policy terms. We provide optimal insurance solutions through real-time premium estimation, multi-insurer comparison, and expert risk analysis.' },
+        'inland.intro': { ko: '엔투엔보험중개는 복수의 보험사 상품을 비교·분석하여, 계약자의 운송 구간과 화물 특성에 가장 적합한 내륙운송보험을 독립적으로 중개해 드립니다. 보험 목적물을 <strong>육상(호수와 하천을 포함)</strong>에서 운송하는 도중에 생긴 멸실·훼손 등의 손해 또는 화물을 보호하기 위하여 화물의 소유자가 입은 손해를 보험 조건에 따라 보상받으실 수 있습니다.', en: 'N2N Insurance Brokerage independently compares and brokers the most suitable inland transit insurance by analyzing multiple insurers\' products, tailored to the client\'s transit routes and cargo characteristics. Losses such as destruction or damage incurred during <strong>overland transport (including lakes and rivers)</strong>, as well as losses borne by cargo owners to protect their goods, are covered according to policy terms.' },
+        'art.intro': { ko: '엔투엔보험중개는 미술관·박물관·컬렉터의 소장품 특성과 전시·운송 환경을 분석하여, 가장 적합한 예술품종합보험을 독립적으로 비교·중개해 드립니다. 예술품 종합보험은 <strong>전 위험담보 (All Risk Cover)</strong> 보험으로서 증권상 면책규정에 해당되는 일부 위험을 제외하고 급격하고 우연한 사고로 인하여 소장품(Collection)에 발생하는 손해를 보상하는 보험입니다.', en: 'N2N Insurance Brokerage independently compares and brokers the most suitable fine art insurance by analyzing collection characteristics and exhibition/transport environments for museums, galleries, and collectors. Fine Art Comprehensive Insurance is an <strong>All Risk Cover</strong> policy that compensates for sudden and accidental losses to collections, excluding certain perils specified in the policy exclusions.' },
+        'liab.intro': { ko: '엔투엔보험중개는 운송주선업자·물류기업의 영업 형태와 위험 구조를 분석하여, 가장 적합한 화물배상책임보험을 독립적으로 비교·중개해 드립니다. 보험기간 동안에 발생한 화물의 손상, 멸실, 운송지연 등으로 발생하는 피보험자의 법률상 배상책임을 관습법, 계약서, 국가 또는 국제협약 관련법규의 범위내에서 담보합니다.', en: 'N2N Insurance Brokerage independently compares and brokers the most suitable freight forwarder\'s liability insurance by analyzing the business model and risk profile of freight forwarders and logistics companies. This policy covers the assured\'s legal liability arising from cargo damage, loss, or delay during the policy period, within the scope of common law, contracts, and national or international conventions.' },
         'cargo.h.cover1': { ko: '주요 보상하는 손해', en: 'Major Losses Covered' },
         'cargo.h.cover2': { ko: '주요 보상하는 손해 (계속)', en: 'Major Losses Covered (cont.)' },
         'cargo.cv1': { ko: '수출입화물의 운송 중 발생한 물적 손해(멸실, 손상)', en: 'Physical loss/damage to export/import cargo during transit' },
@@ -20484,7 +21400,68 @@ const i18n = {
         'notice.h.confirm': { ko: '청약 시에는 보험계약의 기본사항을 반드시 확인', en: 'Confirm Basic Insurance Details at Application' },
         'notice.h.withdraw': { ko: '청약의 철회', en: 'Withdrawal of Application' },
         'notice.h.nocover': { ko: '보험금을 지급하지 아니하는 사유', en: 'Reasons for Non-payment of Claims' },
+
+        // Notice - 일반/전문 금융소비자 정의
+        'notice.def.general': { ko: '[일반금융 소비자]란 전문금융소비자가 아닌 금융 소비자를 말합니다.', en: '[General financial consumer] refers to a financial consumer who is not a professional financial consumer.' },
+        'notice.def.professional': { ko: '[전문금융소비자]란 금융상품에관한전문성, 자산규모등에비추어 위험감수능력이 있는금융소비자로서, 「금융소비자 보호에 관한법률」 제2조(정의) 제9호에서 정하는바에따릅니다.', en: '[Professional financial consumer] refers to a financial consumer with risk tolerance based on expertise and asset scale regarding financial products, as defined in Article 2(9) of the Financial Consumer Protection Act.' },
+
+        // Notice - 계약의 취소
+        'notice.h.cancel.contract': { ko: '계약의 취소', en: 'Cancellation of Contract' },
+        'notice.cancel.contract.p': { ko: '보험계약자는 청약 시 약관과 청약서 부본을 전달받지 못했거나 약관의 중요한 내용을 설명 받지 못한 때 또는 청약서에 자필(날인(도장을 찍음) 서명을 하지 아니한 때에는 계약이 성립한 날부터 3개월 이내에 이 계약을 취소할 수 있습니다. 이 경우 회사는 이미 납입한 보험료를 계약자에게 돌려드리며, 보험료를 받은 기간에 대하여 보험개발원이 공시하는 보험계약대출이율을 연단위 복리로 계산한 금액을 더하여 지급합니다.', en: 'The policyholder may cancel the contract within 3 months of its inception if: the policy terms and application copy were not delivered at application; key terms were not explained; or the application was not personally signed/sealed. In such cases, the company shall refund the paid premium plus interest calculated at the annual compound rate published by the Korea Insurance Development Institute.' },
+
+        // Notice - 보험금 지급사유 통지
+        'notice.h.claim.notify': { ko: '보험금 지급사유 통지', en: 'Notification of Claim Events' },
+        'notice.claim.notify.p': { ko: '보험계약자,피보험자또는보험수익자는사고가 생긴 것을 안 때에는 즉시 그 사실을 회사에 알려야 합니다. 통지를 게을리하여 손해가 증가된 때에는 증가된 손해에 대해서는 보상하여 드리지 아니합니다.', en: 'The policyholder, assured, or beneficiary must immediately notify the company upon becoming aware of an insured event. If failure to notify results in increased loss, the increased portion shall not be compensated.' },
+
+        // Notice - 보험금의 지급 및 지급제한
+        'notice.h.claim.payment': { ko: '보험금의 지급 및 지급제한', en: 'Claim Payment and Limitations' },
+        'notice.h.claim.pay': { ko: '보험금의 지급', en: 'Claim Payment' },
+        'notice.claim.pay.p': { ko: '보험회사는 지급보험이 확정되면 지체 없이 보험금을 지급합니다. 그러나피보험자는보험자가손해를 통지받고보상할책임을 인정하는 경우 해당 상황 하에서 지급할 수 있는 최저액을 가지급 보험금으로 청구할 수 있습니다. 보상액이 확정되지 않거나 피보험자의 관리영역 내에 있는 사유로 보험금을 지급할 수 없는 기간 동안은 보험금 지급을 중지합니다.', en: 'The insurer shall pay claims without delay once the amount is determined. However, the assured may request an interim payment of the minimum payable amount when the insurer has been notified of loss and acknowledges liability. Claim payment may be suspended while the amount remains undetermined or due to reasons within the assured\'s control.' },
+        'notice.claim.pay.a': { ko: '<strong>A</strong> 보험자에게 필요한 증빙이 제출되지 않음으로써 피보험자의 보상청구권에 의문이 있는 경우', en: '<strong>A</strong> When the assured\'s right to claim is in question due to failure to submit required documentation to the insurer' },
+        'notice.claim.pay.b': { ko: '<strong>B</strong> 사고와 관련하여 경찰의 조사 또는 형법에 의한 심문이 완결되지 않은 상태로 진행 중인 경우', en: '<strong>B</strong> When police investigation or criminal proceedings related to the incident are still ongoing' },
+        'notice.h.claim.limit': { ko: '보험금의 지급제한', en: 'Limitations on Claim Payment' },
+        'notice.claim.limit.p': { ko: '약관에서 정한 보상하지않는손해 및 일반면책사항(이 일반면책은 증권의 전 부문에 적용됩니다). 피보험자 또는 그 대리인의 고의적 행위나 고의적 태만으로 인한 손해는 보상하지 않습니다. 자세한 내용은 약관을 참고하시기 바랍니다.', en: 'Losses excluded under the policy terms and general exclusions (applicable to all sections of the policy). Losses caused by intentional acts or willful negligence of the assured or their agents are not covered. Please refer to the policy terms for details.' },
+
+        // Notice - 계약의 해제·해지
+        'notice.h.termination': { ko: '계약의 해제·해지에 관한 사항 (해지환급금 안내)', en: 'Contract Rescission and Cancellation (Surrender Value Information)' },
+        'notice.h.cancel.reason': { ko: '계약의 해지 사유', en: 'Grounds for Contract Cancellation' },
+        'notice.cancel.reason.p': { ko: '보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있습니다. 보험회사는 아래와 같은 사실이 있을 경우에는 그 사실을 안 날부터 1개월 이내에 계약을 해지할 수 있습니다.', en: 'The policyholder may cancel the contract at any time before its expiry. The insurer may cancel the contract within 1 month of learning of the following facts:' },
+        'notice.cancel.r1': { ko: '1 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급사유를 발생시킨 경우', en: '1. The policyholder, assured, or beneficiary intentionally caused an insured event' },
+        'notice.cancel.r2': { ko: '2 계약자, 피보험자 또는 보험수익자가 보험금을 받는 자가고의로 보험금 지급청구서류에 사실과 다른 것을 기재하였거나 그 서류 또는 증거를 위조 또는 변조한 경우', en: '2. The policyholder, assured, or beneficiary intentionally made false entries in claim documents or forged/altered documents or evidence' },
+        'notice.cancel.r3': { ko: '3 계약자,피보험자가고의 또는 중대한 과실로 계약 전 알릴 의무를 위반하고 그 의무가 중요한 사항에 해당하는 경우', en: '3. The policyholder or assured breached the pre-contract duty of disclosure through intent or gross negligence on a material matter' },
+        'notice.cancel.r4': { ko: '4 계약자 또는 피보험자가 고의 또는 중대한 과실로 뚜렷한 위험의 증가와 관련된 계약 후 알릴 의무를 미이행한 경우', en: '4. The policyholder or assured failed to fulfill post-contract notification duty regarding a significant increase in risk, through intent or gross negligence' },
+
+        // Notice - 계약의 해제 사항
+        'notice.h.rescission': { ko: '계약의 해제 사항', en: 'Contract Rescission' },
+        'notice.rescission.p1': { ko: '계약자는 계약 체결 후 지체 없이 보험료의 전부 또는 제1회 보험료를 지급하여야 하며, 이를 지급하지 아니하는 경우, 다른 약정이 없는 한 계약 성립 후 2개월이 경과하면 그 계약은 해제된 것으로 봅니다(상법제650조제세항).', en: 'The policyholder must pay the full premium or first installment without delay after contract execution. Failure to pay shall result in the contract being deemed rescinded after 2 months, unless otherwise agreed (Commercial Act Article 650).' },
+        'notice.rescission.p2': { ko: '보험계약이 효력상실, 해지 또는 소멸된 때에는 아래와 같이 보험료를 돌려드리나 보험기간 중 보험사고가 발생하여 보험금이 지급된 사실이 있으면 어떠한 경우에도 보험료는 돌려드리지 아니합니다.', en: 'When a contract lapses, is cancelled, or expires, premium shall be refunded as follows. However, no refund shall be made if a claim has been paid during the coverage period:' },
+        'notice.refund.1': { ko: '• 계약자, 피보험자 또는 수익자의 책임 없는 사유에 의하는 경우 경과하지 아니한 기간에 대하여 일단위로 계산한 보험료', en: '• If due to reasons not attributable to the policyholder/assured/beneficiary: daily pro-rata premium for the unexpired period' },
+        'notice.refund.2': { ko: '• 계약자, 피보험자 또는 수익자의 책임 있는 사유에 의한 경우 이미 경과한 기간에 대하여 단기요율로 계산한 보험료를 뺀 잔액', en: '• If due to reasons attributable to the policyholder/assured/beneficiary: balance after deducting short-rate premium for the expired period' },
+
+        // Notice - 해지환급금
+        'notice.h.surrender': { ko: '해지환급금이 적거나 없는 이유', en: 'Why Surrender Value May Be Low or Zero' },
+        'notice.surrender.p': { ko: '보험계약자는 계약이 소멸하기 전에 언제든지 계약을 해지할 수 있으므로 계약 해지 시 보험기간 중 남은 미경과기간에 대해 단기요율을 적용하여 해지환급금을 돌려드리므로 납입하신 보험료보다 적거나 없을 수 있습니다.', en: 'Since the policyholder may cancel the contract at any time before expiry, the surrender value is calculated using short-rate factors for the remaining period, which may result in a refund less than the paid premium or no refund at all.' },
+
+        // Notice - 예금자 보호
+        'notice.h.deposit': { ko: '예금자 보호 안내', en: 'Deposit Protection Information' },
+        'notice.deposit.p': { ko: '이 보험계약은 예금자보호법에 따라 해지환급금(또는 만기 시 보험금에 기타지급금을 합한 금액)이 1인당 "1억원까지" (본 보험회사의 여타 보호상품과 합산) 보호됩니다. 이와 별도로 본 보험회사 보호상품의 사고보험금을 합산한 금액이 1인당 "1억원까지" 보호됩니다. 단, 보험계약자 및 보험료납부자가 법인인 경우에는 보호되지 않습니다.', en: 'This insurance contract is protected under the Depositor Protection Act up to KRW 100 million per person for surrender value (or maturity benefits plus other payments, combined with other protected products of this insurer). Separately, accident insurance benefits of protected products are covered up to KRW 100 million per person. However, contracts where the policyholder or premium payer is a corporation are not protected.' },
+
+        // Notice - 분쟁해결
+        'notice.h.dispute': { ko: '보험 상담 및 분쟁의 해결 안내', en: 'Insurance Consultation and Dispute Resolution' },
+        'notice.dispute.p': { ko: '보험에 관한 상담 및 분쟁이 있을 때에는 먼저 당사 고객서비스센터로 연락하여 주시기 바라며, 처리결과에 이의가 있으시면 금융감독원에 민원 또는 분쟁 조정을 신청하실 수 있습니다.', en: 'For insurance inquiries or disputes, please contact our customer service center first. If you disagree with the result, you may file a complaint or request dispute mediation with the Financial Supervisory Service (FSS).' },
+        'notice.dispute.fss': { ko: '금융감독원 금융소비자보호센터 (국번없이 1332/ www.fss.or.kr)', en: 'FSS Financial Consumer Protection Center (Call 1332 / www.fss.or.kr)' },
+
+        // Notice - 계약해지 후 유의사항
+        'notice.h.newcontract': { ko: '계약 해지 후 다른 보험계약 시 유의사항', en: 'Cautions When Entering New Contracts After Cancellation' },
+        'notice.newcontract.p': { ko: '보험계약자가 기존에 체결했던 보험계약을 해지하고 다른 보험계약을 체결할 경우 보험인수가 거절 되거나 보험료가 인상될 수 있으며, 보장내용(면책기간 적용 등)이 달라질 수 있습니다.', en: 'If the policyholder cancels an existing contract and enters into a new one, underwriting acceptance may be refused, premiums may increase, and coverage terms (such as waiting periods) may differ.' },
+
+        // Notice - 위법계약 해지권
+        'notice.h.illegal': { ko: '위법계약을 해지할 수 있는 권리', en: 'Right to Cancel Unlawful Contracts' },
+        'notice.illegal.p1': { ko: '계약자는 보험사가 「금융소비자 보호에 관한 법률」 제17조(적합성 원칙) 제3항, 제18조(적정성 원칙) 제2항, 제19조(설명의무)제1항및제3항, 제20조(불공정영업행위금지) 제1항 또는 제21조(부당권유행위금지)를 위반하여 계약을 체결한 경우, 동법제47조(위법계약의해지)제1항, 동법 시행령 제38조 및 동법 감독 규정 제3조의4에서 정하는 바에 따라, 계약체결일부터 5년을 초과하지 않는 범위 내에서 계약체결에 대한 회사의 위반사항을 안 날부터 1년 이내에 서면 등으로 해당 계약의 해지를 요구할 수 있습니다.', en: 'If the insurer entered into the contract in violation of the Financial Consumer Protection Act (Articles 17, 18, 19, 20, or 21 regarding suitability, adequacy, duty of explanation, unfair practices, or improper solicitation), the policyholder may request cancellation in writing within 1 year of learning of the violation, and no later than 5 years from the contract date, pursuant to Article 47 of the Act.' },
+        'notice.illegal.p2': { ko: '이때 계약자는 해지요구시에 위반사실을 증명하는 서류를 첨부하여 보험사에 제출하여야합니다. 이 경우 보험사에 해지를 요구하신 날부터 10일 이내에 수락 여부를 통지(거절할 때에는 거절사유를 함께 포함하여 통지) 받으실 수 있습니다.', en: 'The policyholder must submit supporting documents proving the violation when requesting cancellation. The insurer must notify the policyholder of acceptance or rejection (with reasons for rejection) within 10 days of the cancellation request.' },
+        'notice.illegal.p3': { ko: '다만, 법률에 따라 가입의무가 부과되고 그 해지·해지도해당 법률에 따라 가능한 보장성 상품에 대해 계약의 해지를 요구하려는 경우에는 동종의 다른 보험에 가입되어 있어야 합니다.', en: 'However, for mandatory insurance products where cancellation is governed by the relevant law, the policyholder must already have enrolled in an equivalent alternative insurance to request cancellation.' },
         'info.title': { ko: '📚 정보센터', en: '📚 Information Center' },
+        'info.tab.infographic': { ko: '📋 적하보험이해', en: '📋 Cargo Insurance Guide' },
         'info.tab.ia2015': { ko: '영국보험법 2015', en: 'UK Insurance Act 2015' },
         'info.tab.iccOld': { ko: 'ICC 구약관', en: 'ICC Old Clauses' },
         'info.tab.iccNew': { ko: 'ICC 신약관', en: 'ICC New Clauses' },
@@ -20558,6 +21535,9 @@ const i18n = {
         'ig.tab1': { ko: '⚓ 담보위험 · 보상 · 면책', en: '⚓ Perils · Coverage · Exclusions' },
         'ig.tab2': { ko: '📜 ICC 구약관 비교', en: '📜 ICC Old Clauses' },
         'ig.tab3': { ko: '📘 ICC 신약관 비교', en: '📘 ICC New Clauses' },
+        'ig.acc.perils': { ko: '담보위험 · 보상 · 면책<small>Perils Covered · Losses Compensated · Exclusions</small>', en: 'Covered Perils · Losses · Exclusions<small>Perils Covered · Losses Compensated · Exclusions</small>' },
+        'ig.acc.journey': { ko: '화물 운송 여정과 위험<small>Warehouse to Warehouse — Cargo Journey &amp; Perils</small>', en: 'Cargo Journey &amp; Perils<small>Warehouse to Warehouse — Full Transit Coverage</small>' },
+        'ig.acc.reqinfo': { ko: '적하보험 가입 시 필요한 정보<small>Required Information for Cargo Insurance Application</small>', en: 'Required Application Information<small>Required Information for Cargo Insurance Application</small>' },
         'ig.p0.intro': { ko: '적하보험은 화물이 매도인 창고를 떠나 매수인 창고에 도착할 때까지 해상·육상 전 운송구간에서 발생할 수 있는 위험으로부터 화물을 보호합니다.', en: 'Cargo insurance protects goods against risks during the entire transit from the seller\'s warehouse to the buyer\'s warehouse, covering both marine and inland transport.' },
         'ig.p0.risk.title': { ko: '담보하는 위험', en: 'Perils Covered' },
         'ig.p0.cover.title': { ko: '보상하는 손해', en: 'Losses Compensated' },
@@ -20709,11 +21689,11 @@ const i18n = {
         // === Services Modal ===
         'services.title': { ko: 'Cargoinsu 서비스 전체보기', en: 'All Cargoinsu Services' },
         'services.sec.products': { ko: '보험상품', en: 'Insurance Products' },
-        'services.sec.support': { ko: '고객센터', en: 'Customer Support' },
-        'services.sec.calc': { ko: '보험료 견적', en: 'Premium Quote' },
-        'services.info': { ko: '정보센터 (약관안내)', en: 'Info Center (Clauses)' },
-        'services.email': { ko: '이메일 문의', en: 'Email Inquiry' },
-        'services.phone': { ko: '전화 상담 (010-5755-6465)', en: 'Phone Consultation (010-5755-6465)' },
+        'services.sec.support': { ko: '고객지원', en: 'Customer Support' },
+        'services.sec.calc': { ko: '보험료 계산', en: 'Premium Calculator' },
+        'services.noticeView': { ko: '📌 알아두실 사항 보기', en: '📌 View Important Notices' },
+        'services.email': { ko: '✉️ E-mail 이메일 문의', en: '✉️ Email Inquiry' },
+        'services.phone': { ko: '📱 전화 상담 (010-5755-6465)', en: '📱 Phone (010-5755-6465)' },
         'nav.notice.full': { ko: '알아두실 사항', en: 'Important Notices' },
         'btn.allServices': { ko: '☰ 서비스 전체보기', en: '☰ All Services' },
         'btn.close': { ko: '닫기', en: 'Close' },
@@ -20744,6 +21724,96 @@ const i18n = {
         'route.europe': { ko: '유럽', en: 'Europe' },
         'route.namerica': { ko: '북미', en: 'North America' },
         'route.samerica': { ko: '남미', en: 'South America' },
+
+        // === Guide Pages ===
+        'guide.back': { ko: '← 홈으로', en: '← Home' },
+        'guide.cta.calc': { ko: '📊 예상보험료 계산하기', en: '📊 Calculate Estimated Premium' },
+
+        // Guide: Cargo Type
+        'guide.cargo.title': { ko: '📦 40개 화물종류 분류', en: '📦 40 Cargo Type Classifications' },
+        'guide.cargo.desc': { ko: '적하보험 요율은 화물 종류에 따라 결정됩니다.<br>HS Code 입력 시 해당 화물분류가 자동으로 매칭됩니다.', en: 'Cargo insurance rates are determined by cargo type.<br>Enter an HS Code to auto-match the cargo classification.' },
+        'guide.cargo.hsTitle': { ko: '🔗 HS Code 자동매칭 시스템', en: '🔗 HS Code Auto-Matching System' },
+        'guide.cargo.hsDesc': { ko: '수출입 통관 시 사용하는 <strong>HS Code(국제통일상품분류체계)</strong> 4자리를 입력하면, 보험 화물분류 코드(KIDI 기준)로 자동 변환되어 해당 요율이 적용됩니다.', en: 'Enter the <strong>4-digit HS Code (Harmonized System)</strong> used in customs clearance, and it will be automatically converted to the insurance cargo classification code (KIDI standard) with the applicable rate.' },
+        'guide.cargo.hsFlow1': { ko: '📝 HS Code 4자리 입력<br><small>예: 6204 (여성의류)</small>', en: '📝 Enter 4-digit HS Code<br><small>e.g., 6204 (Women\'s Clothing)</small>' },
+        'guide.cargo.hsFlow2': { ko: '🔄 KIDI 코드 자동매핑<br><small>→ 203 의류</small>', en: '🔄 Auto-map to KIDI Code<br><small>→ 203 Clothing</small>' },
+        'guide.cargo.hsFlow3': { ko: '📊 요율 자동적용<br><small>화물분류별 보험요율 산출</small>', en: '📊 Auto-apply Rate<br><small>Calculate rate by cargo type</small>' },
+        'guide.cargo.searchTitle': { ko: '🔍 HS Code → 화물분류 자동매칭 테스트', en: '🔍 HS Code → Cargo Classification Auto-Match Test' },
+        'guide.cargo.cta': { ko: '화물종류를 확인하셨나요? 지금 바로 보험료를 계산해 보세요.', en: 'Found your cargo type? Calculate premium now.' },
+        'guide.cargo.g.textile': { ko: '🧵 섬유류 (6개)', en: '🧵 Textiles (6)' },
+        'guide.cargo.g.wood': { ko: '🪵 목재류 (4개)', en: '🪵 Wood Products (4)' },
+        'guide.cargo.g.paper': { ko: '📄 지류 (2개)', en: '📄 Paper Products (2)' },
+        'guide.cargo.g.chem': { ko: '⚗️ 화학류 (7개)', en: '⚗️ Chemicals (7)' },
+        'guide.cargo.g.food': { ko: '🍚 식품류 (3개)', en: '🍚 Food Products (3)' },
+        'guide.cargo.g.bio': { ko: '🌿 동식물 (5개)', en: '🌿 Flora & Fauna (5)' },
+        'guide.cargo.g.mineral': { ko: '⛏️ 광물류 (3개)', en: '⛏️ Minerals (3)' },
+        'guide.cargo.g.metal': { ko: '🔩 금속류 (2개)', en: '🔩 Metals (2)' },
+        'guide.cargo.g.machine': { ko: '⚙️ 기계류 (3개)', en: '⚙️ Machinery (3)' },
+        'guide.cargo.g.etc': { ko: '📦 기타 (5개)', en: '📦 Others (5)' },
+
+        // Guide: Region
+        'guide.region.title': { ko: '🌍 10개 운송지역', en: '🌍 10 Shipping Regions' },
+        'guide.region.desc': { ko: '운송 지역에 따라 보험요율이 달라집니다. 도착지/출발지 국가를 검색하면 해당 운송지역을 확인할 수 있습니다.', en: 'Insurance rates vary by shipping region. Search your origin/destination country to find the applicable region.' },
+        'guide.region.cta': { ko: '보험료 계산기에서 출발지·도착지 항구를 선택하면 위 10개 운송지역이 자동으로 결정됩니다.', en: 'When you select origin/destination ports in the calculator, the shipping region is determined automatically.' },
+        'guide.region.r0.name': { ko: '보세/외항', en: 'Bonded/Outer Port' },
+        'guide.region.r0.desc': { ko: '한국 내 보세구역 및 외항 간 운송에 적용. 국내 항만 간 화물 이동 시 최저 요율 적용.', en: 'Applies to transport between bonded areas and outer ports in Korea. Lowest rate for domestic port-to-port cargo.' },
+        'guide.region.r1.name': { ko: '국내연안', en: 'Domestic Coastal' },
+        'guide.region.r1.desc': { ko: '한국 연안 항구 간 운송. 제주도, 울릉도 등 도서지역 포함.', en: 'Transport between Korean coastal ports. Includes island regions like Jeju and Ulleungdo.' },
+        'guide.region.r2.name': { ko: '🇯🇵 일본', en: '🇯🇵 Japan' },
+        'guide.region.r3.name': { ko: '🇨🇳 중국', en: '🇨🇳 China' },
+        'guide.region.r4.name': { ko: '🌏 동남아', en: '🌏 Southeast Asia' },
+        'guide.region.r5.name': { ko: '🕌 중동/아프리카', en: '🕌 Middle East/Africa' },
+        'guide.region.r6.name': { ko: '🦘 호주/뉴질랜드', en: '🦘 Australia/New Zealand' },
+        'guide.region.r7.name': { ko: '🏰 유럽', en: '🏰 Europe' },
+        'guide.region.r8.name': { ko: '🗽 북미', en: '🗽 North America' },
+        'guide.region.r9.name': { ko: '🌎 남미', en: '🌎 South America' },
+
+        // Guide: Coverage
+        'guide.cov.title': { ko: '📋 신·구약관 9가지 담보조건', en: '📋 9 Coverage Conditions (New & Old Clauses)' },
+        'guide.cov.desc': { ko: '적하보험은 ICC(Institute Cargo Clauses) 약관에 따라 담보범위가 달라집니다.<br>신약관(1982/2009)과 구약관(1963)을 선택할 수 있습니다.', en: 'Cargo insurance coverage varies by ICC (Institute Cargo Clauses).<br>Choose between New Clauses (1982/2009) and Old Clauses (1963).' },
+        'guide.cov.newTitle': { ko: '📘 ICC 신약관 (1982/2009) — 4가지', en: '📘 ICC New Clauses (1982/2009) — 4 Types' },
+        'guide.cov.oldTitle': { ko: '📜 ICC 구약관 (1963) — 5가지', en: '📜 ICC Old Clauses (1963) — 5 Types' },
+        'guide.cov.iccC.desc': { ko: '화재·폭발, 좌초·침몰·전복, 충돌, 공동해손 희생, 투하, 본선·부선의 전손 등 <strong>열거된 위험</strong>만 담보. 가장 기본적인 보장.', en: 'Covers only <strong>named perils</strong>: fire/explosion, stranding/sinking/capsizing, collision, general average sacrifice, jettison, total loss of vessel/lighter. Most basic coverage.' },
+        'guide.cov.iccB.desc': { ko: 'ICC(C) + 지진·낙뢰·해일, 갑판유실, 침수, 하역 중 낙하·추락 등 추가 담보. 중간 수준의 보장.', en: 'ICC(C) + earthquake/lightning/tsunami, washing overboard, flooding, dropping during loading/unloading. Mid-level coverage.' },
+        'guide.cov.iccA.desc': { ko: '<strong>전위험 담보(All Risks)</strong>. 면책사항을 제외한 모든 우연한 위험을 담보. 가장 넓은 보장 범위.', en: '<strong>All Risks coverage</strong>. Covers all fortuitous risks except exclusions. Widest scope of protection.' },
+        'guide.cov.iccAir.desc': { ko: '항공운송 화물 전용. ICC(A)와 동일한 전위험 담보. 하역 후 시간제한이 <strong>30일</strong>로 축소.', en: 'For air cargo only. Same All Risks as ICC(A). Time limit after discharge reduced to <strong>30 days</strong>.' },
+        'guide.cov.fpa.desc': { ko: '<strong>단독해손 부담보</strong>. 전손, 공동해손, 특정 사고(좌초·침몰·화재·충돌)로 인한 손해만 보상. 분손은 보상하지 않음.', en: '<strong>Free from Particular Average</strong>. Only covers total loss, general average, and specific accidents (stranding/sinking/fire/collision). No partial loss.' },
+        'guide.cov.wa3.desc': { ko: 'F.P.A. + <strong>면책률 3% 이상의 분손</strong> 담보. 손해가 보험가액의 3% 이상이면 전액 보상, 미만이면 보상 없음.', en: 'F.P.A. + <strong>partial loss above 3% franchise</strong>. Full compensation if loss ≥ 3% of insured value, nothing if below.' },
+        'guide.cov.waIop.desc': { ko: 'F.P.A. + <strong>면책률 없이 모든 분손</strong> 담보. 손해 비율에 관계없이 분손 보상.', en: 'F.P.A. + <strong>all partial losses regardless of percentage</strong>. No franchise threshold applied.' },
+        'guide.cov.ar.desc': { ko: '<strong>전위험 담보</strong>. 면책위험을 제외한 모든 우연한 사고로 인한 손해를 담보. 구약관 중 가장 넓은 보장.', en: '<strong>All Risks</strong>. Covers all fortuitous losses except exclusions. Widest coverage under old clauses.' },
+        'guide.cov.arAir.desc': { ko: '항공운송 화물 전용 전위험 담보. 구약관 기준 항공 화물에 적용.', en: 'All Risks for air cargo. Applied under old clauses for air shipments.' },
+        'guide.cov.scope40': { ko: '담보범위 약 40%', en: 'Coverage ~40%' },
+        'guide.cov.scope65': { ko: '담보범위 약 65%', en: 'Coverage ~65%' },
+        'guide.cov.scope100': { ko: '담보범위 약 100%', en: 'Coverage ~100%' },
+        'guide.cov.scopeAir': { ko: '항공 전위험', en: 'Air All Risks' },
+        'guide.cov.scopeMin': { ko: '최소 담보', en: 'Minimum Coverage' },
+        'guide.cov.scopeFr3': { ko: '면책률 3%', en: '3% Franchise' },
+        'guide.cov.scopeNoFr': { ko: '면책률 없음', en: 'No Franchise' },
+        'guide.cov.scopeAR': { ko: '전위험 담보', en: 'All Risks' },
+        'guide.cov.exclusions': { ko: '⚠️ <strong>공통 면책위험</strong>: 고의적 불법행위 · 지연 · 고유하자/성질 · 포장부적합 · 자연소모 · 원자력/핵 · 전쟁(별도특약) · 파업(별도특약) · 불감항(별도)', en: '⚠️ <strong>Common Exclusions</strong>: Willful misconduct · Delay · Inherent vice · Insufficient packing · Wastage · Nuclear · War (separate) · Strikes (separate) · Unseaworthiness (separate)' },
+        'guide.cov.cta': { ko: '담보조건을 이해하셨나요? 조건별 보험료 차이를 직접 비교해 보세요.', en: 'Understand the coverage options? Compare premium differences by condition.' },
+
+        // Guide: Value
+        'guide.val.title': { ko: '💰 화물가액 (보험가액) 산정', en: '💰 Insured Value Calculation' },
+        'guide.val.desc': { ko: '적하보험의 보험가액은 국제 상관습에 따라<br><strong>CIF 가격 × 110%</strong>를 기준으로 산정합니다.', en: 'The insured value for cargo insurance is calculated based on international practice:<br><strong>CIF Price × 110%</strong>.' },
+        'guide.val.formula': { ko: '보험가액 = CIF × 110%', en: 'Insured Value = CIF × 110%' },
+        'guide.val.formulaSub': { ko: 'Insured Value = CIF Price × 110%', en: 'Including 10% Imaginary Profit' },
+        'guide.val.cost': { ko: 'C — Cost', en: 'C — Cost' },
+        'guide.val.costDesc': { ko: '화물 원가<br>(Invoice 금액)', en: 'Cargo Cost<br>(Invoice Amount)' },
+        'guide.val.ins': { ko: 'I — Insurance', en: 'I — Insurance' },
+        'guide.val.insDesc': { ko: '보험료<br>(적하보험료)', en: 'Premium<br>(Cargo Insurance)' },
+        'guide.val.frt': { ko: 'F — Freight', en: 'F — Freight' },
+        'guide.val.frtDesc': { ko: '운임<br>(해상/항공 운송비)', en: 'Freight<br>(Ocean/Air Transport)' },
+        'guide.val.profit': { ko: '+10% (희망이익)', en: '+10% (Imaginary Profit)' },
+        'guide.val.profitDesc': { ko: 'Imaginary Profit<br>도착 후 예상 이익분', en: 'Imaginary Profit<br>Expected profit on arrival' },
+        'guide.val.exTitle': { ko: '💡 산출 예시', en: '💡 Calculation Example' },
+        'guide.val.exCIF': { ko: '<strong>▸ CIF 조건일 때</strong><br>CIF 가격: <strong>USD 53,200</strong> (Cost $50,000 + Insurance $200 + Freight $3,000)<br>보험가액: USD 53,200 × 110% = <strong>USD 58,520</strong>', en: '<strong>▸ Under CIF Terms</strong><br>CIF Price: <strong>USD 53,200</strong> (Cost $50,000 + Insurance $200 + Freight $3,000)<br>Insured Value: USD 53,200 × 110% = <strong>USD 58,520</strong>' },
+        'guide.val.exFOB': { ko: '<strong>▸ FOB/CFR 조건일 때</strong> (매수인이 보험 가입)<br>화물원가(C): <strong>USD 50,000</strong> / 운임(F): <strong>USD 3,000</strong><br>보험가액: (50,000 + 3,000) × 110% = <strong>USD 58,300</strong><br><span style="font-size:0.75rem; color:#888;">※ 보험료(I)는 미확정이므로 (C+F) × 110%로 산정. 보험료 0.1~0.5%는 10% 희망이익에 흡수.</span>', en: '<strong>▸ Under FOB/CFR Terms</strong> (Buyer arranges insurance)<br>Cost (C): <strong>USD 50,000</strong> / Freight (F): <strong>USD 3,000</strong><br>Insured Value: (50,000 + 3,000) × 110% = <strong>USD 58,300</strong><br><span style="font-size:0.75rem; color:#888;">※ Insurance (I) is unknown, so (C+F) × 110% is used. Premium of 0.1–0.5% is absorbed into the 10% margin.</span>' },
+        'guide.val.incoTitle': { ko: '📌 <strong>인코텀즈(Incoterms)에 따른 보험가액 산정</strong>', en: '📌 <strong>Insured Value by Incoterms</strong>' },
+        'guide.val.incoCIF': { ko: '• <strong>CIF/CIP 조건</strong>: 매도인이 보험가입 의무 → 가격에 보험료(I)가 이미 포함 → <strong>CIF × 110%</strong> 적용', en: '• <strong>CIF/CIP</strong>: Seller arranges insurance → Price includes Insurance (I) → <strong>CIF × 110%</strong>' },
+        'guide.val.incoFOB': { ko: '• <strong>FOB/CFR 조건</strong>: 매수인이 보험가입 → 보험료 미확정 상태에서 보험가액 산정 필요 → <strong>(C+F) × 110%</strong>로 산정', en: '• <strong>FOB/CFR</strong>: Buyer arranges insurance → Premium unknown at calculation → <strong>(C+F) × 110%</strong>' },
+        'guide.val.incoEXW': { ko: '• <strong>EXW 조건</strong>: 매수인이 모든 비용·위험 부담 → <strong>(원가 + 내륙운송비 + 해상운임) × 110%</strong>', en: '• <strong>EXW</strong>: Buyer bears all costs and risks → <strong>(Cost + Inland Transport + Freight) × 110%</strong>' },
+        'guide.val.circular': { ko: '<span style="color:#e65100;">💡 <strong>왜 FOB/CFR/EXW에서 보험료(I)를 넣지 않나요?</strong></span><br>보험가액을 구하려면 보험료가 필요하고, 보험료를 구하려면 보험가액이 필요한 <strong>순환계산(Circular Calculation)</strong> 문제가 발생합니다. 실무에서는 보험료가 화물가액의 0.1~0.5% 수준으로 미미하므로, 10% 희망이익분에 흡수되는 것으로 보고 <strong>(C+F) × 110%</strong>를 보험가액으로 사용합니다.', en: '<span style="color:#e65100;">💡 <strong>Why is Insurance (I) excluded for FOB/CFR/EXW?</strong></span><br>To calculate the insured value you need the premium, but to calculate the premium you need the insured value — a <strong>circular calculation</strong> problem. In practice, since the premium is only 0.1–0.5% of cargo value, it is absorbed into the 10% imaginary profit margin, so <strong>(C+F) × 110%</strong> is used.' },
+        'guide.val.cta': { ko: '화물가액 산정 방법을 이해하셨나요? 직접 금액을 입력하고 보험료를 확인해 보세요.', en: 'Understand how to calculate insured value? Enter the amount and check your premium.' },
     }
 };
 
@@ -20783,6 +21853,8 @@ function switchLang(lang) {
         'destCountry': lang === 'en' ? 'Search country' : '국가명 검색',
         'destCity': lang === 'en' ? 'City name' : '도시명',
         'hsCode': lang === 'en' ? 'e.g., 8471' : '예: 8471',
+        'guideHsInput': lang === 'en' ? 'Enter 4-digit HS Code (e.g., 6204, 8471, 2710...)' : 'HS Code 4자리 입력 (예: 6204, 8471, 2710...)',
+        'regionSearchInput': lang === 'en' ? 'Search country (e.g., USA, Germany, 독일...)' : '국가명 검색 (예: 미국, Vietnam, 독일...)',
     };
     for (const [id, ph] of Object.entries(phMap)) {
         const el = document.getElementById(id);
