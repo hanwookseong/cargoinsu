@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="N2N">
+  <title>N2N mark</title>
+  <desc>Square N2N mark with three close-together discs for profile pictures and favicons.</desc>
+
+  <circle cx="34" cy="100" r="30" fill="#0B2818"/>
+  <circle cx="100" cy="100" r="30" fill="#D97757"/>
+  <circle cx="166" cy="100" r="30" fill="#0B2818"/>
+
+  <text x="34" y="113" text-anchor="middle"
+        font-family="'Fraunces','Noto Serif KR',Georgia,serif"
+        font-size="38" font-weight="600" letter-spacing="-1"
+        fill="#F4F0E8">N</text>
+  <text x="100" y="113" text-anchor="middle"
+        font-family="'Fraunces','Noto Serif KR',Georgia,serif"
+        font-size="38" font-weight="600"
+        fill="#F4F0E8">2</text>
+  <text x="166" y="113" text-anchor="middle"
+        font-family="'Fraunces','Noto Serif KR',Georgia,serif"
+        font-size="38" font-weight="600" letter-spacing="-1"
+        fill="#F4F0E8">N</text>
+</svg>

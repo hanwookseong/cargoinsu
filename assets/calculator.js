@@ -10,7 +10,7 @@
    1) 수입/수출 구분
    2) 출발지·도착지 (전 세계 206개국 datalist) → 운송지역 자동선택
    3) 운송지역 (KIDI zone 10) — 보세/외항·국내연안·일본·중국·동남아·중동/아프리카·호주/뉴질랜드·유럽·북미·남미
-   4) HS Code(4자리) → KIDI 품목코드 자동 분류 (Chubb 1,391종 매핑)
+   4) HS Code(4자리) → KIDI 품목코드 자동 분류
    5) KIDI 해상보험요율서 품목 코드 (201~306) 직접 선택 가능
    6) 화물가액 — 10개 주요 통화 + 통화별 환율
    7) 보험가입금액 = 화물가액 × 110% × 환율
@@ -236,8 +236,9 @@
     ['SR', '수리남', 'Suriname', '남미']
   ];
   // ─────────────────────────────────────────────────────────
-  // 다중통화 — KEB하나은행 1차고시 전신환매도율 (₩ 환산, 예시 2026년 4월 기준)
-  // 사용자는 각 통화 환율을 직접 수정 가능
+  // 다중통화 — 기본값(폴백용)은 정적 환율, loadFx()에서 frankfurter.app API로
+  // 실시간 ECB 기준 환율 자동 갱신 (영업일 1회, 약 16:00 CET 기준).
+  // 사용자는 각 통화 환율을 직접 수정 가능.
   // ─────────────────────────────────────────────────────────
   var CURRENCIES = [
     { code: 'USD', name: '미국 달러',        rate: 1450.00, unit: 1   },
@@ -303,18 +304,19 @@
     { code: '306',   label: '306   군수물자 (Defense Materials)',               group: '기타', cargo: 'general' }
   ];
 
-  // 단일 요율 (KIDI 참조요율 + 메리츠화재 기준) — 화물군별 6개 약관
+  // 단일 요율 (KIDI 참조요율 + 메리츠화재 기준) — 화물군별 6개 약관 (단위 %)
+  // 시장 실제 적용 요율 수준에 맞춰 보정 (2026-04-27)
   var RATE_TABLE = {
-    'general':   { name: '일반화물',         icc_a: 0.130, icc_b: 0.090, icc_c: 0.070, ar: 0.125, wa: 0.085, fpa: 0.065 },
-    'machinery': { name: '기계·전자',        icc_a: 0.150, icc_b: 0.105, icc_c: 0.080, ar: 0.145, wa: 0.100, fpa: 0.075 },
-    'metal':     { name: '철강·금속',        icc_a: 0.165, icc_b: 0.115, icc_c: 0.090, ar: 0.160, wa: 0.110, fpa: 0.085 },
-    'textile':   { name: '섬유·의류',        icc_a: 0.155, icc_b: 0.108, icc_c: 0.085, ar: 0.150, wa: 0.103, fpa: 0.080 },
-    'foodstuff': { name: '식품·농수산',      icc_a: 0.230, icc_b: 0.160, icc_c: 0.120, ar: 0.220, wa: 0.150, fpa: 0.115 },
-    'frozen':    { name: '냉동·냉장',        icc_a: 0.270, icc_b: 0.190, icc_c: 0.150, ar: 0.260, wa: 0.180, fpa: 0.145 },
-    'chemical':  { name: '화학·위험물',      icc_a: 0.290, icc_b: 0.205, icc_c: 0.165, ar: 0.280, wa: 0.195, fpa: 0.160 },
-    'liquid':    { name: '석유·액체',        icc_a: 0.180, icc_b: 0.125, icc_c: 0.100, ar: 0.175, wa: 0.120, fpa: 0.095 },
-    'fragile':   { name: '취약·도자기·유리', icc_a: 0.330, icc_b: 0.230, icc_c: 0.180, ar: 0.320, wa: 0.220, fpa: 0.175 },
-    'art':       { name: '예술품·귀금속',    icc_a: 0.450, icc_b: null,  icc_c: null,  ar: 0.430, wa: null,  fpa: null }
+    'general':   { name: '일반화물',         icc_a: 0.0130, icc_b: 0.0090, icc_c: 0.0070, ar: 0.0125, wa: 0.0085, fpa: 0.0065 },
+    'machinery': { name: '기계·전자',        icc_a: 0.0150, icc_b: 0.0105, icc_c: 0.0080, ar: 0.0145, wa: 0.0100, fpa: 0.0075 },
+    'metal':     { name: '철강·금속',        icc_a: 0.0165, icc_b: 0.0115, icc_c: 0.0090, ar: 0.0160, wa: 0.0110, fpa: 0.0085 },
+    'textile':   { name: '섬유·의류',        icc_a: 0.0155, icc_b: 0.0108, icc_c: 0.0085, ar: 0.0150, wa: 0.0103, fpa: 0.0080 },
+    'foodstuff': { name: '식품·농수산',      icc_a: 0.0230, icc_b: 0.0160, icc_c: 0.0120, ar: 0.0220, wa: 0.0150, fpa: 0.0115 },
+    'frozen':    { name: '냉동·냉장',        icc_a: 0.0270, icc_b: 0.0190, icc_c: 0.0150, ar: 0.0260, wa: 0.0180, fpa: 0.0145 },
+    'chemical':  { name: '화학·위험물',      icc_a: 0.0290, icc_b: 0.0205, icc_c: 0.0165, ar: 0.0280, wa: 0.0195, fpa: 0.0160 },
+    'liquid':    { name: '석유·액체',        icc_a: 0.0180, icc_b: 0.0125, icc_c: 0.0100, ar: 0.0175, wa: 0.0120, fpa: 0.0095 },
+    'fragile':   { name: '취약·도자기·유리', icc_a: 0.0330, icc_b: 0.0230, icc_c: 0.0180, ar: 0.0320, wa: 0.0220, fpa: 0.0175 },
+    'art':       { name: '예술품·귀금속',    icc_a: 0.0450, icc_b: null,   icc_c: null,   ar: 0.0430, wa: null,   fpa: null   }
   };
 
   // KIDI zone 별 region factor
@@ -342,7 +344,7 @@
     'fpa':   '구약관 F.P.A — Free from Particular Average'
   };
 
-  // Chubb cargo 카테고리 → KIDI 추천 코드
+  // 화물 카테고리 → KIDI 추천 코드
   var CARGO_TO_KIDI = {
     'general':   '303',    'machinery': '216-3', 'metal':     '215-1',
     'textile':   '201-1',  'foodstuff': '210-1', 'frozen':    '210-2',
@@ -408,7 +410,7 @@
       if (hint) {
         hint.innerHTML = '✓ <strong>' + match.name + '</strong> → KIDI 품목 ' +
           '<strong style="color:var(--accent);">' + (kidiItem ? kidiItem.label : rateName) + '</strong> ' +
-          '<span style="color:var(--ink-2);font-size:.78rem;">(Chubb HS → KIDI 자동 매핑)</span>';
+          '<span style="color:var(--ink-2);font-size:.78rem;">(HS → KIDI 자동 매핑)</span>';
         hint.style.color = 'var(--forest)';
       }
     } else if (raw && raw.length >= 2) {
@@ -514,12 +516,12 @@
 
     $('calcResPremium').textContent = '₩' + fmt(premium);
     $('calcResCargo').textContent = kidiItem.label + '  · 화물군 ' + rateInfo.name;
-    $('calcResHs').textContent = hs ? hs + ' (Chubb HS 분류 자동)' : '직접 선택';
+    $('calcResHs').textContent = hs ? hs + ' (자동 분류)' : '직접 선택';
     $('calcResClause').textContent = CLAUSE_LABEL[clause] || clause;
     $('calcResRoute').textContent = origin + ' → ' + dest + ' (zone: ' + region + ')';
     $('calcResTrade').textContent = trade === 'export' ? '수출 (Export)' : '수입 (Import)';
     $('calcResInsured').textContent = '₩' + fmt(insuredKRW) + ' (' + ccyCode + ' ' + fmt(insuredCcy) + ')';
-    $('calcResRate').textContent = rate.toFixed(3) + '%';
+    $('calcResRate').textContent = rate.toFixed(4) + '%';
     $('calcResFx').textContent = '₩' + fmt2(fx) + ' / ' + ccyCode + ' (전일 종가 전신환 매도율)';
 
     var resultEl = $('calcResult');
@@ -541,11 +543,38 @@
   function loadFx() {
     var hint = $('calcFxHint');
     if (!hint) return;
-    var d = new Date();
-    d.setDate(d.getDate() - 1);
-    var dateStr = d.toISOString().substring(0, 10);
-    hint.innerHTML = '전일(' + dateStr + ') 종가 <strong>전신환 매도율</strong> 자동 적용 ' +
-      '<span style="color:var(--ink-2);font-size:.74rem;">(KEB하나은행 1차고시 기준 — 통화별 환율 자동세팅)</span>';
+    hint.innerHTML = '환율 불러오는 중…';
+
+    var symbols = CURRENCIES.map(function (c) { return c.code; }).join(',');
+    var url = 'https://api.frankfurter.app/latest?from=KRW&to=' + symbols;
+
+    fetch(url, { cache: 'no-store' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        if (!data || !data.rates) throw new Error('Invalid response');
+        // data.rates[XXX] = (XXX 단위/1 KRW). KRW/XXX = 1 / 위 값.
+        CURRENCIES.forEach(function (c) {
+          var perKrw = data.rates[c.code];
+          if (perKrw && perKrw > 0) {
+            c.rate = Math.round((1 / perKrw) * 100) / 100;  // 소수 둘째자리 반올림
+          }
+        });
+        var dateStr = data.date || new Date().toISOString().substring(0, 10);
+        hint.innerHTML = '✓ 최종 갱신 ' + dateStr + ' · ECB 기준 환율 자동 적용 ' +
+          '<span style="color:var(--ink-2);font-size:.74rem;">(영업일 1회 갱신, 통화 변경 시 자동세팅, 수동 수정 가능)</span>';
+        // 현재 선택된 통화로 환율 input 즉시 갱신
+        onCurrencyChange();
+      })
+      .catch(function (err) {
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        var dateStr = d.toISOString().substring(0, 10);
+        hint.innerHTML = '⚠ 자동 환율 조회 실패 — 예시 환율 적용 중 ' +
+          '<span style="color:var(--ink-2);font-size:.74rem;">(' + dateStr + ' 기준 정적 값, 수동 수정 가능)</span>';
+      });
   }
 
   function fillCountryDatalist() {

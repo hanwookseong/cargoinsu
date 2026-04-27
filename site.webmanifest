@@ -1,0 +1,21 @@
+{
+  "name": "엔투엔보험중개",
+  "short_name": "N2N",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#0B2818",
+  "background_color": "#F4F0E8",
+  "display": "standalone"
+}

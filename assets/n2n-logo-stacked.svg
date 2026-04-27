@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 88" role="img" aria-label="N2N Insurance Brokerage">
-  <title>N2N Insurance Brokerage</title>
-  <desc>Three-disc N2N mark with INSURANCE BROKERAGE tagline below.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" role="img" aria-label="엔투엔보험중개 N2N Insurance Brokerage">
+  <title>엔투엔보험중개 — N2N Insurance Brokerage</title>
+  <desc>Three-disc N2N mark with INSURANCE BROKERAGE tagline and Korean wordmark below.</desc>
 
   <circle cx="38" cy="32" r="28" fill="#0B2818"/>
   <circle cx="100" cy="32" r="28" fill="#D97757"/>
@@ -20,8 +20,13 @@
         font-size="34" font-weight="600" letter-spacing="-1"
         fill="#F4F0E8">N</text>
 
-  <text x="100" y="80" text-anchor="middle"
+  <text x="100" y="78" text-anchor="middle"
         font-family="'Inter','Helvetica Neue',system-ui,sans-serif"
-        font-size="11" font-weight="500" letter-spacing="2.5"
+        font-size="10" font-weight="500" letter-spacing="2"
         fill="#0B2818">INSURANCE BROKERAGE</text>
+
+  <text x="100" y="106" text-anchor="middle"
+        font-family="'Noto Serif KR','Fraunces',Georgia,serif"
+        font-size="18" font-weight="600" letter-spacing="-0.5"
+        fill="#0A0A0A">엔투엔보험중개</text>
 </svg>
