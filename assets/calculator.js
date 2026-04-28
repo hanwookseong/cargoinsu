@@ -546,29 +546,54 @@
     hint.innerHTML = '환율 불러오는 중…';
 
     var symbols = CURRENCIES.map(function (c) { return c.code; }).join(',');
-    var url = 'https://api.frankfurter.app/latest?from=KRW&to=' + symbols;
+    // Primary: frankfurter.dev (ECB 기준, 2024년에 .app → .dev 이전)
+    var primaryUrl = 'https://api.frankfurter.dev/v1/latest?base=KRW&symbols=' + symbols;
+    // Fallback: jsdelivr CDN 기반 currency-api (CDN이라 CORS 이슈 없음)
+    var fallbackUrl = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/krw.json';
 
-    fetch(url, { cache: 'no-store' })
+    function applyRates(ratesByCode, dateStr, source) {
+      CURRENCIES.forEach(function (c) {
+        var perKrw = ratesByCode[c.code] || ratesByCode[c.code.toLowerCase()];
+        if (perKrw && perKrw > 0) {
+          c.rate = Math.round((1 / perKrw) * 100) / 100;
+        }
+      });
+      hint.innerHTML = '✓ 최종 갱신 ' + dateStr + ' · ' + source + ' 기준 환율 자동 적용 ' +
+        '<span style="color:var(--ink-2);font-size:.74rem;">(영업일 1회 갱신, 통화 변경 시 자동세팅, 수동 수정 가능)</span>';
+      onCurrencyChange();
+    }
+
+    function tryFallback() {
+      return fetch(fallbackUrl, { cache: 'no-store' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          if (!data || !data.krw) throw new Error('Invalid jsdelivr response');
+          var ratesUpper = {};
+          for (var k in data.krw) {
+            if (Object.prototype.hasOwnProperty.call(data.krw, k)) {
+              ratesUpper[k.toUpperCase()] = data.krw[k];
+            }
+          }
+          applyRates(ratesUpper, data.date || new Date().toISOString().substring(0, 10), 'CDN');
+        });
+    }
+
+    fetch(primaryUrl, { cache: 'no-store' })
       .then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
         return res.json();
       })
       .then(function (data) {
-        if (!data || !data.rates) throw new Error('Invalid response');
-        // data.rates[XXX] = (XXX 단위/1 KRW). KRW/XXX = 1 / 위 값.
-        CURRENCIES.forEach(function (c) {
-          var perKrw = data.rates[c.code];
-          if (perKrw && perKrw > 0) {
-            c.rate = Math.round((1 / perKrw) * 100) / 100;  // 소수 둘째자리 반올림
-          }
-        });
-        var dateStr = data.date || new Date().toISOString().substring(0, 10);
-        hint.innerHTML = '✓ 최종 갱신 ' + dateStr + ' · ECB 기준 환율 자동 적용 ' +
-          '<span style="color:var(--ink-2);font-size:.74rem;">(영업일 1회 갱신, 통화 변경 시 자동세팅, 수동 수정 가능)</span>';
-        // 현재 선택된 통화로 환율 input 즉시 갱신
-        onCurrencyChange();
+        if (!data || !data.rates) throw new Error('Invalid frankfurter response');
+        applyRates(data.rates, data.date || new Date().toISOString().substring(0, 10), 'ECB');
       })
-      .catch(function (err) {
+      .catch(function () {
+        return tryFallback();
+      })
+      .catch(function () {
         var d = new Date();
         d.setDate(d.getDate() - 1);
         var dateStr = d.toISOString().substring(0, 10);
