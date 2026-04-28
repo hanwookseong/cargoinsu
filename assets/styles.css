@@ -4205,6 +4205,13 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   margin-top: 2px;
 }
 
+/* 한글 단어 잘림 방지 — 데스크톱 포함 전역 */
+html, body {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+
 /* ════════════════════════════════════════════════════════════════════
    Mobile Responsive Overrides — file 끝에 두어 모든 desktop 스타일을 덮어씀
    ──────────────────────────────────────────────────────────────────── */
@@ -4400,6 +4407,13 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 
   /* Container */
   .container { padding: 0 16px !important; }
+
+  /* 한글 단어 잘림 방지 (음절 단위 줄바꿈 방지) */
+  body, h1, h2, h3, h4, h5, h6, p, li, td, th, a, span, div, label, button {
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    line-break: strict !important;
+  }
 
   /* ───── 가로 오버플로우 안전장치 ───── */
   html, body {
