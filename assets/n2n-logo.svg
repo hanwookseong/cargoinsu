@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 110" role="img" aria-label="N2N Insurance Brokerage">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" role="img" aria-label="N2N Insurance Brokerage">
   <title>N2N Insurance Brokerage</title>
-  <desc>Three-disc N2N mark with INSURANCE and BROKERAGE stacked below.</desc>
+  <desc>Three-disc N2N mark with prominent INSURANCE and BROKERAGE wordmark.</desc>
 
-  <circle cx="44" cy="30" r="24" fill="#0B2818"/>
-  <circle cx="100" cy="30" r="24" fill="#D97757"/>
-  <circle cx="156" cy="30" r="24" fill="#0B2818"/>
+  <circle cx="60" cy="34" r="26" fill="#0B2818"/>
+  <circle cx="120" cy="34" r="26" fill="#D97757"/>
+  <circle cx="180" cy="34" r="26" fill="#0B2818"/>
 
-  <text x="44" y="40" text-anchor="middle"
+  <text x="60" y="46" text-anchor="middle"
         font-family="'Fraunces','Noto Serif KR',Georgia,serif"
-        font-size="28" font-weight="600" letter-spacing="-1"
+        font-size="32" font-weight="600" letter-spacing="-1"
         fill="#F4F0E8">N</text>
-  <text x="100" y="40" text-anchor="middle"
+  <text x="120" y="46" text-anchor="middle"
         font-family="'Fraunces','Noto Serif KR',Georgia,serif"
-        font-size="28" font-weight="600"
+        font-size="32" font-weight="600"
         fill="#F4F0E8">2</text>
-  <text x="156" y="40" text-anchor="middle"
+  <text x="180" y="46" text-anchor="middle"
         font-family="'Fraunces','Noto Serif KR',Georgia,serif"
-        font-size="28" font-weight="600" letter-spacing="-1"
+        font-size="32" font-weight="600" letter-spacing="-1"
         fill="#F4F0E8">N</text>
 
-  <text x="100" y="76" text-anchor="middle"
+  <text x="120" y="92" text-anchor="middle"
         font-family="'Inter','Helvetica Neue',system-ui,sans-serif"
-        font-size="13" font-weight="500" letter-spacing="3"
+        font-size="26" font-weight="600" letter-spacing="2"
         fill="#0B2818">INSURANCE</text>
-  <text x="100" y="96" text-anchor="middle"
+  <text x="120" y="120" text-anchor="middle"
         font-family="'Inter','Helvetica Neue',system-ui,sans-serif"
-        font-size="13" font-weight="500" letter-spacing="3"
+        font-size="26" font-weight="600" letter-spacing="2"
         fill="#0B2818">BROKERAGE</text>
 </svg>

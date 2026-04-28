@@ -4213,6 +4213,52 @@ html, body {
 }
 
 /* ════════════════════════════════════════════════════════════════════
+   사용자 요청 — 헤더/푸터/오렌지 강조 부분 크기 조정
+   ──────────────────────────────────────────────────────────────────── */
+
+/* 1. 헤더 로고 — 38px → 57px (150% 확대) */
+.logo-img { height: 57px !important; }
+
+/* 1-2. 헤더 utils 전화/이메일/카톡 — 150% 확대 */
+.top-utils { font-size: 1.05rem !important; }
+.top-utils a { font-size: 1.05rem !important; }
+.top-utils .hot { font-size: 1.05rem !important; font-weight: 600; }
+.top-utils .kakao-link { padding: 6px 14px !important; font-size: 1.0rem !important; }
+
+/* 2. 바디 오렌지 강조 영역 (eyebrow, why category label) — 150% 확대 */
+.eyebrow,
+.section-eyebrow,
+.why-eyebrow,
+.hero-eyebrow,
+.cat-eyebrow,
+.pd-eyebrow {
+  font-size: 1.15rem !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 600 !important;
+}
+
+/* 3. 푸터 로고 — 가로형 박스, 빈공간 최소화 */
+.site-footer .footer-brand {
+  background: var(--ivory);
+  padding: 14px 20px !important;
+  border-radius: 6px;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 14px !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+.site-footer .footer-brand .logo-img {
+  height: 64px !important;
+  width: auto !important;
+  margin: 0 !important;
+  display: block !important;
+}
+.site-footer .footer-brand br { display: none !important; }
+
+/* ════════════════════════════════════════════════════════════════════
    Mobile Responsive Overrides — file 끝에 두어 모든 desktop 스타일을 덮어씀
    ──────────────────────────────────────────────────────────────────── */
 @media (max-width: 780px) {
