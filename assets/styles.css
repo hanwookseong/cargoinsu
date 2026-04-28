@@ -4216,9 +4216,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     flex-wrap: wrap !important;
     gap: 8px !important;
   }
-  .logo-img { height: 36px !important; }
-  .logo-txt strong { font-size: 0.95rem !important; }
-  .logo-txt span { font-size: 0.7rem !important; }
+  .logo-img { height: 52px !important; }  /* 새 3행 로고 가독성 위해 확대 */
+  .logo-txt strong { font-size: 0.92rem !important; line-height: 1.3 !important; }
+  .logo-txt span { font-size: 0.68rem !important; line-height: 1.35 !important; }
 
   /* Sticky GNB → 일반 흐름으로 변경 (모바일에서는 sticky 비활성) */
   .navi_wrap {
