@@ -1648,6 +1648,60 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .gnb .depth2 li a:hover { background: var(--ivory-2); color: var(--forest); }
 .menu-toggle { display: none; }
 
+/* ── 모바일 GNB 햄버거 메뉴 정상화 (이전 .gnb > ul flex 규칙을 모바일에서 강제 숨김) ── */
+@media (max-width: 780px) {
+  .gnb { position: relative; min-height: 48px; padding: 0; }
+  .gnb > ul {
+    display: none !important;
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column;
+    background: var(--brand);
+    padding: 8px 0;
+    margin: 0;
+    z-index: 100;
+    gap: 0;
+  }
+  .gnb > ul.open { display: flex !important; }
+  .gnb > ul > li {
+    flex: none; width: 100%; position: relative;
+  }
+  .gnb > ul > li > a {
+    text-align: left;
+    padding: 12px 20px;
+    color: #fff;
+    display: block;
+  }
+  .gnb > ul > li > a::after { display: none !important; }
+  .gnb .depth2 {
+    position: static !important;
+    border: 0 !important; box-shadow: none !important;
+    background: var(--brand-2) !important;
+    padding: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .gnb .depth2 li a {
+    color: rgba(255,255,255,0.88);
+    padding: 10px 36px;
+  }
+  .gnb .consult-btn {
+    margin: 8px 16px;
+    text-align: center;
+  }
+  .menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 12px; top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 101;
+  }
+}
+
 /* ── Breadcrumb ───────────────────────────────────────────── */
 .breadcrumb {
   background: var(--ivory);

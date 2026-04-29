@@ -1,4 +1,38 @@
 /* =========================================================
+   모바일 GNB 햄버거 토글 — 모든 페이지 공통
+   ========================================================= */
+(function () {
+  function initMenuToggle() {
+    var btn = document.querySelector('.menu-toggle');
+    var ul  = document.querySelector('.gnb > ul');
+    if (!btn || !ul) return;
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      ul.classList.toggle('open');
+    });
+    /* 메뉴 항목 클릭 시 자동 닫기 */
+    ul.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (a && !e.target.closest('.depth2--mega .mega-col h4')) {
+        ul.classList.remove('open');
+      }
+    });
+    /* 외부 클릭 시 닫기 */
+    document.addEventListener('click', function (e) {
+      if (!ul.contains(e.target) && e.target !== btn && !btn.contains(e.target)) {
+        ul.classList.remove('open');
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMenuToggle);
+  } else {
+    initMenuToggle();
+  }
+})();
+
+/* =========================================================
    cargoinsu.com — 적하보험 보험료 계산기 (v6)
    ─────────────────────────────────────────────────────────
    v6 변경:
