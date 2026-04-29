@@ -4237,11 +4237,11 @@ html, body {
   font-weight: 600 !important;
 }
 
-/* 3. 푸터 로고 — 가로형 박스, 빈공간 최소화 */
+/* 3. 푸터 로고 — 모노컬러 버전, 프레임 없이 포레스트 그린 위에 직접 */
 .site-footer .footer-brand {
-  background: var(--ivory);
-  padding: 14px 20px !important;
-  border-radius: 6px;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   display: inline-flex !important;
   flex-direction: row !important;
   align-items: center !important;
@@ -4250,11 +4250,14 @@ html, body {
   width: auto !important;
   max-width: 100% !important;
 }
+/* 푸터 로고만 모노컬러(아이보리 외곽선·텍스트) 버전으로 자동 교체 */
 .site-footer .footer-brand .logo-img {
-  height: 64px !important;
+  content: url('n2n-logo-mono.svg');
+  height: 80px !important;
   width: auto !important;
   margin: 0 !important;
   display: block !important;
+  filter: none !important;
 }
 .site-footer .footer-brand br { display: none !important; }
 

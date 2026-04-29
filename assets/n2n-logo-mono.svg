@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" role="img" aria-label="N2N Insurance Brokerage">
   <title>N2N Insurance Brokerage</title>
-  <desc>Three-disc N2N mark with prominent INSURANCE and BROKERAGE wordmark.</desc>
+  <desc>Monochrome ivory variant of the three-disc N2N mark for use on dark forest-green backgrounds.</desc>
 
-  <circle cx="60" cy="34" r="26" fill="#0B2818"/>
-  <circle cx="120" cy="34" r="26" fill="#D97757"/>
-  <circle cx="180" cy="34" r="26" fill="#0B2818"/>
+  <circle cx="60" cy="34" r="26" fill="none" stroke="#F4F0E8" stroke-width="1.8"/>
+  <circle cx="120" cy="34" r="26" fill="none" stroke="#F4F0E8" stroke-width="1.8"/>
+  <circle cx="180" cy="34" r="26" fill="none" stroke="#F4F0E8" stroke-width="1.8"/>
 
   <text x="60" y="46" text-anchor="middle"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
@@ -23,9 +23,9 @@
   <text x="120" y="92" text-anchor="middle"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
         font-size="26" font-weight="700" letter-spacing="2"
-        fill="#0B2818">INSURANCE</text>
+        fill="#F4F0E8">INSURANCE</text>
   <text x="120" y="120" text-anchor="middle"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
         font-size="26" font-weight="700" letter-spacing="2"
-        fill="#0B2818">BROKERAGE</text>
+        fill="#F4F0E8">BROKERAGE</text>
 </svg>
