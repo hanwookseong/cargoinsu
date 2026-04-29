@@ -1700,6 +1700,8 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     cursor: pointer;
     z-index: 101;
   }
+  /* 모바일에서 우측 플로팅 빠른메뉴(전화·즉시계산·카톡·n2nib) 숨김 — 콘텐츠 가림 방지 */
+  .right-quick { display: none !important; }
 }
 
 /* ── Breadcrumb ───────────────────────────────────────────── */
