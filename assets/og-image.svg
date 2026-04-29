@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="cargoinsu.com Open Graph image">
+  <title>cargoinsu.com — 적하보험 온라인 플랫폼</title>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B2818"/>
+      <stop offset="100%" stop-color="#0F3A24"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F5238" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#1F5238" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Wave silhouettes -->
+  <path d="M0,500 Q300,460 600,500 T1200,500 L1200,630 L0,630 Z" fill="url(#wave)"/>
+  <path d="M0,540 Q300,510 600,540 T1200,540 L1200,630 L0,630 Z" fill="url(#wave)" opacity="0.7"/>
+
+  <!-- Container ship illustration (top-right) -->
+  <g transform="translate(800, 90)" opacity="0.85">
+    <path d="M20,180 L320,180 L300,222 L40,222 Z" fill="#F4F0E8"/>
+    <rect x="60" y="120" width="50" height="60" fill="#D97757"/>
+    <rect x="115" y="120" width="50" height="60" fill="#F4F0E8"/>
+    <rect x="170" y="120" width="50" height="60" fill="#D97757"/>
+    <rect x="225" y="120" width="50" height="60" fill="#F4F0E8"/>
+    <rect x="60" y="60" width="50" height="55" fill="#F4F0E8"/>
+    <rect x="115" y="60" width="50" height="55" fill="#D97757"/>
+    <rect x="170" y="60" width="50" height="55" fill="#F4F0E8"/>
+    <rect x="280" y="80" width="40" height="100" fill="#F4F0E8"/>
+    <rect x="290" y="100" width="20" height="20" fill="#0B2818"/>
+  </g>
+
+  <!-- ============================== -->
+  <!-- N2N LOGO BLOCK (mark + wordmark) -->
+  <!-- Aligned with homepage style -->
+  <!-- ============================== -->
+  <g transform="translate(80, 90)">
+    <circle cx="42" cy="42" r="42" fill="#F4F0E8"/>
+    <circle cx="130" cy="42" r="42" fill="#D97757"/>
+    <circle cx="218" cy="42" r="42" fill="#F4F0E8"/>
+
+    <text x="42" y="58" text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="52" font-weight="700" letter-spacing="-2"
+          fill="#0B2818">N</text>
+    <text x="130" y="58" text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="52" font-weight="700"
+          fill="#F4F0E8">2</text>
+    <text x="218" y="58" text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="52" font-weight="700" letter-spacing="-2"
+          fill="#0B2818">N</text>
+
+    <text x="130" y="125" text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="22" font-weight="700" letter-spacing="3"
+          fill="#F4F0E8">INSURANCE</text>
+    <text x="130" y="153" text-anchor="middle"
+          font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+          font-size="22" font-weight="700" letter-spacing="3"
+          fill="#F4F0E8">BROKERAGE</text>
+  </g>
+
+  <!-- Main domain/title block -->
+  <text x="80" y="320" font-family="'Pretendard', 'Noto Sans KR', sans-serif"
+        font-size="92" font-weight="800" fill="#F4F0E8" letter-spacing="-3">cargoinsu<tspan fill="#D97757">.com</tspan></text>
+
+  <text x="80" y="395" font-family="'Pretendard', 'Noto Sans KR', sans-serif"
+        font-size="48" font-weight="700" fill="#F4F0E8">적하보험 온라인 플랫폼</text>
+
+  <text x="80" y="450" font-family="'Pretendard', 'Noto Sans KR', sans-serif"
+        font-size="26" font-weight="500" fill="#F4F0E8" opacity="0.9">실시간 요율 산정 · ICC(A)/(B)/(C) 비교 · 5분 가입</text>
+
+  <!-- Bottom band -->
+  <rect x="0" y="560" width="1200" height="70" fill="#0B2818" opacity="0.6"/>
+  <text x="80" y="605" font-family="'Pretendard', 'Noto Sans KR', sans-serif"
+        font-size="22" font-weight="600" fill="#F4F0E8" opacity="0.9">엔투엔보험중개 · 금융감독원 등록 제2026-012201호</text>
+  <text x="1120" y="605" text-anchor="end"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="22" font-weight="700" fill="#D97757">cargoinsu.com</text>
+
+  <!-- Right accent bar -->
+  <rect x="1140" y="0" width="60" height="630" fill="#D97757"/>
+</svg>
