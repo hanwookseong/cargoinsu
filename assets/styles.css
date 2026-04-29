@@ -51,6 +51,22 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
+/* iOS Safari 가로 잘림 방지 — viewport 초과 컨텐츠는 자체 영역에서만 가로 스크롤 */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* flex/grid item 기본 min-width:auto 무력화 — iOS Safari 잘림의 흔한 원인 */
+  min-width: 0;
+}
+img, iframe, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   font-family: var(--f-body);
   color: var(--ink);
@@ -1479,29 +1495,6 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   transform: translateY(-1px);
 }
 .gnb > ul > li > a[href*="products.html#"]::after { display: none !important; }
-
-/* ── cargoinsu 전용: 4개 상품 카테고리 (products/...) — n2nib과 동일한 forest green 박스 ── */
-.gnb > ul > li > a[href*="products/"] {
-  display: inline-block;
-  margin: 8px 0;
-  padding: 11px 22px;
-  min-width: 110px;
-  text-align: center;
-  background: var(--forest);
-  color: var(--ivory);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  border-radius: 2px;
-  transition: background .2s, transform .2s;
-}
-.gnb > ul > li > a[href*="products/"]:hover,
-.gnb > ul > li.active > a[href*="products/"] {
-  background: var(--accent);
-  color: #fff;
-  transform: translateY(-1px);
-}
-.gnb > ul > li > a[href*="products/"]::after { display: none !important; }
-
 /* 카테고리 박스 사이 간격을 살짝 좁혀 가로 폭을 더 확보 */
 .gnb > ul { gap: 0.85rem; }
 .gnb .consult-btn {
@@ -1625,7 +1618,6 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 
 /* 카테고리 박스 hover 시 transform 제거 — 메가메뉴 위치 안정 */
 .gnb > ul > li > a[href*="products.html#"]:hover { transform: none; }
-.gnb > ul > li > a[href*="products/"]:hover { transform: none; }
 
 /* 태블릿: 메가메뉴 컬럼 수 축소 */
 @media (max-width: 1100px) {
@@ -3916,6 +3908,14 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   gap: 1rem;
   margin: 1.5rem 0;
 }
+/* 모바일: 4열 카드를 2열(태블릿) → 1열(폰)로 명시적 분기 */
+@media (max-width: 780px) {
+  .cargo-history { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .cargo-history-cell { padding: 1rem 1.1rem; }
+}
+@media (max-width: 480px) {
+  .cargo-history { grid-template-columns: 1fr; }
+}
 .cargo-history-cell {
   padding: 1.25rem 1.5rem;
   background: var(--ivory-2);
@@ -4012,6 +4012,43 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   font-size: 0.7rem;
   color: var(--accent);
   font-weight: 600;
+}
+
+/* 7열 비교표 가로 스크롤 래퍼 — iOS Safari 잘림 방지 */
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+.table-scroll > .coverage-compare,
+.table-scroll > .incoterms-table,
+.table-scroll > .special-clauses {
+  margin: 0;
+  min-width: 580px; /* 표 본래 폭 유지 — 모바일에서는 좌우 스와이프 */
+}
+.table-scroll::after {
+  content: "← 좌우로 스와이프하여 전체 보기 →";
+  display: block;
+  font-size: 11px;
+  color: var(--ink-40);
+  text-align: right;
+  padding: 6px 8px 0;
+  letter-spacing: 0.02em;
+}
+@media (min-width: 781px) {
+  .table-scroll::after { display: none; }
+}
+
+/* 모바일에서 비교표 폰트 살짝 축소 — 7열 가독성 유지 */
+@media (max-width: 780px) {
+  .coverage-compare { font-size: 0.78rem; }
+  .coverage-compare th { font-size: 0.72rem; padding: 0.45rem 0.3rem; }
+  .coverage-compare td { padding: 0.4rem 0.3rem; }
+  .coverage-compare .icon-cover,
+  .coverage-compare .icon-partial { width: 18px; height: 18px; line-height: 18px; }
 }
 
 /* INCOTERMS 표 */
@@ -4203,340 +4240,4 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   color: rgba(244, 240, 232, 0.6);
   letter-spacing: 0.02em;
   margin-top: 2px;
-}
-
-/* 한글 단어 잘림 방지 — 데스크톱 포함 전역 */
-html, body {
-  word-break: keep-all;
-  overflow-wrap: break-word;
-  line-break: strict;
-}
-
-/* ════════════════════════════════════════════════════════════════════
-   사용자 요청 — 헤더/푸터/오렌지 강조 부분 크기 조정
-   ──────────────────────────────────────────────────────────────────── */
-
-/* 1. 헤더 로고 — 38px → 57px (150% 확대) */
-.logo-img { height: 57px !important; }
-
-/* 1-2. 헤더 utils 전화/이메일/카톡 — 150% 확대 */
-.top-utils { font-size: 1.05rem !important; }
-.top-utils a { font-size: 1.05rem !important; }
-.top-utils .hot { font-size: 1.05rem !important; font-weight: 600; }
-.top-utils .kakao-link { padding: 6px 14px !important; font-size: 1.0rem !important; }
-
-/* 2. 바디 오렌지 강조 영역 (eyebrow, why category label) — 150% 확대 */
-.eyebrow,
-.section-eyebrow,
-.why-eyebrow,
-.hero-eyebrow,
-.cat-eyebrow,
-.pd-eyebrow {
-  font-size: 1.15rem !important;
-  letter-spacing: 0.12em !important;
-  font-weight: 600 !important;
-}
-
-/* 3. 푸터 로고 — 모노컬러 버전, 프레임 없이 포레스트 그린 위에 직접 */
-.site-footer .footer-brand {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  display: inline-flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 16px !important;
-  margin-bottom: 14px !important;
-  width: auto !important;
-  max-width: 100% !important;
-}
-/* 푸터 로고만 모노컬러(아이보리 외곽선·텍스트) 버전으로 자동 교체 */
-.site-footer .footer-brand .logo-img {
-  content: url('n2n-logo-mono.svg');
-  height: 80px !important;
-  width: auto !important;
-  margin: 0 !important;
-  display: block !important;
-  filter: none !important;
-}
-.site-footer .footer-brand br { display: none !important; }
-
-/* ════════════════════════════════════════════════════════════════════
-   Mobile Responsive Overrides — file 끝에 두어 모든 desktop 스타일을 덮어씀
-   ──────────────────────────────────────────────────────────────────── */
-@media (max-width: 780px) {
-  /* Top bar */
-  .top-utils { display: none !important; }
-  .top_wrap_cont {
-    padding: 12px 16px !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-  }
-  .logo-img { height: 52px !important; }  /* 새 3행 로고 가독성 위해 확대 */
-  .logo-txt strong { font-size: 0.92rem !important; line-height: 1.3 !important; }
-  .logo-txt span { font-size: 0.68rem !important; line-height: 1.35 !important; }
-
-  /* Sticky GNB → 일반 흐름으로 변경 (모바일에서는 sticky 비활성) */
-  .navi_wrap {
-    position: relative !important;
-    top: auto !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background: var(--ivory) !important;
-    border-bottom: 1px solid var(--border) !important;
-  }
-
-  /* GNB 컨테이너 */
-  .gnb {
-    padding: 0 !important;
-    position: relative !important;
-    min-height: 56px !important;
-  }
-
-  /* GNB ul: 데스크톱 가로 → 모바일 세로 드롭다운 */
-  .gnb > ul {
-    display: none !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0 !important;
-    background: var(--forest) !important;
-    padding: 8px 0 !important;
-    margin: 0 !important;
-    z-index: 200 !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18) !important;
-  }
-  .gnb > ul.open { display: flex !important; }
-  .gnb > ul > li {
-    width: 100% !important;
-    flex: none !important;
-    position: static !important;
-  }
-  .gnb > ul > li > a {
-    display: block !important;
-    padding: 14px 20px !important;
-    font-size: 0.96rem !important;
-    font-weight: 500 !important;
-    color: var(--ivory) !important;
-    background: transparent !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    min-width: 0 !important;
-    text-align: left !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-  }
-  .gnb > ul > li > a::after { display: none !important; }
-  .gnb > ul > li > a:hover,
-  .gnb > ul > li.active > a {
-    background: rgba(255,255,255,0.08) !important;
-    color: var(--ivory) !important;
-  }
-
-  /* products 카테고리 박스 — 모바일에서는 평평하게 */
-  .gnb > ul > li > a[href*="products.html#"],
-  .gnb > ul > li > a[href*="products/"] {
-    background: transparent !important;
-    color: var(--ivory) !important;
-    border-radius: 0 !important;
-    padding: 14px 20px !important;
-    text-align: left !important;
-    font-weight: 500 !important;
-    transform: none !important;
-  }
-
-  /* 적하 즉시 계산 / consult 버튼 — 강조 유지 */
-  .gnb .consult-btn {
-    background: var(--accent) !important;
-    color: #fff !important;
-    margin: 8px 16px !important;
-    padding: 12px 16px !important;
-    text-align: center !important;
-    border-radius: 4px !important;
-    border-bottom: none !important;
-    font-weight: 600 !important;
-  }
-
-  /* depth2 / 메가메뉴 — 모바일에서는 hover 비활성 (탭 시 페이지 이동) */
-  .gnb .depth2,
-  .gnb .depth2--mega {
-    display: none !important;
-    position: static !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-shadow: none !important;
-    border: none !important;
-    background: rgba(0,0,0,0.18) !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    grid-template-columns: 1fr !important;
-  }
-  .gnb > ul > li:hover .depth2,
-  .gnb > ul > li:hover .depth2--mega { display: none !important; }
-  .gnb > ul > li.is-open .depth2,
-  .gnb > ul > li.is-open .depth2--mega { display: block !important; }
-
-  /* Mega columns → 모바일 단일 컬럼 */
-  .gnb .depth2--mega.depth2--cols-1,
-  .gnb .depth2--mega.depth2--cols-2,
-  .gnb .depth2--mega.depth2--cols-3,
-  .gnb .depth2--mega.depth2--cols-4 {
-    grid-template-columns: 1fr !important;
-  }
-  .gnb .depth2--mega .mega-col {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-    padding: 0.5rem 1rem !important;
-  }
-  .gnb .depth2--mega .mega-h {
-    color: rgba(255,255,255,0.65) !important;
-    font-size: 0.7rem !important;
-    margin: 0.5rem 0 0.25rem !important;
-    border-color: rgba(255,255,255,0.15) !important;
-  }
-  .gnb .depth2--mega .mega-list li a {
-    padding: 10px 8px !important;
-    font-size: 0.88rem !important;
-    color: rgba(255,255,255,0.92) !important;
-    white-space: normal !important;
-  }
-  .gnb .depth2--mega .mega-list li a:hover {
-    background: rgba(255,255,255,0.06) !important;
-    color: #fff !important;
-  }
-  .gnb .depth2--mega .mega-footer-link {
-    color: var(--accent) !important;
-    border-color: rgba(255,255,255,0.15) !important;
-  }
-
-  /* 햄버거 토글 — 모바일에서만 노출 */
-  .menu-toggle {
-    display: block !important;
-    position: absolute !important;
-    right: 16px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    padding: 8px !important;
-    z-index: 201 !important;
-  }
-  .menu-toggle span {
-    display: block !important;
-    width: 22px !important;
-    height: 2px !important;
-    background: var(--ink) !important;
-    margin: 5px 0 !important;
-    border-radius: 2px !important;
-    transition: transform 0.2s, opacity 0.2s !important;
-  }
-  .menu-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
-  .menu-toggle.is-active span:nth-child(2) { opacity: 0 !important; }
-  .menu-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
-
-  /* Right-quick 사이드바 모바일에서 숨김 */
-  .right-quick { display: none !important; }
-
-  /* Hero / 섹션 패딩 축소 */
-  .hero, .pd-hero, .cargo-hero { padding: 36px 0 !important; }
-  .hero h1, .cargo-hero h1, .pd-hero h1 {
-    font-size: 1.55rem !important;
-    line-height: 1.3 !important;
-  }
-  .hero .lede, .cargo-hero .lede, .pd-hero .pd-lead {
-    font-size: 0.95rem !important;
-    line-height: 1.55 !important;
-  }
-  .section { padding: 36px 0 !important; }
-
-  /* Container */
-  .container { padding: 0 16px !important; }
-
-  /* 한글 단어 잘림 방지 (음절 단위 줄바꿈 방지) */
-  body, h1, h2, h3, h4, h5, h6, p, li, td, th, a, span, div, label, button {
-    word-break: keep-all !important;
-    overflow-wrap: break-word !important;
-    line-break: strict !important;
-  }
-
-  /* ───── 가로 오버플로우 안전장치 ───── */
-  html, body {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-  }
-  *, *::before, *::after { box-sizing: border-box !important; }
-
-  /* 계산기 카드 패딩 축소 */
-  .calc-card {
-    padding: 1.25rem 1rem !important;
-    margin: 1.25rem 0 0 !important;
-    border-radius: 4px !important;
-  }
-  .calc-card h2 { font-size: 1.05rem !important; }
-  .calc-card .calc-sub { font-size: 0.82rem !important; }
-
-  /* 계산기 폼 — 1열 강제 */
-  .calc-grid, .calc-row {
-    grid-template-columns: 1fr !important;
-    gap: 0.75rem !important;
-  }
-
-  /* 폼 input/select 100% 너비 */
-  .calc-field, .form-row, .form-col, .form-col-2 {
-    min-width: 0 !important;
-    max-width: 100% !important;
-  }
-  .calc-field input,
-  .calc-field select,
-  .calc-field textarea,
-  .form-row input,
-  .form-row select,
-  .form-row textarea,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="search"],
-  select, textarea {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* 결과 박스 */
-  .calc-result { padding: 1rem 0.875rem !important; margin-top: 1rem !important; }
-  #calcResPremium { font-size: 1.5rem !important; word-break: break-all; }
-  .calc-result .range-display { flex-wrap: wrap; gap: 0.5rem; }
-
-  /* 표·grid 가로 스크롤 허용 (overflow 방지) */
-  table { display: block; overflow-x: auto; max-width: 100%; }
-
-  /* 이미지·SVG 강제 max-width */
-  img, svg, video { max-width: 100% !important; height: auto !important; }
-  .logo-img { width: auto !important; }  /* 로고는 height 기반 유지 */
-
-  /* Hero 섹션 좌우 패딩 */
-  .hero, .pd-hero, .cargo-hero {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
-  .cargo-hero h1 { font-size: 1.5rem !important; }
-
-  /* GNB-search 모바일에서는 숨김 (햄버거 메뉴와 충돌) */
-  .gnb-search { display: none !important; }
-
-  /* footer 컬럼 1열 */
-  .footer-top, .footer-cols { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-
-  /* 가로 스크롤 가능한 컨테이너에는 명시적 표시 */
-  .pd-info-table, .pd-compare {
-    display: block !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
 }
