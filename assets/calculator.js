@@ -570,7 +570,7 @@
         ' / HS:' + (hs || '-') + ' / KIDI ' + kidiCode + ' ' + rateInfo.name +
         ' / CIF ' + ccyCode + ' ' + fmt(cif) +
         ' / ' + (CLAUSE_LABEL[clause] || clause);
-      consultLink.href = 'https://n2nib.com/consult.html?product=적하보험&memo=' + encodeURIComponent(memo);
+      consultLink.href = 'consult.html?product=cargo&memo=' + encodeURIComponent(memo);
     }
   }
 

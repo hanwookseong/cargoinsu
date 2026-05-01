@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>가입 상담 신청 | cargoinsu.com</title>
+<meta name="description" content="cargoinsu.com 가입 상담 신청 — 적하·운송·예술품·화물배상(FFL) 4개 전문 상품. AM Best A급 6개 인수사 비교 견적. 1영업일 회신.">
+<meta name="keywords" content="적하보험 상담, 운송보험 상담, 예술품보험 상담, 화물배상책임 상담, FFL 상담, cargoinsu, 엔투엔보험중개">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cargoinsu.com/consult.html">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="cargoinsu.com">
+<meta property="og:title" content="가입 상담 신청 | cargoinsu.com">
+<meta property="og:description" content="적하·운송·예술품·FFL 4종 가입 상담. AM Best A급 6개 인수사 비교 후 1영업일 회신.">
+<meta property="og:url" content="https://cargoinsu.com/consult.html">
+<meta property="og:image" content="https://cargoinsu.com/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cargoinsu.com/assets/og-image.png">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="N2N">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0B2818">
+<!-- Google tag (gtag.js) — GA4: cargoinsu.com -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW747HKK0N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-RW747HKK0N');
+</script>
+<style>
+/* ==== consult page-only styles ==== */
+.consult-page{padding:48px 0 80px;background:var(--ivory)}
+.consult-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start;max-width:1200px;margin:0 auto;padding:0 20px}
+@media (max-width:880px){.consult-grid{grid-template-columns:1fr;gap:20px;padding:0 16px}}
+
+.consult-head{max-width:1200px;margin:0 auto;padding:32px 20px 8px}
+.consult-head h1{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin:0 0 6px}
+.consult-head .lede{color:var(--ink-2);font-size:1rem;margin:0 0 8px}
+.consult-head .crumb{color:var(--ink-40);font-size:.84rem;margin-bottom:6px}
+.consult-head .crumb a{color:var(--ink-2)}
+
+.form-card{background:#fff;border-radius:6px;padding:28px 30px 22px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.form-card h3{font-size:1rem;color:var(--forest);margin:0 0 14px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.form-card hr{margin:22px 0;border:0;border-top:1px dashed #e2dccf}
+.form-row{display:flex;flex-direction:column;margin-bottom:14px}
+.form-col-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.form-col-2{grid-template-columns:1fr}}
+.form-row label{font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:.4rem;letter-spacing:.02em}
+.form-row .req{color:var(--accent);margin-left:2px}
+.form-row .hint{font-size:.74rem;color:var(--ink-40);margin-top:.3rem}
+.form-row input[type=text],
+.form-row input[type=tel],
+.form-row input[type=email],
+.form-row input[type=number],
+.form-row input[type=url],
+.form-row select,
+.form-row textarea{padding:.6rem .8rem;border:1px solid #d8d5cd;border-radius:3px;font-size:.92rem;font-family:inherit;background:#fff;color:var(--ink)}
+.form-row textarea{min-height:96px;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(11,40,24,.08)}
+.check-row{display:flex;align-items:flex-start;gap:8px;font-size:.88rem}
+.check-row input{margin-top:3px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.form-actions .btn{padding:.85rem 1.6rem;border-radius:3px;font-size:.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:1px solid transparent}
+.form-actions .btn-dark{background:var(--brand);color:#fff;border-color:var(--brand)}
+.form-actions .btn-dark:hover{background:var(--brand-2)}
+.form-actions .btn-ghost{background:#fff;color:var(--ink);border-color:#d8d5cd}
+.form-actions .btn-ghost:hover{background:var(--ivory)}
+
+/* product picker (radio cards) */
+.product-pick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (max-width:560px){.product-pick{grid-template-columns:1fr}}
+.product-pick label{position:relative;display:block;padding:14px 16px;border:1.5px solid #e2dccf;border-radius:6px;background:#fafaf6;cursor:pointer;transition:all .15s}
+.product-pick label:hover{border-color:var(--accent);background:#fff}
+.product-pick input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.product-pick input:checked + .pp-body{color:var(--forest)}
+.product-pick label:has(input:checked){border-color:var(--forest);background:#fff;box-shadow:0 0 0 3px rgba(11,40,24,.06)}
+.pp-body strong{display:block;font-size:.95rem;color:var(--forest);margin-bottom:2px}
+.pp-body small{display:block;font-size:.78rem;color:var(--ink-40)}
+
+/* form-note + kakao-card */
+.form-note{background:#fafaf6;border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:18px;font-size:.86rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.form-note strong{color:var(--forest)}
+.form-note code{background:#eee;padding:1px 6px;border-radius:3px;font-size:.85em}
+.kakao-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#FEE500;border-radius:6px;padding:14px 18px;margin-bottom:18px;flex-wrap:wrap}
+.kakao-card .kc-text strong{display:block;font-size:.95rem;color:#191919;margin-bottom:2px}
+.kakao-card .kc-text span{font-size:.78rem;color:#3c1e1e}
+.kakao-card .btn-kakao{background:#191919;color:#FEE500;padding:.6rem 1rem;border-radius:3px;font-weight:700;font-size:.86rem;text-decoration:none;white-space:nowrap}
+
+/* side panel */
+.contact-side{background:#fff;border-radius:6px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.contact-side h3{font-size:1rem;color:var(--forest);margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.contact-side dl{margin:0;font-size:.86rem}
+.contact-side dt{color:var(--ink-40);font-weight:600;margin-top:10px}
+.contact-side dd{margin:2px 0 0;color:var(--ink-2)}
+.contact-side dd a{color:var(--forest);text-decoration:underline}
+.contact-side .step-list{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.8}
+.callout{background:#fff7ed;border-left:3px solid var(--accent);padding:10px 14px;margin-top:14px;font-size:.84rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.mt-16{margin-top:16px}
+
+/* announcement banner */
+.consult-banner{display:flex;align-items:center;gap:10px;background:#dcfce7;border:1px solid #86efac;color:#14532d;padding:10px 14px;border-radius:6px;margin-bottom:18px;font-size:.86rem;position:relative}
+.consult-banner-ic{display:inline-block;width:22px;height:22px;background:#16a34a;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:.8rem;font-weight:700}
+.consult-banner-txt strong{display:block;color:#14532d}
+.consult-banner-txt span{font-size:.78rem;color:#166534}
+.consult-banner-close{position:absolute;right:8px;top:6px;background:none;border:0;font-size:1.1rem;color:#166534;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- TOP -->
+<div class="top_wrap"><div class="top_wrap_cont">
+  <a class="logo" href="index.html">
+    <img class="logo-img" src="assets/n2n-logo.svg" alt="cargoinsu.com" width="200" height="64">
+    <span class="logo-mark">N2N</span>
+    <span class="logo-txt"><strong>cargoinsu.com</strong><span>by 엔투엔보험중개 · 금융감독원 제2026-012201호</span></span>
+  </a>
+  <div class="top-utils">
+    <span class="hot">☎ 010-5755-6465</span>
+    <span class="sep">|</span>
+    <a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a>
+    <span class="sep">|</span>
+    <a class="kakao-link" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener" title="카카오 1:1 채팅 상담">카톡상담</a>
+    <span class="sep">|</span>
+    <a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com ↗</a>
+  </div>
+</div></div>
+
+<!-- GNB -->
+<nav class="navi_wrap" aria-label="주메뉴"><div class="gnb"><ul>
+  <li><a href="products/marine-cargo.html">적하보험</a></li>
+  <li><a href="products/marine-transit.html">운송보험</a></li>
+  <li><a href="products/specialty-art.html">예술품 종합</a></li>
+  <li><a href="products/liability-freight-forwarders.html">화물배상책임</a></li>
+  <li class="gnb-search-li" style="margin-left:auto;">
+    <span style="color:var(--ink-2);font-size:.84rem;">📞 24시간 응답</span>
+  </li>
+  <li style="flex:0 0 auto;"><a class="consult-btn" href="consult.html">가입 상담 →</a></li>
+</ul><button class="menu-toggle" aria-label="메뉴"><span></span><span></span><span></span></button></div></nav>
+
+<!-- BREADCRUMB + HEAD -->
+<div class="consult-head">
+  <div class="crumb"><a href="index.html">홈</a> › <span>가입 상담 신청</span></div>
+  <h1>가입 상담 신청</h1>
+  <p class="lede">적하·운송·예술품·화물배상(FFL) 4개 상품 — AM Best A급 이상 6개 인수사를 비교한 견적·약관을 <strong>1영업일 이내</strong> 회신드립니다. 적하보험은 <a href="index.html#calculator">상단 계산기</a>로 즉시 견적도 가능합니다.</p>
+</div>
+
+<!-- FORM -->
+<section class="consult-page">
+  <div class="consult-grid">
+
+    <div>
+      <div class="form-note">
+        <strong>접수 안내.</strong>
+        제출하신 내용은 즉시 <code>sales@cargoinsu.com</code>으로 전달되며,
+        담당 ACIU 심사역이 검토 후 <strong>1영업일 이내</strong> 회신드립니다.
+        급하신 경우 우측 카카오톡 1:1 또는 010-5755-6465로 직접 연락 주세요.
+      </div>
+
+      <!-- 카카오 즉시 상담 -->
+      <div class="kakao-card">
+        <div class="kc-text">
+          <strong>카카오톡으로 빠르게 문의</strong>
+          <span>친구추가 후 1:1 채팅. 영업시간 내 평균 10분 회신.</span>
+        </div>
+        <a class="btn-kakao" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">💬 카카오톡 1:1 상담</a>
+      </div>
+
+      <!-- 관심 상품 자동 배지 (URL 파라미터 ?product=cargo 등 진입 시) -->
+      <div id="consultBanner" class="consult-banner" hidden>
+        <span class="consult-banner-ic">✓</span>
+        <div class="consult-banner-txt">
+          <strong id="consultBannerTitle">관심 상품이 전달되었습니다</strong>
+          <span id="consultBannerSub">아래 폼에 해당 상품이 자동 선택되었습니다. 필요시 수정해 주세요.</span>
+        </div>
+        <button type="button" class="consult-banner-close" aria-label="닫기" onclick="this.parentElement.hidden=true">×</button>
+      </div>
+
+      <form id="consultForm" class="form-card"
+            action="https://api.web3forms.com/submit"
+            method="POST">
+
+        <!-- Web3Forms 필수 필드 -->
+        <input type="hidden" name="access_key" value="f9955503-58e6-4506-a51c-fa1f8bf488ab">
+        <input type="hidden" name="subject" value="[cargoinsu] 가입 상담 신청 접수">
+        <input type="hidden" name="from_name" value="cargoinsu.com 상담신청">
+        <input type="hidden" name="redirect" value="https://cargoinsu.com/consult.html?sent=1">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <!-- 유입 추적(숨김) -->
+        <input type="hidden" id="sourcePageHidden" name="source_page" value="">
+        <input type="hidden" id="sourceRefHidden" name="source_ref" value="">
+        <input type="hidden" id="sourceUtmHidden" name="utm" value="">
+
+        <h3>① 신청인 정보</h3>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="company">회사명(상호) <span class="req">*</span></label>
+            <input id="company" name="company" type="text" required placeholder="예) 주식회사 한국무역">
+          </div>
+          <div class="form-row">
+            <label for="name">담당자 성명 <span class="req">*</span></label>
+            <input id="name" name="name" type="text" required placeholder="홍길동">
+          </div>
+        </div>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="phone">연락처 <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" required placeholder="010-0000-0000" autocomplete="tel">
+          </div>
+          <div class="form-row">
+            <label for="email">이메일 <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="name@company.com" autocomplete="email">
+            <!-- Web3Forms Reply-To 자동 사용(name="email"). 추가 명시용 hidden -->
+            <input type="hidden" id="replyto" name="replyto" value="">
+          </div>
+        </div>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="industry">업종 / 사업 형태</label>
+            <input id="industry" name="industry" type="text" placeholder="예) 무역상사 · 포워더 · 갤러리 · 제조사">
+          </div>
+          <div class="form-row">
+            <label for="biznum">사업자등록번호 (선택)</label>
+            <input id="biznum" name="biznum" type="text" placeholder="000-00-00000" inputmode="numeric">
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>② 상담 상품 선택 <span class="req">*</span></h3>
+        <div class="product-pick">
+          <label>
+            <input type="radio" name="product_category" value="cargo" required>
+            <span class="pp-body">
+              <strong>📦 적하보험 (Marine Cargo)</strong>
+              <small>해상·항공·복합운송 / ICC(A)/(B)/(C)</small>
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="product_category" value="transit">
+            <span class="pp-body">
+              <strong>🚛 운송보험 (Inland Transit)</strong>
+              <small>국내 도로·철도·연안운송</small>
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="product_category" value="art">
+            <span class="pp-body">
+              <strong>🎨 예술품 종합 (Fine Art)</strong>
+              <small>박물관·갤러리·소장가 약정가액 보상</small>
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="product_category" value="ffl">
+            <span class="pp-body">
+              <strong>⚓ 화물배상책임 (FFL)</strong>
+              <small>포워더·복합운송주선업자 책임보험</small>
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="product_category" value="multi">
+            <span class="pp-body">
+              <strong>🧩 복수 상품 동시 견적</strong>
+              <small>2개 이상 동시 비교 희망</small>
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="product_category" value="unknown">
+            <span class="pp-body">
+              <strong>❓ 잘 모르겠음 / 컨설팅</strong>
+              <small>전문가 상담 후 결정</small>
+            </span>
+          </label>
+        </div>
+
+        <hr>
+
+        <h3>③ 화물·위험 정보</h3>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="cargo_type">주요 화물·자산 종류</label>
+            <input id="cargo_type" name="cargo_type" type="text" placeholder="예) 전자제품·기계류·강재·식음료·예술품·전자상거래 화물">
+          </div>
+          <div class="form-row">
+            <label for="route">주요 운송 구간</label>
+            <input id="route" name="route" type="text" placeholder="예) 부산→LA · 인천→호치민 · 국내 전국">
+          </div>
+        </div>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="frequency">운송 빈도 / 가입 형태</label>
+            <select id="frequency" name="frequency">
+              <option value="">선택</option>
+              <option>단건(Single) — 건별 청약</option>
+              <option>월 1–4건</option>
+              <option>월 5–20건</option>
+              <option>월 20건 이상</option>
+              <option>연간 포괄(Open Cover) 희망</option>
+              <option>해당없음 (예술품·FFL 등)</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="value_band">예상 보험가입금액 (연간 또는 1건)</label>
+            <select id="value_band" name="value_band">
+              <option value="">선택</option>
+              <option>USD 100,000 미만</option>
+              <option>USD 100,000–500,000</option>
+              <option>USD 500,000–2,000,000</option>
+              <option>USD 2,000,000–10,000,000</option>
+              <option>USD 10,000,000 이상</option>
+              <option>잘 모르겠음</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="purpose">가입 목적</label>
+            <select id="purpose" name="purpose">
+              <option value="">선택</option>
+              <option>신규 가입</option>
+              <option>기존 계약 갱신·리뉴얼</option>
+              <option>기존 계약 검토·비교</option>
+              <option>L/C·신용장 요건 충족</option>
+              <option>화주·발주처 요구</option>
+              <option>법정 의무보험</option>
+              <option>기타</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="urgency">희망 가입시점</label>
+            <select id="urgency" name="urgency">
+              <option value="">선택</option>
+              <option>즉시 (오늘·내일)</option>
+              <option>1주 이내</option>
+              <option>2주 이내</option>
+              <option>1개월 이내</option>
+              <option>3개월 이내</option>
+              <option>정보 수집 단계</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="details">추가 전달사항</label>
+          <textarea id="details" name="details"
+                    placeholder="화물 상세, 포장 형태, 인수사 선호도, 면책·할증 이력, 요구하는 보장한도 등을 자유롭게 기재해 주세요."></textarea>
+        </div>
+        <div class="form-col-2">
+          <div class="form-row">
+            <label for="contact_time">희망 연락 시간대</label>
+            <select id="contact_time" name="contact_time">
+              <option value="">관계없음</option>
+              <option>오전 (09:00–12:00)</option>
+              <option>점심 (12:00–14:00)</option>
+              <option>오후 (14:00–18:00)</option>
+              <option>이메일만</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="how_heard">유입 경로</label>
+            <select id="how_heard" name="how_heard">
+              <option value="">선택</option>
+              <option>cargoinsu.com 적하 계산기</option>
+              <option>n2nib.com</option>
+              <option>검색 (구글·네이버)</option>
+              <option>지인 소개</option>
+              <option>기존 계약</option>
+              <option>SNS·블로그</option>
+              <option>기타</option>
+            </select>
+          </div>
+        </div>
+
+        <hr>
+
+        <h3>④ 개인정보 처리 동의</h3>
+        <div class="form-row">
+          <label class="check-row">
+            <input type="checkbox" name="agree_privacy" required>
+            <span>[필수] 개인정보 수집·이용에 동의합니다.<br>
+              <small style="color:var(--ink-40);">수집항목: 회사명·담당자명·연락처·이메일·상담내용·운송정보 /
+                이용목적: 보험 상담·견적 회신 / 보유기간: 상담 종료 후 3년 (보험업법 제90조) /
+                거부 시 상담 접수 제한 가능. 상세는
+                <a href="privacy.html" target="_blank" style="text-decoration:underline">개인정보처리방침</a> 참조.</small></span>
+          </label>
+        </div>
+        <div class="form-row">
+          <label class="check-row">
+            <input type="checkbox" name="agree_marketing">
+            <span>[선택] 보험상품·이벤트 정보 수신에 동의합니다. (이메일·문자)</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-dark">상담신청 제출 →</button>
+          <a class="btn btn-ghost" href="tel:010-5755-6465">📞 바로 통화</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Side panel -->
+    <aside>
+      <div class="contact-side">
+        <h3>빠른 문의 채널</h3>
+        <p style="font-size:.84rem;color:var(--ink-40);margin:0 0 12px;">폼 대신 직접 연락도 환영합니다.</p>
+        <dl>
+          <dt>📧 이메일</dt><dd><a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></dd>
+          <dt>📞 전화 (24시간 응답)</dt><dd><a href="tel:010-5755-6465">010-5755-6465</a></dd>
+          <dt>💬 카카오톡 1:1</dt><dd><a href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">친구추가 → 채팅</a></dd>
+          <dt>🕘 영업시간</dt><dd>평일 09:00 – 18:00 (긴급 24시간 통화 가능)</dd>
+          <dt>📦 적하 즉시 견적</dt><dd><a href="index.html#calculator">cargoinsu 계산기 →</a></dd>
+          <dt>🏢 등록번호</dt><dd>금융감독원 제2026-012201호</dd>
+        </dl>
+      </div>
+
+      <div class="contact-side mt-16">
+        <h3>처리 프로세스</h3>
+        <ol class="step-list">
+          <li>접수 확인 (당일·자동 회신)</li>
+          <li>초도 상담·인수사 사전 협의 (1영업일)</li>
+          <li>6개 인수사 견적 (1–3영업일)</li>
+          <li>비교표·추천안 제공</li>
+          <li>청약·증권 발급 지원</li>
+        </ol>
+      </div>
+
+      <div class="callout mt-16">
+        <strong style="color:var(--accent);">⚓ cargoinsu의 강점.</strong><br>
+        해상·운송·예술품·FFL 4개 상품만 깊이 다루는 전문 플랫폼입니다.
+        AM Best A급 이상 6개 인수사(Chubb·DB·KB·현대·메리츠·AIG)의 견적을 동시 비교합니다.
+      </div>
+
+      <div class="callout mt-16" style="background:#fef9c3;border-left-color:#eab308;">
+        <strong style="color:#854d0e;">💡 87종 전체 상품이 필요하신가요?</strong><br>
+        화재·배상·근재·기술·특종 등 다른 분야는 자매 사이트 <a href="https://n2nib.com" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--forest)">n2nib.com</a>에서 안내드립니다.
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- RIGHT QUICK -->
+<aside class="right-quick" aria-label="빠른메뉴">
+  <a href="tel:010-5755-6465"><strong>☎</strong><span>전화상담<br>010-5755-6465</span></a>
+  <a href="index.html#calculator"><strong>📦</strong><span>적하<br>즉시계산</span></a>
+  <a class="rq-kakao" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener"><strong>💬</strong><span>카톡<br>상담</span></a>
+  <a href="https://n2nib.com" target="_blank" rel="noopener"><strong>🏛</strong><span>n2nib<br>.com</span></a>
+  <button class="rq-totop" aria-label="맨위로"><strong>↑</strong><span>TOP</span></button>
+</aside>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div><div class="footer-brand">
+        <a class="logo" href="index.html">
+          <img class="logo-img" src="assets/n2n-logo.svg" alt="cargoinsu.com" width="200" height="64">
+          <span class="logo-mark">N2N</span>
+          <span class="logo-txt"><strong>cargoinsu.com</strong><span>by 엔투엔보험중개 · 금융감독원 제2026-012201호</span></span>
+        </a>
+      </div>
+      <p class="footer-meta">cargoinsu.com — by 엔투엔보험중개 (N2N Insurance Brokerage)<br>
+        대표 성한욱(손해보험중개사, ACIU 기업보험심사역)<br>
+        사업자등록번호 611-23-02374 · 금융감독원 등록 제2026-012201호 · 개인사업체<br>
+        주소 서울특별시 서초구 방배로30길 41, 602호<br>
+        전화 010-5755-6465 · 이메일 sales@cargoinsu.com</p></div>
+    <div><div class="footer-head">전문 상품</div><ul class="footer-list">
+      <li><a href="products/marine-cargo.html">적하보험 (즉시 계산)</a></li>
+      <li><a href="products/marine-transit.html">운송보험 (상담)</a></li>
+      <li><a href="products/specialty-art.html">예술품 종합 (상담)</a></li>
+      <li><a href="products/liability-freight-forwarders.html">화물배상책임 (상담)</a></li></ul></div>
+    <div><div class="footer-head">관련 사이트</div><ul class="footer-list">
+      <li><a href="consult.html">cargoinsu 가입 상담</a></li>
+      <li><a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com (87종 전체)</a></li>
+      <li><a href="https://n2nib.com/about.html" target="_blank">회사소개</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 N2N Insurance Brokerage / cargoinsu.com. All rights reserved. · <a href="privacy.html" style="color:inherit;text-decoration:underline">개인정보처리방침</a> · <a href="terms.html" style="color:inherit;text-decoration:underline">이용약관</a></div>
+</footer>
+
+<script src="assets/script.js" defer></script>
+
+<script>
+/* ============================================================
+   cargoinsu 상담폼 — URL 파라미터 → 폼 값 자동 채움
+   진입 예: consult.html?product=cargo  /  ?product=art  /  ?product=ffl
+            ?product=transit  /  ?product=multi
+   추가 파라미터: ?ref=google  ?utm_source=...  ?cargo=Electronics
+   ============================================================ */
+(function () {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var params = new URLSearchParams(location.search);
+
+    /* 제출 완료 안내 (?sent=1 진입 시) */
+    if (params.get('sent') === '1') {
+      var b = document.getElementById('consultBanner');
+      var t = document.getElementById('consultBannerTitle');
+      var s = document.getElementById('consultBannerSub');
+      if (b) b.hidden = false;
+      if (t) t.textContent = '✅ 상담 신청이 접수되었습니다';
+      if (s) s.textContent = '담당 ACIU 심사역이 1영업일 이내 회신드립니다. 급하시면 010-5755-6465.';
+      return; /* 자동채움 스킵 */
+    }
+
+    /* 상품 자동 선택 */
+    var productKey = (params.get('product') || '').toLowerCase().trim();
+    var KEY_MAP = {
+      'cargo':'cargo','marine':'cargo','적하':'cargo',
+      'transit':'transit','운송':'transit',
+      'art':'art','fineart':'art','예술':'art','예술품':'art',
+      'ffl':'ffl','freight':'ffl','포워더':'ffl','화물배상':'ffl',
+      'multi':'multi','복수':'multi',
+      'unknown':'unknown','etc':'unknown'
+    };
+    var pickedKey = KEY_MAP[productKey] || '';
+    if (pickedKey) {
+      var radio = document.querySelector('input[name="product_category"][value="' + pickedKey + '"]');
+      if (radio) radio.checked = true;
+    }
+
+    /* 화물 종류 자동 입력 */
+    var cargoParam = params.get('cargo') || params.get('cargo_type');
+    if (cargoParam) {
+      var cargoInput = document.getElementById('cargo_type');
+      if (cargoInput && !cargoInput.value) cargoInput.value = cargoParam;
+    }
+
+    /* 운송 구간 자동 입력 */
+    var routeParam = params.get('route');
+    if (routeParam) {
+      var routeInput = document.getElementById('route');
+      if (routeInput && !routeInput.value) routeInput.value = routeParam;
+    }
+
+    /* 유입 경로 추적 */
+    var sp = document.getElementById('sourcePageHidden');
+    var sr = document.getElementById('sourceRefHidden');
+    var su = document.getElementById('sourceUtmHidden');
+    if (sp) sp.value = document.referrer || '(direct)';
+    if (sr) sr.value = params.get('ref') || '';
+    if (su) {
+      var utmParts = [];
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function (k) {
+        var v = params.get(k);
+        if (v) utmParts.push(k + '=' + v);
+      });
+      su.value = utmParts.join(' | ');
+    }
+
+    /* 상품 자동 선택 시 배지 표시 */
+    if (pickedKey) {
+      var b2 = document.getElementById('consultBanner');
+      var t2 = document.getElementById('consultBannerTitle');
+      var labels = {
+        'cargo':'적하보험','transit':'운송보험','art':'예술품 종합',
+        'ffl':'화물배상책임 (FFL)','multi':'복수 상품 동시 견적','unknown':'컨설팅 희망'
+      };
+      if (b2 && labels[pickedKey]) {
+        b2.hidden = false;
+        if (t2) t2.textContent = '관심 상품: ' + labels[pickedKey];
+      }
+    }
+  });
+})();
+
+/* ============================================================
+   이메일 → replyto 동기화 (Web3Forms Reply-To 명시)
+   ============================================================ */
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    var emailInput = document.getElementById('email');
+    var replyto    = document.getElementById('replyto');
+    if (!emailInput || !replyto) return;
+    var sync = function () { replyto.value = emailInput.value || ''; };
+    emailInput.addEventListener('input', sync);
+    emailInput.addEventListener('change', sync);
+    emailInput.addEventListener('blur', sync);
+    sync();
+  });
+})();
+</script>
+
+</body>
+</html>
