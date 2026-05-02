@@ -73,4 +73,100 @@
       if (hashBtn) hashBtn.click();
     }
   }
+
+  // =====================================================
+  // Quick Win 1 — 푸터 신뢰 블록 자동 주입 (모든 페이지)
+  // =====================================================
+  function injectFooterTrust() {
+    var footer = document.querySelector('footer.site-footer');
+    if (!footer) return;
+    if (footer.querySelector('.footer-trust')) return;
+    var bottom = footer.querySelector('.footer-bottom');
+    var trust = document.createElement('div');
+    trust.className = 'footer-trust';
+    trust.style.cssText = 'border-top:1px solid rgba(244,240,232,.15);margin-top:1.5rem;padding-top:1rem;font-size:.78rem;line-height:1.6;color:rgba(244,240,232,.7)';
+    trust.innerHTML = '\n  <div class="container">\n    <strong style="color:rgba(244,240,232,.85)">예금자보호</strong> 본 사이트의 모든 손해보험 상품은 예금자보호법에 따라 1인당 최고 <strong>1억원</strong>까지 보호됩니다.<br>\n    <strong style="color:rgba(244,240,232,.85)">보험사기 신고</strong> 금융감독원 ☎1332 · 보험사기방지센터 <a href="https://www.fss.or.kr/insec" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">www.fss.or.kr/insec</a><br>\n    <strong style="color:rgba(244,240,232,.85)">분쟁조정</strong> 금융분쟁조정위원회 ☎1332 · 한국소비자원 ☎1372<br>\n    <span style="opacity:.75">본 광고는 보험상품 안내자료이며, 계약내용은 약관·증권이 우선합니다. 광고는 자율준수 원칙에 따라 게재되었습니다.</span>\n  </div>\n';
+    if (bottom && bottom.parentNode === footer) {
+      footer.insertBefore(trust, bottom);
+    } else if (bottom) {
+      bottom.parentNode.insertBefore(trust, bottom);
+    } else {
+      footer.appendChild(trust);
+    }
+  }
+  injectFooterTrust();
+
+  // =====================================================
+  // Quick Win 6 — 상품 페이지 통일 CTA 자동 주입
+  // =====================================================
+  function injectProductCTA() {
+    var p = location.pathname.toLowerCase();
+    if (p.indexOf('/products/') === -1) return;
+    if (document.querySelector('.pd-cta-final')) return;
+    var existing = document.querySelector('.pd-cta-bar');
+    if (!existing) return;
+    var productName = '';
+    var link = existing.querySelector('a[href*="consult.html"]');
+    if (link) {
+      var href = link.getAttribute('href') || '';
+      var m = href.match(/[?&]product=([^&]+)/);
+      if (m) {
+        try { productName = decodeURIComponent(m[1]); } catch(e) { productName = m[1]; }
+      }
+    }
+    if (!productName) {
+      var h1 = document.querySelector('h1');
+      if (h1) productName = (h1.textContent || '').trim();
+    }
+    var encoded = encodeURIComponent(productName || '');
+    var final = document.createElement('section');
+    final.className = 'pd-cta-final';
+    final.style.cssText = 'margin:24px 0;padding:20px;background:linear-gradient(135deg,#0B2818,#1a4a35);color:#F4F0E8;border-radius:8px;text-align:center';
+    final.innerHTML =
+      '<h3 style="margin:0 0 8px;color:#F4F0E8">이 상품으로 견적받기</h3>' +
+      '<p style="margin:0 0 16px;opacity:.85;font-size:.9rem">엔투엔보험중개의 ACIU 보유 전문가가 6개 원수사 비교견적을 제공합니다.</p>' +
+      '<a href="../consult.html?product=' + encoded + '" style="display:inline-block;padding:10px 24px;background:#F4F0E8;color:#0B2818;text-decoration:none;border-radius:6px;font-weight:700">무료 상담신청 →</a>' +
+      '<a href="tel:010-5755-6465" style="display:inline-block;margin-left:8px;padding:10px 24px;background:transparent;color:#F4F0E8;text-decoration:none;border-radius:6px;font-weight:700;border:1px solid rgba(244,240,232,.4)">☎ 010-5755-6465</a>';
+    existing.parentNode.insertBefore(final, existing.nextSibling);
+  }
+  injectProductCTA();
+
 })();
+
+// =====================================================
+// Quick Win 7 — GTM dataLayer 이벤트 자동 트래킹
+// =====================================================
+window.dataLayer = window.dataLayer || [];
+
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. 전화 클릭
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      window.dataLayer.push({event:'phone_click', phone_number:el.href.replace('tel:','')});
+    });
+  });
+  // 2. 이메일 클릭
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      window.dataLayer.push({event:'email_click', email:el.href.replace('mailto:','')});
+    });
+  });
+  // 3. 카카오 클릭
+  document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      window.dataLayer.push({event:'kakao_click'});
+    });
+  });
+  // 4. 폼 제출 (consult/quote)
+  document.querySelectorAll('form').forEach(function(f){
+    f.addEventListener('submit', function(){
+      window.dataLayer.push({event:'form_submit', form_id:f.id||f.name||'unknown'});
+    });
+  });
+  // 5. 자동견적 사용 (cargoinsu)
+  document.querySelectorAll('[data-calculator], #calcSubmit').forEach(function(el){
+    el.addEventListener('click', function(){
+      window.dataLayer.push({event:'calculator_use'});
+    });
+  });
+});
