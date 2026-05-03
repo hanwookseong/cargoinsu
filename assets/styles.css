@@ -4401,20 +4401,12 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     padding-left: 4px;
   }
   .msh-logo img {
-    height: 40px !important;
+    height: 38px !important;
     width: auto !important;
     flex: 0 0 auto;
     filter: none !important;
   }
-  .msh-logo strong {
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--forest, #0B2818);
-  }
+  .msh-logo strong { display: none !important; }
   .msh-cta {
     flex: 0 0 auto;
     background: var(--accent, #C56A2C);
@@ -4591,23 +4583,30 @@ html body .right-quick {
     line-height: 1 !important;
     position: static !important;
   }
+  .gnb > ul > li > a {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
   .gnb > ul > li > a::after {
-    content: '›' !important;
+    content: '' !important;
     position: static !important;
-    width: auto !important;
-    height: auto !important;
+    display: block !important;
+    width: 9px !important;
+    height: 9px !important;
+    border: 0 !important;
+    border-right: 2.5px solid var(--accent, #C56A2C) !important;
+    border-top: 2.5px solid var(--accent, #C56A2C) !important;
+    transform: rotate(45deg) !important;
+    background: transparent !important;
+    margin-left: auto !important;
+    margin-right: 6px !important;
+    flex: 0 0 auto !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
-    background: transparent !important;
-    transform: none !important;
-    margin-left: auto !important;
-    font-size: 1.8rem !important;
-    color: var(--accent, #C56A2C) !important;
-    font-weight: 400 !important;
-    line-height: 1 !important;
-    flex: 0 0 auto !important;
-    padding-right: 4px !important;
+    top: auto !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
   }
   /* cargoinsu 카테고리별 아이콘 */
   .gnb > ul > li:nth-child(1) > a::before { content: '📦'; }  /* 적하 */

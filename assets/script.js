@@ -141,15 +141,14 @@
     var isInProducts = p.indexOf('/products/') !== -1;
     var homeHref = isInProducts ? '../index.html' : 'index.html';
     var consultHref = isInProducts ? '../consult.html' : 'consult.html';
-    var logoSrc = isInProducts ? '../assets/n2n-mark.svg' : 'assets/n2n-mark.svg';
+    var logoSrc = isInProducts ? '../assets/logo-horizontal.svg' : 'assets/logo-horizontal.svg';
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
     header.innerHTML =
       '<button type="button" class="msh-menu" aria-label="메뉴 열기"><span></span></button>' +
-      '<a class="msh-logo" href="' + homeHref + '" aria-label="홈으로">' +
-        '<img src="' + logoSrc + '" alt="cargoinsu by N2N">' +
-        '<strong>cargoinsu.com</strong>' +
+      '<a class="msh-logo" href="' + homeHref + '" aria-label="cargoinsu 홈">' +
+        '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage / cargoinsu.com">' +
       '</a>' +
       '<a class="msh-cta" href="' + consultHref + '">상담신청</a>';
     document.body.insertBefore(header, document.body.firstChild);
@@ -198,17 +197,13 @@
     var p = location.pathname.toLowerCase();
     var isInProducts = p.indexOf('/products/') !== -1;
     var homeHref = isInProducts ? '../index.html' : 'index.html';
-    var logoSrc = isInProducts ? '../assets/n2n-mark.svg' : 'assets/n2n-mark.svg';
+    var logoSrc = isInProducts ? '../assets/logo-horizontal-dark.svg' : 'assets/logo-horizontal-dark.svg';
     var logoAnchor = document.createElement('a');
     logoAnchor.className = 'gnb-logo';
     logoAnchor.href = homeHref;
     logoAnchor.setAttribute('aria-label', 'cargoinsu.com 홈');
     logoAnchor.innerHTML =
-      '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage">' +
-      '<span class="gnb-logo-text">' +
-        '<strong>cargoinsu.com</strong>' +
-        '<small>by 엔투엔보험중개 · 적하보험 온라인 플랫폼</small>' +
-      '</span>';
+      '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage">';
     gnb.insertBefore(logoAnchor, gnb.firstChild);
   }
   injectDesktopHeaderLogo();
