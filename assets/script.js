@@ -145,12 +145,30 @@ document.addEventListener('DOMContentLoaded', function() {
       window.dataLayer.push({event:'phone_click', phone_number:el.href.replace('tel:','')});
     });
   });
-  // 2. 이메일 클릭
+  // 2. 이메일 클릭 — GTM 이벤트 + 클립보드 복사 폴백 (PC 메일앱 미설정 대응)
   document.querySelectorAll('a[href^="mailto:"]').forEach(function(el){
-    el.addEventListener('click', function(){
-      window.dataLayer.push({event:'email_click', email:el.href.replace('mailto:','')});
+    el.addEventListener('click', function(e){
+      var email = el.href.replace('mailto:','').split('?')[0];
+      window.dataLayer.push({event:'email_click', email:email});
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function(){
+          showToast('이메일 주소를 복사했습니다: ' + email);
+        }).catch(function(){});
+      }
     });
   });
+  // ---- 토스트 알림 ----
+  function showToast(msg){
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#0B2818;color:#F4F0E8;padding:12px 20px;border-radius:8px;font-size:.9rem;font-weight:600;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:99999;opacity:0;transition:opacity .3s';
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){ t.style.opacity='1'; });
+    setTimeout(function(){
+      t.style.opacity='0';
+      setTimeout(function(){ if(t.parentNode) t.parentNode.removeChild(t); }, 300);
+    }, 2700);
+  }
   // 3. 카카오 클릭
   document.querySelectorAll('a[href*="pf.kakao.com"]').forEach(function(el){
     el.addEventListener('click', function(){
