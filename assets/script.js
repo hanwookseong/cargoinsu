@@ -154,16 +154,33 @@
       '<a class="msh-cta" href="' + consultHref + '">상담신청</a>';
     document.body.insertBefore(header, document.body.firstChild);
     var newMenuBtn = header.querySelector('.msh-menu');
-    var origToggle = document.querySelector('.menu-toggle');
-    if (newMenuBtn && origToggle) {
+    if (newMenuBtn) {
       newMenuBtn.addEventListener('click', function(e){
         e.preventDefault();
-        origToggle.click();
+        e.stopPropagation();
+        var gnbList = document.querySelector('.gnb > ul');
+        var origToggle = document.querySelector('.menu-toggle');
+        if (gnbList) gnbList.classList.toggle('open');
+        if (origToggle) origToggle.classList.toggle('is-active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   }
   injectMobileStickyHeader();
+
+  // 모바일 GNB 펼침 시 하단에 전화·카톡 버튼 자동 주입
+  function injectMobileMenuFooterCTAs() {
+    var gnbList = document.querySelector('.gnb > ul');
+    if (!gnbList || gnbList.querySelector('.mmf-cta')) return;
+    var li = document.createElement('li');
+    li.className = 'mmf-cta';
+    li.style.cssText = 'list-style:none;padding:14px 20px 18px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(244,240,232,0.18);margin-top:8px';
+    li.innerHTML =
+      '<a href="tel:010-5755-6465" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:transparent;border:1px solid rgba(244,240,232,0.6);border-radius:6px;color:#F4F0E8;text-decoration:none;font-weight:700">☎ 전화상담 010-5755-6465</a>' +
+      '<a href="https://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;background:#FEE500;color:#3C1E1E;border-radius:6px;text-decoration:none;font-weight:700">💬 카카오톡 1:1 상담</a>';
+    gnbList.appendChild(li);
+  }
+  injectMobileMenuFooterCTAs();
 
   // =====================================================
   // 모바일 하단 sticky CTA 바 자동 주입 (cargoinsu, 모바일 전용)
@@ -192,7 +209,8 @@
     document.body.appendChild(bar);
     document.body.classList.add('has-mobile-cta');
   }
-  injectMobileCTABar();
+  // 하단 CTA 바 비활성화 — 벤치마크 매칭
+  // injectMobileCTABar();
 
 })();
 
