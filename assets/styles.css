@@ -4668,6 +4668,8 @@ html body .right-quick {
   color: rgba(244, 240, 232, 0.92) !important;
   margin: 0 0 24px;
   font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
 }
 .footer-cta-cluster h3,
 .footer-cta-cluster p,

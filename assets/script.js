@@ -225,7 +225,7 @@
     section.innerHTML =
       '<div class="fcc-inner">' +
         '<h3>적하보험 외 전 보험은 상담으로 안내합니다</h3>' +
-        '<p class="fcc-sub">ACIU 자격 보유 · 6개 원수사 비교 · 평균 4시간 견적 회신</p>' +
+        '<p class="fcc-sub">ACIU 자격 보유 · 6개 원수사 비교<br>평균 4시간 견적 회신</p>' +
         '<div class="fcc-buttons">' +
           '<a class="fcc-primary" href="' + consultHref + '">✎ 상담신청</a>' +
           '<a class="fcc-phone" href="tel:010-5755-6465">☎ 010-5755-6465</a>' +
