@@ -4517,16 +4517,28 @@ html body .right-quick {
     overflow: hidden !important;
     margin: 0 !important;
   }
-  .gnb > ul > li > a {
+  .gnb > ul > li > a,
+  .gnb > ul > li > a[href*="products.html#"],
+  .gnb > ul > li > a[href*="products/"] {
     display: flex !important;
     align-items: center !important;
     gap: 14px !important;
     padding: 16px 16px !important;
-    color: var(--ink, #0B2818) !important;
+    background: transparent !important;          /* 데스크톱 forest 배경 해제 */
+    color: var(--ink, #0B2818) !important;       /* 흰 카드 위에서 다크 텍스트 */
     font-weight: 700 !important;
     font-size: 1.02rem !important;
     text-decoration: none !important;
     line-height: 1.3 !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    border-radius: 0 !important;
+    text-align: left !important;
+  }
+  /* 데스크톱 underline 애니메이션 ::after 비활성화 (모바일 카드형) */
+  .gnb > ul > li > a::after {
+    background: transparent !important;
+    transform: none !important;
   }
   .gnb > ul > li > a::before {
     flex: 0 0 40px;
