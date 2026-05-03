@@ -4396,6 +4396,143 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 }
 
 /* ════════════════════════════════════════════════════════════════════
-   모바일 하단 sticky CTA 바 — 제거됨 (벤치마크 패턴 매칭)
+   모바일 하단 sticky CTA 바 — 제거됨 (벤치마크 매칭)
    ──────────────────────────────────────────────────────────────────── */
 .mobile-cta-bar { display: none !important; }
+
+/* ════════════════════════════════════════════════════════════════════
+   데스크톱 sticky 헤더 — Policygenius 패턴 (cargoinsu)
+   ──────────────────────────────────────────────────────────────────── */
+@media (min-width: 781px) {
+  .top_wrap { display: none !important; }
+  .navi_wrap {
+    position: sticky;
+    top: 0;
+    z-index: 9000;
+    background: var(--forest, #0B2818);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  }
+  .gnb {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    min-height: 64px;
+  }
+  .gnb-logo {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 24px 8px 0;
+    margin-right: 16px;
+    border-right: 1px solid rgba(244, 240, 232, 0.15);
+    text-decoration: none !important;
+  }
+  .gnb-logo img {
+    height: 44px;
+    width: auto;
+    flex: 0 0 auto;
+  }
+  .gnb-logo .gnb-logo-text {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .gnb-logo .gnb-logo-text strong {
+    font-size: 1.0rem;
+    color: var(--ivory, #F4F0E8);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .gnb-logo .gnb-logo-text small {
+    font-size: 0.7rem;
+    color: rgba(244, 240, 232, 0.65);
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+  .right-quick a:not(.rq-totop) { display: none !important; }
+  .right-quick {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .right-quick .rq-totop {
+    background: var(--forest, #0B2818) !important;
+    color: var(--ivory, #F4F0E8) !important;
+    border-radius: 50% !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   푸터 CTA 클러스터 — 상담신청 + 전화 + 카톡 (cargoinsu)
+   ──────────────────────────────────────────────────────────────────── */
+.footer-cta-cluster {
+  background: linear-gradient(135deg, #0B2818 0%, #1a4a35 100%);
+  color: var(--ivory, #F4F0E8);
+  padding: 40px 0;
+  text-align: center;
+}
+.footer-cta-cluster .fcc-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.footer-cta-cluster h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--ivory, #F4F0E8);
+  letter-spacing: -0.02em;
+}
+.footer-cta-cluster .fcc-sub {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  margin: 0 0 24px;
+}
+.footer-cta-cluster .fcc-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.footer-cta-cluster .fcc-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 6px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 160px;
+}
+.footer-cta-cluster .fcc-primary {
+  background: var(--accent, #C56A2C);
+  color: #fff !important;
+}
+.footer-cta-cluster .fcc-phone {
+  background: transparent;
+  color: var(--ivory, #F4F0E8) !important;
+  border: 1px solid rgba(244, 240, 232, 0.5);
+}
+.footer-cta-cluster .fcc-kakao {
+  background: #FEE500;
+  color: #3C1E1E !important;
+}
+@media (max-width: 780px) {
+  .footer-cta-cluster .fcc-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .footer-cta-cluster .fcc-buttons a { min-width: 0; }
+  .footer-cta-cluster h3 { font-size: 1.25rem; }
+}
+

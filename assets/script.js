@@ -141,14 +141,14 @@
     var isInProducts = p.indexOf('/products/') !== -1;
     var homeHref = isInProducts ? '../index.html' : 'index.html';
     var consultHref = isInProducts ? '../consult.html' : 'consult.html';
-    var logoSrc = isInProducts ? '../assets/n2n-logo.svg' : 'assets/n2n-logo.svg';
+    var logoSrc = isInProducts ? '../assets/n2n-mark.svg' : 'assets/n2n-mark.svg';
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
     header.innerHTML =
       '<button type="button" class="msh-menu" aria-label="메뉴 열기"><span></span></button>' +
       '<a class="msh-logo" href="' + homeHref + '" aria-label="홈으로">' +
-        '<img src="' + logoSrc + '" alt="cargoinsu">' +
+        '<img src="' + logoSrc + '" alt="cargoinsu by N2N">' +
         '<strong>cargoinsu.com</strong>' +
       '</a>' +
       '<a class="msh-cta" href="' + consultHref + '">상담신청</a>';
@@ -181,6 +181,58 @@
     gnbList.appendChild(li);
   }
   injectMobileMenuFooterCTAs();
+
+  // =====================================================
+  // 데스크톱 sticky 헤더 — 로고 영역을 .gnb 좌측에 주입 (cargoinsu)
+  // =====================================================
+  function injectDesktopHeaderLogo() {
+    var gnb = document.querySelector('.gnb');
+    if (!gnb) return;
+    if (gnb.querySelector('.gnb-logo')) return;
+    var p = location.pathname.toLowerCase();
+    var isInProducts = p.indexOf('/products/') !== -1;
+    var homeHref = isInProducts ? '../index.html' : 'index.html';
+    var logoSrc = isInProducts ? '../assets/n2n-mark.svg' : 'assets/n2n-mark.svg';
+    var logoAnchor = document.createElement('a');
+    logoAnchor.className = 'gnb-logo';
+    logoAnchor.href = homeHref;
+    logoAnchor.setAttribute('aria-label', 'cargoinsu.com 홈');
+    logoAnchor.innerHTML =
+      '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage">' +
+      '<span class="gnb-logo-text">' +
+        '<strong>cargoinsu.com</strong>' +
+        '<small>by 엔투엔보험중개 · 적하보험 온라인 플랫폼</small>' +
+      '</span>';
+    gnb.insertBefore(logoAnchor, gnb.firstChild);
+  }
+  injectDesktopHeaderLogo();
+
+  // =====================================================
+  // 푸터 CTA 클러스터 — 상담신청 + 전화 + 카톡 (cargoinsu)
+  // =====================================================
+  function injectFooterCTACluster() {
+    var footer = document.querySelector('footer.site-footer');
+    if (!footer) return;
+    if (document.querySelector('.footer-cta-cluster')) return;
+    var p = location.pathname.toLowerCase();
+    var isInProducts = p.indexOf('/products/') !== -1;
+    var consultHref = isInProducts ? '../consult.html' : 'consult.html';
+    var section = document.createElement('section');
+    section.className = 'footer-cta-cluster';
+    section.setAttribute('aria-label', '빠른 상담 안내');
+    section.innerHTML =
+      '<div class="fcc-inner">' +
+        '<h3>적하보험 외 전 보험은 상담으로 안내합니다</h3>' +
+        '<p class="fcc-sub">ACIU 자격 보유 · 6개 원수사 비교 · 평균 4시간 견적 회신</p>' +
+        '<div class="fcc-buttons">' +
+          '<a class="fcc-primary" href="' + consultHref + '">✎ 상담신청</a>' +
+          '<a class="fcc-phone" href="tel:010-5755-6465">☎ 010-5755-6465</a>' +
+          '<a class="fcc-kakao" href="https://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">💬 카톡상담</a>' +
+        '</div>' +
+      '</div>';
+    footer.parentNode.insertBefore(section, footer);
+  }
+  injectFooterCTACluster();
 
   // =====================================================
   // 모바일 하단 sticky CTA 바 자동 주입 (cargoinsu, 모바일 전용)
