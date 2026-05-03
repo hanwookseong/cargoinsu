@@ -4455,6 +4455,64 @@ html body .right-quick {
   li.mmf-cta { display: none !important; }
 }
 
+/* 모바일 중복 헤더 차단 + 메뉴 fixed 슬라이드 (cargoinsu) */
+@media (max-width: 780px) {
+  html body .top_wrap,
+  html body .top_wrap_cont,
+  html body div.top_wrap {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+  .gnb-logo { display: none !important; }
+  .navi_wrap {
+    height: 0 !important; min-height: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important; margin: 0 !important;
+    background: transparent !important; border: 0 !important;
+  }
+  .gnb {
+    height: 0 !important; min-height: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important; margin: 0 !important;
+    background: transparent !important;
+  }
+  .navi_wrap .menu-toggle,
+  .gnb .menu-toggle,
+  .menu-toggle:not(.msh-menu) {
+    display: none !important;
+  }
+  .gnb > ul {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important; right: 0 !important;
+    width: 100% !important;
+    max-height: calc(100vh - 60px) !important;
+    overflow-y: auto !important;
+    background: var(--forest, #0B2818) !important;
+    flex-direction: column !important;
+    padding: 12px 0 !important; margin: 0 !important;
+    z-index: 9000 !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    display: none !important;
+  }
+  .gnb > ul.open {
+    display: flex !important;
+  }
+  .gnb > ul > li {
+    width: 100% !important;
+    border-bottom: 1px solid rgba(244,240,232,0.08);
+  }
+  .gnb > ul > li > a {
+    display: block !important;
+    padding: 14px 24px !important;
+    font-size: 1rem !important;
+    color: var(--ivory, #F4F0E8) !important;
+    font-weight: 600 !important;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════════
    데스크톱 sticky 헤더 — Policygenius 패턴 정밀 토큰 (cargoinsu)
    ──────────────────────────────────────────────────────────────────── */
