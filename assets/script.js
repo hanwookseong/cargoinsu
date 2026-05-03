@@ -160,9 +160,13 @@
         e.stopPropagation();
         var gnbList = document.querySelector('.gnb > ul');
         var origToggle = document.querySelector('.menu-toggle');
+        var isOpen = gnbList && gnbList.classList.contains('open');
         if (gnbList) gnbList.classList.toggle('open');
         if (origToggle) origToggle.classList.toggle('is-active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.body.classList.toggle('mobile-menu-open', !isOpen);
+        newMenuBtn.classList.toggle('is-open', !isOpen);
+        newMenuBtn.setAttribute('aria-label', !isOpen ? '메뉴 닫기' : '메뉴 열기');
+        if (!isOpen) window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   }

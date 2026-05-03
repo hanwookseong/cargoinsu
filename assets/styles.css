@@ -464,6 +464,34 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .prod-card p { font-size: .88rem; margin: 0 0 14px; flex: 1; }
 .prod-card .prod-link { font-size: .82rem; color: var(--brand); font-weight: 600; }
 
+/* ★ 상품카드 우측 쉐브론 (Policygenius 패턴) */
+.prod-card { position: relative; padding-right: 40px; }
+.prod-card::after {
+  content: '›';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: var(--accent, #C56A2C);
+  font-weight: 300;
+  line-height: 1;
+  pointer-events: none;
+  transition: transform 0.18s ease, color 0.18s ease;
+}
+.prod-card:hover::after {
+  transform: translateY(-50%) translateX(3px);
+  color: var(--forest, #0B2818);
+}
+.prod-card .prod-link {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: .82rem;
+  color: var(--accent, #C56A2C);
+  text-decoration: none;
+}
+.prod-card .prod-link:hover { text-decoration: underline; }
+
 /* =========================================================
    Forms
    ========================================================= */
@@ -4351,6 +4379,15 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   }
   .msh-menu span::before { top: -7px; }
   .msh-menu span::after { top: 7px; }
+  .msh-menu span,
+  .msh-menu span::before,
+  .msh-menu span::after {
+    transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  }
+  .msh-menu.is-open span { background: transparent; }
+  .msh-menu.is-open span::before { top: 0; transform: rotate(45deg); }
+  .msh-menu.is-open span::after { top: 0; transform: rotate(-45deg); }
+  body.mobile-menu-open { overflow: hidden !important; }
   .msh-logo {
     flex: 1 1 auto;
     display: flex;
@@ -4488,13 +4525,15 @@ html body .right-quick {
     top: 60px !important;
     left: 0 !important; right: 0 !important;
     width: 100% !important;
-    max-height: calc(100vh - 60px) !important;
+    max-height: calc(100dvh - 60px) !important;
     overflow-y: auto !important;
-    background: var(--forest, #0B2818) !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    background: var(--ivory, #F4F0E8) !important;     /* 다크 → 아이보리 */
     flex-direction: column !important;
-    padding: 12px 0 !important; margin: 0 !important;
+    padding: 16px 12px 80px !important; margin: 0 !important;
     z-index: 9000 !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
     display: none !important;
   }
   .gnb > ul.open {
@@ -4505,15 +4544,14 @@ html body .right-quick {
 
   /* Policygenius 패턴 카드형 메뉴 (cargoinsu) */
   .gnb > ul {
-    background: #ffffff !important;
-    padding: 16px 12px !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
   .gnb > ul > li {
     width: 100% !important;
     background: #ffffff !important;
-    border: 1px solid #e8e4dc !important;
-    border-radius: 10px !important;
+    border: 1px solid rgba(11, 40, 24, 0.08) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 2px rgba(11, 40, 24, 0.04) !important;
     overflow: hidden !important;
     margin: 0 !important;
   }
@@ -4541,25 +4579,35 @@ html body .right-quick {
     transform: none !important;
   }
   .gnb > ul > li > a::before {
-    flex: 0 0 40px;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(217, 119, 87, 0.10);
-    border-radius: 8px;
-    font-size: 1.4rem;
-    line-height: 1;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(217, 119, 87, 0.10) !important;
+    border-radius: 8px !important;
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    position: static !important;
   }
   .gnb > ul > li > a::after {
     content: '›' !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    background: transparent !important;
+    transform: none !important;
     margin-left: auto !important;
-    font-size: 1.6rem !important;
+    font-size: 1.8rem !important;
     color: var(--accent, #C56A2C) !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     line-height: 1 !important;
     flex: 0 0 auto !important;
+    padding-right: 4px !important;
   }
   /* cargoinsu 카테고리별 아이콘 */
   .gnb > ul > li:nth-child(1) > a::before { content: '📦'; }  /* 적하 */
