@@ -4444,6 +4444,16 @@ html body .right-quick {
   font-size: 0.85rem !important;
   letter-spacing: 0 !important;
 }
+.site-footer .footer-list a[href*="n2nib"] {
+  font-size: 0.94rem !important;
+  font-weight: 700 !important;
+  color: var(--ivory, #F4F0E8) !important;
+}
+
+@media (min-width: 781px) {
+  .gnb > ul > li.mmf-cta,
+  li.mmf-cta { display: none !important; }
+}
 
 /* ════════════════════════════════════════════════════════════════════
    데스크톱 sticky 헤더 — Policygenius 패턴 정밀 토큰 (cargoinsu)

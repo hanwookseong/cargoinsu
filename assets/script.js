@@ -168,8 +168,10 @@
   }
   injectMobileStickyHeader();
 
-  // 모바일 GNB 펼침 시 하단에 전화·카톡 버튼 자동 주입
+  // 모바일 GNB 펼침 시 하단에 전화·카톡 버튼 자동 주입 (모바일 전용)
+  // ★ FIX: 데스크톱(≥781px)에서는 절대 주입 안 함
   function injectMobileMenuFooterCTAs() {
+    if (window.matchMedia && window.matchMedia('(min-width: 781px)').matches) return;
     var gnbList = document.querySelector('.gnb > ul');
     if (!gnbList || gnbList.querySelector('.mmf-cta')) return;
     var li = document.createElement('li');
