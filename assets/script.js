@@ -131,6 +131,69 @@
   }
   injectProductCTA();
 
+  // =====================================================
+  // 모바일 상단 sticky 헤더 자동 주입 (cargoinsu, 모바일 전용)
+  // 햄버거 + 로고 + 상담CTA (스크롤 시 항상 노출)
+  // =====================================================
+  function injectMobileStickyHeader() {
+    if (document.querySelector('.mobile-sticky-header')) return;
+    var p = location.pathname.toLowerCase();
+    var isInProducts = p.indexOf('/products/') !== -1;
+    var homeHref = isInProducts ? '../index.html' : 'index.html';
+    var consultHref = isInProducts ? '../consult.html' : 'consult.html';
+    var logoSrc = isInProducts ? '../assets/n2n-logo.svg' : 'assets/n2n-logo.svg';
+    var header = document.createElement('header');
+    header.className = 'mobile-sticky-header';
+    header.setAttribute('role', 'banner');
+    header.innerHTML =
+      '<button type="button" class="msh-menu" aria-label="메뉴 열기"><span></span></button>' +
+      '<a class="msh-logo" href="' + homeHref + '" aria-label="홈으로">' +
+        '<img src="' + logoSrc + '" alt="cargoinsu">' +
+        '<strong>cargoinsu.com</strong>' +
+      '</a>' +
+      '<a class="msh-cta" href="' + consultHref + '">상담신청</a>';
+    document.body.insertBefore(header, document.body.firstChild);
+    var newMenuBtn = header.querySelector('.msh-menu');
+    var origToggle = document.querySelector('.menu-toggle');
+    if (newMenuBtn && origToggle) {
+      newMenuBtn.addEventListener('click', function(e){
+        e.preventDefault();
+        origToggle.click();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
+  injectMobileStickyHeader();
+
+  // =====================================================
+  // 모바일 하단 sticky CTA 바 자동 주입 (cargoinsu, 모바일 전용)
+  // index.html에서는 "자동견적"으로, 그 외 페이지에서는 "상담신청"으로 분기
+  // =====================================================
+  function injectMobileCTABar() {
+    if (document.querySelector('.mobile-cta-bar')) return;
+    var p = location.pathname.toLowerCase();
+    var isProductDetail = p.indexOf('/products/') !== -1;
+    var isIndex = p === '/' || p.endsWith('/index.html') || p.endsWith('cargoinsu.com/');
+    var primaryHref, primaryLabel, primaryIcon;
+    if (isIndex) {
+      primaryHref = '#calc-section'; primaryLabel = '자동견적'; primaryIcon = '⚡';
+    } else if (isProductDetail) {
+      primaryHref = '../consult.html'; primaryLabel = '상담신청'; primaryIcon = '✎';
+    } else {
+      primaryHref = 'consult.html'; primaryLabel = '상담신청'; primaryIcon = '✎';
+    }
+    var bar = document.createElement('nav');
+    bar.className = 'mobile-cta-bar';
+    bar.setAttribute('aria-label', '빠른 연락');
+    bar.innerHTML =
+      '<a href="tel:010-5755-6465" aria-label="전화상담"><span class="ico">☎</span><span>전화</span></a>' +
+      '<a class="cta-kakao" href="https://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener" aria-label="카카오톡 상담"><span class="ico">💬</span><span>카톡</span></a>' +
+      '<a class="cta-primary" href="' + primaryHref + '" aria-label="' + primaryLabel + '"><span class="ico">' + primaryIcon + '</span><span>' + primaryLabel + '</span></a>';
+    document.body.appendChild(bar);
+    document.body.classList.add('has-mobile-cta');
+  }
+  injectMobileCTABar();
+
 })();
 
 // =====================================================

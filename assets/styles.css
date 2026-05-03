@@ -4297,3 +4297,152 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   letter-spacing: 0.02em;
   margin-top: 2px;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   모바일 상단 sticky 헤더 — 햄버거·로고·상담CTA (모바일 ≤780px 전용)
+   ──────────────────────────────────────────────────────────────────── */
+.mobile-sticky-header { display: none; }
+@media (max-width: 780px) {
+  .mobile-sticky-header {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    height: 56px;
+    padding: 0 12px;
+    background: var(--forest, #0B2818);
+    color: var(--ivory, #F4F0E8);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .msh-menu {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(244, 240, 232, 0.25);
+    border-radius: 6px;
+    color: var(--ivory, #F4F0E8);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .msh-menu span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    position: relative;
+  }
+  .msh-menu span::before,
+  .msh-menu span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+  }
+  .msh-menu span::before { top: -6px; }
+  .msh-menu span::after { top: 6px; }
+  .msh-logo {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none !important;
+    color: var(--ivory, #F4F0E8);
+    overflow: hidden;
+    min-width: 0;
+  }
+  .msh-logo img {
+    height: 32px !important;
+    width: auto !important;
+    flex: 0 0 auto;
+    filter: brightness(0) invert(1);
+  }
+  .msh-logo strong {
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .msh-cta {
+    flex: 0 0 auto;
+    background: var(--accent, #C56A2C);
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .msh-cta:active { opacity: 0.85; }
+  body { padding-top: 56px !important; }
+  .top_wrap { display: none !important; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   모바일 하단 sticky CTA 바 — 전화·카톡·자동견적/상담 (모바일 ≤780px)
+   ──────────────────────────────────────────────────────────────────── */
+.mobile-cta-bar { display: none; }
+@media (max-width: 780px) {
+  .mobile-cta-bar {
+    display: flex !important;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9998;
+    background: var(--forest, #0B2818);
+    box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.18);
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(244, 240, 232, 0.12);
+  }
+  .mobile-cta-bar > a {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 4px;
+    color: var(--ivory, #F4F0E8);
+    text-decoration: none !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    border: 0;
+    background: transparent;
+    line-height: 1.15;
+    -webkit-tap-highlight-color: rgba(244, 240, 232, 0.18);
+  }
+  .mobile-cta-bar > a:active { background: rgba(244, 240, 232, 0.10); }
+  .mobile-cta-bar > a + a { border-left: 1px solid rgba(244, 240, 232, 0.12); }
+  .mobile-cta-bar > a .ico {
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-bottom: 1px;
+    display: block;
+  }
+  .mobile-cta-bar > a.cta-kakao {
+    background: #FEE500;
+    color: #3C1E1E;
+  }
+  .mobile-cta-bar > a.cta-primary {
+    background: var(--accent, #C56A2C);
+    color: #fff;
+  }
+  body { padding-bottom: 64px !important; }
+  body.has-mobile-cta { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important; }
+}
