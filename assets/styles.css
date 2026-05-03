@@ -4665,8 +4665,14 @@ html body .right-quick {
 }
 .footer-cta-cluster .fcc-sub {
   font-size: 0.92rem;
-  opacity: 0.8;
+  color: rgba(244, 240, 232, 0.92) !important;
   margin: 0 0 24px;
+  font-weight: 500;
+}
+.footer-cta-cluster h3,
+.footer-cta-cluster p,
+.footer-cta-cluster .fcc-sub {
+  color: var(--ivory, #F4F0E8);
 }
 .footer-cta-cluster .fcc-buttons {
   display: flex;
