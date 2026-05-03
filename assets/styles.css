@@ -4500,17 +4500,90 @@ html body .right-quick {
   .gnb > ul.open {
     display: flex !important;
   }
+  /* depth2 메가메뉴는 모바일에서 숨김 */
+  .gnb .depth2 { display: none !important; }
+
+  /* Policygenius 패턴 카드형 메뉴 (cargoinsu) */
+  .gnb > ul {
+    background: #ffffff !important;
+    padding: 16px 12px !important;
+    gap: 8px !important;
+  }
   .gnb > ul > li {
     width: 100% !important;
-    border-bottom: 1px solid rgba(244,240,232,0.08);
+    background: #ffffff !important;
+    border: 1px solid #e8e4dc !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
   }
   .gnb > ul > li > a {
-    display: block !important;
-    padding: 14px 24px !important;
-    font-size: 1rem !important;
-    color: var(--ivory, #F4F0E8) !important;
-    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 16px 16px !important;
+    color: var(--ink, #0B2818) !important;
+    font-weight: 700 !important;
+    font-size: 1.02rem !important;
+    text-decoration: none !important;
+    line-height: 1.3 !important;
   }
+  .gnb > ul > li > a::before {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(217, 119, 87, 0.10);
+    border-radius: 8px;
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+  .gnb > ul > li > a::after {
+    content: '›' !important;
+    margin-left: auto !important;
+    font-size: 1.6rem !important;
+    color: var(--accent, #C56A2C) !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    flex: 0 0 auto !important;
+  }
+  /* cargoinsu 카테고리별 아이콘 */
+  .gnb > ul > li:nth-child(1) > a::before { content: '📦'; }  /* 적하 */
+  .gnb > ul > li:nth-child(2) > a::before { content: '🚛'; }  /* 운송 */
+  .gnb > ul > li:nth-child(3) > a::before { content: '🎨'; }  /* 예술품 */
+  .gnb > ul > li:nth-child(4) > a::before { content: '⚖️'; }  /* 화물배상 */
+  .gnb > ul > li:nth-child(5) > a::before { content: '💬'; }  /* 가입상담 */
+  /* gnb-search-li (24시간 응답 텍스트) — 카드형 제외 */
+  .gnb > ul > li.gnb-search-li {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 8px 16px !important;
+  }
+  .gnb > ul > li.gnb-search-li > * {
+    color: var(--ink-2, #555) !important;
+  }
+  /* consult-btn (적하 즉시 계산) — 강조 */
+  .gnb > ul > li:has(> a.consult-btn) {
+    background: var(--accent, #C56A2C) !important;
+    border-color: var(--accent, #C56A2C) !important;
+  }
+  .gnb > ul > li:has(> a.consult-btn) > a { color: #fff !important; }
+  .gnb > ul > li:has(> a.consult-btn) > a::before {
+    background: rgba(255, 255, 255, 0.22) !important;
+    content: '⚡' !important;
+  }
+  .gnb > ul > li:has(> a.consult-btn) > a::after { color: #fff !important; }
+  /* mmf-cta */
+  .gnb > ul > li.mmf-cta {
+    background: transparent !important;
+    border: 0 !important;
+    margin-top: 12px !important;
+    padding: 0 16px 0 !important;
+  }
+  .gnb > ul > li.mmf-cta > a::before,
+  .gnb > ul > li.mmf-cta > a::after { content: none !important; }
 }
 
 /* ════════════════════════════════════════════════════════════════════
