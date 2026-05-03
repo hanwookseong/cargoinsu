@@ -4401,11 +4401,14 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     padding-left: 4px;
   }
   .msh-logo img {
-    height: 38px !important;
+    height: 48px !important;
     width: auto !important;
     flex: 0 0 auto;
     filter: none !important;
   }
+  .mobile-sticky-header { height: 64px !important; }
+  body { padding-top: 64px !important; }
+  .gnb > ul { top: 64px !important; }
   .msh-logo strong { display: none !important; }
   .msh-cta {
     flex: 0 0 auto;
@@ -4586,28 +4589,30 @@ html body .right-quick {
   .gnb > ul > li > a {
     width: 100% !important;
     box-sizing: border-box !important;
+    padding-right: 36px !important;
   }
-  .gnb > ul > li > a::after {
+  .gnb > ul > li {
+    position: relative !important;
+  }
+  .gnb > ul > li::after {
     content: '' !important;
-    position: static !important;
-    display: block !important;
-    width: 9px !important;
-    height: 9px !important;
+    position: absolute !important;
+    right: 18px !important;
+    top: 50% !important;
+    width: 10px !important;
+    height: 10px !important;
     border: 0 !important;
     border-right: 2.5px solid var(--accent, #C56A2C) !important;
     border-top: 2.5px solid var(--accent, #C56A2C) !important;
-    transform: rotate(45deg) !important;
+    transform: translateY(-50%) rotate(45deg) !important;
+    margin-top: -1px !important;
     background: transparent !important;
-    margin-left: auto !important;
-    margin-right: 6px !important;
-    flex: 0 0 auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    top: auto !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
+    pointer-events: none !important;
+    z-index: 2 !important;
+    display: block !important;
   }
+  .gnb > ul > li.gnb-search-li::after,
+  .gnb > ul > li.mmf-cta::after { display: none !important; }
   /* cargoinsu 카테고리별 아이콘 */
   .gnb > ul > li:nth-child(1) > a::before { content: '📦'; }  /* 적하 */
   .gnb > ul > li:nth-child(2) > a::before { content: '🚛'; }  /* 운송 */
