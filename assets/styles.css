@@ -4482,6 +4482,17 @@ html body .right-quick {
   color: var(--ivory, #F4F0E8) !important;
 }
 
+/* 푸터 회사정보 — 줄바꿈 방지 + max-width 해제 */
+.site-footer .footer-meta .meta-item {
+  white-space: nowrap;
+  display: inline-block;
+}
+.site-footer .footer-meta {
+  max-width: 100% !important;
+  word-break: keep-all !important;
+}
+.site-footer .footer-brand br { display: none !important; }
+
 @media (min-width: 781px) {
   .gnb > ul > li.mmf-cta,
   li.mmf-cta { display: none !important; }
