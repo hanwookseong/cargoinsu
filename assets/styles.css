@@ -4400,6 +4400,51 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
    ──────────────────────────────────────────────────────────────────── */
 .mobile-cta-bar { display: none !important; }
 
+/* ★ 강제 박멸 — top_wrap + right-quick 위젯 (TOP만 남김) */
+html body .top_wrap,
+html body div.top_wrap,
+html body .top_wrap_cont { display: none !important; }
+
+html body .right-quick > a,
+html body aside.right-quick > a,
+html body .right-quick > a.rq-kakao,
+html body .right-quick > a[href^="tel:"],
+html body .right-quick > a[href*="kakao"],
+html body .right-quick > a[href*="cargoinsu"],
+html body .right-quick > a[href*="consult"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+html body .right-quick > button.rq-totop,
+html body aside.right-quick > button.rq-totop {
+  display: flex !important;
+  visibility: visible !important;
+}
+html body .right-quick {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+/* 푸터 폰트 통일 */
+.site-footer .footer-head {
+  font-family: inherit !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--ivory, #F4F0E8) !important;
+  margin-bottom: 0.85rem !important;
+}
+.site-footer .footer-list,
+.site-footer .footer-list li,
+.site-footer .footer-list a {
+  font-family: inherit !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0 !important;
+}
+
 /* ════════════════════════════════════════════════════════════════════
    데스크톱 sticky 헤더 — Policygenius 패턴 정밀 토큰 (cargoinsu)
    ──────────────────────────────────────────────────────────────────── */
