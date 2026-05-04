@@ -4459,6 +4459,37 @@ html body .right-quick {
   padding: 0 !important;
 }
 
+/* ────────────────────────────────────────
+   상담폼 제출 성공(?sent=1) 강조 배너
+   ──────────────────────────────────────── */
+.consult-banner.consult-banner--success {
+  background: linear-gradient(135deg, #0B2818 0%, #1a4a35 100%) !important;
+  color: var(--ivory, #F4F0E8) !important;
+  padding: 32px 28px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(11, 40, 24, 0.25) !important;
+  border: 0 !important;
+  margin: 24px 0 !important;
+  text-align: center !important;
+}
+.consult-banner.consult-banner--success #consultBannerTitle {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--ivory, #F4F0E8) !important;
+  display: block !important;
+  margin-bottom: 12px !important;
+}
+.consult-banner.consult-banner--success #consultBannerSub {
+  font-size: 1rem !important;
+  color: rgba(244, 240, 232, 0.92) !important;
+  line-height: 1.7 !important;
+  display: block !important;
+}
+.consult-banner.consult-banner--success #consultBannerSub a {
+  color: var(--accent, #C56A2C) !important;
+  font-weight: 700 !important;
+}
+
 /* 푸터 폰트 통일 */
 .site-footer .footer-head {
   font-family: inherit !important;
@@ -4727,7 +4758,7 @@ html body .right-quick {
     height: 72px !important;
   }
   .gnb-logo img {
-    height: 32px !important;
+    height: 44px !important;        /* n2nib와 통일 (item 5) */
     width: auto !important;
     flex: 0 0 auto !important;
   }

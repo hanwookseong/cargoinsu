@@ -145,7 +145,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li><a href="products/specialty-art.html">예술품 종합</a></li>
   <li><a href="products/liability-freight-forwarders.html">화물배상책임</a></li>
   <li class="gnb-search-li" style="margin-left:auto;">
-    <span style="color:var(--ink-2);font-size:.84rem;">📞 24시간 응답</span>
   </li>
   <li style="flex:0 0 auto;"><a class="consult-btn" href="consult.html">가입 상담 →</a></li>
 </ul><button class="menu-toggle" aria-label="메뉴"><span></span><span></span><span></span></button></div></nav>
@@ -420,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style="font-size:.84rem;color:var(--ink-40);margin:0 0 12px;">폼 대신 직접 연락도 환영합니다.</p>
         <dl>
           <dt>📧 이메일</dt><dd><a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></dd>
-          <dt>📞 전화 (24시간 응답)</dt><dd><a href="tel:010-5755-6465">010-5755-6465</a></dd>
+          <dt>📞 전화</dt><dd><a href="tel:010-5755-6465">010-5755-6465</a></dd>
           <dt>💬 카카오톡 1:1</dt><dd><a href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">친구추가 → 채팅</a></dd>
           <dt>🕘 영업시간</dt><dd>평일 09:00 – 18:00 (긴급 24시간 통화 가능)</dd>
           <dt>📦 적하 즉시 견적</dt><dd><a href="index.html#calculator">cargoinsu 계산기 →</a></dd>
@@ -506,15 +505,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener('DOMContentLoaded', function () {
     var params = new URLSearchParams(location.search);
 
-    /* 제출 완료 안내 (?sent=1 진입 시) */
+    /* 제출 완료 안내 (?sent=1 진입 시) — 강화: 큰 모달 + 자동 스크롤 + 폼 숨김 */
     if (params.get('sent') === '1') {
       var b = document.getElementById('consultBanner');
       var t = document.getElementById('consultBannerTitle');
       var s = document.getElementById('consultBannerSub');
-      if (b) b.hidden = false;
-      if (t) t.textContent = '✅ 상담 신청이 접수되었습니다';
-      if (s) s.textContent = '담당 ACIU 심사역이 1영업일 이내 회신드립니다. 급하시면 010-5755-6465.';
-      return; /* 자동채움 스킵 */
+      if (b) {
+        b.hidden = false;
+        b.classList.add('consult-banner--success');  /* 강조 스타일 (CSS) */
+      }
+      if (t) t.textContent = '✅ 상담 신청이 정상 접수되었습니다';
+      if (s) s.innerHTML = '담당 ACIU 심사역이 <strong>1영업일 이내</strong> 회신드립니다.<br>급하신 경우 ☎ <a href="tel:010-5755-6465" style="color:inherit;text-decoration:underline">010-5755-6465</a> 또는 카톡으로 연락 주세요.';
+      // 폼 영역을 가리고 안내 강조 — 사용자가 다시 제출하지 않도록
+      var formEl = document.getElementById('consultForm');
+      if (formEl) formEl.style.display = 'none';
+      // 페이지 최상단으로 자동 스크롤
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // GTM form_submit 보조 트래킹
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'form_submit', form_id:'cargoinsu_consult_success'});
+      return;
     }
 
     /* 상품 자동 선택 */
