@@ -4923,9 +4923,10 @@ html body .right-quick {
   font-weight: 800;
   line-height: 1.3;
   margin-bottom: 16px;
+  color: var(--ivory, #F4F0E8) !important;       /* 다크 배경 위 강제 ivory */
 }
 .guide-hero h1 em {
-  color: var(--accent, #C56A2C);
+  color: var(--accent, #C56A2C) !important;
   font-style: normal;
 }
 .guide-hero .lede {
@@ -5023,10 +5024,11 @@ html body .right-quick {
   font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 10px;
+  color: var(--ivory, #F4F0E8) !important;       /* 다크 배경 위 강제 ivory */
 }
 .guide-cta p {
   font-size: 1rem;
-  color: rgba(244, 240, 232, 0.88);
+  color: rgba(244, 240, 232, 0.88) !important;
   margin-bottom: 22px;
 }
 .guide-cta-buttons {
@@ -5087,9 +5089,10 @@ html body .right-quick {
   font-weight: 800;
   line-height: 1.35;
   margin-bottom: 14px;
+  color: var(--ivory, #F4F0E8) !important;       /* 다크 배경 위 강제 ivory */
 }
 .guide-page-hero h1 em {
-  color: var(--accent, #C56A2C);
+  color: var(--accent, #C56A2C) !important;
   font-style: normal;
 }
 .guide-page-hero .lede {
@@ -5720,8 +5723,8 @@ html body .right-quick {
   margin: 24px 0;
   text-align: center;
 }
-.g-emergency-box h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
-.g-emergency-box p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.92); margin-bottom: 16px; }
+.g-emergency-box h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; color: #fff !important; }
+.g-emergency-box p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.92) !important; margin-bottom: 16px; }
 .g-emergency-contacts { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .g-emer-btn {
   background: #fff;
