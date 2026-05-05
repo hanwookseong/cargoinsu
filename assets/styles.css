@@ -77,6 +77,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  /* 한국어 워드 분절 방지 — 단어 중간에서 끊기지 않도록 (전역) */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  line-break: strict;
 }
 
 /* Subtle film grain overlay (vape24-style) */
