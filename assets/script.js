@@ -138,7 +138,8 @@
   function injectMobileStickyHeader() {
     if (document.querySelector('.mobile-sticky-header')) return;
     var p = location.pathname.toLowerCase();
-    var isInProducts = p.indexOf('/products/') !== -1;
+    /* /products/ 또는 /guide/ 하위 폴더 모두 ../ 경로 사용 */
+    var isInProducts = p.indexOf('/products/') !== -1 || p.indexOf('/guide/') !== -1;
     var homeHref = isInProducts ? '../index.html' : 'index.html';
     var consultHref = isInProducts ? '../consult.html' : 'consult.html';
     var logoSrc = isInProducts ? '../assets/logo-horizontal.svg' : 'assets/logo-horizontal.svg';
@@ -195,9 +196,10 @@
     if (!gnb) return;
     if (gnb.querySelector('.gnb-logo')) return;
     var p = location.pathname.toLowerCase();
-    var isInProducts = p.indexOf('/products/') !== -1;
-    var homeHref = isInProducts ? '../index.html' : 'index.html';
-    var logoSrc = isInProducts ? '../assets/logo-horizontal-dark.svg' : 'assets/logo-horizontal-dark.svg';
+    /* /products/ 또는 /guide/ 하위 폴더 모두 ../ 경로 사용 */
+    var isSubfolder = p.indexOf('/products/') !== -1 || p.indexOf('/guide/') !== -1;
+    var homeHref = isSubfolder ? '../index.html' : 'index.html';
+    var logoSrc = isSubfolder ? '../assets/logo-horizontal-dark.svg' : 'assets/logo-horizontal-dark.svg';
     var logoAnchor = document.createElement('a');
     logoAnchor.className = 'gnb-logo';
     logoAnchor.href = homeHref;
@@ -216,7 +218,8 @@
     if (!footer) return;
     if (document.querySelector('.footer-cta-cluster')) return;
     var p = location.pathname.toLowerCase();
-    var isInProducts = p.indexOf('/products/') !== -1;
+    /* /products/ 또는 /guide/ 하위 폴더 모두 ../ 경로 사용 */
+    var isInProducts = p.indexOf('/products/') !== -1 || p.indexOf('/guide/') !== -1;
     var consultHref = isInProducts ? '../consult.html' : 'consult.html';
     var section = document.createElement('section');
     section.className = 'footer-cta-cluster';
