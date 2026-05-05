@@ -122,8 +122,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       6개 원수사 비교 · 30초 자동견적 · 평균 4시간 견적 회신
     </p>
 
+    <!-- 3-track value strip — 계산기 / Open Policy / 대시보드 -->
+    <div class="hero-tracks" role="list">
+      <a class="track-card track-card--active" href="#calculator-card" role="listitem">
+        <div class="track-num">01</div>
+        <div class="track-body">
+          <div class="track-title">즉시 보험료 계산</div>
+          <div class="track-desc">5분 자동견적 · 6개 원수사 비교 · 당일 발급</div>
+        </div>
+        <span class="track-arrow">↓</span>
+      </a>
+      <a class="track-card" href="#open-policy" role="listitem">
+        <div class="track-num">02</div>
+        <div class="track-body">
+          <div class="track-title">Open Policy</div>
+          <div class="track-desc">보장공백 제거 · 행정 90% 절감 · 월 1회 정산</div>
+        </div>
+        <span class="track-arrow">→</span>
+      </a>
+      <a class="track-card" href="#dashboard" role="listitem">
+        <div class="track-num">03</div>
+        <div class="track-body">
+          <div class="track-title">전용 대시보드 <span class="track-badge">2026 Q4</span></div>
+          <div class="track-desc">화주별 가입현황 · 자동갱신 · OCR 입력</div>
+        </div>
+        <span class="track-arrow">→</span>
+      </a>
+    </div>
+
     <!-- 적하보험 전용 계산기 -->
-    <div class="calc-card">
+    <div class="calc-card" id="calculator-card">
       <h2>📦 적하보험 예상 보험료 즉시 계산</h2>
       <p class="calc-sub">
         해상·항공 적하보험 전용 — 수출/수입·운송구간·HS 코드·CIF 가액을 입력하면 약 30초 안에 예상 보험료 범위를 확인하실 수 있습니다.
@@ -273,6 +301,130 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div style="font-size:1.85rem;font-weight:800;color:var(--brand,#0B2818);line-height:1">24<span style="font-size:1rem">시간</span></div>
       <div style="font-size:.82rem;margin-top:4px;color:#555">실시간 가입</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== OPEN POLICY ====== -->
+<section class="op-section" id="open-policy">
+  <div class="container">
+    <div class="op-header">
+      <span class="op-badge">FOR REGULAR SHIPPERS · 정기 화주 전용</span>
+      <h2>Open Policy로 <em>보장공백 제거</em> + <em>행정시간 90% 절감</em></h2>
+      <p class="op-lede">매 선적마다 견적·청약·증권 발급, 더 이상 안 하셔도 됩니다.<br>
+        선적 시점부터 자동 보장 · 월 1회 정산서 1장으로 관리.</p>
+    </div>
+
+    <div class="op-grid">
+      <div class="op-card">
+        <div class="op-icon">⏱️</div>
+        <h3>보장공백 제거</h3>
+        <p>선적 시점부터 자동 보장. 증권 발급 지연으로 보장 안 되는 위험 0.</p>
+      </div>
+      <div class="op-card">
+        <div class="op-icon">📉</div>
+        <h3>행정시간 90% 절감</h3>
+        <p>매 선적 견적·청약·발급 → 월 1회 정산서 1장으로 종료.</p>
+      </div>
+      <div class="op-card">
+        <div class="op-icon">💳</div>
+        <h3>인가요율 + 월결제</h3>
+        <p>KIDI 참조요율 적용 + 가상계좌 월결제. 6개 원수사 신용공여 약정.</p>
+      </div>
+      <div class="op-card">
+        <div class="op-icon">🔒</div>
+        <h3>ACIU 심사역 직접 응대</h3>
+        <p>클레임 시 N2N이 손해사정·청구 전담. 화주는 서류만 송부.</p>
+      </div>
+    </div>
+
+    <div class="op-tiers">
+      <div class="op-tier">
+        <span class="op-tier-label">STANDARD</span>
+        <h4>Open Policy</h4>
+        <div class="op-tier-condition">월 보험료 <strong>200만원↑</strong></div>
+        <ul>
+          <li>KIDI 참조요율(인가) 적용</li>
+          <li>월 1회 정산 + 가상계좌</li>
+          <li>CHUBB·DB 등 즉시 가능</li>
+        </ul>
+      </div>
+      <div class="op-tier op-tier--plus">
+        <span class="op-tier-label op-tier-label--plus">PLUS</span>
+        <h4>Open Policy Plus</h4>
+        <div class="op-tier-condition">월 보험료 <strong>1,000만원↑</strong></div>
+        <ul>
+          <li>구득요율 협상 적용</li>
+          <li>비용 추가 절감 가능</li>
+          <li>보험사별 인수 협의</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="op-cta">
+      <a class="op-cta-btn" href="consult.html?product=cargo&memo=Open%20Policy%20%EC%83%81%EB%8B%B4%20%EC%9A%94%EC%B2%AD">Open Policy 상담 신청 →</a>
+      <a class="op-cta-link" href="tel:010-5755-6465">📞 010-5755-6465 직접 통화</a>
+    </div>
+    <p class="op-disclaimer">※ Open Policy 약정은 보험사·화주 사전 인수심사 + 일괄 정산 약정 체결 후 효력 발생합니다.</p>
+  </div>
+</section>
+
+<!-- ====== DASHBOARD COMING SOON ====== -->
+<section class="dash-section" id="dashboard">
+  <div class="container">
+    <div class="dash-header">
+      <span class="dash-badge">COMING Q4 2026 · BETA</span>
+      <h2>cargoinsu 전용 <em>대시보드</em></h2>
+      <p class="dash-lede">거래 화주별 가입현황 · 만기 알림 · 증권 다운로드 · OCR 자동 입력 — 한 화면에서.</p>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-feat">
+        <div class="dash-feat-icon">📊</div>
+        <h4>한눈에 보는 가입현황</h4>
+        <p>거래 화주·운송별 증권을 시각화. 갱신 임박 자동 표시.</p>
+      </div>
+      <div class="dash-feat">
+        <div class="dash-feat-icon">🔔</div>
+        <h4>갱신·만기 자동 알림</h4>
+        <p>증권 만기 D-30 / D-14 / D-7 자동 메일·카톡.</p>
+      </div>
+      <div class="dash-feat">
+        <div class="dash-feat-icon">📄</div>
+        <h4>월정산서 자동 생성</h4>
+        <p>Open Policy 월별 PDF 자동 + 엑셀 export. 회계 연동.</p>
+      </div>
+      <div class="dash-feat">
+        <div class="dash-feat-icon">🤖</div>
+        <h4>OCR 무역서류 자동 입력</h4>
+        <p>CI·PL·B/L 업로드 → HS코드·금액·인코텀즈 자동 추출.</p>
+      </div>
+    </div>
+
+    <div class="dash-signup">
+      <div class="dash-signup-text">
+        <h3>베타 우선 사용 신청</h3>
+        <p>오픈 시 우선 액세스 + <strong>첫 3개월 무료</strong> 사용권. Open Policy 가입 화주는 자동 등록됩니다.</p>
+      </div>
+      <form class="dash-signup-form"
+            action="https://api.web3forms.com/submit"
+            method="POST">
+        <input type="hidden" name="access_key" value="f9955503-58e6-4506-a51c-fa1f8bf488ab">
+        <input type="hidden" name="subject" value="[cargoinsu] 대시보드 베타 우선 신청">
+        <input type="hidden" name="from_name" value="cargoinsu Dashboard Beta Signup">
+        <input type="hidden" name="redirect" value="https://cargoinsu.com/?dashboard_signed=1">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="dash-form-row">
+          <input type="text" name="company" placeholder="회사명 *" required>
+          <input type="text" name="name" placeholder="담당자 성함 *" required>
+        </div>
+        <div class="dash-form-row">
+          <input type="email" name="email" placeholder="이메일 *" required>
+          <input type="tel" name="phone" placeholder="연락처 (선택)">
+        </div>
+        <button type="submit" class="dash-form-btn">베타 우선 신청 →</button>
+        <p class="dash-form-note">※ 신청 정보는 베타 안내 외 용도로 사용되지 않습니다.</p>
+      </form>
     </div>
   </div>
 </section>
