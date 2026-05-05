@@ -338,19 +338,20 @@
     { code: '306',   label: '306   군수물자 (Defense Materials)',               group: '기타', cargo: 'general' }
   ];
 
-  // 단일 요율 (KIDI 참조요율 + 메리츠화재 기준) — 화물군별 6개 약관 (단위 %)
-  // 시장 실제 적용 요율 수준에 맞춰 보정 (2026-04-27)
+  // 단일 요율 (KIDI 참조요율 + 메리츠화재 기준) — 화물군별 8개 약관 (단위 %)
+  // 시장 실제 적용 요율 수준에 맞춰 보정 (2026-04-27, 항공 약관 추가 2026-05-04)
+  // 항공 약관(icc_air, ar_air): All-Risks 기준 base = icc_a/ar 동일, MODE_FACTOR['air']=0.65로 자동 보정
   var RATE_TABLE = {
-    'general':   { name: '일반화물',         icc_a: 0.0130, icc_b: 0.0090, icc_c: 0.0070, ar: 0.0125, wa: 0.0085, fpa: 0.0065 },
-    'machinery': { name: '기계·전자',        icc_a: 0.0150, icc_b: 0.0105, icc_c: 0.0080, ar: 0.0145, wa: 0.0100, fpa: 0.0075 },
-    'metal':     { name: '철강·금속',        icc_a: 0.0165, icc_b: 0.0115, icc_c: 0.0090, ar: 0.0160, wa: 0.0110, fpa: 0.0085 },
-    'textile':   { name: '섬유·의류',        icc_a: 0.0155, icc_b: 0.0108, icc_c: 0.0085, ar: 0.0150, wa: 0.0103, fpa: 0.0080 },
-    'foodstuff': { name: '식품·농수산',      icc_a: 0.0230, icc_b: 0.0160, icc_c: 0.0120, ar: 0.0220, wa: 0.0150, fpa: 0.0115 },
-    'frozen':    { name: '냉동·냉장',        icc_a: 0.0270, icc_b: 0.0190, icc_c: 0.0150, ar: 0.0260, wa: 0.0180, fpa: 0.0145 },
-    'chemical':  { name: '화학·위험물',      icc_a: 0.0290, icc_b: 0.0205, icc_c: 0.0165, ar: 0.0280, wa: 0.0195, fpa: 0.0160 },
-    'liquid':    { name: '석유·액체',        icc_a: 0.0180, icc_b: 0.0125, icc_c: 0.0100, ar: 0.0175, wa: 0.0120, fpa: 0.0095 },
-    'fragile':   { name: '취약·도자기·유리', icc_a: 0.0330, icc_b: 0.0230, icc_c: 0.0180, ar: 0.0320, wa: 0.0220, fpa: 0.0175 },
-    'art':       { name: '예술품·귀금속',    icc_a: 0.0450, icc_b: null,   icc_c: null,   ar: 0.0430, wa: null,   fpa: null   }
+    'general':   { name: '일반화물',         icc_a: 0.0130, icc_b: 0.0090, icc_c: 0.0070, icc_air: 0.0130, ar: 0.0125, wa: 0.0085, fpa: 0.0065, ar_air: 0.0125 },
+    'machinery': { name: '기계·전자',        icc_a: 0.0150, icc_b: 0.0105, icc_c: 0.0080, icc_air: 0.0150, ar: 0.0145, wa: 0.0100, fpa: 0.0075, ar_air: 0.0145 },
+    'metal':     { name: '철강·금속',        icc_a: 0.0165, icc_b: 0.0115, icc_c: 0.0090, icc_air: 0.0165, ar: 0.0160, wa: 0.0110, fpa: 0.0085, ar_air: 0.0160 },
+    'textile':   { name: '섬유·의류',        icc_a: 0.0155, icc_b: 0.0108, icc_c: 0.0085, icc_air: 0.0155, ar: 0.0150, wa: 0.0103, fpa: 0.0080, ar_air: 0.0150 },
+    'foodstuff': { name: '식품·농수산',      icc_a: 0.0230, icc_b: 0.0160, icc_c: 0.0120, icc_air: 0.0230, ar: 0.0220, wa: 0.0150, fpa: 0.0115, ar_air: 0.0220 },
+    'frozen':    { name: '냉동·냉장',        icc_a: 0.0270, icc_b: 0.0190, icc_c: 0.0150, icc_air: 0.0270, ar: 0.0260, wa: 0.0180, fpa: 0.0145, ar_air: 0.0260 },
+    'chemical':  { name: '화학·위험물',      icc_a: 0.0290, icc_b: 0.0205, icc_c: 0.0165, icc_air: 0.0290, ar: 0.0280, wa: 0.0195, fpa: 0.0160, ar_air: 0.0280 },
+    'liquid':    { name: '석유·액체',        icc_a: 0.0180, icc_b: 0.0125, icc_c: 0.0100, icc_air: 0.0180, ar: 0.0175, wa: 0.0120, fpa: 0.0095, ar_air: 0.0175 },
+    'fragile':   { name: '취약·도자기·유리', icc_a: 0.0330, icc_b: 0.0230, icc_c: 0.0180, icc_air: 0.0330, ar: 0.0320, wa: 0.0220, fpa: 0.0175, ar_air: 0.0320 },
+    'art':       { name: '예술품·귀금속',    icc_a: 0.0450, icc_b: null,   icc_c: null,   icc_air: 0.0450, ar: 0.0430, wa: null,   fpa: null,   ar_air: 0.0430 }
   };
 
   // KIDI zone 별 region factor
@@ -370,12 +371,14 @@
   var MODE_FACTOR = { 'sea': 1.00, 'air': 0.65, 'land': 1.10, 'multimodal': 1.05 };
 
   var CLAUSE_LABEL = {
-    'icc_a': '신약관 ICC(A) — All Risks',
-    'icc_b': '신약관 ICC(B) — 한정담보',
-    'icc_c': '신약관 ICC(C) — 최소담보',
-    'ar':    '구약관 A.R — All Risks (S.G. Policy)',
-    'wa':    '구약관 W.A — With Average',
-    'fpa':   '구약관 F.P.A — Free from Particular Average'
+    'icc_a':   '신약관 ICC(A) — All Risks (해상)',
+    'icc_b':   '신약관 ICC(B) — 한정담보',
+    'icc_c':   '신약관 ICC(C) — 최소담보',
+    'icc_air': '신약관 ICC(Air) — All Risks (항공)',
+    'ar':      '구약관 A.R — All Risks (S.G. Policy)',
+    'wa':      '구약관 W.A — With Average',
+    'fpa':     '구약관 F.P.A — Free from Particular Average',
+    'ar_air':  '구약관 A.R (Air) — All Risks (항공)'
   };
 
   // 화물 카테고리 → KIDI 추천 코드
@@ -705,6 +708,25 @@
     });
     var regionEl = $('calcRegion');
     if (regionEl) regionEl.addEventListener('change', onRegionUserChange);
+
+    /* 운송수단 변경 시 약관 자동 매칭 (UX) — 사용자가 명시적으로 다른 약관 선택 시 우회 */
+    var modeEl = $('calcMode');
+    var clauseEl = $('calcClause');
+    if (modeEl && clauseEl) {
+      modeEl.addEventListener('change', function () {
+        var current = clauseEl.value;
+        if (modeEl.value === 'air') {
+          /* 해상→항공 전환 시 ICC(A)·A.R → ICC(Air)·A.R(Air)로 자동 변경 */
+          if (current === 'icc_a') clauseEl.value = 'icc_air';
+          else if (current === 'ar') clauseEl.value = 'ar_air';
+        } else {
+          /* 항공→해상 전환 시 항공 약관 → 해상 ICC(A)·A.R로 복귀 */
+          if (current === 'icc_air') clauseEl.value = 'icc_a';
+          else if (current === 'ar_air') clauseEl.value = 'ar';
+        }
+      });
+    }
+
     var btn = $('calcSubmit');
     if (btn) btn.addEventListener('click', doCalc);
     onCurrencyChange();   // 초기 통화 라벨/환율 세팅

@@ -176,17 +176,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </select>
         </div>
         <div class="calc-field">
-          <label>약관 조건<span class="tip" title="ICC(A) All-Risks 권장. ICC(C)는 벌크화물용">?</span></label>
+          <label>약관 조건<span class="tip" title="해상: ICC(A) 권장 / 항공: ICC(Air) 권장. 운송수단 선택 시 자동 매칭">?</span></label>
           <select id="calcClause">
-            <optgroup label="신약관 (1982/2009 ICC)">
-              <option value="icc_a">신약관 ICC(A) — All Risks (권장)</option>
+            <optgroup label="신약관 — 해상 (1982/2009 ICC)">
+              <option value="icc_a">신약관 ICC(A) — All Risks (해상 권장)</option>
               <option value="icc_b">신약관 ICC(B) — 한정담보</option>
               <option value="icc_c">신약관 ICC(C) — 최소담보</option>
             </optgroup>
-            <optgroup label="구약관 (1963 S.G. Policy)">
+            <optgroup label="신약관 — 항공 (1982/2009 ICC Air)">
+              <option value="icc_air">신약관 ICC(Air) — All Risks (항공 권장)</option>
+            </optgroup>
+            <optgroup label="구약관 — 해상 (1963 S.G. Policy)">
               <option value="ar">구약관 A.R — All Risks</option>
               <option value="wa">구약관 W.A — With Average</option>
               <option value="fpa">구약관 F.P.A — Free from Particular Average</option>
+            </optgroup>
+            <optgroup label="구약관 — 항공 (Air)">
+              <option value="ar_air">구약관 A.R (Air) — All Risks (항공)</option>
             </optgroup>
           </select>
         </div>
