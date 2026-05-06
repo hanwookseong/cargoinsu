@@ -3747,9 +3747,29 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   line-height: 1.8;
 }
 @media (max-width: 780px) {
-  .cargo-hero { padding: 3.5rem 0 2.5rem; }
-  .cargo-hero h1 { line-height: 1.5; max-width: 100%; }
-  .cargo-hero .lede { line-height: 1.75; }
+  .cargo-hero { padding: 2.5rem 0 2rem; }
+  .cargo-hero .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 1rem;
+  }
+  .cargo-hero h1 {
+    font-size: 1.55rem !important;       /* 데스크톱 1.85~3rem → 모바일 1.55rem */
+    line-height: 1.4;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .cargo-hero .lede {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+  .cargo-hero .hero-usp {
+    font-size: 0.82rem !important;
+    margin-top: 1.2rem !important;
+    line-height: 1.6;
+  }
 }
 
 /* 보험료 계산기 카드 */
