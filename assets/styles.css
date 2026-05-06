@@ -3696,12 +3696,13 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
    N2N 디자인 시스템 + 보험료 계산기 + cargo 특화 hero
    =========================================================== */
 
-/* cargoinsu hero — 큰 계산기 카드 중심 */
+/* cargoinsu hero — Squaremouth/Policygenius 스타일 (center align + 여백 확대) */
 .cargo-hero {
-  padding: 4rem 0 3rem;
+  padding: 5.5rem 0 4rem;        /* 상하 여백 확대 (Squaremouth 패턴) */
   background: linear-gradient(135deg, var(--forest) 0%, var(--forest-2) 60%, var(--ink) 100%);
   color: var(--ivory);
   position: relative;
+  text-align: center;             /* 가운데 정렬 */
 }
 .cargo-hero::before {
   content: '';
@@ -3713,16 +3714,20 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .cargo-hero .eyebrow {
   display: inline-block;
   font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 0.6rem;
+  letter-spacing: 0.18em;        /* 자간 확대 0.1 → 0.18 (Policygenius 표준) */
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.4rem;          /* 0.6 → 1.4 여백 확대 */
 }
 .cargo-hero h1 {
   font-family: var(--f-display);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.85rem, 4.2vw, 3rem);
   color: var(--ivory);
   font-weight: 500;
-  line-height: 1.2;
-  margin: 0 0 0.6rem;
+  line-height: 1.45;              /* 1.2 → 1.45 행간 확대 (한글 가독성) */
+  letter-spacing: -0.01em;        /* 살짝 좁힘 */
+  margin: 0 auto 1.4rem;          /* 좌우 auto = 가운데 / 하단 0.6 → 1.4 */
+  max-width: 880px;               /* 폭 제한으로 시각적 여백 확보 */
 }
 .cargo-hero h1 em {
   color: var(--accent);
@@ -3730,8 +3735,21 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   font-weight: 600;
 }
 .cargo-hero .lede {
-  font-size: 1.05rem; color: rgba(244, 240, 232, 0.85);
-  max-width: 720px; margin: 0;
+  font-size: 1.08rem;             /* 1.05 → 1.08 */
+  color: rgba(244, 240, 232, 0.82);
+  max-width: 720px;
+  margin: 0 auto;                 /* 가운데 정렬 */
+  line-height: 1.85;              /* 한글 행간 확대 */
+}
+.cargo-hero .hero-usp {
+  margin-top: 1.6rem !important;  /* 8px → 1.6rem 여백 확대 */
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+@media (max-width: 780px) {
+  .cargo-hero { padding: 3.5rem 0 2.5rem; }
+  .cargo-hero h1 { line-height: 1.5; max-width: 100%; }
+  .cargo-hero .lede { line-height: 1.75; }
 }
 
 /* 보험료 계산기 카드 */
