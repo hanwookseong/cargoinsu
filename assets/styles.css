@@ -1506,6 +1506,22 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .gnb > ul > li > a:hover::after,
 .gnb > ul > li.active > a::after { transform: scaleX(1); }
 
+/* ── dd-parent (드롭다운 부모 메뉴: 운송 화물·고가재·운송인 책임) ── */
+.gnb > ul > li > a.dd-parent {
+  cursor: pointer;
+  user-select: none;
+}
+.gnb > ul > li > a.dd-parent:focus {
+  outline: 2px solid var(--forest);
+  outline-offset: 2px;
+}
+.gnb > ul > li:hover > a.dd-parent,
+.gnb > ul > li:focus-within > a.dd-parent {
+  color: var(--forest);
+}
+/* depth2 dropdown should appear on focus-within for keyboard accessibility */
+.gnb > ul > li:focus-within .depth2 { display: block; }
+
 /* ── 보험 카테고리 (products.html#... ) — 가로로 넓은 forest green 박스 ── */
 .gnb > ul > li > a[href*="products.html#"] {
   display: inline-block;
