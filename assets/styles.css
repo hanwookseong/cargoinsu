@@ -3786,6 +3786,14 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   margin-top: 1.6rem !important;  /* 8px → 1.6rem 여백 확대 */
   letter-spacing: 0.04em;
   line-height: 1.8;
+  color: var(--accent) !important; /* 오렌지 강조 — 어두운 녹색 배경 가독성 확보 */
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(244, 240, 232, 0.08);
+  border: 1px solid rgba(197, 106, 44, 0.3);
+  border-radius: 4px;
 }
 @media (max-width: 780px) {
   .cargo-hero { padding: 2.5rem 0 2rem; }
