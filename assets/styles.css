@@ -1506,7 +1506,32 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .gnb > ul > li > a:hover::after,
 .gnb > ul > li.active > a::after { transform: scaleX(1); }
 
-/* ── dd-parent (드롭다운 부모 메뉴: 운송 화물·고가재·운송인 책임) ── */
+/* ── 카드 sublinks (카테고리 카드 안의 2개 상품 링크) ── */
+.cargo-card .card-sublinks {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 12px 0 0;
+  border-top: 1px solid rgba(11, 40, 24, 0.1);
+}
+.cargo-card .card-sublinks li {
+  margin: 4px 0;
+}
+.cargo-card .card-sublinks li a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 0.86rem;
+  color: var(--forest);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.cargo-card .card-sublinks li a:hover {
+  background: var(--ivory-2, #efe9dc);
+  color: var(--accent);
+}
+
+/* ── dd-parent (드롭다운 부모 메뉴: 4개 헤더 카테고리) ── */
 .gnb > ul > li > a.dd-parent {
   cursor: pointer;
   user-select: none;
