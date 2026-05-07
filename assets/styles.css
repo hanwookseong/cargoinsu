@@ -1745,7 +1745,9 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     display: block;
   }
   .gnb > ul > li > a::after { display: none !important; }
+  /* ⭐ 모바일: 드롭다운 메뉴를 항상 펼친 상태로 표시 (호버 불가) */
   .gnb .depth2 {
+    display: block !important;
     position: static !important;
     border: 0 !important; box-shadow: none !important;
     background: var(--brand-2) !important;
@@ -1753,10 +1755,33 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
     transform: none !important;
     width: 100% !important;
     max-width: 100% !important;
+    list-style: none;
+  }
+  .gnb .depth2 li {
+    width: 100%;
+    display: block;
   }
   .gnb .depth2 li a {
-    color: rgba(255,255,255,0.88);
+    color: rgba(255,255,255,0.92) !important;
     padding: 10px 36px;
+    display: block;
+    text-align: left;
+    font-size: 0.92rem;
+  }
+  .gnb .depth2 li a:hover {
+    background: rgba(255,255,255,0.08) !important;
+    color: #fff !important;
+  }
+  /* dd-parent (드롭다운 부모): 모바일에서는 카테고리 헤더로만 표시 (클릭 불가) */
+  .gnb > ul > li > a.dd-parent {
+    background: rgba(0,0,0,0.18);
+    font-weight: 600;
+    cursor: default;
+    color: rgba(255,255,255,0.95) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .gnb > ul > li > a.dd-parent:focus {
+    outline: none;
   }
   .gnb .consult-btn {
     margin: 8px 16px;

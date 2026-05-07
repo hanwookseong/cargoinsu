@@ -19,6 +19,24 @@
         toggle.classList.remove('is-active');
       }
     });
+
+    // 메뉴 내부 링크 클릭 시 메뉴 닫기 (모바일 UX)
+    var menuLinks = gnbList.querySelectorAll('a[href]');
+    for (var m = 0; m < menuLinks.length; m++) {
+      menuLinks[m].addEventListener('click', function () {
+        gnbList.classList.remove('open');
+        toggle.classList.remove('is-active');
+      });
+    }
+
+    // dd-parent (href 없는 카테고리 헤더): 클릭 차단 (모바일에서 의미 없는 동작 방지)
+    var ddParents = gnbList.querySelectorAll('a.dd-parent');
+    for (var p = 0; p < ddParents.length; p++) {
+      ddParents[p].addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    }
   }
 
   // ───── Active GNB highlight (현재 페이지 메뉴 강조) ─────
