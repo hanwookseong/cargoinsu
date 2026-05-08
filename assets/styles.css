@@ -1721,107 +1721,10 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
 .gnb .depth2 li a:hover { background: var(--ivory-2); color: var(--forest); }
 .menu-toggle { display: none; }
 
-/* ── 모바일 GNB 햄버거 메뉴 정상화 (이전 .gnb > ul flex 규칙을 모바일에서 강제 숨김) ── */
+/* ── 모바일 우측 플로팅 빠른메뉴 숨김 (콘텐츠 가림 방지) ── */
 @media (max-width: 780px) {
-  .gnb { position: relative; min-height: 48px; padding: 0; }
-  .gnb > ul {
-    display: none !important;
-    position: absolute; left: 0; right: 0; top: 100%;
-    flex-direction: column;
-    background: var(--brand);
-    padding: 8px 0;
-    margin: 0;
-    z-index: 100;
-    gap: 0;
-  }
-  .gnb > ul.open { display: flex !important; }
-  .gnb > ul > li {
-    flex: none; width: 100%; position: relative;
-  }
-  .gnb > ul > li > a {
-    text-align: left;
-    padding: 12px 20px;
-    color: #fff;
-    display: block;
-  }
-  .gnb > ul > li > a::after { display: none !important; }
-  /* ⭐ 모바일: li 배경·테두리 명시적 dark green 강제 */
-  .gnb > ul > li {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-  }
-  /* ⭐ 모바일: 드롭다운(depth2) 항상 펼친 상태 + dark 배경 강제 */
-  .gnb > ul > li .depth2,
-  .gnb .depth2 {
-    display: block !important;
-    position: static !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    background: var(--brand-2, #0f3a23) !important;
-    padding: 0 !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    list-style: none !important;
-    margin: 0 !important;
-  }
-  .gnb > ul > li .depth2 li,
-  .gnb .depth2 li {
-    width: 100% !important;
-    display: block !important;
-    background: transparent !important;
-    border: none !important;
-  }
-  .gnb > ul > li .depth2 li a,
-  .gnb .depth2 li a {
-    color: rgba(255,255,255,0.92) !important;
-    background: transparent !important;
-    padding: 12px 36px !important;
-    display: block !important;
-    text-align: left !important;
-    font-size: 0.92rem !important;
-    border: none !important;
-  }
-  .gnb > ul > li .depth2 li a:hover,
-  .gnb .depth2 li a:hover {
-    background: rgba(255,255,255,0.08) !important;
-    color: #fff !important;
-  }
-  /* dd-parent (드롭다운 부모 카테고리 헤더): 어두운 배경 + 흰색 텍스트 */
-  .gnb > ul > li > a.dd-parent {
-    background: rgba(0,0,0,0.25) !important;
-    font-weight: 700 !important;
-    cursor: default !important;
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255,255,255,0.12) !important;
-    padding: 14px 20px !important;
-    display: block !important;
-  }
-  .gnb > ul > li > a.dd-parent:focus { outline: none; }
-  /* 모바일 메뉴 ul 배경 명시적 강제 (혹시 라이트 색상 inherit되는 것 방지) */
-  .gnb > ul.open {
-    background: var(--brand, #0B2818) !important;
-  }
-  .gnb .consult-btn {
-    margin: 8px 16px;
-    text-align: center;
-  }
-  .menu-toggle {
-    display: block !important;
-    position: absolute;
-    right: 12px; top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: 0;
-    padding: 8px;
-    cursor: pointer;
-    z-index: 101;
-  }
-  /* 모바일에서 우측 플로팅 빠른메뉴(전화·즉시계산·카톡·n2nib) 숨김 — 콘텐츠 가림 방지 */
   .right-quick { display: none !important; }
+  /* 모바일 GNB 메뉴 전체 스타일은 라인 4670+ "모바일 GNB — 심플 평면 리스트" 블록 참조 */
 }
 
 /* ── Breadcrumb ───────────────────────────────────────────── */
