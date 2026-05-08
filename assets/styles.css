@@ -4525,13 +4525,12 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   .msh-menu.is-open span { background: transparent; }
   .msh-menu.is-open span::before { top: 0; transform: rotate(45deg); }
   .msh-menu.is-open span::after { top: 0; transform: rotate(-45deg); }
+  /* iOS Safari 호환 — html+body overflow:hidden만 사용, position:fixed 제거 */
+  html.mobile-menu-open,
   body.mobile-menu-open {
     overflow: hidden !important;
-    position: fixed !important;
-    width: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    height: 100% !important;
+    touch-action: none !important;
   }
   .msh-logo {
     flex: 1 1 auto;
@@ -4706,7 +4705,8 @@ html body .right-quick {
     display: none !important;
   }
 
-  /* ── 메뉴 컨테이너 (UL) — 풀스크린 오버레이 ── */
+  /* ── 메뉴 컨테이너 (UL) — iOS Safari 안전 풀스크린 오버레이 ── */
+  /* top/bottom 사용으로 viewport height 자동 계산 (URL bar 동적 변화 대응) */
   .gnb > ul {
     position: fixed !important;
     top: 0 !important;
@@ -4715,23 +4715,21 @@ html body .right-quick {
     bottom: 0 !important;
     width: 100% !important;
     max-width: 100vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    max-height: 100vh !important;
-    max-height: 100dvh !important;
+    /* height/max-height 제거 — top:0+bottom:0으로 자동 계산 */
     box-sizing: border-box !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
     background: var(--brand, #0B2818) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     flex-direction: column !important;
-    padding: 76px 0 100px !important;  /* 상단 60px sticky header + 16px 여백 */
+    padding: 76px 0 120px !important;  /* 상단 60px + 16px 여백, 하단 iOS bottom bar 대비 120px */
     margin: 0 !important;
     gap: 0 !important;
-    z-index: 9000 !important;  /* sticky header(9999)보다 낮음 → X 버튼 클릭 가능 */
+    z-index: 9000 !important;
     box-shadow: 0 4px 16px rgba(0,0,0,0.25);
     display: none !important;
     list-style: none !important;

@@ -181,10 +181,15 @@
         var isOpen = gnbList && gnbList.classList.contains('open');
         if (gnbList) gnbList.classList.toggle('open');
         if (origToggle) origToggle.classList.toggle('is-active');
+        // body + html 둘 다 토글 — iOS Safari 스크롤 잠금 안정화
         document.body.classList.toggle('mobile-menu-open', !isOpen);
+        document.documentElement.classList.toggle('mobile-menu-open', !isOpen);
         newMenuBtn.classList.toggle('is-open', !isOpen);
         newMenuBtn.setAttribute('aria-label', !isOpen ? '메뉴 닫기' : '메뉴 열기');
-        if (!isOpen) window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 메뉴 열 때 메뉴 내부 스크롤 위치 초기화 (iOS Safari 안정화)
+        if (!isOpen && gnbList) {
+          setTimeout(function(){ gnbList.scrollTop = 0; }, 50);
+        }
       });
     }
   }
