@@ -4609,7 +4609,6 @@ html body .right-quick {
   }
 
   /* ── 메뉴 컨테이너 (UL) — iOS Safari 안전 풀스크린 오버레이 ── */
-  /* top/bottom 사용으로 viewport height 자동 계산 (URL bar 동적 변화 대응) */
   .gnb > ul {
     position: fixed !important;
     top: 0 !important;
@@ -4618,7 +4617,10 @@ html body .right-quick {
     bottom: 0 !important;
     width: 100% !important;
     max-width: 100vw !important;
-    /* height/max-height 제거 — top:0+bottom:0으로 자동 계산 */
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
     box-sizing: border-box !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -4629,7 +4631,8 @@ html body .right-quick {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     flex-direction: column !important;
-    padding: 76px 0 120px !important;  /* 상단 60px + 16px 여백, 하단 iOS bottom bar 대비 120px */
+    flex-wrap: nowrap !important;       /* ⭐ 핵심 수정: wrap 방지 — li 세로 정렬 */
+    padding: 76px 0 120px !important;
     margin: 0 !important;
     gap: 0 !important;
     z-index: 9000 !important;
@@ -4638,6 +4641,11 @@ html body .right-quick {
     list-style: none !important;
   }
   .gnb > ul.open { display: flex !important; }
+  /* li가 세로 일렬로 쌓이도록 강제 (wrap 충돌 방지) */
+  .gnb > ul > li {
+    flex: 0 0 auto !important;
+    align-self: stretch !important;
+  }
 
   /* ── 모든 li: 카드형 효과 제거, 평면 리스트 ── */
   .gnb > ul > li {
