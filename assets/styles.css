@@ -4667,8 +4667,11 @@ html body .right-quick {
   li.mmf-cta { display: none !important; }
 }
 
-/* 모바일 중복 헤더 차단 + 메뉴 fixed 슬라이드 (cargoinsu) */
+/* ════════════════════════════════════════════════════════════════════
+   모바일 GNB — 심플 평면 리스트 (cargoinsu, 2026-05-08 재구성)
+   ──────────────────────────────────────────────────────────────────── */
 @media (max-width: 780px) {
+  /* 데스크톱 헤더·로고 모바일 숨김 */
   html body .top_wrap,
   html body .top_wrap_cont,
   html body div.top_wrap {
@@ -4695,131 +4698,164 @@ html body .right-quick {
   .menu-toggle:not(.msh-menu) {
     display: none !important;
   }
+
+  /* ── 메뉴 컨테이너 (UL) ── */
   .gnb > ul {
     position: fixed !important;
     top: 60px !important;
     left: 0 !important; right: 0 !important;
     width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
     max-height: calc(100dvh - 60px) !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
     -webkit-overflow-scrolling: touch !important;
     overscroll-behavior: contain !important;
-    background: var(--ivory, #F4F0E8) !important;     /* 다크 → 아이보리 */
+    background: var(--brand, #0B2818) !important;
     flex-direction: column !important;
-    padding: 16px 12px 80px !important; margin: 0 !important;
+    padding: 8px 0 80px !important;
+    margin: 0 !important;
+    gap: 0 !important;
     z-index: 9000 !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
     display: none !important;
+    list-style: none !important;
   }
-  .gnb > ul.open {
-    display: flex !important;
-  }
-  /* depth2 메가메뉴는 모바일에서 숨김 */
-  .gnb .depth2 { display: none !important; }
+  .gnb > ul.open { display: flex !important; }
 
-  /* Policygenius 패턴 카드형 메뉴 (cargoinsu) */
-  .gnb > ul {
-    gap: 10px !important;
-  }
+  /* ── 모든 li: 카드형 효과 제거, 평면 리스트 ── */
   .gnb > ul > li {
     width: 100% !important;
-    background: #ffffff !important;
-    border: 1px solid rgba(11, 40, 24, 0.08) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 1px 2px rgba(11, 40, 24, 0.04) !important;
-    overflow: hidden !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    flex: 0 0 auto !important;
+    display: block !important;
   }
+
+  /* ── 1단 메뉴 a (단독 링크 / dd-parent 공통) ── */
   .gnb > ul > li > a,
   .gnb > ul > li > a[href*="products.html#"],
   .gnb > ul > li > a[href*="products/"] {
-    display: flex !important;
-    align-items: center !important;
-    gap: 14px !important;
-    padding: 16px 16px !important;
-    background: transparent !important;          /* 데스크톱 forest 배경 해제 */
-    color: var(--ink, #0B2818) !important;       /* 흰 카드 위에서 다크 텍스트 */
-    font-weight: 700 !important;
-    font-size: 1.02rem !important;
-    text-decoration: none !important;
-    line-height: 1.3 !important;
-    margin: 0 !important;
-    min-width: 0 !important;
-    border-radius: 0 !important;
-    text-align: left !important;
-  }
-  /* 데스크톱 underline 애니메이션 ::after 비활성화 (모바일 카드형) */
-  .gnb > ul > li > a::after {
-    background: transparent !important;
-    transform: none !important;
-  }
-  .gnb > ul > li > a::before {
-    flex: 0 0 40px !important;
-    width: 40px !important;
-    height: 40px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: rgba(217, 119, 87, 0.10) !important;
-    border-radius: 8px !important;
-    font-size: 1.4rem !important;
-    line-height: 1 !important;
-    position: static !important;
-  }
-  .gnb > ul > li > a {
+    display: block !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    padding-right: 36px !important;
-  }
-  .gnb > ul > li {
-    position: relative !important;
-  }
-  .gnb > ul > li::after {
-    content: '' !important;
-    position: absolute !important;
-    right: 18px !important;
-    top: 50% !important;
-    width: 10px !important;
-    height: 10px !important;
-    border: 0 !important;
-    border-right: 2.5px solid var(--accent, #C56A2C) !important;
-    border-top: 2.5px solid var(--accent, #C56A2C) !important;
-    transform: translateY(-50%) rotate(45deg) !important;
-    margin-top: -1px !important;
+    padding: 14px 20px !important;
     background: transparent !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
+    color: rgba(244, 240, 232, 0.95) !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+    text-align: left !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(244, 240, 232, 0.08) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* ── 아이콘·쉐브론 모두 제거 ── */
+  .gnb > ul > li > a::before,
+  .gnb > ul > li > a::after,
+  .gnb > ul > li::before,
+  .gnb > ul > li::after {
+    content: none !important;
+    display: none !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  /* ── dd-parent (카테고리 헤더) — 약간 더 어두운 배경 + 굵은 글씨 ── */
+  .gnb > ul > li > a.dd-parent {
+    background: rgba(0, 0, 0, 0.20) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    cursor: default !important;
+    padding: 14px 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* ── depth2 (하위 메뉴) — 항상 펼쳐진 상태 ── */
+  .gnb .depth2,
+  .gnb > ul > li .depth2 {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    list-style: none !important;
+    overflow: hidden !important;
+  }
+  .gnb .depth2 li,
+  .gnb > ul > li .depth2 li {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: transparent !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
     display: block !important;
   }
-  .gnb > ul > li.gnb-search-li::after,
-  .gnb > ul > li.mmf-cta::after { display: none !important; }
-  /* cargoinsu 카테고리별 아이콘 */
-  .gnb > ul > li:nth-child(1) > a::before { content: '📦'; }  /* 적하 */
-  .gnb > ul > li:nth-child(2) > a::before { content: '🚛'; }  /* 운송 */
-  .gnb > ul > li:nth-child(3) > a::before { content: '🎨'; }  /* 예술품 */
-  .gnb > ul > li:nth-child(4) > a::before { content: '⚖️'; }  /* 화물배상 */
-  .gnb > ul > li:nth-child(5) > a::before { content: '💬'; }  /* 가입상담 */
-  /* gnb-search-li (24시간 응답 텍스트) — 카드형 제외 */
-  .gnb > ul > li.gnb-search-li {
+  .gnb .depth2 li a,
+  .gnb > ul > li .depth2 li a {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 12px 20px 12px 36px !important;
+    color: rgba(244, 240, 232, 0.85) !important;
     background: transparent !important;
+    font-size: 0.93rem !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+    text-align: left !important;
     border: 0 !important;
-    padding: 8px 16px !important;
+    border-bottom: 1px solid rgba(244, 240, 232, 0.06) !important;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
   }
-  .gnb > ul > li.gnb-search-li > * {
-    color: var(--ink-2, #555) !important;
+  .gnb .depth2 li a:hover,
+  .gnb > ul > li .depth2 li a:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #ffffff !important;
   }
-  /* consult-btn (적하 즉시 계산) — 강조 */
-  .gnb > ul > li:has(> a.consult-btn) {
+
+  /* ── 즉시 계산 CTA — 오렌지 강조 ── */
+  .gnb > ul > li > a.consult-btn {
     background: var(--accent, #C56A2C) !important;
-    border-color: var(--accent, #C56A2C) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    margin: 12px 16px !important;
+    padding: 14px 20px !important;
+    border-radius: 6px !important;
+    text-align: center !important;
+    border: 0 !important;
+    width: calc(100% - 32px) !important;
+    box-sizing: border-box !important;
   }
-  .gnb > ul > li:has(> a.consult-btn) > a { color: #fff !important; }
-  .gnb > ul > li:has(> a.consult-btn) > a::before {
-    background: rgba(255, 255, 255, 0.22) !important;
-    content: '⚡' !important;
+
+  /* ── gnb-search-li (빈 spacer) 숨김 ── */
+  .gnb > ul > li.gnb-search-li {
+    display: none !important;
   }
-  .gnb > ul > li:has(> a.consult-btn) > a::after { color: #fff !important; }
-  /* mmf-cta */
+
+  /* ── mmf-cta (전화·카톡 자동주입 CTA) ── */
   .gnb > ul > li.mmf-cta {
     background: transparent !important;
     border: 0 !important;
