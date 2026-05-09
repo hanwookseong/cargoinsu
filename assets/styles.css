@@ -1531,6 +1531,105 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   color: var(--accent);
 }
 
+/* ════════════════════════════════════════════════════════════════════
+   Phase 1: 홈 FAQ 섹션 (Policygenius 패턴) — 2026-05-08
+   ──────────────────────────────────────────────────────────────────── */
+.cargo-faq {
+  padding: 4rem 0;
+  background: var(--ivory, #F4F0E8);
+  border-top: 1px solid var(--border);
+}
+.cargo-faq .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cargo-faq .faq-item {
+  background: #ffffff;
+  border: 1px solid rgba(11, 40, 24, 0.08);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.cargo-faq .faq-item:hover {
+  border-color: var(--accent, #C56A2C);
+  box-shadow: 0 2px 12px rgba(11, 40, 24, 0.06);
+}
+.cargo-faq .faq-item summary {
+  padding: 18px 24px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--forest, #0B2818);
+  list-style: none;
+  position: relative;
+  user-select: none;
+}
+.cargo-faq .faq-item summary::-webkit-details-marker { display: none; }
+.cargo-faq .faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: var(--accent, #C56A2C);
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+.cargo-faq .faq-item[open] summary::after {
+  content: '−';
+}
+.cargo-faq .faq-item p {
+  padding: 0 24px 18px;
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--ink-2);
+  line-height: 1.75;
+}
+.cargo-faq .faq-item p strong {
+  color: var(--forest, #0B2818);
+  font-weight: 600;
+}
+@media (max-width: 780px) {
+  .cargo-faq { padding: 2.5rem 0; }
+  .cargo-faq .faq-item summary { padding: 14px 18px; font-size: 0.95rem; }
+  .cargo-faq .faq-item summary::after { right: 18px; }
+  .cargo-faq .faq-item p { padding: 0 18px 14px; font-size: 0.9rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   Phase 1: 상단 신뢰 바 (Policygenius 패턴) — 2026-05-08
+   ──────────────────────────────────────────────────────────────────── */
+.trust-bar {
+  background: var(--forest, #0B2818);
+  color: rgba(244, 240, 232, 0.92);
+  font-size: 0.78rem;
+  padding: 8px 16px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.trust-bar .tb-item strong {
+  color: var(--accent, #C56A2C);
+  font-weight: 600;
+}
+.trust-bar .tb-sep {
+  margin: 0 8px;
+  color: rgba(244, 240, 232, 0.4);
+}
+@media (max-width: 780px) {
+  .trust-bar {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    line-height: 1.55;
+  }
+  .trust-bar .tb-sep { display: none; }
+  .trust-bar .tb-item { display: block; }
+  .trust-bar .tb-item + .tb-item { margin-top: 2px; }
+}
+
 /* ── dd-parent (드롭다운 부모 메뉴: 4개 헤더 카테고리) ── */
 .gnb > ul > li > a.dd-parent {
   cursor: pointer;
