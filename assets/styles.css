@@ -6539,3 +6539,54 @@ html body .right-quick {
     height: 56px;
   }
 }
+
+/* ============================================ */
+/* Phase B: 통합 author-box (작성자 + 운영사)      */
+/* 2026-05-10 — Policygenius Editor 패턴 통합   */
+/* ============================================ */
+.author-box {
+  display: block; /* override Phase A flex */
+}
+
+.author-box .author-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.author-box .author-divider {
+  margin: 16px 0 12px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.author-box .broker-section {
+  font-size: 0.92em;
+  line-height: 1.55;
+  color: #555;
+}
+
+.author-box .broker-section .broker-tag {
+  font-weight: 600;
+  color: #2a3a2a;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.author-box .broker-section .broker-text {
+  margin: 0;
+}
+
+.author-box .broker-section .broker-text strong {
+  color: #2a3a2a;
+}
+
+@media (max-width: 600px) {
+  .author-box .author-divider {
+    margin: 12px 0 10px 0;
+  }
+  .author-box .broker-section {
+    font-size: 0.88em;
+  }
+}
