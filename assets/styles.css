@@ -6504,3 +6504,38 @@ html body .right-quick {
   color: var(--forest, #0B2818);
   font-weight: 600;
 }
+
+/* ============================================ */
+/* author-box 사진 추가 (Policygenius 패턴)        */
+/* 2026-05-10 — flex 레이아웃 + 원형 아바타       */
+/* ============================================ */
+.author-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.author-box .author-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--accent, #C56A2C);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.author-box .author-content {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .author-box {
+    gap: 12px;
+  }
+  .author-box .author-photo {
+    width: 56px;
+    height: 56px;
+  }
+}
