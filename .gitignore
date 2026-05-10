@@ -1,2 +1,24 @@
-
+# === 백업 파일 ===
 *.bak
+*.bak[0-9]
+*.bak[0-9]*
+*.old
+*.orig
+
+# === OS·에디터 임시 파일 ===
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+*~
+.vscode/
+.idea/
+
+# === Node·dev ===
+node_modules/
+.env
+.env.local
+
+# === Cloudflare 25MB 제한 ===
+*.zip
