@@ -6590,3 +6590,48 @@ html body .right-quick {
     font-size: 0.88em;
   }
 }
+
+/* ============================================ */
+/* Hero 이미지 (Phase B+) — 2026-05-10            */
+/* marine-cargo.html 시작                         */
+/* ============================================ */
+.pd-hero.pd-hero-image {
+  padding: 0;
+  margin: 0;
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
+
+.pd-hero.pd-hero-image picture {
+  display: block;
+  width: 100%;
+}
+
+.pd-hero.pd-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 스크린리더 전용 (SEO·접근성) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .pd-hero.pd-hero-image {
+    max-height: 360px;
+  }
+}
