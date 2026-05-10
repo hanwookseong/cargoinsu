@@ -6408,3 +6408,30 @@ html body .right-quick {
   .dash-form-row { grid-template-columns: 1fr; }
 }
 
+
+/* ============================================ */
+/* Mobile sticky header - 2026-05-10            */
+/* 5/4 데스크톱 .navi_wrap fixed 패턴을 모바일로  */
+/* .top_wrap 전체에 적용 (로고 포함)              */
+/* ============================================ */
+@media (max-width: 780px) {
+  html body .top_wrap {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 100 !important;
+    background: #0B2818 !important;
+  }
+  html body .top_wrap_cont {
+    display: block !important;
+    visibility: visible !important;
+    height: auto !important;
+  }
+  body {
+    padding-top: 60px !important;
+  }
+}
