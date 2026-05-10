@@ -6635,3 +6635,38 @@ html body .right-quick {
     max-height: 360px;
   }
 }
+
+/* === FIX 2026-05-10: Hero 이미지 데스크톱 크기 제한 === */
+/* 풀와이드일 때 16:9 비율로 너무 커지는 문제 → max-width로 카드형 제한 */
+.pd-hero.pd-hero-image {
+  max-width: 1200px !important;
+  max-height: none !important;
+  margin: 16px auto 24px !important;
+  padding: 0 16px !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.pd-hero.pd-hero-image picture {
+  display: block !important;
+  width: 100% !important;
+}
+
+.pd-hero.pd-hero-image img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 768px) {
+  .pd-hero.pd-hero-image {
+    max-width: 100% !important;
+    padding: 0 8px !important;
+    margin: 12px auto 16px !important;
+  }
+  .pd-hero.pd-hero-image img {
+    border-radius: 8px;
+  }
+}
