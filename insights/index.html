@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>현장에서 본 화물보험 — 화물보험 분쟁·사고 케이스 시리즈 | cargoinsu.com</title>
+<meta name="description" content="화물보험 실무에서 자주 발생하는 분쟁·사고 패턴을 약관 차원에서 분석하는 케이스 시리즈. FOB·ICC·적재물배상·보세창고까지, 보험중개사가 본 현장의 진짜 이야기.">
+<meta name="keywords" content="화물보험, 적하보험, 적재물배상, ICC 약관, FOB, Incoterms, 보험분쟁, 사례">
+<link rel="canonical" href="https://cargoinsu.com/insights/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cargoinsu.com/insights/">
+<meta property="og:title" content="현장에서 본 화물보험 — 화물보험 분쟁·사고 케이스 시리즈">
+<meta property="og:description" content="화물보험 실무 분쟁·사고 패턴을 약관 차원에서 분석. 보험중개사가 본 현장의 진짜 이야기.">
+<meta property="og:image" content="https://cargoinsu.com/assets/og-image.png">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="cargoinsu.com">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="현장에서 본 화물보험 — 케이스 시리즈">
+<meta name="twitter:description" content="화물보험 실무 분쟁·사고 패턴을 약관 차원에서 분석.">
+<meta name="twitter:image" content="https://cargoinsu.com/assets/og-image.png">
+
+<!-- JSON-LD: Blog -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "현장에서 본 화물보험",
+  "alternateName": "cargoinsu Insights",
+  "description": "화물보험 실무 분쟁·사고 패턴을 약관 차원에서 분석하는 케이스 시리즈",
+  "url": "https://cargoinsu.com/insights/",
+  "inLanguage": "ko",
+  "publisher": {
+    "@type": "Organization",
+    "name": "엔투엔보험중개",
+    "url": "https://cargoinsu.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cargoinsu.com/apple-touch-icon.png"
+    }
+  },
+  "author": {
+    "@type": "Person",
+    "name": "성한욱",
+    "jobTitle": "기업보험심사역(ACIU)·보험중개사",
+    "identifier": "금융감독원 등록 제2026-012201호"
+  }
+}
+</script>
+
+<!-- JSON-LD: Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://cargoinsu.com/"},
+    {"@type": "ListItem", "position": 2, "name": "현장에서 본 화물보험", "item": "https://cargoinsu.com/insights/"}
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="N2N">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0B2818">
+
+<style>
+/* === Insights 시리즈 전용 — minimal, 기존 디자인 토큰과 호환 === */
+.insights-breadcrumb { padding: 14px 0; font-size: 0.9rem; color: #888; }
+.insights-breadcrumb a { color: #555; text-decoration: none; }
+.insights-breadcrumb a:hover { text-decoration: underline; }
+.insights-breadcrumb .sep { margin: 0 8px; color: #ccc; }
+
+.insights-hero { padding: 56px 0 40px; text-align: center; background: linear-gradient(180deg, #FBF7EE 0%, #F5F1E8 100%); border-bottom: 1px solid #E5E0D5; }
+.insights-hero h1 { font-size: 2.4rem; margin: 0 0 14px; color: #0B2818; line-height: 1.25; letter-spacing: -0.5px; }
+.insights-hero p.lead { font-size: 1.1rem; color: #4A4A4A; max-width: 740px; margin: 0 auto; line-height: 1.7; }
+.insights-hero .meta { margin-top: 18px; font-size: 0.88rem; color: #888; }
+.insights-hero .meta strong { color: #0B2818; }
+
+.insights-list { padding: 56px 0 80px; background: #FAF7EE; }
+.insights-grid { display: grid; gap: 24px; max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+.insight-card { background: #fff; border: 1px solid #E5E0D5; border-radius: 12px; padding: 28px; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; position: relative; }
+.insight-card:hover { box-shadow: 0 8px 24px rgba(11,40,24,0.10); transform: translateY(-2px); border-color: #C56A2C; }
+.insight-card.is-upcoming { background: #FCFAF4; border-style: dashed; border-color: #D5CFC0; }
+.insight-card.is-upcoming:hover { transform: none; box-shadow: none; border-color: #D5CFC0; }
+
+.insight-number { display: inline-block; padding: 5px 12px; background: #0B2818; color: #FFF; border-radius: 4px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 14px; }
+.insight-card.is-upcoming .insight-number { background: #C56A2C; }
+
+.insight-title { font-size: 1.35rem; color: #0B2818; margin: 6px 0 14px; line-height: 1.4; font-weight: 700; }
+.insight-lead { color: #555; line-height: 1.75; margin: 0 0 18px; font-size: 0.97rem; }
+
+.insight-meta { font-size: 0.85rem; color: #888; margin-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.insight-tag { display: inline-block; padding: 3px 10px; background: #F5F1E8; color: #555; border-radius: 4px; font-size: 0.78rem; }
+
+.insight-link { color: #C56A2C; font-weight: 600; text-decoration: none; font-size: 0.95rem; }
+.insight-link:hover { text-decoration: underline; }
+.insight-card.is-upcoming .insight-link { color: #999; pointer-events: none; cursor: default; }
+
+.insights-cta-section { background: #0B2818; padding: 56px 16px; }
+.insights-cta { color: #F5F1E8; max-width: 720px; margin: 0 auto; text-align: center; }
+.insights-cta h2 { color: #FFF; font-size: 1.7rem; margin: 0 0 14px; line-height: 1.4; }
+.insights-cta p { color: rgba(245,241,232,0.85); margin: 0 0 28px; line-height: 1.7; font-size: 1rem; }
+.insights-cta .btn-primary { display: inline-block; padding: 14px 32px; background: #C56A2C; color: #FFF; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: background .2s; }
+.insights-cta .btn-primary:hover { background: #B05E26; }
+.insights-cta .btn-secondary { display: inline-block; padding: 14px 28px; margin-left: 12px; color: #F5F1E8; text-decoration: none; border: 1px solid rgba(245,241,232,0.4); border-radius: 8px; font-weight: 500; transition: border-color .2s, background .2s; }
+.insights-cta .btn-secondary:hover { background: rgba(245,241,232,0.08); border-color: rgba(245,241,232,0.7); }
+
+@media (max-width: 768px) {
+  .insights-hero { padding: 40px 16px 28px; }
+  .insights-hero h1 { font-size: 1.8rem; }
+  .insights-hero p.lead { font-size: 1rem; }
+  .insights-list { padding: 36px 0 56px; }
+  .insight-card { padding: 22px; }
+  .insight-title { font-size: 1.18rem; }
+  .insights-cta h2 { font-size: 1.4rem; }
+  .insights-cta .btn-secondary { display: block; margin: 12px auto 0; max-width: 240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53BQJZHC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Phase 1: 상단 신뢰 바 (Policygenius 패턴) -->
+<div class="trust-bar" role="complementary" aria-label="신뢰 정보">
+  <span class="tb-item">금융감독원 등록 보험중개사 <strong>제2026-012201호</strong></span>
+  <span class="tb-sep">·</span>
+  <span class="tb-item"></span>
+  <span class="tb-sep">·</span>
+  <span class="tb-item"><strong>AIG · Chubb · DB · KB · 메리츠 · 현대해상</strong> 6개 인수사 비교</span>
+</div>
+
+<div class="top_wrap"><div class="top_wrap_cont">
+  <a class="logo" href="../index.html">
+    <img class="logo-img" src="../assets/n2n-logo.svg" alt="cargoinsu.com" width="200" height="64">
+    <span class="logo-mark">N2N</span>
+    <span class="logo-txt"><strong>cargoinsu.com</strong><span>by 엔투엔보험중개 · 금융감독원 제2026-012201호</span></span>
+  </a>
+  <div class="top-utils">
+    <a class="hot" href="tel:010-5755-6465">📞010-5755-6465</a>
+    <span class="sep">|</span>
+    <a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a>
+    <span class="sep">|</span>
+    <a class="kakao-link" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener" title="카카오 1:1 채팅 상담">카톡상담</a>
+    <span class="sep">|</span>
+    <a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com ↗</a>
+  </div>
+</div></div>
+
+<nav class="navi_wrap" aria-label="주메뉴"><div class="gnb"><ul>
+  <li><a href="../products/marine-cargo.html">적하보험</a></li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">운송보험 ▼</a>
+    <ul class="depth2">
+      <li><a href="../products/marine-transit.html">운송보험 (Marine Transit)</a></li>
+      <li><a href="../products/inland-transit.html">내륙운송보험 (Inland Transit)</a></li>
+    </ul>
+  </li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">예술품/보석 ▼</a>
+    <ul class="depth2">
+      <li><a href="../products/specialty-art.html">예술품 종합 (Fine Art)</a></li>
+      <li><a href="../products/jewellers-block.html">보석·고급재화 (Jewellers Block)</a></li>
+    </ul>
+  </li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">적재물/화물배상 ▼</a>
+    <ul class="depth2">
+      <li><a href="../products/liability-freight-forwarders.html">화물배상책임 (FFL)</a></li>
+      <li><a href="../products/carriers-liability.html">적재물배상책임</a></li>
+    </ul>
+  </li>
+  <li><a href="../guide/">보험 가이드</a></li>
+</ul></div></nav>
+
+<!-- Breadcrumb -->
+<div class="container insights-breadcrumb">
+  <a href="../index.html">홈</a><span class="sep">/</span>현장에서 본 화물보험
+</div>
+
+<!-- Hero / Series intro -->
+<section class="insights-hero">
+  <div class="container">
+    <h1>현장에서 본 화물보험</h1>
+    <p class="lead">화물보험 실무에서 자주 발생하는 분쟁·사고 패턴을 약관 차원에서 분석합니다.<br>보험중개사가 본 현장의 진짜 이야기 — 다이렉트 보험사도, 일반 비교 플랫폼도 만들지 못하는 콘텐츠.</p>
+    <p class="meta">작성: <strong>성한욱</strong> — 기업보험심사역(ACIU) · 보험중개사 등록 제2026-012201호</p>
+  </div>
+</section>
+
+<!-- Insights list -->
+<section class="insights-list">
+  <div class="insights-grid">
+
+    <!-- #001 — FOB Incoterms (출간 준비 완료) -->
+    <article class="insight-card is-upcoming" aria-label="케이스 001 출간 준비 중">
+      <span class="insight-number">#001 · 출간 준비 중</span>
+      <h3 class="insight-title">FOB 조건에서 적하보험은 누가 들어야 하나</h3>
+      <p class="insight-lead">FOB Busan으로 출하했는데 컨테이너가 부두 야적장에서 적재 대기 중 태풍에 손상됐다면 — 매도인 부담일까요, 매수인 부담일까요? Incoterms 2020 위험 이전 시점과 보험 책임을 매트릭스로 분석합니다.</p>
+      <div class="insight-meta">
+        <span class="insight-tag">적하보험</span>
+        <span class="insight-tag">Incoterms</span>
+        <span class="insight-tag">위험 이전</span>
+        · 2026-05 출간 예정
+      </div>
+      <span class="insight-link">곧 공개 →</span>
+    </article>
+
+    <!-- #002 — ICC(A) vs (B) -->
+    <article class="insight-card is-upcoming" aria-label="케이스 002 작성 중">
+      <span class="insight-number">#002 · 작성 중</span>
+      <h3 class="insight-title">컨테이너 한 통이 사라졌을 때 ICC(A)와 (B), 무엇이 다른가</h3>
+      <p class="insight-lead">협회적하약관 ICC(A)·(B)·(C)의 보장 범위 차이를 컨테이너 분실·도난 시나리오로 비교합니다. 약관 한 줄 차이가 보상 가능성을 어떻게 가르는가.</p>
+      <div class="insight-meta">
+        <span class="insight-tag">적하보험</span>
+        <span class="insight-tag">ICC 약관</span>
+        <span class="insight-tag">분실</span>
+      </div>
+      <span class="insight-link">작성 중 →</span>
+    </article>
+
+    <!-- #003 — 적재물배상 의무가입 -->
+    <article class="insight-card is-upcoming" aria-label="케이스 003 작성 중">
+      <span class="insight-number">#003 · 작성 중</span>
+      <h3 class="insight-title">적재물배상 의무가입 미이행 사고 — 화물자동차 운수사업법 제35조</h3>
+      <p class="insight-lead">운송업체 적재물배상보험 의무가입 위반 시 행정 처분과 민사 책임. 의무가입 대상·가입금액 기준·미가입 시 위험 노출을 약관과 법 조항으로 함께 봅니다.</p>
+      <div class="insight-meta">
+        <span class="insight-tag">적재물배상</span>
+        <span class="insight-tag">의무가입</span>
+        <span class="insight-tag">운수사업법</span>
+      </div>
+      <span class="insight-link">작성 중 →</span>
+    </article>
+
+    <!-- #004 — 보세창고 보관 중 손해 -->
+    <article class="insight-card is-upcoming" aria-label="케이스 004 기획 중">
+      <span class="insight-number">#004 · 기획 중</span>
+      <h3 class="insight-title">보세창고 보관 중 손해는 누가 보상하는가</h3>
+      <p class="insight-lead">보관과 운송 사이의 회색지대. 적하보험·창고업자배상보험·화주 자가보험 — 어떤 약관이 어디까지 보장하는지, 책임 분담을 정리합니다.</p>
+      <div class="insight-meta">
+        <span class="insight-tag">적하보험</span>
+        <span class="insight-tag">보세창고</span>
+        <span class="insight-tag">회색지대</span>
+      </div>
+      <span class="insight-link">기획 중 →</span>
+    </article>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="insights-cta-section">
+  <div class="insights-cta">
+    <h2>지금 바로 화물보험 비교 견적이 필요하신가요?</h2>
+    <p>6개 인수사(AIG · Chubb · DB · KB · 메리츠 · 현대해상) 견적을 30초 안에 비교하실 수 있습니다.<br>※ 당사 수수료는 인수사가 지급하므로 화주의 추가 비용은 없습니다 (보험업법 제98조).</p>
+    <a href="../products/marine-cargo.html#calculator" class="btn-primary">적하보험 즉시 계산 →</a>
+    <a href="../consult.html" class="btn-secondary">상담 신청</a>
+  </div>
+</section>
+
+<aside class="right-quick" aria-label="빠른메뉴">
+  <a href="tel:010-5755-6465"><strong>📞</strong><span>전화상담<br>010-5755-6465</span></a>
+  <a href="../products/marine-cargo.html#calculator"><strong>📦</strong><span>적하<br>즉시계산</span></a>
+  <a class="rq-kakao" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener"><strong>💬</strong><span>카톡<br>상담</span></a>
+  <a href="https://n2nib.com" target="_blank" rel="noopener"><strong>🏛</strong><span>n2nib<br>.com</span></a>
+  <button class="rq-totop" aria-label="맨위로"><strong>↑</strong><span>TOP</span></button>
+</aside>
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div><div class="footer-brand">
+        <a class="logo" href="../index.html" style="display:inline-block;text-decoration:none">
+          <img class="logo-img" src="../assets/logo-horizontal-dark.svg" alt="엔투엔보험중개 N2N Insurance Brokerage" width="200" height="50">
+        </a>
+      </div>
+      <p class="footer-meta">cargoinsu.com — by 엔투엔보험중개 (N2N Insurance Brokerage)<br>
+        대표 성한욱(손해보험중개사, ACIU 기업보험심사역)<br>
+        <span class="meta-item">사업자등록번호&nbsp;611-23-02374</span> · <span class="meta-item">금융감독원&nbsp;등록 제2026-012201호</span> · <span class="meta-item">개인사업체</span><br>
+        <span class="meta-item">주소&nbsp;서울특별시 서초구 방배로30길&nbsp;41,&nbsp;602호</span><br>
+        <span class="meta-item">전화&nbsp;<a href="tel:010-5755-6465">010-5755-6465</a></span> · <span class="meta-item">이메일&nbsp;<a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></span></p>
+      <p class="footer-compliance" style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(244,240,232,0.12);font-size:.78rem;color:rgba(244,240,232,0.7);line-height:1.65;">
+        ※ 당사 수수료는 인수사가 지급하며, 화주가 부담하는 보험료에 추가되지 않습니다 (보험업법 제98조 특별이익 제공 금지 준수).
+      </p></div>
+    <div><div class="footer-head">전문 상품 7종</div><ul class="footer-list">
+      <li><a href="../products/marine-cargo.html">적하보험 (즉시 계산)</a></li>
+      <li><a href="../products/marine-transit.html">운송보험</a></li>
+      <li><a href="../products/inland-transit.html">내륙운송보험</a></li>
+      <li><a href="../products/specialty-art.html">예술품 종합</a></li>
+      <li><a href="../products/jewellers-block.html">보석·고급재화</a></li>
+      <li><a href="../products/liability-freight-forwarders.html">화물배상책임 (FFL)</a></li>
+      <li><a href="../products/carriers-liability.html">적재물배상책임</a></li></ul></div>
+    <div><div class="footer-head">상담 / 관련</div><ul class="footer-list">
+      <li><a href="../consult.html">cargoinsu 가입 상담</a></li>
+      <li><a href="./">현장에서 본 화물보험</a></li>
+      <li><a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com (110종 전체)</a></li>
+      <li><a href="https://n2nib.com/about.html" target="_blank">회사소개</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 N2N Insurance Brokerage / cargoinsu.com. All rights reserved. · <a href="../privacy.html" style="color:inherit;text-decoration:underline">개인정보처리방침</a> · <a href="../terms.html" style="color:inherit;text-decoration:underline">이용약관</a></div>
+</footer>
+
+<script src="../assets/hs-database.js"></script>
+<script src="../assets/calculator.js"></script>
+<script src="../assets/script.js" defer></script>
+</body>
+</html>
