@@ -6478,3 +6478,29 @@ html body .right-quick {
     font-size: 0.8125rem;
   }
 }
+
+/* ============================================ */
+/* FIX: author-box 라이트 테마 (2026-05-10)      */
+/* cargoinsu 본문은 cream/ivory 배경이라 dark    */
+/* 톤 글씨가 안 보임 → 라이트 톤으로 override     */
+/* ============================================ */
+.author-box {
+  background: #fff;
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-left: 3px solid var(--accent, #C56A2C);
+}
+.author-box .author-byline {
+  color: #111;
+  font-weight: 600;
+}
+.author-box .author-byline strong { color: #000; }
+.author-box .author-review,
+.author-box .author-date {
+  color: #555;
+}
+.author-box .author-review strong,
+.author-box .author-date strong {
+  color: var(--forest, #0B2818);
+  font-weight: 600;
+}
