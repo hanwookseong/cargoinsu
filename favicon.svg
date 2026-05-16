@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="32" viewBox="0 0 40 40" role="img" aria-label="cargoinsu">
-<title>cargoinsu.com by N2N Insurance Brokerage</title>
-<defs>
-<clipPath id="clip_1">
-<path transform="matrix(1,0,0,-1,0,40)" d="M0 40H40V0H0Z"/>
-</clipPath>
-</defs>
-<g clip-path="url(#clip_1)">
-<path transform="matrix(1,0,0,-1,35.2969,20.1846)" d="M0 0C0-8.836-7.163-16-16-16-24.836-16-32-8.836-32 0-32 8.837-24.836 16-16 16-7.163 16 0 8.837 0 0" fill="#0b2818"/>
-<path transform="matrix(1,0,0,-1,8.3291,20.1846)" d="M0 0C0 6.367 4.769 11.033 11.239 11.033 17.013 11.033 20.88 7.553 21.73 3.119H16.987C16.497 5.13 14.358 6.729 11.342 6.729 7.526 6.729 4.691 3.919 4.691 0 4.691-3.893 7.526-6.728 11.342-6.728 14.358-6.728 16.833-4.743 17.193-2.835H21.937C21.292-7.062 17.064-11.032 11.239-11.032 4.769-11.032 0-6.367 0 0" fill="#f4f0e8"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="N2N 엔투엔보험중개">
+  <!-- Forest green 원형 디스크 배경 -->
+  <circle cx="50" cy="50" r="50" fill="#0B2818"/>
+  
+  <!-- 큰 N letter (path로 그려 폰트 의존성 제거, 모든 크기에서 동일하게 표시) -->
+  <path d="M 28 72 L 28 28 L 72 72 L 72 28" 
+        stroke="#F4F0E8" 
+        stroke-width="11" 
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
 </svg>
