@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>포워더 파트너 대시보드 (데모) | cargoinsu.com</title>
+<meta name="robots" content="noindex,follow">
+<meta name="description" content="cargoinsu 포워더 파트너 콘솔 데모 — 거래 화주별 적하보험 증권·갱신·클레임을 한 화면에서 관리하는 미리보기 화면입니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --brand:#0B2818; --brand-2:#14391f; --brand-soft:#1d4a2c;
+    --accent:#C56A2C; --accent-d:#a8551f; --accent-soft:#FBEFE2;
+    --ivory:#F6F2E7; --paper:#FFFFFF; --paper-2:#FCFAF3;
+    --ink:#1A2E22; --ink-2:#5b6a60; --ink-3:#909a91;
+    --line:#E6E1D2; --line-2:#EFEBDD;
+    --ok:#2F7D52;  --ok-bg:#E7F1EA;
+    --warn:#BE6526; --warn-bg:#FAEBDB;
+    --claim:#AE4536; --claim-bg:#F6E6E2;
+    --new:#256E78;  --new-bg:#E2EFF0;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+    --shadow:0 1px 2px rgba(11,40,24,.05),0 8px 24px -12px rgba(11,40,24,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    background:var(--ivory);color:var(--ink);
+    -webkit-font-smoothing:antialiased;line-height:1.5;font-feature-settings:"tnum";
+  }
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  .num{font-variant-numeric:tabular-nums}
+  .mono{font-family:var(--mono)}
+
+  /* ---------- demo preview banner ---------- */
+  .demo-banner{background:var(--accent-soft);border-bottom:1px solid #ecd6bf}
+  .demo-banner-in{
+    max-width:1240px;margin:0 auto;padding:9px 26px;
+    display:flex;align-items:center;gap:13px;flex-wrap:wrap;
+  }
+  .db-tag{
+    flex:0 0 auto;background:var(--accent);color:#fff;font-size:10.5px;font-weight:800;
+    letter-spacing:.6px;padding:3px 8px;border-radius:5px;
+  }
+  .db-txt{flex:1 1 320px;font-size:12px;color:var(--accent-d);line-height:1.45}
+  .db-txt strong{font-weight:800}
+  .db-cta{
+    flex:0 0 auto;font-size:12px;font-weight:700;color:#fff;background:var(--brand);
+    padding:7px 14px;border-radius:8px;transition:.15s;white-space:nowrap;
+  }
+  .db-cta:hover{background:var(--accent)}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--brand);background-image:linear-gradient(115deg,#0B2818,#123420 60%,#0e2c1c);
+    color:#EBE7D8;position:sticky;top:0;z-index:50;border-bottom:1px solid #0a2014;
+  }
+  .topbar-in{max-width:1240px;margin:0 auto;padding:0 26px;height:62px;display:flex;align-items:center;gap:26px}
+  .brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
+  .brand-mark{
+    width:38px;height:38px;border-radius:9px;background:var(--accent);color:#fff;font-weight:800;
+    display:grid;place-items:center;font-size:15px;letter-spacing:-.5px;
+    box-shadow:0 4px 12px -4px rgba(197,106,44,.6);
+  }
+  .brand-txt strong{display:block;font-size:14.5px;color:#fff;letter-spacing:-.3px;line-height:1.2}
+  .brand-txt span{display:block;font-size:11px;color:#8fa394}
+  .topnav{display:flex;gap:3px;margin-left:8px}
+  .topnav a{
+    font-size:13.5px;color:#a7b6ab;padding:8px 13px;border-radius:7px;font-weight:500;
+    transition:.16s;display:flex;align-items:center;gap:6px;
+  }
+  .topnav a:hover{color:#fff;background:rgba(255,255,255,.07)}
+  .topnav a.on{color:#fff;background:var(--brand-soft)}
+  .topnav a .lock{font-size:10px;opacity:.65}
+  .topbar-r{margin-left:auto;display:flex;align-items:center;gap:14px}
+  .bell{
+    position:relative;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);
+    display:grid;place-items:center;color:#cdd6cf;transition:.16s;
+  }
+  .bell:hover{background:rgba(255,255,255,.12);color:#fff}
+  .bell .dot{
+    position:absolute;top:6px;right:7px;min-width:15px;height:15px;padding:0 3px;background:var(--accent);
+    color:#fff;border-radius:8px;font-size:9.5px;font-weight:800;display:grid;place-items:center;border:2px solid #0e2c1c;
+  }
+  .who{display:flex;align-items:center;gap:9px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1)}
+  .who-av{
+    width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#2b6b3f,#1d4a2c);
+    color:#dff0e4;display:grid;place-items:center;font-weight:700;font-size:12.5px;border:1px solid rgba(255,255,255,.14);
+  }
+  .who-txt strong{display:block;font-size:12.5px;color:#fff;line-height:1.25}
+  .who-txt span{display:block;font-size:10.5px;color:#8fa394}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1240px;margin:0 auto;padding:28px 26px 60px}
+  .pagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:6px}
+  .pagehead h1{font-size:23px;font-weight:800;letter-spacing:-.6px;color:var(--brand)}
+  .pagehead .sub{font-size:13px;color:var(--ink-2);margin-top:3px}
+  .head-r{display:flex;flex-direction:column;gap:9px;align-items:flex-end}
+  .head-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .btn-primary,.btn-ghost{
+    font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:9px;transition:.15s;
+    display:flex;align-items:center;gap:6px;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px -7px rgba(197,106,44,.7)}
+  .btn-primary:hover{background:#d57833;transform:translateY(-1px)}
+  .btn-ghost{background:var(--paper);color:var(--brand);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .head-meta{display:flex;align-items:center;gap:10px}
+  .demo-chip{
+    display:inline-flex;align-items:center;gap:7px;background:var(--accent-soft);color:var(--accent-d);
+    font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:20px;border:1px solid #ecd6bf;
+  }
+  .demo-chip i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
+  .synced{font-size:11.5px;color:var(--ink-3);white-space:nowrap}
+
+  /* ---------- KPI ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:22px 0 8px}
+  .kpi{
+    background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 17px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;cursor:pointer;
+    transition:transform .14s,box-shadow .14s,border-color .14s;
+  }
+  .kpi:hover{transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(11,40,24,.28);border-color:#d8d2bf}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:0;transition:.14s}
+  .kpi:hover::before{opacity:1}
+  .kpi.alert::before{opacity:1;background:var(--warn)}
+  .kpi.claim::before{opacity:1;background:var(--claim)}
+  .kpi .k-top{display:flex;align-items:center;justify-content:space-between}
+  .kpi .k-label{font-size:12px;color:var(--ink-2);font-weight:600}
+  .kpi .k-ico{font-size:15px;opacity:.5}
+  .kpi .k-val{font-size:30px;font-weight:800;letter-spacing:-1px;color:var(--brand);margin-top:8px;line-height:1}
+  .kpi .k-val small{font-size:14px;font-weight:700;color:var(--ink-2);letter-spacing:0}
+  .kpi .k-foot{font-size:11.5px;color:var(--ink-3);margin-top:7px;display:flex;align-items:center;gap:5px}
+  .kpi .k-foot b{color:var(--ok);font-weight:700}
+  .kpi.alert .k-foot b{color:var(--warn)}
+  .kpi.claim .k-foot b{color:var(--claim)}
+
+  /* ---------- section frame ---------- */
+  .sec{margin-top:30px}
+  .sec-head{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+  .sec-head h2{font-size:15.5px;font-weight:800;letter-spacing:-.4px;color:var(--brand)}
+  .sec-head .tick{width:4px;height:16px;border-radius:2px;background:var(--accent)}
+  .sec-head .count{
+    font-size:11.5px;font-weight:700;color:var(--ink-2);background:var(--paper);
+    border:1px solid var(--line);border-radius:11px;padding:2px 9px;
+  }
+  .sec-action{
+    margin-left:auto;font-size:12px;font-weight:700;color:var(--brand);
+    border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 13px;transition:.15s;
+  }
+  .sec-action:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- renewal strip ---------- */
+  .renew-row{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+  .renew{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 15px;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .renew .dday{
+    position:absolute;top:13px;right:13px;font-size:11px;font-weight:800;padding:3px 8px;border-radius:7px;
+  }
+  .dday.d-urgent{background:var(--claim-bg);color:var(--claim)}
+  .dday.d-soon{background:var(--warn-bg);color:var(--warn)}
+  .renew .r-co{font-size:13.5px;font-weight:700;color:var(--ink);padding-right:48px}
+  .renew .r-pol{font-size:11px;color:var(--ink-3);margin-top:2px}
+  .renew .r-meta{font-size:11.5px;color:var(--ink-2);margin-top:10px;display:flex;flex-wrap:wrap;gap:3px 10px}
+  .renew .r-meta b{color:var(--ink);font-weight:600}
+  .renew .r-act{
+    margin-top:11px;width:100%;padding:7px 0;border-radius:8px;background:var(--brand);
+    color:#fff;font-size:12px;font-weight:700;transition:.14s;
+  }
+  .renew .r-act:hover{background:var(--accent)}
+
+  /* ---------- toolbar ---------- */
+  .toolbar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--paper);
+    border:1px solid var(--line);border-radius:12px;padding:11px 13px;box-shadow:var(--shadow);margin-bottom:13px;
+  }
+  .tabs{display:flex;gap:4px;flex-wrap:wrap}
+  .tab{
+    font-size:12.5px;font-weight:600;color:var(--ink-2);padding:7px 13px;border-radius:8px;
+    transition:.14s;display:flex;align-items:center;gap:6px;
+  }
+  .tab:hover{background:var(--paper-2);color:var(--ink)}
+  .tab.on{background:var(--brand);color:#fff}
+  .tab .b{font-size:10.5px;font-weight:800;background:rgba(0,0,0,.08);border-radius:9px;padding:1px 6px;color:inherit}
+  .tab.on .b{background:rgba(255,255,255,.2)}
+  .search{margin-left:auto;position:relative}
+  .search input{
+    font-family:inherit;font-size:12.5px;width:212px;padding:8px 12px 8px 31px;
+    border:1px solid var(--line);border-radius:8px;background:var(--paper-2);color:var(--ink);transition:.14s;
+  }
+  .search input:focus{outline:none;border-color:var(--accent);background:#fff}
+  .search .si{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--ink-3)}
+
+  /* ---------- shipper table ---------- */
+  .stable{background:var(--paper);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);overflow:hidden}
+  .s-colhead,.s-row{
+    display:grid;grid-template-columns:2.3fr 1.15fr 1.05fr 1.2fr 1.1fr .95fr 36px;gap:12px;align-items:center;
+  }
+  .s-colhead{
+    padding:11px 18px;font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.3px;
+    background:var(--paper-2);border-bottom:1px solid var(--line);text-transform:uppercase;
+  }
+  .s-item{border-bottom:1px solid var(--line-2)}
+  .s-item:last-child{border-bottom:none}
+  .s-row{padding:14px 18px;cursor:pointer;transition:background .13s}
+  .s-row:hover{background:var(--paper-2)}
+  .s-item.open .s-row{background:var(--paper-2)}
+  .co{display:flex;align-items:center;gap:11px;min-width:0}
+  .co-logo{
+    width:34px;height:34px;border-radius:8px;flex:0 0 auto;display:grid;place-items:center;
+    font-weight:800;font-size:13px;color:#fff;
+  }
+  .co-name{min-width:0}
+  .co-name strong{display:block;font-size:13.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .co-name span{display:block;font-size:11px;color:var(--ink-3)}
+  .cell-sub{font-size:12.5px;color:var(--ink-2)}
+  .cell-strong{font-size:13px;font-weight:700;color:var(--ink)}
+  .cell-strong .u{font-size:11px;font-weight:500;color:var(--ink-3)}
+  .vp-tag{
+    display:inline-block;margin-top:3px;font-size:10px;font-weight:700;padding:1px 7px;border-radius:6px;
+  }
+  .vp-oc{background:var(--accent-soft);color:var(--accent-d)}
+  .vp-ind{background:var(--line-2);color:var(--ink-2)}
+  .ins-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px}
+  .badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;white-space:nowrap}
+  .badge i{width:5px;height:5px;border-radius:50%;background:currentColor;display:block}
+  .b-active{background:var(--ok-bg);color:var(--ok)}
+  .b-expiring{background:var(--warn-bg);color:var(--warn)}
+  .b-claim{background:var(--claim-bg);color:var(--claim)}
+  .b-new{background:var(--new-bg);color:var(--new)}
+  .chev{
+    width:24px;height:24px;border-radius:6px;display:grid;place-items:center;
+    color:var(--ink-3);font-size:11px;transition:.18s;justify-self:end;
+  }
+  .s-item.open .chev{transform:rotate(180deg);background:var(--brand);color:#fff}
+
+  /* detail panel */
+  .s-detail{display:grid;grid-template-rows:0fr;transition:grid-template-rows .26s ease;background:var(--paper-2)}
+  .s-item.open .s-detail{grid-template-rows:1fr}
+  .s-detail-in{overflow:hidden}
+  .s-detail-pad{padding:6px 18px 20px}
+  .d-section-lbl{
+    font-size:11px;font-weight:800;color:var(--ink-3);letter-spacing:.4px;
+    margin:16px 2px 9px;text-transform:uppercase;
+  }
+
+  /* open cover card */
+  .ocover{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+    border-left:3px solid var(--accent);
+  }
+  .oc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .oc-tt{font-size:11px;font-weight:800;color:var(--accent-d);letter-spacing:.3px}
+  .oc-id{font-size:13px;font-weight:700;color:var(--brand);margin-top:3px}
+  .oc-id .oc-period{font-size:11px;font-weight:500;color:var(--ink-3);margin-left:7px}
+  .oc-add{
+    font-size:11.5px;font-weight:700;background:var(--brand);color:#fff;
+    padding:7px 12px;border-radius:8px;transition:.14s;white-space:nowrap;
+  }
+  .oc-add:hover{background:var(--accent)}
+  .oc-bar{height:9px;border-radius:6px;background:var(--line-2);margin-top:13px;overflow:hidden}
+  .oc-fill{height:100%;border-radius:6px;background:var(--brand);transition:width .5s ease}
+  .oc-fill.hot{background:var(--accent)}
+  .oc-stats{display:flex;flex-wrap:wrap;gap:5px 18px;margin-top:10px;font-size:11.5px;color:var(--ink-2)}
+  .oc-stats b{color:var(--ink);font-weight:700}
+  .oc-stats .pct{color:var(--accent-d);font-weight:800}
+  .oc-warn{
+    margin-top:11px;font-size:11.5px;font-weight:600;color:var(--warn);
+    background:var(--warn-bg);border-radius:8px;padding:8px 11px;
+  }
+
+  /* policy cards */
+  .pol-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+  .pol{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:13px 14px}
+  .pol-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .pol-id{font-size:12px;font-weight:700;color:var(--brand)}
+  .pol-tags{display:flex;align-items:center;gap:6px}
+  .pol-status{font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:6px}
+  .ps-done{background:var(--ok-bg);color:var(--ok)}
+  .ps-wait{background:var(--warn-bg);color:var(--warn)}
+  .icc-tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:6px;background:var(--brand);color:#fff;letter-spacing:.3px}
+  .pol-route{font-size:13px;font-weight:700;color:var(--ink);margin-top:9px;display:flex;align-items:center;gap:7px}
+  .pol-route .arr{color:var(--accent);font-weight:800}
+  .pol-goods{font-size:11.5px;color:var(--ink-3);margin-top:2px}
+  .pol-rows{margin-top:11px;border-top:1px dashed var(--line);padding-top:10px;display:grid;gap:6px}
+  .pol-rows .pr{display:flex;justify-content:space-between;font-size:11.5px;gap:10px}
+  .pol-rows .pr .l{color:var(--ink-3)}
+  .pol-rows .pr .v{color:var(--ink);font-weight:600;text-align:right}
+  .pol-act{display:flex;gap:7px;margin-top:12px}
+  .pol-act button{flex:1;font-size:11.5px;font-weight:700;padding:7px 0;border-radius:8px;transition:.14s}
+  .pa-ghost{background:var(--paper-2);border:1px solid var(--line);color:var(--ink-2)}
+  .pa-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .pa-fill{background:var(--brand);color:#fff}
+  .pa-fill:hover{background:var(--accent)}
+
+  /* claim */
+  .claim-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .claimc{
+    background:var(--paper);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow);
+    padding:16px 17px;border-top:3px solid var(--claim);
+  }
+  .claim-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .claim-co{font-size:14px;font-weight:800;color:var(--ink)}
+  .claim-id{font-size:11px;color:var(--ink-3);margin-top:2px}
+  .claim-line{font-size:12px;color:var(--ink-2);margin-top:10px}
+  .claim-line b{color:var(--ink);font-weight:600}
+  .claim-desc{
+    font-size:12px;color:var(--ink-2);background:var(--paper-2);border-left:2px solid var(--accent);
+    padding:8px 11px;border-radius:0 7px 7px 0;margin-top:11px;
+  }
+  .stepper{display:flex;margin-top:15px}
+  .step{flex:1;text-align:center}
+  .step .dotw{display:flex;align-items:center}
+  .step .ln{flex:1;height:2px;background:var(--line)}
+  .step .pt{
+    width:20px;height:20px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;
+    font-size:10px;font-weight:800;background:var(--paper);border:2px solid var(--line);color:var(--ink-3);
+  }
+  .step.done .pt{background:var(--ok);border-color:var(--ok);color:#fff}
+  .step.done .ln{background:var(--ok)}
+  .step.cur .pt{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 4px var(--accent-soft)}
+  .step .slbl{font-size:9.5px;color:var(--ink-3);margin-top:6px;font-weight:600;line-height:1.3}
+  .step.done .slbl,.step.cur .slbl{color:var(--ink)}
+  .claim-foot{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2);
+  }
+  .claim-stat{font-size:11.5px;color:var(--ink-2)}
+  .claim-stat b{color:var(--accent-d);font-weight:700}
+  .claim-foot button{
+    font-size:11.5px;font-weight:700;color:var(--brand);border:1px solid var(--line);
+    border-radius:8px;padding:6px 12px;transition:.14s;
+  }
+  .claim-foot button:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* roadmap */
+  .roadmap{
+    margin-top:30px;border-radius:15px;overflow:hidden;background:var(--brand);
+    background-image:linear-gradient(120deg,#0B2818,#163a22);color:#e9e5d6;position:relative;
+  }
+  .roadmap::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;
+    background:radial-gradient(circle,rgba(197,106,44,.28),transparent 70%);
+  }
+  .road-in{padding:24px 26px;position:relative;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+  .road-txt{flex:1;min-width:280px}
+  .road-tag{display:inline-block;background:var(--accent);color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.6px;padding:3px 10px;border-radius:5px}
+  .road-txt h3{font-size:18px;font-weight:800;color:#fff;margin:10px 0 6px;letter-spacing:-.4px}
+  .road-txt p{font-size:12.5px;color:#aab9ad;line-height:1.6;max-width:560px}
+  .road-steps{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}
+  .road-steps span{
+    font-size:11px;font-weight:600;color:#cfd8cf;background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.1);padding:6px 11px;border-radius:7px;
+  }
+  .road-steps span .a{color:var(--accent)}
+  .road-cta{flex:0 0 auto}
+  .road-cta button{
+    background:var(--accent);color:#fff;font-size:13px;font-weight:800;padding:13px 22px;
+    border-radius:10px;transition:.16s;box-shadow:0 8px 20px -8px rgba(197,106,44,.7);
+  }
+  .road-cta button:hover{background:#d57833;transform:translateY(-1px)}
+  .road-cta .note{font-size:10.5px;color:#8fa394;text-align:center;margin-top:8px}
+
+  /* footer */
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding-top:22px;font-size:11.5px;color:var(--ink-3);line-height:1.7}
+  .foot strong{color:var(--ink-2);font-weight:700}
+  .foot .legal{margin-top:8px}
+  .foot .compliance{
+    margin-top:12px;background:var(--paper);border:1px solid var(--line);border-radius:9px;
+    padding:11px 14px;color:var(--ink-2);font-size:11px;
+  }
+
+  /* toast / notif */
+  .toast{
+    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--brand);color:#fff;font-size:12.5px;font-weight:600;padding:11px 20px;border-radius:10px;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.25s;z-index:90;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .notif{
+    position:fixed;top:62px;right:max(26px,calc(50% - 620px + 26px));width:336px;background:var(--paper);
+    border:1px solid var(--line);border-radius:13px;box-shadow:0 18px 44px -14px rgba(11,40,24,.4);
+    z-index:60;overflow:hidden;display:none;
+  }
+  .notif.show{display:block}
+  .notif-h{padding:13px 16px;border-bottom:1px solid var(--line-2);font-size:13px;font-weight:800;color:var(--brand)}
+  .notif-i{padding:12px 16px;border-bottom:1px solid var(--line-2);display:flex;gap:11px;font-size:12px}
+  .notif-i:last-child{border-bottom:none}
+  .notif-i .ni{width:30px;height:30px;border-radius:8px;flex:0 0 auto;display:grid;place-items:center;font-size:13px}
+  .ni.warn{background:var(--warn-bg)}
+  .ni.claim{background:var(--claim-bg)}
+  .ni.ok{background:var(--ok-bg)}
+  .ni.doc{background:var(--accent-soft)}
+  .notif-i .nt{color:var(--ink-2)}
+  .notif-i .nt b{color:var(--ink);font-weight:700}
+  .notif-i .nd{font-size:10.5px;color:var(--ink-3);margin-top:2px}
+
+  .reveal{opacity:0;transform:translateY(10px);animation:rise .5s ease forwards}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  .empty{padding:40px;text-align:center;color:var(--ink-3);font-size:13px;display:none}
+
+  @media(max-width:1080px){
+    .kpis{grid-template-columns:repeat(3,1fr)}
+    .renew-row{grid-template-columns:repeat(2,1fr)}
+    .pol-grid,.claim-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:760px){
+    .topnav,.who-txt{display:none}
+    .topbar-in{gap:14px;padding:0 16px}
+    .wrap{padding:20px 16px 48px}
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .renew-row{grid-template-columns:1fr}
+    .s-colhead{display:none}
+    .s-row{grid-template-columns:1fr auto;gap:8px 12px;row-gap:9px}
+    .s-row .h-biz,.s-row .h-exp,.s-row .h-ins{display:none}
+    .search{margin-left:0;width:100%}
+    .head-r{align-items:stretch;width:100%}
+    .head-actions{justify-content:stretch}
+    .btn-primary,.btn-ghost{flex:1;justify-content:center}
+    .notif{right:12px;left:12px;width:auto}
+    .demo-banner-in{padding:9px 16px;gap:8px}
+    .db-cta{width:100%;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== DEMO PREVIEW BANNER ===================== -->
+<div class="demo-banner">
+  <div class="demo-banner-in">
+    <span class="db-tag">DEMO</span>
+    <p class="db-txt">
+      cargoinsu 포워더 파트너 콘솔 <strong>미리보기 화면</strong>입니다. 화면의 화주·증권·수치는
+      모두 가상의 샘플 데이터이며 실제 거래 정보가 아닙니다.
+    </p>
+    <a class="db-cta" href="mailto:sales@cargoinsu.com?subject=cargoinsu%20%ED%8F%AC%EC%9B%8C%EB%8D%94%20%ED%8C%8C%ED%8A%B8%EB%84%88%20%EB%93%B1%EB%A1%9D%20%EB%AC%B8%EC%9D%98">파트너 등록 문의하기 →</a>
+  </div>
+</div>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="/">
+      <div class="brand-mark">N2N</div>
+      <div class="brand-txt"><strong>cargoinsu.com</strong><span>포워더 파트너 콘솔</span></div>
+    </a>
+    <nav class="topnav">
+      <a href="#top" class="on">대시보드</a>
+      <a href="#shippers">화주 관리</a>
+      <a href="#claims">클레임</a>
+      <a href="#roadmap">정산·리포트 <span class="lock">🔒</span></a>
+    </nav>
+    <div class="topbar-r">
+      <button class="bell" id="bellBtn" aria-label="알림">🔔<span class="dot">6</span></button>
+      <div class="who">
+        <div class="who-av">HS</div>
+        <div class="who-txt"><strong>한성국제물류(주)</strong><span>파트너 등급 · Gold</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="notif" id="notif">
+  <div class="notif-h">알림 6건</div>
+  <div class="notif-i"><div class="ni doc">📄</div><div class="nt"><b>대광전자</b> 신규 선언 등록 — 증권 발급 진행 중<div class="nd">오늘 11:05 · 오픈 커버 OC-2026-014</div></div></div>
+  <div class="notif-i"><div class="ni claim">⚠</div><div class="nt"><b>세아글로벌</b> 클레임 서류 보완 요청<div class="nd">오늘 09:12 · 손해사정 전 단계</div></div></div>
+  <div class="notif-i"><div class="ni warn">⏳</div><div class="nt"><b>코어케미칼</b> 증권 만기 D-5<div class="nd">2026-05-25 만기 · 갱신 검토 필요</div></div></div>
+  <div class="notif-i"><div class="ni warn">📈</div><div class="nt"><b>한빛머시너리</b> 오픈 커버 한도 사용률 85%<div class="nd">한도 증액 검토 권장</div></div></div>
+  <div class="notif-i"><div class="ni ok">✓</div><div class="nt"><b>미래정밀</b> 신규 적하보험 가입 완료<div class="nd">어제 16:40 · 증권 발행 완료</div></div></div>
+  <div class="notif-i"><div class="ni ok">✓</div><div class="nt"><b>누리텍스타일</b> 클레임 손해사정 착수<div class="nd">2026-05-18 · 보험회사 배정 완료</div></div></div>
+</div>
+
+<!-- ===================== MAIN ===================== -->
+<main class="wrap" id="top">
+
+  <div class="pagehead reveal">
+    <div>
+      <h1>화주별 적하보험 관리</h1>
+      <div class="sub">거래 화주의 오픈 커버 · 증권 · 갱신 · 클레임을 한 화면에서 관리합니다.</div>
+    </div>
+    <div class="head-r">
+      <div class="head-actions">
+        <button class="btn-ghost" onclick="toast('증권 발급 내역 화면을 불러옵니다 (데모)')">📄 증권 발급</button>
+        <button class="btn-primary" onclick="toast('신규 부보 요청이 접수되었습니다 · 인수심사 후 조건을 안내합니다 (데모)')">＋ 신규 부보 요청</button>
+      </div>
+      <div class="head-meta">
+        <span class="demo-chip"><i></i>샘플 데이터 · 데모 화면</span>
+        <span class="synced">최종 동기화 2026-05-20 14:30</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- KPI -->
+  <section class="kpis">
+    <div class="kpi reveal" style="animation-delay:.04s" data-jump="shippers">
+      <div class="k-top"><span class="k-label">관리 화주</span><span class="k-ico">🏢</span></div>
+      <div class="k-val num" id="kpiShippers">0</div>
+      <div class="k-foot"><b>+1</b> 이번 달 신규</div>
+    </div>
+    <div class="kpi reveal" style="animation-delay:.08s" data-jump="shippers">
+      <div class="k-top"><span class="k-label">유효 증권</span><span class="k-ico">📄</span></div>
+      <div class="k-val num" id="kpiPolicies">0</div>
+      <div class="k-foot" id="kpiWaitFoot">발급 대기 0건</div>
+    </div>
+    <div class="kpi alert reveal" style="animation-delay:.12s" data-filter="expiring">
+      <div class="k-top"><span class="k-label">30일 내 갱신</span><span class="k-ico">⏳</span></div>
+      <div class="k-val num" id="kpiRenew">0</div>
+      <div class="k-foot"><b>확인 필요</b> · 만기 임박 증권</div>
+    </div>
+    <div class="kpi claim reveal" style="animation-delay:.16s" data-jump="claims">
+      <div class="k-top"><span class="k-label">진행 중 클레임</span><span class="k-ico">🛟</span></div>
+      <div class="k-val num" id="kpiClaims">0</div>
+      <div class="k-foot"><b>N2N 처리 중</b> · 손해사정 단계</div>
+    </div>
+    <div class="kpi reveal" style="animation-delay:.20s" data-jump="shippers">
+      <div class="k-top"><span class="k-label">오픈 커버 한도 사용</span><span class="k-ico">📦</span></div>
+      <div class="k-val num"><span id="kpiOcPct">0</span><small> %</small></div>
+      <div class="k-foot">누적 부보 ₩<span id="kpiOcUsed">0</span>억 / 한도 ₩<span id="kpiOcLimit">0</span>억</div>
+    </div>
+  </section>
+
+  <!-- RENEWAL STRIP -->
+  <section class="sec reveal" style="animation-delay:.24s" id="renewSec">
+    <div class="sec-head">
+      <span class="tick"></span><h2>갱신 임박 증권</h2>
+      <span class="count" id="renewCount">0건</span>
+    </div>
+    <div class="renew-row" id="renewRow"></div>
+  </section>
+
+  <!-- SHIPPER TABLE -->
+  <section class="sec reveal" style="animation-delay:.28s" id="shippers">
+    <div class="sec-head">
+      <span class="tick"></span><h2>화주별 관리</h2>
+      <span class="count" id="shipperCount">0개사</span>
+    </div>
+    <div class="toolbar">
+      <div class="tabs" id="tabs">
+        <button class="tab on" data-f="all">전체 <span class="b" id="cAll">0</span></button>
+        <button class="tab" data-f="opencover">오픈 커버 <span class="b" id="cOc">0</span></button>
+        <button class="tab" data-f="expiring">갱신 임박 <span class="b" id="cExp">0</span></button>
+        <button class="tab" data-f="claim">클레임 진행 <span class="b" id="cClm">0</span></button>
+      </div>
+      <div class="search">
+        <span class="si">🔍</span>
+        <input type="text" id="search" placeholder="화주명 검색">
+      </div>
+    </div>
+    <div class="stable">
+      <div class="s-colhead">
+        <div>화주 / 담당자</div>
+        <div class="h-biz">업종</div>
+        <div>유효 증권</div>
+        <div class="h-exp">다음 만기</div>
+        <div class="h-ins">주 거래 보험회사</div>
+        <div>상태</div>
+        <div></div>
+      </div>
+      <div id="shipperList"></div>
+      <div class="empty" id="emptyMsg">검색 결과가 없습니다.</div>
+    </div>
+  </section>
+
+  <!-- CLAIMS -->
+  <section class="sec reveal" id="claims">
+    <div class="sec-head">
+      <span class="tick"></span><h2>클레임 현황</h2>
+      <span class="count">N2N 직접 처리</span>
+      <button class="sec-action" onclick="toast('온라인 사고 접수가 등록되었습니다 · N2N이 손해사정 절차를 안내합니다 (데모)')">＋ 사고 접수</button>
+    </div>
+    <div class="claim-grid" id="claimGrid"></div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="roadmap reveal" id="roadmap">
+    <div class="road-in">
+      <div class="road-txt">
+        <span class="road-tag">2026 하반기 출시 예정</span>
+        <h3>Open Policy + OCR 자동 정산</h3>
+        <p>무역서류를 OCR로 자동 인식해 선언을 생성하고, 월 1회 일괄 정산까지 자동화합니다. 화주별 선적이 늘어도 포워더님의 손이 가지 않습니다.</p>
+        <div class="road-steps">
+          <span><span class="a">01</span> 무역서류 OCR 인식</span>
+          <span><span class="a">02</span> 선언·증권 자동 발급</span>
+          <span><span class="a">03</span> 월 1회 일괄 정산</span>
+          <span><span class="a">04</span> 가상계좌 자동 청구</span>
+        </div>
+      </div>
+      <div class="road-cta">
+        <button onclick="toast('베타 우선 액세스 신청이 접수되었습니다 (데모)')">베타 우선 액세스 신청</button>
+        <div class="note">파트너 등록 포워더 무료 제공</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <strong>cargoinsu.com — 엔투엔보험중개 (N2N Insurance Brokerage)</strong><br>
+    대표 성한욱 (손해보험중개사 · ACIU 기업보험심사역) · 금융감독원 등록 보험중개사 제2026-012201호
+    <div class="legal">
+      사업자등록번호 611-23-02374 · 서울특별시 서초구 방배로30길 41, 602호 ·
+      전화 010-5755-6465 · 이메일 sales@cargoinsu.com
+    </div>
+    <div class="compliance">
+      본 대시보드는 거래 화주의 적하보험 운영 현황 관리를 위한 도구이며, 화면의 수치·증권·한도 정보는
+      <strong>데모용 샘플 데이터</strong>입니다. 보험중개사의 중개 수수료는 보험회사가 부담하며 화주가 납부하는
+      보험료에 추가되지 않습니다 (보험업법 제98조 특별이익 제공 금지 준수). 보장·요율·인수 여부 및 신규 부보 조건은
+      보험회사의 약관 및 인수심사 결과에 따라 확정됩니다.
+    </div>
+  </footer>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =================== SAMPLE DATA (demo) =================== */
+const TODAY=new Date('2026-05-20');
+const INSURERS={ /* 가나다 순 — 우열 표시 없음 */
+  'AIG':'#2A6F7B','Chubb':'#3a5a8c','DB손해보험':'#1d6b3f',
+  'KB손해보험':'#9a7321','메리츠화재':'#a8551f','현대해상':'#2f5d8a'
+};
+const dday=s=>Math.round((new Date(s)-TODAY)/86400000);
+
+const SHIPPERS=[
+ {id:'s1',name:'대광전자(주)',mgr:'김도현 차장',biz:'전자부품 수출',color:'#1d4a2c',new:false,
+  openCover:{id:'OC-2026-014',period:['2026-01-01','2026-12-31'],limit:1200000000},
+  policies:[
+   {id:'CGI-2026-0431',route:['부산','롱비치(US)'],goods:'반도체 검사장비 (추가 선적)',icc:'A',amount:124000000,start:'2026-05-18',exp:'2027-05-17',ins:'Chubb',issued:false},
+   {id:'CGI-2026-0341',route:['부산','롱비치(US)'],goods:'반도체 검사장비',icc:'A',amount:512000000,start:'2025-09-12',exp:'2026-09-11',ins:'Chubb',issued:true,idate:'2025-09-13'},
+   {id:'CGI-2026-0298',route:['인천','상하이(CN)'],goods:'PCB 기판',icc:'B',amount:188000000,start:'2025-06-12',exp:'2026-06-12',ins:'DB손해보험',issued:true,idate:'2025-06-13'},
+   {id:'CGI-2025-1180',route:['부산','하이퐁(VN)'],goods:'커넥터 부품',icc:'A',amount:96000000,start:'2025-08-01',exp:'2026-07-31',ins:'현대해상',issued:true,idate:'2025-08-01'}
+  ]},
+ {id:'s2',name:'서진식품',mgr:'이수민 대리',biz:'냉동식품 수입',color:'#a8551f',new:false,openCover:null,
+  policies:[
+   {id:'CGI-2026-0210',route:['로테르담(NL)','부산'],goods:'냉동 수산물',icc:'A',amount:243000000,start:'2025-06-01',exp:'2026-06-01',ins:'메리츠화재',issued:true,idate:'2025-06-02'},
+   {id:'CGI-2026-0377',route:['시애틀(US)','인천'],goods:'냉동 베이커리',icc:'B',amount:131000000,start:'2026-03-20',exp:'2027-03-19',ins:'KB손해보험',issued:true,idate:'2026-03-21'}
+  ]},
+ {id:'s3',name:'누리텍스타일(주)',mgr:'박정호 과장',biz:'직물 수출',color:'#AE4536',new:false,
+  openCover:{id:'OC-2026-031',period:['2025-11-01','2026-10-31'],limit:900000000},
+  policies:[
+   {id:'CGI-2026-0188',route:['부산','로테르담(NL)'],goods:'폴리에스터 직물',icc:'A',amount:357000000,start:'2025-11-04',exp:'2026-11-03',ins:'메리츠화재',issued:true,idate:'2025-11-05',claim:'c1'},
+   {id:'CGI-2026-0301',route:['광양','이즈미르(TR)'],goods:'면혼방 원단',icc:'B',amount:142000000,start:'2026-01-15',exp:'2027-01-14',ins:'AIG',issued:true,idate:'2026-01-16'},
+   {id:'CGI-2025-1044',route:['부산','첸나이(IN)'],goods:'산업용 부직포',icc:'C',amount:78000000,start:'2025-07-22',exp:'2026-07-21',ins:'DB손해보험',issued:true,idate:'2025-07-22'}
+  ]},
+ {id:'s4',name:'한빛머시너리',mgr:'정유진 차장',biz:'산업기계 수출',color:'#256E78',new:false,
+  openCover:{id:'OC-2026-008',period:['2026-01-01','2026-12-31'],limit:1300000000},
+  policies:[
+   {id:'CGI-2026-0264',route:['울산','자카르타(ID)'],goods:'CNC 공작기계',icc:'A',amount:684000000,start:'2025-06-17',exp:'2026-06-17',ins:'현대해상',issued:true,idate:'2025-06-18'},
+   {id:'CGI-2026-0319',route:['부산','담맘(SA)'],goods:'유압 프레스',icc:'A',amount:421000000,start:'2026-02-09',exp:'2027-02-08',ins:'Chubb',issued:true,idate:'2026-02-10'}
+  ]},
+ {id:'s5',name:'코어케미칼(주)',mgr:'최민석 부장',biz:'화학원료 수출입',color:'#1d4a2c',new:false,
+  openCover:{id:'OC-2026-022',period:['2026-01-01','2026-12-31'],limit:800000000},
+  policies:[
+   {id:'CGI-2026-0152',route:['여수','카오슝(TW)'],goods:'정밀화학 원료',icc:'B',amount:206000000,start:'2025-05-25',exp:'2026-05-25',ins:'DB손해보험',issued:true,idate:'2025-05-26'},
+   {id:'CGI-2026-0288',route:['앤트워프(BE)','여수'],goods:'특수 첨가제',icc:'A',amount:174000000,start:'2026-02-28',exp:'2027-02-27',ins:'AIG',issued:true,idate:'2026-03-01'},
+   {id:'CGI-2026-0405',route:['울산','오사카(JP)'],goods:'코팅용 수지',icc:'B',amount:118000000,start:'2026-04-11',exp:'2027-04-10',ins:'KB손해보험',issued:true,idate:'2026-04-12'}
+  ]},
+ {id:'s6',name:'영동물산',mgr:'한가람 대리',biz:'생활잡화 수입',color:'#9a7321',new:false,openCover:null,
+  policies:[
+   {id:'CGI-2026-0233',route:['닝보(CN)','인천'],goods:'주방용품 세트',icc:'B',amount:88000000,start:'2025-12-03',exp:'2026-12-02',ins:'현대해상',issued:true,idate:'2025-12-04'},
+   {id:'CGI-2026-0360',route:['호치민(VN)','부산'],goods:'생활잡화 혼재',icc:'C',amount:54000000,start:'2026-03-08',exp:'2027-03-07',ins:'메리츠화재',issued:true,idate:'2026-03-09'}
+  ]},
+ {id:'s7',name:'세아글로벌',mgr:'오세진 과장',biz:'자동차부품 수출입',color:'#3a5a8c',new:false,
+  openCover:{id:'OC-2026-019',period:['2025-12-01','2026-11-30'],limit:1000000000},
+  policies:[
+   {id:'CGI-2026-0205',route:['상하이(CN)','인천'],goods:'차량 전장부품',icc:'A',amount:298000000,start:'2025-12-20',exp:'2026-12-19',ins:'DB손해보험',issued:true,idate:'2025-12-21',claim:'c2'},
+   {id:'CGI-2026-0331',route:['부산','롱비치(US)'],goods:'브레이크 모듈',icc:'A',amount:367000000,start:'2026-01-30',exp:'2027-01-29',ins:'Chubb',issued:true,idate:'2026-01-31'},
+   {id:'CGI-2025-1156',route:['평택','톈진(CN)'],goods:'엔진 가스켓',icc:'B',amount:112000000,start:'2025-08-14',exp:'2026-08-13',ins:'현대해상',issued:true,idate:'2025-08-15'}
+  ]},
+ {id:'s8',name:'미래정밀(주)',mgr:'서지안 대리',biz:'정밀부품 수출',color:'#2A6F7B',new:true,openCover:null,
+  policies:[
+   {id:'CGI-2026-0418',route:['인천','뮌헨(DE)'],goods:'정밀 가공부품',icc:'A',amount:233000000,start:'2026-05-19',exp:'2027-05-18',ins:'AIG',issued:true,idate:'2026-05-19'}
+  ]}
+];
+const CLAIMS={
+ c1:{shipper:'누리텍스타일(주)',polId:'CGI-2026-0188',route:'부산 → 로테르담(NL)',goods:'폴리에스터 직물',
+   ins:'메리츠화재',reported:'2026-05-16',
+   desc:'운송 중 컨테이너 일부 해수 침수로 직물 손상이 신고되어, 약관상 보상 가능성 검토를 위해 손해사정이 진행 중입니다.',
+   stage:3,stat:'손해사정 현장조사 진행 중 — 손해사정사 배정 완료'},
+ c2:{shipper:'세아글로벌',polId:'CGI-2026-0205',route:'상하이(CN) → 인천',goods:'차량 전장부품',
+   ins:'DB손해보험',reported:'2026-05-19',
+   desc:'하역 작업 중 외부 충격에 의한 포장 파손이 신고되어, 손상 범위 확인을 위한 서류 보완을 요청한 단계입니다.',
+   stage:2,stat:'사고 서류 확인 중 — B/L·포장명세서 보완 요청'}
+};
+const CLAIM_STEPS=['사고 접수','서류 확인','손해사정','보험회사 심사','보상 종결'];
+
+/* =================== HELPERS =================== */
+const won=n=>n.toLocaleString('ko-KR');
+const eok=n=>(n/1e8).toFixed(1);
+const declared=s=>s.policies.reduce((a,p)=>a+p.amount,0);
+function shipperStatus(s){
+  if(s.policies.some(p=>p.claim))return 'claim';
+  if(s.policies.some(p=>{const d=dday(p.exp);return d>=0&&d<=30;}))return 'expiring';
+  if(s.new)return 'new';
+  return 'active';
+}
+const nextExpiry=s=>s.policies.map(p=>p.exp).sort()[0];
+const BADGE={active:['b-active','정상'],expiring:['b-expiring','갱신 임박'],
+  claim:['b-claim','클레임 진행'],new:['b-new','신규 가입']};
+
+/* =================== KPI =================== */
+const allPolicies=SHIPPERS.flatMap(s=>s.policies);
+const waitCnt=allPolicies.filter(p=>!p.issued).length;
+const renewCnt=allPolicies.filter(p=>{const d=dday(p.exp);return d>=0&&d<=30;}).length;
+const ocList=SHIPPERS.filter(s=>s.openCover);
+const ocUsed=ocList.reduce((a,s)=>a+declared(s),0);
+const ocLimit=ocList.reduce((a,s)=>a+s.openCover.limit,0);
+animateNum('kpiShippers',SHIPPERS.length);
+animateNum('kpiPolicies',allPolicies.length);
+animateNum('kpiRenew',renewCnt);
+animateNum('kpiClaims',Object.keys(CLAIMS).length);
+animateNum('kpiOcPct',Math.round(ocUsed/ocLimit*100));
+document.getElementById('kpiWaitFoot').innerHTML=
+  waitCnt?('<b style="color:var(--warn)">발급 대기 '+waitCnt+'건</b> · 발행 완료 '+(allPolicies.length-waitCnt)+'건')
+         :'전 증권 발행 완료';
+document.getElementById('kpiOcUsed').textContent=eok(ocUsed);
+document.getElementById('kpiOcLimit').textContent=eok(ocLimit);
+function animateNum(id,t){
+  const el=document.getElementById(id);let c=0;const step=Math.max(1,Math.ceil(t/22));
+  const iv=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(iv);}el.textContent=c;},26);
+}
+
+/* =================== RENEWAL STRIP =================== */
+(function(){
+  const rows=[];
+  SHIPPERS.forEach(s=>s.policies.forEach(p=>{const d=dday(p.exp);if(d>=0&&d<=30)rows.push({s,p,d});}));
+  rows.sort((a,b)=>a.d-b.d);
+  document.getElementById('renewCount').textContent=rows.length+'건';
+  document.getElementById('renewRow').innerHTML=rows.map(r=>`
+    <div class="renew">
+      <span class="dday ${r.d<=10?'d-urgent':'d-soon'}">D-${r.d}</span>
+      <div class="r-co">${r.s.name}</div>
+      <div class="r-pol mono">${r.p.id}</div>
+      <div class="r-meta">
+        <span><b>${r.p.route[0]} → ${r.p.route[1]}</b></span>
+        <span>만기 ${r.p.exp}</span><span>${r.p.ins}</span>
+      </div>
+      <button class="r-act" onclick="toast('${r.s.name} · ${r.p.id} 갱신 검토를 요청했습니다 (데모)')">갱신 검토 요청</button>
+    </div>`).join('');
+})();
+
+/* =================== SHIPPER TABLE =================== */
+let curFilter='all',curSearch='';
+function counts(){
+  const c={all:SHIPPERS.length,opencover:0,expiring:0,claim:0};
+  SHIPPERS.forEach(s=>{
+    if(s.openCover)c.opencover++;
+    if(s.policies.some(p=>{const d=dday(p.exp);return d>=0&&d<=30;}))c.expiring++;
+    if(s.policies.some(p=>p.claim))c.claim++;
+  });
+  return c;
+}
+function mainInsurer(s){
+  const c={};s.policies.forEach(p=>c[p.ins]=(c[p.ins]||0)+1);
+  const top=Object.entries(c).sort((a,b)=>b[1]-a[1])[0][0];
+  return `<span class="ins-dot" style="background:${INSURERS[top]}"></span>${top}`;
+}
+function ocBlock(s){
+  if(!s.openCover)return'';
+  const oc=s.openCover,used=declared(s),pct=Math.round(used/oc.limit*100),rem=oc.limit-used;
+  const hot=pct>=80;
+  return `
+  <div class="d-section-lbl">오픈 커버 현황</div>
+  <div class="ocover">
+    <div class="oc-head">
+      <div>
+        <div class="oc-tt">연간 포괄 오픈 커버 (Open Policy)</div>
+        <div class="oc-id mono">${oc.id}<span class="oc-period">${oc.period[0]} ~ ${oc.period[1]}</span></div>
+      </div>
+      <button class="oc-add" onclick="event.stopPropagation();toast('${s.name} · ${oc.id} 신규 선언이 등록되었습니다 · 증권 발급이 진행됩니다 (데모)')">＋ 선언 추가 · 증권 발급</button>
+    </div>
+    <div class="oc-bar"><div class="oc-fill ${hot?'hot':''}" style="width:${pct}%"></div></div>
+    <div class="oc-stats">
+      <span class="pct">사용률 ${pct}%</span>
+      <span>누적 부보 <b>₩${won(used)}</b></span>
+      <span>연간 한도 <b>₩${won(oc.limit)}</b></span>
+      <span>잔여 한도 <b>₩${won(rem)}</b></span>
+      <span>선언 <b>${s.policies.length}건</b></span>
+    </div>
+    ${hot?`<div class="oc-warn">⚠ 한도 사용률 ${pct}% — 잔여 한도 소진에 대비해 한도 증액 검토를 권장합니다.</div>`:''}
+  </div>`;
+}
+function polCard(p){
+  const d=dday(p.exp);
+  const expColor=d<=30?'var(--warn)':'var(--ink)';
+  const statusBadge=p.issued
+    ? '<span class="pol-status ps-done">발행 완료</span>'
+    : '<span class="pol-status ps-wait">발급 대기</span>';
+  let actions;
+  if(!p.issued){
+    actions=`<button class="pa-ghost" onclick="event.stopPropagation();toast('${p.id} 증권 발급 진행 현황을 확인합니다 (데모)')">발급 현황 보기</button>`;
+  }else if(d>=0&&d<=30){
+    actions=`<button class="pa-ghost" onclick="event.stopPropagation();toast('${p.id} 증권 PDF를 준비합니다 (데모)')">증권 PDF</button>
+      <button class="pa-fill" onclick="event.stopPropagation();toast('${p.id} 갱신 요청이 접수되었습니다 (데모)')">갱신 요청</button>`;
+  }else{
+    actions=`<button class="pa-ghost" onclick="event.stopPropagation();toast('${p.id} 증권 PDF를 준비합니다 (데모)')">증권 PDF</button>
+      <button class="pa-fill" onclick="event.stopPropagation();toast('${p.id} 증권 재발급을 요청했습니다 (데모)')">재발급</button>`;
+  }
+  return `
+  <div class="pol">
+    <div class="pol-top">
+      <span class="pol-id mono">${p.id}</span>
+      <span class="pol-tags">${statusBadge}<span class="icc-tag">ICC(${p.icc})</span></span>
+    </div>
+    <div class="pol-route">${p.route[0]}<span class="arr">→</span>${p.route[1]}</div>
+    <div class="pol-goods">${p.goods}${p.claim?' · <b style="color:var(--claim)">클레임 진행 중</b>':''}</div>
+    <div class="pol-rows">
+      <div class="pr"><span class="l">보험가입금액</span><span class="v num">₩${won(p.amount)}</span></div>
+      <div class="pr"><span class="l">보험기간</span><span class="v num">${p.start} ~ ${p.exp}</span></div>
+      <div class="pr"><span class="l">만기까지</span><span class="v" style="color:${expColor}">D-${d}</span></div>
+      <div class="pr"><span class="l">증권 발급</span><span class="v">${p.issued?('발행 완료 · '+p.idate):'<span style="color:var(--warn)">발급 진행 중</span>'}</span></div>
+      <div class="pr"><span class="l">보험회사</span><span class="v"><span class="ins-dot" style="background:${INSURERS[p.ins]}"></span>${p.ins}</span></div>
+    </div>
+    <div class="pol-act">${actions}</div>
+  </div>`;
+}
+function claimMini(s){
+  const cp=s.policies.find(p=>p.claim);if(!cp)return'';
+  const cl=CLAIMS[cp.claim];
+  return `
+  <div class="d-section-lbl">클레임 이력</div>
+  <div class="claim-desc" style="margin-top:0">
+    <b>${cl.polId}</b> · ${cl.route} — ${cl.stat}
+    <span style="color:var(--ink-3)"> (${CLAIM_STEPS[cl.stage-1]} 단계)</span>
+  </div>`;
+}
+function renderTable(){
+  const c=counts();
+  cAll.textContent=c.all;cOc.textContent=c.opencover;
+  cExp.textContent=c.expiring;cClm.textContent=c.claim;
+  const list=SHIPPERS.filter(s=>{
+    if(curSearch&&!s.name.toLowerCase().includes(curSearch))return false;
+    if(curFilter==='all')return true;
+    if(curFilter==='opencover')return !!s.openCover;
+    if(curFilter==='expiring')return s.policies.some(p=>{const d=dday(p.exp);return d>=0&&d<=30;});
+    if(curFilter==='claim')return s.policies.some(p=>p.claim);
+  });
+  document.getElementById('shipperCount').textContent=SHIPPERS.length+'개사';
+  document.getElementById('emptyMsg').style.display=list.length?'none':'block';
+  document.getElementById('shipperList').innerHTML=list.map(s=>{
+    const st=shipperStatus(s);const [bc,bl]=BADGE[st];
+    const ne=nextExpiry(s);const nd=dday(ne);
+    const initials=s.name.replace(/\(주\)/,'').slice(0,2);
+    const ocTag=s.openCover?'<span class="vp-tag vp-oc">오픈 커버</span>':'<span class="vp-tag vp-ind">개별 부보</span>';
+    return `
+    <div class="s-item" data-id="${s.id}">
+      <div class="s-row" onclick="toggleShipper('${s.id}')">
+        <div class="co">
+          <div class="co-logo" style="background:${s.color}">${initials}</div>
+          <div class="co-name"><strong>${s.name}</strong><span>${s.mgr}</span></div>
+        </div>
+        <div class="cell-sub h-biz">${s.biz}</div>
+        <div><span class="cell-strong num">${s.policies.length}<span class="u"> 건</span></span><br>${ocTag}</div>
+        <div class="cell-sub h-exp num">${ne} <span style="color:${nd<=30?'var(--warn)':'var(--ink-3)'};font-weight:700">D-${nd}</span></div>
+        <div class="cell-sub h-ins">${mainInsurer(s)}</div>
+        <div><span class="badge ${bc}"><i></i>${bl}</span></div>
+        <div class="chev">▼</div>
+      </div>
+      <div class="s-detail"><div class="s-detail-in"><div class="s-detail-pad">
+        ${ocBlock(s)}
+        <div class="d-section-lbl">${s.openCover?'선언 내역 · 발급 증권':'적하보험 증권 · 구간별 개별 부보'} (${s.policies.length}건)</div>
+        <div class="pol-grid">${s.policies.map(polCard).join('')}</div>
+        ${claimMini(s)}
+      </div></div></div>
+    </div>`;
+  }).join('');
+}
+function toggleShipper(id){
+  document.querySelectorAll('.s-item').forEach(it=>{
+    if(it.dataset.id===id)it.classList.toggle('open');
+    else it.classList.remove('open');
+  });
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab');if(!t)return;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  t.classList.add('on');curFilter=t.dataset.f;renderTable();
+});
+document.getElementById('search').addEventListener('input',e=>{
+  curSearch=e.target.value.trim().toLowerCase();renderTable();
+});
+document.querySelectorAll('.kpi').forEach(k=>{
+  k.addEventListener('click',()=>{
+    if(k.dataset.filter){
+      curFilter=k.dataset.filter;
+      document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.f===curFilter));
+      renderTable();
+      document.getElementById('shippers').scrollIntoView({behavior:'smooth',block:'start'});
+    }else if(k.dataset.jump){
+      document.getElementById(k.dataset.jump).scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+
+/* =================== CLAIMS =================== */
+function renderClaims(){
+  document.getElementById('claimGrid').innerHTML=Object.values(CLAIMS).map(cl=>`
+    <div class="claimc">
+      <div class="claim-top">
+        <div><div class="claim-co">${cl.shipper}</div><div class="claim-id mono">${cl.polId}</div></div>
+        <span class="badge b-claim"><i></i>처리 중</span>
+      </div>
+      <div class="claim-line">${cl.route} · <b>${cl.goods}</b></div>
+      <div class="claim-line">사고 접수 ${cl.reported} · 담당 보험회사 <b>${cl.ins}</b></div>
+      <div class="claim-desc">${cl.desc}</div>
+      <div class="stepper">
+        ${CLAIM_STEPS.map((s,i)=>{
+          const n=i+1;const cls=n<cl.stage?'done':(n===cl.stage?'cur':'');
+          return `<div class="step ${cls}">
+            <div class="dotw">
+              <div class="ln" ${i===0?'style="visibility:hidden"':''}></div>
+              <div class="pt">${n<cl.stage?'✓':n}</div>
+              <div class="ln" ${i===CLAIM_STEPS.length-1?'style="visibility:hidden"':''}></div>
+            </div>
+            <div class="slbl">${s}</div></div>`;
+        }).join('')}
+      </div>
+      <div class="claim-foot">
+        <span class="claim-stat">현재 단계 · <b>${cl.stat}</b></span>
+        <button onclick="toast('${cl.polId} 클레임 진행 내역을 불러옵니다 (데모)')">상세 이력</button>
+      </div>
+    </div>`).join('');
+}
+
+/* =================== MISC =================== */
+let toastT;
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2800);
+}
+document.getElementById('bellBtn').addEventListener('click',e=>{
+  e.stopPropagation();document.getElementById('notif').classList.toggle('show');
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#notif')&&!e.target.closest('#bellBtn'))
+    document.getElementById('notif').classList.remove('show');
+});
+document.querySelectorAll('.topnav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const h=a.getAttribute('href');
+    if(h&&h.startsWith('#')){
+      e.preventDefault();
+      document.querySelectorAll('.topnav a').forEach(x=>x.classList.remove('on'));
+      a.classList.add('on');
+      document.querySelector(h).scrollIntoView({behavior:'smooth',block:'start'});
+    }
+  });
+});
+
+renderTable();
+renderClaims();
+</script>
+</body>
+</html>
