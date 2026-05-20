@@ -56,14 +56,12 @@
     color:#EBE7D8;position:sticky;top:0;z-index:50;border-bottom:1px solid #0a2014;
   }
   .topbar-in{max-width:1180px;margin:0 auto;padding:0 26px;height:62px;display:flex;align-items:center;gap:26px}
-  .brand{display:flex;align-items:center;gap:11px;flex:0 0 auto}
-  .brand-mark{
-    width:38px;height:38px;border-radius:9px;background:var(--accent);color:#fff;font-weight:800;
-    display:grid;place-items:center;font-size:15px;letter-spacing:-.5px;
-    box-shadow:0 4px 12px -4px rgba(197,106,44,.6);
+  .brand{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+  .brand-logo{height:38px;width:auto;display:block}
+  .brand-console{
+    font-size:11.5px;font-weight:700;color:#8fa394;letter-spacing:-.2px;white-space:nowrap;
+    padding-left:13px;border-left:1px solid rgba(255,255,255,.16);
   }
-  .brand-txt strong{display:block;font-size:14.5px;color:#fff;letter-spacing:-.3px;line-height:1.2}
-  .brand-txt span{display:block;font-size:11px;color:#8fa394}
   .topnav{display:flex;gap:3px;margin-left:8px}
   .topnav a{
     font-size:13.5px;color:#a7b6ab;padding:8px 13px;border-radius:7px;font-weight:500;
@@ -370,7 +368,7 @@
     .pol-grid{grid-template-columns:1fr}
   }
   @media(max-width:760px){
-    .topnav,.who-txt{display:none}
+    .topnav,.who-txt,.brand-console{display:none}
     .topbar-in{gap:14px;padding:0 16px}
     .wrap{padding:20px 16px 48px}
     .kpis{grid-template-columns:repeat(2,1fr)}
@@ -402,8 +400,8 @@
 <header class="topbar">
   <div class="topbar-in">
     <a class="brand" href="/">
-      <div class="brand-mark">N2N</div>
-      <div class="brand-txt"><strong>cargoinsu.com</strong><span>화주 보험 콘솔</span></div>
+      <img class="brand-logo" src="/assets/n2n-logo.svg" alt="cargoinsu.com — 엔투엔보험중개">
+      <span class="brand-console">화주 보험 콘솔</span>
     </a>
     <nav class="topnav">
       <a href="#top" class="on">내 보험</a>
