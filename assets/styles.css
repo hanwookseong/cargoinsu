@@ -3095,6 +3095,10 @@ hr { border: 0; border-top: 1px solid var(--border); margin: 48px 0; }
   display: flex;
   flex-direction: column;
 }
+/* 2열 그리드에서 카드가 홀수개일 때 마지막 카드를 전체폭으로 — 빈 칸(어두운 배경 노출) 방지 */
+.pd-case-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
 .pd-case-num {
   font-family: var(--f-mono);
   font-size: 0.7rem;
