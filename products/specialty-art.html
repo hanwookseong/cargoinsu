@@ -13,6 +13,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>예술품 종합보험 (Fine Art Insurance) | cargoinsu.com</title>
 <meta name="description" content="박물관·미술관·갤러리·옥션사·소장가의 예술품 컬렉션을 전시·보관·운송 전 구간에서 All-Risk 약정가액(Agreed Value) 방식으로 담보. 단일 작품·컬렉션 단위 가입.">
 <link rel="stylesheet" href="../assets/styles.css">
+<!-- ===== 아트딜러 캠페인 CTA 카드 스타일 (2026-05-26) ===== -->
+<style>
+.fa-cta-card{
+  --fa-green:#0B2818; --fa-orange:#C56A2C; --fa-bronze:#8b5a2b;
+  --fa-line:#E6E2D8; --fa-muted:#6b746e;
+  display:block; box-sizing:border-box; width:100%;
+  background:#fff; border:1px solid var(--fa-line); border-radius:14px;
+  padding:28px 26px 24px; margin:1.5rem 0 0;
+  text-decoration:none; color:#1f2b25;
+  position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(11,40,24,.05);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.fa-cta-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--fa-bronze),var(--fa-orange));
+}
+.fa-cta-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(11,40,24,.13);
+  border-color:#d8d2c4;
+}
+.fa-cta-card .fa-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--fa-bronze); margin:0 0 9px;
+}
+.fa-cta-card .fa-title{
+  font-size:1.32rem; font-weight:700; color:var(--fa-green);
+  margin:0 0 8px; line-height:1.3; letter-spacing:-.01em;
+}
+.fa-cta-card .fa-lede{
+  font-size:.92rem; line-height:1.62; color:var(--fa-muted); margin:0 0 18px;
+}
+.fa-cta-card .fa-features{
+  list-style:none; margin:0 0 22px; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:9px 22px;
+}
+.fa-cta-card .fa-features li{
+  position:relative; padding-left:19px;
+  font-size:.875rem; line-height:1.5;
+}
+.fa-cta-card .fa-features li::before{
+  content:"\25C6"; position:absolute; left:0; top:1px;
+  font-size:.6rem; color:var(--fa-orange);
+}
+.fa-cta-card .fa-features b{ color:var(--fa-green); font-weight:700; }
+.fa-cta-card .fa-go{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--fa-orange); color:#fff;
+  font-size:.95rem; font-weight:700;
+  padding:13px 22px; border-radius:9px;
+  transition:background .2s ease;
+}
+.fa-cta-card:hover .fa-go{ background:#b25c22; }
+.fa-cta-card .fa-go .arrow{ transition:transform .25s ease; }
+.fa-cta-card:hover .fa-go .arrow{ transform:translateX(4px); }
+.fa-cta-card .fa-note{
+  margin:14px 0 0; font-size:.74rem; line-height:1.55; color:var(--fa-muted);
+}
+@media (max-width:560px){
+  .fa-cta-card .fa-features{ grid-template-columns:1fr; }
+  .fa-cta-card .fa-go{ display:flex; justify-content:center; }
+}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -381,6 +445,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       운송보험·예술품 종합보험·화물배상책임보험은 자산 평가·인수심사가 필요해 본 사이트에서 즉시 계산이 제공되지 않습니다.
       가입 상담 신청 시 <strong>6개 보험회사 동시 비교 견적</strong>을 무료로 안내드립니다 (영업시간 내 평균 24시간 이내 회신).
     </div>
+
+    <!-- ===== 아트딜러 캠페인 CTA 카드 (Fine Art) ===== -->
+    <a class="fa-cta-card" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">
+      <p class="fa-eyebrow">Fine Art Insurance · 비교견적 안내</p>
+      <h3 class="fa-title">갤러리·아트딜러님을 위한 예술품종합보험</h3>
+      <p class="fa-lede">
+        작품 목록과 평가가액만 보내주시면, Chubb Fine Art 전담팀 포함 6개 보험회사
+        약관을 비교해 작품 구성에 적합한 보장을 1~2영업일 내 견적으로 회신드립니다.
+      </p>
+      <ul class="fa-features">
+        <li><b>7개 구간 통합 보장</b> — 운송·전시·보관·이동·포장·설치·개봉</li>
+        <li><b>약정가액(Agreed Value)</b> — 사고 시 가치 산정 분쟁 부담 완화</li>
+        <li><b>단기 전시 보험</b> — 아트페어·기획전 기간만 별도 가입</li>
+        <li><b>Pair &amp; Set 담보</b> — 세트 작품 잔존 가치하락분도 검토</li>
+      </ul>
+      <span class="fa-go">카톡으로 비교견적 상담 <span class="arrow">&rarr;</span></span>
+      <p class="fa-note">
+        보장·면책·한도는 각 보험회사 약관이 우선하며, 최종 보험료는 보험회사 인수심사 후 확정됩니다.
+        당사 수수료는 보험회사가 부담하므로 고객 추가비용은 없습니다 (보험업법 제98조).
+      </p>
+    </a>
   </div>
 </div></div>
 
