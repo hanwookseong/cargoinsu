@@ -13,6 +13,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>운송보험 (Inland Transit Insurance) | cargoinsu.com</title>
 <meta name="description" content="국내 도로·철도·연안 운송 중 화물의 멸실·훼손을 보장하는 운송보험. 자가용·위탁 운송 구분, 단건·연간 포괄 설계 가능. 적재물배상책임과 별개의 화주 측 보장.">
 <link rel="stylesheet" href="../assets/styles.css">
+<!-- ===== 캠페인 CTA 카드 (공통 · 2026-05-26) ===== -->
+<style>
+.cta-card{
+  --cc-green:#0B2818; --cc-orange:#C56A2C; --cc-bronze:#8b5a2b;
+  --cc-line:#E6E2D8; --cc-muted:#6b746e;
+  display:block; box-sizing:border-box; width:100%;
+  background:#fff; border:1px solid var(--cc-line); border-radius:14px;
+  padding:28px 26px 24px; margin:1.5rem 0 0;
+  text-decoration:none; color:#1f2b25;
+  position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(11,40,24,.05);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.cta-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--cc-bronze),var(--cc-orange));
+}
+.cta-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(11,40,24,.13);
+  border-color:#d8d2c4;
+}
+.cta-card .cc-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--cc-bronze); margin:0 0 9px;
+}
+.cta-card .cc-title{
+  font-size:1.32rem; font-weight:700; color:var(--cc-green);
+  margin:0 0 8px; line-height:1.3; letter-spacing:-.01em;
+}
+.cta-card .cc-lede{
+  font-size:.92rem; line-height:1.62; color:var(--cc-muted); margin:0 0 18px;
+}
+.cta-card .cc-features{
+  list-style:none; margin:0 0 22px; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:9px 22px;
+}
+.cta-card .cc-features li{
+  position:relative; padding-left:19px;
+  font-size:.875rem; line-height:1.5;
+}
+.cta-card .cc-features li::before{
+  content:"\25C6"; position:absolute; left:0; top:1px;
+  font-size:.6rem; color:var(--cc-orange);
+}
+.cta-card .cc-features b{ color:var(--cc-green); font-weight:700; }
+.cta-card .cc-go{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--cc-orange); color:#fff;
+  font-size:.95rem; font-weight:700;
+  padding:13px 22px; border-radius:9px;
+  transition:background .2s ease;
+}
+.cta-card:hover .cc-go{ background:#b25c22; }
+.cta-card .cc-go .arrow{ transition:transform .25s ease; }
+.cta-card:hover .cc-go .arrow{ transform:translateX(4px); }
+.cta-card .cc-note{
+  margin:14px 0 0; font-size:.74rem; line-height:1.55; color:var(--cc-muted);
+}
+@media (max-width:560px){
+  .cta-card .cc-features{ grid-template-columns:1fr; }
+  .cta-card .cc-go{ display:flex; justify-content:center; }
+}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -278,6 +342,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       운송보험·예술품 종합보험·화물배상책임보험은 자산 평가·인수심사가 필요해 본 사이트에서 즉시 계산이 제공되지 않습니다.
       가입 상담 신청 시 <strong>6개 보험회사 동시 비교 견적</strong>을 무료로 안내드립니다 (영업시간 내 평균 24시간 이내 회신).
     </div>
+
+    <!-- ===== 캠페인 CTA 카드 ===== -->
+    <a class="cta-card" id="campaign-cta" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">
+      <p class="cc-eyebrow">Transit Insurance · 비교견적 안내</p>
+      <h3 class="cc-title">국내 운송이 잦은 사업자님을 위한 운송보험</h3>
+      <p class="cc-lede">공장·창고에서 도착지까지 국내 운송 중 발생하는 화물 손해를, 운송 형태와 물량에 맞춰 설계해 드립니다.</p>
+      <ul class="cc-features">
+        <li><b>국내 전 구간 담보</b> &mdash; 도로·철도·연안 운송 통합</li>
+        <li><b>자가용·위탁 모두</b> &mdash; 직접 운송·위탁 운송 모두 적용</li>
+        <li><b>연간 포괄 가입</b> &mdash; 연간 물량 일괄 가입으로 관리 단순화</li>
+        <li><b>화주 측 직접 보장</b> &mdash; 운송업자 책임과 무관하게 화물 보장</li>
+      </ul>
+      <span class="cc-go">카톡으로 비교견적 상담 <span class="arrow">&rarr;</span></span>
+      <p class="cc-note">보장·면책·한도는 각 보험회사 약관이 우선하며, 최종 보험료는 보험회사 인수심사 후 확정됩니다. 당사 수수료는 보험회사가 부담하므로 고객 추가비용은 없습니다 (보험업법 제98조).</p>
+    </a>
   </div>
 </div></div>
 

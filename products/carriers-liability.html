@@ -13,6 +13,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>적재물배상책임보험 (Carrier's Liability) | cargoinsu.com</title>
 <meta name="description" content="화물자동차운송사업자·운송주선업자(포워더)의 화주에 대한 법률상 손해배상책임을 담보. 화물자동차 운수사업법 제35조 의무가입 대응. 5톤 이상·총중량 10톤 이상·이사화물·택배·냉동냉장 사업자 필수.">
 <link rel="stylesheet" href="../assets/styles.css">
+<!-- ===== 캠페인 CTA 카드 (공통 · 2026-05-26) ===== -->
+<style>
+.cta-card{
+  --cc-green:#0B2818; --cc-orange:#C56A2C; --cc-bronze:#8b5a2b;
+  --cc-line:#E6E2D8; --cc-muted:#6b746e;
+  display:block; box-sizing:border-box; width:100%;
+  background:#fff; border:1px solid var(--cc-line); border-radius:14px;
+  padding:28px 26px 24px; margin:1.5rem 0 0;
+  text-decoration:none; color:#1f2b25;
+  position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(11,40,24,.05);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.cta-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--cc-bronze),var(--cc-orange));
+}
+.cta-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(11,40,24,.13);
+  border-color:#d8d2c4;
+}
+.cta-card .cc-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--cc-bronze); margin:0 0 9px;
+}
+.cta-card .cc-title{
+  font-size:1.32rem; font-weight:700; color:var(--cc-green);
+  margin:0 0 8px; line-height:1.3; letter-spacing:-.01em;
+}
+.cta-card .cc-lede{
+  font-size:.92rem; line-height:1.62; color:var(--cc-muted); margin:0 0 18px;
+}
+.cta-card .cc-features{
+  list-style:none; margin:0 0 22px; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:9px 22px;
+}
+.cta-card .cc-features li{
+  position:relative; padding-left:19px;
+  font-size:.875rem; line-height:1.5;
+}
+.cta-card .cc-features li::before{
+  content:"\25C6"; position:absolute; left:0; top:1px;
+  font-size:.6rem; color:var(--cc-orange);
+}
+.cta-card .cc-features b{ color:var(--cc-green); font-weight:700; }
+.cta-card .cc-go{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--cc-orange); color:#fff;
+  font-size:.95rem; font-weight:700;
+  padding:13px 22px; border-radius:9px;
+  transition:background .2s ease;
+}
+.cta-card:hover .cc-go{ background:#b25c22; }
+.cta-card .cc-go .arrow{ transition:transform .25s ease; }
+.cta-card:hover .cc-go .arrow{ transform:translateX(4px); }
+.cta-card .cc-note{
+  margin:14px 0 0; font-size:.74rem; line-height:1.55; color:var(--cc-muted);
+}
+@media (max-width:560px){
+  .cta-card .cc-features{ grid-template-columns:1fr; }
+  .cta-card .cc-go{ display:flex; justify-content:center; }
+}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -280,6 +344,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>본 사이트는 다수 보험회사의 약관·요율을 비교 안내하며, 청약·승인은 각 보험회사의 약관에 따라 이루어집니다.</li>
       </ul>
     </div>
+
+    <!-- ===== 캠페인 CTA 카드 ===== -->
+    <a class="cta-card" id="campaign-cta" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">
+      <p class="cc-eyebrow">Carriers Liability Insurance · 비교견적 안내</p>
+      <h3 class="cc-title">화물자동차 운송사업자님을 위한 적재물배상책임보험</h3>
+      <p class="cc-lede">화물자동차 운수사업법 제35조 의무가입 대상입니다. 6개 보험회사 약관을 비교해 운송 형태에 맞춰 설계해 드립니다.</p>
+      <ul class="cc-features">
+        <li><b>하역작업 중 담보</b> &mdash; 상·하차 중 화물 손해 (가장 빈번)</li>
+        <li><b>냉동·냉장 화물</b> &mdash; 온도유지 실패로 인한 부패 손해</li>
+        <li><b>이사화물 특약</b> &mdash; 이삿짐 파손·분실</li>
+        <li><b>국제운송 확장</b> &mdash; 국경 통과 구간 (CMR)</li>
+      </ul>
+      <span class="cc-go">카톡으로 비교견적 상담 <span class="arrow">&rarr;</span></span>
+      <p class="cc-note">보장·면책·한도는 각 보험회사 약관이 우선하며, 최종 보험료는 보험회사 인수심사 후 확정됩니다. 당사 수수료는 보험회사가 부담하므로 고객 추가비용은 없습니다 (보험업법 제98조).</p>
+    </a>
   </div>
 </div></div>
 

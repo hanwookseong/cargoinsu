@@ -13,6 +13,70 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>화물배상책임보험 FFL (Freight Forwarders Liability) | cargoinsu.com</title>
 <meta name="description" content="포워더(Freight Forwarder)·복합운송주선업자가 화주로부터 위탁받은 국제 화물의 운송·보관·환적 중 발생한 손해와 제3자 배상책임을 통합 담보. KIFFA·FIATA·IATA B/L 사업자 표준.">
 <link rel="stylesheet" href="../assets/styles.css">
+<!-- ===== 캠페인 CTA 카드 (공통 · 2026-05-26) ===== -->
+<style>
+.cta-card{
+  --cc-green:#0B2818; --cc-orange:#C56A2C; --cc-bronze:#8b5a2b;
+  --cc-line:#E6E2D8; --cc-muted:#6b746e;
+  display:block; box-sizing:border-box; width:100%;
+  background:#fff; border:1px solid var(--cc-line); border-radius:14px;
+  padding:28px 26px 24px; margin:1.5rem 0 0;
+  text-decoration:none; color:#1f2b25;
+  position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(11,40,24,.05);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.cta-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--cc-bronze),var(--cc-orange));
+}
+.cta-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(11,40,24,.13);
+  border-color:#d8d2c4;
+}
+.cta-card .cc-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--cc-bronze); margin:0 0 9px;
+}
+.cta-card .cc-title{
+  font-size:1.32rem; font-weight:700; color:var(--cc-green);
+  margin:0 0 8px; line-height:1.3; letter-spacing:-.01em;
+}
+.cta-card .cc-lede{
+  font-size:.92rem; line-height:1.62; color:var(--cc-muted); margin:0 0 18px;
+}
+.cta-card .cc-features{
+  list-style:none; margin:0 0 22px; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:9px 22px;
+}
+.cta-card .cc-features li{
+  position:relative; padding-left:19px;
+  font-size:.875rem; line-height:1.5;
+}
+.cta-card .cc-features li::before{
+  content:"\25C6"; position:absolute; left:0; top:1px;
+  font-size:.6rem; color:var(--cc-orange);
+}
+.cta-card .cc-features b{ color:var(--cc-green); font-weight:700; }
+.cta-card .cc-go{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--cc-orange); color:#fff;
+  font-size:.95rem; font-weight:700;
+  padding:13px 22px; border-radius:9px;
+  transition:background .2s ease;
+}
+.cta-card:hover .cc-go{ background:#b25c22; }
+.cta-card .cc-go .arrow{ transition:transform .25s ease; }
+.cta-card:hover .cc-go .arrow{ transform:translateX(4px); }
+.cta-card .cc-note{
+  margin:14px 0 0; font-size:.74rem; line-height:1.55; color:var(--cc-muted);
+}
+@media (max-width:560px){
+  .cta-card .cc-features{ grid-template-columns:1fr; }
+  .cta-card .cc-go{ display:flex; justify-content:center; }
+}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -289,6 +353,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/dashboard.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent,#C56A2C);color:#fff;font-weight:700;font-size:.95rem;padding:11px 22px;border-radius:9px;text-decoration:none;">📊 콘솔 데모 화면 보기 →</a>
       <span style="display:block;font-size:.8rem;color:#8fa394;margin-top:11px;">※ 데모 화면이며 표시된 화주·증권·수치는 가상의 샘플 데이터입니다.</span>
     </aside>
+
+    <!-- ===== 캠페인 CTA 카드 ===== -->
+    <a class="cta-card" id="campaign-cta" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">
+      <p class="cc-eyebrow">Freight Forwarders Liability · 비교견적 안내</p>
+      <h3 class="cc-title">포워더·KIFFA 회원사님을 위한 화물배상책임보험(FFL)</h3>
+      <p class="cc-lede">운송주선 과정에서 발생하는 화주 화물 손해 배상책임을, 복합운송 구조에 맞춰 설계해 드립니다.</p>
+      <ul class="cc-features">
+        <li><b>Goods-Legal Liability</b> &mdash; 운송·보관·환적·통관 중 화주 화물 배상</li>
+        <li><b>Third Party Liability</b> &mdash; 업무로 인한 제3자 신체·재물 배상</li>
+        <li><b>Professional Indemnity</b> &mdash; 자문·서류 처리 과실 전문직업 배상</li>
+        <li><b>국제 복합운송 특화</b> &mdash; 해상·항공·내륙 Multi-modal 통합</li>
+      </ul>
+      <span class="cc-go">카톡으로 비교견적 상담 <span class="arrow">&rarr;</span></span>
+      <p class="cc-note">보장·면책·한도는 각 보험회사 약관이 우선하며, 최종 보험료는 보험회사 인수심사 후 확정됩니다. 당사 수수료는 보험회사가 부담하므로 고객 추가비용은 없습니다 (보험업법 제98조).</p>
+    </a>
   </div>
 </div></div>
 
