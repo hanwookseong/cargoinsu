@@ -1,59 +1,86 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cargoinsu.com/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/"/></url>
   <url>
     <loc>https://cargoinsu.com/products/marine-cargo.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-cargo.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/marine-transit.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/marine-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/marine-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-transit.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/liability-freight-forwarders.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/liability-freight-forwarders.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/specialty-art.html</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/specialty-art.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/specialty-art.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/specialty-art.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/inland-transit.html</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/inland-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/inland-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/inland-transit.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/jewellers-block.html</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/jewellers-block.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/jewellers-block.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/jewellers-block.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/carriers-liability.html</loc>
     <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/carriers-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/carriers-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/carriers-liability.html"/></url>
   <url>
     <loc>https://cargoinsu.com/consult.html</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
+  
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/consult.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/consult.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/consult.html"/></url>
   <url>
     <loc>https://cargoinsu.com/guide/index.html</loc>
     <lastmod>2026-05-04</lastmod>
@@ -101,5 +128,86 @@
     <lastmod>2026-05-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/index.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/consult.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/consult.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/consult.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/consult.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/marine-cargo.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-cargo.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/marine-transit.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/marine-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/marine-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-transit.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/inland-transit.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/inland-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/inland-transit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/inland-transit.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/specialty-art.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/specialty-art.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/specialty-art.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/specialty-art.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/jewellers-block.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/jewellers-block.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/jewellers-block.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/jewellers-block.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/carriers-liability.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/carriers-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/carriers-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/carriers-liability.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/products/liability-freight-forwarders.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/liability-freight-forwarders.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/>
   </url>
 </urlset>

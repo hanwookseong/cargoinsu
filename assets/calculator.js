@@ -389,6 +389,54 @@
     'art':       '305'
   };
 
+  // ─────────────────────────────────────────────────────────
+  // i18n 레이어 (페이지 <html lang> 감지) — 국문 동작 100% 보존
+  // ─────────────────────────────────────────────────────────
+  var LANG = (document.documentElement.lang || '').toLowerCase().indexOf('en') === 0 ? 'en' : 'ko';
+  function T(ko, en) { return LANG === 'en' ? en : ko; }
+  var ZONE_EN = {
+    '보세/외항':'Bonded/Ocean-going','국내연안':'Domestic coastal','일본':'Japan','중국':'China',
+    '동남아':'SE & S Asia','중동/아프리카':'Middle East/Africa','호주/뉴질랜드':'Australia/NZ',
+    '유럽':'Europe','북미':'North America','남미':'South America','기타':'Other'
+  };
+  function zoneName(z){ return LANG === 'en' ? (ZONE_EN[z] || z) : z; }
+  var CARGO_EN = {
+    '일반화물':'General cargo','기계·전자':'Machinery/Electronics','철강·금속':'Steel/Metals',
+    '섬유·의류':'Textiles/Apparel','식품·농수산':'Food/Agri-fisheries','냉동·냉장':'Frozen/Chilled',
+    '화학·위험물':'Chemicals/Dangerous','석유·액체':'Oil/Liquids','취약·도자기·유리':'Fragile/Ceramics/Glass',
+    '예술품·귀금속':'Art/Precious'
+  };
+  function cargoName(n){ return LANG === 'en' ? (CARGO_EN[n] || n) : n; }
+  var CLAUSE_EN = {
+    'icc_a':'New ICC(A) — All Risks (Marine)','icc_b':'New ICC(B) — limited','icc_c':'New ICC(C) — minimum',
+    'icc_air':'New ICC(Air) — All Risks (Air)','ar':'Old A.R — All Risks (S.G. Policy)','wa':'Old W.A — With Average',
+    'fpa':'Old F.P.A — Free from Particular Average','ar_air':'Old A.R (Air) — All Risks (Air)'
+  };
+  function clauseName(key){ return LANG === 'en' ? (CLAUSE_EN[key] || key) : (CLAUSE_LABEL[key] || key); }
+  var GROUP_EN = {
+    '섬유류 (201-202)':'Textiles (201-202)','농산·임산물류 (203-204)':'Agri/Forestry (203-204)',
+    '지류·화학류 (205-209)':'Paper/Chemicals (205-209)','식품류 (210-211)':'Food (210-211)',
+    '동물류 (212)':'Animals (212)','광물류 (213-214)':'Minerals (213-214)','금속류 (215)':'Metals (215)',
+    '기계류 (216)':'Machinery (216)','기타':'Others'
+  };
+  function groupName(g){ return LANG === 'en' ? (GROUP_EN[g] || g) : g; }
+  var ITEM_LABEL_EN = {
+    '201-1':'201-① Woven goods (cotton/wool/synthetic)','201-2':'201-② Raw Cotton','201-3':'201-③ Raw Silk',
+    '201-4':'201-④ Wool','202':'202 Fur & Hides','203':'203 Grain/Feed/Oilseed','204-1':'204-① Logs, Bamboo',
+    '204-2':'204-② Plywood, Lumber','204-3':'204-③ Rubber','204-4':'204-④ Leaf Tobacco','205-1':'205-① Pulp',
+    '205-2':'205-② Paper','206':'206 Fertilizer (see conditions)','207':'207 Oil','208':'208 Oil Fats',
+    '209-1':'209-① Chemicals (Liquid)','209-2':'209-② Chemicals (Solid)','209-3':'209-③ Pharmaceuticals',
+    '210-1':'210-① General Foodstuff','210-2':'210-② Chilled/Frozen Food','211-1':'211-① Fish','211-2':'211-② Meat',
+    '212-1':'212-① Small Mammals','212-2':'212-② Large Mammals','212-3':'212-③ Snakes','212-4':'212-④ Birds',
+    '212-5':'212-⑤ Aquatic Animals','213-1':'213-① Minerals Type 1','213-2':'213-② Minerals Type 2',
+    '214':'214 Coal','215-1':'215-① Ferrous Metals','215-2':'215-② Non-ferrous Metals',
+    '216-1':'216-① General Machinery','216-2':'216-② Precision Machinery','216-3':'216-③ Electronics & Semiconductors',
+    '216-4':'216-④ Automobiles','216-5':'216-⑤ Heavy Equipment','217':'217 Glass & Ceramic',
+    '301':'301 Bank Note/Bullion/Jewelry','302':'302 Household Goods','303':'303 General Merchandise',
+    '304':'304 Books & Printed Matter','305':'305 Art & Antiques','306':'306 Defense Materials'
+  };
+  function itemLabel(it){ return LANG === 'en' ? (ITEM_LABEL_EN[it.code] || it.label) : it.label; }
+
   function $(id) { return document.getElementById(id); }
   function fmt(n) { return Math.round(n).toLocaleString('ko-KR'); }
   function fmt2(n) { return Number(n).toLocaleString('ko-KR', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
@@ -445,18 +493,19 @@
       var kidiItem = KIDI_ITEMS.find(function (i) { return i.code === kidiCode; });
       var rateName = kidiItem ? RATE_TABLE[kidiItem.cargo].name : '';
       if (hint) {
-        hint.innerHTML = '✓ <strong>' + match.name + '</strong> → KIDI 품목 ' +
-          '<strong style="color:var(--accent);">' + (kidiItem ? kidiItem.label : rateName) + '</strong> ' +
-          '<span style="color:var(--ink-2);font-size:.78rem;">(HS → KIDI 자동 매핑)</span>';
+        var _lbl = kidiItem ? itemLabel(kidiItem) : cargoName(rateName);
+        hint.innerHTML = T('✓ <strong>' + match.name + '</strong> → KIDI 품목 ', '✓ ' + (match.name_en ? '<strong>' + match.name_en + '</strong> → ' : 'matched → ') + 'KIDI item ') +
+          '<strong style="color:var(--accent);">' + _lbl + '</strong> ' +
+          T('<span style="color:var(--ink-2);font-size:.78rem;">(HS → KIDI 자동 매핑)</span>', '<span style="color:var(--ink-2);font-size:.78rem;">(HS → KIDI auto-map)</span>');
         hint.style.color = 'var(--forest)';
       }
     } else if (raw && raw.length >= 2) {
       if (hint) {
-        hint.textContent = '⚠ HS 코드(4자리)를 찾을 수 없습니다. KIDI 품목군을 직접 선택해 주세요.';
+        hint.textContent = T('⚠ HS 코드(4자리)를 찾을 수 없습니다. KIDI 품목군을 직접 선택해 주세요.', '⚠ HS code (4 digits) not found. Please pick a KIDI cargo group.');
         hint.style.color = 'var(--accent)';
       }
     } else {
-      if (hint) hint.innerHTML = '예: <strong>8471</strong>(컴퓨터·216-③), <strong>7208</strong>(열연강판·215-①), <strong>0901</strong>(커피·210-①), <strong>2710</strong>(석유·207)';
+      if (hint) hint.innerHTML = T('예: <strong>8471</strong>(컴퓨터·216-③), <strong>7208</strong>(열연강판·215-①), <strong>0901</strong>(커피·210-①), <strong>2710</strong>(석유·207)', 'e.g. <strong>8471</strong> (computers·216-③), <strong>7208</strong> (hot-rolled steel·215-①), <strong>0901</strong> (coffee·210-①), <strong>2710</strong> (oil·207)');
       if (hint) hint.style.color = 'var(--ink-2)';
     }
   }
@@ -471,12 +520,12 @@
     }
     var hint = $('calcRouteHint');
     if (hint) {
-      var trade = $('calcTrade').value === 'export' ? '수출' : '수입';
+      var trade = $('calcTrade').value === 'export' ? T('수출','Export') : T('수입','Import');
       var origin = $('calcOrigin').value || '?';
       var dest = $('calcDest').value || '?';
       hint.innerHTML = trade + ' · ' + origin + ' → ' + dest +
-        ' · 운송지역: <strong style="color:var(--forest);">' + region + '</strong>' +
-        ' <span style="color:var(--ink-2);font-size:.78rem;">(KIDI zone 자동매핑 — 필요 시 수정)</span>';
+        T(' · 운송지역: ', ' · zone: ') + '<strong style="color:var(--forest);">' + zoneName(region) + '</strong>' +
+        ' <span style="color:var(--ink-2);font-size:.78rem;">' + T('(KIDI zone 자동매핑 — 필요 시 수정)','(KIDI zone auto-mapped — edit if needed)') + '</span>';
     }
     return region;
   }
@@ -494,9 +543,9 @@
     var fxEl = $('calcFx');
     if (fxEl) fxEl.value = ccy.rate;
     var fxLbl = $('calcFxLabel');
-    if (fxLbl) fxLbl.textContent = '적용 환율 (₩/' + ccy.code + ')';
+    if (fxLbl) fxLbl.textContent = T('적용 환율 (₩/' + ccy.code + ')', 'Applied FX (₩/' + ccy.code + ')');
     var cifLbl = $('calcCifLabel');
-    if (cifLbl) cifLbl.textContent = '화물가액 CIF (' + ccy.code + ')';
+    if (cifLbl) cifLbl.textContent = T('화물가액 CIF (' + ccy.code + ')', 'Cargo value CIF (' + ccy.code + ')');
     updateInsuredAmt();
   }
 
@@ -508,7 +557,7 @@
     var insuredKRW = insuredCcy * fx;
     var hint = $('calcInsuredHint');
     if (hint) {
-      hint.innerHTML = '보험가입금액 (CIF×110%): <strong>' + ccyCode + ' ' + fmt(insuredCcy) +
+      hint.innerHTML = T('보험가입금액 (CIF×110%): ', 'Sum insured (CIF×110%): ') + '<strong>' + ccyCode + ' ' + fmt(insuredCcy) +
         '</strong> ≈ <strong>₩' + fmt(insuredKRW) + '</strong>';
     }
   }
@@ -528,16 +577,16 @@
     var manualRegion = regionSel ? regionSel.value : '';
 
     if (!kidiCode || !cif || cif <= 0 || !origin || !dest) {
-      alert('수출/수입 · 출발지 · 도착지 · 화물 품목 · 화물가액(CIF)을 모두 입력해 주세요.');
+      alert(T('수출/수입 · 출발지 · 도착지 · 화물 품목 · 화물가액(CIF)을 모두 입력해 주세요.', 'Please enter export/import, origin, destination, cargo item and CIF value.'));
       return;
     }
     var kidiItem = KIDI_ITEMS.find(function (i) { return i.code === kidiCode; });
-    if (!kidiItem) { alert('KIDI 품목코드 매핑 실패: ' + kidiCode); return; }
+    if (!kidiItem) { alert(T('KIDI 품목코드 매핑 실패: ','KIDI item mapping failed: ') + kidiCode); return; }
     var rateInfo = RATE_TABLE[kidiItem.cargo];
-    if (!rateInfo) { alert('화물군 매핑 실패: ' + kidiItem.cargo); return; }
+    if (!rateInfo) { alert(T('화물군 매핑 실패: ','Cargo group mapping failed: ') + kidiItem.cargo); return; }
     var baseRate = rateInfo[clause];
     if (baseRate === null || baseRate === undefined) {
-      alert('이 화물(예술품·귀금속)은 선택한 약관이 적용되지 않습니다. ICC(A) 또는 구약관 A.R를 선택해 주세요.');
+      alert(T('이 화물(예술품·귀금속)은 선택한 약관이 적용되지 않습니다. ICC(A) 또는 구약관 A.R를 선택해 주세요.', 'This cargo (art/precious) is not eligible for the selected clause. Please choose ICC(A) or old A.R.'));
       return;
     }
 
@@ -552,14 +601,14 @@
     if (premium < MIN_PREMIUM) premium = MIN_PREMIUM;
 
     $('calcResPremium').textContent = '₩' + fmt(premium);
-    $('calcResCargo').textContent = kidiItem.label + '  · 화물군 ' + rateInfo.name;
-    $('calcResHs').textContent = hs ? hs + ' (자동 분류)' : '직접 선택';
-    $('calcResClause').textContent = CLAUSE_LABEL[clause] || clause;
-    $('calcResRoute').textContent = origin + ' → ' + dest + ' (zone: ' + region + ')';
-    $('calcResTrade').textContent = trade === 'export' ? '수출 (Export)' : '수입 (Import)';
+    $('calcResCargo').textContent = itemLabel(kidiItem) + T('  · 화물군 ', '  · group ') + cargoName(rateInfo.name);
+    $('calcResHs').textContent = hs ? hs + T(' (자동 분류)',' (auto-classified)') : T('직접 선택','manual');
+    $('calcResClause').textContent = clauseName(clause);
+    $('calcResRoute').textContent = origin + ' → ' + dest + ' (zone: ' + zoneName(region) + ')';
+    $('calcResTrade').textContent = trade === 'export' ? T('수출 (Export)','Export') : T('수입 (Import)','Import');
     $('calcResInsured').textContent = '₩' + fmt(insuredKRW) + ' (' + ccyCode + ' ' + fmt(insuredCcy) + ')';
     $('calcResRate').textContent = rate.toFixed(4) + '%';
-    $('calcResFx').textContent = '₩' + fmt2(fx) + ' / ' + ccyCode + ' (전일 종가 전신환 매도율)';
+    $('calcResFx').textContent = '₩' + fmt2(fx) + ' / ' + ccyCode + T(' (전일 종가 전신환 매도율)',' (prior-day T/T selling rate)');
 
     var resultEl = $('calcResult');
     if (resultEl) {
@@ -568,19 +617,19 @@
     }
     var consultLink = $('calcConsultLink');
     if (consultLink) {
-      var memo = '[적하] ' + (trade === 'export' ? '수출' : '수입') +
-        ' / ' + origin + '→' + dest + ' (' + region + ')' +
-        ' / HS:' + (hs || '-') + ' / KIDI ' + kidiCode + ' ' + rateInfo.name +
+      var memo = T('[적하] ','[Cargo] ') + (trade === 'export' ? T('수출','Export') : T('수입','Import')) +
+        ' / ' + origin + '→' + dest + ' (' + zoneName(region) + ')' +
+        ' / HS:' + (hs || '-') + ' / KIDI ' + kidiCode + ' ' + cargoName(rateInfo.name) +
         ' / CIF ' + ccyCode + ' ' + fmt(cif) +
-        ' / ' + (CLAUSE_LABEL[clause] || clause);
-      consultLink.href = 'consult.html?product=cargo&memo=' + encodeURIComponent(memo);
+        ' / ' + clauseName(clause);
+      consultLink.href = (LANG === 'en' ? '/en/consult.html' : 'consult.html') + '?product=cargo&memo=' + encodeURIComponent(memo);
     }
   }
 
   function loadFx() {
     var hint = $('calcFxHint');
     if (!hint) return;
-    hint.innerHTML = '환율 불러오는 중…';
+    hint.innerHTML = T('환율 불러오는 중…','Loading FX rates…');
 
     var symbols = CURRENCIES.map(function (c) { return c.code; }).join(',');
     // Primary: frankfurter.dev (ECB 기준, 2024년에 .app → .dev 이전)
@@ -595,8 +644,8 @@
           c.rate = Math.round((1 / perKrw) * 100) / 100;
         }
       });
-      hint.innerHTML = '✓ 최종 갱신 ' + dateStr + ' · ' + source + ' 기준 환율 자동 적용 ' +
-        '<span style="color:var(--ink-2);font-size:.74rem;">(영업일 1회 갱신, 통화 변경 시 자동세팅, 수동 수정 가능)</span>';
+      hint.innerHTML = T('✓ 최종 갱신 ' + dateStr + ' · ' + source + ' 기준 환율 자동 적용 ', '✓ Updated ' + dateStr + ' · ' + source + ' rates applied ') +
+        '<span style="color:var(--ink-2);font-size:.74rem;">' + T('(영업일 1회 갱신, 통화 변경 시 자동세팅, 수동 수정 가능)','(updated once per business day; auto-set on currency change; editable)') + '</span>';
       onCurrencyChange();
     }
 
@@ -634,8 +683,8 @@
         var d = new Date();
         d.setDate(d.getDate() - 1);
         var dateStr = d.toISOString().substring(0, 10);
-        hint.innerHTML = '⚠ 자동 환율 조회 실패 — 예시 환율 적용 중 ' +
-          '<span style="color:var(--ink-2);font-size:.74rem;">(' + dateStr + ' 기준 정적 값, 수동 수정 가능)</span>';
+        hint.innerHTML = T('⚠ 자동 환율 조회 실패 — 예시 환율 적용 중 ', '⚠ Auto FX fetch failed — using sample rates ') +
+          '<span style="color:var(--ink-2);font-size:.74rem;">(' + dateStr + T(' 기준 정적 값, 수동 수정 가능',' static values; editable') + ')</span>';
       });
   }
 
@@ -643,7 +692,7 @@
     var dl = $('countryList');
     if (!dl) return;
     dl.innerHTML = COUNTRIES.map(function (c) {
-      return '<option value="' + c[1] + '">' + c[2] + ' (' + c[0] + ')</option>';
+      return '<option value="' + (LANG==="en"?c[2]:c[1]) + '">' + c[2] + ' (' + c[0] + ')</option>';
     }).join('');
   }
 
@@ -656,11 +705,11 @@
       if (!groups[it.group]) { groups[it.group] = []; groupOrder.push(it.group); }
       groups[it.group].push(it);
     });
-    var html = '<option value="">선택하세요…</option>';
+    var html = '<option value="">' + T('선택하세요…','Select…') + '</option>';
     groupOrder.forEach(function (g) {
-      html += '<optgroup label="' + g + '">';
+      html += '<optgroup label="' + groupName(g) + '">';
       groups[g].forEach(function (it) {
-        html += '<option value="' + it.code + '">' + it.label + '</option>';
+        html += '<option value="' + it.code + '">' + itemLabel(it) + '</option>';
       });
       html += '</optgroup>';
     });
@@ -671,7 +720,7 @@
     var sel = $('calcRegion');
     if (!sel) return;
     sel.innerHTML = REGIONS.map(function (r) {
-      return '<option value="' + r + '">' + r + '</option>';
+      return '<option value="' + r + '">' + zoneName(r) + '</option>';
     }).join('');
   }
 
@@ -679,7 +728,7 @@
     var sel = $('calcCcy');
     if (!sel) return;
     sel.innerHTML = CURRENCIES.map(function (c) {
-      return '<option value="' + c.code + '">' + c.code + ' — ' + c.name + '</option>';
+      return '<option value="' + c.code + '">' + (LANG==="en" ? c.code : c.code + ' — ' + c.name) + '</option>';
     }).join('');
   }
 
