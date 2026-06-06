@@ -7404,3 +7404,39 @@ html body .right-quick {
 .notice-accordion .na-body{padding:4px 20px 18px;border-top:1px solid var(--n2n-border-light,#EFEAE0);}
 .notice-accordion .na-body h4{color:var(--brand,#0B2818);font-size:1rem;margin:16px 0 6px;}
 .notice-accordion .na-body li,.notice-accordion .na-body p{font-size:.86rem;color:var(--n2n-ink-60,#555);line-height:1.6;}
+
+
+/* ===================== 활용 사례(ed-case) 강조 박스 — 시안 A ===================== */
+.ed-case{
+  position:relative;
+  background:var(--n2n-cream-deep,#FBF7EE);
+  border:1px solid var(--n2n-border,#E5E0D5);
+  border-left:5px solid var(--n2n-orange,#C56A2C);
+  border-radius:14px;
+  padding:22px 24px 20px 74px;
+  margin:28px 0;
+}
+.ed-case::before{
+  content:'📋';
+  position:absolute; left:20px; top:20px;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--n2n-orange-bg,#FDF4EC); border:1px solid #F0D9C2;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; line-height:1;
+}
+.ed-case__label{
+  display:inline-block;
+  background:none; padding:0; border-radius:0;
+  color:var(--n2n-orange,#C56A2C);
+  font-weight:800; font-size:.84rem; letter-spacing:.01em;
+  margin:0 0 9px;
+}
+.ed-case__quote{
+  font-style:italic; color:var(--n2n-ink,#1A1A1A);
+  line-height:1.78; font-size:.95rem; margin:0;
+}
+.ed-case__attribution{ font-size:.8rem; color:var(--n2n-ink-60,#555); margin:13px 0 0; }
+@media (max-width:560px){
+  .ed-case{ padding:20px 18px 18px 18px; }
+  .ed-case::before{ position:static; margin-bottom:12px; }
+}
