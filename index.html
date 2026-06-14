@@ -74,6 +74,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style id="cargo-hero-contemporize">
+/* === CARGO HERO contemporize · 타이포 밸런스 (2026-06-14) === */
+.cargo-hero{ font-family:'Pretendard',var(--f-body); padding:4.5rem 0 3.25rem; }
+.cargo-hero .calc-card{ font-family:var(--f-body); }
+.cargo-hero .eyebrow{ font-size:.72rem; letter-spacing:.16em; font-weight:600; margin-bottom:1.05rem; }
+.cargo-hero h1{
+  font-family:'Pretendard',var(--f-display);
+  font-size:clamp(1.95rem,3.6vw,2.8rem);
+  font-weight:700; line-height:1.3; letter-spacing:-0.025em;
+  margin:0 auto 1.05rem; max-width:680px;
+}
+.cargo-hero h1 em{ font-weight:800; }
+.cargo-hero .lede{
+  font-family:'Pretendard',var(--f-body);
+  font-size:1rem; line-height:1.72; max-width:580px; margin:0 auto;
+  color:rgba(244,240,232,.80);
+}
+.cargo-hero .hero-usp{
+  margin-top:1.3rem !important; font-size:.84rem; font-weight:600;
+  letter-spacing:.02em; padding:7px 16px; border-radius:999px;
+}
+.hero-tracks{ margin:2rem auto 0; max-width:880px; gap:12px; }
+.track-card{ border-width:1px; border-radius:12px; padding:15px 18px; }
+.track-num{ font-size:1rem; }
+.track-title{ font-size:.95rem; font-weight:700; }
+.track-desc{ font-size:.76rem; }
+@media (max-width:780px){
+  .cargo-hero{ padding:2.5rem 0 1.75rem; }
+  .cargo-hero h1{ font-size:1.62rem !important; line-height:1.34; letter-spacing:-0.02em; max-width:100%; }
+  .cargo-hero .lede{ font-size:.95rem; line-height:1.66; max-width:100%; }
+  .hero-tracks{ grid-template-columns:1fr; }
+}
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
