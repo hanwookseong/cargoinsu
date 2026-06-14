@@ -90,22 +90,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .cargo-hero h1 em{ font-weight:800; }
 .cargo-hero .lede{
   font-family:'Pretendard',var(--f-body);
-  font-size:1rem; line-height:1.72; max-width:580px; margin:0 auto;
-  color:rgba(244,240,232,.80);
+  font-size:1.12rem; line-height:1.78; max-width:620px; margin:0 auto;
+  color:rgba(255,255,255,.92);
 }
 .cargo-hero .hero-usp{
   margin-top:1.3rem !important; font-size:.84rem; font-weight:600;
   letter-spacing:.02em; padding:7px 16px; border-radius:999px;
 }
+.cargo-hero .hero-usp .usp-line2{ white-space:nowrap; }
 .hero-tracks{ margin:2rem auto 0; max-width:880px; gap:12px; }
 .track-card{ border-width:1px; border-radius:12px; padding:15px 18px; }
 .track-num{ font-size:1rem; }
 .track-title{ font-size:.95rem; font-weight:700; }
-.track-desc{ font-size:.76rem; }
+.track-desc{ font-size:.76rem; text-align:center; }
+.track-nw{ white-space:nowrap; }
 @media (max-width:780px){
   .cargo-hero{ padding:2.5rem 0 1.75rem; }
   .cargo-hero h1{ font-size:1.62rem !important; line-height:1.34; letter-spacing:-0.02em; max-width:100%; }
-  .cargo-hero .lede{ font-size:.95rem; line-height:1.66; max-width:100%; }
+  .cargo-hero .lede{ font-size:1.02rem; line-height:1.7; max-width:100%; }
+  .cargo-hero .hero-usp{ text-align:center; }
+  .cargo-hero .hero-usp .usp-sep{ display:none; }
+  .cargo-hero .hero-usp .usp-line2{ display:block; }
   .hero-tracks{ grid-template-columns:1fr; }
 }
 </style>
@@ -186,7 +191,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <strong style="color:#fff;">적하보험</strong>은 KIDI 인가요율 기준 즉시 견적, 그 외 6종은 6개 보험회사 약관 비교 상담.
     </p>
     <p class="hero-usp">
-      6개 보험회사 약관 비교 · 30초 자동견적 · 평균 4시간 회신
+      6개 보험회사 약관 비교 · 30초 자동견적<span class="usp-sep"> · </span><span class="usp-line2">평균 4시간 회신</span>
     </p>
 
     <!-- 3-track value strip — 계산기 / Open Policy / 대시보드 -->
@@ -203,7 +208,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="track-num">02</div>
         <div class="track-body">
           <div class="track-title">Open Policy</div>
-          <div class="track-desc">보장공백 제거 · 행정 90% 절감 · 월 1회 정산</div>
+          <div class="track-desc">보장공백 제거 · 행정 90% 절감 · <span class="track-nw">월 1회 정산</span></div>
         </div>
         <span class="track-arrow">→</span>
       </a>
