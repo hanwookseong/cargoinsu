@@ -282,6 +282,149 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="pd-lead">컨테이너 한 통이 통째로 사라지면 어떡하나, 다들 한 번쯤 떠올리시죠. 적하보험은 그 걱정을 정확히 보장으로 바꿔주는 안전장치입니다. 신약관 ICC(A/B/C)부터 구약관 A.R·W.A·F.P.A까지 6가지 조건 중 <strong>화주님 화물에 가장 잘 맞는 걸</strong> 고르세요. 6개 보험회사 견적을 한 번에 비교 — <strong>30초</strong>면 충분합니다.</p>
 </div></section>
 
+
+<!-- 적하보험 즉시 계산기 (홈에서 이전) -->
+<section id="calculator" style="padding:48px 0;background:#FAF7EE;border-top:1px solid #E5E0D5;border-bottom:1px solid #E5E0D5;">
+  <div class="container">
+    <!-- 적하보험 전용 계산기 -->
+    <div class="calc-card" id="calculator-card">
+      <h2>📦 적하보험 예상 보험료 즉시 계산</h2>
+      <p class="calc-sub">
+        해상·항공 적하보험 전용 — 수출/수입·운송구간·HS 코드·CIF 가액을 입력하면 약 30초 안에 예상 보험료 범위를 확인하실 수 있습니다.
+        <strong style="color:var(--accent);">실제 보험료는 인수심사 후 확정됩니다.</strong>
+      </p>
+
+      <!-- 1행: 수출/수입 + 운송수단 + 약관 -->
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>수출/수입 <span class="req">*</span></label>
+          <select id="calcTrade">
+            <option value="export">수출 (Export)</option>
+            <option value="import">수입 (Import)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>운송수단</label>
+          <select id="calcMode">
+            <option value="sea">해상 (Sea)</option>
+            <option value="air">항공 (Air)</option>
+            <option value="multimodal">복합운송 (Multimodal)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>약관 조건<span class="tip" title="해상: ICC(A) 권장 / 항공: ICC(Air) 권장. 운송수단 선택 시 자동 매칭">?</span></label>
+          <select id="calcClause">
+            <optgroup label="신약관 — 해상 (1982/2009 ICC)">
+              <option value="icc_a">신약관 ICC(A) — All Risks (해상 권장)</option>
+              <option value="icc_b">신약관 ICC(B) — 한정담보</option>
+              <option value="icc_c">신약관 ICC(C) — 최소담보</option>
+            </optgroup>
+            <optgroup label="신약관 — 항공 (1982/2009 ICC Air)">
+              <option value="icc_air">신약관 ICC(Air) — All Risks (항공 권장)</option>
+            </optgroup>
+            <optgroup label="구약관 — 해상 (1963 S.G. Policy)">
+              <option value="ar">구약관 A.R — All Risks</option>
+              <option value="wa">구약관 W.A — With Average</option>
+              <option value="fpa">구약관 F.P.A — Free from Particular Average</option>
+            </optgroup>
+            <optgroup label="구약관 — 항공 (Air)">
+              <option value="ar_air">구약관 A.R (Air) — All Risks (항공)</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <!-- 2행: 출발지·도착지 + 운송지역(자동선택) -->
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>출발지 (국가) <span class="req">*</span><span class="tip" title="국가명 또는 영문 입력 — 자동완성">?</span></label>
+          <input type="text" id="calcOrigin" list="countryList" placeholder="예: 대한민국 / Korea / KR" autocomplete="off">
+        </div>
+        <div class="calc-field">
+          <label>도착지 (국가) <span class="req">*</span></label>
+          <input type="text" id="calcDest" list="countryList" placeholder="예: 미국 / United States / US" autocomplete="off">
+        </div>
+        <div class="calc-field">
+          <label>운송지역 (KIDI zone)<span class="tip" title="출발/도착 국가에서 자동선택. 보세/외항·국내연안 등은 수동 선택 가능">?</span></label>
+          <select id="calcRegion">
+            <option value="">자동선택…</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-hint" id="calcRouteHint" style="margin: -8px 0 12px;">출발지·도착지 입력 시 운송지역 자동매핑</div>
+      <datalist id="countryList"></datalist>
+
+      <!-- 3행: HS 코드 + 화물군 + CIF -->
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>HS Code (4 또는 6 자리) <span class="tip" title="HS 코드를 입력하면 KIDI 화물군이 자동 매칭됩니다">?</span></label>
+          <input type="text" id="calcHs" placeholder="예: 8471 또는 847130" maxlength="10" autocomplete="off">
+          <div class="calc-hint" id="calcHsHint">예: <strong>8471</strong>(컴퓨터), <strong>7208</strong>(열연강판), <strong>0901</strong>(커피)</div>
+        </div>
+        <div class="calc-field">
+          <label>화물 품목 (KIDI 코드 201~306) <span class="req">*</span><span class="tip" title="KIDI 해상보험요율서 품목코드. HS Code 입력 시 자동선택, 직접 변경 가능">?</span></label>
+          <select id="calcCargo">
+            <option value="">로딩중…</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label id="calcCifLabel">화물가액 CIF (USD) <span class="req">*</span><span class="tip" title="CIF=Cost+Insurance+Freight. 보험가입금액=CIF×110%">?</span></label>
+          <input type="number" id="calcCif" value="500000" min="1" step="1000">
+          <div class="calc-hint" id="calcInsuredHint">보험가입금액: USD 550,000 (₩797,500,000)</div>
+        </div>
+      </div>
+
+      <!-- 4행: 통화 + 환율 -->
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label>화물가액 통화 (Currency)<span class="tip" title="USD/EUR/JPY/CNY/GBP/AUD/CAD/CHF/HKD/SGD — 통화 선택 시 KEB하나은행 1차고시 환율 자동세팅">?</span></label>
+          <select id="calcCcy">
+            <option value="USD">로딩중…</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label id="calcFxLabel">적용 환율 (₩/USD)<span class="tip" title="전일 종가 전신환 매도율 — KEB하나은행 1차고시 표준. 통화 변경 시 자동세팅, 수동 수정 가능">?</span></label>
+          <input type="number" id="calcFx" value="1450" min="0.01" step="0.01">
+          <div class="calc-hint" id="calcFxHint">전일 종가 전신환 매도율 자동 적용</div>
+        </div>
+      </div>
+
+      <button type="button" class="calc-submit" id="calcSubmit">📊 예상 보험료 확인하기 →</button>
+
+      <!-- 결과 -->
+      <div class="calc-result" id="calcResult">
+        <div class="res-head">
+          <h3>예상 보험료 (KIDI · 메리츠 기준)</h3>
+          <span class="res-tag" id="calcResClause">신약관 ICC(A)</span>
+        </div>
+        <div class="single-premium">
+          <span class="lbl">예상 보험료</span>
+          <span class="single-amount" id="calcResPremium">-</span>
+        </div>
+        <div class="res-detail">
+          <strong>구분:</strong> <span id="calcResTrade">-</span><br>
+          <strong>운송 구간:</strong> <span id="calcResRoute">-</span><br>
+          <strong>HS Code:</strong> <span id="calcResHs">-</span><br>
+          <strong>KIDI 품목·화물군:</strong> <span id="calcResCargo">-</span><br>
+          <strong>보험가입금액 (CIF×110%):</strong> <span id="calcResInsured">-</span><br>
+          <strong>적용 요율:</strong> <span id="calcResRate">-</span> <span style="color:var(--ink-2);font-size:.78rem;">(KIDI 참조요율 + 메리츠화재 기준)</span><br>
+          <strong>적용 환율:</strong> <span id="calcResFx">-</span><br>
+          <strong>최저보험료:</strong> ₩13,000 (KIDI 참조)
+        </div>
+        <div class="res-notice">
+          ※ 위 보험료는 <strong>보험개발원(KIDI) 참조요율 + 메리츠화재 기준 단일 요율</strong>로 산출한 예상치이며,
+          화물 상세·포장·선박·계약자 실적·할인·할증 등에 따라 실제 보험료는 달라질 수 있습니다.
+          정확한 견적은 <strong>6개 보험회사 동시 비교 후 확정</strong>되며, 가입 신청 시 안내드립니다.
+        </div>
+        <div class="res-actions">
+          <a class="btn-primary" id="calcConsultLink" href="../consult.html?product=cargo">정식 견적 신청 →</a>
+          <a class="btn-outline" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank">💬 카톡 1:1 상담</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div class="container"><div class="pd-layout">
   <aside class="pd-snb"><h3>전문 상품 7종</h3><ul>
     <li class="active"><a href="marine-cargo.html">적하보험</a></li>
@@ -847,6 +990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-bottom">© 2026 N2N Insurance Brokerage / cargoinsu.com. All rights reserved. · <a href="../privacy.html" style="color:inherit;text-decoration:underline">개인정보처리방침</a> · <a href="../terms.html" style="color:inherit;text-decoration:underline">이용약관</a></div>
 </footer>
 
+<script src="../assets/hs-database.js"></script>
 <script src="../assets/calculator.js"></script>
 <script src="../assets/script.js" defer></script>
 </body>
