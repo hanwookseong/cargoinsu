@@ -170,11 +170,15 @@
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
+    var langHref = LANG === 'en' ? '/index.html' : '/en/index.html';
+    var langLabel = LANG === 'en' ? 'KO' : 'EN';
+    var langAria = LANG === 'en' ? '한국어로 보기' : 'View in English';
     header.innerHTML =
       '<button type="button" class="msh-menu" aria-label="' + L('메뉴 열기','Open menu') + '"><span></span></button>' +
       '<a class="msh-logo" href="' + homeHref + '" aria-label="cargoinsu home">' +
         '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage / cargoinsu.com">' +
       '</a>' +
+      '<a class="msh-lang" href="' + langHref + '" hreflang="' + (LANG === 'en' ? 'ko' : 'en') + '" aria-label="' + langAria + '" style="flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:30px;padding:0 9px;margin-right:8px;border:1px solid #0B2818;border-radius:6px;color:#0B2818;font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;line-height:1;">' + langLabel + '</a>' +
       '<a class="msh-cta" href="' + consultHref + '">' + L('상담신청','Consult') + '</a>';
     document.body.insertBefore(header, document.body.firstChild);
     var newMenuBtn = header.querySelector('.msh-menu');
@@ -234,7 +238,7 @@
       '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage">';
     gnb.insertBefore(logoAnchor, gnb.firstChild);
     // 언어 전환 토글 — GNB 우측에 주입 (데스크톱·모바일 공통 가시)
-    if (!gnb.querySelector('.gnb-lang-switch')) {
+    if (!gnb.querySelector('.gnb-lang-switch') && (!window.matchMedia || window.matchMedia('(min-width: 781px)').matches)) {
       var langSw = document.createElement('a');
       langSw.className = 'gnb-lang-switch';
       langSw.href = LANG === 'en' ? '/index.html' : '/en/index.html';
