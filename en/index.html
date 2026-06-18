@@ -80,6 +80,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* Language switch (EN/KO) — self-contained so styles.css needs no edit */
 .lang-switch{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;padding:0 9px;border:1px solid currentColor;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;line-height:1;opacity:.92}
 .lang-switch:hover{opacity:1}
+
+/* HERO 하단 증거 카드 — 클릭 시 RTB 상세 (native details) */
+.trust-stats .proof{background:#fff;border-radius:8px;border:1px solid rgba(11,40,24,.08);overflow:hidden;transition:border-color .15s,box-shadow .15s;}
+.trust-stats .proof[open]{border-color:var(--accent);box-shadow:0 6px 20px rgba(11,40,24,.08);}
+.trust-stats .proof summary{list-style:none;cursor:pointer;padding:26px 20px 22px;text-align:center;}
+.trust-stats .proof summary::-webkit-details-marker{display:none;}
+.trust-stats .proof-num{font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.02em;}
+.trust-stats .proof-unit{font-size:1.1rem;font-weight:600;margin-left:2px;}
+.trust-stats .proof-label{font-size:.78rem;color:var(--ink-2);margin-top:10px;letter-spacing:.02em;line-height:1.55;}
+.trust-stats .proof-hint{margin-top:12px;font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:.03em;}
+.trust-stats .proof[open] .proof-hint{font-size:0;}
+.trust-stats .proof[open] .proof-hint::before{content:"Close \25b4";font-size:.72rem;opacity:.6;}
+.trust-stats .proof-body{padding:0 22px 22px;text-align:left;border-top:1px solid rgba(11,40,24,.06);}
+.trust-stats .proof-body p{margin:14px 0 0;font-size:.82rem;color:var(--ink-2);line-height:1.7;}
+.trust-stats .proof-body a{display:inline-block;margin-top:12px;color:var(--accent);font-weight:600;font-size:.82rem;text-decoration:none;}
+.trust-stats .proof-body a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -117,17 +133,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div></div>
 
 <nav class="navi_wrap" aria-label="Main menu"><div class="gnb"><ul>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Fine Art / Jeweller's ▾</a>
+    <ul class="depth2">
+      <li><a href="/en/products/specialty-art.html">Fine Art</a></li>
+      <li><a href="/en/products/jewellers-block.html">Jeweller's Block</a></li>
+    </ul>
+  </li>
   <li><a href="/en/products/marine-cargo.html">Marine Cargo</a></li>
   <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Transit ▾</a>
     <ul class="depth2">
       <li><a href="/en/products/marine-transit.html">Transit Insurance (Marine)</a></li>
       <li><a href="/en/products/inland-transit.html">Inland Transit</a></li>
-    </ul>
-  </li>
-  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Fine Art / Jeweller's ▾</a>
-    <ul class="depth2">
-      <li><a href="/en/products/specialty-art.html">Fine Art</a></li>
-      <li><a href="/en/products/jewellers-block.html">Jeweller's Block</a></li>
     </ul>
   </li>
   <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Carrier &amp; Freight Liability ▾</a>
@@ -142,46 +158,160 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </ul><button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
 
 <!-- HERO -->
-<section class="cargo-hero" id="calculator">
+<section class="cargo-hero">
   <div class="container">
-    <span class="eyebrow">CARGO · TRANSIT · FINE ART · JEWELLERS · CARRIER LIABILITY · FFL</span>
-    <h1>Instant quotes for <em>cargo</em>.<br>Expert brokerage for what you ship — and what you're <em>liable for</em>.</h1>
+    <span class="eyebrow">FINE ART · JEWELLER'S BLOCK · SPECIE · MARINE CARGO · CARRIER LIABILITY</span>
+    <h1><em>Fine art · jewellery · specie</em>,<br>structured by an <em>independent broker</em><br>comparing <em style="white-space:nowrap">AM Best A-rated</em> insurers.</h1>
     <p class="lede">
-      N2N Insurance Brokerage's specialist platform across <strong style="color:#fff;">cargo · transit · fine art / jeweller's · carrier / freight liability</strong> — 4 categories, 7 lines.
-      <strong style="color:#fff;">Marine cargo</strong> gets an instant quote on KIDI reference rates; the other 6 lines are advised after comparing the terms of 6 insurers.
+      N2N Insurance Brokerage (N2NIB) is an <strong style="color:#0B2818;">independent broker specialising in high-value assets</strong> — fine art, jewellery and specie.
+      We compare <strong style="color:#0B2818;">6 AM Best A-rated</strong> insurers in one place to find the cover and terms that fit you best.
+      We also broker the full range of cargo insurance — marine cargo, transit and carrier / freight liability.
     </p>
     <p class="hero-usp">
-      Compare 6 insurers' terms · 30-second auto-quote · avg. 4-hour response
+      Independent broker · 6 AM Best A-rated insurers compared<span class="usp-sep"> · </span><span class="usp-line2">broker fee paid by the insurer (Insurance Business Act Art. 98)</span>
     </p>
 
-    <!-- 3-track value strip — calculator / Open Policy / dashboard -->
-    <div class="hero-tracks" role="list">
-      <a class="track-card track-card--active" href="#calculator-card" role="listitem">
-        <div class="track-num">01</div>
-        <div class="track-body">
-          <div class="track-title">Instant premium calculator</div>
-          <div class="track-desc">5-min auto-quote · 6 insurers compared · same-day issue</div>
+    <div class="hero-cta" role="group" aria-label="Get started" style="margin:2.4rem auto 0;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#products" style="display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1rem;">Explore fine art &amp; jewellery cover →</a>
+      <a href="/en/consult.html" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--forest);color:var(--forest);padding:14px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;">Talk to a broker</a>
+    </div>
+    <p style="margin:14px auto 0;max-width:520px;text-align:center;font-size:0.86rem;color:var(--ink-40);line-height:1.6;">High-value assets are structured through specialist, agreed-value underwriting — start by exploring the cover and real-world scenarios.</p>
+
+  </div>
+</section>
+
+<!-- ====== TRUST STATS ====== -->
+<section class="trust-stats" style="padding:40px 0;border-top:1px solid rgba(11,40,24,.08);border-bottom:1px solid rgba(11,40,24,.08);background:rgba(244,240,232,.55)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:start;">
+      <details class="proof">
+        <summary>
+          <div class="proof-num">6</div>
+          <div class="proof-label">AM Best A-rated insurers<br>compared side by side</div>
+          <div class="proof-hint">Details ▾</div>
+        </summary>
+        <div class="proof-body">
+          <p>AIG · Chubb · DB · Hyundai Marine &amp; Fire · KB · Meritz — all six insurers are rated AM Best A (Excellent) or higher. We compare premiums, policy wordings and financial strength in one table.</p>
+          <a href="/en/consult.html">→ Request a 6-insurer comparison</a>
         </div>
-        <span class="track-arrow">↓</span>
-      </a>
-      <a class="track-card" href="#open-policy" role="listitem">
-        <div class="track-num">02</div>
-        <div class="track-body">
-          <div class="track-title">Open Policy</div>
-          <div class="track-desc">Close coverage gaps · cut admin 90% · monthly settlement</div>
+      </details>
+      <details class="proof">
+        <summary>
+          <div class="proof-num">0</div>
+          <div class="proof-label">extra fee to you<br>(broker fee paid by the insurer)</div>
+          <div class="proof-hint">Details ▾</div>
+        </summary>
+        <div class="proof-body">
+          <p>Our brokerage fee is paid by the insurer. No separate broker fee is added to your premium, so you receive the 6-insurer comparison at no extra cost (Insurance Business Act Art. 98).</p>
+          <a href="/en/consult.html">→ Get a free comparison quote</a>
         </div>
-        <span class="track-arrow">→</span>
-      </a>
-      <a class="track-card" href="#dashboard" role="listitem">
-        <div class="track-num">03</div>
-        <div class="track-body">
-          <div class="track-title">Console dashboard <span class="track-badge">Q4 2026</span></div>
-          <div class="track-desc">Per-client cover status · auto-renewal · OCR intake</div>
+      </details>
+      <details class="proof">
+        <summary>
+          <div class="proof-num">30<span class="proof-unit">sec</span></div>
+          <div class="proof-label">marine cargo instant quote<br>(KIDI reference-rate basis)</div>
+          <div class="proof-hint">Details ▾</div>
+        </summary>
+        <div class="proof-body">
+          <p>Enter the HS code and cargo details and a marine cargo premium is estimated in about 30 seconds on the KIDI reference rate, leading into a 6-insurer comparison and same-day issue.</p>
+          <a href="#calculator">→ Run the instant marine cargo quote</a>
         </div>
-        <span class="track-arrow">→</span>
-      </a>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 4 categories (7 lines) -->
+<section class="cargo-products" id="products">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">PRODUCTS · 4 CATEGORIES · 7 LINES</span>
+      <h2>What cargoinsu specialises in — <em style="color:var(--accent);font-weight:600;">4 categories, 7 lines</em></h2>
+      <p>Fine art, jewellery and specie are structured through specialist agreed-value underwriting; marine cargo can be quoted instantly on the KIDI reference rate.</p>
+    </div>
+    <!-- featured: Fine Art / Jeweller's -->
+    <div class="cargo-card cargo-card--featured" style="border:2px solid var(--accent);position:relative;background:linear-gradient(180deg, rgba(217,119,87,0.05) 0%, #fff 55%);padding:30px 28px;margin-bottom:18px;">
+      <div style="position:absolute;top:-12px;left:24px;background:var(--accent);color:#fff;padding:5px 14px;border-radius:20px;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">SPECIALTY · HIGH-VALUE ASSETS</div>
+      <span class="sub" style="color:var(--accent);font-weight:700;">FINE ART / JEWELLER'S BLOCK · SPECIALIST</span>
+      <h3 style="margin-top:6px;font-size:clamp(1.3rem,2.6vw,1.7rem);">Fine Art · Jewellery · Specie</h3>
+      <p style="margin-bottom:18px;max-width:700px;">Works held by museums, galleries and collectors, and the high-value stock of jewellers, duty-free and auction houses, covered on an <strong>Agreed Value</strong> basis. From Wall-to-Wall and short-term exhibition to Memo consignment, Mysterious Disappearance and Worldwide cover — we structure the risks specific to high-value assets.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+        <a href="/en/products/specialty-art.html" style="display:flex;align-items:center;gap:12px;padding:16px;background:rgba(244,240,232,0.7);border-radius:8px;text-decoration:none;color:var(--forest);font-weight:600;line-height:1.4;">🖼️ <span>Fine Art<br><span style="font-size:0.78rem;font-weight:500;color:var(--ink-40);">View risks · scenarios →</span></span></a>
+        <a href="/en/products/jewellers-block.html" style="display:flex;align-items:center;gap:12px;padding:16px;background:rgba(244,240,232,0.7);border-radius:8px;text-decoration:none;color:var(--forest);font-weight:600;line-height:1.4;">💎 <span>Jeweller's Block<br><span style="font-size:0.78rem;font-weight:500;color:var(--ink-40);">View risks · scenarios →</span></span></a>
+      </div>
+    </div>
+    <!-- cargo trio -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+      <div class="cargo-card" style="position:relative;">
+        <span class="sub">CARGO · 30-SEC QUOTE</span>
+        <h3 style="margin-top:4px;">Marine Cargo</h3>
+        <p style="font-size:0.9rem;margin-bottom:12px;">Loss or damage to goods in sea, air or multimodal transit. Designed by ICC (A)/(B)/(C).</p>
+        <a class="card-link" href="/en/products/marine-cargo.html" style="color:var(--accent);font-weight:600;font-size:0.9rem;text-decoration:none;">Learn more →</a>
+      </div>
+      <div class="cargo-card" style="position:relative;">
+        <span class="sub">TRANSIT · ADVISORY</span>
+        <h3 style="margin-top:4px;">Transit Insurance</h3>
+        <p style="font-size:0.9rem;margin-bottom:12px;">The shipper's own goods in domestic marine, multimodal and inland transit. All Risks · W2W.</p>
+        <a class="card-link" href="/en/products/marine-transit.html" style="color:var(--accent);font-weight:600;font-size:0.9rem;text-decoration:none;">Learn more →</a>
+      </div>
+      <div class="cargo-card" style="position:relative;">
+        <span class="sub">CARRIER LIABILITY · ADVISORY</span>
+        <h3 style="margin-top:4px;">Carrier / Freight Liability</h3>
+        <p style="font-size:0.9rem;margin-bottom:12px;">Carrier and forwarder liability. Trucking Act Art. 35 compulsory cover · FFL.</p>
+        <a class="card-link" href="/en/products/carriers-liability.html" style="color:var(--accent);font-weight:600;font-size:0.9rem;text-decoration:none;">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="cargo-why">
+  <div class="container">
+    <div class="section-head" style="text-align:center;">
+      <span class="eyebrow" style="display:inline-block;color:var(--accent);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;">WHY AN INDEPENDENT BROKER</span>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin:0;">Why an independent broker</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-cell">
+        <span class="num">01</span>
+        <h3>Independent · on your side</h3>
+        <p>An FSS-registered insurance broker (Reg. No. 2026-012201) advising on the client's side under Article 89 of the Insurance Business Act. We are not an agent of any single insurer, so we compare neutrally for shippers, collectors and dealers.</p>
+      </div>
+      <div class="why-cell">
+        <span class="num">02</span>
+        <h3>Specialist in fine art, jewellery &amp; specie</h3>
+        <p>Agreed Value, Wall-to-Wall, Memo consignment and Mysterious Disappearance — we structure the cover specific to high-value assets. An ACIU-qualified underwriter reviews museum, gallery, auction, dealer and duty-free risks directly.</p>
+      </div>
+      <div class="why-cell">
+        <span class="num">03</span>
+        <h3>6 AM Best A-rated insurers compared</h3>
+        <p>AIG · Chubb · DB · Hyundai Marine &amp; Fire · KB · Meritz — <strong>all rated AM Best A (Excellent) or higher</strong>. We compare premiums and policy terms side by side, weighing coverage and financial strength — not merely the lowest price.</p>
+      </div>
+      <div class="why-cell">
+        <span class="num">04</span>
+        <h3>Broker fee paid by the insurer</h3>
+        <p>Our brokerage fee is paid by the insurer. No separate broker fee is added to your premium, so you receive the 6-insurer comparison at no extra cost (Insurance Business Act Art. 98).</p>
+      </div>
     </div>
 
+    <div style="margin-top:3rem;text-align:center;">
+      <a class="btn btn-primary" href="https://n2nib.com" target="_blank" style="background:var(--forest);color:var(--ivory);padding:.85rem 2rem;font-weight:600;text-decoration:none;border-radius:3px;">See all 110+ lines at N2N Insurance Brokerage →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Conversion CTA band -->
+<section class="cta-band" style="background:var(--forest);padding:clamp(40px,6vw,60px) 0;">
+  <div class="container" style="text-align:center;max-width:760px;">
+    <h2 style="color:var(--ivory);font-size:clamp(1.4rem,2.8vw,2rem);margin:0 0 .8rem;line-height:1.35;">Send us your schedule of works or stock,<br>and we'll return a 6-insurer comparison</h2>
+    <p style="color:rgba(244,240,232,.82);font-size:0.95rem;margin:0 0 1.6rem;line-height:1.6;">Broker fee paid by the insurer — no extra cost to you. Reply within 1–2 business days. (Premiums are confirmed after the insurer's underwriting review.)</p>
+    <a href="/en/consult.html" style="display:inline-block;background:var(--accent);color:#fff;padding:15px 34px;border-radius:8px;text-decoration:none;font-weight:700;font-size:1.05rem;">Request a comparison →</a>
+  </div>
+</section>
+
+<!-- ====== MARINE CARGO INSTANT QUOTE (relocated) ====== -->
+<section class="calc-section" id="calculator" style="padding:clamp(40px,6vw,64px) 0;background:rgba(244,240,232,.35);">
+  <div class="container">
     <!-- Marine cargo calculator -->
     <div class="calc-card" id="calculator-card">
       <h2>📦 Instant marine cargo premium estimate</h2>
@@ -321,30 +451,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ====== TRUST STATS ====== -->
-<section class="trust-stats" style="padding:40px 0;border-top:1px solid rgba(11,40,24,.08);border-bottom:1px solid rgba(11,40,24,.08);background:rgba(244,240,232,.55)">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
-      <div style="background:#fff;padding:28px 20px;border-radius:8px;border:1px solid rgba(11,40,24,.08);text-align:center;">
-        <div style="font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-0.02em;">7<span style="font-size:1.1rem;font-weight:600;margin-left:2px;">lines</span></div>
-        <div style="font-size:0.78rem;color:var(--ink-2);margin-top:10px;letter-spacing:0.02em;line-height:1.55;">specialist cargo lines<br>(4 categories · 1 instant-quote line)</div>
-      </div>
-      <div style="background:#fff;padding:28px 20px;border-radius:8px;border:1px solid rgba(11,40,24,.08);text-align:center;">
-        <div style="font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-0.02em;">6</div>
-        <div style="font-size:0.78rem;color:var(--ink-2);margin-top:10px;letter-spacing:0.02em;line-height:1.55;">partner insurers<br>(AM Best A or higher)</div>
-      </div>
-      <div style="background:#fff;padding:28px 20px;border-radius:8px;border:1px solid rgba(11,40,24,.08);text-align:center;">
-        <div style="font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-0.02em;">30<span style="font-size:1.1rem;font-weight:600;margin-left:2px;">sec</span></div>
-        <div style="font-size:0.78rem;color:var(--ink-2);margin-top:10px;letter-spacing:0.02em;line-height:1.55;">cargo auto-quote<br>(KIDI reference rate basis)</div>
-      </div>
-      <div style="background:#fff;padding:28px 20px;border-radius:8px;border:1px solid rgba(11,40,24,.08);text-align:center;">
-        <div style="font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1;letter-spacing:-0.02em;">4<span style="font-size:1.1rem;font-weight:600;margin-left:2px;">hrs</span></div>
-        <div style="font-size:0.78rem;color:var(--ink-2);margin-top:10px;letter-spacing:0.02em;line-height:1.55;">average response time<br>(6 advisory lines)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ====== OPEN POLICY ====== -->
 <section class="op-section" id="open-policy">
   <div class="container">
@@ -471,103 +577,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="submit" class="dash-form-btn">Apply for beta access →</button>
         <p class="dash-form-note">※ Your details are used only for beta notifications.</p>
       </form>
-    </div>
-  </div>
-</section>
-
-<!-- 4 categories (7 lines) -->
-<section class="cargo-products">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">PRODUCTS · 4 CATEGORIES · 7 LINES</span>
-      <h2>What cargoinsu specializes in — <em style="color:var(--accent);font-weight:600;">4 categories, 7 lines</em></h2>
-      <p>Only marine cargo can be quoted instantly; the other categories need asset valuation and underwriting, so we guide them via consultation.</p>
-    </div>
-    <div class="cargo-card-grid">
-
-      <!-- 1. Marine Cargo (featured) -->
-      <div class="cargo-card cargo-card--featured" style="border:2px solid var(--accent);position:relative;background:linear-gradient(180deg, rgba(217,119,87,0.04) 0%, #fff 60%);">
-        <div style="position:absolute;top:-12px;left:24px;background:var(--accent);color:#fff;padding:5px 14px;border-radius:20px;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">★ Instant Quote</div>
-        <div class="icon" style="font-size:3rem;line-height:1;margin-bottom:14px;">📦</div>
-        <span class="sub" style="color:var(--accent);font-weight:700;">CARGO · INSTANT QUOTE</span>
-        <h3 style="margin-top:4px;">Marine Cargo</h3>
-        <p style="margin-bottom:18px;">Covers loss or damage to goods in sea, air or multimodal transit. Designed by ICC(A)/(B)/(C) condition; War and SRCC extensions available.</p>
-        <a class="card-link" href="#calculator-card" style="display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92rem;">30-second quote above →</a>
-        <a class="card-link" href="/en/products/marine-cargo.html" style="display:block;margin-top:10px;color:var(--ink-2);">Learn more →</a>
-      </div>
-
-      <!-- 2. Transit (marine + inland) -->
-      <div class="cargo-card" style="position:relative;">
-        <div class="icon" style="font-size:3rem;line-height:1;margin-bottom:14px;">🚛</div>
-        <span class="sub">TRANSIT · ADVISORY</span>
-        <h3>Transit Insurance</h3>
-        <p style="margin-bottom:14px;">Protects the shipper's own goods in domestic road, rail and coastal transit. <strong>All Risks from the shipper's standpoint</strong> + Warehouse-to-Warehouse + Declaration basis.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(11,40,24,.08);">
-          <a href="/en/products/marine-transit.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">🌊<br>Marine / multimodal<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">Marine Transit</span></a>
-          <a href="/en/products/inland-transit.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">🛣️<br>Inland road<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">Inland Transit</span></a>
-        </div>
-      </div>
-
-      <!-- 3. Fine Art / Jeweller's -->
-      <div class="cargo-card" style="position:relative;">
-        <div class="icon" style="font-size:3rem;line-height:1;margin-bottom:14px;">🎨</div>
-        <span class="sub">FINE ART / JEWELLERS · ADVISORY</span>
-        <h3>Fine Art / Jeweller's</h3>
-        <p style="margin-bottom:14px;">Works held by museums, galleries and collectors + high-value stock of jewellers, duty-free and auction houses. <strong>Agreed Value basis + Worldwide / Memo endorsements.</strong></p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(11,40,24,.08);">
-          <a href="/en/products/specialty-art.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">🖼️<br>Fine Art<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">Fine Art</span></a>
-          <a href="/en/products/jewellers-block.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">💎<br>Jeweller's Block<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">Jeweller's Block</span></a>
-        </div>
-      </div>
-
-      <!-- 4. Carrier / Freight Liability -->
-      <div class="cargo-card" style="position:relative;">
-        <div class="icon" style="font-size:3rem;line-height:1;margin-bottom:14px;">⚓</div>
-        <span class="sub">CARRIER LIABILITY · ADVISORY</span>
-        <h3>Carrier / Freight Liability</h3>
-        <p style="margin-bottom:14px;">Compulsory liability cover for trucking carriers + comprehensive liability for international forwarders. <strong>Article 35 Trucking Transport Business Act compulsory cover + KIFFA · FIATA · IATA B/L</strong>.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(11,40,24,.08);">
-          <a href="/en/products/carriers-liability.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">🚚<br>Carrier's Liability<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">Carrier's Liability</span></a>
-          <a href="/en/products/liability-freight-forwarders.html" style="display:block;padding:12px 10px;background:rgba(244,240,232,0.6);border-radius:6px;text-decoration:none;text-align:center;font-size:0.85rem;color:var(--forest);font-weight:600;line-height:1.4;">🌐<br>Freight Forwarder (FFL)<br><span style="font-size:0.72rem;font-weight:500;color:var(--ink-40);">FFL</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section class="cargo-why">
-  <div class="container">
-    <div class="section-head" style="text-align:center;">
-      <span class="eyebrow" style="display:inline-block;color:var(--accent);font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;">WHY CARGOINSU</span>
-      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin:0;">Why cargoinsu</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-cell">
-        <span class="num">01</span>
-        <h3>Specialist in 4 categories / 7 lines</h3>
-        <p>Cargo · transit · fine art / jeweller's · carrier / freight liability — depth in transit, storage and high-value goods, with faster response than generalist insurers.</p>
-      </div>
-      <div class="why-cell">
-        <span class="num">02</span>
-        <h3>HS Code auto-matching</h3>
-        <p>Enter an HS Code and the KIDI marine tariff item (201–306) and cargo group map automatically — reaching the right cargo group in one step.</p>
-      </div>
-      <div class="why-cell">
-        <span class="num">03</span>
-        <h3>6 AM Best A-rated insurers compared</h3>
-        <p>AIG · Chubb · DB · Hyundai Marine &amp; Fire · KB · Meritz — <strong>all rated AM Best A (Excellent) or higher</strong>. We compare premiums and policy terms side by side, seeking the best-fit terms balancing coverage and financial strength — not merely the lowest price.</p>
-      </div>
-      <div class="why-cell">
-        <span class="num">04</span>
-        <h3>Independent insurance broker</h3>
-        <p>An FSS-registered broker (Reg. No. 2026-012201) advising on the client's side under Article 89 of the Insurance Business Act — not an agent of any single insurer.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:3rem;text-align:center;">
-      <a class="btn btn-primary" href="https://n2nib.com" target="_blank" style="background:var(--forest);color:var(--ivory);padding:.85rem 2rem;font-weight:600;text-decoration:none;border-radius:3px;">See all 110+ lines at N2N Insurance Brokerage →</a>
     </div>
   </div>
 </section>
