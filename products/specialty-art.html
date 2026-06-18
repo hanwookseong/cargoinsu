@@ -625,13 +625,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="meta-item">주소&nbsp;서울특별시 서초구 방배로30길&nbsp;41,&nbsp;602호</span><br>
         <span class="meta-item">전화&nbsp;<a href="tel:010-5755-6465">010-5755-6465</a></span> · <span class="meta-item">이메일&nbsp;<a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></span></p></div>
     <div><div class="footer-head">전문 상품</div><ul class="footer-list">
+      <li><a href="specialty-art.html">예술품 종합</a></li>
+      <li><a href="jewellers-block.html">보석·고급재화</a></li>
       <li><a href="marine-cargo.html">적하보험 (즉시 계산)</a></li>
       <li><a href="marine-transit.html">운송보험</a></li>
       <li><a href="inland-transit.html">내륙운송보험</a></li>
-      <li><a href="specialty-art.html">예술품 종합</a></li>
-      <li><a href="jewellers-block.html">보석·고급재화</a></li>
-      <li><a href="liability-freight-forwarders.html">화물배상책임 (FFL)</a></li>
-      <li><a href="carriers-liability.html">적재물배상책임</a></li></ul></div>
+      <li><a href="carriers-liability.html">적재물배상책임</a></li>
+      <li><a href="liability-freight-forwarders.html">화물배상책임 (FFL)</a></li></ul></div>
     <div><div class="footer-head">상담 / 관련</div><ul class="footer-list">
       <li><a href="../consult.html">cargoinsu 가입 상담</a></li>
       <li><a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com (110종 전체)</a></li>
@@ -642,5 +642,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="../assets/calculator.js"></script>
 <script src="../assets/script.js" defer></script>
+<!-- 전환 sticky CTA (콜드 SEO 유입 → 상담) -->
+<style>
+.pd-sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:95;background:#0B2818;box-shadow:0 -6px 24px rgba(11,40,24,.18);transform:translateY(110%);transition:transform .28s ease;}
+.pd-sticky-cta.show{transform:translateY(0);}
+.pd-sticky-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 18px;}
+.pd-sticky-text{min-width:0;}
+.pd-sticky-text strong{display:block;color:#fff;font-size:.92rem;font-weight:700;letter-spacing:-.01em;}
+.pd-sticky-text span{display:block;color:rgba(244,240,232,.78);font-size:.78rem;margin-top:2px;line-height:1.4;}
+.pd-sticky-btn{flex:0 0 auto;background:#C56A2C;color:#fff;padding:11px 20px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.92rem;white-space:nowrap;}
+.pd-sticky-btn:hover{background:#b35d22;}
+.pd-sticky-close{flex:0 0 auto;background:transparent;border:0;color:rgba(244,240,232,.55);font-size:1.25rem;line-height:1;cursor:pointer;padding:4px 4px;}
+@media(max-width:780px){.pd-sticky-text span{display:none;}.pd-sticky-inner{padding:9px 12px;gap:10px;}.pd-sticky-btn{padding:11px 16px;font-size:.88rem;}}
+</style>
+<div class="pd-sticky-cta" id="pdStickyCta" role="complementary" aria-label="상담 신청">
+  <div class="pd-sticky-inner">
+    <div class="pd-sticky-text">
+      <strong>독립 보험중개사 · 6개 보험회사 비교견적</strong>
+      <span>작품·재고·화물 정보를 보내주시면 회신드립니다 · 수수료는 보험회사 부담</span>
+    </div>
+    <a class="pd-sticky-btn" href="../consult.html">상담·견적 신청 →</a>
+    <button class="pd-sticky-close" type="button" aria-label="닫기" onclick="this.closest('.pd-sticky-cta').classList.remove('show');window.__pdStickyDismissed=true;">&times;</button>
+  </div>
+</div>
+<script>
+(function(){var b=document.getElementById('pdStickyCta');if(!b)return;function f(){if(window.__pdStickyDismissed)return;if(window.scrollY>420){b.classList.add('show');}else{b.classList.remove('show');}}window.addEventListener('scroll',f,{passive:true});f();})();
+</script>
 </body>
 </html>
