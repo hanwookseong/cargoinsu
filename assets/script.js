@@ -6,6 +6,11 @@
   var LANG = location.pathname.indexOf('/en/') === 0 ? 'en' : 'ko';
   function L(ko, en) { return LANG === 'en' ? en : ko; }
   var BASE = LANG === 'en' ? '/en/' : '/';
+  function langTarget(){
+    var pth = location.pathname || '/';
+    if (pth.charAt(pth.length-1) === '/') pth += 'index.html';
+    return LANG === 'en' ? pth.replace(/^\/en\//, '/') : '/en' + pth;
+  }
 
   // ───── Mobile GNB hamburger toggle ─────
   var toggle = document.querySelector('.menu-toggle');
@@ -170,7 +175,7 @@
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
-    var langHref = LANG === 'en' ? '/index.html' : '/en/index.html';
+    var langHref = langTarget();
     var langLabel = LANG === 'en' ? 'KO' : 'EN';
     var langAria = LANG === 'en' ? '한국어로 보기' : 'View in English';
     header.innerHTML =
@@ -238,16 +243,24 @@
       '<img src="' + logoSrc + '" alt="N2N Insurance Brokerage">';
     gnb.insertBefore(logoAnchor, gnb.firstChild);
     // 언어 전환 토글 — GNB 우측에 주입 (데스크톱·모바일 공통 가시)
-    if (!gnb.querySelector('.gnb-lang-switch') && (!window.matchMedia || window.matchMedia('(min-width: 781px)').matches)) {
+    if (!gnb.querySelector('.gnb-lang-switch, .gnb-lang-li') && (!window.matchMedia || window.matchMedia('(min-width: 781px)').matches)) {
       var langSw = document.createElement('a');
       langSw.className = 'gnb-lang-switch';
-      langSw.href = LANG === 'en' ? '/index.html' : '/en/index.html';
+      langSw.href = langTarget();
       langSw.setAttribute('hreflang', LANG === 'en' ? 'ko' : 'en');
       langSw.setAttribute('lang', LANG === 'en' ? 'ko' : 'en');
       langSw.setAttribute('aria-label', LANG === 'en' ? 'View in Korean' : 'View in English');
       langSw.textContent = LANG === 'en' ? 'KO' : 'EN';
-      langSw.style.cssText = 'margin-left:14px;align-self:center;display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:28px;padding:0 10px;border:1px solid currentColor;border-radius:7px;font-size:12px;font-weight:800;letter-spacing:.05em;text-decoration:none;line-height:1;opacity:.95;flex:0 0 auto;';
-      gnb.appendChild(langSw);
+      langSw.style.cssText = 'margin:0 10px 0 0;align-self:center;display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:28px;padding:0 10px;border:1px solid currentColor;border-radius:7px;font-size:12px;font-weight:800;letter-spacing:.05em;text-decoration:none;line-height:1;opacity:.95;flex:0 0 auto;';
+      var _ul = gnb.querySelector('ul');
+      var _cb = _ul ? _ul.querySelector('a.consult-btn') : null;
+      var _li = document.createElement('li');
+      _li.className = 'gnb-lang-auto';
+      _li.style.cssText = 'flex:0 0 auto;display:flex;align-items:center;list-style:none;';
+      _li.appendChild(langSw);
+      if (_ul && _cb && _cb.parentNode) { _ul.insertBefore(_li, _cb.parentNode); }
+      else if (_ul) { _ul.appendChild(_li); }
+      else { gnb.appendChild(langSw); }
     }
   }
   injectDesktopHeaderLogo();
