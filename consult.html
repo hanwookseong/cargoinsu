@@ -290,8 +290,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label>
             <input type="radio" name="product_category" value="transit">
             <span class="pp-body">
-              <strong>🚛 운송보험 (Inland Transit)</strong>
+              <strong>🚛 운송보험 (Marine Transit)</strong>
               <small>국내 도로·철도·연안운송</small>
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="product_category" value="inland">
+            <span class="pp-body">
+              <strong>🚚 내륙운송 (Inland Transit)</strong>
+              <small>FOB 수출 공장→선적항(POL) 구간</small>
             </span>
           </label>
           <label>
@@ -314,6 +322,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="pp-body">
               <strong>⚓ 화물배상책임 (FFL)</strong>
               <small>포워더·복합운송주선업자 책임보험</small>
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="product_category" value="carriers">
+            <span class="pp-body">
+              <strong>📋 적재물배상 (Carrier's Liability)</strong>
+              <small>운송인 적재물 배상책임 · 화물자동차법 제35조</small>
             </span>
           </label>
           <label>
@@ -594,7 +610,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var productKey = (params.get('product') || '').toLowerCase().trim();
     var KEY_MAP = {
       'cargo':'cargo','marine':'cargo','적하':'cargo',
-      'transit':'transit','운송':'transit',
+      'transit':'transit','운송':'transit','운송보험':'transit',
+      'inland':'inland','내륙':'inland','내륙운송':'inland',
+      'carriers':'carriers','carrier':'carriers','적재물':'carriers','적재물배상':'carriers',
       'art':'art','fineart':'art','예술':'art','예술품':'art',
       'jewellers':'jewellers','jewel':'jewellers','jewelry':'jewellers','보석':'jewellers','귀금속':'jewellers','고급재화':'jewellers',
       'ffl':'ffl','freight':'ffl','포워더':'ffl','화물배상':'ffl',
@@ -641,7 +659,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var b2 = document.getElementById('consultBanner');
       var t2 = document.getElementById('consultBannerTitle');
       var labels = {
-        'cargo':'적하보험','transit':'운송보험','art':'예술품 종합','jewellers':'보석·귀금속·고급재화',
+        'cargo':'적하보험','transit':'운송보험','inland':'내륙운송','carriers':'적재물배상','art':'예술품 종합','jewellers':'보석·귀금속·고급재화',
         'ffl':'화물배상책임 (FFL)','multi':'복수 상품 동시 견적','unknown':'컨설팅 희망'
       };
       if (b2 && labels[pickedKey]) {

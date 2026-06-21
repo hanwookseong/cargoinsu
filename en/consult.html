@@ -283,8 +283,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label>
             <input type="radio" name="product_category" value="transit">
             <span class="pp-body">
-              <strong>🚛 Transit Insurance</strong>
+              <strong>🚛 Marine Transit</strong>
               <small>Domestic road / rail / coastal transit</small>
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="product_category" value="inland">
+            <span class="pp-body">
+              <strong>🚚 Inland Transit</strong>
+              <small>FOB factory → port of loading (POL)</small>
             </span>
           </label>
           <label>
@@ -307,6 +315,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="pp-body">
               <strong>⚓ Freight Forwarder's Liability (FFL)</strong>
               <small>Forwarder / multimodal operator liability</small>
+            </span>
+          </label>
+
+          <label>
+            <input type="radio" name="product_category" value="carriers">
+            <span class="pp-body">
+              <strong>📋 Carrier's Liability</strong>
+              <small>Carrier's liability for goods · Trucking Act Art. 35</small>
             </span>
           </label>
           <label>
@@ -575,7 +591,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var productKey = (params.get('product') || '').toLowerCase().trim();
     var KEY_MAP = {
       'cargo':'cargo','marine':'cargo',
-      'transit':'transit',
+      'transit':'transit','inland':'inland','carriers':'carriers','carrier':'carriers',
       'art':'art','fineart':'art','jewellers':'jewellers','jewel':'jewellers','jewelry':'jewellers','jewellery':'jewellers',
       'ffl':'ffl','freight':'ffl',
       'multi':'multi',
@@ -616,7 +632,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var b2 = document.getElementById('consultBanner');
       var t2 = document.getElementById('consultBannerTitle');
       var labels = {
-        'cargo':'Marine Cargo','transit':'Transit Insurance','art':'Fine Art','jewellers':'Jewellers & High-value',
+        'cargo':'Marine Cargo','transit':'Marine Transit','inland':'Inland Transit','carriers':"Carrier's Liability",'art':'Fine Art','jewellers':'Jewellers & High-value',
         'ffl':'Freight Forwarders Liability (FFL)','multi':'Compare multiple products','unknown':'Consulting'
       };
       if (b2 && labels[pickedKey]) {
