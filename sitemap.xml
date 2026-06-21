@@ -83,33 +83,48 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/consult.html"/></url>
   <url>
     <loc>https://cargoinsu.com/guide/index.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/index.html"/>
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/clauses.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/clauses.html"/>
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/incoterms.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/incoterms.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/incoterms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/incoterms.html"/>
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/period.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/period.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/period.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/period.html"/>
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/claims.html</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/claims.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/claims.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/claims.html"/>
   </url>
   <url>
     <loc>https://cargoinsu.com/privacy.html</loc>
