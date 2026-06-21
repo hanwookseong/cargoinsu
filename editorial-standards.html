@@ -11,8 +11,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>편집 기준 (Editorial Standards) | cargoinsu.com</title>
-<meta name="description" content="cargoinsu.com이 발행하는 모든 가이드·상품 설명·FAQ가 따르는 편집 기준 — 정확성·독립성·균형성·투명성. 보험회사 6사 비교, 수수료 보험회사 부담(보험업법 제98조), 보험광고심의 준수.">
+<meta name="description" content="cargoinsu.com 편집 기준 — 정확성·독립성·균형성·투명성 4원칙. 보험료 단정 없음, 6개 보험회사 가나다순, 수수료는 보험회사 부담(보험업법 제98조), 작성자·정정 정책 공개.">
+<meta name="keywords" content="적하보험 상담, 운송보험 상담, 예술품보험 상담, 화물배상책임 상담, FFL 상담, cargoinsu, 엔투엔보험중개">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://cargoinsu.com/editorial-standards.html">
+<link rel="alternate" hreflang="ko" href="https://cargoinsu.com/editorial-standards.html">
+<link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/editorial-standards.html">
+<link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/editorial-standards.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="cargoinsu.com">
+<meta property="og:title" content="편집 기준 (Editorial Standards) | cargoinsu.com">
+<meta property="og:description" content="cargoinsu.com 편집 기준 — 정확성·독립성·균형성·투명성 4원칙. 보험료 단정 없음, 6개 보험회사 가나다순, 수수료는 보험회사 부담(보험업법 제98조), 작성자·정정 정책 공개.">
+<meta property="og:url" content="https://cargoinsu.com/editorial-standards.html">
+<meta property="og:image" content="https://cargoinsu.com/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cargoinsu.com/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -21,13 +40,137 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="apple-mobile-web-app-title" content="N2N">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0B2818">
+<style>
+/* ==== consult page-only styles ==== */
+.consult-page{padding:48px 0 80px;background:var(--ivory)}
+.consult-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start;max-width:1200px;margin:0 auto;padding:0 20px}
+@media (max-width:880px){.consult-grid{grid-template-columns:1fr;gap:20px;padding:0 16px}}
+
+.consult-head{max-width:1200px;margin:0 auto;padding:32px 20px 8px}
+.consult-head h1{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin:0 0 6px}
+.consult-head .lede{color:var(--ink-2);font-size:1rem;margin:0 0 8px}
+.consult-head .crumb{color:var(--ink-40);font-size:.84rem;margin-bottom:6px}
+.consult-head .crumb a{color:var(--ink-2)}
+
+.form-card{background:#fff;border-radius:6px;padding:28px 30px 22px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.form-card h3{font-size:1rem;color:var(--forest);margin:0 0 14px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.form-card hr{margin:22px 0;border:0;border-top:1px dashed #e2dccf}
+.form-row{display:flex;flex-direction:column;margin-bottom:14px}
+.form-col-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.form-col-2{grid-template-columns:1fr}}
+.form-row label{font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:.4rem;letter-spacing:.02em}
+.form-row .req{color:var(--accent);margin-left:2px}
+.form-row .hint{font-size:.74rem;color:var(--ink-40);margin-top:.3rem}
+.form-row input[type=text],
+.form-row input[type=tel],
+.form-row input[type=email],
+.form-row input[type=number],
+.form-row input[type=url],
+.form-row select,
+.form-row textarea{padding:.6rem .8rem;border:1px solid #d8d5cd;border-radius:3px;font-size:.92rem;font-family:inherit;background:#fff;color:var(--ink)}
+.form-row textarea{min-height:96px;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(11,40,24,.08)}
+.check-row{display:flex;align-items:flex-start;gap:8px;font-size:.88rem}
+.check-row input{margin-top:3px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.form-actions .btn{padding:.85rem 1.6rem;border-radius:3px;font-size:.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:1px solid transparent}
+.form-actions .btn-dark{background:var(--brand);color:#fff;border-color:var(--brand)}
+.form-actions .btn-dark:hover{background:var(--brand-2)}
+.form-actions .btn-ghost{background:#fff;color:var(--ink);border-color:#d8d5cd}
+.form-actions .btn-ghost:hover{background:var(--ivory)}
+
+/* product picker (radio cards) */
+.product-pick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (max-width:560px){.product-pick{grid-template-columns:1fr}}
+.product-pick label{position:relative;display:block;padding:14px 16px;border:1.5px solid #e2dccf;border-radius:6px;background:#fafaf6;cursor:pointer;transition:all .15s}
+.product-pick label:hover{border-color:var(--accent);background:#fff}
+.product-pick input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.product-pick input:checked + .pp-body{color:var(--forest)}
+.product-pick label:has(input:checked){border-color:var(--forest);background:#fff;box-shadow:0 0 0 3px rgba(11,40,24,.06)}
+.pp-body strong{display:block;font-size:.95rem;color:var(--forest);margin-bottom:2px}
+.pp-body small{display:block;font-size:.78rem;color:var(--ink-40)}
+
+/* form-note + kakao-card */
+.form-note{background:#fafaf6;border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:18px;font-size:.86rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.form-note strong{color:var(--forest)}
+.form-note code{background:#eee;padding:1px 6px;border-radius:3px;font-size:.85em}
+.kakao-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#FEE500;border-radius:6px;padding:14px 18px;margin-bottom:18px;flex-wrap:wrap}
+.kakao-card .kc-text strong{display:block;font-size:.95rem;color:#191919;margin-bottom:2px}
+.kakao-card .kc-text span{font-size:.78rem;color:#3c1e1e}
+.kakao-card .btn-kakao{background:#191919;color:#FEE500;padding:.6rem 1rem;border-radius:3px;font-weight:700;font-size:.86rem;text-decoration:none;white-space:nowrap}
+
+/* side panel */
+.contact-side{background:#fff;border-radius:6px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.contact-side h3{font-size:1rem;color:var(--forest);margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.contact-side dl{margin:0;font-size:.86rem}
+.contact-side dt{color:var(--ink-40);font-weight:600;margin-top:10px}
+.contact-side dd{margin:2px 0 0;color:var(--ink-2)}
+.contact-side dd a{color:var(--forest);text-decoration:underline}
+.contact-side .step-list{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.8}
+.callout{background:#fff7ed;border-left:3px solid var(--accent);padding:10px 14px;margin-top:14px;font-size:.84rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.mt-16{margin-top:16px}
+
+/* announcement banner */
+.consult-banner{display:flex;align-items:center;gap:10px;background:#dcfce7;border:1px solid #86efac;color:#14532d;padding:10px 14px;border-radius:6px;margin-bottom:18px;font-size:.86rem;position:relative}
+.consult-banner-ic{display:inline-block;width:22px;height:22px;background:#16a34a;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:.8rem;font-weight:700}
+.consult-banner-txt strong{display:block;color:#14532d}
+.consult-banner-txt span{font-size:.78rem;color:#166534}
+.consult-banner-close{position:absolute;right:8px;top:6px;background:none;border:0;font-size:1.1rem;color:#166534;cursor:pointer}
+</style>
+
+<style>
+/* About page (scoped) */
+.ab-crumb{background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.ab-crumb .container{padding-top:14px;padding-bottom:14px;font-size:.85rem;color:var(--muted)}
+.ab-crumb a{color:var(--muted);text-decoration:none}.ab-crumb a:hover{color:var(--accent)}
+.ab-crumb span{color:var(--ink-2)}
+.ab-eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 16px}
+.ab-hero h1{margin:0 0 20px;color:var(--forest)}
+.ab-lede{font-size:1.12rem;line-height:1.78;color:var(--ink-2);max-width:780px;margin:0}
+.ab-lede strong{color:var(--forest)}
+.ab-grid{display:grid;gap:20px;margin-top:30px}
+.ab-grid.two{grid-template-columns:1fr 1fr}
+.ab-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:26px 24px}
+.ab-card .n{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+.ab-card h3{margin:0 0 10px;font-size:1.15rem;color:var(--forest)}
+.ab-card p{margin:0;color:var(--ink-2);line-height:1.7;font-size:.97rem}
+.ab-op{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;margin-top:24px;max-width:760px}
+.ab-op img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--ivory-2)}
+.ab-op .name{font-size:1.2rem;font-weight:700;color:var(--forest);margin-bottom:10px}
+.ab-op ul{margin:0;padding-left:18px;color:var(--ink-2);line-height:1.85}
+.ab-table{width:100%;border-collapse:collapse;margin-top:24px;font-size:.95rem}
+.ab-table th{background:var(--forest);color:var(--ivory);text-align:left;padding:12px 16px;font-weight:600}
+.ab-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.ab-table td strong{color:var(--forest)}
+.ab-fee{background:var(--forest);color:var(--ivory);border-radius:10px;padding:28px 30px;margin-top:24px;max-width:820px}
+.ab-fee p{margin:0 0 10px;line-height:1.75;color:var(--ivory)}.ab-fee p:last-child{margin:0}
+.ab-fee .law{font-size:.9rem;color:rgba(244,240,232,.78)}
+.ab-carriers{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.ab-chip{background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:8px 16px;font-size:.92rem;color:var(--forest);font-weight:600}
+.ab-chip span{color:var(--muted);font-weight:400;font-size:.82rem;margin-left:6px}
+.ab-note{font-size:.85rem;color:var(--muted);margin-top:14px;line-height:1.6}
+.ab-cta{text-align:center}
+.ab-cta h2{margin:0 0 14px}
+.ab-cta p{color:var(--ink-2);margin:0 0 26px}
+.ab-cta .btn{margin:0 6px}
+@media(max-width:720px){.ab-grid.two{grid-template-columns:1fr}.ab-op{grid-template-columns:1fr;text-align:left}.ab-op img{width:96px;height:96px}}
+</style>
+
+<style>
+.es-principle{border-left:3px solid var(--accent);padding:4px 0 4px 22px;margin:0 0 30px}
+.es-principle h3{margin:0 0 12px;font-size:1.2rem;color:var(--forest)}
+.es-principle ul{margin:0;padding-left:18px;color:var(--ink-2);line-height:1.85}
+.es-principle ul li{margin-bottom:6px}
+.es-principle ul li strong{color:var(--forest)}
+.es-sub{font-weight:700;color:var(--forest);margin:18px 0 6px}
+.es-meta{font-size:.88rem;color:var(--muted);border-top:1px solid var(--border);padding-top:18px;margin-top:8px}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53BQJZHC"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-
 <!-- Phase 1: 상단 신뢰 바 (Policygenius 패턴) -->
 <div class="trust-bar" role="complementary" aria-label="신뢰 정보">
   <span class="tb-item">금융감독원 등록 보험중개사 <strong>제2026-012201호</strong></span>
@@ -35,6 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="tb-item"><strong>AIG · Chubb · DB · KB · 메리츠 · 현대해상</strong> 6개 보험회사 비교</span>
 </div>
 
+<!-- TOP -->
 <div class="top_wrap"><div class="top_wrap_cont">
   <a class="logo" href="index.html">
     <img class="logo-img" src="assets/n2n-logo.svg" alt="cargoinsu.com" width="200" height="64">
@@ -52,6 +196,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div></div>
 
+<!-- GNB -->
 <nav class="navi_wrap" aria-label="주메뉴"><div class="gnb"><ul>
   <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">예술품/보석 ▾</a>
     <ul class="depth2">
@@ -83,128 +228,76 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li style="flex:0 0 auto;"><a class="consult-btn" href="index.html#calculator">즉시 계산 →</a></li>
 </ul><button class="menu-toggle" aria-label="메뉴"><span></span><span></span><span></span></button></div></nav>
 
-<nav class="breadcrumb" aria-label="경로"><div class="container"><ol>
-  <li><a href="index.html">홈</a></li><li>편집 기준 (Editorial Standards)</li>
-</ol></div></nav>
+<nav class="ab-crumb" aria-label="breadcrumb"><div class="container"><a href="/index.html">홈</a> &rsaquo; <a href="/about.html">회사소개</a> &rsaquo; <span>편집 기준</span></div></nav>
 
-<main>
+<section class="section ab-hero">
+  <div class="container">
+    <p class="ab-eyebrow">Editorial Standards</p>
+    <h1>편집 기준</h1>
+    <p class="ab-lede">N2N보험중개가 발행하는 모든 가이드·상품 설명·FAQ는 다음 기준을 따릅니다. 보험상품은 화주의 재무에 직접 영향을 주는 의사결정입니다. <strong>부정확한 정보의 비용은 N2N이 아니라 화주가 부담합니다.</strong></p>
+  </div>
+</section>
 
-  <!-- ===== PAGE HEADER ===== -->
-  <section style="background:linear-gradient(120deg,#0B2818,#15391f 70%,#0e2c1c);color:#EBE7D8;">
-    <div class="container" style="max-width:880px;padding-top:52px;padding-bottom:46px;">
-      <span style="display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.14em;color:#E9A368;background:rgba(197,106,44,.16);padding:5px 12px;border-radius:6px;">EDITORIAL STANDARDS</span>
-      <h1 style="color:#fff;font-size:clamp(1.8rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin:16px 0 12px;line-height:1.25;">편집 기준</h1>
-      <p style="font-size:1.02rem;color:#bccabe;line-height:1.7;max-width:640px;margin:0;">
-        cargoinsu.com이 발행하는 모든 가이드·상품 설명·FAQ는 아래 네 가지 기준 — 정확성·독립성·균형성·투명성 — 을 따릅니다.
-      </p>
-      <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.83rem;color:#8fa394;line-height:1.7;">
-        작성·검토 <strong style="color:#cdd6cf;font-weight:700;">성한욱</strong> · 기업보험심사역(ACIU) · 보험중개사 등록 제2026-012201호
-        &nbsp;&nbsp;|&nbsp;&nbsp; 최종수정 2026-05-20 · 다음 정기 검토 2026-08-20
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTENT ===== -->
-  <div class="container" style="max-width:880px;padding-top:38px;padding-bottom:58px;color:#2b3a30;line-height:1.72;">
-
-    <!-- 핵심 선언 -->
-    <div style="border-left:4px solid #C56A2C;background:#FAF6EC;border-radius:0 10px 10px 0;padding:18px 22px;font-size:1rem;line-height:1.75;color:#33403a;">
-      보험상품은 계약자의 재무에 직접 영향을 주는 의사결정입니다.
-      <strong style="color:#0B2818;">부정확한 정보의 비용은 엔투엔보험중개가 아니라 계약자가 부담합니다.</strong>
-      보장 범위나 의무가입 요건을 잘못 이해하고 가입하면, 사고·행정처분의 손해는 계약자에게 돌아갑니다.
-      그래서 우리는 보험을 광고가 아니라 검증된 편집 기준으로 설명합니다.
-    </div>
-
-    <!-- 1. 정확성 -->
-    <section style="margin-top:40px;">
-      <div style="display:flex;gap:14px;align-items:baseline;">
-        <span style="flex:0 0 auto;font-size:.95rem;font-weight:800;color:#fff;background:#0B2818;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;">01</span>
-        <h2 style="font-size:1.32rem;font-weight:800;color:#0B2818;margin:0;letter-spacing:-.01em;">정확성 <span style="font-size:.86rem;font-weight:600;color:#8a968d;">Accuracy</span></h2>
-      </div>
-      <ul style="margin:14px 0 0;padding-left:20px;display:grid;gap:9px;">
-        <li>모든 약관 인용은 <strong>보험회사가 발행한 약관 원문</strong>을 기준으로 합니다.</li>
+<section class="section section--alt">
+  <div class="container" style="max-width:840px">
+    <div class="es-principle">
+      <h3>1. 정확성 (Accuracy)</h3>
+      <ul>
+        <li>모든 약관 인용은 <strong>보험회사 발행 약관 원문</strong>을 기준으로 합니다.</li>
         <li>법령 인용은 <strong>국가법령정보센터의 현행 조문</strong>을 기준으로 합니다.</li>
         <li><strong>보험료 수치는 본문에 단정하지 않습니다.</strong> 보험회사 안내문서·시뮬레이터 결과를 출처와 함께 인용하는 형식만 사용합니다.</li>
-        <li>추정·예시에는 "예시이며 실제 인수심사 결과와 다를 수 있다"는 면책 문구를 함께 표기합니다.</li>
+        <li>추정·예시는 "예시이며 실제 인수 결과와 다를 수 있다"는 면책 문구를 함께 표기합니다.</li>
       </ul>
-    </section>
-
-    <!-- 2. 독립성 -->
-    <section style="margin-top:34px;">
-      <div style="display:flex;gap:14px;align-items:baseline;">
-        <span style="flex:0 0 auto;font-size:.95rem;font-weight:800;color:#fff;background:#0B2818;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;">02</span>
-        <h2 style="font-size:1.32rem;font-weight:800;color:#0B2818;margin:0;letter-spacing:-.01em;">독립성 <span style="font-size:.86rem;font-weight:600;color:#8a968d;">Independence</span></h2>
-      </div>
-      <ul style="margin:14px 0 0;padding-left:20px;display:grid;gap:9px;">
-        <li>엔투엔보험중개는 <strong>6개 보험회사</strong>(AIG·Chubb·DB손해보험·KB손해보험·메리츠화재·현대해상)의 안내자료를 모두 검토합니다.</li>
+    </div>
+    <div class="es-principle">
+      <h3>2. 독립성 (Independence)</h3>
+      <ul>
+        <li>N2N은 6개 보험회사(AIG·Chubb·DB손해보험·KB손해보험·메리츠화재·현대해상)의 안내자료를 모두 검토합니다.</li>
         <li>특정 보험회사로부터 추가 광고비·후원·인센티브를 받지 않습니다.</li>
-        <li>콘텐츠 내 보험회사 언급 순서는 <strong>가나다·알파벳 순으로 고정</strong>합니다 (우열 표시를 피하기 위한 보험광고심의 준수 사항).</li>
+        <li>콘텐츠 내 보험회사 언급 순서는 <strong>가나다순으로 고정</strong>합니다(우열 표시 회피).</li>
       </ul>
-    </section>
-
-    <!-- 3. 균형성 -->
-    <section style="margin-top:34px;">
-      <div style="display:flex;gap:14px;align-items:baseline;">
-        <span style="flex:0 0 auto;font-size:.95rem;font-weight:800;color:#fff;background:#0B2818;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;">03</span>
-        <h2 style="font-size:1.32rem;font-weight:800;color:#0B2818;margin:0;letter-spacing:-.01em;">균형성 <span style="font-size:.86rem;font-weight:600;color:#8a968d;">Balance</span></h2>
-      </div>
-      <ul style="margin:14px 0 0;padding-left:20px;display:grid;gap:9px;">
+    </div>
+    <div class="es-principle">
+      <h3>3. 균형성 (Balance)</h3>
+      <ul>
         <li>"가장 저렴한", "최저가", "1위" 같은 <strong>단정 표현을 사용하지 않습니다.</strong></li>
-        <li>보장을 비교할 때 장점만 나열하지 않고 <strong>면책·자기부담 조건을 함께 표시</strong>합니다.</li>
-        <li>시나리오 예시는 <strong>보장 적용 사례와 면책 사례를 함께</strong> 제시합니다.</li>
+        <li>보장 비교 시 장점만 나열하지 않고 <strong>면책·자기부담 조건을 동시에 표시</strong>합니다.</li>
+        <li>시나리오 예시는 보장 적용 사례와 면책 사례를 함께 제시합니다.</li>
       </ul>
-    </section>
-
-    <!-- 4. 투명성 -->
-    <section style="margin-top:34px;">
-      <div style="display:flex;gap:14px;align-items:baseline;">
-        <span style="flex:0 0 auto;font-size:.95rem;font-weight:800;color:#fff;background:#0B2818;width:34px;height:34px;border-radius:8px;display:grid;place-items:center;">04</span>
-        <h2 style="font-size:1.32rem;font-weight:800;color:#0B2818;margin:0;letter-spacing:-.01em;">투명성 <span style="font-size:.86rem;font-weight:600;color:#8a968d;">Transparency</span></h2>
-      </div>
-
-      <div style="margin-top:16px;display:grid;gap:14px;">
-        <div style="background:#fff;border:1px solid #E6E1D2;border-radius:11px;padding:16px 18px;">
-          <h3 style="font-size:1rem;font-weight:800;color:#0B2818;margin:0 0 6px;">작성자 표시</h3>
-          <p style="margin:0;font-size:.95rem;color:#41504a;">모든 글 상단에 <strong>작성자·최종수정일·검토자</strong>를 명시합니다. 작성자는 성한욱(기업보험심사역 ACIU · 보험중개사 등록 제2026-012201호)입니다.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #E6E1D2;border-radius:11px;padding:16px 18px;">
-          <h3 style="font-size:1rem;font-weight:800;color:#0B2818;margin:0 0 6px;">수수료 구조 고지</h3>
-          <p style="margin:0;font-size:.95rem;color:#41504a;">당사 수수료는 <strong>보험회사가 지급</strong>하며, 계약자가 납부하는 보험료에 엔투엔보험중개의 수수료가 추가되지 않습니다. 이 구조는 <strong>보험업법 제98조</strong>(특별이익 제공 금지) 준수 사항입니다.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #E6E1D2;border-radius:11px;padding:16px 18px;">
-          <h3 style="font-size:1rem;font-weight:800;color:#0B2818;margin:0 0 6px;">정정·업데이트 정책</h3>
-          <p style="margin:0;font-size:.95rem;color:#41504a;">사실관계 오류 발견 시 <strong>24시간 내 수정</strong>하고 본문 하단에 정정 일자·내용을 기록합니다. 약관·법령 개정 시 영향받는 글을 식별해 <strong>90일 내 갱신</strong>합니다.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #E6E1D2;border-radius:11px;padding:16px 18px;">
-          <h3 style="font-size:1rem;font-weight:800;color:#0B2818;margin:0 0 6px;">광고심의 준수</h3>
-          <p style="margin:0;font-size:.95rem;color:#41504a;">본 사이트의 모든 보험광고성 표현은 <strong>보험광고심의 가이드라인을 준수</strong>합니다. 회사명·금융감독원 등록번호·연락처를 모든 페이지 푸터에 표시합니다.</p>
-        </div>
-        <div style="background:#fff;border:1px solid #E6E1D2;border-radius:11px;padding:16px 18px;">
-          <h3 style="font-size:1rem;font-weight:800;color:#0B2818;margin:0 0 6px;">개인정보 처리</h3>
-          <p style="margin:0;font-size:.95rem;color:#41504a;">견적 신청 시 수집한 정보는 <strong>보험회사의 인수심사 목적에 한해</strong> 사용합니다. 보유기간·제3자 제공 항목은 개인정보처리방침에 별도로 명시합니다 (개인정보보호법 준수).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 독자 피드백 -->
-    <section style="margin-top:38px;background:#0B2818;border-radius:13px;padding:24px 26px;color:#e9e5d6;">
-      <h2 style="font-size:1.15rem;font-weight:800;color:#fff;margin:0 0 8px;">독자 피드백을 환영합니다</h2>
-      <p style="margin:0 0 14px;font-size:.95rem;color:#aeb9ac;line-height:1.7;">
-        사실관계 정정 요청, 약관 해석에 대한 이견, 가이드 추가 요청을 언제든 보내주십시오.
-        검토 후 정정 정책에 따라 반영하고 본문에 기록합니다.
-      </p>
-      <a href="mailto:sales@cargoinsu.com?subject=cargoinsu%20%ED%8E%B8%EC%A7%91%20%EA%B8%B0%EC%A4%80%20%ED%94%BC%EB%93%9C%EB%B0%B1"
-         style="display:inline-flex;align-items:center;gap:8px;background:#C56A2C;color:#fff;font-weight:700;font-size:.95rem;padding:11px 22px;border-radius:9px;text-decoration:none;">✉ 편집 피드백 보내기</a>
-    </section>
-
-    <!-- 메타 -->
-    <p style="margin-top:26px;font-size:.82rem;color:#8a968d;border-top:1px solid #E6E1D2;padding-top:16px;">
-      이 문서 최종수정 <strong style="color:#5f6f64;">2026-05-20</strong> · 다음 정기 검토 <strong style="color:#5f6f64;">2026-08-20</strong> ·
-      검토자 성한욱(보험중개사 등록 제2026-012201호)
-    </p>
-
+    </div>
+    <div class="es-principle">
+      <h3>4. 투명성 (Transparency)</h3>
+      <div class="es-sub">작성자 표시</div>
+      <ul>
+        <li>모든 글 상단에 작성자·최종수정일·검토 근거를 명시합니다.</li>
+        <li>작성자 = 성한욱 (ACIU, 보험중개사 등록 제2026-012201호)</li>
+      </ul>
+      <div class="es-sub">수수료 구조 고지</div>
+      <ul>
+        <li>당사 수수료는 <strong>보험회사가 지급</strong>하며, 화주가 납부하는 보험료에 추가되지 않습니다.</li>
+        <li>위 구조는 <strong>보험업법 제98조</strong>(특별이익 제공 금지) 준수 사항입니다.</li>
+      </ul>
+      <div class="es-sub">정정·업데이트 정책</div>
+      <ul>
+        <li>사실관계 오류 발견 시 <strong>24시간 내 수정</strong> 후 본문 하단에 정정 일자·내용을 기록합니다.</li>
+        <li>약관·법령 개정 시 영향받는 글을 식별하여 <strong>90일 내 갱신</strong>합니다.</li>
+      </ul>
+      <div class="es-sub">광고심의·개인정보</div>
+      <ul>
+        <li>모든 보험광고성 표현은 보험광고심의 가이드라인을 준수하며, 회사명·금감원 등록번호·연락처를 모든 페이지 푸터에 표시합니다.</li>
+        <li>견적 신청 시 수집한 정보는 보험회사 인수심사 목적에 한해 사용합니다(개인정보보호법 준수).</li>
+      </ul>
+    </div>
   </div>
-</main>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:840px">
+    <h2>독자 피드백</h2>
+    <p class="ab-lede">사실관계 정정 요청, 약관 해석 이견, 가이드 추가 요청을 환영합니다. <a href="mailto:sales@cargoinsu.com" style="color:var(--accent)">sales@cargoinsu.com</a> 으로 보내주십시오.</p>
+    <p class="es-meta">이 문서는 cargoinsu.com·n2nib.com이 발행하는 콘텐츠 전반에 적용됩니다. 약관·법령·보험회사 안내자료를 기준으로 정기 검토합니다.</p>
+  </div>
+</section>
 
 <aside class="right-quick" aria-label="빠른메뉴">
   <a href="tel:010-5755-6465"><strong>☎</strong><span>전화상담<br>010-5755-6465</span></a>
@@ -214,6 +307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button class="rq-totop" aria-label="맨위로"><strong>↑</strong><span>TOP</span></button>
 </aside>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container footer-top">
     <div><div class="footer-brand">
@@ -225,10 +319,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         대표 성한욱(손해보험중개사, ACIU 기업보험심사역)<br>
         <span class="meta-item">사업자등록번호&nbsp;611-23-02374</span> · <span class="meta-item">금융감독원&nbsp;등록 제2026-012201호</span> · <span class="meta-item">개인사업체</span><br>
         <span class="meta-item">주소&nbsp;서울특별시 서초구 방배로30길&nbsp;41,&nbsp;602호</span><br>
-        <span class="meta-item">전화&nbsp;<a href="tel:010-5755-6465">010-5755-6465</a></span> · <span class="meta-item">이메일&nbsp;<a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></span></p>
-      <p class="footer-compliance" style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(244,240,232,0.12);font-size:.78rem;color:rgba(244,240,232,0.7);line-height:1.65;">
-        ※ 당사 수수료는 보험회사가 지급하며, 계약자가 부담하는 보험료에 추가되지 않습니다 (보험업법 제98조 특별이익 제공 금지 준수).
-      </p></div>
+        <span class="meta-item">전화&nbsp;<a href="tel:010-5755-6465">010-5755-6465</a></span> · <span class="meta-item">이메일&nbsp;<a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></span></p></div>
     <div><div class="footer-head">전문 상품 7종</div><ul class="footer-list">
       <li><a href="products/marine-cargo.html">적하보험 (즉시 계산)</a></li>
       <li><a href="products/marine-transit.html">운송보험</a></li>
@@ -239,13 +330,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="products/carriers-liability.html">적재물배상책임</a></li></ul></div>
     <div><div class="footer-head">상담 / 관련</div><ul class="footer-list">
       <li><a href="consult.html">cargoinsu 가입 상담</a></li>
-      <li><a href="editorial-standards.html">편집 기준 (Editorial Standards)</a></li>
       <li><a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com (110종 전체)</a></li>
-      <li><a href="/about.html">회사소개</a></li></ul></div>
+      <li><a href="/about.html" target="_blank">회사소개</a></li></ul></div>
   </div>
   <div class="footer-bottom">© 2026 N2N Insurance Brokerage / cargoinsu.com. All rights reserved. · <a href="privacy.html" style="color:inherit;text-decoration:underline">개인정보처리방침</a> · <a href="terms.html" style="color:inherit;text-decoration:underline">이용약관</a></div>
 </footer>
 
 <script src="assets/script.js" defer></script>
+
+<script>
+/* ============================================================
+   cargoinsu 상담폼 — URL 파라미터 → 폼 값 자동 채움
+   진입 예: consult.html?product=cargo  /  ?product=art  /  ?product=ffl
+            ?product=transit  /  ?product=multi
+   추가 파라미터: ?ref=google  ?utm_source=...  ?cargo=Electronics
+   ============================================================ */
+(function () {
+  'use strict';
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var params = new URLSearchParams(location.search);
+
+    /* 제출 완료 안내 (?sent=1 진입 시) — 강화: 큰 모달 + 자동 스크롤 + 폼 숨김 */
+    if (params.get('sent') === '1') {
+      var b = document.getElementById('consultBanner');
+      var t = document.getElementById('consultBannerTitle');
+      var s = document.getElementById('consultBannerSub');
+      if (b) {
+        b.hidden = false;
+        b.classList.add('consult-banner--success');  /* 강조 스타일 (CSS) */
+      }
+      if (t) t.textContent = '✅ 상담 신청이 정상 접수되었습니다';
+      if (s) s.innerHTML = '담당 ACIU 심사역이 <strong>1영업일 이내</strong> 회신드립니다.<br>급하신 경우 ☎ <a href="tel:010-5755-6465" style="color:inherit;text-decoration:underline">010-5755-6465</a> 또는 카톡으로 연락 주세요.';
+      // 폼 영역을 가리고 안내 강조 — 사용자가 다시 제출하지 않도록
+      var formEl = document.getElementById('consultForm');
+      if (formEl) formEl.style.display = 'none';
+      // 페이지 최상단으로 자동 스크롤
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // GTM form_submit 보조 트래킹
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({event:'form_submit', form_id:'cargoinsu_consult_success'});
+      return;
+    }
+
+    /* 상품 자동 선택 */
+    var productKey = (params.get('product') || '').toLowerCase().trim();
+    var KEY_MAP = {
+      'cargo':'cargo','marine':'cargo','적하':'cargo',
+      'transit':'transit','운송':'transit',
+      'art':'art','fineart':'art','예술':'art','예술품':'art',
+      'ffl':'ffl','freight':'ffl','포워더':'ffl','화물배상':'ffl',
+      'multi':'multi','복수':'multi',
+      'unknown':'unknown','etc':'unknown'
+    };
+    var pickedKey = KEY_MAP[productKey] || '';
+    if (pickedKey) {
+      var radio = document.querySelector('input[name="product_category"][value="' + pickedKey + '"]');
+      if (radio) radio.checked = true;
+    }
+
+    /* 화물 종류 자동 입력 */
+    var cargoParam = params.get('cargo') || params.get('cargo_type');
+    if (cargoParam) {
+      var cargoInput = document.getElementById('cargo_type');
+      if (cargoInput && !cargoInput.value) cargoInput.value = cargoParam;
+    }
+
+    /* 운송 구간 자동 입력 */
+    var routeParam = params.get('route');
+    if (routeParam) {
+      var routeInput = document.getElementById('route');
+      if (routeInput && !routeInput.value) routeInput.value = routeParam;
+    }
+
+    /* 유입 경로 추적 */
+    var sp = document.getElementById('sourcePageHidden');
+    var sr = document.getElementById('sourceRefHidden');
+    var su = document.getElementById('sourceUtmHidden');
+    if (sp) sp.value = document.referrer || '(direct)';
+    if (sr) sr.value = params.get('ref') || '';
+    if (su) {
+      var utmParts = [];
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function (k) {
+        var v = params.get(k);
+        if (v) utmParts.push(k + '=' + v);
+      });
+      su.value = utmParts.join(' | ');
+    }
+
+    /* 상품 자동 선택 시 배지 표시 */
+    if (pickedKey) {
+      var b2 = document.getElementById('consultBanner');
+      var t2 = document.getElementById('consultBannerTitle');
+      var labels = {
+        'cargo':'적하보험','transit':'운송보험','art':'예술품 종합',
+        'ffl':'화물배상책임 (FFL)','multi':'복수 상품 동시 견적','unknown':'컨설팅 희망'
+      };
+      if (b2 && labels[pickedKey]) {
+        b2.hidden = false;
+        if (t2) t2.textContent = '관심 상품: ' + labels[pickedKey];
+      }
+    }
+  });
+})();
+
+/* ============================================================
+   이메일 → replyto 동기화 (Web3Forms Reply-To 명시)
+   ============================================================ */
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    var emailInput = document.getElementById('email');
+    var replyto    = document.getElementById('replyto');
+    if (!emailInput || !replyto) return;
+    var sync = function () { replyto.value = emailInput.value || ''; };
+    emailInput.addEventListener('input', sync);
+    emailInput.addEventListener('change', sync);
+    emailInput.addEventListener('blur', sync);
+    sync();
+  });
+})();
+</script>
+
 </body>
 </html>
