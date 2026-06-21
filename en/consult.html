@@ -38,6 +38,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .lang-switch{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;padding:0 9px;border:1px solid currentColor;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;line-height:1;opacity:.92}
 .lang-switch:hover{opacity:1}
 </style>
+  <style>
+/* ==== consult page-only styles ==== */
+.consult-page{padding:48px 0 80px;background:var(--ivory)}
+.consult-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:32px;align-items:start;max-width:1200px;margin:0 auto;padding:0 20px}
+@media (max-width:880px){.consult-grid{grid-template-columns:1fr;gap:20px;padding:0 16px}}
+
+.consult-head{max-width:1200px;margin:0 auto;padding:32px 20px 8px}
+.consult-head h1{font-size:clamp(1.6rem,3vw,2.2rem);color:var(--forest);margin:0 0 6px}
+.consult-head .lede{color:var(--ink-2);font-size:1rem;margin:0 0 8px}
+.consult-head .crumb{color:var(--ink-40);font-size:.84rem;margin-bottom:6px}
+.consult-head .crumb a{color:var(--ink-2)}
+
+.form-card{background:#fff;border-radius:6px;padding:28px 30px 22px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.form-card h3{font-size:1rem;color:var(--forest);margin:0 0 14px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.form-card hr{margin:22px 0;border:0;border-top:1px dashed #e2dccf}
+.form-row{display:flex;flex-direction:column;margin-bottom:14px}
+.form-col-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.form-col-2{grid-template-columns:1fr}}
+.form-row label{font-size:.78rem;font-weight:600;color:var(--ink-2);margin-bottom:.4rem;letter-spacing:.02em}
+.form-row .req{color:var(--accent);margin-left:2px}
+.form-row .hint{font-size:.74rem;color:var(--ink-40);margin-top:.3rem}
+.form-row input[type=text],
+.form-row input[type=tel],
+.form-row input[type=email],
+.form-row input[type=number],
+.form-row input[type=url],
+.form-row select,
+.form-row textarea{padding:.6rem .8rem;border:1px solid #d8d5cd;border-radius:3px;font-size:.92rem;font-family:inherit;background:#fff;color:var(--ink)}
+.form-row textarea{min-height:96px;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--forest);box-shadow:0 0 0 3px rgba(11,40,24,.08)}
+.check-row{display:flex;align-items:flex-start;gap:8px;font-size:.88rem}
+.check-row input{margin-top:3px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.form-actions .btn{padding:.85rem 1.6rem;border-radius:3px;font-size:.95rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;cursor:pointer;border:1px solid transparent}
+.form-actions .btn-dark{background:var(--brand);color:#fff;border-color:var(--brand)}
+.form-actions .btn-dark:hover{background:var(--brand-2)}
+.form-actions .btn-ghost{background:#fff;color:var(--ink);border-color:#d8d5cd}
+.form-actions .btn-ghost:hover{background:var(--ivory)}
+
+/* product picker (radio cards) */
+.product-pick{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (max-width:560px){.product-pick{grid-template-columns:1fr}}
+.product-pick label{position:relative;display:block;padding:14px 16px;border:1.5px solid #e2dccf;border-radius:6px;background:#fafaf6;cursor:pointer;transition:all .15s}
+.product-pick label:hover{border-color:var(--accent);background:#fff}
+.product-pick input[type=radio]{position:absolute;opacity:0;pointer-events:none}
+.product-pick input:checked + .pp-body{color:var(--forest)}
+.product-pick label:has(input:checked){border-color:var(--forest);background:#fff;box-shadow:0 0 0 3px rgba(11,40,24,.06)}
+.pp-body strong{display:block;font-size:.95rem;color:var(--forest);margin-bottom:2px}
+.pp-body small{display:block;font-size:.78rem;color:var(--ink-40)}
+
+/* form-note + kakao-card */
+.form-note{background:#fafaf6;border-left:3px solid var(--accent);padding:12px 16px;margin-bottom:18px;font-size:.86rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.form-note strong{color:var(--forest)}
+.form-note code{background:#eee;padding:1px 6px;border-radius:3px;font-size:.85em}
+.kakao-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#FEE500;border-radius:6px;padding:14px 18px;margin-bottom:18px;flex-wrap:wrap}
+.kakao-card .kc-text strong{display:block;font-size:.95rem;color:#191919;margin-bottom:2px}
+.kakao-card .kc-text span{font-size:.78rem;color:#3c1e1e}
+.kakao-card .btn-kakao{background:#191919;color:#FEE500;padding:.6rem 1rem;border-radius:3px;font-weight:700;font-size:.86rem;text-decoration:none;white-space:nowrap}
+
+/* side panel */
+.contact-side{background:#fff;border-radius:6px;padding:22px 24px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+.contact-side h3{font-size:1rem;color:var(--forest);margin:0 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);display:inline-block}
+.contact-side dl{margin:0;font-size:.86rem}
+.contact-side dt{color:var(--ink-40);font-weight:600;margin-top:10px}
+.contact-side dd{margin:2px 0 0;color:var(--ink-2)}
+.contact-side dd a{color:var(--forest);text-decoration:underline}
+.contact-side .step-list{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-2);line-height:1.8}
+.callout{background:#fff7ed;border-left:3px solid var(--accent);padding:10px 14px;margin-top:14px;font-size:.84rem;color:var(--ink-2);border-radius:0 4px 4px 0}
+.mt-16{margin-top:16px}
+
+/* announcement banner */
+.consult-banner{display:flex;align-items:center;gap:10px;background:#dcfce7;border:1px solid #86efac;color:#14532d;padding:10px 14px;border-radius:6px;margin-bottom:18px;font-size:.86rem;position:relative}
+.consult-banner-ic{display:inline-block;width:22px;height:22px;background:#16a34a;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:.8rem;font-weight:700}
+.consult-banner-txt strong{display:block;color:#14532d}
+.consult-banner-txt span{font-size:.78rem;color:#166534}
+.consult-banner-close{position:absolute;right:8px;top:6px;background:none;border:0;font-size:1.1rem;color:#166534;cursor:pointer}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
