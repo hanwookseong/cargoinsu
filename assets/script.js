@@ -171,7 +171,7 @@
     /* /products/ 또는 /guide/ 하위 폴더 모두 ../ 경로 사용 */
     var homeHref = BASE + 'index.html';
     var consultHref = BASE + 'consult.html';
-    var logoSrc = '/assets/logo-horizontal.svg';
+    var logoSrc = LANG === 'en' ? '/assets/logo-horizontal-en.svg' : '/assets/logo-horizontal.svg';
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
@@ -234,7 +234,7 @@
     if (!gnb) return;
     if (gnb.querySelector('.gnb-logo')) return;
     var homeHref = BASE + 'index.html';
-    var logoSrc = '/assets/logo-horizontal-dark.svg';
+    var logoSrc = LANG === 'en' ? '/assets/logo-horizontal-dark-en.svg' : '/assets/logo-horizontal-dark.svg';
     var logoAnchor = document.createElement('a');
     logoAnchor.className = 'gnb-logo';
     logoAnchor.href = homeHref;
