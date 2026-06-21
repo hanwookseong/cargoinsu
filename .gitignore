@@ -10,3 +10,9 @@ Thumbs.db
 *~
 node_modules/
 .vscode/
+
+# backup artifacts - never commit
+_bak_*
+_bak-*
+*.bak_*
+*.orig
