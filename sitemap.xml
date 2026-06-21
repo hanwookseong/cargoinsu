@@ -243,4 +243,58 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://cargoinsu.com/about.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/about.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/editorial-standards.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/editorial-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/editorial-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/editorial-standards.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/editorial-standards.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/editorial-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/editorial-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/editorial-standards.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/guide/marine-cargo.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/marine-cargo.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/en/guide/marine-cargo.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/marine-cargo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/marine-cargo.html"/>
+  </url>
 </urlset>
