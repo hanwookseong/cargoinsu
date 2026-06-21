@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 162" role="img" aria-label="N2N Insurance Brokerage">
+<circle cx="66.0" cy="35" r="27" fill="#0B2818"/>
+<circle cx="126.0" cy="35" r="27" fill="#C56A2C"/>
+<circle cx="186.0" cy="35" r="27" fill="#0B2818"/>
+<text x="66.0" y="47" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-1" fill="#F4F0E8">N</text>
+<text x="126.0" y="47" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="700" fill="#F4F0E8">2</text>
+<text x="186.0" y="47" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="-1" fill="#F4F0E8">N</text>
+<text x="126.0" y="108" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="1" fill="#0B2818">INSURANCE</text>
+<text x="126.0" y="145" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="1" fill="#0B2818">BROKERAGE</text>
+</svg>
