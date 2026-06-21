@@ -301,6 +301,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <small>박물관·갤러리·소장가 약정가액 보상</small>
             </span>
           </label>
+
+          <label>
+            <input type="radio" name="product_category" value="jewellers">
+            <span class="pp-body">
+              <strong>💎 보석·귀금속·고급재화</strong>
+              <small>주얼리·시계·골드바 · Jewellers Block / 약정가액</small>
+            </span>
+          </label>
           <label>
             <input type="radio" name="product_category" value="ffl">
             <span class="pp-body">
@@ -326,20 +334,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <hr>
 
-        <h3>③ 화물·위험 정보</h3>
-        <div class="form-col-2">
-          <div class="form-row">
-            <label for="cargo_type">주요 화물·자산 종류</label>
-            <input id="cargo_type" name="cargo_type" type="text" placeholder="예) 전자제품·기계류·강재·식음료·예술품·전자상거래 화물">
-          </div>
+        <h3>③ 품목·위험 정보</h3>
+        <div class="form-row">
+          <label for="cargo_type">주요 품목·자산 종류</label>
+          <input id="cargo_type" name="cargo_type" type="text" placeholder="예) 회화·조각·골동품 · 시계·보석·귀금속 · 전자제품·기계류·강재·식음료">
+        </div>
+
+        <!-- 적하·운송 전용 -->
+        <div class="form-col-2" data-fieldgroup="cargo">
           <div class="form-row">
             <label for="route">주요 운송 구간 / 운송수단</label>
             <input id="route" name="route" type="text" placeholder="예: 해상 FCL · 중국→인천">
           </div>
+          <div class="form-row">
+            <label for="hs_code">HS CODE (알고 계시면 기재)</label>
+            <input id="hs_code" name="hs_code" type="text" placeholder="예: 8517.62 (전자기기)">
+          </div>
         </div>
-        <div class="form-row">
-          <label for="hs_code">HS CODE (알고 계시면 기재)</label>
-          <input id="hs_code" name="hs_code" type="text" placeholder="예: 8517.62 (전자기기)">
+
+        <!-- 예술품·보석·고급재화 전용 -->
+        <div class="form-col-2" data-fieldgroup="specie" hidden>
+          <div class="form-row">
+            <label for="storage_security">보관·전시 장소 / 보안</label>
+            <input id="storage_security" name="storage_security" type="text" placeholder="예: 갤러리 상설전시 · 금고보관(에스원/세콤) · 이동 전시">
+          </div>
+          <div class="form-row">
+            <label for="valuation">평가 기준 / 감정서</label>
+            <input id="valuation" name="valuation" type="text" placeholder="예: 약정가액(Agreed Value) · 감정서 보유 · 감정 예정">
+          </div>
         </div>
         <div class="form-col-2">
           <div class="form-row">
@@ -351,7 +373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <option>월 5–20건</option>
               <option>월 20건 이상</option>
               <option>연간 포괄(Open Cover) 희망</option>
-              <option>해당없음 (예술품·FFL 등)</option>
+              <option>해당없음 (예술품·보석·FFL 등)</option>
             </select>
           </div>
           <div class="form-row">
@@ -574,6 +596,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       'cargo':'cargo','marine':'cargo','적하':'cargo',
       'transit':'transit','운송':'transit',
       'art':'art','fineart':'art','예술':'art','예술품':'art',
+      'jewellers':'jewellers','jewel':'jewellers','jewelry':'jewellers','보석':'jewellers','귀금속':'jewellers','고급재화':'jewellers',
       'ffl':'ffl','freight':'ffl','포워더':'ffl','화물배상':'ffl',
       'multi':'multi','복수':'multi',
       'unknown':'unknown','etc':'unknown'
@@ -618,7 +641,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var b2 = document.getElementById('consultBanner');
       var t2 = document.getElementById('consultBannerTitle');
       var labels = {
-        'cargo':'적하보험','transit':'운송보험','art':'예술품 종합',
+        'cargo':'적하보험','transit':'운송보험','art':'예술품 종합','jewellers':'보석·귀금속·고급재화',
         'ffl':'화물배상책임 (FFL)','multi':'복수 상품 동시 견적','unknown':'컨설팅 희망'
       };
       if (b2 && labels[pickedKey]) {
@@ -647,5 +670,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+
+<style>[data-fieldgroup][hidden]{display:none !important;}</style>
+<script>
+/* ③ 위험정보 — 선택 상품별 필드 전환 (적하/운송 ↔ 예술품/보석) */
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    var SPECIE = { art:1, jewellers:1 };
+    var BOTH   = { multi:1, unknown:1 };
+    function apply(v) {
+      var c = document.querySelector('[data-fieldgroup="cargo"]');
+      var s = document.querySelector('[data-fieldgroup="specie"]');
+      if (!c || !s) return;
+      if (BOTH[v])        { c.hidden = false; s.hidden = false; }
+      else if (SPECIE[v]) { c.hidden = true;  s.hidden = false; }
+      else                { c.hidden = false; s.hidden = true;  }
+    }
+    var radios = document.querySelectorAll('input[name="product_category"]');
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () { if (r.checked) apply(r.value); });
+    });
+    var ck = document.querySelector('input[name="product_category"]:checked');
+    apply(ck ? ck.value : 'cargo');
+  });
+})();
+</script>
 </body>
 </html>

@@ -294,6 +294,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <small>Museums, galleries, collectors · Agreed Value</small>
             </span>
           </label>
+
+          <label>
+            <input type="radio" name="product_category" value="jewellers">
+            <span class="pp-body">
+              <strong>💎 Jewellers &amp; High-value goods</strong>
+              <small>Jewellery · watches · gold bars · Jewellers Block / Agreed Value</small>
+            </span>
+          </label>
           <label>
             <input type="radio" name="product_category" value="ffl">
             <span class="pp-body">
@@ -319,20 +327,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <hr>
 
-        <h3>③ Cargo &amp; risk details</h3>
-        <div class="form-col-2">
-          <div class="form-row">
-            <label for="cargo_type">Main cargo / asset type</label>
-            <input id="cargo_type" name="cargo_type" type="text" placeholder="e.g. electronics · machinery · steel · food &amp; beverage · art · e-commerce goods">
-          </div>
+        <h3>③ Item &amp; risk details</h3>
+        <div class="form-row">
+          <label for="cargo_type">Main item / asset type</label>
+          <input id="cargo_type" name="cargo_type" type="text" placeholder="e.g. paintings · sculpture · antiques · watches · jewellery · electronics · machinery · steel">
+        </div>
+
+        <!-- Marine cargo / transit only -->
+        <div class="form-col-2" data-fieldgroup="cargo">
           <div class="form-row">
             <label for="route">Main route / mode</label>
             <input id="route" name="route" type="text" placeholder="e.g. Sea FCL · China → Incheon">
           </div>
+          <div class="form-row">
+            <label for="hs_code">HS Code (if known)</label>
+            <input id="hs_code" name="hs_code" type="text" placeholder="e.g. 8517.62 (electronics)">
+          </div>
         </div>
-        <div class="form-row">
-          <label for="hs_code">HS Code (if known)</label>
-          <input id="hs_code" name="hs_code" type="text" placeholder="e.g. 8517.62 (electronics)">
+
+        <!-- Fine Art / Jewellers / High-value only -->
+        <div class="form-col-2" data-fieldgroup="specie" hidden>
+          <div class="form-row">
+            <label for="storage_security">Storage / display location &amp; security</label>
+            <input id="storage_security" name="storage_security" type="text" placeholder="e.g. permanent gallery display · safe/vault (S1·Secom) · travelling exhibition">
+          </div>
+          <div class="form-row">
+            <label for="valuation">Valuation basis / appraisal</label>
+            <input id="valuation" name="valuation" type="text" placeholder="e.g. Agreed Value · appraisal on file · appraisal pending">
+          </div>
         </div>
         <div class="form-col-2">
           <div class="form-row">
@@ -344,7 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <option>5–20 / month</option>
               <option>20+ / month</option>
               <option>Annual Open Cover preferred</option>
-              <option>N/A (Fine Art, FFL, etc.)</option>
+              <option>N/A (Fine Art, Jewellers, FFL, etc.)</option>
             </select>
           </div>
           <div class="form-row">
@@ -554,7 +576,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var KEY_MAP = {
       'cargo':'cargo','marine':'cargo',
       'transit':'transit',
-      'art':'art','fineart':'art',
+      'art':'art','fineart':'art','jewellers':'jewellers','jewel':'jewellers','jewelry':'jewellers','jewellery':'jewellers',
       'ffl':'ffl','freight':'ffl',
       'multi':'multi',
       'unknown':'unknown','etc':'unknown'
@@ -594,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       var b2 = document.getElementById('consultBanner');
       var t2 = document.getElementById('consultBannerTitle');
       var labels = {
-        'cargo':'Marine Cargo','transit':'Transit Insurance','art':'Fine Art',
+        'cargo':'Marine Cargo','transit':'Transit Insurance','art':'Fine Art','jewellers':'Jewellers & High-value',
         'ffl':'Freight Forwarders Liability (FFL)','multi':'Compare multiple products','unknown':'Consulting'
       };
       if (b2 && labels[pickedKey]) {
@@ -621,5 +643,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+
+<style>[data-fieldgroup][hidden]{display:none !important;}</style>
+<script>
+/* Section 3 — switch risk fields by selected product (cargo/transit vs fine art/jewellers) */
+(function () {
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function () {
+    var SPECIE = { art:1, jewellers:1 };
+    var BOTH   = { multi:1, unknown:1 };
+    function apply(v) {
+      var c = document.querySelector('[data-fieldgroup="cargo"]');
+      var s = document.querySelector('[data-fieldgroup="specie"]');
+      if (!c || !s) return;
+      if (BOTH[v])        { c.hidden = false; s.hidden = false; }
+      else if (SPECIE[v]) { c.hidden = true;  s.hidden = false; }
+      else                { c.hidden = false; s.hidden = true;  }
+    }
+    var radios = document.querySelectorAll('input[name="product_category"]');
+    radios.forEach(function (r) { r.addEventListener('change', function () { if (r.checked) apply(r.value); }); });
+    var ck = document.querySelector('input[name="product_category"]:checked');
+    apply(ck ? ck.value : 'cargo');
+  });
+})();
+</script>
 </body>
 </html>
