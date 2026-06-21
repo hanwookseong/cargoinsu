@@ -69,6 +69,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="shortcut icon" href="/favicon.ico">
@@ -96,6 +101,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .trust-stats .proof-body p{margin:14px 0 0;font-size:.82rem;color:var(--ink-2);line-height:1.7;}
 .trust-stats .proof-body a{display:inline-block;margin-top:12px;color:var(--accent);font-weight:600;font-size:.82rem;text-decoration:none;}
 .trust-stats .proof-body a:hover{text-decoration:underline;}
+</style>
+  <style>
+/* === CARGO HERO · gallery layer (cream + serif) - aligned with KO 2026-06-18 === */
+.cargo-hero{
+  font-family:'Pretendard',var(--f-body);
+  background:#FAF8F3 !important;
+  color:#0B2818;
+  padding:5.25rem 0 4rem;
+  border-bottom:1px solid #E8E1D2;
+}
+.cargo-hero .eyebrow{
+  display:block; font-size:.72rem; letter-spacing:.3em; font-weight:600;
+  color:#8B5A2B; margin-bottom:1.5rem;
+}
+.cargo-hero h1{
+  font-family:'Nanum Myeongjo',serif;
+  font-size:clamp(2rem,3.8vw,3rem);
+  font-weight:700; line-height:1.32; letter-spacing:-0.01em;
+  color:#0B2818; margin:0 auto 1.25rem; max-width:720px;
+}
+.cargo-hero h1 em{ font-style:normal; font-weight:700; color:#C56A2C; }
+.cargo-hero .lede{
+  font-family:'Pretendard',var(--f-body);
+  font-size:1.1rem; line-height:1.85; max-width:600px; margin:0 auto;
+  color:#4a4a42;
+}
+.cargo-hero .lede strong{ color:#0B2818 !important; font-weight:600; }
+.cargo-hero .hero-usp{
+  display:inline-block; margin-top:1.6rem !important;
+  font-size:.82rem; font-weight:500; letter-spacing:.02em;
+  color:#6b6256; background:#fff; border:1px solid #E5DECF;
+  border-radius:2px; padding:8px 18px;
+}
+.cargo-hero .hero-usp .usp-line2{ white-space:nowrap; }@media (max-width:780px){
+  .cargo-hero{ padding:3rem 0 2.25rem; }
+  .cargo-hero h1{ font-size:1.7rem !important; line-height:1.34; max-width:100%; }
+  .cargo-hero .lede{ font-size:1.0rem; line-height:1.72; max-width:100%; }
+  .cargo-hero .hero-usp{ text-align:center; }
+  .cargo-hero .hero-usp .usp-sep{ display:none; }
+  .cargo-hero .hero-usp .usp-line2{ display:block; }
+}
 </style>
 </head>
 <body>
