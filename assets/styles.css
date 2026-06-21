@@ -7445,3 +7445,8 @@ html body .right-quick {
   .ed-case{ padding:20px 18px 18px 18px; }
   .ed-case::before{ position:static; margin-bottom:12px; }
 }
+
+/* Footer meta-item: allow wrapping on narrow screens (long EN address overflow fix) 2026-06-21 */
+@media (max-width: 600px){
+  .site-footer .footer-meta .meta-item{ white-space: normal !important; }
+}
