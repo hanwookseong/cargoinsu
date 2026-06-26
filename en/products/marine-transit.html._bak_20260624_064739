@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-53BQJZHC');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transit Insurance (Marine / domestic) | cargoinsu.com</title>
+<meta name="description" content="Transit insurance covering loss or damage to goods in domestic road, rail and coastal carriage. Own-account or contracted, per-shipment or annual open cover. Cargo-owner cover, separate from carrier's liability.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cargoinsu.com/en/products/marine-transit.html">
+<link rel="alternate" hreflang="ko" href="https://cargoinsu.com/products/marine-transit.html">
+<link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/products/marine-transit.html">
+<link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-transit.html">
+<link rel="stylesheet" href="/assets/styles.css">
+<!-- ===== campaign CTA card (shared · 2026-05-26) ===== -->
+<style>
+.cta-card{
+  --cc-green:#0B2818; --cc-orange:#C56A2C; --cc-bronze:#8b5a2b;
+  --cc-line:#E6E2D8; --cc-muted:#6b746e;
+  display:block; box-sizing:border-box; width:100%;
+  background:#fff; border:1px solid var(--cc-line); border-radius:14px;
+  padding:28px 26px 24px; margin:1.5rem 0 0;
+  text-decoration:none; color:#1f2b25;
+  position:relative; overflow:hidden;
+  box-shadow:0 1px 3px rgba(11,40,24,.05);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.cta-card::before{
+  content:""; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--cc-bronze),var(--cc-orange));
+}
+.cta-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 30px rgba(11,40,24,.13);
+  border-color:#d8d2c4;
+}
+.cta-card .cc-eyebrow{
+  font-size:.7rem; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--cc-bronze); margin:0 0 9px;
+}
+.cta-card .cc-title{
+  font-size:1.32rem; font-weight:700; color:var(--cc-green);
+  margin:0 0 8px; line-height:1.3; letter-spacing:-.01em;
+}
+.cta-card .cc-lede{
+  font-size:.92rem; line-height:1.62; color:var(--cc-muted); margin:0 0 18px;
+}
+.cta-card .cc-features{
+  list-style:none; margin:0 0 22px; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:9px 22px;
+}
+.cta-card .cc-features li{
+  position:relative; padding-left:19px;
+  font-size:.875rem; line-height:1.5;
+}
+.cta-card .cc-features li::before{
+  content:"\25C6"; position:absolute; left:0; top:1px;
+  font-size:.6rem; color:var(--cc-orange);
+}
+.cta-card .cc-features b{ color:var(--cc-green); font-weight:700; }
+.cta-card .cc-go{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--cc-orange); color:#fff;
+  font-size:.95rem; font-weight:700;
+  padding:13px 22px; border-radius:9px;
+  transition:background .2s ease;
+}
+.cta-card:hover .cc-go{ background:#b25c22; }
+.cta-card .cc-go .arrow{ transition:transform .25s ease; }
+.cta-card:hover .cc-go .arrow{ transform:translateX(4px); }
+.cta-card .cc-note{
+  margin:14px 0 0; font-size:.74rem; line-height:1.55; color:var(--cc-muted);
+}
+@media (max-width:560px){
+  .cta-card .cc-features{ grid-template-columns:1fr; }
+  .cta-card .cc-go{ display:flex; justify-content:center; }
+}
+.lang-switch{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:26px;padding:0 9px;border:1px solid currentColor;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;line-height:1;opacity:.92}
+.lang-switch:hover{opacity:1}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="N2N">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0B2818">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+/* === PD-HERO · gallery layer (cream + serif) - aligned with KO === */
+.pd-hero{ background:#FAF8F3 !important; border-bottom:1px solid #E8E1D2; padding:3.75rem 0 3rem; }
+.pd-hero .pd-cat{ color:#8B5A2B !important; letter-spacing:.26em; font-weight:600; }
+.pd-hero h1{ font-family:'Nanum Myeongjo',serif !important; color:#0B2818 !important; font-weight:700; letter-spacing:-0.01em; }
+.pd-hero .pd-lead{ color:#4a4a42 !important; }
+.pd-hero .pd-lead strong{ color:#0B2818 !important; }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53BQJZHC"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="trust-bar" role="complementary" aria-label="Trust information">
+  <span class="tb-item">FSS-registered insurance broker <strong>Reg. No. 2026-012201</strong></span>
+  <span class="tb-sep">·</span>
+  <span class="tb-item">Comparing 6 insurers — <strong>AIG · Chubb · DB · Hyundai · KB · Meritz</strong></span>
+</div>
+
+<div class="top_wrap"><div class="top_wrap_cont">
+  <a class="logo" href="/en/index.html">
+    <img class="logo-img" src="/assets/n2n-logo.svg" alt="cargoinsu.com" width="200" height="64">
+    <span class="logo-mark">N2N</span>
+    <span class="logo-txt"><strong>cargoinsu.com</strong><span>by N2N Insurance Brokerage · FSS Reg. 2026-012201</span></span>
+  </a>
+  <div class="top-utils">
+    <a class="hot" href="tel:+82-10-5755-6465">☎ +82-10-5755-6465</a>
+    <span class="sep">|</span>
+    <a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a>
+    <span class="sep">|</span>
+    <a class="kakao-link" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">KakaoTalk</a>
+    <span class="sep">|</span>
+    <a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com ↗</a>
+    <span class="sep">|</span>
+    <a class="lang-switch" href="/products/marine-transit.html" hreflang="ko" lang="ko" aria-label="View in Korean">KO</a>
+  </div>
+</div></div>
+
+<nav class="navi_wrap" aria-label="Main menu"><div class="gnb"><ul>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Fine Art / Jeweller's ▾</a>
+    <ul class="depth2">
+      <li><a href="specialty-art.html">Fine Art</a></li>
+      <li><a href="jewellers-block.html">Jeweller's Block</a></li>
+    </ul>
+  </li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Marine Cargo ▾</a>
+    <ul class="depth2">
+      <li><a href="marine-cargo.html">Marine Cargo</a></li>
+      <li><a href="marine-cargo.html#open-policy">Open Policy</a></li>
+      <li><a href="marine-cargo.html#dashboard">Console Dashboard</a></li>
+    </ul>
+  </li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Transit ▾</a>
+    <ul class="depth2">
+      <li><a href="marine-transit.html">Transit Insurance (Marine)</a></li>
+      <li><a href="inland-transit.html">Inland Transit</a></li>
+    </ul>
+  </li>
+  <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">Carrier &amp; Freight Liability ▾</a>
+    <ul class="depth2">
+      <li><a href="carriers-liability.html">Carrier's Liability</a></li>
+      <li><a href="liability-freight-forwarders.html">Freight Forwarder's Liability (FFL)</a></li>
+    </ul>
+  </li>
+  <li><a href="/en/guide/index.html">Insurance Guide</a></li>
+  <li class="gnb-search-li" style="margin-left:auto;"></li>
+  <li style="flex:0 0 auto;"><a class="consult-btn" href="/en/products/marine-cargo.html#calculator">Instant Quote →</a></li>
+</ul><button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+
+<nav class="breadcrumb" aria-label="Breadcrumb"><div class="container"><ol>
+  <li><a href="/en/index.html">Home</a></li><li>Transit Insurance</li>
+</ol></div></nav>
+
+<section class="pd-hero"><div class="container">
+  <span class="pd-cat">TRANSIT INSURANCE</span>
+  <h1>Transit Insurance</h1>
+  <p class="pd-lead">If marine cargo is about international transit, transit insurance is domestic. When a truck, train or coastal vessel moving your goods causes them to break or vanish, who is liable? Transit insurance covers that loss directly as <strong>cargo-owner cover</strong> (separate from the carrier's liability that the carrier holds). Own-account or contracted, per-shipment or annual — compare quotes from 6 insurers.</p>
+</div></section>
+
+<div class="container"><div class="pd-layout">
+  <aside class="pd-snb"><h3>7 specialist lines</h3><ul>
+    <li><a href="specialty-art.html">Fine Art</a></li>
+    <li><a href="jewellers-block.html">Jeweller's Block</a></li>
+    <li><a href="marine-cargo.html">Marine Cargo</a></li>
+    <li class="active"><a href="marine-transit.html">Transit Insurance</a></li>
+    <li><a href="inland-transit.html">Inland Transit</a></li>
+    <li><a href="carriers-liability.html">Carrier's Liability</a></li>
+    <li><a href="liability-freight-forwarders.html">Freight Forwarder's Liability (FFL)</a></li>
+  </ul></aside>
+
+  <div class="pd-content">
+    <h2 class="pd-title">Transit Insurance</h2>
+
+<aside class="author-box" aria-label="Author and operator information">
+  <div class="author-row">
+    <img class="author-photo" src="/assets/hanwook-portrait.jpg" alt="Hanwook Seong, representative insurance broker" width="72" height="72" loading="lazy">
+    <div class="author-content">
+      <div class="author-byline"><strong>✍️ Author:</strong> Hanwook Seong — Chartered Insurance Underwriter (ACIU) · Broker Reg. No. 2026-012201</div>
+      <div class="author-review"><strong>📋 Basis:</strong> written from insurers' policy wordings and product materials</div>
+      <div class="author-date"><strong>🗓️ Last updated:</strong> 2026-05-10</div>
+    </div>
+  </div>
+  <hr class="author-divider">
+  <div class="broker-section">
+    <span class="broker-tag">⚖ Operated by an independent insurance broker</span>
+    <p class="broker-text"><strong>cargoinsu.com</strong> is operated by N2N Insurance Brokerage (a broker registered under Article 89 of the Insurance Business Act · FSS Reg. No. 2026-012201). The wording, coverage and exclusion information on this page is summarized from member insurers' official product brochures.</p>
+  </div>
+</aside>
+
+    <aside class="ambest-trustbar" aria-label="Partner insurer financial strength ratings" style="background:#FAF6EC;border:1px solid rgba(11,40,24,.12);border-radius:10px;padding:13px 18px;margin:14px 0 24px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:.92rem;line-height:1.55;color:var(--brand,#0B2818);">
+      <span style="background:rgba(197,106,44,.13);color:var(--accent,#C56A2C);font-weight:700;font-size:.86rem;padding:4px 11px;border-radius:6px;white-space:nowrap;">AM Best A++ to A</span>
+      <span style="flex:1;min-width:220px;"><strong>AIG · Chubb · DB · Hyundai Marine &amp; Fire · KB · Meritz</strong> — we work with 6 insurers rated A (Excellent) or higher for financial strength</span>
+      <a href="/am-best.html" style="color:var(--accent,#C56A2C);font-weight:600;text-decoration:none;white-space:nowrap;">More →</a>
+    </aside>
+
+    <div class="pd-section"><h3>Overview</h3>
+      <p>Transit insurance covers the risk of loss or damage to goods during domestic road, rail and coastal carriage. It is structured so the <strong>cargo owner is indemnified directly</strong> for loss to its own goods, regardless of the carrier's liability limits.</p>
+      <p>It can be arranged per shipment or as an Annual Open Cover. Rates vary with conveyance, cargo type and frequency; general cargo uses ICC(A)-equivalent wording, bulk uses limited cover.</p></div>
+
+    <div class="pd-section"><h3>Key features</h3>
+      <ul class="pd-feature-list">
+          <li><span class="pd-num">01</span><div class="pd-ftext"><strong>Nationwide door-to-door cover</strong>
+            <p>Integrated road, rail and coastal cover from factory/warehouse to destination</p></div></li>
+          <li><span class="pd-num">02</span><div class="pd-ftext"><strong>Own-account or contracted</strong>
+            <p>Applies whether you carry in your own vehicles or use contracted carriers</p></div></li>
+          <li><span class="pd-num">03</span><div class="pd-ftext"><strong>Annual open cover</strong>
+            <p>One annual contract for the year's volume simplifies management</p></div></li>
+          <li><span class="pd-num">04</span><div class="pd-ftext"><strong>Separate from carrier's liability</strong>
+            <p>Direct cover on the cargo-owner side, independent of the carrier's liability</p></div></li>
+      </ul></div>
+
+    <div class="pd-section"><h3>Main losses covered</h3>
+      <ul class="pd-bul">
+          <li>Loss/damage during road, rail or coastal carriage</li>
+          <li>Accidents during loading/unloading</li>
+          <li>Accidents during transhipment</li>
+          <li>Temporary storage during a transit stoppage</li>
+      </ul></div>
+
+    <div class="pd-exclude"><h4>Main exclusions</h4>
+      <ul>
+          <li>Wilful misconduct or gross negligence</li>
+          <li>Insufficient packing / inherent defect</li>
+          <li>Delay / loss of market value</li>
+          <li>War / terrorism (unless separately endorsed)</li>
+      </ul></div>
+
+    <div class="pd-section"><h3>Conditions</h3>
+      <table class="pd-info-table">
+          <tr><th>Period</th><td>Per shipment, or 1-year renewable</td></tr>
+          <tr><th>Payment</th><td>Single or annual</td></tr>
+          <tr><th>Main insurers</th><td>DB · Hyundai Marine &amp; Fire · KB · Meritz</td></tr>
+          <tr><th>Turnaround</th><td>Instant online estimate / formal application 1–2 business days</td></tr>
+      </table></div>
+
+    <div class="pd-section"><h3>What we need to quote</h3>
+      <ul class="pd-bul">
+          <li>Cargo item &amp; packing form</li>
+          <li>Route (origin, destination, waypoints)</li>
+          <li>Conveyance (road, rail, coastal)</li>
+          <li>Annual volume (for open cover)</li>
+      </ul></div>
+
+    <!-- ===== Editorial blocks (ed-* style) ===== -->
+    <section class="ed-signal" aria-label="When you need transit insurance">
+      <h2 class="ed-signal__title">When you need transit insurance</h2>
+      <p class="ed-signal__sub">Situations we see often &mdash; a quick self-check by scenario</p>
+      <div class="ed-signal__grid">
+        <div class="ed-signal__item"><div class="ed-signal__item__icon">&#128666;</div><h3 class="ed-signal__item__title">Businesses moving goods or raw materials by road within Korea</h3><p class="ed-signal__item__desc">Exposed to loss or damage of cargo while in transit.</p></div>
+        <div class="ed-signal__item"><div class="ed-signal__item__icon">&#127981;</div><h3 class="ed-signal__item__title">Manufacturers with frequent, regular factory&harr;DC shipments</h3><p class="ed-signal__item__desc">Cover the accident risk of repeated routes under a single policy.</p></div>
+        <div class="ed-signal__item"><div class="ed-signal__item__icon">&#128230;</div><h3 class="ed-signal__item__title">Operators delivering high-value equipment or machinery domestically</h3><p class="ed-signal__item__desc">Covers impact and overturning loss during loading, unloading and transit.</p></div>
+        <div class="ed-signal__item"><div class="ed-signal__item__icon">&#128257;</div><h3 class="ed-signal__item__title">Distributors shipping out to many customers</h3><p class="ed-signal__item__desc">Consider open cover when shipment counts are high.</p></div>
+      </div>
+    </section>
+
+    <section class="ed-pitfall" aria-label="Things easily missed when buying transit insurance">
+      <h2 class="ed-pitfall__title">3 things easily missed when buying transit insurance</h2>
+      <p class="ed-pitfall__sub">The wording and structure points most often overlooked</p>
+      <ul class="ed-pitfall__list">
+        <li class="ed-pitfall__item"><div class="ed-pitfall__num">1</div><div class="ed-pitfall__content"><h3 class="ed-pitfall__content__title">Scope &mdash; whether loading/unloading is included</h3><p class="ed-pitfall__content__desc">Check the wording for whether accidents during loading and unloading &mdash; not just carriage &mdash; are covered.</p></div></li>
+        <li class="ed-pitfall__item"><div class="ed-pitfall__num">2</div><div class="ed-pitfall__content"><h3 class="ed-pitfall__content__title">Conveyance limits &mdash; own-account / commercial / contracted</h3><p class="ed-pitfall__content__desc">Settle in advance which conveyances and contracting arrangements are covered.</p></div></li>
+        <li class="ed-pitfall__item"><div class="ed-pitfall__num">3</div><div class="ed-pitfall__content"><h3 class="ed-pitfall__content__title">Exclusions &mdash; insufficient packing / natural wastage</h3><p class="ed-pitfall__content__desc">Packing defects or ordinary natural wastage may not be covered.</p></div></li>
+      </ul>
+    </section>
+
+    <section class="ed-related" aria-label="Related insurance guides">
+      <h2 class="ed-related__title">Guides worth reading together</h2>
+      <p class="ed-related__sub">Lines that combine with or complement transit insurance</p>
+      <div class="ed-related__grid">
+        <a href="marine-cargo.html" class="ed-related__card"><span class="ed-related__card__num">Linked</span><h3 class="ed-related__card__title">Marine Cargo (import/export)</h3><p class="ed-related__card__desc">Covers loss to cargo on international import/export legs.</p><span class="ed-related__card__cta">Read more &rarr;</span></a>
+        <a href="inland-transit.html" class="ed-related__card"><span class="ed-related__card__num">Linked</span><h3 class="ed-related__card__title">Inland Transit Insurance</h3><p class="ed-related__card__desc">Covers loss or damage to cargo on the inland leg.</p><span class="ed-related__card__cta">Read more &rarr;</span></a>
+        <a href="carriers-liability.html" class="ed-related__card"><span class="ed-related__card__num">Complement</span><h3 class="ed-related__card__title">Carrier's Liability Insurance</h3><p class="ed-related__card__desc">Covers the carrier's liability for cargo in its custody.</p><span class="ed-related__card__cta">Read more &rarr;</span></a>
+      </div>
+    </section>
+
+    <section class="ed-faq" aria-label="Frequently asked questions">
+      <h2 class="ed-faq__title">Frequently asked questions</h2>
+      <p class="ed-faq__sub">The questions most often asked when considering transit insurance (Marine Transit)</p>
+
+      <details class="ed-faq__item">
+        <summary>How is transit insurance different from carrier's liability insurance?</summary>
+        <p class="ed-faq__answer">Transit insurance is cargo-owner-side cover that the shipper buys to protect their own cargo during domestic transit. Carrier's liability insurance, by contrast, is bought by the carrier to cover the liability it owes the cargo owner. The buyer and the insured interest differ; as a shipper, protecting your cargo directly with transit insurance is the usual approach.</p>
+      </details>
+      <details class="ed-faq__item">
+        <summary>How do I tell transit insurance from marine cargo insurance?</summary>
+        <p class="ed-faq__answer">Marine cargo insurance covers cargo on international import/export legs; transit insurance covers cargo on domestic road, rail and coastal legs. The distinction is simply whether the leg is domestic or international.</p>
+      </details>
+      <details class="ed-faq__item">
+        <summary>Can I buy single-shipment cover only, or also annual open cover?</summary>
+        <p class="ed-faq__answer">Both. For infrequent moves you can buy per shipment; frequent shippers can take annual open cover to handle the year's volume under one contract and simplify administration.</p>
+      </details>
+      <details class="ed-faq__item">
+        <summary>How is the premium set?</summary>
+        <p class="ed-faq__answer">The insurer rates it on conveyance, cargo type, route, annual volume and policy terms. The exact premium and acceptance terms are confirmed after the insurer's underwriting review (AIG &middot; Chubb &middot; DB &middot; Hyundai &middot; KB &middot; Meritz).</p>
+      </details>
+    </section>
+
+    <div class="pd-disclosure">
+        <h3>Things to note</h3>
+        <ul class="pd-bul">
+          <li>When applying, confirm the basics of the contract — <strong>product name, period of insurance, premium payment term and the insured</strong> — and be sure to receive and read the policy wording and product brochure.</li>
+          <li><strong>Coverage exclusions</strong> are set out in each insurer's policy wording and brochure; refer to them for details, as claims may be limited by exclusions or payment-limitation grounds.</li>
+          <li>If the insured event has already occurred when the contract is concluded, the contract is void.</li>
+          <li><strong>Duty of disclosure:</strong> the policyholder, the insured or their agent must answer the application/questionnaire truthfully; otherwise a claim may be declined or the contract cancelled.</li>
+          <li><strong>Cooling-off:</strong> a policyholder may generally withdraw the application within 15 days of receiving the certificate; note that <strong>commercial (corporate) insurance taken out by a professional financial consumer cannot be withdrawn</strong>.</li>
+          <li>Providing special benefits in connection with an insurance contract is punishable under the Insurance Business Act.</li>
+          <li><strong>N2N Insurance Brokerage</strong> is a broker registered under Article 89 of the Insurance Business Act; it does not represent any single insurer and advises on the client's side (FSS Reg. No. 2026-012201 · Business Reg. No. 611-23-02374). Application and acceptance follow each insurer's wording.</li>
+        </ul>
+        <p style="font-size:.86rem;color:var(--ink-2);margin-top:10px;">Full Korean statutory disclosures — depositor protection, tax treatment, signature requirements, the insurance-fraud reporting center and dispute resolution — are provided on the <a href="/products/marine-transit.html" style="color:var(--accent);">Korean version of this page</a>.</p>
+      </div>
+
+    <div class="callout" style="background:#fff8f3;border-left:3px solid var(--accent);padding:1rem 1.25rem;margin:1.5rem 0;font-size:.9rem;color:var(--ink);line-height:1.6;">
+      <strong>📌 Only marine cargo is quoted instantly on this site.</strong><br>
+      Transit, fine art and liability lines need asset valuation and underwriting, so they are not auto-quoted here.
+      When you request a consultation we provide a free <strong>simultaneous comparison across 6 insurers</strong> (avg. reply within 24 hours during business hours).
+    </div>
+
+    <a class="cta-card" id="campaign-cta" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener">
+      <p class="cc-eyebrow">Transit Insurance · comparison quote</p>
+      <h3 class="cc-title">Transit cover for businesses with frequent domestic shipments</h3>
+      <p class="cc-lede">We design cover for loss in domestic transit from factory/warehouse to destination, matched to your transport pattern and volume.</p>
+      <ul class="cc-features">
+        <li><b>Nationwide cover</b> &mdash; road, rail and coastal combined</li>
+        <li><b>Own-account or contracted</b> &mdash; applies to both</li>
+        <li><b>Annual open cover</b> &mdash; one contract for the year's volume</li>
+        <li><b>Cargo-owner side cover</b> &mdash; independent of the carrier's liability</li>
+      </ul>
+      <span class="cc-go">Ask for a comparison quote on KakaoTalk <span class="arrow">&rarr;</span></span>
+      <p class="cc-note">Coverage, exclusions and limits are governed by each insurer's wording, and the final premium is confirmed after the insurer's underwriting review. Our fee is paid by the insurer, so there is no extra cost to you (Article 98 of the Insurance Business Act).</p>
+    </a>
+  </div>
+</div></div>
+
+<aside class="right-quick" aria-label="Quick menu">
+  <a href="tel:+82-10-5755-6465"><strong>☎</strong><span>Call<br>+82-10-5755-6465</span></a>
+  <a href="/en/products/marine-cargo.html#calculator"><strong>📦</strong><span>Cargo<br>quote</span></a>
+  <a class="rq-kakao" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener"><strong>💬</strong><span>Kakao<br>chat</span></a>
+  <a href="https://n2nib.com" target="_blank" rel="noopener"><strong>🏛</strong><span>n2nib<br>.com</span></a>
+  <button class="rq-totop" aria-label="Back to top"><strong>↑</strong><span>TOP</span></button>
+</aside>
+
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div><div class="footer-brand">
+        <a class="logo" href="/en/index.html" style="display:inline-block;text-decoration:none">
+          <img class="logo-img" src="/assets/logo-horizontal-dark-en.svg" alt="N2N Insurance Brokerage" width="200" height="50">
+        </a>
+      </div>
+      <p class="footer-meta">cargoinsu.com — by N2N Insurance Brokerage<br>
+        Hanwook Seong, Representative (Licensed Non-Life Insurance Broker, ACIU)<br>
+        <span class="meta-item">Business Reg. No.&nbsp;611-23-02374</span> · <span class="meta-item">FSS Broker Reg. No.&nbsp;2026-012201</span> · <span class="meta-item">Sole proprietorship</span><br>
+        <span class="meta-item">Address&nbsp;41 Bangbae-ro 30-gil, Seocho-gu, Seoul, Republic of Korea, Suite&nbsp;602</span><br>
+        <span class="meta-item">Tel&nbsp;<a href="tel:+82-10-5755-6465">+82-10-5755-6465</a></span> · <span class="meta-item">Email&nbsp;<a href="mailto:sales@cargoinsu.com">sales@cargoinsu.com</a></span></p></div>
+    <div><div class="footer-head">Specialist lines</div><ul class="footer-list">
+      <li><a href="marine-cargo.html">Marine Cargo (instant quote)</a></li>
+      <li><a href="marine-transit.html">Transit Insurance</a></li>
+      <li><a href="inland-transit.html">Inland Transit</a></li>
+      <li><a href="specialty-art.html">Fine Art</a></li>
+      <li><a href="jewellers-block.html">Jeweller's Block</a></li>
+      <li><a href="liability-freight-forwarders.html">Freight Forwarder's Liability (FFL)</a></li>
+      <li><a href="carriers-liability.html">Carrier's Liability</a></li></ul></div>
+    <div><div class="footer-head">Consultation / Related</div><ul class="footer-list">
+      <li><a href="/en/consult.html?product=transit">cargoinsu consultation</a></li>
+      <li><a href="https://n2nib.com" target="_blank" rel="noopener">n2nib.com (110+ lines)</a></li>
+      <li><a href="/en/about.html">About Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2026 N2N Insurance Brokerage / cargoinsu.com. All rights reserved. · <a href="/privacy.html" style="color:inherit;text-decoration:underline">Privacy Policy</a> · <a href="/terms.html" style="color:inherit;text-decoration:underline">Terms of Use</a></div>
+</footer>
+
+<script src="/assets/calculator.js"></script>
+<script src="/assets/script.js" defer></script>
+<!-- Conversion sticky CTA (cold SEO -> consult) -->
+<style>
+.pd-sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:95;background:#0B2818;box-shadow:0 -6px 24px rgba(11,40,24,.18);transform:translateY(110%);transition:transform .28s ease;}
+.pd-sticky-cta.show{transform:translateY(0);}
+.pd-sticky-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 18px;}
+.pd-sticky-text{min-width:0;}
+.pd-sticky-text strong{display:block;color:#fff;font-size:.92rem;font-weight:700;letter-spacing:-.01em;}
+.pd-sticky-text span{display:block;color:rgba(244,240,232,.78);font-size:.78rem;margin-top:2px;line-height:1.4;}
+.pd-sticky-btn{flex:0 0 auto;background:#C56A2C;color:#fff;padding:11px 20px;border-radius:7px;text-decoration:none;font-weight:700;font-size:.92rem;white-space:nowrap;}
+.pd-sticky-btn:hover{background:#b35d22;}
+.pd-sticky-close{flex:0 0 auto;background:transparent;border:0;color:rgba(244,240,232,.55);font-size:1.25rem;line-height:1;cursor:pointer;padding:4px 4px;}
+@media(max-width:780px){.pd-sticky-text span{display:none;}.pd-sticky-inner{padding:9px 12px;gap:10px;}.pd-sticky-btn{padding:11px 16px;font-size:.88rem;}}
+</style>
+<div class="pd-sticky-cta" id="pdStickyCta" role="complementary" aria-label="Request a quote">
+  <div class="pd-sticky-inner">
+    <div class="pd-sticky-text">
+      <strong>Independent broker · 6-insurer comparison</strong>
+      <span>Send your artwork / stock / cargo details — reply within 1 business day · broker fee paid by the insurer</span>
+    </div>
+    <a class="pd-sticky-btn" href="/en/consult.html?product=transit">Request a quote &rarr;</a>
+    <button class="pd-sticky-close" type="button" aria-label="Close" onclick="this.closest('.pd-sticky-cta').classList.remove('show');window.__pdStickyDismissed=true;">&times;</button>
+  </div>
+</div>
+<script>
+(function(){var b=document.getElementById('pdStickyCta');if(!b)return;function f(){if(window.__pdStickyDismissed)return;if(window.scrollY>420){b.classList.add('show');}else{b.classList.remove('show');}}window.addEventListener('scroll',f,{passive:true});f();})();
+</script>
+</body>
+</html>
