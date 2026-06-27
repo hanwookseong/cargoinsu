@@ -16,3 +16,8 @@ _bak_*
 _bak-*
 *.bak_*
 *.orig
+
+# N2N 배포 백업(자동 생성물)
+*._bak_*
+n2n_backups/
+
