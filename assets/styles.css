@@ -7450,3 +7450,20 @@ html body .right-quick {
 @media (max-width: 600px){
   .site-footer .footer-meta .meta-item{ white-space: normal !important; }
 }
+
+/* ═══ N2N 공식 로고 표준 (적용 2026-07-18) ══════════════════════
+   공식 SVG(n2n-logo.svg / logo-horizontal*.svg)는 워드마크가
+   크림(#F4F0E8) → 딥그린 배경 전용 자산이다.
+   .top_wrap(아이보리 헤더)에서는 딥그린 배지 안에 넣어 가독성 확보.
+   ※ 로고 도형·색상은 절대 재현·수정하지 말 것 (파일 verbatim 사용).
+   ※ 푸터(.site-footer)는 이미 딥그린 배경이므로 배지 불필요.        */
+.top_wrap .logo .logo-img {
+  background: #0B2818;
+  padding: 6px 11px;
+  border-radius: 7px;
+  box-sizing: content-box;
+}
+@media (max-width: 640px) {
+  .top_wrap .logo .logo-img { padding: 5px 9px; border-radius: 6px; }
+}
+/* ═══ /N2N 공식 로고 표준 ═════════════════════════════════════ */

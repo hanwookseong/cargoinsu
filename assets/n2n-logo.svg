@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130" role="img" aria-label="N2N Insurance Brokerage">
+  <!-- n2n-logo dark-header variant: tagline #F4F0E8 (n2nib deep-green header) -->
   <title>N2N Insurance Brokerage</title>
   <desc>Three-disc N2N mark with prominent INSURANCE and BROKERAGE wordmark.</desc>
 
@@ -23,9 +24,9 @@
   <text x="120" y="92" text-anchor="middle"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
         font-size="26" font-weight="700" letter-spacing="2"
-        fill="#0B2818">INSURANCE</text>
+        fill="#F4F0E8">INSURANCE</text>
   <text x="120" y="120" text-anchor="middle"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
         font-size="26" font-weight="700" letter-spacing="2"
-        fill="#0B2818">BROKERAGE</text>
+        fill="#F4F0E8">BROKERAGE</text>
 </svg>
