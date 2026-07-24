@@ -7467,3 +7467,46 @@ html body .right-quick {
   .top_wrap .logo .logo-img { padding: 5px 9px; border-radius: 6px; }
 }
 /* ═══ /N2N 공식 로고 표준 ═════════════════════════════════════ */
+
+
+/* ============================================================
+   N2N-MSH-LOGO-FIX-20260724 - 모바일 sticky 헤더 로고 가시성 수정
+   ------------------------------------------------------------
+   [원인] assets/logo-horizontal.svg 는 다크 배경 전용 공식 에셋.
+          외곽 디스크 2개 / INSURANCE / BROKERAGE / 엔투엔보험중개
+          가 모두 크림(#F4F0E8) 이라, 배경이 #ffffff 인
+          .mobile-sticky-header 위에서는 전부 소실된다.
+          (데스크톱 헤더는 딥그린이라 정상 -> 모바일에서만 발생)
+   [조치] 공식 SVG 색상.좌표는 수정하지 않고,
+          로고를 딥그린(#0B2818) 배지로 감싸 설계된 배경을 부여.
+   [범위] 모바일(max-width 780px) sticky 헤더 로고 영역만.
+   ============================================================ */
+@media (max-width: 780px) {
+  .mobile-sticky-header .msh-logo {
+    flex: 0 1 auto !important;
+    background: #0B2818 !important;
+    border-radius: 7px !important;
+    padding: 5px 11px !important;
+    margin-left: 2px !important;
+    align-self: center !important;
+    overflow: hidden !important;
+    min-width: 0 !important;
+  }
+  .mobile-sticky-header .msh-logo img {
+    height: 32px !important;
+    width: auto !important;
+    display: block !important;
+    filter: none !important;
+  }
+  .mobile-sticky-header .msh-logo strong { display: none !important; }
+}
+
+@media (max-width: 360px) {
+  .mobile-sticky-header .msh-logo { padding: 4px 9px !important; }
+  .mobile-sticky-header .msh-logo img { height: 27px !important; }
+  .mobile-sticky-header .msh-cta {
+    padding: 9px 12px !important;
+    font-size: 0.82rem !important;
+  }
+}
+/* ================ END N2N-MSH-LOGO-FIX-20260724 ================ */
