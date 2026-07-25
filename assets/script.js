@@ -171,7 +171,7 @@
     /* /products/ 또는 /guide/ 하위 폴더 모두 ../ 경로 사용 */
     var homeHref = BASE + 'index.html';
     var consultHref = BASE + 'consult.html';
-    var logoSrc = LANG === 'en' ? '/assets/logo-horizontal-en.svg' : '/assets/logo-horizontal.svg';
+    var logoSrc = '/assets/logo-horizontal-light.svg';  /* [v1.1 §3] sticky 헤더는 흰 배경 -> -light 고정, EN 전용 로고 폐지 */
     var header = document.createElement('header');
     header.className = 'mobile-sticky-header';
     header.setAttribute('role', 'banner');
