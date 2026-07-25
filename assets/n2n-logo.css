@@ -1,0 +1,79 @@
+/* ============================================================
+   N2N 로고 배치 규칙 — N2N_디자인가이드_v1.1 §2 · §3 구현
+   cargoinsu.com / n2nib.com 공통
+   ------------------------------------------------------------
+   원칙: 배경색이 파일을 결정한다.
+     밝은 배경(흰·아이보리·크림) → logo-horizontal-light.svg
+     딥그린 배경(GNB·푸터)       → logo-horizontal-dark.svg
+     폭 420px 미만               → logo-mark-light/dark.svg
+   색상·좌표·비율은 절대 수정하지 않는다.
+   ============================================================ */
+
+/* ---------- 1. 로고 슬롯 공통 ---------- */
+.n2n-logo {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;              /* baseline 여백 제거 → 높이 흔들림 방지 */
+  text-decoration: none;
+}
+.n2n-logo img {
+  height: 32px;                /* 가이드 최소 높이 32px */
+  width: auto;
+  display: block;
+}
+
+/* 보호영역 0.1D는 SVG viewBox에 이미 포함되어 있으므로
+   추가 padding 없이 그대로 배치해도 규격을 만족한다. */
+
+/* ---------- 2. 배경별 파일 전환 ---------- */
+/* 기본 = 밝은 배경(흰 sticky 헤더·문서·모바일) */
+.n2n-logo .logo-on-dark,
+.n2n-logo .logo-mark { display: none; }
+.n2n-logo .logo-on-light { display: block; }
+
+/* 딥그린 배경(데스크톱 GNB·푸터·투명→그린 헤더) */
+.header--green   .n2n-logo .logo-on-light,
+.header--transparent .n2n-logo .logo-on-light,
+.site-footer     .n2n-logo .logo-on-light { display: none; }
+
+.header--green   .n2n-logo .logo-on-dark,
+.header--transparent .n2n-logo .logo-on-dark,
+.site-footer     .n2n-logo .logo-on-dark { display: block; }
+
+/* ---------- 3. 좁은 폭 → 마크 전환 (태그라인 삭제 금지) ---------- */
+@media (max-width: 420px) {
+  .n2n-logo .logo-on-light,
+  .n2n-logo .logo-on-dark { display: none !important; }
+  .n2n-logo .logo-mark { display: block; }
+  .n2n-logo img { height: 26px; }          /* 마크 최소 20px 이상 */
+}
+
+/* ---------- 4. 다크모드 ---------- */
+@media (prefers-color-scheme: dark) {
+  .n2n-logo .logo-on-light { display: none; }
+  .n2n-logo .logo-on-dark  { display: block; }
+}
+@media (prefers-color-scheme: dark) and (max-width: 420px) {
+  .n2n-logo .logo-on-dark { display: none !important; }
+  .n2n-logo .logo-mark { display: block; }
+}
+
+/* ---------- 5. 사진·그라디언트·테라코타 위 배치용 딥그린 바 ----------
+   가이드 §1: 테라코타/사진 위에 로고를 직접 얹지 않는다.
+   딥그린 솔리드 면을 먼저 확보한 뒤 -dark 를 올린다.
+   (이전의 "로고를 딥그린 배지로 감싸는" 임시처리와는 다르다 —
+    배지가 아니라 섹션 전체가 딥그린 면이어야 한다.)                */
+.logo-safe-bar {
+  background: #0B2818;
+  padding: 12px 24px;
+}
+.logo-safe-bar .n2n-logo .logo-on-light { display: none; }
+.logo-safe-bar .n2n-logo .logo-on-dark  { display: block; }
+
+/* ---------- 6. 인쇄 ---------- */
+@media print {
+  .n2n-logo .logo-on-dark,
+  .n2n-logo .logo-mark { display: none !important; }
+  .n2n-logo .logo-on-light { display: block !important; }
+  .n2n-logo img { height: 10mm; }          /* 가이드 인쇄 최소 10mm */
+}
