@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B2818">
+<title>[케이스] "그 지역은 안 받습니다" — 제재 인접 지역 향 화물, 적하보험은 어디까지 가능한가 | cargoinsu.com</title>
+<meta name="description" content="러시아·벨라루스 등 제재 인접 지역 향 화물은 다수 보험회사가 인수를 제한합니다. 제재 준수 약관(Sanctions Limitation)과 전쟁·SRCC 약관의 작동 방식, 인수심사 전에 확인해야 할 항목을 ACIU 보험중개사 관점에서 익명 사례로 정리합니다.">
+<link rel="canonical" href="https://cargoinsu.com/insights/sanctions-tsr-cargo.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="&quot;그 지역은 안 받습니다&quot; — 제재 인접 지역 향 화물의 적하보험">
+<meta property="og:description" content="제재 준수 약관과 전쟁·SRCC 약관이 어떻게 작동하는지, 인수심사 전에 무엇을 확인해야 하는지 정리합니다.">
+<meta property="og:url" content="https://cargoinsu.com/insights/sanctions-tsr-cargo.html">
+<meta property="og:site_name" content="cargoinsu.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Questrial&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+  :root{
+    --forest:#0B2818; --forest-soft:#143A2B;
+    --terracotta:#D97757; --terracotta-hover:#C4623F; --terracotta-ink:#C4623F;
+    --ivory:#FAF8F3; --ivory-panel:#FDFCF8; --cream-text:#F4F0E8;
+    --ink:#1A2B22; --ink-soft:#3B4A41; --ink-mute:#6B7A70;
+    --line:rgba(11,40,24,.12); --warn:#A6482C;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:"Pretendard",system-ui,sans-serif; background:var(--ivory); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7; }
+
+  .nav{ background:var(--forest); display:flex; align-items:center; gap:34px; padding:14px 40px; }
+  .nav__logo{ display:flex; align-items:center; flex-shrink:0; }
+  .nav__logo img{ height:44px; width:auto; display:block; }
+  .nav__menu{ display:flex; align-items:center; gap:26px; flex:1; flex-wrap:wrap; }
+  .nav__menu a{ color:var(--cream-text); text-decoration:none; font-size:15px; font-weight:500; opacity:.92; }
+  .nav__menu a:hover{ opacity:1; }
+  .nav__right{ display:flex; align-items:center; gap:20px; flex-shrink:0; }
+  .nav__cta{ background:var(--terracotta); color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:11px 22px; border-radius:8px; white-space:nowrap; transition:background .15s,transform .15s; }
+  .nav__cta:hover{ background:var(--terracotta-hover); transform:translateY(-1px); }
+  .trustbar{ background:var(--forest-soft); color:var(--cream-text); text-align:center; font-size:13.5px; padding:11px 20px; }
+  .trustbar b{ color:var(--terracotta); font-weight:700; }
+  .trustbar .dot{ opacity:.45; margin:0 10px; }
+
+  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+  .article-head{ padding:64px 0 40px; border-bottom:1px solid var(--line); }
+  .crumb{ font-family:"Questrial",sans-serif; font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--terracotta-ink); margin-bottom:22px; }
+  .crumb a{ color:inherit; text-decoration:none; }
+  h1{ font-family:"Nanum Myeongjo",serif; font-weight:800; color:var(--forest); font-size:clamp(28px,4.2vw,42px); line-height:1.42; letter-spacing:-.01em; word-break:keep-all; margin-bottom:24px; }
+  .dek{ font-size:18px; color:var(--ink-soft); line-height:1.75; word-break:keep-all; }
+  .byline{ display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-top:28px; font-size:13.5px; color:var(--ink-mute); }
+  .byline .who{ color:var(--forest); font-weight:700; }
+
+  .article-body{ padding:44px 0 24px; }
+  .article-body h2{ font-family:"Nanum Myeongjo",serif; font-weight:700; color:var(--forest); font-size:clamp(21px,2.6vw,27px); line-height:1.45; margin:48px 0 18px; word-break:keep-all; }
+  .article-body h3{ font-weight:700; color:var(--forest); font-size:17.5px; margin:30px 0 10px; }
+  .article-body p{ font-size:16.5px; color:var(--ink); margin-bottom:18px; word-break:keep-all; }
+  .article-body p b{ color:var(--forest); }
+  .article-body a{ color:var(--terracotta-ink); text-decoration:underline; text-underline-offset:3px; }
+  .lead-para{ font-size:18px; color:var(--ink-soft); }
+  .src{ display:block; margin-top:-8px; margin-bottom:18px; font-size:13px; color:var(--ink-mute); }
+
+  .case-box{ background:var(--forest); color:var(--cream-text); border-radius:16px; padding:28px 30px; margin:30px 0; }
+  .case-box .tag{ font-family:"Questrial",sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
+  .case-box dl{ display:grid; grid-template-columns:auto 1fr; gap:10px 20px; font-size:15px; }
+  .case-box dt{ color:var(--terracotta); font-weight:700; white-space:nowrap; }
+  .case-box dd{ color:var(--cream-text); }
+  .case-box .foot{ margin-top:16px; padding-top:14px; border-top:1px solid rgba(244,240,232,.18); font-size:13px; color:rgba(244,240,232,.66); }
+
+  .pull{ font-family:"Nanum Myeongjo",serif; font-weight:700; font-size:clamp(20px,2.6vw,26px); line-height:1.55; color:var(--forest); border-left:3px solid var(--terracotta); padding:6px 0 6px 24px; margin:34px 0; word-break:keep-all; }
+
+  table.cmp{ width:100%; border-collapse:collapse; margin:26px 0; font-size:14.5px; }
+  table.cmp th, table.cmp td{ text-align:left; padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; word-break:keep-all; }
+  table.cmp thead th{ background:var(--ivory-panel); color:var(--forest); font-weight:700; border-bottom:2px solid var(--terracotta); }
+  table.cmp td:first-child{ font-weight:700; color:var(--forest); }
+  table.cmp .miss{ color:var(--warn); }
+  table.cmp .need{ color:var(--forest); }
+
+  ul.check{ list-style:none; margin:22px 0; padding:0; }
+  ul.check li{ position:relative; padding:11px 0 11px 34px; border-bottom:1px solid var(--line); font-size:15.5px; color:var(--ink); word-break:keep-all; }
+  ul.check li::before{ content:"✓"; position:absolute; left:6px; top:11px; color:var(--terracotta); font-weight:800; }
+  ul.check li b{ color:var(--forest); }
+
+  ol.steps{ margin:22px 0; padding-left:0; list-style:none; counter-reset:s; }
+  ol.steps li{ position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--line); font-size:15.5px; word-break:keep-all; counter-increment:s; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:12px; width:28px; height:28px; border-radius:50%; background:var(--forest); color:var(--cream-text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  ol.steps li b{ color:var(--forest); }
+
+  .faq{ margin:26px 0; }
+  .faq details{ border:1px solid var(--line); border-radius:12px; padding:4px 20px; margin-bottom:12px; background:var(--ivory-panel); }
+  .faq summary{ cursor:pointer; font-weight:700; color:var(--forest); font-size:16px; padding:16px 0; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--terracotta); font-weight:800; font-size:20px; line-height:1; }
+  .faq details[open] summary::after{ content:"–"; }
+  .faq details p{ font-size:15.5px; color:var(--ink-soft); padding-bottom:18px; margin:0; }
+
+  .disc{ font-size:13px; color:var(--ink-mute); background:var(--ivory-panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; margin:30px 0; line-height:1.7; word-break:keep-all; }
+  .disc b{ color:var(--forest); }
+
+  .alertbox{ border:1px solid rgba(166,72,44,.35); border-left:4px solid var(--warn); background:#FCF6F3; border-radius:12px; padding:20px 24px; margin:28px 0; }
+  .alertbox .t{ font-weight:700; color:var(--warn); font-size:16px; margin-bottom:8px; }
+  .alertbox p{ font-size:15.5px; color:var(--ink-soft); margin-bottom:0; word-break:keep-all; }
+
+  .cta{ background:var(--forest); border-radius:20px; padding:44px 40px; text-align:center; margin:44px 0 20px; }
+  .cta h2{ font-family:"Nanum Myeongjo",serif; color:var(--cream-text); font-size:clamp(22px,3vw,30px); margin-bottom:14px; word-break:keep-all; }
+  .cta p{ color:rgba(244,240,232,.82); font-size:15.5px; margin-bottom:26px; word-break:keep-all; }
+  .cta .btnrow{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .cta .btn{ display:inline-block; background:var(--terracotta); color:#fff; font-weight:700; font-size:16px; padding:15px 32px; border-radius:10px; text-decoration:none; transition:background .15s,transform .15s; }
+  .cta .btn:hover{ background:var(--terracotta-hover); transform:translateY(-2px); }
+  .cta .btn--ghost{ background:transparent; border:1.5px solid rgba(244,240,232,.5); color:var(--cream-text); }
+  .cta .btn--ghost:hover{ background:rgba(244,240,232,.1); border-color:var(--cream-text); }
+  .cta .sub{ display:block; margin-top:20px; font-size:13.5px; color:rgba(244,240,232,.6); word-break:keep-all; }
+
+  footer{ background:var(--forest); color:rgba(244,240,232,.72); font-size:13px; text-align:center; padding:28px 20px; line-height:1.9; }
+  footer b{ color:var(--cream-text); }
+
+  a:focus-visible, summary:focus-visible, .btn:focus-visible{ outline:2.5px solid var(--terracotta); outline-offset:3px; }
+  @media (max-width:820px){
+    .nav{ flex-wrap:wrap; gap:14px; padding:12px 20px; }
+    .nav__menu{ order:3; width:100%; gap:16px; }
+    .case-box dl{ grid-template-columns:1fr; gap:4px 0; }
+    .case-box dt{ margin-top:10px; }
+    .cta{ padding:34px 22px; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none!important; scroll-behavior:auto!important; } }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav__logo" aria-label="엔투엔보험중개 홈">
+      <img src="/assets/logo-horizontal-dark.svg" alt="엔투엔보험중개 · N2N Insurance Brokerage" width="168" height="44">
+    </a>
+    <div class="nav__menu">
+      <a href="/products/marine-cargo.html">적하보험</a>
+      <a href="/products/inland-transit.html">내륙운송보험</a>
+      <a href="/products/specialty-art.html">예술품</a>
+      <a href="/products/jewellers-block.html">보석</a>
+      <a href="/insights/">보험 가이드</a>
+    </div>
+    <div class="nav__right">
+      <a class="nav__cta" href="/consult.html">보장 상담 →</a>
+    </div>
+  </nav>
+  <div class="trustbar">
+    금융감독원 등록 보험중개사 <b>제2026-012201호</b>
+    <span class="dot">·</span> 화주 <b>측</b> 대리
+    <span class="dot">·</span> AM Best <b>A급 이상</b> 보험회사 접근
+  </div>
+
+  <article>
+    <div class="wrap">
+      <header class="article-head">
+        <p class="crumb"><a href="/insights/">보험 가이드</a> › 케이스 · 적하보험 02</p>
+        <h1>"그 지역은 안 받습니다"<br>제재 인접 지역 향 화물의 적하보험</h1>
+        <p class="dek">러시아·벨라루스를 비롯한 제재 인접 지역 향 화물은 다수 보험회사가 인수를 제한합니다.
+          다만 "지역"만으로 일률 거절되는 것은 아니며, 제재 대상 여부가 확인되면 인수심사 대상이 되는 경우가 있습니다.
+          제재 준수 약관과 전쟁·SRCC 약관이 실제로 어떻게 작동하는지, 무엇을 먼저 확인해야 하는지 정리합니다.</p>
+        <div class="byline">
+          <span>✍️ 작성 <span class="who">성한욱</span> — 기업보험심사역(ACIU) · 보험중개사 등록 제2026-012201호</span>
+          <span>· 📋 보험회사 약관·안내자료 기반</span>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <p class="lead-para">수출 담당자가 가장 많이 듣는 답변은 <b>"그 지역은 저희가 안 받습니다"</b>입니다.
+          그런데 이 말은 대개 <b>"제재 위반 위험을 감수할 수 없다"</b>는 뜻이지,
+          해당 국가 향 화물이 법적으로 전부 금지되었다는 뜻은 아닙니다.
+          이 둘을 구분하지 못하면, 적법하게 부보할 수 있었던 화물을 무담보로 내보내게 됩니다.</p>
+
+        <div class="alertbox">
+          <p class="t">먼저 분명히 해 둘 것</p>
+          <p>본 글은 <b>제재를 회피하는 방법을 다루지 않습니다.</b> 제재 대상 품목·개인·기관·선박이 관련된 거래는
+            보험 인수 대상이 아니며, 당사는 그러한 건을 중개하지 않습니다. 여기서 다루는 것은
+            <b>제재 대상이 아님이 확인되는 거래</b>에 대해 담보를 어떻게 설계하고 어떤 절차로 인수 가부를 확인하는지입니다.</p>
+        </div>
+
+        <div class="case-box">
+          <p class="tag">검토 사례 (익명)</p>
+          <dl>
+            <dt>화주</dt><dd>국내 수출제조사 — 산업용 부품·기자재</dd>
+            <dt>운송 경로</dt><dd>부산항 → 극동 항만 (해상) → TSR 시베리아 횡단철도 (철도) → 내륙 목적지</dd>
+            <dt>특성</dt><dd>해상·철도 복합운송 · 장기 운송 · 동절기 구간 포함 · 다회 환적</dd>
+            <dt>시장 반응</dt><dd>복수 보험회사에서 "해당 지역 인수 제한" 회신</dd>
+            <dt>쟁점</dt><dd>제재 대상 여부 확인 / 전쟁·SRCC 담보 가부 / 철도 구간 담보 연속성 / 인수 가부 사전 확정</dd>
+          </dl>
+          <p class="foot">실제 검토 건을 익명·요약 처리한 사례입니다. 당사자·품목·금액·계약조건은 특정되지 않도록 조정했습니다.</p>
+        </div>
+
+        <h2>"인수 제한"의 세 층위</h2>
+        <p>같은 거절처럼 들려도 사유는 층위가 다릅니다. 어느 층위에 걸린 것인지 구분해야 다음 수를 찾을 수 있습니다.</p>
+
+        <table class="cmp">
+          <thead>
+            <tr><th>층위</th><th>내용</th><th>대응 가능성</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>① 법령상 금지</td>
+              <td>제재 대상 품목(이중용도·전략물자 포함), 지정 개인·기관·선박이 관련된 거래</td>
+              <td class="miss"><b>대응 불가.</b> 부보 이전에 거래 자체가 성립하지 않으며, 중개 대상이 아님</td>
+            </tr>
+            <tr>
+              <td>② 보험회사 내부 인수정책</td>
+              <td>법령상 금지가 아니어도 자체 정책으로 해당 지역·경로를 인수 대상에서 제외</td>
+              <td class="need">보험회사마다 정책이 달라 <b>인수 의향 확인이 실질적 관건</b></td>
+            </tr>
+            <tr>
+              <td>③ 담보조건 제약</td>
+              <td>인수는 하되 전쟁·SRCC 담보 제외, 자기부담금 상향, 특정 구간 면책 등 조건 부가</td>
+              <td class="need">조건 협상 영역. <b>어디까지 열리는지 사전 확인 후 수용 여부 판단</b></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="pull">"안 받는다"는 말의 대부분은 ②번입니다. ①번이 아니라면, 받는 곳을 찾는 문제로 바뀝니다.</p>
+
+        <h2>제재 준수 약관은 어떻게 작동하는가</h2>
+        <p>대부분의 적하보험 증권에는 <b>Sanctions Limitation and Exclusion Clause</b>(제재 제한·면책 약관)가
+          부가되어 있습니다. 핵심 구조는 단순합니다.</p>
+        <ul class="check">
+          <li>보험회사가 담보를 제공하거나 보험금을 지급하는 행위 자체가 <b>제재 법령 위반이 되는 경우</b>, 그 범위에서 담보가 작동하지 않습니다.</li>
+          <li>판단 기준 시점은 <b>사고 시점이 아니라 지급 시점</b>이 되는 경우가 있습니다. 부보 당시에는 문제가 없었어도, 이후 제재 지정이 이루어지면 지급이 막힐 수 있습니다.</li>
+          <li>적용 대상은 통상 <b>화주 소재국 법령에 한정되지 않습니다.</b> 보험회사가 속한 그룹의 본국 법령, 재보험자 소재국 법령까지 함께 걸리는 구조가 일반적입니다.</li>
+        </ul>
+        <p>따라서 "국내법상 문제없다"만으로는 부족하고, <b>증권이 어느 법역의 제재 체계에 연결되는지</b>를
+          함께 봐야 합니다. 이 부분은 증권 문면에서 확인할 수 있습니다.
+          <span class="src"><em>(보험 교과서 표준 시나리오)</em></span></p>
+
+        <h2>전쟁·SRCC는 별개의 문제입니다</h2>
+        <p>제재와 자주 혼동되지만 다른 축입니다. 적하보험의 기본 약관인 ICC는
+          <b>전쟁 위험과 파업·폭동·소요(SRCC) 위험을 원칙적으로 면책</b>하고,
+          별도 약관(Institute War Clauses / Strikes Clauses)으로 되살리는 구조입니다.</p>
+
+        <table class="cmp">
+          <thead>
+            <tr><th>구분</th><th>제재(Sanctions)</th><th>전쟁·SRCC</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>성격</td><td class="miss">법령 준수 문제 — 담보 자체가 무효화</td><td class="need">위험 담보 문제 — 별도 약관으로 담보 가능</td></tr>
+            <tr><td>협상 여지</td><td class="miss">없음. 대상이면 종결</td><td class="need">있음. 요율·한도·지역 조건으로 조정</td></tr>
+            <tr><td>확인 방법</td><td class="miss">거래 당사자·품목·선박 스크리닝</td><td class="need">해당 구간의 전쟁위험 등급, 담보 지역 명세 확인</td></tr>
+            <tr><td>흔한 오해</td><td class="miss">"전쟁담보 넣으면 제재도 해결된다" — 무관</td><td class="need">"ICC(A)면 다 된다" — 전쟁·SRCC는 별도</td></tr>
+          </tbody>
+        </table>
+
+        <h2>복합운송 구간에서 추가로 생기는 문제</h2>
+        <p>해상 + 철도처럼 구간이 나뉘면, 제재·전쟁 이슈와 별개로 <b>담보 연속성</b> 문제가 겹칩니다.</p>
+        <ol class="steps">
+          <li><b>환적 지점의 담보 공백</b> — 해상 구간 담보가 양륙과 동시에 종료되고 철도 구간이 별도 계약으로 잡히면, 그 사이 보관·이적 구간이 비게 됩니다.</li>
+          <li><b>장기 운송에 따른 담보 기간</b> — 철도 구간이 길어지면 약관상 운송기간 조항의 한도를 넘길 수 있어, 연장 조건을 미리 확인해야 합니다.</li>
+          <li><b>철도 특유의 물리적 위험</b> — 진동·충격, 환적 중 낙하·분실, 동절기 결빙·응결. 포장·고박 요구가 해상 기준과 다를 수 있습니다.</li>
+          <li><b>담보 지역 명세</b> — 전쟁·SRCC 담보는 지역이 명세로 관리되므로, 경유 지역 전체가 열려 있는지 확인이 필요합니다.</li>
+        </ol>
+        <p>이 구간들을 하나의 증권으로 통합 담보(through cover)할 수 있는지가 실무의 관건입니다.
+          국내 내륙 구간이 별도로 남는다면
+          <a href="/products/inland-transit.html">내륙운송보험</a>으로 이어 붙이는 설계를 함께 검토합니다.</p>
+
+        <h2>인수 타진 전에 준비할 것</h2>
+        <p>보험회사에 문의하기 전에 아래 항목이 정리되어 있으면, "일단 안 됩니다" 대신
+          실제 인수심사로 넘어갈 가능성이 높아집니다.</p>
+        <ul class="check">
+          <li><b>거래 당사자 전체</b> — 매수인, 최종 수하인, 중개상, 결제은행까지. 이름만이 아니라 소재지·지분구조까지 확인 대상이 될 수 있습니다.</li>
+          <li><b>품목의 HS CODE와 사양</b> — 이중용도·전략물자 해당 여부 판단 근거</li>
+          <li><b>전략물자 판정 결과</b> — 해당 시 판정서 또는 비해당 확인 자료</li>
+          <li><b>운송 경로와 운송수단</b> — 경유지, 환적지, 선박·철도 운영주체</li>
+          <li><b>결제 통화와 결제 경로</b></li>
+          <li><b>포장·고박 사양</b> — 철도 구간 진동·충격 대응 계획</li>
+          <li><b>가입금액 산정 근거</b> — 송장가액 기준인지 110% 관행 적용인지</li>
+          <li><b>희망 담보 범위</b> — 전쟁·SRCC 포함 여부, 통합 담보 필요 구간</li>
+          <li><b>출고 예정일</b> — 담보는 출고 전에만 부착 가능합니다</li>
+        </ul>
+
+        <div class="disc">
+          엔투엔보험중개 파트너 보험회사 <b>(가나다순)</b> : AIG · Chubb · DB손해보험 · KB손해보험 · 메리츠화재 · 현대해상.
+          모두 AM Best A급 이상 재무등급 보험회사입니다. 개별 건의 인수 가능 여부·담보조건·보험료는
+          화물 특성, 경로, 당사자 구성에 따라 달라지며 <b>보험회사 인수심사 후 확정</b>됩니다.
+          제재 대상 여부에 대한 최종 판단은 보험회사 및 관계 당국의 확인에 따릅니다.
+        </div>
+
+        <h2>정리</h2>
+        <p>제재 인접 지역 향 화물은 <b>"되는가 / 안 되는가"의 이분법이 아니라,
+          어느 층위에서 막혔는지를 먼저 가려내는 문제</b>입니다.
+          법령상 금지에 해당한다면 거기서 끝나야 합니다.
+          그렇지 않다면, 인수 의향이 있는 보험회사를 찾고 담보조건을 협의하는 일이 남습니다.
+          보험중개사가 화주 측을 대리해 수행하는 것이 이 부분입니다.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>러시아·벨라루스 향 화물은 무조건 보험 가입이 불가능한가요?</summary>
+          <p>지역만으로 일률적으로 결정되지는 않습니다. 제재 대상 품목·개인·기관·선박이 관련된 거래는 인수 대상이 아니지만, 그렇지 않은 거래는 보험회사 인수심사 대상이 될 수 있습니다. 다만 인수 정책은 보험회사마다 다르고 시기에 따라서도 달라지므로, 개별 건마다 사전 확인이 필요합니다.</p>
+        </details>
+        <details>
+          <summary>제재 준수 약관이 붙어 있으면 보험이 의미가 없는 것 아닌가요?</summary>
+          <p>그렇지 않습니다. 이 약관은 담보 제공이나 보험금 지급이 제재 법령 위반이 되는 범위에서만 작동합니다. 제재와 무관한 통상적인 운송 사고에는 영향을 주지 않습니다. 다만 부보 이후 제재 지정이 이루어지면 지급 단계에서 문제가 생길 수 있어, 거래 구조를 사전에 정리해 두는 것이 중요합니다.</p>
+        </details>
+        <details>
+          <summary>전쟁 담보를 넣으면 제재 문제도 해결되나요?</summary>
+          <p>아닙니다. 전혀 다른 축입니다. 전쟁·SRCC 담보는 무력충돌·파업·폭동으로 인한 화물 손해를 담보하는 것이고, 제재 준수 약관은 법령 준수에 관한 조항입니다. 전쟁 담보를 부가해도 제재 관련 제약은 그대로 남습니다.</p>
+        </details>
+        <details>
+          <summary>TSR 철도 구간도 적하보험으로 담보되나요?</summary>
+          <p>해상과 철도를 잇는 국제 복합운송은 적하보험 영역이며, 전 구간을 하나의 증권으로 통합 담보하는 설계가 가능한지가 관건입니다. 환적 지점과 중간 보관 구간이 담보에서 빠지지 않도록 문면을 확인해야 하며, 국내 내륙 구간이 별도로 남는 경우에는 내륙운송보험으로 이어 붙이는 방식을 함께 검토합니다.</p>
+        </details>
+        <details>
+          <summary>전략물자 판정을 아직 안 받았는데 먼저 보험 문의를 해도 되나요?</summary>
+          <p>문의는 가능하지만, 판정 결과가 없으면 인수심사가 진행되지 않는 경우가 많습니다. 품목의 HS CODE와 사양, 최종 수하인 정보를 함께 준비하시면 검토가 빨라집니다. 판정 절차 자체는 소관 기관을 통해 별도로 진행하셔야 합니다.</p>
+        </details>
+        <details>
+          <summary>보험료는 어떻게 산정되나요?</summary>
+          <p>화물 종류와 가액, 운송 경로와 기간, 환적 횟수, 전쟁·SRCC 담보 포함 여부, 손해 이력 등을 종합해 보험회사가 산정합니다. 사전에 확정된 요율표로 안내드릴 수 있는 성격이 아니며, 자료 접수 후 보험회사 인수심사를 거쳐 확정됩니다.</p>
+        </details>
+      </div>
+
+      <div class="cta">
+        <h2>거절 사유부터 정확히 가려보십시오</h2>
+        <p>법령상 금지인지, 개별 보험회사의 인수정책인지, 조건 협상의 문제인지에 따라 다음 수가 달라집니다.
+          경로와 품목 정보를 보내주시면 검토해 드립니다.</p>
+        <div class="btnrow">
+          <a class="btn" href="/consult.html?product=marine-cargo">적하보험 보장 상담 →</a>
+          <a class="btn btn--ghost" href="/products/marine-cargo.html">적하보험 상품 안내</a>
+        </div>
+        <span class="sub">독립 보험중개사 · 화주 측 대리 · 제재 대상 거래는 중개하지 않습니다 · 담보는 보험회사 인수 확정 및 보험료 납입 이후 개시됩니다.</span>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <b>엔투엔보험중개</b> · 대표 성한욱 (ACIU 기업보험심사역)<br>
+    금융감독원 등록 보험중개사 제2026-012201호 · 사업자등록번호 611-23-02374<br>
+    서울특별시 서초구 방배로30길 41 · T. 010-5755-6465 · sales@n2nib.com<br>
+    본 글은 보험회사 약관·안내자료를 기준으로 작성된 정보이며, 실제 인수 여부·담보조건·보험료는 보험회사 인수심사 후 확정됩니다. 제재 관련 법률 판단은 소관 기관 및 법률 전문가의 확인에 따릅니다.
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"홈","item":"https://cargoinsu.com/"},
+    {"@type":"ListItem","position":2,"name":"보험 가이드","item":"https://cargoinsu.com/insights/"},
+    {"@type":"ListItem","position":3,"name":"제재 인접 지역 향 화물의 적하보험","item":"https://cargoinsu.com/insights/sanctions-tsr-cargo.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "제재 인접 지역 향 화물의 적하보험 — 인수 제한의 세 층위",
+  "description": "러시아·벨라루스 등 제재 인접 지역 향 화물의 적하보험 인수 구조. 제재 준수 약관과 전쟁·SRCC 약관의 차이, 인수 타진 전 준비 항목을 익명 검토 사례로 정리합니다.",
+  "inLanguage": "ko",
+  "author": {"@type":"Person","name":"성한욱","jobTitle":"보험중개사(ACIU 기업보험심사역)"},
+  "publisher": {"@type":"Organization","name":"엔투엔보험중개","url":"https://cargoinsu.com/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://cargoinsu.com/insights/sanctions-tsr-cargo.html"},
+  "about": {"@type":"Thing","name":"적하보험 Marine Cargo Insurance"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"러시아·벨라루스 향 화물은 무조건 보험 가입이 불가능한가요?","acceptedAnswer":{"@type":"Answer","text":"지역만으로 일률적으로 결정되지는 않습니다. 제재 대상 품목·개인·기관·선박이 관련된 거래는 인수 대상이 아니지만, 그렇지 않은 거래는 보험회사 인수심사 대상이 될 수 있습니다. 인수 정책은 보험회사마다 다르고 시기에 따라서도 달라지므로 개별 건마다 사전 확인이 필요합니다."}},
+    {"@type":"Question","name":"제재 준수 약관이 붙어 있으면 보험이 의미가 없는 것 아닌가요?","acceptedAnswer":{"@type":"Answer","text":"이 약관은 담보 제공이나 보험금 지급이 제재 법령 위반이 되는 범위에서만 작동하며, 제재와 무관한 통상적인 운송 사고에는 영향을 주지 않습니다. 다만 부보 이후 제재 지정이 이루어지면 지급 단계에서 문제가 생길 수 있어 거래 구조를 사전에 정리해 두는 것이 중요합니다."}},
+    {"@type":"Question","name":"전쟁 담보를 넣으면 제재 문제도 해결되나요?","acceptedAnswer":{"@type":"Answer","text":"아닙니다. 전쟁·SRCC 담보는 무력충돌·파업·폭동으로 인한 화물 손해를 담보하는 것이고, 제재 준수 약관은 법령 준수에 관한 조항입니다. 전쟁 담보를 부가해도 제재 관련 제약은 그대로 남습니다."}},
+    {"@type":"Question","name":"TSR 철도 구간도 적하보험으로 담보되나요?","acceptedAnswer":{"@type":"Answer","text":"해상과 철도를 잇는 국제 복합운송은 적하보험 영역이며, 전 구간을 하나의 증권으로 통합 담보하는 설계가 가능한지가 관건입니다. 환적 지점과 중간 보관 구간이 담보에서 빠지지 않도록 문면을 확인해야 하며, 국내 내륙 구간이 별도로 남는 경우 내륙운송보험으로 이어 붙이는 방식을 함께 검토합니다."}},
+    {"@type":"Question","name":"보험료는 어떻게 산정되나요?","acceptedAnswer":{"@type":"Answer","text":"화물 종류와 가액, 운송 경로와 기간, 환적 횟수, 전쟁·SRCC 담보 포함 여부, 손해 이력 등을 종합해 보험회사가 산정합니다. 자료 접수 후 보험회사 인수심사를 거쳐 확정됩니다."}}
+  ]
+}
+</script>
+</body>
+</html>
