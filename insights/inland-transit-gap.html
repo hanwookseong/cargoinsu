@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B2818">
+<title>[케이스] 항구·공항에서 공장까지, 그 구간은 누가 보상하나 — 인코텀즈가 만드는 내륙운송 담보 공백 | cargoinsu.com</title>
+<meta name="description" content="CIF·DAP로 수입해도 항구·공항 이후 내륙운송 구간은 담보가 끊기는 경우가 많고, FOB 수출은 공장에서 항구까지가 비어 있습니다. 적재물배상책임보험과 내륙운송보험의 차이, 특송·계약운송에서 자주 생기는 공백을 ACIU 보험중개사 관점에서 익명 사례로 정리합니다.">
+<link rel="canonical" href="https://cargoinsu.com/insights/inland-transit-gap.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="항구·공항에서 공장까지, 그 구간은 누가 보상하나 — 내륙운송 담보 공백">
+<meta property="og:description" content="인코텀즈 조건별로 어디서 담보가 끊기는지, 적재물배상책임보험으로 왜 대체되지 않는지를 익명 사례로 정리합니다.">
+<meta property="og:url" content="https://cargoinsu.com/insights/inland-transit-gap.html">
+<meta property="og:site_name" content="cargoinsu.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Questrial&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+  :root{
+    --forest:#0B2818; --forest-soft:#143A2B;
+    --terracotta:#D97757; --terracotta-hover:#C4623F; --terracotta-ink:#C4623F;
+    --ivory:#FAF8F3; --ivory-panel:#FDFCF8; --cream-text:#F4F0E8;
+    --ink:#1A2B22; --ink-soft:#3B4A41; --ink-mute:#6B7A70;
+    --line:rgba(11,40,24,.12); --warn:#A6482C;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:"Pretendard",system-ui,sans-serif; background:var(--ivory); color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.7; }
+
+  /* ===== NAV ===== */
+  .nav{ background:var(--forest); display:flex; align-items:center; gap:34px; padding:14px 40px; }
+  .nav__logo{ display:flex; align-items:center; flex-shrink:0; }
+  .nav__logo img{ height:44px; width:auto; display:block; }
+  .nav__menu{ display:flex; align-items:center; gap:26px; flex:1; flex-wrap:wrap; }
+  .nav__menu a{ color:var(--cream-text); text-decoration:none; font-size:15px; font-weight:500; opacity:.92; }
+  .nav__menu a:hover{ opacity:1; }
+  .nav__right{ display:flex; align-items:center; gap:20px; flex-shrink:0; }
+  .nav__cta{ background:var(--terracotta); color:#fff; text-decoration:none; font-weight:700; font-size:15px; padding:11px 22px; border-radius:8px; white-space:nowrap; transition:background .15s,transform .15s; }
+  .nav__cta:hover{ background:var(--terracotta-hover); transform:translateY(-1px); }
+  .trustbar{ background:var(--forest-soft); color:var(--cream-text); text-align:center; font-size:13.5px; padding:11px 20px; }
+  .trustbar b{ color:var(--terracotta); font-weight:700; }
+  .trustbar .dot{ opacity:.45; margin:0 10px; }
+
+  /* ===== ARTICLE ===== */
+  .wrap{ max-width:760px; margin:0 auto; padding:0 24px; }
+  .article-head{ padding:64px 0 40px; border-bottom:1px solid var(--line); }
+  .crumb{ font-family:"Questrial",sans-serif; font-size:12.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--terracotta-ink); margin-bottom:22px; }
+  .crumb a{ color:inherit; text-decoration:none; }
+  h1{ font-family:"Nanum Myeongjo",serif; font-weight:800; color:var(--forest); font-size:clamp(28px,4.2vw,42px); line-height:1.42; letter-spacing:-.01em; word-break:keep-all; margin-bottom:24px; }
+  .dek{ font-size:18px; color:var(--ink-soft); line-height:1.75; word-break:keep-all; }
+  .byline{ display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-top:28px; font-size:13.5px; color:var(--ink-mute); }
+  .byline .who{ color:var(--forest); font-weight:700; }
+
+  .article-body{ padding:44px 0 24px; }
+  .article-body h2{ font-family:"Nanum Myeongjo",serif; font-weight:700; color:var(--forest); font-size:clamp(21px,2.6vw,27px); line-height:1.45; margin:48px 0 18px; word-break:keep-all; }
+  .article-body h3{ font-weight:700; color:var(--forest); font-size:17.5px; margin:30px 0 10px; }
+  .article-body p{ font-size:16.5px; color:var(--ink); margin-bottom:18px; word-break:keep-all; }
+  .article-body p b{ color:var(--forest); }
+  .article-body a{ color:var(--terracotta-ink); text-decoration:underline; text-underline-offset:3px; }
+  .lead-para{ font-size:18px; color:var(--ink-soft); }
+  .src{ display:block; margin-top:-8px; margin-bottom:18px; font-size:13px; color:var(--ink-mute); }
+
+  .case-box{ background:var(--forest); color:var(--cream-text); border-radius:16px; padding:28px 30px; margin:30px 0; }
+  .case-box .tag{ font-family:"Questrial",sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--terracotta); margin-bottom:14px; }
+  .case-box dl{ display:grid; grid-template-columns:auto 1fr; gap:10px 20px; font-size:15px; }
+  .case-box dt{ color:var(--terracotta); font-weight:700; white-space:nowrap; }
+  .case-box dd{ color:var(--cream-text); }
+  .case-box .foot{ margin-top:16px; padding-top:14px; border-top:1px solid rgba(244,240,232,.18); font-size:13px; color:rgba(244,240,232,.66); }
+
+  .pull{ font-family:"Nanum Myeongjo",serif; font-weight:700; font-size:clamp(20px,2.6vw,26px); line-height:1.55; color:var(--forest); border-left:3px solid var(--terracotta); padding:6px 0 6px 24px; margin:34px 0; word-break:keep-all; }
+
+  table.cmp{ width:100%; border-collapse:collapse; margin:26px 0; font-size:14.5px; }
+  table.cmp th, table.cmp td{ text-align:left; padding:13px 14px; border-bottom:1px solid var(--line); vertical-align:top; word-break:keep-all; }
+  table.cmp thead th{ background:var(--ivory-panel); color:var(--forest); font-weight:700; border-bottom:2px solid var(--terracotta); }
+  table.cmp td:first-child{ font-weight:700; color:var(--forest); }
+  table.cmp .miss{ color:var(--warn); }
+  table.cmp .need{ color:var(--forest); }
+
+  ul.check{ list-style:none; margin:22px 0; padding:0; }
+  ul.check li{ position:relative; padding:11px 0 11px 34px; border-bottom:1px solid var(--line); font-size:15.5px; color:var(--ink); word-break:keep-all; }
+  ul.check li::before{ content:"✓"; position:absolute; left:6px; top:11px; color:var(--terracotta); font-weight:800; }
+  ul.check li b{ color:var(--forest); }
+
+  ol.steps{ margin:22px 0 22px 0; padding-left:0; list-style:none; counter-reset:s; }
+  ol.steps li{ position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--line); font-size:15.5px; word-break:keep-all; counter-increment:s; }
+  ol.steps li::before{ content:counter(s); position:absolute; left:0; top:12px; width:28px; height:28px; border-radius:50%; background:var(--forest); color:var(--cream-text); font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  ol.steps li b{ color:var(--forest); }
+
+  .faq{ margin:26px 0; }
+  .faq details{ border:1px solid var(--line); border-radius:12px; padding:4px 20px; margin-bottom:12px; background:var(--ivory-panel); }
+  .faq summary{ cursor:pointer; font-weight:700; color:var(--forest); font-size:16px; padding:16px 0; list-style:none; }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary::after{ content:"+"; float:right; color:var(--terracotta); font-weight:800; font-size:20px; line-height:1; }
+  .faq details[open] summary::after{ content:"–"; }
+  .faq details p{ font-size:15.5px; color:var(--ink-soft); padding-bottom:18px; margin:0; }
+
+  .disc{ font-size:13px; color:var(--ink-mute); background:var(--ivory-panel); border:1px solid var(--line); border-radius:12px; padding:18px 22px; margin:30px 0; line-height:1.7; word-break:keep-all; }
+  .disc b{ color:var(--forest); }
+
+  .alertbox{ border:1px solid rgba(166,72,44,.35); border-left:4px solid var(--warn); background:#FCF6F3; border-radius:12px; padding:20px 24px; margin:28px 0; }
+  .alertbox .t{ font-weight:700; color:var(--warn); font-size:16px; margin-bottom:8px; }
+  .alertbox p{ font-size:15.5px; color:var(--ink-soft); margin-bottom:0; word-break:keep-all; }
+
+  /* CTA */
+  .cta{ background:var(--forest); border-radius:20px; padding:44px 40px; text-align:center; margin:44px 0 20px; }
+  .cta h2{ font-family:"Nanum Myeongjo",serif; color:var(--cream-text); font-size:clamp(22px,3vw,30px); margin-bottom:14px; word-break:keep-all; }
+  .cta p{ color:rgba(244,240,232,.82); font-size:15.5px; margin-bottom:26px; word-break:keep-all; }
+  .cta .btnrow{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .cta .btn{ display:inline-block; background:var(--terracotta); color:#fff; font-weight:700; font-size:16px; padding:15px 32px; border-radius:10px; text-decoration:none; transition:background .15s,transform .15s; }
+  .cta .btn:hover{ background:var(--terracotta-hover); transform:translateY(-2px); }
+  .cta .btn--ghost{ background:transparent; border:1.5px solid rgba(244,240,232,.5); color:var(--cream-text); }
+  .cta .btn--ghost:hover{ background:rgba(244,240,232,.1); border-color:var(--cream-text); }
+  .cta .sub{ display:block; margin-top:20px; font-size:13.5px; color:rgba(244,240,232,.6); word-break:keep-all; }
+
+  footer{ background:var(--forest); color:rgba(244,240,232,.72); font-size:13px; text-align:center; padding:28px 20px; line-height:1.9; }
+  footer b{ color:var(--cream-text); }
+
+  a:focus-visible, summary:focus-visible, .btn:focus-visible{ outline:2.5px solid var(--terracotta); outline-offset:3px; }
+  @media (max-width:820px){
+    .nav{ flex-wrap:wrap; gap:14px; padding:12px 20px; }
+    .nav__menu{ order:3; width:100%; gap:16px; }
+    .case-box dl{ grid-template-columns:1fr; gap:4px 0; }
+    .case-box dt{ margin-top:10px; }
+    .cta{ padding:34px 22px; }
+  }
+  @media (prefers-reduced-motion:reduce){ *{ transition:none!important; scroll-behavior:auto!important; } }
+</style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <a href="/" class="nav__logo" aria-label="엔투엔보험중개 홈">
+      <img src="/assets/logo-horizontal-dark.svg" alt="엔투엔보험중개 · N2N Insurance Brokerage" width="168" height="44">
+    </a>
+    <div class="nav__menu">
+      <a href="/products/marine-cargo.html">적하보험</a>
+      <a href="/products/inland-transit.html">내륙운송보험</a>
+      <a href="/products/specialty-art.html">예술품</a>
+      <a href="/products/jewellers-block.html">보석</a>
+      <a href="/insights/">보험 가이드</a>
+    </div>
+    <div class="nav__right">
+      <a class="nav__cta" href="/consult.html">보장 상담 →</a>
+    </div>
+  </nav>
+  <div class="trustbar">
+    금융감독원 등록 보험중개사 <b>제2026-012201호</b>
+    <span class="dot">·</span> 화주 <b>측</b> 대리
+    <span class="dot">·</span> AM Best <b>A급 이상</b> 보험회사 접근
+  </div>
+
+  <!-- ===== ARTICLE ===== -->
+  <article>
+    <div class="wrap">
+      <header class="article-head">
+        <p class="crumb"><a href="/insights/">보험 가이드</a> › 케이스 · 내륙운송 01</p>
+        <h1>항구·공항에서 공장까지,<br>그 구간은 누가 보상하나</h1>
+        <p class="dek">수입 적하보험은 대개 도착항에서 끝나고, FOB 수출은 공장을 나서는 순간부터 비어 있습니다.
+          정작 사고가 잦은 국내 내륙운송 구간이 담보 밖으로 남는 이유와, 적재물배상책임보험으로는 왜 대체되지 않는지를
+          실제 검토 사례(익명)로 정리합니다.</p>
+        <div class="byline">
+          <span>✍️ 작성 <span class="who">성한욱</span> — 기업보험심사역(ACIU) · 보험중개사 등록 제2026-012201호</span>
+          <span>· 📋 보험회사 약관·안내자료 기반</span>
+        </div>
+      </header>
+
+      <div class="article-body">
+        <p class="lead-para">수입 화물이 항구나 공항에 도착하면 화주는 대개 "무사히 들어왔다"고 안심합니다.
+          그런데 실제 파손·도난 사고가 가장 자주 보고되는 구간은 해상·항공이 아니라
+          <b>도착지에서 최종 목적지까지의 국내 트럭 운송</b>입니다.
+          그리고 이 구간은, 인코텀즈 조건에 따라 <b>아무 보험도 붙어 있지 않은 상태</b>인 경우가 많습니다.</p>
+
+        <div class="case-box">
+          <p class="tag">검토 사례 (익명)</p>
+          <dl>
+            <dt>화주</dt><dd>국내 연구기관 — 정밀 계측 시스템 수입</dd>
+            <dt>화물</dt><dd>방사선 계측 장비 일식 · 신품 · 충격·진동 민감 정밀기기</dd>
+            <dt>수입 경로</dt><dd>독일 → 인천공항 (항공) · 인코텀즈 DAP</dd>
+            <dt>내륙 구간</dt><dd>인천공항 보세창고 → 대전 소재 연구시설 · 화물차 복수 대</dd>
+            <dt>쟁점</dt><dd>도착 이후 내륙 구간 담보 공백 / 보험료 부담 주체 / 운송사 배상한도 / 담보 개시 시점</dd>
+          </dl>
+          <p class="foot">실제 검토 건을 익명·요약 처리한 사례입니다. 금액·당사자·계약조건은 특정되지 않도록 조정했습니다.</p>
+        </div>
+
+        <p>이 건에서 화물은 DAP 조건으로 도착했지만, 매도인이 부보한 보험이 <b>어느 지점에서 종료되는지</b>가
+          서류상 명확하지 않았습니다. 도착지 창고에서 화물을 인수하는 순간부터 최종 시설까지의 구간을
+          누가, 어떤 보험으로 책임지는지가 비어 있었던 것입니다.</p>
+
+        <h2>인코텀즈 조건별로 어디가 비는가</h2>
+        <p>담보 공백은 대부분 <b>거래조건과 보험 구간이 어긋나면서</b> 생깁니다.
+          가장 흔한 세 가지 유형입니다.</p>
+
+        <table class="cmp">
+          <thead>
+            <tr><th>상황</th><th>흔히 있는 오해</th><th>실제로 비는 구간</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CIF·CFR로 수입</td>
+              <td class="miss">"매도인이 보험 들었으니 끝까지 된다"</td>
+              <td class="need">적하보험은 통상 <b>도착항·도착공항까지</b>. 이후 통관·보세창고 출고·국내 트럭 구간은 별도 설계 필요</td>
+            </tr>
+            <tr>
+              <td>DAP·DDP로 수입</td>
+              <td class="miss">"매도인 부담이니 신경 안 써도 된다"</td>
+              <td class="need">위험부담 이전 지점과 <b>매도인 부보 범위가 일치하지 않을 수 있음</b>. 증권 사본으로 종료 지점 확인 필요</td>
+            </tr>
+            <tr>
+              <td>FOB로 수출</td>
+              <td class="miss">"매수인이 보험 드니까 괜찮다"</td>
+              <td class="need">매수인 보험은 <b>본선 적재 이후</b>부터. <b>공장 → 항구·공항 구간</b>은 매도인 부담이며 무담보인 경우가 많음</td>
+            </tr>
+            <tr>
+              <td>국내 이설·공장 간 이동</td>
+              <td class="miss">"재물보험에 들어 있다"</td>
+              <td class="need">재물보험은 통상 <b>소재지 한정</b>. 물건이 부지를 벗어나는 순간 담보에서 이탈</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="pull">거래조건은 "위험이 언제 넘어가는가"를 정할 뿐, "그 위험을 누가 보험으로 막고 있는가"를 정해주지는 않습니다.</p>
+
+        <h2>적재물배상책임보험은 화물보험이 아닙니다</h2>
+        <p>내륙 구간을 이야기하면 가장 먼저 나오는 답이 "운송사가 적재물배상책임보험에 가입되어 있다"입니다.
+          가입되어 있는 것은 맞지만, <b>화주의 화물을 보상하는 보험과는 성격이 다릅니다.</b></p>
+
+        <table class="cmp">
+          <thead>
+            <tr><th>구분</th><th>적재물배상책임보험</th><th>내륙운송보험</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>피보험자</td><td class="miss">운송인(운송사·주선사)</td><td class="need">화주 또는 화물에 이해관계를 가진 자</td></tr>
+            <tr><td>성격</td><td class="miss">배상책임보험 — 운송인의 <b>법률상 손해배상책임</b>을 담보</td><td class="need">재물보험 — <b>화물 자체의 멸실·손상</b>을 담보</td></tr>
+            <tr><td>지급 조건</td><td class="miss">운송인의 <b>책임이 인정되어야</b> 지급. 불가항력·화물 고유하자 등은 면책 다툼 소지</td><td class="need">약관에 정한 사고이면 <b>책임 소재와 무관하게</b> 검토</td></tr>
+            <tr><td>한도</td><td class="miss">사고당 한도로 설정되는 경우가 많아, 고가 화물에서 <b>실손해에 못 미칠 수 있음</b></td><td class="need">화물 가액 기준으로 <b>가입금액을 화주가 설계</b></td></tr>
+            <tr><td>보상 흐름</td><td class="miss">화주 → 운송사 청구 → 운송사 보험 → 책임 다툼</td><td class="need">화주 → 자기 보험 직접 청구</td></tr>
+          </tbody>
+        </table>
+
+        <p>즉 고가·정밀 화물일수록, 운송사의 배상한도만 믿고 출고했다가
+          사고 후에 <b>한도 초과분과 책임 다툼이 동시에 남는</b> 구조가 됩니다.
+          운송사 보험은 화주 보험의 대체재가 아니라 <b>후순위 회수 수단</b>으로 보는 편이 안전합니다.
+          <span class="src"><em>(업계 일반 사례)</em></span></p>
+
+        <h2>특송·계약운송에서 반복되는 네 갈래</h2>
+        <p>국제특송으로 들어온 화물을 특송사의 계약 운송업체가 배송하는 경우, 실무에서 다음 네 가지 갈림길이 나옵니다.
+          이 사례 역시 같은 구조였습니다.</p>
+
+        <ol class="steps">
+          <li><b>보험 가입을 전제로 배송</b> — 계약 운송업체를 통해 배송하려면 부보를 요구하는 경우가 있습니다. 이때 <b>보험료를 발송인이 낼지 수취인이 낼지</b>부터 합의가 필요합니다.</li>
+          <li><b>보험 없이 면책 조건으로 배송</b> — 양측 모두 부보를 원하지 않으면, 운송 중 사고에 대해 책임을 묻지 않는 조건으로 진행되기도 합니다. 사실상 <b>화주가 전액 자기부담</b>입니다.</li>
+          <li><b>수취인 지정 운송사로 전환</b> — 화물을 인계하는 시점에 특송사 책임이 종료됩니다. 그 <b>이후 구간은 완전히 새로 설계</b>해야 합니다.</li>
+          <li><b>협의가 지연되어 그대로 출고</b> — 가장 위험한 경우입니다. 협의하는 사이 화물이 이미 움직이면 <b>소급 부보가 불가능</b>합니다.</li>
+        </ol>
+
+        <div class="alertbox">
+          <p class="t">담보는 "출고 전"에만 붙일 수 있습니다</p>
+          <p>보험은 사고 발생 시점에 유효한 계약이 대응합니다. 화물이 이미 출발한 뒤에는 원칙적으로 부보가 불가능하며,
+            보험료 납입 전에는 담보가 개시되지 않습니다. 특히 <b>주말·연휴에 걸친 출고</b>는 청약·납입 절차가
+            선행되지 못해 무담보로 움직이는 사고가 잦습니다. 배송 일정이 잡히는 즉시 확인하시는 편이 안전합니다.</p>
+        </div>
+
+        <h2>왜 "가입하려 해도 받아주는 곳이 없다"고 하는가</h2>
+        <p>내륙운송보험 문의를 하다 보면 "그건 취급하지 않는다"는 답을 반복해서 듣게 됩니다.
+          국내에서 단독 내륙운송 구간을 안정적으로 인수하는 시장이 넓지 않기 때문입니다.
+          그 결과 <b>화주가 필요를 인지하고도 부보하지 못한 채</b> 운송이 이루어지는 경우가 상당수 발생합니다.</p>
+        <p>보험중개사는 보험업법 제89조에 따라 <b>화주 측을 대리</b>합니다.
+          어느 보험회사가 해당 화물·구간·조건을 받을 의향이 있는지 사전에 타진하고,
+          가입금액 산정 근거·하역 중 담보·중간 보관·대위권 포기 같은 조건을 화물 특성에 맞게 설계해 협상하는 일 —
+          단순 비교나 다이렉트 가입으로는 메우기 어려운 부분이 여기에 있습니다.</p>
+        <div class="disc">
+          엔투엔보험중개 파트너 보험회사 <b>(가나다순)</b> : AIG · Chubb · DB손해보험 · KB손해보험 · 메리츠화재 · 현대해상.
+          모두 AM Best A급 이상 재무등급 보험회사입니다. 개별 건의 인수 가능 여부·담보조건·보험료는
+          화물 특성과 운송 조건에 따라 달라지며, <b>보험회사 인수심사 후 확정</b>됩니다.
+        </div>
+
+        <h2>출고 전 확인 항목</h2>
+        <ul class="check">
+          <li>매도인·매수인 중 <b>누가 어느 구간을 부보</b>하고 있는지 증권상 확인</li>
+          <li>적하보험 담보 <b>종료 지점</b>이 도착항인지, 최종 목적지인지</li>
+          <li>보세창고 <b>출고 이후 구간</b>이 별도 설계되어 있는지</li>
+          <li>운송사 적재물배상책임보험의 <b>보상한도와 차량번호</b> 확인 (한도 초과분은 화주 부담)</li>
+          <li><b>상·하차(하역) 중</b>과 <b>중간 보관</b> 구간이 담보에 포함되는지</li>
+          <li>가입금액 산정 근거 — <b>송장가액 / 송장가액 110% / 재조달가액</b> 중 어느 기준인지</li>
+          <li>정밀기기·온도민감 화물의 경우 <b>포장·결박 조건</b>이 약관 요구와 일치하는지</li>
+          <li>발주처·거래처가 요구하는 <b>보험 조항 문구</b>가 증권에 반영되는지</li>
+          <li>출고 일정 대비 <b>청약·납입 완료 시점</b>에 여유가 있는지</li>
+        </ul>
+
+        <h2>개별 건이 아니라 반복 운송이라면</h2>
+        <p>연간 운송 빈도가 일정 수준 이상이면 건별 청약보다 <b>OP(Open Policy, 월정산 포괄계약)</b> 방식이
+          실무적으로 편합니다. 연간 포괄계약을 걸어두고 월별 운송실적을 신고하는 구조로,
+          매 건 청약 절차 없이 담보를 이어갈 수 있어 <b>출고 일정에 쫓겨 무담보로 나가는 사고</b>를 줄일 수 있습니다.</p>
+        <p>이 경우에는 연간 예상 운송가액, 1회 운송 최대 노출가액, 주요 구간과 품목 구성을 함께 검토합니다.</p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq">
+        <details>
+          <summary>수입 적하보험에 들어 있는데 내륙운송보험이 또 필요한가요?</summary>
+          <p>적하보험의 담보 구간이 어디서 끝나는지에 따라 다릅니다. 도착항·도착공항까지로 종료되는 조건이라면 그 이후 국내 트럭 구간은 담보 밖입니다. 증권상 담보 구간을 먼저 확인하시고, 최종 목적지까지 이어지지 않는다면 내륙운송보험으로 이어 붙이는 설계가 필요합니다.</p>
+        </details>
+        <details>
+          <summary>운송사가 적재물배상책임보험에 가입되어 있으면 충분하지 않나요?</summary>
+          <p>성격이 다릅니다. 적재물배상책임보험은 운송인의 법률상 배상책임을 담보하는 보험으로, 운송인의 책임이 인정되어야 지급이 검토되고 한도도 사고당으로 설정되는 경우가 많습니다. 고가 화물이라면 한도 초과분과 책임 다툼이 화주에게 남을 수 있어, 화주 자신의 화물보험을 별도로 두는 것이 안전합니다.</p>
+        </details>
+        <details>
+          <summary>FOB로 수출하는데 공장에서 항구까지 구간도 가입할 수 있나요?</summary>
+          <p>가능합니다. 국내 출발지에서 선적항·공항까지의 내륙 구간을 담보하는 설계가 있으며, 사전 신고를 조건으로 본선 적재 시점까지 담보를 연장하는 조건을 검토할 수도 있습니다. 수출 적하보험과 연계해 단일 증권으로 묶는 방식도 함께 검토합니다.</p>
+        </details>
+        <details>
+          <summary>화물이 이미 출발했는데 지금 가입할 수 있나요?</summary>
+          <p>원칙적으로 어렵습니다. 보험은 사고 발생 시점에 유효한 계약이 대응하며, 출고 이후의 소급 부보는 인수되지 않는 것이 일반적입니다. 배송 일정이 확정되는 즉시 문의하시는 것을 권해 드립니다.</p>
+        </details>
+        <details>
+          <summary>중고 설비나 이설(移設) 화물도 가입되나요?</summary>
+          <p>중고 여부만으로 일률적으로 결정되지는 않으며, 사용연수·포장 상태·결박 계획·하역 방식 등을 함께 봅니다. 중고·중량물은 사양서와 상차 후 사진 등 추가 자료가 요구되는 경우가 많습니다. 인수 가능 여부와 조건은 보험회사 심사 후 확정됩니다.</p>
+        </details>
+        <details>
+          <summary>보험료는 어떻게 산정되나요?</summary>
+          <p>화물 종류와 가액, 운송 구간·거리, 운송수단, 포장·결박 조건, 하역 방식, 손해 이력 등을 종합해 보험회사가 산정합니다. 사전에 확정된 요율표로 안내드릴 수 있는 성격이 아니며, 질문서 접수 후 보험회사 인수심사를 거쳐 확정됩니다.</p>
+        </details>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta">
+        <h2>출고 전에, 구간이 비어 있는지부터 확인하세요</h2>
+        <p>거래조건·담보 종료 지점·운송사 배상한도를 함께 짚어드립니다.
+          질문서를 미리 작성해 보내주시면 검토가 빨라집니다.</p>
+        <div class="btnrow">
+          <a class="btn" href="/consult.html?product=inland-transit">내륙운송 보장 상담 →</a>
+          <a class="btn btn--ghost" href="/forms/N2N_질문서_내륙운송보험.docx" download>가입 질문서 내려받기</a>
+        </div>
+        <span class="sub">독립 보험중개사 · 화주 측 대리 · 질문서 작성은 청약이 아니며, 담보는 보험회사 인수 확정 및 보험료 납입 이후 개시됩니다.</span>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <b>엔투엔보험중개</b> · 대표 성한욱 (ACIU 기업보험심사역)<br>
+    금융감독원 등록 보험중개사 제2026-012201호 · 사업자등록번호 611-23-02374<br>
+    서울특별시 서초구 방배로30길 41 · T. 010-5755-6465 · sales@n2nib.com<br>
+    본 글은 보험회사 약관·안내자료를 기준으로 작성된 정보이며, 실제 인수 여부·담보조건·보험료는 보험회사 인수심사 후 확정됩니다.
+  </footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"홈","item":"https://cargoinsu.com/"},
+    {"@type":"ListItem","position":2,"name":"보험 가이드","item":"https://cargoinsu.com/insights/"},
+    {"@type":"ListItem","position":3,"name":"항구·공항에서 공장까지, 그 구간은 누가 보상하나","item":"https://cargoinsu.com/insights/inland-transit-gap.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "항구·공항에서 공장까지, 그 구간은 누가 보상하나 — 인코텀즈가 만드는 내륙운송 담보 공백",
+  "description": "CIF·DAP 수입은 도착항 이후, FOB 수출은 공장에서 항구까지 담보가 비는 경우가 많습니다. 적재물배상책임보험과 내륙운송보험의 차이를 익명 검토 사례로 정리합니다.",
+  "inLanguage": "ko",
+  "author": {"@type":"Person","name":"성한욱","jobTitle":"보험중개사(ACIU 기업보험심사역)"},
+  "publisher": {"@type":"Organization","name":"엔투엔보험중개","url":"https://cargoinsu.com/"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://cargoinsu.com/insights/inland-transit-gap.html"},
+  "about": {"@type":"Thing","name":"내륙운송보험 Inland Transit Insurance"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"수입 적하보험에 들어 있는데 내륙운송보험이 또 필요한가요?","acceptedAnswer":{"@type":"Answer","text":"적하보험의 담보 구간이 어디서 끝나는지에 따라 다릅니다. 도착항·도착공항까지로 종료되는 조건이라면 그 이후 국내 트럭 구간은 담보 밖입니다. 증권상 담보 구간을 확인하고, 최종 목적지까지 이어지지 않는다면 내륙운송보험으로 이어 붙이는 설계가 필요합니다."}},
+    {"@type":"Question","name":"운송사가 적재물배상책임보험에 가입되어 있으면 충분하지 않나요?","acceptedAnswer":{"@type":"Answer","text":"성격이 다릅니다. 적재물배상책임보험은 운송인의 법률상 배상책임을 담보하는 보험으로, 운송인의 책임이 인정되어야 지급이 검토되고 한도도 사고당으로 설정되는 경우가 많습니다. 고가 화물이라면 한도 초과분과 책임 다툼이 화주에게 남을 수 있어, 화주 자신의 화물보험을 별도로 두는 것이 안전합니다."}},
+    {"@type":"Question","name":"FOB로 수출하는데 공장에서 항구까지 구간도 가입할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"가능합니다. 국내 출발지에서 선적항·공항까지의 내륙 구간을 담보하는 설계가 있으며, 사전 신고를 조건으로 본선 적재 시점까지 담보를 연장하는 조건을 검토할 수도 있습니다. 수출 적하보험과 연계해 단일 증권으로 묶는 방식도 검토 가능합니다."}},
+    {"@type":"Question","name":"화물이 이미 출발했는데 지금 가입할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"원칙적으로 어렵습니다. 보험은 사고 발생 시점에 유효한 계약이 대응하며, 출고 이후의 소급 부보는 인수되지 않는 것이 일반적입니다. 배송 일정이 확정되는 즉시 문의하시는 것을 권해 드립니다."}},
+    {"@type":"Question","name":"보험료는 어떻게 산정되나요?","acceptedAnswer":{"@type":"Answer","text":"화물 종류와 가액, 운송 구간·거리, 운송수단, 포장·결박 조건, 하역 방식, 손해 이력 등을 종합해 보험회사가 산정합니다. 질문서 접수 후 보험회사 인수심사를 거쳐 확정됩니다."}}
+  ]
+}
+</script>
+</body>
+</html>
