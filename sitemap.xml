@@ -20,7 +20,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-cargo.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/marine-transit.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -65,7 +65,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/jewellers-block.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/carriers-liability.html</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -251,6 +251,12 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/sanctions-tsr-cargo.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
