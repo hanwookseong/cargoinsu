@@ -321,4 +321,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://cargoinsu.com/en/guide/marine-cargo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/marine-cargo.html"/>
   </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/case-specie-express.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/case-gold-hongkong.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/case-fineart-classical.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

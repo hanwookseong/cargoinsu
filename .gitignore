@@ -20,4 +20,4 @@ _bak-*
 # N2N 배포 백업(자동 생성물)
 *._bak_*
 n2n_backups/
-
+_backup_insights_*/
