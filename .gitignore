@@ -21,3 +21,6 @@ _bak-*
 *._bak_*
 n2n_backups/
 _backup_insights_*/
+
+# 작업용 백업 폴더 (2026-08-18)
+_backup_*/
