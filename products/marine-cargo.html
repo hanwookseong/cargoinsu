@@ -267,8 +267,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">적하보험 ▾</a>
     <ul class="depth2">
       <li><a href="marine-cargo.html">적하보험 (Marine Cargo)</a></li>
-      <li><a href="marine-cargo.html#open-policy">정기화주 Open Policy</a></li>
-      <li><a href="marine-cargo.html#dashboard">콘솔 데모 (포워더·화주)</a></li>
+      <li><a href="open-policy.html">정기화주 Open Policy</a></li>
+      <li><a href="marine-cargo.html#calculator">보험료 즉시계산</a></li>
+      <li><a href="/dashboard.html">콘솔 데모 (포워더·화주)</a></li>
     </ul>
   </li>
   <li><a class="dd-parent" role="button" tabindex="0" aria-haspopup="true">운송보험 ▾</a>
@@ -285,7 +286,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </li>
   <li><a href="../guide/index.html">보험 가이드</a></li>
   <li class="gnb-search-li" style="margin-left:auto;"></li>
-  <li style="flex:0 0 auto;"><a class="consult-btn" href="../index.html#calculator">즉시 계산 →</a></li>
+  <li style="flex:0 0 auto;"><a class="consult-btn" href="#calculator">즉시 계산 →</a></li>
 </ul><button class="menu-toggle" aria-label="메뉴"><span></span><span></span><span></span></button></div></nav>
 
 <nav class="breadcrumb" aria-label="경로"><div class="container"><ol>
@@ -410,7 +411,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- 결과 -->
       <div class="calc-result" id="calcResult">
         <div class="res-head">
-          <h3>예상 보험료 (KIDI · 메리츠 기준)</h3>
+          <h3>예상 보험료 (참조요율 기준 산출)</h3>
           <span class="res-tag" id="calcResClause">신약관 ICC(A)</span>
         </div>
         <div class="single-premium">
@@ -446,7 +447,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="op-header">
       <span class="op-badge">FOR REGULAR SHIPPERS · 정기 화주 전용</span>
-      <h2>Open Policy로 <em>보장공백 제거</em> + <em>행정시간 90% 절감</em></h2>
+      <h2>Open Policy로 <em>보장 공백</em>을 구조로 막습니다</h2>
       <p class="op-lede">매 선적마다 견적·청약·증권 발급, 더 이상 안 하셔도 됩니다.<br>
         선적 시점부터 자동 보장 · 월 1회 정산서 1장으로 관리.</p>
     </div>
@@ -455,17 +456,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="op-card">
         <div class="op-icon">⏱️</div>
         <h3>보장공백 제거</h3>
-        <p>선적 시점부터 자동 보장. 증권 발급 지연으로 보장 안 되는 위험 0.</p>
+        <p>약정 범위 안의 선적 사실을 기준으로 담보가 부착됩니다.</p>
       </div>
       <div class="op-card">
         <div class="op-icon">📉</div>
-        <h3>행정시간 90% 절감</h3>
-        <p>매 선적 견적·청약·발급 → 월 1회 정산서 1장으로 종료.</p>
+        <h3>건별 처리 → 월 정산</h3>
+        <p>건별 견적·청약·발급 절차를 월 1회 신고·정산으로 통합합니다.</p>
       </div>
       <div class="op-card">
         <div class="op-icon">💳</div>
         <h3>인가요율 + 월결제</h3>
-        <p>KIDI 참조요율 적용 + 가상계좌 월결제. 6개 보험회사 신용공여 약정.</p>
+        <p>참조요율 기반 설계 + 월 단위 정산. 보험회사별 인수 협의 후 확정됩니다.</p>
       </div>
       <div class="op-card">
         <div class="op-icon">🔒</div>
@@ -478,7 +479,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="op-tier">
         <span class="op-tier-label">STANDARD</span>
         <h4>Open Policy</h4>
-        <div class="op-tier-condition">연간 보험료 <strong>200만원↑</strong></div>
+        <div class="op-tier-condition">적용 검토 기준 — 연간 적하보험료 규모 <strong>200만원 이상</strong></div>
         <ul>
           <li>KIDI 참조요율(인가) 적용</li>
           <li>월 1회 정산 + 가상계좌</li>
@@ -488,7 +489,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="op-tier op-tier--plus">
         <span class="op-tier-label op-tier-label--plus">PLUS</span>
         <h4>Open Policy Plus</h4>
-        <div class="op-tier-condition">연간 보험료 <strong>2,000만원↑</strong></div>
+        <div class="op-tier-condition">적용 검토 기준 — 연간 적하보험료 규모 <strong>2,000만원 이상</strong></div>
         <ul>
           <li>구득요율 협상 적용</li>
           <li>비용 추가 절감 가능</li>
@@ -498,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="op-cta">
-      <a class="op-cta-btn" href="../consult.html?product=cargo&memo=Open%20Policy%20%EC%83%81%EB%8B%B4%20%EC%9A%94%EC%B2%AD">Open Policy 상담 신청 →</a>
+      <a class="op-cta-btn" href="open-policy.html">Open Policy 자세히 보기 →</a>
       <a class="op-cta-link" href="tel:010-5755-6465">📞 010-5755-6465 직접 통화</a>
     </div>
     <p class="op-disclaimer">※ Open Policy 약정은 보험사·화주 사전 인수심사 + 일괄 정산 약정 체결 후 효력 발생합니다.</p>
@@ -546,7 +547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="dash-signup">
       <div class="dash-signup-text">
         <h3>베타 우선 사용 신청</h3>
-        <p>오픈 시 우선 액세스 + <strong>첫 3개월 무료</strong> 사용권. Open Policy 가입 화주는 자동 등록됩니다.</p>
+        <p>정식 출시 시 베타 참여 안내를 우선 발송해 드립니다.</p>
       </div>
       <form class="dash-signup-form"
             action="https://api.web3forms.com/submit"
@@ -1140,7 +1141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <aside class="right-quick" aria-label="빠른메뉴">
   <a href="tel:010-5755-6465"><strong>☎</strong><span>전화상담<br>010-5755-6465</span></a>
-  <a href="../index.html#calculator"><strong>📦</strong><span>적하<br>즉시계산</span></a>
+  <a href="#calculator"><strong>📦</strong><span>적하<br>즉시계산</span></a>
   <a class="rq-kakao" href="http://pf.kakao.com/_xlxkxdTX/chat" target="_blank" rel="noopener"><strong>💬</strong><span>카톡<br>상담</span></a>
   <a href="https://n2nib.com" target="_blank" rel="noopener"><strong>🏛</strong><span>n2nib<br>.com</span></a>
   <button class="rq-totop" aria-label="맨위로"><strong>↑</strong><span>TOP</span></button>
