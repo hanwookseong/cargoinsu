@@ -7502,3 +7502,44 @@ html body .right-quick {
   }
 }
 /* ================ END N2N-MSH-LOGO-FIX-20260724 ================ */
+
+/* ================ N2N-LANG-SWITCH-20260829 ================ */
+/* KO <-> EN 전환 배지 — GNB 우측(li.gnb-lang-li)에 노출.
+   top_wrap 은 이 파일 앞부분에서 전역 display:none 처리되므로
+   top-utils 안의 배지는 예비용이며 실제 노출은 GNB 쪽이다.
+   GNB 링크에 걸린 다수의 !important 규칙을 이기기 위해
+   선택자 특이도를 높이고 !important 를 사용한다. */
+.gnb > ul > li.gnb-lang-li > a.lang-switch,
+.top-utils a.lang-switch {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  min-width: 36px !important;
+  height: 26px !important;
+  padding: 0 9px !important;
+  margin: 0 !important;
+  border: 1px solid currentColor !important;
+  border-radius: 7px !important;
+  background: transparent !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  opacity: .92;
+}
+.gnb > ul > li.gnb-lang-li > a.lang-switch:hover,
+.top-utils a.lang-switch:hover { opacity: 1; text-decoration: none !important; }
+.gnb > ul > li.gnb-lang-li > a.lang-switch::after,
+.gnb > ul > li.gnb-lang-li > a.lang-switch::before { display: none !important; content: none !important; }
+.gnb > ul > li.gnb-lang-li { display: flex !important; align-items: center !important; }
+/* 모바일: 햄버거 메뉴 안에서도 전환 가능하도록 한 줄로 노출 */
+@media (max-width: 780px) {
+  .gnb > ul > li.gnb-lang-li { display: block !important; }
+  .gnb > ul > li.gnb-lang-li > a.lang-switch {
+    margin: 10px 20px !important;
+  }
+}
+/* ================ END N2N-LANG-SWITCH-20260829 ================ */
