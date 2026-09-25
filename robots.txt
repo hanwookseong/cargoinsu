@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /forms/
 
 Sitemap: https://cargoinsu.com/sitemap.xml
