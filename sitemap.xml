@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://cargoinsu.com/</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   
@@ -11,7 +11,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/"/></url>
   <url>
     <loc>https://cargoinsu.com/products/marine-cargo.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   
@@ -20,7 +20,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-cargo.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/marine-transit.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -38,7 +38,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/specialty-art.html</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -47,7 +47,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/specialty-art.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/inland-transit.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -83,7 +83,7 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/clauses.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/clauses.html"/>
@@ -203,7 +203,7 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -215,13 +215,13 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-006-jewellers-block-memo.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/inland-transit-gap.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -233,7 +233,7 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -299,19 +299,19 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-specie-express.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-gold-hongkong.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-fineart-classical.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -368,7 +368,7 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/products/open-policy.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -386,13 +386,13 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-moving-cargo-liability.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/case-overseas-exhibition-cargo.html</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -402,6 +402,36 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/jewelry-watch.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/jewelry-watch.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/marine-cargo-myanmar.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/marine-cargo-war-risk.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/luxury-resale-export.html</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/media-art-exhibition.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/craft-exhibition-insurance.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cargoinsu.com/guide/carrier-claims.html</loc>
