@@ -5,7 +5,7 @@
   <link>https://cargoinsu.com/</link>
   <description>엔투엔보험중개가 운영하는 cargoinsu의 화물·예술품·귀금속 보험 가이드, 사례, 상품 안내 최근 수정분</description>
   <language>ko</language>
-  <lastBuildDate>Sun, 27 Sep 2026 19:32:14 +0900</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 20:03:53 +0900</lastBuildDate>
   <atom:link href="https://cargoinsu.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>예술품 종합보험 (Fine Art Insurance) — 개인·법인 가입</title>
@@ -27,6 +27,13 @@
     <guid isPermaLink="true">https://cargoinsu.com/insights/media-art-exhibition.html</guid>
     <description>상업 공간에 설치하는 미디어아트는 예술품보험(Fine Art) 인수 검토 대상이 될 수 있지만, 작품가액과 장비 가치를 나누고 전기적·기계적 고장 담보와 설치·철거 구간을 따로 확인해야 합니다. 관람객 사고는 별도 배상책임 영역이며 조건은 인수심사 후 확정됩니다.</description>
     <pubDate>Wed, 30 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 가입·견적 — 수출입·연안화물</title>
+    <link>https://cargoinsu.com/products/marine-cargo.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/marine-cargo.html</guid>
+    <description>적하보험 가입은 품목·보험가액·운송구간만 있으면 시작할 수 있습니다. 수출입과 제주 항로 등 국내 연안운송까지 ICC(A/B/C)·구약관 조건으로 설계하며, 온라인으로 견적을 요청할 수 있습니다. 보험료는 보험회사 인수심사 후 확정됩니다.</description>
+    <pubDate>Tue, 29 Sep 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
     <title>보석·귀금속보험 — 딜러·전시·운송</title>
@@ -61,13 +68,6 @@
     <link>https://cargoinsu.com/products/marine-transit.html</link>
     <guid isPermaLink="true">https://cargoinsu.com/products/marine-transit.html</guid>
     <description>국내 도로·철도·연안 운송 중 화물의 멸실·훼손을 보장하는 화주 측 운송보험(Marine Transit Insurance). 자가용·위탁·단건·연간 포괄 설계 — 적재물배상책임과 별개. 6개 보험회사 약관 비교 중개.</description>
-    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>적하보험 가입·견적 — 수출입·연안화물</title>
-    <link>https://cargoinsu.com/products/marine-cargo.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/marine-cargo.html</guid>
-    <description>적하보험 가입은 품목·보험가액·운송구간만 있으면 시작할 수 있습니다. 수출입과 제주 항로 등 국내 연안운송까지 ICC(A/B/C)·구약관 조건으로 설계하며, 온라인으로 견적을 요청할 수 있습니다. 보험료는 보험회사 인수심사 후 확정됩니다.</description>
     <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
