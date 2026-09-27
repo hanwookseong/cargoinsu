@@ -54,8 +54,9 @@ def main(host):
         t = re.search(r'<title>(.*?)</title>', s, re.S)
         d = re.search(r'<meta name="description" content="([^"]*)"', s)
         title = html.unescape(t.group(1).strip()) if t else path
-        for b in (cfg['brand'], ' | cargoinsu.com', ' | 엔투엔보험중개'):
-            title = title.replace(b, '')
+        for b in (' | cargoinsu.com', ' | 현장에서 본 화물보험', ' | 현장에서 본 기업보험', ' | n2nib.com', ' | 엔투엔보험중개', cfg['brand']):
+            if title.endswith(b):
+                title = title[:-len(b)]
         rows.append(((lm.group(1)[:10] if lm else '2026-01-01'), loc, title,
                      html.unescape(d.group(1)) if d else ''))
     rows.sort(key=lambda r: (r[0], r[1]), reverse=True)
