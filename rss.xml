@@ -5,21 +5,133 @@
   <link>https://cargoinsu.com/</link>
   <description>엔투엔보험중개가 운영하는 cargoinsu의 화물·예술품·귀금속 보험 가이드, 사례, 상품 안내 최근 수정분</description>
   <language>ko</language>
-  <lastBuildDate>Sat, 26 Sep 2026 13:53:10 +0900</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 19:29:44 +0900</lastBuildDate>
   <atom:link href="https://cargoinsu.com/rss.xml" rel="self" type="application/rss+xml"/>
-  <item>
-    <title>보석·고급재화보험 (Jeweller's Block).com</title>
-    <link>https://cargoinsu.com/products/jewellers-block.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/jewellers-block.html</guid>
-    <description>귀금속·보석·고급시계·명품·예술품·골동품의 매장·금고·이동·전시·경매 전 구간 All Risks 담보. Chubb Jeweller's Block 글로벌 표준약관, Worldwide 확장·Mysterious Disappearance·Memo &amp; Consignment 특약.</description>
-    <pubDate>Tue, 29 Sep 2026 09:00:00 +0900</pubDate>
-  </item>
   <item>
     <title>귀금속·시계 보험 — 매장·운송·전시 담보</title>
     <link>https://cargoinsu.com/guide/jewelry-watch.html</link>
     <guid isPermaLink="true">https://cargoinsu.com/guide/jewelry-watch.html</guid>
     <description>귀금속·보석·명품시계 사업자의 재고는 매장·금고·운송·전시·위탁 구간을 오갑니다. 이 구간을 통합 담보하는 Jeweller's Block(국내 Chubb 단독 인수)의 운송수단별 한도, 자주 다투는 면책, 인수심사 항목과 준비 서류를 정리했습니다.</description>
     <pubDate>Tue, 29 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 포괄계약(Open Policy)</title>
+    <link>https://cargoinsu.com/products/open-policy.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/open-policy.html</guid>
+    <description>선적 건마다 청약하는 구조에서는 담당자 부재·금액 변경·일정 변경이 곧 보장 공백이 됩니다. Open Policy는 선적 사실을 기준으로 담보가 부착되는 구조입니다. 개별청약과의 구조 비교·신고의무·필요서류·검토 기준 안내.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>운송보험 국내 화물 — 가입·견적</title>
+    <link>https://cargoinsu.com/products/marine-transit.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/marine-transit.html</guid>
+    <description>국내 도로·철도·연안 운송 중 화물의 멸실·훼손을 보장하는 화주 측 운송보험(Marine Transit Insurance). 자가용·위탁·단건·연간 포괄 설계 — 적재물배상책임과 별개. 6개 보험회사 약관 비교 중개.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 가입·견적 — 수출입·연안화물</title>
+    <link>https://cargoinsu.com/products/marine-cargo.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/marine-cargo.html</guid>
+    <description>적하보험 가입은 품목·보험가액·운송구간만 있으면 시작할 수 있습니다. 수출입과 제주 항로 등 국내 연안운송까지 ICC(A/B/C)·구약관 조건으로 설계하며, 온라인으로 견적을 요청할 수 있습니다. 보험료는 보험회사 인수심사 후 확정됩니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>포워더 화물배상책임보험(FFL)</title>
+    <link>https://cargoinsu.com/products/liability-freight-forwarders.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/liability-freight-forwarders.html</guid>
+    <description>포워더·복합운송주선업자(NVOCC)의 화물배상책임보험(FFL) — 화주 화물 손해·제3자 배상·전문직업 배상 3축 통합 담보. KIFFA·FIATA·IATA B/L 사업자 표준 · 6개 보험회사 약관 비교 중개.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>보석·귀금속보험 — 딜러·전시·운송</title>
+    <link>https://cargoinsu.com/products/jewellers-block.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/jewellers-block.html</guid>
+    <description>귀금속·보석·고급시계·명품·예술품·골동품의 매장·금고·이동·전시·경매 전 구간 All Risks 담보. Chubb Jeweller's Block 글로벌 표준약관, Worldwide 확장·Memo &amp; Consignment 특약.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>내륙운송보험 — 공장·항구 간 화물</title>
+    <link>https://cargoinsu.com/products/inland-transit.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/products/inland-transit.html</guid>
+    <description>FOB 조건 수출 시 공장에서 선적항(POL)까지 내륙 구간을 담보하는 내륙운송보험 — 매수인 적하보험이 부착되기 전 공백을 메웁니다. 창고-창고 All Risks · 연간 포괄 + 월별 Declaration. 6개 보험회사 약관 비교 중개.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 전쟁위험 — 해상 구간 한정 담보</title>
+    <link>https://cargoinsu.com/insights/marine-cargo-war-risk.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/marine-cargo-war-risk.html</guid>
+    <description>적하보험 전쟁위험은 별도 약관을 붙여야 담보되고, 원칙적으로 화물이 해상 운송 중인 동안에만 작동합니다. 분쟁 해역 통과 시 추가 보험료는 인수심사로 정해지며 통지로 담보가 해지될 수 있습니다. 우회 항로·환적 시 보험기간 문제까지 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 미얀마향 — 조건부 인수심사 대상</title>
+    <link>https://cargoinsu.com/insights/marine-cargo-myanmar.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/marine-cargo-myanmar.html</guid>
+    <description>미얀마향 화물은 지역만으로 일률 거절되지는 않지만, 보험회사마다 인수 정책이 다르고 조건이 붙는 경우가 많습니다. 정정 불안에 따른 전쟁·SRCC, 현지 내륙 구간, 은행·결제, 당사자 제재 스크리닝 네 가지를 인수심사 전에 정리하는 방법을 설명합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>제주 카페리 화물 보험 — 해상 구간</title>
+    <link>https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</guid>
+    <description>목포·완도에서 제주로 향하는 카페리에 실린 화물트럭. 적재물배상책임보험은 육상 운송을 전제로 설계되어 있어 해상 구간에서는 배상책임 자체가 성립하지 않는 경우가 많습니다. 상법상 운송인 책임제한과 공동해손까지, 화주가 실제로 회수할 수 있는 범위를 ACIU 보험중개사 관점에서 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>내륙운송 구간 보험 — 항구에서 공장까지</title>
+    <link>https://cargoinsu.com/insights/inland-transit-gap.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/inland-transit-gap.html</guid>
+    <description>CIF·DAP로 수입해도 항구·공항 이후 내륙운송 구간은 담보가 끊기는 경우가 많고, FOB 수출은 공장에서 항구까지가 비어 있습니다. 적재물배상책임보험과 내륙운송보험의 차이, 특송·계약운송에서 자주 생기는 공백을 ACIU 보험중개사 관점에서 익명 사례로 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>명품시계 해외특송 보험 — 특송사 한계</title>
+    <link>https://cargoinsu.com/insights/case-specie-express.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-specie-express.html</guid>
+    <description>국제특송을 이용한 고가 보석·시계 운송에서 특송사 약관상 배상한도와 귀금속 제외 조항, Jewellers Block과 적하보험의 선택, 중고품 평가 기준을 실제 설계 사례로 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>해외전시회 전시품 보험 — 운송·전시</title>
+    <link>https://cargoinsu.com/insights/case-overseas-exhibition-cargo.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-overseas-exhibition-cargo.html</guid>
+    <description>해외 전시회 전시품 운송·전시 담보 안내. 주최측이 요구하는 배상책임보험이 전시품을 담보하지 않는 이유, 적하보험이 끊기는 지점과 전시 기간의 담보 공백, 왕복 구간·ATA 카르네·시제품 부보금액 산정을 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>이사화물 적재물배상 — 증권 분리</title>
+    <link>https://cargoinsu.com/insights/case-moving-cargo-liability.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-moving-cargo-liability.html</guid>
+    <description>이사화물 적재물배상책임보험 가입 안내. 일반화물 주선 증권으로 이삿짐 사고가 처리되지 않는 이유, 이사화물운송주선 특별약관, 사다리차·부수업무·제외 수탁화물의 담보 공백을 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>금 홍콩 특송 — 적하보험 가능 구간</title>
+    <link>https://cargoinsu.com/insights/case-gold-hongkong.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-gold-hongkong.html</guid>
+    <description>금·귀금속의 국제 운송에서 표준 적하약관상 취급, 특송 이용 시 인수 제한, 시세 변동에 따른 부보금액 산정과 홍콩 구간 환적 위험을 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>고서화 운송보험 — 감정가≠보험가액</title>
+    <link>https://cargoinsu.com/insights/case-fineart-classical.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-fineart-classical.html</guid>
+    <description>고미술·서화 작품의 예술품보험에서 협정보험가액 설정, Wall to Wall 담보 범위, 지류·비단 소재 특유의 위험과 표구·이동 중 취급 요건을 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>보석 위탁 분실 — 원인불명 분실 책임</title>
+    <link>https://cargoinsu.com/insights/case-006-jewellers-block-memo.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/insights/case-006-jewellers-block-memo.html</guid>
+    <description>딜러가 시용(Memo)으로 건넨 보석이 회수되지 않거나 원인불명으로 사라졌다면. 일반 재산보험이 면책하는 회색지대를 Jewellers Block의 Memo·원인불명 분실 담보가 어떻게 다루는지, 합리적 회수 노력 요건과 함께 정리합니다.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>적하보험 약관 비교 — ICC(A/B/C) · A.R/W.A/F.P.A · 항공 약관.com</title>
+    <link>https://cargoinsu.com/guide/clauses.html</link>
+    <guid isPermaLink="true">https://cargoinsu.com/guide/clauses.html</guid>
+    <description>적하보험 신·구약관 비교. ICC(A/B/C) 신약관, A.R/W.A/F.P.A 구약관, ICC(Air) 항공 약관, 부가위험 11종, 화물 유형별 권장 약관을 ACIU 보험중개사 관점으로 정리.</description>
+    <pubDate>Mon, 28 Sep 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
     <title>예술품 종합보험 (Fine Art Insurance) — 개인·법인 가입.com</title>
@@ -34,13 +146,6 @@
     <guid isPermaLink="true">https://cargoinsu.com/guide/fine-art-individual.html</guid>
     <description>사업자등록증이 없는 개인도 예술품(미술품) 종합보험 청약이 가능합니다. 개인 컬렉터·작가·상속 소장품의 개인 명의 가입 조건, 개인(신용)정보 처리 동의서, 법인 계약과의 차이, 준비 서류를 보험중개사가 정리했습니다.</description>
     <pubDate>Sat, 26 Sep 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>적하보험 가입·견적 — 수출입·연안화물</title>
-    <link>https://cargoinsu.com/products/marine-cargo.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/marine-cargo.html</guid>
-    <description>적하보험 가입은 품목·보험가액·운송구간만 있으면 시작할 수 있습니다. 수출입과 제주 항로 등 국내 연안운송까지 ICC(A/B/C)·구약관 조건으로 설계하며, 온라인으로 견적을 요청할 수 있습니다. 보험료는 보험회사 인수심사 후 확정됩니다.</description>
-    <pubDate>Fri, 25 Sep 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
     <title>적재물·화물배상책임 비교 — 운송사·포워더</title>
@@ -64,87 +169,10 @@
     <pubDate>Fri, 25 Sep 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>해외 전시회에 전시품을 보냈다 — 주최측이 요구한 건 배상책임, 정작 비는 건 전시품 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-overseas-exhibition-cargo.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-overseas-exhibition-cargo.html</guid>
-    <description>해외 전시회 전시품 운송·전시 담보 안내. 주최측이 요구하는 배상책임보험이 전시품을 담보하지 않는 이유, 적하보험이 끊기는 지점과 전시 기간의 담보 공백, 왕복 구간·ATA 카르네·시제품 부보금액 산정을 정리합니다.</description>
-    <pubDate>Fri, 18 Sep 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>이사화물은 따로 가입해야 한다 — 적재물배상책임보험 증권이 두 장으로 나뉘는 이유 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-moving-cargo-liability.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-moving-cargo-liability.html</guid>
-    <description>이사화물 적재물배상책임보험 가입 안내. 일반화물 주선 증권으로 이삿짐 사고가 처리되지 않는 이유, 이사화물운송주선 특별약관, 사다리차·부수업무·제외 수탁화물의 담보 공백을 정리합니다.</description>
-    <pubDate>Fri, 18 Sep 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>Open Policy (포괄예정보험) — 정기 화주 적하보험.com</title>
-    <link>https://cargoinsu.com/products/open-policy.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/open-policy.html</guid>
-    <description>선적 건마다 청약하는 구조에서는 담당자 부재·금액 변경·일정 변경이 곧 보장 공백이 됩니다. Open Policy는 선적 사실을 기준으로 담보가 부착되는 구조입니다. 개별청약과의 구조 비교·신고의무·필요서류·검토 기준 안내.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>운송보험(국내 화물) — Marine Transit Insurance.com</title>
-    <link>https://cargoinsu.com/products/marine-transit.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/marine-transit.html</guid>
-    <description>국내 도로·철도·연안 운송 중 화물의 멸실·훼손을 보장하는 화주 측 운송보험(Marine Transit Insurance). 자가용·위탁·단건·연간 포괄 설계 — 적재물배상책임과 별개. 6개 보험회사 약관 비교 중개.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>포워더 화물배상책임보험 FFL (Freight Forwarders Liability).com</title>
-    <link>https://cargoinsu.com/products/liability-freight-forwarders.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/liability-freight-forwarders.html</guid>
-    <description>포워더·복합운송주선업자(NVOCC)의 화물배상책임보험(FFL) — 화주 화물 손해·제3자 배상·전문직업 배상 3축 통합 담보. KIFFA·FIATA·IATA B/L 사업자 표준 · 6개 보험회사 약관 비교 중개.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>내륙운송보험 (Inland Transit) — FOB 수출 공장→선적항(POL) 구간.com</title>
-    <link>https://cargoinsu.com/products/inland-transit.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/products/inland-transit.html</guid>
-    <description>FOB 조건 수출 시 공장에서 선적항(POL)까지 내륙 구간을 담보하는 내륙운송보험 — 매수인 적하보험이 부착되기 전 공백을 메웁니다. 창고-창고 All Risks · 연간 포괄 + 월별 Declaration. 6개 보험회사 약관 비교 중개.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
     <title>[케이스] "그 지역은 안 받습니다" — 제재 인접 지역 향 화물, 적하보험은 어디까지 가능한가.com</title>
     <link>https://cargoinsu.com/insights/sanctions-tsr-cargo.html</link>
     <guid isPermaLink="true">https://cargoinsu.com/insights/sanctions-tsr-cargo.html</guid>
     <description>러시아·벨라루스 등 제재 인접 지역 향 화물은 다수 보험회사가 인수를 제한합니다. 제재 준수 약관(Sanctions Limitation)과 전쟁·SRCC 약관의 작동 방식, 인수심사 전에 확인해야 할 항목을 ACIU 보험중개사 관점에서 익명 사례로 정리합니다.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>[케이스] 트럭이 배에 오르는 순간 — 제주 카페리 화물, 바다 위 구간은 누가 보상하나.com</title>
-    <link>https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/jeju-ferry-cargo-gap.html</guid>
-    <description>목포·완도에서 제주로 향하는 카페리에 실린 화물트럭. 적재물배상책임보험은 육상 운송을 전제로 설계되어 있어 해상 구간에서는 배상책임 자체가 성립하지 않는 경우가 많습니다. 상법상 운송인 책임제한과 공동해손까지, 화주가 실제로 회수할 수 있는 범위를 ACIU 보험중개사 관점에서 정리합니다.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>[케이스] 항구·공항에서 공장까지, 그 구간은 누가 보상하나 — 인코텀즈가 만드는 내륙운송 담보 공백.com</title>
-    <link>https://cargoinsu.com/insights/inland-transit-gap.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/inland-transit-gap.html</guid>
-    <description>CIF·DAP로 수입해도 항구·공항 이후 내륙운송 구간은 담보가 끊기는 경우가 많고, FOB 수출은 공장에서 항구까지가 비어 있습니다. 적재물배상책임보험과 내륙운송보험의 차이, 특송·계약운송에서 자주 생기는 공백을 ACIU 보험중개사 관점에서 익명 사례로 정리합니다.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>국제특송으로 명품 시계를 보냈다 — 특송사의 ‘보험’은 보험이 아니다 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-specie-express.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-specie-express.html</guid>
-    <description>국제특송을 이용한 고가 보석·시계 운송에서 특송사 약관상 배상한도와 귀금속 제외 조항, Jewellers Block과 적하보험의 선택, 중고품 평가 기준을 실제 설계 사례로 정리합니다.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>금을 홍콩으로 특송한다 — 적하보험으로 되는 구간인가 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-gold-hongkong.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-gold-hongkong.html</guid>
-    <description>금·귀금속의 국제 운송에서 표준 적하약관상 취급, 특송 이용 시 인수 제한, 시세 변동에 따른 부보금액 산정과 홍콩 구간 환적 위험을 정리합니다.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>조선 후기 서화를 옮긴다 — 감정가와 보험가액은 같은 숫자가 아니다 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-fineart-classical.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-fineart-classical.html</guid>
-    <description>고미술·서화 작품의 예술품보험에서 협정보험가액 설정, Wall to Wall 담보 범위, 지류·비단 소재 특유의 위험과 표구·이동 중 취급 요건을 정리합니다.</description>
     <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
@@ -169,25 +197,11 @@
     <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>적하보험 약관 비교 — ICC(A/B/C) · A.R/W.A/F.P.A · 항공 약관.com</title>
-    <link>https://cargoinsu.com/guide/clauses.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/guide/clauses.html</guid>
-    <description>적하보험 신·구약관 비교. ICC(A/B/C) 신약관, A.R/W.A/F.P.A 구약관, ICC(Air) 항공 약관, 부가위험 11종, 화물 유형별 권장 약관을 ACIU 보험중개사 관점으로 정리.</description>
-    <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
     <title>적하보험 사고 시 처리 절차 — 첫 24시간 액션 + 청구 5단계.com</title>
     <link>https://cargoinsu.com/guide/claims.html</link>
     <guid isPermaLink="true">https://cargoinsu.com/guide/claims.html</guid>
     <description>적하보험 사고 발생 시 첫 24시간 필수 액션, 청구 절차 5단계, 수출·수입별 구비서류 체크리스트, ACIU 보험중개사가 직접 손해사정 동행하는 차별화 안내.</description>
     <pubDate>Sat, 29 Aug 2026 09:00:00 +0900</pubDate>
-  </item>
-  <item>
-    <title>위탁(Memo) 보석 분실 — 원인불명 분실은 누가 책임지나 | 현장에서 본 화물보험</title>
-    <link>https://cargoinsu.com/insights/case-006-jewellers-block-memo.html</link>
-    <guid isPermaLink="true">https://cargoinsu.com/insights/case-006-jewellers-block-memo.html</guid>
-    <description>딜러가 시용(Memo)으로 건넨 보석이 회수되지 않거나 원인불명으로 사라졌다면. 일반 재산보험이 면책하는 회색지대를 Jewellers Block의 Memo·원인불명 분실 담보가 어떻게 다루는지, 합리적 회수 노력 요건과 함께 정리합니다.</description>
-    <pubDate>Sat, 25 Jul 2026 09:00:00 +0900</pubDate>
   </item>
 </channel>
 </rss>
