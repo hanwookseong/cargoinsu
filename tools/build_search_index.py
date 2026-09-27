@@ -17,6 +17,7 @@ SYN = {
     'products/jewellers-block.html': '보석 귀금속 시계 명품 다이아몬드 금 jewellers block 주얼러스블록 고급재화 위탁 memo',
     'products/carriers-liability.html': '적재물 적재물배상 화물차 운송사 운송사업자 주선 화물배상 의무보험 과태료',
     'products/liability-freight-forwarders.html': '포워더 FFL 운송주선 국제물류주선 화물배상책임 NVOCC 주선인',
+    'guide/carrier-claims.html': '적재물 사고 보험처리 청구서류 보험금 청구 화물 파손 도난 손해사정 합의 운송사 주선',
     'guide/jewelry-watch.html': '귀금속 시계 명품시계 보석 택배 특송 분실 미수령',
     'guide/fine-art-individual.html': '개인 컬렉터 작가 개인명의 미술품',
     'guide/incoterms.html': '인코텀즈 FOB CIF EXW DAP 무역조건',

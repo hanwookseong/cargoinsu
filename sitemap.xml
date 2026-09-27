@@ -29,7 +29,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/marine-transit.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/liability-freight-forwarders.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -65,7 +65,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/jewellers-block.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/carriers-liability.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -74,7 +74,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/carriers-liability.html"/></url>
   <url>
     <loc>https://cargoinsu.com/guide/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/"/>
@@ -402,5 +402,12 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/jewelry-watch.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/jewelry-watch.html"/>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/guide/carrier-claims.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://cargoinsu.com/guide/carrier-claims.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/guide/carrier-claims.html"/>
   </url>
 </urlset>
