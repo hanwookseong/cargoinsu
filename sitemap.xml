@@ -38,7 +38,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://cargoinsu.com/products/liability-freight-forwarders.html"/></url>
   <url>
     <loc>https://cargoinsu.com/products/specialty-art.html</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   
@@ -203,7 +203,7 @@
   </url>
   <url>
     <loc>https://cargoinsu.com/insights/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -424,6 +424,12 @@
   <url>
     <loc>https://cargoinsu.com/insights/media-art-exhibition.html</loc>
     <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cargoinsu.com/insights/craft-exhibition-insurance.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
