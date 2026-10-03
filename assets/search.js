@@ -42,12 +42,23 @@
   function norm(s) { return String(s || '').toLowerCase().replace(/[\s\-_·,()&/]/g, ''); }
   function toks(s) { return String(s || '').toLowerCase().split(/[\s\-_·,()/]+/).filter(function (x) { return x.length > 0; }); }
 
+  // 대표 검색어(b) 비교용 — 공백·하이픈만 제거
+  function light(s) { return String(s || '').toLowerCase().replace(/[\s\-_·]/g, ''); }
+  // "적재물보험"처럼 끝에 '보험·보험료·가입·견적'을 붙인 검색어는 앞부분으로도 한 번 더 채점
   function score(p, q) {
+    var a = scoreOne(p, q);
+    var qq = String(q || '').trim();
+    var core = qq.replace(/\s*(보험료|보험|가입|견적)$/, '').trim();
+    if (core && core !== qq && norm(core).length >= 2) a = Math.max(a, scoreOne(p, core) * 0.9);
+    return a;
+  }
+  function scoreOne(p, q) {
     var qn = norm(q); if (!qn) return 0;
     var t = norm(p.t), k = norm(p.k), d = norm(p.d), s = 0;
     if (t === qn) s += 100; else if (t.indexOf(qn) > -1) s += 50;
     if (k.indexOf(qn) > -1) s += 20;
     if (d.indexOf(qn) > -1) s += 6;
+    if ((p.b || []).map(light).indexOf(light(q)) > -1) s += 200;
     var ts = toks(q);
     if (ts.length > 1) {
       var all = t + ' ' + k + ' ' + d;
