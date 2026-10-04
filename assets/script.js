@@ -129,6 +129,9 @@
   // =====================================================
   // Quick Win 6 — 상품 페이지 통일 CTA 자동 주입
   // =====================================================
+  /* 예술품·보석 페이지: Chubb 단독 인수 — '6개 보험회사 비교' 문구를 쓰지 않는다 (2026-10-04) */
+  var CHUBB_ONLY_PAGE = /(specialty-art|jewellers-block|fine-art|jewelry|jewellery|case-005|case-006|media-art)/.test(location.pathname.toLowerCase());
+
   function injectProductCTA() {
     var p = location.pathname.toLowerCase();
     if (p.indexOf('/products/') === -1) return;
@@ -154,7 +157,7 @@
     final.style.cssText = 'margin:24px 0;padding:20px;background:linear-gradient(135deg,#0B2818,#1a4a35);color:#F4F0E8;border-radius:8px;text-align:center';
     final.innerHTML =
       '<h3 style="margin:0 0 8px;color:#F4F0E8">' + L('이 상품으로 견적받기', 'Get a quote for this line') + '</h3>' +
-      '<p style="margin:0 0 16px;opacity:.85;font-size:.9rem">' + L('엔투엔보험중개의 ACIU 기업보험심사역이 AM Best A++~A 등급 6개 보험회사 약관을 비교 분석합니다.', 'N2N\'s ACIU underwriter compares the terms of 6 AM Best A++–A rated insurers (AIG · Chubb · DB · Hyundai · KB · Meritz).') + '</p>' +
+      '<p style="margin:0 0 16px;opacity:.85;font-size:.9rem">' + (CHUBB_ONLY_PAGE ? L('엔투엔보험중개의 ACIU 기업보험심사역이 고객을 대리해 Chubb(AM Best A++)와 인수 조건을 협의합니다.', 'N2N\'s ACIU underwriter negotiates terms with Chubb (AM Best A++) on your behalf.') : L('엔투엔보험중개의 ACIU 기업보험심사역이 AM Best A++~A 등급 6개 보험회사 약관을 비교 분석합니다.', 'N2N\'s ACIU underwriter compares the terms of 6 AM Best A++–A rated insurers (AIG · Chubb · DB · Hyundai · KB · Meritz).')) + '</p>' +
       '<a href="../consult.html?product=' + encoded + '" style="display:inline-block;padding:10px 24px;background:#F4F0E8;color:#0B2818;text-decoration:none;border-radius:6px;font-weight:700">' + L('무료 상담신청 →', 'Request a free consultation →') + '</a>' +
       '<a href="tel:+82-10-5755-6465" style="display:inline-block;margin-left:8px;padding:10px 24px;background:transparent;color:#F4F0E8;text-decoration:none;border-radius:6px;font-weight:700;border:1px solid rgba(244,240,232,.4)">☎ +82-10-5755-6465</a>';
     existing.parentNode.insertBefore(final, existing.nextSibling);
@@ -281,7 +284,7 @@
     section.innerHTML =
       '<div class="fcc-inner">' +
         '<h3>' + L('전문 보험중개사가 직접 상담합니다','A licensed insurance broker advises you directly') + '</h3>' +
-        '<p class="fcc-sub">' + L('ACIU 기업보험심사역 · AM Best A++~A 등급 6개 보험회사 약관 비교<br>평균 1영업일 회신','ACIU underwriter · compares the terms of 6 AM Best A++–A rated insurers<br>avg. 1 business-day reply') + '</p>' +
+        '<p class="fcc-sub">' + (CHUBB_ONLY_PAGE ? L('ACIU 기업보험심사역 · 예술품·보석은 Chubb(AM Best A++) 인수<br>평균 1영업일 회신','ACIU underwriter · fine art & jewellery placed with Chubb (AM Best A++)<br>avg. 1 business-day reply') : L('ACIU 기업보험심사역 · AM Best A++~A 등급 6개 보험회사 약관 비교<br>평균 1영업일 회신','ACIU underwriter · compares the terms of 6 AM Best A++–A rated insurers<br>avg. 1 business-day reply')) + '</p>' +
         '<div class="fcc-buttons">' +
           '<a class="fcc-primary" href="' + consultHref + '">' + L('✎ 상담신청','✎ Request consultation') + '</a>' +
           '<a class="fcc-phone" href="tel:+82-10-5755-6465">☎ +82-10-5755-6465</a>' +
