@@ -538,7 +538,9 @@
 
   // 통화 변경 시 환율 자동세팅
   function onCurrencyChange() {
-    var ccyCode = $('calcCcy').value;
+    var ccyEl = $('calcCcy');
+    if (!ccyEl) return; // 계산기 폼이 없는 페이지
+    var ccyCode = ccyEl.value;
     var ccy = getCurrency(ccyCode);
     var fxEl = $('calcFx');
     if (fxEl) fxEl.value = ccy.rate;
@@ -778,6 +780,7 @@
 
     var btn = $('calcSubmit');
     if (btn) btn.addEventListener('click', doCalc);
+    if (!$('calcCif')) return; // 계산기 폼이 없는 페이지에서는 초기 계산 생략
     onCurrencyChange();   // 초기 통화 라벨/환율 세팅
     updateInsuredAmt();
     loadFx();
