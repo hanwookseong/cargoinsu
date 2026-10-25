@@ -1,6 +1,6 @@
 /* ===========================================================
    N2N Insurance Brokerage — Editorial design system
-   Inspired by vape24 — IBM Plex Sans · Noto Sans KR (한글 가독성 우선, 명조체·이탤릭 미사용)
+   Inspired by vape24 — IBM Plex Sans · Pretendard (한글 가독성 우선, 명조체·이탤릭 미사용)
    =========================================================== */
 
 :root {
@@ -37,12 +37,12 @@
   --shadow:    0 2px 14px rgba(11, 40, 24, 0.10);
 
   /* Typography stacks
-     - 본문/제목 모두 동일한 sans-serif 스택을 사용 (한글 본문은 Noto Sans KR)
+     - 본문/제목 모두 동일한 sans-serif 스택을 사용 (한글 본문은 Pretendard — 2026-10-11 Noto Sans KR에서 통일)
      - 명조체(serif)와 이탤릭은 한글 가독성·식별성 이슈로 사용하지 않음
   */
-  --f-display: 'IBM Plex Sans', 'Noto Sans KR', -apple-system,
+  --f-display: 'IBM Plex Sans', 'Pretendard', -apple-system,
                BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --f-body:    'IBM Plex Sans', 'Noto Sans KR', -apple-system,
+  --f-body:    'IBM Plex Sans', 'Pretendard', -apple-system,
                BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --f-mono:    'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 }
